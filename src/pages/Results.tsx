@@ -1,0 +1,208 @@
+import { useEffect, useState } from "react";
+import { useParams, useNavigate } from "react-router-dom";
+import { supabase } from "@/integrations/supabase/client";
+import { Navigation } from "@/components/Navigation";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Progress } from "@/components/ui/progress";
+import { Share2, Download, Trophy } from "lucide-react";
+import { useToast } from "@/hooks/use-toast";
+
+interface TestResult {
+  id: string;
+  scores: number[];
+  created_at: string;
+  completed: boolean;
+}
+
+const dimensionNames = [
+  "Strategic AI Understanding",
+  "Prompt Engineering Intelligence",
+  "Critical Evaluation Capability",
+  "Integration Intelligence",
+  "Adaptive Learning Capability",
+  "Ethical Judgment",
+  "Context Sensitivity",
+  "Creative Synthesis"
+];
+
+const Results = () => {
+  const { testId } = useParams();
+  const [result, setResult] = useState<TestResult | null>(null);
+  const [loading, setLoading] = useState(true);
+  const navigate = useNavigate();
+  const { toast } = useToast();
+
+  useEffect(() => {
+    fetchResults();
+  }, [testId]);
+
+  const fetchResults = async () => {
+    const { data: { session } } = await supabase.auth.getSession();
+    
+    if (!session) {
+      navigate("/auth");
+      return;
+    }
+
+    try {
+      const { data, error } = await supabase
+        .from("tests")
+        .select("*")
+        .eq("id", testId)
+        .eq("user_id", session.user.id)
+        .single();
+
+      if (error) throw error;
+      
+      if (!data.completed) {
+        toast({
+          title: "Test Not Completed",
+          description: "This test hasn't been completed yet.",
+          variant: "destructive",
+        });
+        navigate("/dashboard");
+        return;
+      }
+
+      setResult({
+        id: data.id,
+        scores: typeof data.scores === 'string' ? JSON.parse(data.scores) : data.scores,
+        created_at: data.created_at,
+        completed: data.completed,
+      });
+    } catch (error: any) {
+      toast({
+        title: "Error",
+        description: error.message,
+        variant: "destructive",
+      });
+      navigate("/dashboard");
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const handleShare = async () => {
+    if (!result) return;
+
+    try {
+      const overallScore = result.scores.reduce((a, b) => a + b, 0) / result.scores.length;
+      const shareCode = Math.random().toString(36).substring(2, 10);
+
+      const { error } = await supabase.from("public_results").insert({
+        test_id: result.id,
+        user_id: (await supabase.auth.getUser()).data.user!.id,
+        share_code: shareCode,
+        overall_score: overallScore,
+        dimension_scores: JSON.stringify(result.scores),
+      });
+
+      if (error) throw error;
+
+      const shareUrl = `${window.location.origin}/shared/${shareCode}`;
+      await navigator.clipboard.writeText(shareUrl);
+
+      toast({
+        title: "Link Copied!",
+        description: "Shareable link copied to clipboard.",
+      });
+    } catch (error: any) {
+      toast({
+        title: "Error",
+        description: error.message,
+        variant: "destructive",
+      });
+    }
+  };
+
+  if (loading) {
+    return (
+      <div className="min-h-screen">
+        <Navigation isAuthenticated={true} />
+        <div className="container py-8">
+          <div className="text-center">Loading results...</div>
+        </div>
+      </div>
+    );
+  }
+
+  if (!result) {
+    return null;
+  }
+
+  const overallScore = result.scores.reduce((a, b) => a + b, 0) / result.scores.length;
+
+  return (
+    <div className="min-h-screen animate-fade-in">
+      <Navigation isAuthenticated={true} />
+      
+      <main className="container py-8 max-w-4xl">
+        <div className="text-center mb-8">
+          <Trophy className="h-16 w-16 text-primary mx-auto mb-4" />
+          <h1 className="text-4xl font-bold mb-2">Your AIQ Results</h1>
+          <p className="text-muted-foreground">
+            Test completed on {new Date(result.created_at).toLocaleDateString()}
+          </p>
+        </div>
+
+        <Card className="mb-8 shadow-elegant">
+          <CardHeader className="text-center">
+            <CardTitle className="text-3xl">
+              Overall AIQ Score: {overallScore.toFixed(1)}
+            </CardTitle>
+          </CardHeader>
+          <CardContent>
+            <Progress value={overallScore} className="h-4" />
+            <p className="text-center text-muted-foreground mt-4">
+              {overallScore >= 80 ? "Exceptional" :
+               overallScore >= 60 ? "Proficient" :
+               overallScore >= 40 ? "Developing" : "Beginner"} AI Collaboration Skills
+            </p>
+          </CardContent>
+        </Card>
+
+        <Card className="mb-8 shadow-elegant">
+          <CardHeader>
+            <CardTitle>Dimension Breakdown</CardTitle>
+          </CardHeader>
+          <CardContent className="space-y-6">
+            {result.scores.map((score, index) => (
+              <div key={index}>
+                <div className="flex justify-between mb-2">
+                  <span className="font-medium">{dimensionNames[index]}</span>
+                  <span className="text-muted-foreground">{score.toFixed(1)}</span>
+                </div>
+                <Progress value={score} className="h-2" />
+              </div>
+            ))}
+          </CardContent>
+        </Card>
+
+        <Card className="shadow-elegant">
+          <CardHeader>
+            <CardTitle>Share Your Results</CardTitle>
+          </CardHeader>
+          <CardContent className="flex gap-4">
+            <Button onClick={handleShare} className="flex-1">
+              <Share2 className="mr-2 h-4 w-4" />
+              Generate Share Link
+            </Button>
+            <Button variant="outline" className="flex-1">
+              <Download className="mr-2 h-4 w-4" />
+              Download PDF
+            </Button>
+          </CardContent>
+        </Card>
+
+        <div className="mt-8 text-center">
+          <Button variant="outline" onClick={() => navigate("/dashboard")}>
+            Back to Dashboard
+          </Button>
+        </div>
+      </main>
+    </div>
+  );
+};
+
+export default Results;
