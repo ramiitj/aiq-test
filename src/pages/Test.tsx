@@ -11,26 +11,20 @@ import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
 import { Clock, ChevronRight } from "lucide-react";
 
-// Sample test data structure (in production, load from Storage)
-const sampleDimensions = [
-  {
-    name: "Strategic AI Understanding",
-    items: Array.from({ length: 10 }, (_, i) => ({
-      id: `strat_${i}`,
-      difficulty: i < 4 ? "easy" : i < 7 ? "medium" : "hard",
-      question: `Strategic AI scenario ${i + 1}: How would you map AI capabilities to optimize a marketing campaign while identifying cultural and ethical limitations?`,
-      type: "mcq",
-      options: [
-        "A: Focus only on data-driven predictions without considering cultural context",
-        "B: Map AI to predictive analytics while noting limitations in cultural nuance interpretation",
-        "C: Avoid AI entirely due to ethical concerns",
-        "D: Use AI for all decisions without human oversight"
-      ],
-      correct: "B"
-    }))
-  },
-  // Add other 7 dimensions here
-];
+interface TestItem {
+  id: string | number;
+  difficulty: string;
+  question: string;
+  type: string;
+  options?: string[];
+  correct?: string;
+  rubric?: string;
+}
+
+interface Dimension {
+  name: string;
+  items: TestItem[];
+}
 
 const Test = () => {
   const [currentDimension, setCurrentDimension] = useState(0);
@@ -39,6 +33,7 @@ const Test = () => {
   const [timeRemaining, setTimeRemaining] = useState(3600); // 60 minutes
   const [testId, setTestId] = useState<string | null>(null);
   const [loading, setLoading] = useState(true);
+  const [dimensions, setDimensions] = useState<Dimension[]>([]);
   const navigate = useNavigate();
   const { toast } = useToast();
 
@@ -66,11 +61,39 @@ const Test = () => {
     }
 
     try {
+      // Load latest test items from Storage
+      const { data: files, error: listError } = await supabase.storage
+        .from("aiq-items")
+        .list("", { sortBy: { column: "created_at", order: "desc" }, limit: 1 });
+
+      if (listError) throw listError;
+
+      if (!files || files.length === 0) {
+        throw new Error("No test items found. Please contact admin.");
+      }
+
+      const latestFile = files[0].name;
+      const { data: fileData, error: downloadError } = await supabase.storage
+        .from("aiq-items")
+        .download(latestFile);
+
+      if (downloadError) throw downloadError;
+
+      const text = await fileData.text();
+      const jsonData = JSON.parse(text);
+      
+      if (!jsonData.dimensions || !Array.isArray(jsonData.dimensions)) {
+        throw new Error("Invalid test data format.");
+      }
+
+      setDimensions(jsonData.dimensions);
+
+      // Create test record
       const { data, error } = await supabase
         .from("tests")
         .insert({
           user_id: session.user.id,
-          json_version: "v1.0",
+          json_version: latestFile,
           completed: false,
         })
         .select()
@@ -91,9 +114,9 @@ const Test = () => {
   };
 
   const handleNext = async () => {
-    const currentQuestion = sampleDimensions[currentDimension].items[currentItem];
+    const currentQuestion = dimensions[currentDimension]?.items[currentItem];
     
-    if (!answers[currentQuestion.id]) {
+    if (!currentQuestion || !answers[currentQuestion.id]) {
       toast({
         title: "Answer Required",
         description: "Please provide an answer before proceeding.",
@@ -102,9 +125,9 @@ const Test = () => {
       return;
     }
 
-    if (currentItem < sampleDimensions[currentDimension].items.length - 1) {
+    if (currentItem < dimensions[currentDimension].items.length - 1) {
       setCurrentItem(currentItem + 1);
-    } else if (currentDimension < sampleDimensions.length - 1) {
+    } else if (currentDimension < dimensions.length - 1) {
       setCurrentDimension(currentDimension + 1);
       setCurrentItem(0);
     } else {
@@ -125,7 +148,7 @@ const Test = () => {
 
     try {
       // Calculate scores (simplified - in production, use proper rubrics)
-      const scores = sampleDimensions.map((dim) => {
+      const scores = dimensions.map((dim) => {
         const dimAnswers = dim.items.filter((item) => answers[item.id]);
         const correctCount = dimAnswers.filter((item) => answers[item.id] === item.correct).length;
         return (correctCount / dim.items.length) * 100;
@@ -158,7 +181,7 @@ const Test = () => {
     }
   };
 
-  if (loading) {
+  if (loading || dimensions.length === 0) {
     return (
       <div className="min-h-screen">
         <Navigation isAuthenticated={true} />
@@ -169,10 +192,21 @@ const Test = () => {
     );
   }
 
-  const currentQuestion = sampleDimensions[currentDimension].items[currentItem];
-  const totalItems = sampleDimensions.reduce((sum, dim) => sum + dim.items.length, 0);
-  const completedItems = currentDimension * 10 + currentItem;
+  const currentQuestion = dimensions[currentDimension]?.items[currentItem];
+  const totalItems = dimensions.reduce((sum, dim) => sum + dim.items.length, 0);
+  const completedItems = dimensions.slice(0, currentDimension).reduce((sum, dim) => sum + dim.items.length, 0) + currentItem;
   const progress = (completedItems / totalItems) * 100;
+
+  if (!currentQuestion) {
+    return (
+      <div className="min-h-screen">
+        <Navigation isAuthenticated={true} />
+        <div className="container py-8">
+          <div className="text-center">Error loading question</div>
+        </div>
+      </div>
+    );
+  }
 
   const formatTime = (seconds: number) => {
     const mins = Math.floor(seconds / 60);
@@ -189,10 +223,10 @@ const Test = () => {
           <div className="flex justify-between items-center mb-4">
             <div>
               <h2 className="text-2xl font-bold">
-                {sampleDimensions[currentDimension].name}
+                {dimensions[currentDimension].name}
               </h2>
               <p className="text-sm text-muted-foreground">
-                Question {currentItem + 1} of {sampleDimensions[currentDimension].items.length}
+                Question {currentItem + 1} of {dimensions[currentDimension].items.length}
               </p>
             </div>
             <div className="flex items-center gap-2 text-muted-foreground">
@@ -246,7 +280,7 @@ const Test = () => {
                     setCurrentItem(currentItem - 1);
                   } else if (currentDimension > 0) {
                     setCurrentDimension(currentDimension - 1);
-                    setCurrentItem(sampleDimensions[currentDimension - 1].items.length - 1);
+                    setCurrentItem(dimensions[currentDimension - 1].items.length - 1);
                   }
                 }}
                 disabled={currentDimension === 0 && currentItem === 0}
@@ -254,8 +288,8 @@ const Test = () => {
                 Previous
               </Button>
               <Button onClick={handleNext}>
-                {currentDimension === sampleDimensions.length - 1 &&
-                currentItem === sampleDimensions[currentDimension].items.length - 1
+                {currentDimension === dimensions.length - 1 &&
+                currentItem === dimensions[currentDimension].items.length - 1
                   ? "Submit Test"
                   : "Next"}
                 <ChevronRight className="ml-2 h-4 w-4" />
