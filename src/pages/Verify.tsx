@@ -32,18 +32,14 @@ const Verify = () => {
   const verifyCode = async (code: string) => {
     setLoading(true);
     try {
-      // Query public_results with share code and expiry validation
-      // RLS policy allows anonymous access for non-expired results
-      const { data, error } = await supabase
-        .from("public_results")
-        .select("id, test_id, overall_score, created_at, expires_at")
-        .eq("share_code", code)
-        .gt("expires_at", new Date().toISOString())
-        .maybeSingle();
+      // Call Edge Function for secure server-side validation
+      const { data, error } = await supabase.functions.invoke('verify-certificate', {
+        body: { shareCode: code }
+      });
 
       if (error) throw error;
 
-      if (!data) {
+      if (!data || !data.valid) {
         setResult({ valid: false });
         toast({
           title: "Invalid or Expired Code",
@@ -53,33 +49,12 @@ const Verify = () => {
         return;
       }
 
-      const expiryDate = new Date(data.expires_at);
-
-      // Determine score range and level (privacy-preserving)
-      const score = data.overall_score;
-      let scoreRange = "";
-      let level = "";
-
-      if (score >= 80) {
-        scoreRange = "80-100";
-        level = "Exceptional";
-      } else if (score >= 60) {
-        scoreRange = "60-79";
-        level = "Proficient";
-      } else if (score >= 40) {
-        scoreRange = "40-59";
-        level = "Developing";
-      } else {
-        scoreRange = "0-39";
-        level = "Emerging";
-      }
-
       setResult({
         valid: true,
-        issueDate: new Date(data.created_at).toLocaleDateString(),
-        expiryDate: expiryDate.toLocaleDateString(),
-        scoreRange,
-        level,
+        issueDate: new Date(data.issueDate).toLocaleDateString(),
+        expiryDate: new Date(data.expiryDate).toLocaleDateString(),
+        scoreRange: data.scoreRange,
+        level: data.level,
       });
     } catch (error: any) {
       toast({
