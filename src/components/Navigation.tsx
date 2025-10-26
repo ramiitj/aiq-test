@@ -68,7 +68,7 @@ export const Navigation = ({
                 </Button>
               </Link>
               <Link to="/auth">
-                <Button size="sm">Get Started</Button>
+                <Button size="sm">Take the Test</Button>
               </Link>
             </>}
         </div>
