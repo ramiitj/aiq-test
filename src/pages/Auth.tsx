@@ -6,8 +6,8 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { useToast } from "@/hooks/use-toast";
-import { Brain } from "lucide-react";
 import { z } from "zod";
+import aiqBrainLogo from "@/assets/aiq-brain-logo.png";
 
 const authSchema = z.object({
   email: z.string().email("Please enter a valid email address"),
@@ -130,7 +130,7 @@ const Auth = () => {
         <CardHeader className="space-y-1 text-center">
           <div className="flex justify-center mb-4">
             <div className="p-3 bg-primary/10 rounded-full">
-              <Brain className="h-8 w-8 text-primary" />
+              <img src={aiqBrainLogo} alt="AIQ Logo" className="h-8 w-8" />
             </div>
           </div>
           <CardTitle className="text-2xl font-semibold">

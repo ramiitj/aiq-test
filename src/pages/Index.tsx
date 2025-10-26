@@ -2,9 +2,10 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { Brain, Target, Zap, Shield, CheckCircle } from "lucide-react";
+import { Target, Zap, Shield, CheckCircle } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { Navigation } from "@/components/Navigation";
+import aiqBrainLogo from "@/assets/aiq-brain-logo.png";
 const Index = () => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   useEffect(() => {
@@ -19,7 +20,7 @@ const Index = () => {
     setIsAuthenticated(!!session);
   };
   const features = [{
-    icon: Brain,
+    icon: "logo",
     title: "Research-Based Framework",
     description: "Built on peer-reviewed research measuring 8 critical dimensions of AI collaboration."
   }, {
@@ -43,7 +44,7 @@ const Index = () => {
         {/* Hero Section */}
         <section className="container py-20 text-center max-w-5xl">
           <div className="inline-block p-3 bg-primary/10 rounded-full mb-6">
-            <Brain className="h-12 w-12 text-primary" />
+            <img src={aiqBrainLogo} alt="AIQ Logo" className="h-12 w-12" />
           </div>
           <h1 className="text-4xl lg:text-5xl font-extrabold mb-6 tracking-tight leading-[1.1]">
             Measure Your <span className="text-blue-900">AI Collaboration</span> Intelligence
@@ -78,11 +79,11 @@ const Index = () => {
             </h2>
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
               {features.map((feature, index) => {
-              const Icon = feature.icon;
+              const Icon = feature.icon === "logo" ? null : feature.icon;
               return <Card key={index} className="shadow-elegant">
                     <CardContent className="pt-6 text-center">
                       <div className="inline-block p-3 bg-primary/10 rounded-full mb-4">
-                        <Icon className="h-6 w-6 text-primary" />
+                        {Icon ? <Icon className="h-6 w-6 text-primary" /> : <img src={aiqBrainLogo} alt="AIQ Logo" className="h-6 w-6" />}
                       </div>
                       <h3 className="text-lg font-semibold mb-3">{feature.title}</h3>
                       <p className="text-base text-muted-foreground leading-relaxed">
