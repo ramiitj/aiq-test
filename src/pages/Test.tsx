@@ -17,7 +17,7 @@ interface TestItem {
   difficulty: string;
   question: string;
   type: string;
-  options?: string[];
+  options?: Array<{ value: string; label: string }>;
   correct?: string;
   rubric?: string;
 }
@@ -92,31 +92,26 @@ const Test = () => {
       const text = await fileData.text();
       const parsed = JSON.parse(text);
 
-      // Accept multiple shapes: {dimensions: [...]}, [...], or { name: {items: [...]}, ... }
+      // Accept multiple shapes: array of dimensions, {dimensions: [...]}, single dimension object with items, or object map name->items
       let dimsRaw: any[] = [];
       if (Array.isArray(parsed)) {
-        // Accept multiple shapes: {dimensions: [...]}, [...], single dimension { id/name + items: [...] }, or { name: {items: [...]}, ... }
-        let dimsRaw: any[] = [];
-        if (Array.isArray(parsed)) {
-          dimsRaw = parsed;
-        } else if (Array.isArray(parsed?.dimensions)) {
-          dimsRaw = parsed.dimensions;
-        } else if (parsed && typeof parsed === 'object' && Array.isArray((parsed as any).items)) {
-          // Single-dimension object
-          dimsRaw = [{ name: (parsed as any).name || (parsed as any).id || 'Dimension 1', items: (parsed as any).items }];
-        } else if (parsed && typeof parsed === 'object') {
-          // Object map of dimensionName -> { items: [...] } or -> [...]
-          dimsRaw = Object.entries(parsed as Record<string, any>)
-            .map(([name, v]) => {
-              const items = Array.isArray(v?.items) ? v.items : Array.isArray(v) ? v : [];
-              return { name, items };
-            })
-            .filter((d) => Array.isArray(d.items) && d.items.length > 0);
-        }
+        dimsRaw = parsed;
+      } else if (Array.isArray((parsed as any)?.dimensions)) {
+        dimsRaw = (parsed as any).dimensions;
+      } else if (parsed && typeof parsed === 'object' && Array.isArray((parsed as any).items)) {
+        dimsRaw = [{ name: (parsed as any).name || (parsed as any).id || 'Dimension 1', items: (parsed as any).items }];
+      } else if (parsed && typeof parsed === 'object') {
+        dimsRaw = Object.entries(parsed as Record<string, any>)
+          .map(([name, v]) => {
+            const items = Array.isArray((v as any)?.items) ? (v as any).items : Array.isArray(v) ? (v as any) : [];
+            return { name, items };
+          })
+          .filter((d) => Array.isArray(d.items) && d.items.length > 0);
+      }
 
-        if (!dimsRaw.length) {
-          throw new Error("Invalid test format: expected dimensions with items.");
-        }
+      if (!dimsRaw.length) {
+        throw new Error("Invalid test format: expected dimensions with items.");
+      }
 
       const normalized: Dimension[] = dimsRaw.map((d: any, di: number) => ({
         name: d.name || `Dimension ${di + 1}`,
