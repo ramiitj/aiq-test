@@ -59,10 +59,10 @@ const Index = () => {
           <div className="inline-block p-3 bg-primary/10 rounded-full mb-6">
             <Brain className="h-12 w-12 text-primary" />
           </div>
-          <h1 className="text-5xl font-bold mb-6 leading-tight">
+          <h1 className="text-5xl lg:text-6xl font-extrabold mb-6 tracking-tight leading-[1.1]">
             Measure Your <span className="text-primary">AI Collaboration</span> Intelligence
           </h1>
-          <p className="text-xl text-muted-foreground mb-8 max-w-3xl mx-auto">
+          <p className="text-xl lg:text-2xl text-muted-foreground mb-8 max-w-3xl mx-auto leading-relaxed font-medium">
             Take the research-validated Artificial Intelligence Quotient (AIQ) test to assess 
             your ability to collaborate effectively with AI systems across 8 key dimensions.
           </p>
@@ -91,7 +91,7 @@ const Index = () => {
         {/* Features Section */}
         <section className="bg-secondary/30 py-20">
           <div className="container max-w-6xl">
-            <h2 className="text-3xl font-bold text-center mb-12">
+            <h2 className="text-4xl lg:text-5xl font-bold text-center mb-16 tracking-tight">
               Why Take the AIQ Test?
             </h2>
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -103,8 +103,8 @@ const Index = () => {
                       <div className="inline-block p-3 bg-primary/10 rounded-full mb-4">
                         <Icon className="h-6 w-6 text-primary" />
                       </div>
-                      <h3 className="font-semibold mb-2">{feature.title}</h3>
-                      <p className="text-sm text-muted-foreground">
+                      <h3 className="text-lg font-semibold mb-3">{feature.title}</h3>
+                      <p className="text-base text-muted-foreground leading-relaxed">
                         {feature.description}
                       </p>
                     </CardContent>
@@ -119,18 +119,18 @@ const Index = () => {
         <section className="container py-20 max-w-4xl">
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div>
-              <h2 className="text-3xl font-bold mb-6">
+              <h2 className="text-4xl lg:text-5xl font-bold mb-6 tracking-tight">
                 What You'll Gain
               </h2>
-              <p className="text-muted-foreground mb-6">
+              <p className="text-lg text-muted-foreground mb-8 leading-relaxed">
                 The AIQ test provides comprehensive insights into your AI collaboration 
                 capabilities, helping you understand where you excel and where you can improve.
               </p>
               <ul className="space-y-3">
                 {benefits.map((benefit, index) => (
                   <li key={index} className="flex items-start gap-3">
-                    <CheckCircle className="h-5 w-5 text-success mt-0.5 flex-shrink-0" />
-                    <span>{benefit}</span>
+                    <CheckCircle className="h-6 w-6 text-success mt-0.5 flex-shrink-0" />
+                    <span className="text-base leading-relaxed">{benefit}</span>
                   </li>
                 ))}
               </ul>
@@ -139,20 +139,20 @@ const Index = () => {
               <CardContent className="pt-6">
                 <div className="space-y-6">
                   <div>
-                    <h3 className="font-semibold mb-2">Assessment Format</h3>
-                    <p className="text-sm text-muted-foreground">
+                    <h3 className="text-lg font-semibold mb-3">Assessment Format</h3>
+                    <p className="text-base text-muted-foreground leading-relaxed">
                       60-minute adaptive test covering 8 dimensions with 80 performance-based questions
                     </p>
                   </div>
                   <div>
-                    <h3 className="font-semibold mb-2">Scoring System</h3>
-                    <p className="text-sm text-muted-foreground">
+                    <h3 className="text-lg font-semibold mb-3">Scoring System</h3>
+                    <p className="text-base text-muted-foreground leading-relaxed">
                       Each response scored 0-100 using research-validated rubrics with detailed feedback
                     </p>
                   </div>
                   <div>
-                    <h3 className="font-semibold mb-2">Results Delivery</h3>
-                    <p className="text-sm text-muted-foreground">
+                    <h3 className="text-lg font-semibold mb-3">Results Delivery</h3>
+                    <p className="text-base text-muted-foreground leading-relaxed">
                       Instant comprehensive report with dimension breakdowns and improvement suggestions
                     </p>
                   </div>
@@ -165,10 +165,10 @@ const Index = () => {
         {/* CTA Section */}
         <section className="bg-primary/5 py-20">
           <div className="container text-center max-w-3xl">
-            <h2 className="text-3xl font-bold mb-4">
+            <h2 className="text-4xl lg:text-5xl font-bold mb-6 tracking-tight">
               Ready to Discover Your AIQ?
             </h2>
-            <p className="text-muted-foreground mb-8">
+            <p className="text-lg text-muted-foreground mb-10 leading-relaxed">
               Join professionals and students worldwide in measuring and improving their 
               AI collaboration capabilities.
             </p>

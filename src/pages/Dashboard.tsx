@@ -89,11 +89,11 @@ const Dashboard = () => {
       <Navigation isAuthenticated={true} isAdmin={profile?.is_admin} />
       
       <main className="container py-8 max-w-6xl">
-        <div className="mb-8">
-          <h1 className="text-3xl font-bold mb-2">
+        <div className="mb-12">
+          <h1 className="text-4xl lg:text-5xl font-bold mb-4 tracking-tight">
             Welcome back, {profile?.name || "User"}!
           </h1>
-          <p className="text-muted-foreground">
+          <p className="text-lg text-muted-foreground font-medium">
             Ready to take your AIQ test or review your results?
           </p>
         </div>
@@ -101,16 +101,16 @@ const Dashboard = () => {
         <div className="grid gap-6 md:grid-cols-2 mb-8">
           <Card className="shadow-elegant">
             <CardHeader>
-              <CardTitle className="flex items-center gap-2">
-                <PlayCircle className="h-5 w-5 text-primary" />
+              <CardTitle className="flex items-center gap-3 text-xl lg:text-2xl">
+                <PlayCircle className="h-6 w-6 text-primary" />
                 Start New Test
               </CardTitle>
-              <CardDescription>
+              <CardDescription className="text-base">
                 Take the adaptive AIQ assessment (approximately 60 minutes)
               </CardDescription>
             </CardHeader>
             <CardContent>
-              <Button onClick={handleStartTest} className="w-full" size="lg">
+              <Button onClick={handleStartTest} className="w-full text-base" size="lg">
                 Begin AIQ Test
               </Button>
             </CardContent>
@@ -118,26 +118,26 @@ const Dashboard = () => {
 
           <Card className="shadow-elegant">
             <CardHeader>
-              <CardTitle className="flex items-center gap-2">
-                <UserIcon className="h-5 w-5 text-primary" />
+              <CardTitle className="flex items-center gap-3 text-xl lg:text-2xl">
+                <UserIcon className="h-6 w-6 text-primary" />
                 Your Profile
               </CardTitle>
-              <CardDescription>Account information</CardDescription>
+              <CardDescription className="text-base">Account information</CardDescription>
             </CardHeader>
-            <CardContent className="space-y-2">
-              <div className="flex justify-between">
+            <CardContent className="space-y-3">
+              <div className="flex justify-between text-base">
                 <span className="text-muted-foreground">Region:</span>
-                <span className="font-medium">{profile?.region || "Global"}</span>
+                <span className="font-semibold">{profile?.region || "Global"}</span>
               </div>
-              <div className="flex justify-between">
+              <div className="flex justify-between text-base">
                 <span className="text-muted-foreground">Role:</span>
-                <span className="font-medium">
+                <span className="font-semibold">
                   {profile?.is_admin ? "Admin" : "User"}
                 </span>
               </div>
-              <div className="flex justify-between">
+              <div className="flex justify-between text-base">
                 <span className="text-muted-foreground">Tests Taken:</span>
-                <span className="font-medium">{tests.length}</span>
+                <span className="font-semibold tabular-nums">{tests.length}</span>
               </div>
             </CardContent>
           </Card>
@@ -145,17 +145,17 @@ const Dashboard = () => {
 
         <Card className="shadow-elegant">
           <CardHeader>
-            <CardTitle className="flex items-center gap-2">
-              <Trophy className="h-5 w-5 text-primary" />
+            <CardTitle className="flex items-center gap-3 text-xl lg:text-2xl">
+              <Trophy className="h-6 w-6 text-primary" />
               Recent Test Results
             </CardTitle>
-            <CardDescription>
+            <CardDescription className="text-base">
               Your most recent AIQ test attempts
             </CardDescription>
           </CardHeader>
           <CardContent>
             {tests.length === 0 ? (
-              <p className="text-muted-foreground text-center py-8">
+              <p className="text-base text-muted-foreground text-center py-10">
                 No tests taken yet. Start your first AIQ assessment above!
               </p>
             ) : (
@@ -163,18 +163,18 @@ const Dashboard = () => {
                 {tests.map((test) => (
                   <div
                     key={test.id}
-                    className="flex items-center justify-between p-4 border rounded-lg hover:bg-accent/50 transition-smooth cursor-pointer"
+                    className="flex items-center justify-between p-5 border rounded-lg hover:bg-accent/50 transition-smooth cursor-pointer"
                     onClick={() => navigate(`/results/${test.id}`)}
                   >
                     <div>
-                      <p className="font-medium">
+                      <p className="text-base font-semibold">
                         {test.completed ? "Completed Test" : "In Progress"}
                       </p>
-                      <p className="text-sm text-muted-foreground">
+                      <p className="text-sm text-muted-foreground mt-1">
                         {new Date(test.created_at).toLocaleDateString()}
                       </p>
                     </div>
-                    <Button variant="ghost" size="sm">
+                    <Button variant="ghost" size="sm" className="text-base">
                       View Results
                     </Button>
                   </div>

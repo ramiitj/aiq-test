@@ -105,11 +105,22 @@ All colors MUST be HSL.
 
   body {
     @apply bg-background text-foreground font-sans antialiased;
+    font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11';
   }
   
   /* Smooth scrolling */
   html {
     scroll-behavior: smooth;
+  }
+  
+  /* Typography improvements */
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-semibold tracking-tight;
+  }
+  
+  /* Tabular numbers for scores */
+  .tabular-nums {
+    font-variant-numeric: tabular-nums;
   }
 }
 
@@ -138,5 +149,26 @@ All colors MUST be HSL.
   /* Custom shadows */
   .shadow-elegant {
     box-shadow: var(--shadow-md);
+  }
+  
+  /* Typography utility classes */
+  .text-hero {
+    @apply text-5xl lg:text-6xl font-extrabold tracking-tight leading-tight;
+  }
+  
+  .text-section-title {
+    @apply text-3xl lg:text-4xl font-bold tracking-tight;
+  }
+  
+  .text-card-title {
+    @apply text-xl lg:text-2xl font-semibold tracking-tight;
+  }
+  
+  .text-body-large {
+    @apply text-lg leading-relaxed;
+  }
+  
+  .text-caption {
+    @apply text-sm text-muted-foreground leading-normal;
   }
 }

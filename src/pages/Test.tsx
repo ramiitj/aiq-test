@@ -446,36 +446,36 @@ const Test = () => {
       <Navigation isAuthenticated={true} />
       
       <main className="container py-8 max-w-4xl">
-        <div className="mb-6">
-          <div className="flex justify-between items-center mb-4">
+        <div className="mb-8">
+          <div className="flex justify-between items-center mb-6">
             <div>
-              <h2 className="text-2xl font-bold">
+              <h2 className="text-3xl lg:text-4xl font-bold tracking-tight">
                 Section {currentDimension + 1} of 6
               </h2>
-              <p className="text-sm text-muted-foreground">
+              <p className="text-base text-muted-foreground mt-1 font-medium">
                 Question {dimStates[currentDimension].answered + 1} of 10
               </p>
             </div>
-            <div className="flex items-center gap-2 text-muted-foreground">
-              <Clock className="h-5 w-5" />
-              <span className="font-mono text-lg">{formatTime(timeRemaining)}</span>
+            <div className="flex items-center gap-3 text-muted-foreground">
+              <Clock className="h-6 w-6" />
+              <span className="font-mono text-xl font-semibold tabular-nums">{formatTime(timeRemaining)}</span>
             </div>
           </div>
-          <Progress value={progress} className="h-2" />
+          <Progress value={progress} className="h-3" />
         </div>
 
         <Card className="shadow-elegant">
-          <CardContent className="pt-6 space-y-6">
+          <CardContent className="pt-8 pb-8 space-y-8">
             <div>
-              <p className="text-lg font-bold mb-6">{currentQuestion.question}</p>
+              <p className="text-xl lg:text-2xl font-semibold mb-8 leading-relaxed">{currentQuestion.question}</p>
               
               {currentQuestion.type === "multiple-choice-multiple" ? (
-                <div className="space-y-3">
+                <div className="space-y-4">
                   {currentQuestion.options?.map((option: string, index: number) => {
                     const selectedIndices = (answers[currentQuestion.id] || "").split(",").filter(Boolean).map(s => parseInt(s.trim()));
                     const isChecked = selectedIndices.includes(index);
                     return (
-                      <div key={index} className="flex items-center space-x-2">
+                      <div key={index} className="flex items-center space-x-3">
                         <Checkbox
                           id={`option-${index}`}
                           checked={isChecked}
@@ -488,7 +488,7 @@ const Test = () => {
                             });
                           }}
                         />
-                        <Label htmlFor={`option-${index}`} className="cursor-pointer flex-1 font-semibold">
+                        <Label htmlFor={`option-${index}`} className="cursor-pointer flex-1 text-lg font-medium leading-relaxed">
                           {option}
                         </Label>
                       </div>
@@ -502,11 +502,11 @@ const Test = () => {
                     setAnswers({ ...answers, [currentQuestion.id]: value })
                   }
                 >
-                  <div className="space-y-3">
+                  <div className="space-y-4">
                     {currentQuestion.options.map((option: string, index: number) => (
-                      <div key={index} className="flex items-center space-x-2">
+                      <div key={index} className="flex items-center space-x-3">
                         <RadioGroupItem value={String(index)} id={`option-${index}`} />
-                        <Label htmlFor={`option-${index}`} className="cursor-pointer flex-1 font-semibold">
+                        <Label htmlFor={`option-${index}`} className="cursor-pointer flex-1 text-lg font-medium leading-relaxed">
                           {option}
                         </Label>
                       </div>

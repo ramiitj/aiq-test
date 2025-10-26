@@ -138,23 +138,24 @@ const Results = () => {
       <Navigation isAuthenticated={true} />
       
       <main className="container py-8 max-w-4xl">
-        <div className="text-center mb-8">
-          <Trophy className="h-16 w-16 text-primary mx-auto mb-4" />
-          <h1 className="text-4xl font-bold mb-2">Your AIQ Results</h1>
-          <p className="text-muted-foreground">
+        <div className="text-center mb-12">
+          <Trophy className="h-20 w-20 text-primary mx-auto mb-6" />
+          <h1 className="text-5xl lg:text-6xl font-extrabold mb-4 tracking-tight">Your AIQ Results</h1>
+          <p className="text-lg text-muted-foreground font-medium">
             Test completed on {new Date(result.created_at).toLocaleDateString()}
           </p>
         </div>
 
-        <Card className="mb-8 shadow-elegant">
-          <CardHeader className="text-center">
-            <CardTitle className="text-3xl">
-              Overall AIQ Score: {overallScore.toFixed(1)}
-            </CardTitle>
+        <Card className="mb-10 shadow-elegant">
+          <CardHeader className="text-center pb-6">
+            <CardTitle className="text-2xl lg:text-3xl font-semibold mb-2">Overall AIQ Score</CardTitle>
+            <div className="text-6xl lg:text-7xl font-bold text-primary tabular-nums tracking-tight">
+              {overallScore.toFixed(1)}
+            </div>
           </CardHeader>
           <CardContent>
-            <Progress value={overallScore} className="h-4" />
-            <p className="text-center text-muted-foreground mt-4">
+            <Progress value={overallScore} className="h-4 mb-6" />
+            <p className="text-center text-xl font-semibold">
               {overallScore >= 80 ? "Exceptional" :
                overallScore >= 60 ? "Proficient" :
                overallScore >= 40 ? "Developing" : "Beginner"} AI Collaboration Skills
@@ -162,18 +163,18 @@ const Results = () => {
           </CardContent>
         </Card>
 
-        <Card className="mb-8 shadow-elegant">
+        <Card className="mb-10 shadow-elegant">
           <CardHeader>
-            <CardTitle>Dimension Breakdown</CardTitle>
+            <CardTitle className="text-2xl lg:text-3xl">Dimension Breakdown</CardTitle>
           </CardHeader>
-          <CardContent className="space-y-6">
+          <CardContent className="space-y-8">
             {result.scores.map((score, index) => (
               <div key={index}>
-                <div className="flex justify-between mb-2">
-                  <span className="font-medium">{dimensionNames[index]}</span>
-                  <span className="text-muted-foreground">{score.toFixed(1)}</span>
+                <div className="flex justify-between mb-3">
+                  <span className="text-lg font-semibold">{dimensionNames[index]}</span>
+                  <span className="text-xl font-bold tabular-nums">{score.toFixed(1)}</span>
                 </div>
-                <Progress value={score} className="h-2" />
+                <Progress value={score} className="h-3" />
               </div>
             ))}
           </CardContent>
@@ -181,15 +182,15 @@ const Results = () => {
 
         <Card className="shadow-elegant">
           <CardHeader>
-            <CardTitle>Share Your Results</CardTitle>
+            <CardTitle className="text-2xl">Share Your Results</CardTitle>
           </CardHeader>
           <CardContent className="flex gap-4">
-            <Button onClick={handleShare} className="flex-1">
-              <Share2 className="mr-2 h-4 w-4" />
+            <Button onClick={handleShare} className="flex-1 text-base" size="lg">
+              <Share2 className="mr-2 h-5 w-5" />
               Generate Share Link
             </Button>
-            <Button variant="outline" className="flex-1">
-              <Download className="mr-2 h-4 w-4" />
+            <Button variant="outline" className="flex-1 text-base" size="lg">
+              <Download className="mr-2 h-5 w-5" />
               Download PDF
             </Button>
           </CardContent>
