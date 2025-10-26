@@ -71,6 +71,15 @@ const Test = () => {
       return 'medium';
     };
 
+    const shuffleArray = <T,>(array: T[]): T[] => {
+      const shuffled = [...array];
+      for (let i = shuffled.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+      }
+      return shuffled;
+    };
+
     try {
       // Load latest test items from Storage
       const { data: files, error: listError } = await supabase.storage
@@ -93,76 +102,98 @@ const Test = () => {
       const text = await fileData.text();
       const parsed = JSON.parse(text);
 
-      // Accept multiple shapes: array, {dimensions: [...]}, single dimension with items to split by prefix, or object map
-      let dimsRaw: any[] = [];
+      // Accept multiple shapes and group by ID prefix
+      let allItems: any[] = [];
+      
       if (Array.isArray(parsed)) {
-        dimsRaw = parsed;
+        // Array of dimension objects: [{ name, items }, ...]
+        allItems = parsed.flatMap((d: any) => d.items || []);
       } else if (Array.isArray((parsed as any)?.dimensions)) {
-        dimsRaw = (parsed as any).dimensions;
+        // { dimensions: [{ name, items }, ...] }
+        allItems = (parsed as any).dimensions.flatMap((d: any) => d.items || []);
       } else if (parsed && typeof parsed === 'object' && Array.isArray((parsed as any).items)) {
-        // Single dimension with mixed items - split by ID prefix
-        const allItems = (parsed as any).items;
-        const grouped = new Map<string, any[]>();
-        
-        allItems.forEach((item: any) => {
-          const id = String(item.id || '');
-          const prefix = id.includes('-') ? id.split('-')[0] : 'MISC';
-          if (!grouped.has(prefix)) grouped.set(prefix, []);
-          grouped.get(prefix)!.push(item);
-        });
-
-        const dimensionNames: Record<string, string> = {
-          'ALC': 'Adaptive Learning & Continuous Improvement',
-          'CEC': 'Critical Evaluation & Calibration',
-          'EJU': 'Ethical Judgment & Use',
-          'ITI': 'Integration & Transformation Intelligence',
-          'CLM': 'Cognitive Load Management',
-          'KOI': 'Knowledge Organization & Insight'
-        };
-
-        dimsRaw = Array.from(grouped.entries()).map(([prefix, items]) => ({
-          name: dimensionNames[prefix] || prefix,
-          items
-        }));
+        // { items: [...] }
+        allItems = (parsed as any).items;
       } else if (parsed && typeof parsed === 'object') {
-        dimsRaw = Object.entries(parsed as Record<string, any>)
-          .map(([name, v]) => {
-            const items = Array.isArray((v as any)?.items) ? (v as any).items : Array.isArray(v) ? (v as any) : [];
-            return { name, items };
-          })
-          .filter((d) => Array.isArray(d.items) && d.items.length > 0);
+        // Map-like: { SAU: { items: [...] }, PEI: { items: [...] }, ... }
+        allItems = Object.values(parsed as Record<string, any>).flatMap((v: any) => 
+          Array.isArray((v as any)?.items) ? (v as any).items : (Array.isArray(v) ? v : [])
+        );
       }
 
-      if (!dimsRaw.length) {
-        throw new Error("Invalid test format: expected dimensions with items.");
+      if (!allItems.length) {
+        throw new Error("Invalid test format: no items found.");
       }
 
-      const normalized: Dimension[] = dimsRaw.map((d: any, di: number) => ({
-        name: d.name || `Dimension ${di + 1}`,
-        items: (d.items || []).map((it: any, ii: number) => {
-          // Clean question text: Enhanced removal of "Select ALL" variations
+      // Group items by ID prefix
+      const grouped = new Map<string, any[]>();
+      allItems.forEach((item: any) => {
+        const id = String(item.id || '');
+        const code = id.includes('-') ? id.split('-')[0].toUpperCase() : 'MISC';
+        if (!grouped.has(code)) grouped.set(code, []);
+        grouped.get(code)!.push(item);
+      });
+
+      // Select exactly 6 dimensions with the most items
+      const sortedCodes = Array.from(grouped.entries())
+        .sort((a, b) => b[1].length - a[1].length)
+        .slice(0, 6);
+
+      if (sortedCodes.length < 6) {
+        throw new Error(`Not enough dimensions found. Expected 6, found ${sortedCodes.length}. Please upload a complete test set.`);
+      }
+
+      // Validate each dimension has at least 10 items
+      for (const [code, items] of sortedCodes) {
+        if (items.length < 10) {
+          throw new Error(`Dimension ${code} has only ${items.length} items. Need at least 10 items per dimension.`);
+        }
+      }
+
+      // Build normalized dimensions with shuffled difficulty pools
+      const normalized: Dimension[] = sortedCodes.map(([code, rawItems]) => {
+        const items = rawItems.map((it: any) => {
+          // Enhanced removal of "Select ALL" variations
           let cleanQuestion = String(it.question ?? '').trim();
           cleanQuestion = cleanQuestion
             .replace(/\bselect\s+all\s*(?:that\s+apply)?\s*:?\s*/gi, '')
             .replace(/^\s*:?\s*/, '')
             .trim();
+          
+          // Capitalize first letter if needed
+          if (cleanQuestion && cleanQuestion[0] === cleanQuestion[0].toLowerCase()) {
+            cleanQuestion = cleanQuestion.charAt(0).toUpperCase() + cleanQuestion.slice(1);
+          }
 
           return {
-            id: String(it.id ?? `${di}_${ii}`),
-            difficulty: it.difficulty,
+            id: String(it.id ?? `${code}_${Math.random()}`),
+            difficulty: it.difficulty ?? 'medium',
             question: cleanQuestion,
-            type: it.type,
+            type: it.type ?? 'multiple-choice',
             options: Array.isArray(it.options) ? it.options.map((o: any) => String(o)) : undefined,
             correctAnswer: it.correctAnswer,
             correctAnswers: it.correctAnswers,
             rubric: it.explanation ?? it.rubric,
           } as TestItem;
-        }),
-      }));
+        });
+
+        // Partition and shuffle by difficulty
+        const easy = shuffleArray(items.filter(it => mapDiff(it.difficulty) === 'easy'));
+        const medium = shuffleArray(items.filter(it => mapDiff(it.difficulty) === 'medium'));
+        const hard = shuffleArray(items.filter(it => mapDiff(it.difficulty) === 'hard'));
+
+        // Recombine shuffled pools
+        const shuffledItems = [...easy, ...medium, ...hard];
+
+        return {
+          name: code,
+          items: shuffledItems,
+        };
+      });
 
       setDimensions(normalized);
 
-      // Initialize adaptive state
+      // Initialize adaptive state for 6 dimensions
       const initStates = normalized.map(() => ({
         theta: 0,
         used: new Set<string>(),
@@ -171,16 +202,14 @@ const Test = () => {
       }));
       setDimStates(initStates);
 
-      // Choose first dimension with items and first question (prefer medium)
-      const firstDimIdx = normalized.findIndex((d: any) => Array.isArray(d.items) && d.items.length > 0);
-      if (firstDimIdx === -1) {
-        throw new Error('No items found in any dimension.');
-      }
-      setCurrentDimension(firstDimIdx);
-      const firstItems = normalized[firstDimIdx].items || [];
-      const findIdx = (target: 'easy' | 'medium' | 'hard') => firstItems.findIndex((it: any) => mapDiff(it.difficulty) === target);
-      const firstIdx = (findIdx('medium') !== -1 ? findIdx('medium') : (findIdx('easy') !== -1 ? findIdx('easy') : findIdx('hard')));
-      setCurrentItem(firstIdx >= 0 ? firstIdx : 0);
+      // Start with first dimension, first medium item (or fallback)
+      setCurrentDimension(0);
+      const firstItems = normalized[0].items;
+      const mediumIdx = firstItems.findIndex(it => mapDiff(it.difficulty) === 'medium');
+      const easyIdx = firstItems.findIndex(it => mapDiff(it.difficulty) === 'easy');
+      const hardIdx = firstItems.findIndex(it => mapDiff(it.difficulty) === 'hard');
+      const startIdx = mediumIdx >= 0 ? mediumIdx : (easyIdx >= 0 ? easyIdx : (hardIdx >= 0 ? hardIdx : 0));
+      setCurrentItem(startIdx);
 
       // Create test record
       const { data, error } = await supabase
@@ -219,11 +248,33 @@ const Test = () => {
   const selectNextItem = (dimIdx: number, theta: number, used: Set<string>, counts: { easy: number; medium: number; hard: number }): number => {
     const items = dimensions[dimIdx]?.items || [];
     const targetDiff = theta < -0.5 ? 'easy' : theta > 0.5 ? 'hard' : 'medium';
-    const pool = items.map((it, idx) => ({ it, idx, diff: mapDiff(it.difficulty) })).filter(({ it, diff }) => !used.has(String(it.id)) && diff === targetDiff);
-    if (pool.length) return pool[0].idx;
     
-    const fallback = items.map((it, idx) => ({ it, idx })).filter(({ it }) => !used.has(String(it.id)));
-    return fallback.length ? fallback[0].idx : -1;
+    // Build pools by difficulty
+    const poolsByDiff = {
+      easy: items.map((it, idx) => ({ it, idx })).filter(({ it }) => !used.has(String(it.id)) && mapDiff(it.difficulty) === 'easy'),
+      medium: items.map((it, idx) => ({ it, idx })).filter(({ it }) => !used.has(String(it.id)) && mapDiff(it.difficulty) === 'medium'),
+      hard: items.map((it, idx) => ({ it, idx })).filter(({ it }) => !used.has(String(it.id)) && mapDiff(it.difficulty) === 'hard'),
+    };
+
+    // Try target difficulty first
+    if (poolsByDiff[targetDiff].length > 0) {
+      return poolsByDiff[targetDiff][0].idx;
+    }
+
+    // Fallback: try nearest difficulty
+    const fallbackOrder: Array<'easy' | 'medium' | 'hard'> = 
+      targetDiff === 'easy' ? ['medium', 'hard'] :
+      targetDiff === 'hard' ? ['medium', 'easy'] :
+      ['easy', 'hard'];
+
+    for (const diff of fallbackOrder) {
+      if (poolsByDiff[diff].length > 0) {
+        return poolsByDiff[diff][0].idx;
+      }
+    }
+
+    // Should not happen if we have enough items, but return -1 if exhausted
+    return -1;
   };
 
   const handleNext = async () => {
@@ -263,30 +314,40 @@ const Test = () => {
     updatedStates[currentDimension] = { theta: newTheta, used: newUsed, counts: newCounts, answered: newAnswered };
     setDimStates(updatedStates);
 
-    // Check if dimension complete (10 items answered)
+    // Check if dimension complete (exactly 10 items answered)
     if (newAnswered >= 10) {
-      if (currentDimension < dimensions.length - 1) {
+      if (currentDimension < 5) {
+        // Move to next dimension (we have exactly 6 dimensions, 0-5)
         const nextDim = currentDimension + 1;
         setCurrentDimension(nextDim);
         const nextIdx = selectNextItem(nextDim, updatedStates[nextDim].theta, updatedStates[nextDim].used, updatedStates[nextDim].counts);
-        setCurrentItem(nextIdx >= 0 ? nextIdx : 0);
+        if (nextIdx < 0) {
+          toast({ 
+            title: "Error", 
+            description: `Dimension ${nextDim + 1} has insufficient items.`,
+            variant: "destructive"
+          });
+          await handleSubmit();
+        } else {
+          setCurrentItem(nextIdx);
+        }
       } else {
+        // Completed all 6 dimensions (60 questions total)
         await handleSubmit();
       }
     } else {
+      // Continue in current dimension
       const nextIdx = selectNextItem(currentDimension, newTheta, newUsed, newCounts);
-      if (nextIdx >= 0) {
-        setCurrentItem(nextIdx);
+      if (nextIdx < 0) {
+        // Ran out of items before reaching 10 - should not happen with validation
+        toast({ 
+          title: "Error", 
+          description: "Insufficient items in current dimension.",
+          variant: "destructive"
+        });
+        await handleSubmit();
       } else {
-        toast({ title: "No more items", description: "Moving to next dimension.", variant: "default" });
-        if (currentDimension < dimensions.length - 1) {
-          const nextDim = currentDimension + 1;
-          setCurrentDimension(nextDim);
-          const nextIdx2 = selectNextItem(nextDim, updatedStates[nextDim].theta, updatedStates[nextDim].used, updatedStates[nextDim].counts);
-          setCurrentItem(nextIdx2 >= 0 ? nextIdx2 : 0);
-        } else {
-          await handleSubmit();
-        }
+        setCurrentItem(nextIdx);
       }
     }
 
@@ -360,7 +421,7 @@ const Test = () => {
 
   const currentQuestion = dimensions[currentDimension]?.items[currentItem];
   const totalAnswered = dimStates.reduce((sum, s) => sum + s.answered, 0);
-  const totalRequired = dimensions.length * 10;
+  const totalRequired = 60; // Fixed: 6 dimensions × 10 items each
   const progress = (totalAnswered / totalRequired) * 100;
 
   if (!currentQuestion) {
@@ -388,8 +449,8 @@ const Test = () => {
         <div className="mb-6">
           <div className="flex justify-between items-center mb-4">
             <div>
-              <h2 className="text-2xl font-bold capitalize">
-                {dimensions[currentDimension].name}
+              <h2 className="text-2xl font-bold">
+                Section {currentDimension + 1} of 6
               </h2>
               <p className="text-sm text-muted-foreground">
                 Question {dimStates[currentDimension].answered + 1} of 10
@@ -427,7 +488,7 @@ const Test = () => {
                             });
                           }}
                         />
-                        <Label htmlFor={`option-${index}`} className="cursor-pointer flex-1">
+                        <Label htmlFor={`option-${index}`} className="cursor-pointer flex-1 font-semibold">
                           {option}
                         </Label>
                       </div>
@@ -445,7 +506,7 @@ const Test = () => {
                     {currentQuestion.options.map((option: string, index: number) => (
                       <div key={index} className="flex items-center space-x-2">
                         <RadioGroupItem value={String(index)} id={`option-${index}`} />
-                        <Label htmlFor={`option-${index}`} className="cursor-pointer flex-1">
+                        <Label htmlFor={`option-${index}`} className="cursor-pointer flex-1 font-semibold">
                           {option}
                         </Label>
                       </div>
@@ -466,7 +527,7 @@ const Test = () => {
 
             <div className="flex justify-end pt-4">
               <Button onClick={handleNext}>
-                {totalAnswered >= totalRequired - 1 ? "Submit Test" : "Next"}
+                {totalAnswered >= 59 ? "Submit Test" : "Next"}
                 <ChevronRight className="ml-2 h-4 w-4" />
               </Button>
             </div>
