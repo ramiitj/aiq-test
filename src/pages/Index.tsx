@@ -60,7 +60,7 @@ const Index = () => {
                 </Button>
               </Link> : <Link to="/auth">
                 <Button size="lg" className="text-lg px-8">
-                  Get Started Free
+                  Take the Test
                 </Button>
               </Link>}
             <Link to="/about">
@@ -153,11 +153,11 @@ const Index = () => {
             </p>
             {isAuthenticated ? <Link to="/dashboard">
                 <Button size="lg" className="text-lg px-8">
-                  Start Your Test
+                  Take the Test
                 </Button>
               </Link> : <Link to="/auth">
                 <Button size="lg" className="text-lg px-8">
-                  Sign Up Now
+                  Take the Test
                 </Button>
               </Link>}
           </div>
