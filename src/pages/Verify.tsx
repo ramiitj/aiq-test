@@ -32,8 +32,9 @@ const Verify = () => {
   const verifyCode = async (code: string) => {
     setLoading(true);
     try {
+      // Use shared_results view which excludes user_id for privacy
       const { data, error } = await supabase
-        .from("public_results")
+        .from("shared_results")
         .select("created_at, overall_score, expires_at")
         .eq("share_code", code)
         .maybeSingle();
@@ -45,18 +46,8 @@ const Verify = () => {
         return;
       }
 
+      // No need to check expiry - the view already filters expired results
       const expiryDate = new Date(data.expires_at);
-      const isExpired = expiryDate < new Date();
-
-      if (isExpired) {
-        setResult({ valid: false });
-        toast({
-          title: "Certificate Expired",
-          description: "This certificate has expired and is no longer valid.",
-          variant: "destructive",
-        });
-        return;
-      }
 
       // Determine score range and level (privacy-preserving)
       const score = data.overall_score;
