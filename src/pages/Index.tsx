@@ -5,52 +5,38 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Brain, Target, Zap, Shield, CheckCircle } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { Navigation } from "@/components/Navigation";
-
 const Index = () => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
-
   useEffect(() => {
     checkAuth();
   }, []);
-
   const checkAuth = async () => {
-    const { data: { session } } = await supabase.auth.getSession();
+    const {
+      data: {
+        session
+      }
+    } = await supabase.auth.getSession();
     setIsAuthenticated(!!session);
   };
-
-  const features = [
-    {
-      icon: Brain,
-      title: "Research-Based Framework",
-      description: "Built on peer-reviewed research measuring 8 critical dimensions of AI collaboration."
-    },
-    {
-      icon: Target,
-      title: "Adaptive Assessment",
-      description: "Uses Item Response Theory (IRT) to dynamically adjust question difficulty based on your performance."
-    },
-    {
-      icon: Zap,
-      title: "Instant Results",
-      description: "Receive comprehensive scoring with dimension breakdowns and personalized improvement recommendations."
-    },
-    {
-      icon: Shield,
-      title: "Secure & Private",
-      description: "Your test data is encrypted and private. Share results only when you choose to."
-    }
-  ];
-
-  const benefits = [
-    "Understand your AI collaboration strengths and weaknesses",
-    "Benchmark your skills against standardized metrics",
-    "Receive actionable insights for improvement",
-    "Share verified results with employers or educators",
-    "Track your progress over time"
-  ];
-
-  return (
-    <div className="min-h-screen animate-fade-in">
+  const features = [{
+    icon: Brain,
+    title: "Research-Based Framework",
+    description: "Built on peer-reviewed research measuring 8 critical dimensions of AI collaboration."
+  }, {
+    icon: Target,
+    title: "Adaptive Assessment",
+    description: "Uses Item Response Theory (IRT) to dynamically adjust question difficulty based on your performance."
+  }, {
+    icon: Zap,
+    title: "Instant Results",
+    description: "Receive comprehensive scoring with dimension breakdowns and personalized improvement recommendations."
+  }, {
+    icon: Shield,
+    title: "Secure & Private",
+    description: "Your test data is encrypted and private. Share results only when you choose to."
+  }];
+  const benefits = ["Understand your AI collaboration strengths and weaknesses", "Benchmark your skills against standardized metrics", "Receive actionable insights for improvement", "Share verified results with employers or educators", "Track your progress over time"];
+  return <div className="min-h-screen animate-fade-in">
       <Navigation isAuthenticated={isAuthenticated} />
       
       <main>
@@ -60,26 +46,22 @@ const Index = () => {
             <Brain className="h-12 w-12 text-primary" />
           </div>
           <h1 className="text-4xl lg:text-5xl font-extrabold mb-6 tracking-tight leading-[1.1]">
-            Measure Your <span className="text-primary">AI Collaboration</span> Intelligence
+            Measure Your <span className="text-blue-900">AI Collaboration</span> Intelligence
           </h1>
           <p className="text-lg lg:text-xl text-muted-foreground mb-8 max-w-3xl mx-auto leading-relaxed font-medium">
             Take the research-validated Artificial Intelligence Quotient (AIQ) test to assess 
             your ability to collaborate effectively with AI systems across 8 key dimensions.
           </p>
           <div className="flex gap-4 justify-center">
-            {isAuthenticated ? (
-              <Link to="/dashboard">
-                <Button size="lg" className="text-lg px-8">
+            {isAuthenticated ? <Link to="/dashboard">
+                <Button size="lg" className="text-lg px-8 bg-blue-900 hover:bg-blue-800">
                   Go to Dashboard
                 </Button>
-              </Link>
-            ) : (
-              <Link to="/auth">
+              </Link> : <Link to="/auth">
                 <Button size="lg" className="text-lg px-8">
                   Get Started Free
                 </Button>
-              </Link>
-            )}
+              </Link>}
             <Link to="/about">
               <Button size="lg" variant="outline" className="text-lg px-8">
                 Learn More
@@ -96,9 +78,8 @@ const Index = () => {
             </h2>
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
               {features.map((feature, index) => {
-                const Icon = feature.icon;
-                return (
-                  <Card key={index} className="shadow-elegant">
+              const Icon = feature.icon;
+              return <Card key={index} className="shadow-elegant">
                     <CardContent className="pt-6 text-center">
                       <div className="inline-block p-3 bg-primary/10 rounded-full mb-4">
                         <Icon className="h-6 w-6 text-primary" />
@@ -108,9 +89,8 @@ const Index = () => {
                         {feature.description}
                       </p>
                     </CardContent>
-                  </Card>
-                );
-              })}
+                  </Card>;
+            })}
             </div>
           </div>
         </section>
@@ -127,12 +107,10 @@ const Index = () => {
                 capabilities, helping you understand where you excel and where you can improve.
               </p>
               <ul className="space-y-3">
-                {benefits.map((benefit, index) => (
-                  <li key={index} className="flex items-start gap-3">
+                {benefits.map((benefit, index) => <li key={index} className="flex items-start gap-3">
                     <CheckCircle className="h-6 w-6 text-success mt-0.5 flex-shrink-0" />
                     <span className="text-base leading-relaxed">{benefit}</span>
-                  </li>
-                ))}
+                  </li>)}
               </ul>
             </div>
             <Card className="shadow-elegant">
@@ -172,19 +150,15 @@ const Index = () => {
               Join professionals and students worldwide in measuring and improving their 
               AI collaboration capabilities.
             </p>
-            {isAuthenticated ? (
-              <Link to="/dashboard">
+            {isAuthenticated ? <Link to="/dashboard">
                 <Button size="lg" className="text-lg px-8">
                   Start Your Test
                 </Button>
-              </Link>
-            ) : (
-              <Link to="/auth">
+              </Link> : <Link to="/auth">
                 <Button size="lg" className="text-lg px-8">
                   Sign Up Now
                 </Button>
-              </Link>
-            )}
+              </Link>}
           </div>
         </section>
       </main>
@@ -199,8 +173,6 @@ const Index = () => {
           </p>
         </div>
       </footer>
-    </div>
-  );
+    </div>;
 };
-
 export default Index;
