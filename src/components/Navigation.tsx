@@ -1,8 +1,9 @@
 import { Link, useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { Brain, LogOut, User, BookOpen } from "lucide-react";
+import { LogOut, User, BookOpen } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
+import aiqLogo from "@/assets/aiq-logo.png";
 
 interface NavigationProps {
   isAuthenticated: boolean;
@@ -30,8 +31,8 @@ export const Navigation = ({ isAuthenticated, isAdmin }: NavigationProps) => {
     <nav className="border-b border-border bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 sticky top-0 z-50">
       <div className="container flex h-16 items-center justify-between">
         <Link to="/" className="flex items-center gap-2 font-semibold text-lg hover:opacity-80 transition-smooth">
-          <Brain className="h-6 w-6 text-primary" />
-          <span>AIQ Test</span>
+          <img src={aiqLogo} alt="AIQ Logo" className="h-8 w-8" />
+          <span>Test</span>
         </Link>
 
         <div className="flex items-center gap-4">
