@@ -21,7 +21,6 @@ interface ShareModalProps {
   dimensions: Array<{ name: string; score: number }>;
   verificationCode: string;
   verificationUrl: string;
-  percentile?: number | null;
 }
 
 export function ShareModal({
@@ -31,7 +30,6 @@ export function ShareModal({
   dimensions,
   verificationCode,
   verificationUrl,
-  percentile,
 }: ShareModalProps) {
   const [imageBlob, setImageBlob] = useState<Blob | null>(null);
   const [imageUrl, setImageUrl] = useState<string>("");
@@ -52,7 +50,6 @@ export function ShareModal({
         level,
         topDimensions,
         verificationUrl,
-        percentile,
       });
       setCaption(generatedCaption);
     }
@@ -67,7 +64,6 @@ export function ShareModal({
         verificationCode,
         dimensions: topDimensions,
         verificationUrl,
-        percentile,
       });
       setImageBlob(blob);
       const url = URL.createObjectURL(blob);

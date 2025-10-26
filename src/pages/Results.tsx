@@ -47,7 +47,6 @@ const Results = () => {
   const [shareModalOpen, setShareModalOpen] = useState(false);
   const [verificationCode, setVerificationCode] = useState<string>("");
   const [downloadingPDF, setDownloadingPDF] = useState(false);
-  const [percentile, setPercentile] = useState<number | null>(null);
   const [userName, setUserName] = useState<string>("");
   const navigate = useNavigate();
   const { toast } = useToast();
@@ -100,14 +99,6 @@ const Results = () => {
         .single();
       
       setUserName(profile?.name || session.user.email || "AIQ Participant");
-
-      // Calculate percentile
-      const overallScore = (typeof data.scores === 'string' ? JSON.parse(data.scores) : data.scores).reduce((a: number, b: number) => a + b, 0) / 8;
-      const { data: percentileData, error: percentileError } = await supabase.rpc('calculate_percentile', { user_score: overallScore });
-      
-      if (!percentileError && percentileData !== null) {
-        setPercentile(percentileData);
-      }
     } catch (error: any) {
       toast({
         title: "Error",
@@ -160,7 +151,6 @@ const Results = () => {
             user_name: userName,
             test_completion_date: result.created_at,
             test_duration_seconds: result.test_duration_seconds,
-            percentile_rank: percentile,
           });
 
           if (error) throw error;
@@ -176,8 +166,7 @@ const Results = () => {
         issueDate,
         expiryDate,
         userName,
-        result.test_duration_seconds,
-        percentile
+        result.test_duration_seconds
       );
 
       // Update report_generated_at
@@ -243,7 +232,6 @@ const Results = () => {
           user_name: userName,
           test_completion_date: result.created_at,
           test_duration_seconds: result.test_duration_seconds,
-          percentile_rank: percentile,
         });
 
         if (error) throw error;
@@ -311,16 +299,6 @@ const Results = () => {
             <div className="text-5xl lg:text-6xl font-bold text-primary tabular-nums tracking-tight">
               {overallScore.toFixed(1)}
             </div>
-            {percentile !== null && (
-              <div className="mt-4">
-                <p className="text-xl font-semibold text-blue-600">
-                  Top {(100 - percentile).toFixed(0)}% of all test-takers
-                </p>
-                <p className="text-sm text-muted-foreground mt-1">
-                  {percentile.toFixed(1)}th Percentile Ranking
-                </p>
-              </div>
-            )}
           </CardHeader>
           <CardContent>
             <Progress value={overallScore} className="h-4 mb-6" />
@@ -329,15 +307,6 @@ const Results = () => {
                overallScore >= 60 ? "Proficient" :
                overallScore >= 40 ? "Developing" : "Beginner"} AI Collaboration Skills
             </p>
-            {percentile !== null && (
-              <p className="text-center text-sm text-muted-foreground mt-4 max-w-2xl mx-auto">
-                Your percentile rank means you scored higher than {percentile.toFixed(1)}% of all AIQ Assessment participants. 
-                {percentile >= 90 ? " Outstanding performance!" : 
-                 percentile >= 75 ? " Strong performance!" : 
-                 percentile >= 50 ? " Good performance with room to grow." : 
-                 " Keep developing these skills!"}
-              </p>
-            )}
           </CardContent>
         </Card>
 
@@ -412,7 +381,6 @@ const Results = () => {
           dimensions={dimensionsWithNames}
           verificationCode={verificationCode}
           verificationUrl={verificationUrl}
-          percentile={percentile}
         />
 
         <div className="mt-8 text-center">

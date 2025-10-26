@@ -16,7 +16,6 @@ interface VerificationResult {
   level?: string;
   userName?: string;
   testDuration?: string;
-  percentile?: number;
 }
 
 const Verify = () => {
@@ -60,7 +59,6 @@ const Verify = () => {
         level: data.level,
         userName: data.userName,
         testDuration: data.testDuration,
-        percentile: data.percentile,
       });
     } catch (error: any) {
       toast({
@@ -162,13 +160,6 @@ const Verify = () => {
                       <p className="text-sm text-muted-foreground mb-1">Score Range</p>
                       <p className="text-lg font-semibold">{result.scoreRange}</p>
                     </div>
-
-                    {result.percentile !== undefined && (
-                      <div className="p-4 bg-muted rounded-lg col-span-2">
-                        <p className="text-sm text-muted-foreground mb-1">Percentile Ranking</p>
-                        <p className="text-lg font-semibold">Top {(100 - result.percentile).toFixed(0)}% • {result.percentile.toFixed(1)}th Percentile</p>
-                      </div>
-                    )}
 
                     <div className="p-4 bg-muted rounded-lg">
                       <p className="text-sm text-muted-foreground mb-1">Issue Date</p>

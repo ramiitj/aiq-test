@@ -14,8 +14,7 @@ export async function generatePDFReport(
   issueDate: Date,
   expiryDate: Date,
   userName?: string,
-  testDurationSeconds?: number,
-  percentileRank?: number | null
+  testDurationSeconds?: number
 ): Promise<Blob> {
   const doc = new jsPDF({
     orientation: 'portrait',
@@ -60,31 +59,38 @@ export async function generatePDFReport(
   doc.setFont('helvetica', 'normal');
   doc.text(`Verification Code: ${verificationCode}`, pageWidth / 2, 45, { align: 'center' });
 
-  // User name in bold
+  // User name below the blue bar in bold
+  let userInfoY = 62;
   if (userName) {
     doc.setTextColor(0, 0, 0);
-    doc.setFontSize(14);
+    doc.setFontSize(11);
     doc.setFont('helvetica', 'bold');
-    doc.text(userName, pageWidth / 2, 55, { align: 'center' });
+    doc.text('Name:', margin, userInfoY);
+    doc.setFont('helvetica', 'normal');
+    doc.setFontSize(12);
+    doc.text(userName, margin + 16, userInfoY);
+    userInfoY += 8;
   }
 
   // Issue and expiry dates with test duration
   doc.setTextColor(0, 0, 0);
   doc.setFontSize(9);
   doc.setFont('helvetica', 'normal');
-  doc.text(`Issued: ${issueDate.toLocaleDateString()}`, margin, userName ? 68 : 68);
-  doc.text(`Valid Until: ${expiryDate.toLocaleDateString()}`, pageWidth - margin, userName ? 68 : 68, { align: 'right' });
+  doc.text(`Issued: ${issueDate.toLocaleDateString()}`, margin, userInfoY);
+  doc.text(`Valid Until: ${expiryDate.toLocaleDateString()}`, pageWidth - margin, userInfoY, { align: 'right' });
+  userInfoY += 7;
   
   if (testDurationSeconds) {
     const minutes = Math.floor(testDurationSeconds / 60);
     const seconds = testDurationSeconds % 60;
     const durationText = `Duration: ${minutes}m ${seconds}s`;
-    doc.text(durationText, pageWidth / 2, userName ? 75 : 75, { align: 'center' });
+    doc.text(durationText, pageWidth / 2, userInfoY, { align: 'center' });
+    userInfoY += 7;
   }
 
   // Overall Score Circle
   const centerX = pageWidth / 2;
-  const centerY = 105;
+  const centerY = userName ? 115 : 105;
   const radius = 28;
 
   // Draw circle
@@ -110,23 +116,11 @@ export async function generatePDFReport(
   const yOffset = userName && testDurationSeconds ? 10 : 0;
   doc.text(`${level} AI Collaborator`, centerX, centerY + radius + 15 + yOffset, { align: 'center' });
 
-  // Percentile Ranking
-  if (percentileRank !== null && percentileRank !== undefined) {
-    doc.setFontSize(12);
-    doc.setFont('helvetica', 'normal');
-    doc.setTextColor(59, 130, 246);
-    doc.text(`Top ${(100 - percentileRank).toFixed(0)}% of test-takers`, centerX, centerY + radius + 25 + yOffset, { align: 'center' });
-    
-    doc.setFontSize(10);
-    doc.setTextColor(80, 80, 80);
-    doc.text(`${percentileRank.toFixed(1)}th Percentile`, centerX, centerY + radius + 33 + yOffset, { align: 'center' });
-  }
-
   // Interpretation
   doc.setFontSize(10);
   doc.setFont('helvetica', 'normal');
   doc.setTextColor(60, 60, 60);
-  const interpretationY = percentileRank !== null ? 180 : 160;
+  const interpretationY = 165;
   const interpretation = `This score represents ${level.toLowerCase()} proficiency in AI collaboration across eight research-validated dimensions. The assessment utilizes adaptive testing with Item Response Theory (IRT) to provide precise measurement of real-world AI collaboration capabilities.`;
   
   const interpretationLines = doc.splitTextToSize(interpretation, pageWidth - 2 * margin);
@@ -135,7 +129,7 @@ export async function generatePDFReport(
   // Top 3 Dimensions
   const topDimensions = [...dimensionScores].sort((a, b) => b.score - a.score).slice(0, 3);
   
-  const topDimY = percentileRank !== null ? 205 : 185;
+  const topDimY = 190;
   doc.setFontSize(13);
   doc.setFont('helvetica', 'bold');
   doc.setTextColor(0, 0, 0);
@@ -323,12 +317,12 @@ export async function generatePDFReport(
   doc.setTextColor(60, 60, 60);
   doc.text('Recommended focus areas for continued development:', margin, 45);
 
-  let currentY = 55;
+  let developmentY = 55;
   lowestDimensions.forEach((dim, idx) => {
     doc.setFontSize(11);
     doc.setFont('helvetica', 'bold');
     doc.setTextColor(0, 0, 0);
-    doc.text(`${idx + 1}. ${dim.name} (${dim.score.toFixed(1)})`, margin, currentY);
+    doc.text(`${idx + 1}. ${dim.name} (${dim.score.toFixed(1)})`, margin, developmentY);
     
     doc.setFontSize(9);
     doc.setFont('helvetica', 'normal');
@@ -342,36 +336,36 @@ export async function generatePDFReport(
     ];
     
     resources.forEach((resource, resIdx) => {
-      doc.text(`  • ${resource}`, margin + 5, currentY + 7 + resIdx * 5);
+      doc.text(`  • ${resource}`, margin + 5, developmentY + 7 + resIdx * 5);
     });
     
-    currentY += 32;
+    developmentY += 32;
   });
 
   // Retake Policy
   doc.setFontSize(14);
   doc.setFont('helvetica', 'bold');
   doc.setTextColor(59, 130, 246);
-  doc.text('Retake Policy', margin, currentY + 10);
+  doc.text('Retake Policy', margin, developmentY + 10);
 
   doc.setFontSize(10);
   doc.setFont('helvetica', 'normal');
   doc.setTextColor(60, 60, 60);
   const retakeText = `You may retake this assessment after thirty days to measure your progress. We recommend focused practice in identified development areas before retaking to observe meaningful improvement in your AI collaboration capabilities.`;
   const retakeLines = doc.splitTextToSize(retakeText, pageWidth - 2 * margin);
-  doc.text(retakeLines, margin, currentY + 20);
+  doc.text(retakeLines, margin, developmentY + 20);
 
   // Contact Information
   doc.setFontSize(14);
   doc.setFont('helvetica', 'bold');
   doc.setTextColor(59, 130, 246);
-  doc.text('Questions?', margin, currentY + 45);
+  doc.text('Questions?', margin, developmentY + 45);
 
   doc.setFontSize(10);
   doc.setFont('helvetica', 'normal');
   doc.setTextColor(60, 60, 60);
-  doc.text('For questions about your results or the assessment methodology,', margin, currentY + 55);
-  doc.text('please visit our website or contact support.', margin, currentY + 62);
+  doc.text('For questions about your results or the assessment methodology,', margin, developmentY + 55);
+  doc.text('please visit our website or contact support.', margin, developmentY + 62);
 
   addPageNumber(4);
 

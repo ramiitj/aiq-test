@@ -3,19 +3,14 @@ interface CaptionData {
   level: string;
   topDimensions: Array<{ name: string; score: number }>;
   verificationUrl: string;
-  percentile?: number | null;
 }
 
 export function generateCaption(data: CaptionData): string {
-  const { score, topDimensions, verificationUrl, percentile } = data;
+  const { score, topDimensions, verificationUrl } = data;
 
   const dimensionList = topDimensions
     .map((dim) => `✅ ${dim.name} (${dim.score.toFixed(1)})`)
     .join('\n');
-
-  const percentileText = percentile !== null && percentile !== undefined
-    ? `\n\n📊 Ranking: Top ${(100 - percentile).toFixed(0)}% (${percentile.toFixed(1)}th percentile)`
-    : '';
 
   if (score >= 80) {
     return `🌟 Thrilled to share my AIQ Assessment™ results!
@@ -25,7 +20,7 @@ Scored ${score.toFixed(1)}/100 as an Exceptional AI Collaborator across 8 resear
 This assessment measures real-world AI collaboration skills using 400 psychometrically calibrated items and adaptive Item Response Theory (IRT) methodology.
 
 Top strengths:
-${dimensionList}${percentileText}
+${dimensionList}
 
 Proud to validate my expertise in this rapidly evolving field!
 
