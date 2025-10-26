@@ -7,6 +7,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Progress } from "@/components/ui/progress";
 import { Share2, Download, Trophy } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
+import { ShareModal } from "@/components/ShareModal";
 
 interface TestResult {
   id: string;
@@ -17,11 +18,11 @@ interface TestResult {
 
 const dimensionNames = [
   "Strategic AI Understanding",
-  "Prompt Engineering Intelligence",
-  "Critical Evaluation Capability",
-  "Integration Intelligence",
-  "Adaptive Learning Capability",
-  "Ethical Judgment",
+  "Prompt Engineering & Iteration",
+  "Critical Evaluation & Calibration",
+  "Intelligent Task Integration",
+  "Adaptive Learning & Continuous Improvement",
+  "Ethical Judgment & Use",
   "Context Sensitivity",
   "Creative Synthesis"
 ];
@@ -30,6 +31,8 @@ const Results = () => {
   const { testId } = useParams();
   const [result, setResult] = useState<TestResult | null>(null);
   const [loading, setLoading] = useState(true);
+  const [shareModalOpen, setShareModalOpen] = useState(false);
+  const [verificationCode, setVerificationCode] = useState<string>("");
   const navigate = useNavigate();
   const { toast } = useToast();
 
@@ -83,30 +86,42 @@ const Results = () => {
     }
   };
 
-  const handleShare = async () => {
+  const handleGenerateShareablePost = async () => {
     if (!result) return;
 
     try {
-      const overallScore = result.scores.reduce((a, b) => a + b, 0) / result.scores.length;
-      const shareCode = Math.random().toString(36).substring(2, 10);
+      // Check if share record already exists
+      const { data: existingShare } = await supabase
+        .from("public_results")
+        .select("share_code")
+        .eq("test_id", result.id)
+        .single();
 
-      const { error } = await supabase.from("public_results").insert({
-        test_id: result.id,
-        user_id: (await supabase.auth.getUser()).data.user!.id,
-        share_code: shareCode,
-        overall_score: overallScore,
-        dimension_scores: JSON.stringify(result.scores),
-      });
+      let shareCode: string;
 
-      if (error) throw error;
+      if (existingShare) {
+        shareCode = existingShare.share_code;
+      } else {
+        // Generate new verification code in format: AIQ-YYYY-XXXX
+        const year = new Date().getFullYear();
+        const randomPart = Math.random().toString(36).substring(2, 6).toUpperCase();
+        shareCode = `AIQ-${year}-${randomPart}`;
 
-      const shareUrl = `${window.location.origin}/shared/${shareCode}`;
-      await navigator.clipboard.writeText(shareUrl);
+        const overallScore = result.scores.reduce((a, b) => a + b, 0) / result.scores.length;
 
-      toast({
-        title: "Link Copied!",
-        description: "Shareable link copied to clipboard.",
-      });
+        const { error } = await supabase.from("public_results").insert({
+          test_id: result.id,
+          user_id: (await supabase.auth.getUser()).data.user!.id,
+          share_code: shareCode,
+          overall_score: overallScore,
+          dimension_scores: JSON.stringify(result.scores),
+        });
+
+        if (error) throw error;
+      }
+
+      setVerificationCode(shareCode);
+      setShareModalOpen(true);
     } catch (error: any) {
       toast({
         title: "Error",
@@ -132,6 +147,15 @@ const Results = () => {
   }
 
   const overallScore = result.scores.reduce((a, b) => a + b, 0) / result.scores.length;
+  
+  const dimensionsWithNames = result.scores.map((score, index) => ({
+    name: dimensionNames[index],
+    score: score,
+  }));
+
+  const verificationUrl = verificationCode 
+    ? `${window.location.origin}/shared/${verificationCode}`
+    : "";
 
   return (
     <div className="min-h-screen animate-fade-in">
@@ -185,9 +209,9 @@ const Results = () => {
             <CardTitle className="text-2xl">Share Your Results</CardTitle>
           </CardHeader>
           <CardContent className="flex gap-4">
-            <Button onClick={handleShare} className="flex-1 text-base" size="lg">
+            <Button onClick={handleGenerateShareablePost} className="flex-1 text-base" size="lg">
               <Share2 className="mr-2 h-5 w-5" />
-              Generate Share Link
+              Generate Shareable Post
             </Button>
             <Button variant="outline" className="flex-1 text-base" size="lg">
               <Download className="mr-2 h-5 w-5" />
@@ -195,6 +219,15 @@ const Results = () => {
             </Button>
           </CardContent>
         </Card>
+
+        <ShareModal
+          open={shareModalOpen}
+          onOpenChange={setShareModalOpen}
+          score={overallScore}
+          dimensions={dimensionsWithNames}
+          verificationCode={verificationCode}
+          verificationUrl={verificationUrl}
+        />
 
         <div className="mt-8 text-center">
           <Button variant="outline" onClick={() => navigate("/dashboard")}>
