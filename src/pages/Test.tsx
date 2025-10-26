@@ -17,8 +17,9 @@ interface TestItem {
   difficulty: string;
   question: string;
   type: string;
-  options?: Array<{ value: string; label: string }>;
-  correct?: string;
+  options?: string[];
+  correctAnswer?: number;
+  correctAnswers?: number[];
   rubric?: string;
 }
 
@@ -139,57 +140,21 @@ const Test = () => {
       const normalized: Dimension[] = dimsRaw.map((d: any, di: number) => ({
         name: d.name || `Dimension ${di + 1}`,
         items: (d.items || []).map((it: any, ii: number) => {
-          // Clean question text: remove "Select ALL:" or similar patterns
+          // Clean question text: Enhanced removal of "Select ALL" variations
           let cleanQuestion = String(it.question ?? '').trim();
-          cleanQuestion = cleanQuestion.replace(/\bselect\s+all\s*:?\s*/gi, '').trim();
-
-          // Normalize options into { value, label }
-          const options = Array.isArray(it.options)
-            ? it.options.map((op: any, oi: number) => {
-                if (typeof op === 'string') {
-                  const val = op.includes(':') ? op.split(':')[0].trim() : String(op).trim();
-                  return { value: val, label: op };
-                }
-                const valueRaw = (op?.value ?? op?.key ?? op?.label ?? op?.text ?? `${oi}`);
-                const value = String(valueRaw);
-                const labelRaw = (op?.label ?? op?.text ?? op?.value ?? op?.key ?? value);
-                const label = String(labelRaw);
-                return { value, label };
-              })
-            : undefined;
-
-          // Normalize type
-          const rawType = String(it.type || '').toLowerCase();
-          let type: string = 'short';
-          if (rawType.includes('multiple-choice-multiple') || (rawType.includes('multiple') && !rawType.includes('single'))) {
-            type = 'multi';
-          } else if (rawType.includes('multiple-choice') || Array.isArray(it.options)) {
-            type = 'mcq';
-          }
-
-          // Normalize correct answer(s)
-          let correct: string | undefined = undefined;
-          if (it.correct !== undefined && it.correct !== null) {
-            correct = String(it.correct);
-          } else if (typeof it.correctAnswer === 'number' && Array.isArray(options)) {
-            const opt = options[it.correctAnswer];
-            if (opt) correct = String(opt.value);
-          } else if (Array.isArray(it.correctAnswers) && Array.isArray(options)) {
-            const vals = it.correctAnswers
-              .map((idx: number) => options[idx]?.value)
-              .filter(Boolean)
-              .map(String)
-              .sort();
-            if (vals.length) correct = vals.join('||');
-          }
+          cleanQuestion = cleanQuestion
+            .replace(/\bselect\s+all\s*(?:that\s+apply)?\s*:?\s*/gi, '')
+            .replace(/^\s*:?\s*/, '')
+            .trim();
 
           return {
             id: String(it.id ?? `${di}_${ii}`),
             difficulty: it.difficulty,
             question: cleanQuestion,
-            type,
-            options,
-            correct,
+            type: it.type,
+            options: Array.isArray(it.options) ? it.options.map((o: any) => String(o)) : undefined,
+            correctAnswer: it.correctAnswer,
+            correctAnswers: it.correctAnswers,
             rubric: it.explanation ?? it.rubric,
           } as TestItem;
         }),
@@ -242,6 +207,7 @@ const Test = () => {
     }
   };
 
+
   const mapDiff = (d: any): 'easy' | 'medium' | 'hard' => {
     if (typeof d === 'number') return d <= -0.5 ? 'easy' : d >= 0.5 ? 'hard' : 'medium';
     const s = String(d || '').toLowerCase();
@@ -274,7 +240,16 @@ const Test = () => {
 
     const state = dimStates[currentDimension];
     const userAnswer = answers[currentQuestion.id];
-    const isCorrect = currentQuestion.correct ? (userAnswer === currentQuestion.correct) : false;
+    
+    // Check correctness based on answer format
+    let isCorrect = false;
+    if (typeof currentQuestion.correctAnswer === 'number' && currentQuestion.options) {
+      isCorrect = userAnswer === String(currentQuestion.correctAnswer);
+    } else if (Array.isArray(currentQuestion.correctAnswers)) {
+      const userIndices = userAnswer.split(',').map(s => parseInt(s.trim())).sort();
+      const correctIndices = [...currentQuestion.correctAnswers].sort();
+      isCorrect = JSON.stringify(userIndices) === JSON.stringify(correctIndices);
+    }
     
     // Update theta (simple IRT-like)
     const delta = isCorrect ? 0.3 : -0.3;
@@ -331,7 +306,17 @@ const Test = () => {
       const scores = dimensions.map((dim, di) => {
         const state = dimStates[di];
         const answered = Array.from(state.used).map(id => dim.items.find(it => String(it.id) === id)).filter(Boolean);
-        const correctCount = answered.filter((item: any) => answers[item.id] === item.correct).length;
+        const correctCount = answered.filter((item: any) => {
+          const userAnswer = answers[item.id];
+          if (typeof item.correctAnswer === 'number') {
+            return userAnswer === String(item.correctAnswer);
+          } else if (Array.isArray(item.correctAnswers)) {
+            const userIndices = userAnswer.split(',').map((s: string) => parseInt(s.trim())).sort();
+            const correctIndices = [...item.correctAnswers].sort();
+            return JSON.stringify(userIndices) === JSON.stringify(correctIndices);
+          }
+          return false;
+        }).length;
         return answered.length > 0 ? (correctCount / answered.length) * 100 : 0;
       });
 
@@ -403,7 +388,7 @@ const Test = () => {
         <div className="mb-6">
           <div className="flex justify-between items-center mb-4">
             <div>
-              <h2 className="text-2xl font-bold">
+              <h2 className="text-2xl font-bold capitalize">
                 {dimensions[currentDimension].name}
               </h2>
               <p className="text-sm text-muted-foreground">
@@ -421,9 +406,35 @@ const Test = () => {
         <Card className="shadow-elegant">
           <CardContent className="pt-6 space-y-6">
             <div>
-              <p className="text-lg mb-6">{currentQuestion.question}</p>
+              <p className="text-lg font-bold mb-6">{currentQuestion.question}</p>
               
-              {currentQuestion.type === "mcq" ? (
+              {currentQuestion.type === "multiple-choice-multiple" ? (
+                <div className="space-y-3">
+                  {currentQuestion.options?.map((option: string, index: number) => {
+                    const selectedIndices = (answers[currentQuestion.id] || "").split(",").filter(Boolean).map(s => parseInt(s.trim()));
+                    const isChecked = selectedIndices.includes(index);
+                    return (
+                      <div key={index} className="flex items-center space-x-2">
+                        <Checkbox
+                          id={`option-${index}`}
+                          checked={isChecked}
+                          onCheckedChange={(checked) => {
+                            const current = selectedIndices.filter((i: number) => i !== index);
+                            if (checked) current.push(index);
+                            setAnswers({
+                              ...answers,
+                              [currentQuestion.id]: current.sort((a: number, b: number) => a - b).join(","),
+                            });
+                          }}
+                        />
+                        <Label htmlFor={`option-${index}`} className="cursor-pointer flex-1">
+                          {option}
+                        </Label>
+                      </div>
+                    );
+                  })}
+                </div>
+              ) : currentQuestion.options ? (
                 <RadioGroup
                   value={answers[currentQuestion.id] || ""}
                   onValueChange={(value) =>
@@ -431,46 +442,16 @@ const Test = () => {
                   }
                 >
                   <div className="space-y-3">
-                    {currentQuestion.options?.map((option: any, index: number) => {
-                      const optVal = typeof option === 'string' ? (option.includes(':') ? option.split(':')[0].trim() : option.trim()) : option.value;
-                      const optLabel = typeof option === 'string' ? option : option.label;
-                      return (
-                        <div key={index} className="flex items-center space-x-2">
-                          <RadioGroupItem value={optVal} id={`option-${index}`} />
-                          <Label htmlFor={`option-${index}`} className="cursor-pointer flex-1">
-                            {optLabel}
-                          </Label>
-                        </div>
-                      );
-                    })}
-                  </div>
-                </RadioGroup>
-              ) : currentQuestion.type === "multi" ? (
-                <div className="space-y-3">
-                  {currentQuestion.options?.map((option: any, index: number) => {
-                    const optVal = typeof option === 'string' ? (option.includes(':') ? option.split(':')[0].trim() : option.trim()) : option.value;
-                    const optLabel = typeof option === 'string' ? option : option.label;
-                    const selected = (answers[currentQuestion.id] || "").split("||").filter(Boolean);
-                    const isChecked = selected.includes(optVal);
-                    return (
+                    {currentQuestion.options.map((option: string, index: number) => (
                       <div key={index} className="flex items-center space-x-2">
-                        <Checkbox
-                          id={`option-${index}`}
-                          checked={isChecked}
-                          onCheckedChange={(checked) => {
-                            const next = new Set(selected);
-                            if (checked === true) next.add(optVal); else next.delete(optVal);
-                            const joined = Array.from(next).map(String).sort().join("||");
-                            setAnswers({ ...answers, [currentQuestion.id]: joined });
-                          }}
-                        />
+                        <RadioGroupItem value={String(index)} id={`option-${index}`} />
                         <Label htmlFor={`option-${index}`} className="cursor-pointer flex-1">
-                          {optLabel}
+                          {option}
                         </Label>
                       </div>
-                    );
-                  })}
-                </div>
+                    ))}
+                  </div>
+                </RadioGroup>
               ) : (
                 <Textarea
                   placeholder="Type your answer here..."
