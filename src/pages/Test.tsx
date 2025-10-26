@@ -644,7 +644,7 @@ const Test = () => {
                 Section {currentDimension + 1} of 8
               </h2>
               <p className="text-base text-muted-foreground mt-1 font-medium">
-                Question {dimStates[currentDimension].answered + 1} of 10
+                Question {Math.min(dimStates[currentDimension].answered + 1, 10)} of 10
               </p>
             </div>
             <div className="flex items-center gap-6">
