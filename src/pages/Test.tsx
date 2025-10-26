@@ -34,6 +34,7 @@ const Test = () => {
   const [testId, setTestId] = useState<string | null>(null);
   const [loading, setLoading] = useState(true);
   const [dimensions, setDimensions] = useState<Dimension[]>([]);
+  const [dimStates, setDimStates] = useState<Array<{ theta: number; used: Set<string>; counts: { easy: number; medium: number; hard: number }; answered: number }>>([]);
   const navigate = useNavigate();
   const { toast } = useToast();
 
@@ -60,6 +61,14 @@ const Test = () => {
       return;
     }
 
+    const mapDiff = (d: any): 'easy' | 'medium' | 'hard' => {
+      if (typeof d === 'number') return d <= -0.5 ? 'easy' : d >= 0.5 ? 'hard' : 'medium';
+      const s = String(d || '').toLowerCase();
+      if (s.includes('easy') || s === 'e' || s === '-1') return 'easy';
+      if (s.includes('hard') || s === 'h' || s === '1') return 'hard';
+      return 'medium';
+    };
+
     try {
       // Load latest test items from Storage
       const { data: files, error: listError } = await supabase.storage
@@ -80,13 +89,67 @@ const Test = () => {
       if (downloadError) throw downloadError;
 
       const text = await fileData.text();
-      const jsonData = JSON.parse(text);
-      
-      if (!jsonData.dimensions || !Array.isArray(jsonData.dimensions)) {
-        throw new Error("Invalid test data format.");
+      const parsed = JSON.parse(text);
+
+      // Accept multiple shapes: {dimensions: [...]}, [...], or { name: {items: [...]}, ... }
+      let dimsRaw: any[] = [];
+      if (Array.isArray(parsed)) {
+        dimsRaw = parsed;
+      } else if (Array.isArray(parsed?.dimensions)) {
+        dimsRaw = parsed.dimensions;
+      } else if (parsed && typeof parsed === 'object') {
+        dimsRaw = Object.keys(parsed).map((name) => {
+          const v = (parsed as any)[name];
+          const items = Array.isArray(v?.items) ? v.items : Array.isArray(v) ? v : [];
+          return { name, items };
+        });
       }
 
-      setDimensions(jsonData.dimensions);
+      if (!dimsRaw.length) {
+        throw new Error("Invalid test format: expected a 'dimensions' array or an array of dimensions.");
+      }
+
+      const normalized: Dimension[] = dimsRaw.map((d: any, di: number) => ({
+        name: d.name || `Dimension ${di + 1}`,
+        items: (d.items || []).map((it: any, ii: number) => ({
+          id: String(it.id ?? `${di}_${ii}`),
+          difficulty: it.difficulty,
+          question: it.question ?? '',
+          type: it.type ?? (Array.isArray(it.options) ? 'mcq' : 'short'),
+          options: Array.isArray(it.options)
+            ? it.options.map((op: any) => {
+                if (typeof op === 'string') {
+                  const val = op.includes(':') ? op.split(':')[0].trim() : String(op).trim();
+                  return { value: val, label: op } as any;
+                }
+                const valueRaw = op?.value ?? op?.key ?? (op?.label ?? op?.text);
+                const value = String(valueRaw != null && valueRaw !== '' ? valueRaw : `${ii}`);
+                const labelRaw = op?.label ?? op?.text ?? op?.value ?? op?.key;
+                const label = String(labelRaw != null ? labelRaw : '');
+                return { value, label } as any;
+              })
+            : undefined,
+          correct: it.correct,
+          rubric: it.rubric,
+        })),
+      }));
+
+      setDimensions(normalized);
+
+      // Initialize adaptive state
+      const initStates = normalized.map(() => ({
+        theta: 0,
+        used: new Set<string>(),
+        counts: { easy: 0, medium: 0, hard: 0 },
+        answered: 0,
+      }));
+      setDimStates(initStates);
+
+      // Choose first question for first dimension (prefer medium)
+      const firstItems = normalized[0]?.items || [];
+      const findIdx = (target: 'easy' | 'medium' | 'hard') => firstItems.findIndex((it: any) => mapDiff(it.difficulty) === target);
+      const firstIdx = (findIdx('medium') !== -1 ? findIdx('medium') : (findIdx('easy') !== -1 ? findIdx('easy') : findIdx('hard')));
+      setCurrentItem(firstIdx >= 0 ? firstIdx : 0);
 
       // Create test record
       const { data, error } = await supabase
