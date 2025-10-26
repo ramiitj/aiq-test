@@ -14,6 +14,9 @@ interface VerificationResult {
   expiryDate?: string;
   scoreRange?: string;
   level?: string;
+  userName?: string;
+  testDuration?: string;
+  percentile?: number;
 }
 
 const Verify = () => {
@@ -55,6 +58,9 @@ const Verify = () => {
         expiryDate: new Date(data.expiryDate).toLocaleDateString(),
         scoreRange: data.scoreRange,
         level: data.level,
+        userName: data.userName,
+        testDuration: data.testDuration,
+        percentile: data.percentile,
       });
     } catch (error: any) {
       toast({
@@ -140,6 +146,12 @@ const Verify = () => {
             <CardContent>
               {result.valid ? (
                 <div className="space-y-6">
+                  {result.userName && (
+                    <div className="text-center pb-4 border-b">
+                      <p className="text-2xl font-bold">{result.userName}</p>
+                    </div>
+                  )}
+                  
                   <div className="grid grid-cols-2 gap-6">
                     <div className="p-4 bg-muted rounded-lg">
                       <p className="text-sm text-muted-foreground mb-1">Proficiency Level</p>
@@ -151,6 +163,13 @@ const Verify = () => {
                       <p className="text-lg font-semibold">{result.scoreRange}</p>
                     </div>
 
+                    {result.percentile !== undefined && (
+                      <div className="p-4 bg-muted rounded-lg col-span-2">
+                        <p className="text-sm text-muted-foreground mb-1">Percentile Ranking</p>
+                        <p className="text-lg font-semibold">Top {(100 - result.percentile).toFixed(0)}% • {result.percentile.toFixed(1)}th Percentile</p>
+                      </div>
+                    )}
+
                     <div className="p-4 bg-muted rounded-lg">
                       <p className="text-sm text-muted-foreground mb-1">Issue Date</p>
                       <p className="text-lg font-semibold">{result.issueDate}</p>
@@ -160,6 +179,13 @@ const Verify = () => {
                       <p className="text-sm text-muted-foreground mb-1">Valid Until</p>
                       <p className="text-lg font-semibold">{result.expiryDate}</p>
                     </div>
+
+                    {result.testDuration && (
+                      <div className="p-4 bg-muted rounded-lg col-span-2">
+                        <p className="text-sm text-muted-foreground mb-1">Test Duration</p>
+                        <p className="text-lg font-semibold">{result.testDuration}</p>
+                      </div>
+                    )}
                   </div>
 
                   <div className="p-4 bg-green-50 dark:bg-green-950 rounded-lg border border-green-200 dark:border-green-800">

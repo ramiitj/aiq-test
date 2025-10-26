@@ -34,7 +34,7 @@
       "difficulty": 0.22,
       "discrimination": 0.46,
       "type": "multiple-choice-multiple",
-      "question": "Which behaviors demonstrate learning from AI interactions? Select ALL:",
+      "question": "Which behaviors demonstrate that you are learning from your AI interactions? Select ALL that apply:",
       "options": [
         "Repeating the same unsuccessful prompt",
         "Refining prompts based on previous results",
@@ -66,7 +66,7 @@
       "difficulty": 0.24,
       "discrimination": 0.47,
       "type": "multiple-choice",
-      "question": "You notice AI consistently misunderstands a certain type of request. What should you do?",
+      "question": "You notice AI consistently misunderstands a certain type of request. What is the BEST approach to address this?",
       "options": [
         "Keep trying the same way - AI should learn",
         "Blame the AI and give up",
@@ -132,7 +132,7 @@
       "difficulty": 0.25,
       "discrimination": 0.49,
       "type": "multiple-choice-multiple",
-      "question": "Which information is worth tracking about your AI interactions? Select ALL:",
+      "question": "Which types of information are worth tracking about your AI interactions? Select ALL that apply:",
       "options": [
         "What prompts produced good results",
         "The AI's internal algorithms",
@@ -186,7 +186,7 @@
       "difficulty": 0.27,
       "discrimination": 0.51,
       "type": "multiple-choice",
-      "question": "You discover a colleague's prompt works better than yours for similar tasks. Best response?",
+      "question": "You discover a colleague's prompt works better than yours for similar tasks. What is the BEST response?",
       "options": [
         "Ignore it - your way is fine",
         "Learn from their approach and adapt it to your needs",
@@ -274,7 +274,7 @@
       "difficulty": 0.48,
       "discrimination": 0.6,
       "type": "learning-strategy",
-      "question": "Build personal knowledge base of AI interaction patterns. What structure is MOST useful?",
+      "question": "When building a personal knowledge base of AI interaction patterns, what structure is MOST useful?",
       "options": [
         "Random notes in various places",
         "Organized by: task type, what works (successful patterns), what doesn't (pitfalls), key learnings, examples, and continuous updates",
@@ -296,7 +296,7 @@
       "difficulty": 0.46,
       "discrimination": 0.57,
       "type": "multiple-choice-multiple",
-      "question": "Which practices accelerate learning from AI interactions? Select ALL:",
+      "question": "Which practices can help accelerate your learning from AI interactions? Select ALL that apply:",
       "options": [
         "Experimenting with different approaches",
         "Always using the first result AI gives",
@@ -328,7 +328,7 @@
       "difficulty": 0.5,
       "discrimination": 0.61,
       "type": "reflection-practice",
-      "question": "Develop weekly reflection practice for AI learning. What should you review?",
+      "question": "When developing a weekly reflection practice for AI learning, what should you review?",
       "options": [
         "Nothing - weekly is too frequent",
         "Comprehensive review: successful interactions (what worked), failures (what didn't), patterns observed, adjustments made, new techniques tried, skills improved",
@@ -372,7 +372,7 @@
       "difficulty": 0.52,
       "discrimination": 0.62,
       "type": "pattern-recognition",
-      "question": "After 50 AI interactions, you notice: simple tasks work well, complex tasks need iteration, creative tasks require examples. This pattern suggests:",
+      "question": "After 50 AI interactions, you notice: simple tasks work well, complex tasks need iteration, creative tasks require examples. What does this pattern suggest?",
       "options": [
         "AI is inconsistent",
         "You should develop task-specific strategies: templates for simple, iterative refinement for complex, few-shot prompting for creative",
@@ -416,7 +416,7 @@
       "difficulty": 0.51,
       "discrimination": 0.61,
       "type": "experimentation",
-      "question": "Design learning experiments to improve AI collaboration. Approach?",
+      "question": "How should you design learning experiments to improve AI collaboration? What is the best approach?",
       "options": [
         "Never experiment - stick with what works",
         "Systematic experimentation: isolate one variable (prompt structure, specificity, examples), test variations, measure outcomes, keep improvements",
@@ -526,7 +526,7 @@
       "difficulty": 0.5,
       "discrimination": 0.6,
       "type": "multiple-choice-multiple",
-      "question": "Build personal AI collaboration playbook. Include which elements? Select ALL:",
+      "question": "When building a personal AI collaboration playbook, which elements should you include? Select ALL that apply:",
       "options": [
         "Successful prompt templates by task type",
         "Complete AI technical specifications",
@@ -560,7 +560,7 @@
       "difficulty": 0.52,
       "discrimination": 0.62,
       "type": "metacognition",
-      "question": "Develop metacognitive awareness of your AI collaboration. This means:",
+      "question": "What does it mean to develop metacognitive awareness of your AI collaboration?",
       "options": [
         "Never thinking about your thinking",
         "Actively monitoring: how you're approaching tasks, what strategies work, when you're struggling, how to adjust in real-time",
@@ -582,7 +582,7 @@
       "difficulty": 0.47,
       "discrimination": 0.58,
       "type": "learning-measurement",
-      "question": "Measure whether you're actually learning from AI interactions. Indicators?",
+      "question": "How can you measure whether you're actually learning from AI interactions? What are the key indicators?",
       "options": [
         "Just assume you're learning",
         "Concrete measures: track time-to-quality-result over time, count iterations needed, self-rate confidence, document skill development",
@@ -714,7 +714,7 @@
       "difficulty": 0.65,
       "discrimination": 0.7,
       "type": "framework-development",
-      "question": "Develop personal learning framework for continuous AI skill development. Core components?",
+      "question": "When developing a personal learning framework for continuous AI skill development, what are the core components?",
       "options": [
         "Just use AI and hope to improve",
         "Comprehensive framework: assessment (where am I?), goal-setting (where do I want to be?), learning activities (how to get there?), measurement (am I improving?), reflection (what did I learn?), adjustment (what should change?)",
@@ -802,7 +802,7 @@
       "difficulty": 0.67,
       "discrimination": 0.71,
       "type": "adaptive-expertise",
-      "question": "Develop adaptive expertise - ability to apply learning to novel situations. How?",
+      "question": "How can you develop adaptive expertise - the ability to apply learning to novel situations with AI?",
       "options": [
         "Memorize specific solutions",
         "Build flexible mental models: understand principles not just procedures, practice varied applications, reflect on transfer, develop pattern libraries, embrace ambiguity",
@@ -824,7 +824,7 @@
       "difficulty": 0.66,
       "discrimination": 0.7,
       "type": "learning-culture",
-      "question": "Build team culture that accelerates AI learning. Cultural elements?",
+      "question": "When building a team culture that accelerates AI learning, what are the key cultural elements?",
       "options": [
         "Individual competition for best results",
         "Learning culture: psychological safety (safe to experiment), growth mindset (improvement focus), knowledge sharing (open), reflection time (built-in), celebration of learning",
@@ -846,7 +846,7 @@
       "difficulty": 0.64,
       "discrimination": 0.69,
       "type": "meta-learning",
-      "question": "Develop meta-learning capability - learning how to learn with AI. Focus?",
+      "question": "How do you develop meta-learning capability - learning how to learn with AI? What should be the focus?",
       "options": [
         "Just learn specific AI skills",
         "Meta-learning: understand your learning process, identify what accelerates your learning, recognize when you're stuck, know how to unstick yourself, continuously optimize learning approach",
@@ -868,7 +868,7 @@
       "difficulty": 0.69,
       "discrimination": 0.73,
       "type": "knowledge-architecture",
-      "question": "Design personal knowledge architecture for AI learning. Structure?",
+      "question": "When designing personal knowledge architecture for AI learning, what structure works best?",
       "options": [
         "Unorganized collection of tips",
         "Layered architecture: foundational concepts (base), patterns and principles (middle), specific techniques (top), examples (throughout), meta-knowledge (connections), regular curation",
@@ -890,7 +890,7 @@
       "difficulty": 0.71,
       "discrimination": 0.75,
       "type": "learning-measurement",
-      "question": "Develop sophisticated measurement system for AI learning progress. Metrics?",
+      "question": "When developing a sophisticated measurement system for AI learning progress, what metrics should you track?",
       "options": [
         "Just count hours spent",
         "Multi-dimensional: skill assessments, performance outcomes, efficiency gains, capability expansion, confidence levels, peer feedback, impact on work quality",
@@ -912,7 +912,7 @@
       "difficulty": 0.68,
       "discrimination": 0.72,
       "type": "deliberate-practice",
-      "question": "Design deliberate practice regimen for AI skills. Components?",
+      "question": "When designing a deliberate practice regimen for AI skills, what are the essential components?",
       "options": [
         "Just use AI frequently",
         "Structured practice: identify weak areas, design targeted exercises, practice with feedback, gradually increase difficulty, track improvement, reflect on learning",
@@ -1022,7 +1022,7 @@
       "difficulty": 0.73,
       "discrimination": 0.77,
       "type": "learning-resilience",
-      "question": "Build resilience in AI learning - maintain progress through challenges, changes, setbacks. Strategy?",
+      "question": "How do you build resilience in AI learning - maintaining progress through challenges, changes, and setbacks? What is the best strategy?",
       "options": [
         "Give up when facing difficulty",
         "Resilience building: growth mindset cultivation, failure as learning reframe, support network, progress tracking (see gains), adaptive strategies, self-compassion",
@@ -1066,7 +1066,7 @@
       "difficulty": 0.74,
       "discrimination": 0.78,
       "type": "learning-ecosystem",
-      "question": "Design personal learning ecosystem integrating multiple learning modes. Components?",
+      "question": "When designing a personal learning ecosystem that integrates multiple learning modes, what are the key components?",
       "options": [
         "Single learning source",
         "Integrated ecosystem: formal learning (courses), social learning (communities), experiential learning (practice), reflective learning (journaling), teaching (explaining), reading (research), experimentation (discovery)",
@@ -1132,7 +1132,7 @@
       "difficulty": 0.75,
       "discrimination": 0.79,
       "type": "mastery-philosophy",
-      "question": "Develop philosophy of AI learning mastery. Core principle?",
+      "question": "When developing a philosophy of AI learning mastery, what is the core principle?",
       "options": [
         "Master everything completely",
         "Continuous growth: embrace perpetual beginner mindset, focus on learning how to learn, value process over outcomes, see mastery as journey not destination, maintain curiosity",
@@ -1176,7 +1176,7 @@
       "difficulty": 0.23,
       "discrimination": 0.47,
       "type": "multiple-choice-multiple",
-      "question": "Which AI outputs should ALWAYS be verified before use? Select ALL:",
+      "question": "Which types of AI outputs should ALWAYS be verified before use? Select ALL that apply:",
       "options": [
         "Medical or health advice",
         "Creative story ideas",
@@ -1209,7 +1209,7 @@
       "difficulty": 0.25,
       "discrimination": 0.48,
       "type": "multiple-choice",
-      "question": "AI generates a report with the statistic '78% of consumers prefer...' but provides no source. What's the BEST response?",
+      "question": "AI generates a report with the statistic '78% of consumers prefer...' but provides no source. What is the BEST response?",
       "options": [
         "Use it - sounds reasonable",
         "Delete the entire report",
@@ -1272,7 +1272,7 @@
       "difficulty": 0.26,
       "discrimination": 0.49,
       "type": "multiple-choice-multiple",
-      "question": "Which are red flags suggesting AI output may be biased or inaccurate? Select ALL:",
+      "question": "Which of the following are red flags suggesting that AI output may be biased or inaccurate? Select ALL that apply:",
       "options": [
         "Makes sweeping generalizations about groups",
         "Acknowledges limitations and uncertainties",
@@ -1326,7 +1326,7 @@
       "difficulty": 0.27,
       "discrimination": 0.5,
       "type": "multiple-choice",
-      "question": "AI provides medical information about symptoms. What should you do?",
+      "question": "AI provides medical information about symptoms. What should you do with this information?",
       "options": [
         "Follow the advice immediately",
         "Ignore it completely",
@@ -1410,7 +1410,7 @@
       "difficulty": 0.48,
       "discrimination": 0.6,
       "type": "multiple-choice",
-      "question": "AI provides a historical 'fact': 'The Treaty of Versailles was signed in 1920.' Quick research shows it was 1919. This suggests AI is:",
+      "question": "AI provides a historical 'fact': 'The Treaty of Versailles was signed in 1920.' Quick research shows it was 1919. What does this suggest about the AI?",
       "options": [
         "Completely unreliable on all topics",
         "Prone to close-but-wrong errors requiring verification of details",
@@ -1431,7 +1431,7 @@
       "difficulty": 0.46,
       "discrimination": 0.57,
       "type": "multiple-choice-multiple",
-      "question": "You're evaluating AI-generated research summary. Which checks should you perform? Select ALL:",
+      "question": "When evaluating an AI-generated research summary, which checks should you perform? Select ALL that apply:",
       "options": [
         "Verify key statistics against original sources",
         "Check that context and nuance weren't lost",
@@ -1463,7 +1463,7 @@
       "difficulty": 0.5,
       "discrimination": 0.61,
       "type": "scenario-analysis",
-      "question": "AI outputs a legal contract clause. You notice the language seems generic and may not apply to your specific jurisdiction. Best action?",
+      "question": "AI outputs a legal contract clause. You notice the language seems generic and may not apply to your specific jurisdiction. What is the best action to take?",
       "options": [
         "Use it - legal language is standardized",
         "Flag for attorney review before using any AI-generated legal content",
@@ -1632,7 +1632,7 @@
       "difficulty": 0.46,
       "discrimination": 0.57,
       "type": "multiple-choice",
-      "question": "You notice AI consistently provides more negative information about certain demographic groups. This indicates:",
+      "question": "You notice AI consistently provides more negative information about certain demographic groups. What does this indicate?",
       "options": [
         "AI is being objective based on data",
         "Potential bias in training data that needs correction",
@@ -1695,7 +1695,7 @@
       "difficulty": 0.47,
       "discrimination": 0.58,
       "type": "multiple-choice-multiple",
-      "question": "Which validation techniques are appropriate for AI-generated financial analysis? Select ALL:",
+      "question": "Which validation techniques are appropriate for AI-generated financial analysis? Select ALL that apply:",
       "options": [
         "Verify all calculations independently",
         "Check assumptions against market realities",
@@ -1727,7 +1727,7 @@
       "difficulty": 0.49,
       "discrimination": 0.6,
       "type": "multiple-choice",
-      "question": "AI summarizes meeting notes but omits important dissenting opinions that were discussed. This is:",
+      "question": "AI summarizes meeting notes but omits important dissenting opinions that were discussed. How should this be characterized?",
       "options": [
         "Acceptable - summaries condense information",
         "Problematic - changes the record and may bias decisions",
@@ -1748,7 +1748,7 @@
       "difficulty": 0.51,
       "discrimination": 0.61,
       "type": "comparative-analysis",
-      "question": "Two AIs give different answers to the same factual question. What's your best approach?",
+      "question": "Two AIs give different answers to the same factual question. What is your best approach to resolve this?",
       "options": [
         "Trust the one that agrees with your beliefs",
         "Investigate primary sources to determine which is correct",
@@ -1790,7 +1790,7 @@
       "difficulty": 0.54,
       "discrimination": 0.64,
       "type": "pattern-recognition",
-      "question": "After using AI for 3 months, you notice it consistently underestimates timeframes for projects. This suggests:",
+      "question": "After using AI for 3 months, you notice it consistently underestimates timeframes for projects. What does this suggest?",
       "options": [
         "AI is randomly wrong",
         "Systematic bias requiring adjustment - add buffer or seek alternative estimates",
@@ -1832,7 +1832,7 @@
       "difficulty": 0.65,
       "discrimination": 0.7,
       "type": "framework-design",
-      "question": "Design a verification framework for AI-generated content in a regulated industry (pharma). Which components are ESSENTIAL?",
+      "question": "When designing a verification framework for AI-generated content in a regulated industry like pharmaceuticals, which components are ESSENTIAL?",
       "options": [
         "Speed and convenience only",
         "Multi-layer system: Subject matter expert review, regulatory compliance check, source verification, audit trail, and update protocol",
@@ -1876,7 +1876,7 @@
       "difficulty": 0.63,
       "discrimination": 0.69,
       "type": "bias-analysis",
-      "question": "You discover AI recruiting tool consistently rates candidates from certain universities lower. Root cause analysis reveals:",
+      "question": "You discover an AI recruiting tool consistently rates candidates from certain universities lower. What does root cause analysis reveal?",
       "options": [
         "AI is malfunctioning",
         "Training data likely reflects historical hiring biases - requires data auditing, bias correction, and ongoing monitoring",
@@ -1898,11 +1898,11 @@
       "difficulty": 0.7,
       "discrimination": 0.74,
       "type": "system-design",
-      "question": "Build a multi-tiered verification system for high-stakes AI medical diagnosis support. Architecture?",
+      "question": "When building a multi-tiered verification system for high-stakes AI medical diagnosis support, what should the architecture look like?",
       "options": [
-        "AI output → Doctor uses directly",
-        "Layered: AI output → Automated safety checks → Clinical validation → Secondary expert review → Patient consent → Audit logging → Continuous monitoring",
-        "AI output → Patient receives",
+        "AI output \u2192 Doctor uses directly",
+        "Layered: AI output \u2192 Automated safety checks \u2192 Clinical validation \u2192 Secondary expert review \u2192 Patient consent \u2192 Audit logging \u2192 Continuous monitoring",
+        "AI output \u2192 Patient receives",
         "Simple approval checkbox"
       ],
       "correctAnswer": 1,
@@ -1920,7 +1920,7 @@
       "difficulty": 0.67,
       "discrimination": 0.71,
       "type": "quality-metrics",
-      "question": "Establish KPIs for measuring AI output quality in content moderation. Which metrics are MOST important?",
+      "question": "When establishing KPIs for measuring AI output quality in content moderation, which metrics are MOST important?",
       "options": [
         "Speed only",
         "Accuracy (precision/recall), fairness (demographic parity), consistency, transparency (explainability), and appeal success rate",
@@ -1986,7 +1986,7 @@
       "difficulty": 0.69,
       "discrimination": 0.73,
       "type": "cross-domain-validation",
-      "question": "AI provides scientific claim citing journal article. Article exists but doesn't support AI's claim. This represents:",
+      "question": "AI provides a scientific claim citing a journal article. The article exists but doesn't support AI's claim. What does this represent?",
       "options": [
         "Minor error",
         "Citation fabrication - AI hallucinated the connection requiring immediate correction and examination of validation gaps in your system",
@@ -2008,7 +2008,7 @@
       "difficulty": 0.71,
       "discrimination": 0.75,
       "type": "adversarial-testing",
-      "question": "Design adversarial testing strategy for AI content filter. What should you test?",
+      "question": "When designing an adversarial testing strategy for an AI content filter, what should you test?",
       "options": [
         "Normal content only",
         "Comprehensive: obvious violations, borderline cases, obfuscated violations, false positives, cultural variations, evolving tactics, and adversarial examples",
@@ -2052,7 +2052,7 @@
       "difficulty": 0.65,
       "discrimination": 0.7,
       "type": "validation-automation",
-      "question": "Balance automated validation vs human review for AI outputs at scale. Optimal approach?",
+      "question": "How should you balance automated validation versus human review for AI outputs at scale? What is the optimal approach?",
       "options": [
         "100% automated - humans can't scale",
         "Tiered: automated screening for obvious issues, AI confidence-based routing, human review for low-confidence/high-stakes, continuous calibration",
@@ -2140,7 +2140,7 @@
       "difficulty": 0.73,
       "discrimination": 0.77,
       "type": "advanced-bias-detection",
-      "question": "Design systematic bias detection for AI hiring system. Methodology?",
+      "question": "When designing systematic bias detection for an AI hiring system, what methodology should you use?",
       "options": [
         "Check for obvious slurs",
         "Comprehensive: demographic parity analysis, intersectional bias testing, historical bias audit, causal analysis of features, adversarial fairness testing, longitudinal monitoring",
@@ -2295,7 +2295,7 @@
       "difficulty": 0.23,
       "discrimination": 0.47,
       "type": "multiple-choice-multiple",
-      "question": "Which situations raise ethical concerns about AI use? Select ALL:",
+      "question": "Which of the following situations raise ethical concerns about AI use? Select ALL that apply:",
       "options": [
         "Using AI to make hiring decisions without human review",
         "Using AI to summarize public research papers",
@@ -2328,7 +2328,7 @@
       "difficulty": 0.22,
       "discrimination": 0.46,
       "type": "multiple-choice",
-      "question": "AI generates content that includes someone's personal information. What should you do?",
+      "question": "AI generates content that includes someone's personal information. What should you do in this situation?",
       "options": [
         "Use it as-is - AI included it",
         "Remove or anonymize personal information before using",
@@ -2395,7 +2395,7 @@
       "difficulty": 0.26,
       "discrimination": 0.5,
       "type": "multiple-choice-multiple",
-      "question": "Which AI uses require extra ethical scrutiny? Select ALL:",
+      "question": "Which AI uses require extra ethical scrutiny? Select ALL that apply:",
       "options": [
         "Entertainment recommendations",
         "Criminal justice decisions",
@@ -2451,7 +2451,7 @@
       "difficulty": 0.27,
       "discrimination": 0.51,
       "type": "multiple-choice",
-      "question": "AI recommends rejecting a job candidate. Ethically, you should:",
+      "question": "AI recommends rejecting a job candidate. What should you do ethically?",
       "options": [
         "Follow AI recommendation automatically",
         "Review AI's reasoning, consider human judgment, ensure fairness, and make final decision yourself",
@@ -2541,7 +2541,7 @@
       "difficulty": 0.48,
       "discrimination": 0.6,
       "type": "privacy-analysis",
-      "question": "Build customer service chatbot. Customer data includes: names, purchase history, complaints, credit card info, health conditions mentioned in support tickets. Privacy approach?",
+      "question": "You're building a customer service chatbot. Customer data includes: names, purchase history, complaints, credit card info, and health conditions mentioned in support tickets. What should be your privacy approach?",
       "options": [
         "Use all data - more context is better",
         "Data minimization: use only essential data, encrypt sensitive info, implement access controls, regular audits, clear retention policies, customer transparency",
@@ -2564,7 +2564,7 @@
       "difficulty": 0.46,
       "discrimination": 0.57,
       "type": "multiple-choice-multiple",
-      "question": "Ethical principles for AI in healthcare. Which apply? Select ALL:",
+      "question": "When considering ethical principles for AI in healthcare, which principles apply? Select ALL that apply:",
       "options": [
         "Maximize hospital profit above all",
         "Do no harm - ensure AI doesn't make dangerous mistakes",
@@ -2623,7 +2623,7 @@
       "difficulty": 0.47,
       "discrimination": 0.58,
       "type": "transparency-design",
-      "question": "Design transparency for AI-assisted medical diagnosis. What should patients know?",
+      "question": "When designing transparency for AI-assisted medical diagnosis, what should patients know?",
       "options": [
         "Nothing - technical details confuse patients",
         "Clear disclosure: AI is used, what it analyzes, how doctor uses recommendations, final decision is doctor's, right to ask questions",
@@ -2781,7 +2781,7 @@
       "difficulty": 0.46,
       "discrimination": 0.57,
       "type": "dual-use",
-      "question": "Develop AI tool with beneficial uses but potential for harmful misuse (e.g., image generation). Ethical responsibility?",
+      "question": "You're developing an AI tool with beneficial uses but potential for harmful misuse (e.g., image generation). What is your ethical responsibility?",
       "options": [
         "Not our problem how people use it",
         "Design with safeguards: usage restrictions, abuse monitoring, takedown procedures, transparent policies, user education, ongoing adaptation to misuse",
@@ -2919,7 +2919,7 @@
       "difficulty": 0.45,
       "discrimination": 0.57,
       "type": "multiple-choice-multiple",
-      "question": "Build AI ethics review process. Include which elements? Select ALL:",
+      "question": "When building an AI ethics review process, which elements should you include? Select ALL that apply:",
       "options": [
         "Diverse review committee representing affected stakeholders",
         "Quick rubber-stamp approval only",
@@ -3000,7 +3000,7 @@
       "difficulty": 0.65,
       "discrimination": 0.7,
       "type": "framework-design",
-      "question": "Design comprehensive AI ethics framework for large organization. Core components?",
+      "question": "When designing a comprehensive AI ethics framework for a large organization, what are the core components?",
       "options": [
         "Just principles document",
         "Integrated framework: ethical principles, governance structure, review processes, impact assessment tools, monitoring systems, training programs, incident response, continuous improvement",
@@ -3215,7 +3215,7 @@
         "Ignore fairness definitions"
       ],
       "correctAnswer": 1,
-      "explanation": "Contextual fairness (B): domain matters (criminal justice ≠ advertising), stakeholder values (affected people input), harm assessment (consequences), document choices (transparency), acknowledge limits (honesty). Not simplicity (A) or single definition (C) - context determines appropriate fairness notion. Not ignoring (D) - fairness essential. Mathematical impossibility of satisfying all definitions requires thoughtful choice.",
+      "explanation": "Contextual fairness (B): domain matters (criminal justice \u2260 advertising), stakeholder values (affected people input), harm assessment (consequences), document choices (transparency), acknowledge limits (honesty). Not simplicity (A) or single definition (C) - context determines appropriate fairness notion. Not ignoring (D) - fairness essential. Mathematical impossibility of satisfying all definitions requires thoughtful choice.",
       "tags": [
         "algorithmic-fairness",
         "fairness-definitions",
@@ -3391,7 +3391,7 @@
       "difficulty": 0.71,
       "discrimination": 0.75,
       "type": "institutional-ethics",
-      "question": "Build ethical AI in organization with competing pressures (profit, speed, ethics). Institutional design?",
+      "question": "How do you build ethical AI in an organization with competing pressures (profit, speed, ethics)? What institutional design is needed?",
       "options": [
         "Ethics is PR department's job",
         "Embedded ethics: ethics in incentive structures, empowered ethics teams, integration in development, leadership commitment, transparent reporting, independent review",
@@ -3414,7 +3414,7 @@
       "difficulty": 0.69,
       "discrimination": 0.73,
       "type": "ethical-innovation",
-      "question": "Balance innovation (experimentation, risk-taking) with ethics (caution, protection). Framework?",
+      "question": "How do you balance innovation (experimentation, risk-taking) with ethics (caution, protection)? What framework should you use?",
       "options": [
         "Innovation first, ethics later",
         "Responsible innovation: proactive ethics consideration, staged deployment, stakeholder engagement, learning from failures, adaptation, proportional risk-taking",
@@ -3482,7 +3482,7 @@
       "difficulty": 0.24,
       "discrimination": 0.47,
       "type": "multiple-choice-multiple",
-      "question": "Which tasks are good candidates for AI integration in a workflow? Select ALL:",
+      "question": "Which tasks are good candidates for AI integration in a workflow? Select ALL that apply:",
       "options": [
         "High-volume data entry",
         "Complex ethical decisions",
@@ -3579,7 +3579,7 @@
       "difficulty": 0.26,
       "discrimination": 0.5,
       "type": "multiple-choice-multiple",
-      "question": "Which elements are essential for successful AI integration? Select ALL:",
+      "question": "Which elements are essential for successful AI integration? Select ALL that apply:",
       "options": [
         "Clear roles and responsibilities",
         "Complete automation with no human involvement",
@@ -3722,7 +3722,7 @@
       "difficulty": 0.48,
       "discrimination": 0.6,
       "type": "workflow-design",
-      "question": "Integrate AI into medical diagnosis workflow. Where should human checkpoints be MANDATORY?",
+      "question": "When integrating AI into a medical diagnosis workflow, where should human checkpoints be MANDATORY?",
       "options": [
         "Only at final diagnosis",
         "Initial assessment, differential diagnosis review, treatment recommendation, and patient communication",
@@ -3744,7 +3744,7 @@
       "difficulty": 0.46,
       "discrimination": 0.57,
       "type": "multiple-choice-multiple",
-      "question": "Design handoff protocol from AI to human. What should be transferred? Select ALL:",
+      "question": "When designing a handoff protocol from AI to human, what information should be transferred? Select ALL that apply:",
       "options": [
         "AI's recommendation or output",
         "Confidence level or uncertainty indicators",
@@ -3824,7 +3824,7 @@
       "difficulty": 0.52,
       "discrimination": 0.62,
       "type": "integration-challenge",
-      "question": "Integrate AI scheduling into team calendar system. Main integration challenge?",
+      "question": "When integrating AI scheduling into a team calendar system, what is the main integration challenge?",
       "options": [
         "AI doesn't understand time zones",
         "Balancing AI's optimization goals with unstated human preferences, priorities, and working styles",
@@ -3846,7 +3846,7 @@
       "difficulty": 0.49,
       "discrimination": 0.59,
       "type": "scenario-analysis",
-      "question": "Team resists AI integration, fearing job loss. Best approach?",
+      "question": "Your team resists AI integration, fearing job loss. What is the best approach to address their concerns?",
       "options": [
         "Force adoption - management decision",
         "Demonstrate AI as augmentation tool that handles tedious work, freeing time for skilled judgment; involve team in design; measure quality of work not just speed",
@@ -3868,7 +3868,7 @@
       "difficulty": 0.51,
       "discrimination": 0.61,
       "type": "quality-control",
-      "question": "Design quality control for AI-human hybrid workflow. Best approach?",
+      "question": "How do you design quality control for an AI-human hybrid workflow? What is the best approach?",
       "options": [
         "Trust AI output - no QC needed",
         "Sample-based auditing: random sampling across AI-only and AI-human decisions, compare error rates, investigate discrepancies, continuous improvement",
@@ -3912,7 +3912,7 @@
       "difficulty": 0.53,
       "discrimination": 0.63,
       "type": "escalation-design",
-      "question": "Design escalation criteria: when should AI hand off to humans?",
+      "question": "How do you design escalation criteria: when should AI hand off to humans?",
       "options": [
         "Never - AI should handle everything",
         "Based on: low confidence scores, edge cases outside training, conflicting indicators, high-stakes outcomes, user requests, or regulatory requirements",
@@ -3934,7 +3934,7 @@
       "difficulty": 0.48,
       "discrimination": 0.59,
       "type": "feedback-loops",
-      "question": "Design feedback loop to improve AI integration over time. Components?",
+      "question": "When designing a feedback loop to improve AI integration over time, what are the essential components?",
       "options": [
         "Just measure speed",
         "Track: decision accuracy, user satisfaction, edge case frequency, human override patterns, time savings, quality metrics; regular review and adjustment",
@@ -3956,7 +3956,7 @@
       "difficulty": 0.46,
       "discrimination": 0.57,
       "type": "multiple-choice",
-      "question": "Integrate AI into creative workflow (design, writing). Best practice?",
+      "question": "When integrating AI into a creative workflow (design, writing), what is the best practice?",
       "options": [
         "AI does all creative work",
         "AI generates options/variations, humans select and refine based on judgment and brand alignment",
@@ -3978,7 +3978,7 @@
       "difficulty": 0.5,
       "discrimination": 0.6,
       "type": "multiple-choice-multiple",
-      "question": "Which metrics indicate successful AI integration? Select ALL:",
+      "question": "Which metrics indicate successful AI integration? Select ALL that apply:",
       "options": [
         "100% automation of all tasks",
         "Improved accuracy over previous baseline",
@@ -4034,7 +4034,7 @@
       "difficulty": 0.47,
       "discrimination": 0.58,
       "type": "training-design",
-      "question": "Design training program for team using AI-integrated workflow. Focus?",
+      "question": "When designing a training program for a team using an AI-integrated workflow, what should be the focus?",
       "options": [
         "Technical AI internals only",
         "Practical skills: when to trust AI, when to override, how to interpret outputs, escalation procedures, and continuous learning mindset",
@@ -4100,7 +4100,7 @@
       "difficulty": 0.45,
       "discrimination": 0.57,
       "type": "multiple-choice",
-      "question": "Integrate AI into regulated workflow (financial trading). Additional requirement?",
+      "question": "When integrating AI into a regulated workflow like financial trading, what is the additional requirement?",
       "options": [
         "Speed above all",
         "Audit trail: log all AI decisions, inputs, reasoning, overrides, outcomes for regulatory review and accountability",
@@ -4166,7 +4166,7 @@
       "difficulty": 0.65,
       "discrimination": 0.7,
       "type": "framework-design",
-      "question": "Design enterprise-wide AI integration framework for organization with 10,000 employees across 50 departments. Architecture?",
+      "question": "How do you design an enterprise-wide AI integration framework for an organization with 10,000 employees across 50 departments? What architecture is needed?",
       "options": [
         "Each department does their own thing",
         "Centralized: Center of Excellence sets standards, provides shared services, offers integration patterns, enables local customization, measures outcomes across organization",
@@ -4188,7 +4188,7 @@
       "difficulty": 0.68,
       "discrimination": 0.72,
       "type": "complex-integration",
-      "question": "Integrate AI into emergency room workflow where decisions are time-critical, high-stakes, and require multiple specialists. Design approach?",
+      "question": "When integrating AI into an emergency room workflow where decisions are time-critical, high-stakes, and require multiple specialists, what is the best design approach?",
       "options": [
         "Full AI automation for speed",
         "Parallel processing: AI provides real-time decision support (differential diagnosis, risk assessment, protocol recommendations) alongside human clinical judgment with override capability and full audit trail",
@@ -4232,7 +4232,7 @@
       "difficulty": 0.7,
       "discrimination": 0.74,
       "type": "architecture-design",
-      "question": "Design technical architecture for AI-human workflow with: real-time collaboration, version control, audit logging, rollback capability, A/B testing. Core components?",
+      "question": "When designing technical architecture for AI-human workflow with: real-time collaboration, version control, audit logging, rollback capability, and A/B testing, what are the core components?",
       "options": [
         "Just the AI model",
         "Layered architecture: API gateway, workflow orchestration engine, state management, audit logging service, version control system, rollback mechanism, A/B testing framework, monitoring dashboard",
@@ -4276,7 +4276,7 @@
       "difficulty": 0.66,
       "discrimination": 0.7,
       "type": "integration-measurement",
-      "question": "Build comprehensive measurement framework for AI integration success. Metrics?",
+      "question": "When building a comprehensive measurement framework for AI integration success, what metrics should you track?",
       "options": [
         "Just cost savings",
         "Balanced scorecard: efficiency (time/cost savings), quality (accuracy, consistency), user experience (satisfaction, adoption), business outcomes (revenue, customer retention), learning (improvement over time)",
@@ -4320,7 +4320,7 @@
       "difficulty": 0.69,
       "discrimination": 0.73,
       "type": "multi-stakeholder",
-      "question": "Integrate AI into workflow affecting: operations team (wants efficiency), compliance (wants auditability), customers (want quality), executives (want ROI), IT (wants maintainability). Prioritization?",
+      "question": "You need to integrate AI into a workflow affecting: operations team (wants efficiency), compliance (wants auditability), customers (want quality), executives (want ROI), and IT (wants maintainability). How should you prioritize?",
       "options": [
         "Pick one stakeholder to satisfy",
         "Hierarchical requirements: compliance and quality (must-haves), then efficiency and maintainability (should-haves), then ROI demonstration (nice-to-have), with ongoing stakeholder engagement",
@@ -4342,7 +4342,7 @@
       "difficulty": 0.71,
       "discrimination": 0.75,
       "type": "cross-system-integration",
-      "question": "Integrate AI across 5 legacy systems (CRM, ERP, inventory, HR, finance) built over 15 years with inconsistent data formats. Strategy?",
+      "question": "You need to integrate AI across 5 legacy systems (CRM, ERP, inventory, HR, finance) built over 15 years with inconsistent data formats. What is the best strategy?",
       "options": [
         "Replace all legacy systems",
         "Integration layer: build middleware for data normalization, create unified API, implement data governance, staged rollout with backward compatibility",
@@ -4386,7 +4386,7 @@
       "difficulty": 0.65,
       "discrimination": 0.7,
       "type": "quality-assurance",
-      "question": "Design QA process for AI-human integrated workflow in financial services (regulated industry). Requirements?",
+      "question": "When designing a QA process for AI-human integrated workflow in financial services (a regulated industry), what are the requirements?",
       "options": [
         "Trust AI - it's accurate",
         "Multi-layer QA: automated consistency checks, sample-based human auditing, compliance verification, independent testing, outcome tracking, continuous monitoring, regular external audits",
@@ -4430,7 +4430,7 @@
       "difficulty": 0.67,
       "discrimination": 0.71,
       "type": "personalization-at-scale",
-      "question": "Integrate AI personalization for 1M users while maintaining human oversight for sensitive decisions. Architecture?",
+      "question": "How do you integrate AI personalization for 1M users while maintaining human oversight for sensitive decisions? What architecture is needed?",
       "options": [
         "Personalize everything automatically",
         "Segmented approach: AI handles low-risk personalization automatically, medium-risk uses confidence-based routing to humans, high-risk always requires human review, with bias monitoring across all segments",
@@ -4496,7 +4496,7 @@
       "difficulty": 0.66,
       "discrimination": 0.7,
       "type": "exception-handling",
-      "question": "Design systematic exception handling for AI-integrated workflow. Framework?",
+      "question": "When designing systematic exception handling for an AI-integrated workflow, what framework should you use?",
       "options": [
         "Ignore exceptions",
         "Tiered exception framework: automatic retry (transient errors), escalation routing (complexity tiers), expert pool (specialized knowledge), fallback procedures (continuity), exception analysis (learning), process improvement",
@@ -4518,7 +4518,7 @@
       "difficulty": 0.74,
       "discrimination": 0.78,
       "type": "vendor-ecosystem",
-      "question": "Build AI-integrated workflow using 5 vendor solutions plus internal systems. Integration strategy?",
+      "question": "When building an AI-integrated workflow using 5 vendor solutions plus internal systems, what is the best integration strategy?",
       "options": [
         "Use each vendor's approach",
         "Unified integration platform: standard API contracts, vendor abstraction layer, centralized monitoring, SLA management, vendor-agnostic design enabling substitutability",
@@ -4628,7 +4628,7 @@
       "difficulty": 0.25,
       "discrimination": 0.48,
       "type": "multiple-choice-multiple",
-      "question": "Select ALL elements that improve prompt effectiveness:",
+      "question": "Which elements improve the effectiveness of prompts? Select ALL that apply:",
       "options": [
         "Clear context and background information",
         "Using complex jargon to sound professional",
@@ -4700,7 +4700,7 @@
       "difficulty": 0.26,
       "discrimination": 0.5,
       "type": "multiple-choice-multiple",
-      "question": "Which prompt components help constrain AI responses appropriately? Select ALL:",
+      "question": "Which prompt components help constrain AI responses appropriately? Select ALL that apply:",
       "options": [
         "Word or character count limits",
         "Desired tone or style specifications",
@@ -4877,7 +4877,7 @@
       "difficulty": 0.47,
       "discrimination": 0.59,
       "type": "multiple-choice-multiple",
-      "question": "Which techniques improve prompt clarity for technical tasks? Select ALL:",
+      "question": "Which techniques can improve prompt clarity for technical tasks? Select ALL that apply:",
       "options": [
         "Define technical terms specific to your domain",
         "Assume AI knows your company's internal processes",
@@ -4991,7 +4991,7 @@
       "difficulty": 0.51,
       "discrimination": 0.61,
       "type": "multiple-choice-multiple",
-      "question": "Which prompt strategies help maintain consistency across multiple AI interactions? Select ALL:",
+      "question": "Which prompt strategies help maintain consistency across multiple AI interactions? Select ALL that apply:",
       "options": [
         "Reusing successful prompt templates with modifications",
         "Completely rewriting prompts each time for freshness",
@@ -5046,7 +5046,7 @@
       "options": [
         "'Fix my code'",
         "'This code doesn't work'",
-        "'This Python function should calculate compound interest but returns incorrect values for monthly compounding. Here's the code: [paste code]. Expected output for $1000, 5% annual rate, 12 months: $1051.16. Actual output: $1050.00. Please identify the error and provide corrected code with explanation.'",
+        "'This Python function should calculate compound interest but returns incorrect values for monthly compounding. Here's the code: def calc_interest(principal, rate, months): return principal * (1 + rate/12) * months. Expected output for $1000, 5% annual rate, 12 months: $1051.16. Actual output: $1050.00. Please identify the error and provide corrected code with explanation.'",
         "'Help'"
       ],
       "correctAnswer": 2,
@@ -5088,7 +5088,7 @@
       "options": [
         "'Compare A and B'",
         "'Tell me about A and B'",
-        "'Create a comparison table of A vs B across these dimensions: [list dimensions]. For each, provide: key differences, advantages/disadvantages, and use case recommendations.'",
+        "'Create a comparison table of electric cars vs gas cars across these dimensions: cost, environmental impact, maintenance, range, and charging/refueling time. For each, provide: key differences, advantages/disadvantages, and use case recommendations.'",
         "'Which is better, A or B?'"
       ],
       "correctAnswer": 2,
@@ -5105,7 +5105,7 @@
       "difficulty": 0.5,
       "discrimination": 0.61,
       "type": "multiple-choice-multiple",
-      "question": "Which elements help AI understand context better? Select ALL:",
+      "question": "Which elements help AI understand context better? Select ALL that apply:",
       "options": [
         "Background information about the project/situation",
         "Irrelevant personal anecdotes",
@@ -5135,7 +5135,7 @@
       "difficulty": 0.52,
       "discrimination": 0.62,
       "type": "scenario-analysis",
-      "question": "You're using AI to generate marketing copy. After 3 iterations, it's still not quite right. What's the MOST effective next step?",
+      "question": "You're using AI to generate marketing copy. After 3 iterations, it's still not quite right. What is the MOST effective next step?",
       "options": [
         "Give up on AI for this task",
         "Try a completely different approach",
@@ -5159,7 +5159,7 @@
       "question": "How should you prompt AI to generate test cases for software?",
       "options": [
         "'Write tests'",
-        "'Generate unit tests for this code: [code]. Cover: normal inputs, edge cases (empty, null, max values), error conditions, and boundary conditions. Use pytest format with descriptive test names and comments.'",
+        "'Generate unit tests for this code: def calculate_discount(price, discount_percent): return price - (price * discount_percent / 100). Cover: normal inputs, edge cases (empty, null, max values), error conditions, and boundary conditions. Use pytest format with descriptive test names and comments.'",
         "'Make some tests for QA'",
         "'Test my function'"
       ],
@@ -5198,7 +5198,7 @@
       "difficulty": 0.51,
       "discrimination": 0.61,
       "type": "multiple-choice",
-      "question": "When prompting for email composition, which elements are MOST important?",
+      "question": "When prompting for email composition, which elements are MOST important to include?",
       "options": [
         "Purpose, audience, tone, key points, and desired action",
         "Just the subject line",
@@ -5222,7 +5222,7 @@
       "question": "How do you best prompt AI for brainstorming?",
       "options": [
         "'Give me ideas'",
-        "'Brainstorm 10 innovative marketing strategies for [product] targeting [audience]. For each strategy, provide: core concept, implementation approach, estimated cost range (low/medium/high), and expected impact metrics.'",
+        "'Brainstorm 10 innovative marketing strategies for a sustainable water bottle targeting environmentally-conscious millennials. For each strategy, provide: core concept, implementation approach, estimated cost range (low/medium/high), and expected impact metrics.'",
         "'Think of something creative'",
         "'Help me brainstorm'"
       ],
@@ -5291,7 +5291,7 @@
       "difficulty": 0.65,
       "discrimination": 0.7,
       "type": "complex-scenario",
-      "question": "Design a prompt engineering strategy for a complex business intelligence task: generating quarterly board reports that synthesize data from 5 sources, include narrative insights, predictive trends, and action recommendations. The reports must maintain consistent voice across quarters while adapting to changing business priorities. What's your optimal approach?",
+      "question": "You need to design a prompt engineering strategy for a complex business intelligence task: generating quarterly board reports that synthesize data from 5 sources, include narrative insights, predictive trends, and action recommendations. The reports must maintain consistent voice across quarters while adapting to changing business priorities. What is your optimal approach?",
       "options": [
         "Single comprehensive prompt covering everything",
         "Modular prompt system with: data ingestion template, analysis framework, narrative style guide, output formatter, and quarterly priority updater",
@@ -5357,7 +5357,7 @@
       "difficulty": 0.7,
       "discrimination": 0.74,
       "type": "system-design",
-      "question": "Design a prompt validation system for a high-stakes AI application (medical information). Which validation layers are ESSENTIAL?",
+      "question": "When designing a prompt validation system for a high-stakes AI application like medical information, which validation layers are ESSENTIAL?",
       "options": [
         "Spell-check only",
         "Multi-layer: prompt clarity scoring, domain terminology validation, output format verification, error-case testing, and comparative benchmarking against gold-standard responses",
@@ -5445,7 +5445,7 @@
       "difficulty": 0.69,
       "discrimination": 0.73,
       "type": "advanced-scenario",
-      "question": "You need AI to maintain consistency across a 10-document series where each document references previous ones. Standard prompts produce contradictions. Best approach?",
+      "question": "You need AI to maintain consistency across a 10-document series where each document references previous ones. Standard prompts produce contradictions. What is the best approach?",
       "options": [
         "Hope AI remembers (it won't)",
         "Build a prompt system with: canonical fact database, explicit cross-reference checker, contradiction detection, and progressive knowledge accumulation across documents",
@@ -5533,7 +5533,7 @@
       "difficulty": 0.72,
       "discrimination": 0.76,
       "type": "governance-framework",
-      "question": "Design prompt governance for an enterprise with 500 users across 20 teams. What's the MOST effective model?",
+      "question": "When designing prompt governance for an enterprise with 500 users across 20 teams, what is the MOST effective model?",
       "options": [
         "Centralized: all prompts must be approved",
         "Anarchic: everyone does what they want",
@@ -5577,7 +5577,7 @@
       "difficulty": 0.7,
       "discrimination": 0.74,
       "type": "quality-metrics",
-      "question": "Design a prompt quality scorecard for your team. Which metrics provide MOST actionable insights?",
+      "question": "When designing a prompt quality scorecard for your team, which metrics provide MOST actionable insights?",
       "options": [
         "Just subjective ratings",
         "Multi-dimensional: clarity score, specificity score, constraint completeness, output usability, error rate, iteration count to success, and user satisfaction",
@@ -5599,7 +5599,7 @@
       "difficulty": 0.73,
       "discrimination": 0.77,
       "type": "integration-design",
-      "question": "Integrate AI prompting into existing workflow where humans currently do task. What's the MOST important consideration?",
+      "question": "When integrating AI prompting into an existing workflow where humans currently do the task, what is the MOST important consideration?",
       "options": [
         "Replace humans completely",
         "Design prompts that complement human strengths: AI handles volume/speed/consistency, humans handle judgment/edge cases/quality control, with clear handoff points",
@@ -5709,7 +5709,7 @@
       "difficulty": 0.75,
       "discrimination": 0.79,
       "type": "future-proofing",
-      "question": "Design prompts that remain effective as AI models evolve. MOST important principle?",
+      "question": "How do you design prompts that remain effective as AI models evolve? What is the MOST important principle?",
       "options": [
         "Exploit current model quirks maximally",
         "Build on fundamental task descriptions and desired outcomes rather than model-specific behaviors, with clear success criteria, examples, and regular testing across model versions",
@@ -6255,7 +6255,7 @@
       "difficulty": 0.48,
       "discrimination": 0.58,
       "type": "multiple-choice",
-      "question": "In an AI content marketing workflow (SEO analyzer → content generator → grammar checker → scheduler), where should the PRIMARY human review occur?",
+      "question": "In an AI content marketing workflow (SEO analyzer \u2192 content generator \u2192 grammar checker \u2192 scheduler), where should the PRIMARY human review occur?",
       "options": [
         "After SEO analyzer",
         "After content generator",
@@ -6390,9 +6390,9 @@
       "question": "For an AI job application screening system, what's the MOST important acceptance criterion?",
       "options": [
         "Processing speed under 2 seconds",
-        "Precision ≥90% for qualified candidates",
+        "Precision \u226590% for qualified candidates",
         "Demographic parity difference <5%",
-        "System uptime ≥99.9%"
+        "System uptime \u226599.9%"
       ],
       "correctAnswer": 2,
       "explanation": "Demographic parity (C) is most critical for fairness and legal compliance. Without this, the system perpetuates bias regardless of other metrics.",
@@ -6436,7 +6436,7 @@
       "difficulty": 0.65,
       "discrimination": 0.7,
       "type": "framework-design",
-      "question": "Design a human-AI task allocation framework for software development with:\n1. Decision criteria\n2. Task categories (5-7)\n3. Allocation matrix\n4. Feedback mechanisms\n5. Performance metrics\n\nWhich framework element is MOST critical for success?",
+      "question": "When designing a human-AI task allocation framework for software development with: decision criteria, task categories (5-7), allocation matrix, feedback mechanisms, and performance metrics - which framework element is MOST critical for success?",
       "options": [
         "Clear decision criteria based on task characteristics",
         "Comprehensive task categorization",
@@ -6478,7 +6478,7 @@
       "difficulty": 0.63,
       "discrimination": 0.69,
       "type": "system-design",
-      "question": "Design AI for credit scoring with regulatory compliance (FCRA). Which architecture component is MOST critical?",
+      "question": "When designing AI for credit scoring with regulatory compliance like FCRA, which architecture component is MOST critical?",
       "options": [
         "High-performance model achieving 95%+ accuracy",
         "Explainable AI providing reason codes for decisions",
@@ -6587,11 +6587,11 @@
       "options": [
         "Continue as-is, focus resources on English majority",
         "Equal investment in all three languages",
-        "Prioritize Mandarin improvement (largest gap × usage)",
+        "Prioritize Mandarin improvement (largest gap \u00d7 usage)",
         "Shut down Mandarin, improve Spanish"
       ],
       "correctAnswer": 2,
-      "explanation": "Prioritize Mandarin (C) - largest gap (poor performance) × significant usage (30%). Impact = Gap × Volume. This optimization delivers maximum user experience improvement.",
+      "explanation": "Prioritize Mandarin (C) - largest gap (poor performance) \u00d7 significant usage (30%). Impact = Gap \u00d7 Volume. This optimization delivers maximum user experience improvement.",
       "tags": [
         "optimization",
         "global-deployment"
@@ -6604,7 +6604,7 @@
       "difficulty": 0.71,
       "discrimination": 0.75,
       "type": "architecture-design",
-      "question": "Design AI system processing 1M+ transactions/day with fraud detection (real-time), analytics (batch), and compliance reporting (daily). What's the optimal architecture pattern?",
+      "question": "You're designing an AI system processing 1M+ transactions/day with fraud detection (real-time), analytics (batch), and compliance reporting (daily). What is the optimal architecture pattern?",
       "options": [
         "Single monolithic AI system handling all functions",
         "Microservices with specialized AI models per function",
@@ -6732,10 +6732,10 @@
       "type": "performance-optimization",
       "question": "AI model performance degrades 15% over 6 months in production. Diagnostics show data drift (10% contribution), concept drift (60%), infrastructure issues (30%). Optimal remediation sequence?",
       "options": [
-        "Infrastructure → Data drift → Concept drift",
-        "Concept drift → Infrastructure → Data drift",
+        "Infrastructure \u2192 Data drift \u2192 Concept drift",
+        "Concept drift \u2192 Infrastructure \u2192 Data drift",
         "All simultaneously with dedicated teams",
-        "Data drift → Concept drift → Infrastructure"
+        "Data drift \u2192 Concept drift \u2192 Infrastructure"
       ],
       "correctAnswer": 1,
       "explanation": "Address concept drift first (60% impact), then infrastructure (30%), then data drift (10%). Prioritize by impact magnitude for fastest performance recovery.",
@@ -6814,7 +6814,7 @@
       "difficulty": 0.71,
       "discrimination": 0.75,
       "type": "regulatory-navigation",
-      "question": "AI system must comply with GDPR (EU), CCPA (California), and industry-specific regulations. Regulations conflict on data retention. What's the BEST approach?",
+      "question": "An AI system must comply with GDPR (EU), CCPA (California), and industry-specific regulations. The regulations conflict on data retention requirements. What is the BEST approach?",
       "options": [
         "Comply with strictest regulation for all users",
         "Implement region-specific compliance",
@@ -6847,6 +6847,2270 @@
       "tags": [
         "transformation-leadership",
         "strategic-vision"
+      ]
+    },
+    {
+      "id": "CXS-001",
+      "level": 1,
+      "points": 10,
+      "difficulty": 0.2,
+      "discrimination": 0.44,
+      "type": "multiple-choice",
+      "question": "Why does context matter when you are using AI for different tasks?",
+      "options": [
+        "It doesn't - AI works the same way everywhere",
+        "Different situations have different requirements, constraints, and stakeholders that require you to adapt your approach",
+        "Context only matters for technical settings",
+        "AI automatically adjusts to any context"
+      ],
+      "correctAnswer": 1,
+      "explanation": "Context shapes appropriate AI use (B): work vs personal, regulated vs unregulated, high-stakes vs low-stakes all differ significantly. Not universal (A). Not just technical (C) - social and organizational context matters greatly. AI doesn't auto-adjust (D) - humans must consciously adapt their usage based on context.",
+      "tags": [
+        "context-importance",
+        "situational-awareness",
+        "adaptation"
+      ]
+    },
+    {
+      "id": "CXS-002",
+      "level": 1,
+      "points": 10,
+      "difficulty": 0.22,
+      "discrimination": 0.46,
+      "type": "multiple-choice-multiple",
+      "question": "Which contextual factors should influence how you use AI in your work? Select ALL that apply:",
+      "options": [
+        "Organizational policies and culture",
+        "The weather outside",
+        "Stakeholder expectations",
+        "Regulatory requirements",
+        "Your favorite color",
+        "Cultural norms"
+      ],
+      "correctAnswers": [
+        0,
+        2,
+        3,
+        5
+      ],
+      "partialCredit": {
+        "2correct": 5,
+        "1correct": 2
+      },
+      "explanation": "Relevant contexts include: organizational policies (A), stakeholder expectations (C), regulatory requirements (D), and cultural norms (F). Irrelevant factors: weather (B) and personal color preferences (E) don't affect appropriate AI use in professional settings.",
+      "tags": [
+        "contextual-factors",
+        "relevant-context",
+        "adaptation-triggers"
+      ]
+    },
+    {
+      "id": "CXS-003",
+      "level": 1,
+      "points": 10,
+      "difficulty": 0.24,
+      "discrimination": 0.47,
+      "type": "multiple-choice",
+      "question": "If you use the same AI prompt at work versus for a personal project, should your approach differ?",
+      "options": [
+        "No - a prompt is a prompt regardless of where you use it",
+        "Yes - work involves professional standards, organizational reputation, and stakeholder impacts that require different considerations",
+        "Only if your employer actively monitors your AI use",
+        "Personal use is always more casual by default"
+      ],
+      "correctAnswer": 1,
+      "explanation": "Context changes the appropriate approach (B): work settings involve professional standards, organizational reputation, potential stakeholder impacts, and possibly regulatory requirements. Personal contexts lack these constraints. Not the same (A). Not just about monitoring (C) - there are intrinsic differences in appropriateness. Not always casual (D) - personal projects can also be serious and require rigor.",
+      "tags": [
+        "work-vs-personal",
+        "professional-standards",
+        "context-adaptation"
+      ]
+    },
+    {
+      "id": "CXS-004",
+      "level": 1,
+      "points": 10,
+      "difficulty": 0.21,
+      "discrimination": 0.45,
+      "type": "multiple-choice",
+      "question": "What should be your first step when using AI in a context-aware manner?",
+      "options": [
+        "Jump in and start using AI immediately",
+        "Pause to assess: What is the situation? Who will be affected? What are the constraints and expectations?",
+        "Use AI the same way you always have in the past",
+        "Ask the AI what the appropriate context is"
+      ],
+      "correctAnswer": 1,
+      "explanation": "Assess context first (B): take time to understand the situation, identify who will be affected, and recognize relevant constraints and expectations before proceeding. Not impulsive jumping in (A), unchanging repetition (C), or delegating contextual assessment to AI (D). Developing conscious situational awareness enables you to adapt your approach appropriately.",
+      "tags": [
+        "context-assessment",
+        "situational-awareness",
+        "deliberate-approach"
+      ]
+    },
+    {
+      "id": "CXS-005",
+      "level": 1,
+      "points": 10,
+      "difficulty": 0.23,
+      "discrimination": 0.48,
+      "type": "multiple-choice",
+      "question": "When you are using AI in a regulated industry like healthcare or finance, what changes about your approach?",
+      "options": [
+        "Nothing changes - AI is AI regardless of industry",
+        "You need higher standards including compliance requirements, documentation needs, oversight expectations, and risk management",
+        "You should just work faster to meet deadlines",
+        "You should avoid using AI entirely in regulated industries"
+      ],
+      "correctAnswer": 1,
+      "explanation": "Regulated contexts require elevated standards (B): specific compliance requirements, thorough documentation, formal oversight expectations, and comprehensive risk management. Not the same as unregulated use (A) - regulations exist for important reasons. Not about speed focus (C) - carefulness and compliance matter more. Not complete avoidance (D) - you can use AI responsibly with proper contextual adaptation.",
+      "tags": [
+        "regulated-industries",
+        "compliance-context",
+        "elevated-standards"
+      ]
+    },
+    {
+      "id": "CXS-006",
+      "level": 1,
+      "points": 10,
+      "difficulty": 0.25,
+      "discrimination": 0.49,
+      "type": "multiple-choice-multiple",
+      "question": "Which situations require you to exercise extra caution when using AI? Select ALL that apply:",
+      "options": [
+        "Drafting casual personal emails",
+        "Creating customer-facing communications",
+        "Internal brainstorming sessions",
+        "Preparing legal documents",
+        "Making shopping lists",
+        "Generating financial reports"
+      ],
+      "correctAnswers": [
+        1,
+        3,
+        5
+      ],
+      "partialCredit": {
+        "2correct": 6,
+        "1correct": 3
+      },
+      "explanation": "High-stakes contexts demand caution: customer communications (B) represent your organization; legal documents (D) are binding; financial reports (F) are regulated and consequential. Lower-stakes contexts: personal emails (A), internal brainstorming (C), and shopping lists (E) allow more experimentation without serious consequences.",
+      "tags": [
+        "high-stakes-contexts",
+        "caution-triggers",
+        "risk-assessment"
+      ]
+    },
+    {
+      "id": "CXS-007",
+      "level": 1,
+      "points": 10,
+      "difficulty": 0.26,
+      "discrimination": 0.5,
+      "type": "multiple-choice",
+      "question": "How should your organization's culture influence the way you use AI?",
+      "options": [
+        "You should ignore culture - AI transcends cultural considerations",
+        "You should understand and respect organizational norms, communication styles, and decision-making practices",
+        "Culture doesn't matter when you're doing technical work",
+        "You should impose your preferred culture through your AI use"
+      ],
+      "correctAnswer": 1,
+      "explanation": "Respect organizational culture (B): take time to understand prevailing norms, match appropriate communication styles, and align with established decision-making practices. Not ignoring culture (A) - it shapes what will be effective and accepted. Not irrelevant for technical work (C) - all organizational work has social dimensions. Not imposing personal preferences (D) - you should work within the existing context.",
+      "tags": [
+        "organizational-culture",
+        "cultural-adaptation",
+        "workplace-norms"
+      ]
+    },
+    {
+      "id": "CXS-008",
+      "level": 1,
+      "points": 10,
+      "difficulty": 0.27,
+      "discrimination": 0.51,
+      "type": "multiple-choice",
+      "question": "If you are new to an organization, how should this affect your approach to using AI?",
+      "options": [
+        "You should use AI exactly as you did at your previous job",
+        "You should learn the organizational context first by understanding policies, culture, and expectations before extensive AI use",
+        "You should immediately establish new AI practices",
+        "Using AI doesn't require any organizational understanding"
+      ],
+      "correctAnswer": 1,
+      "explanation": "Learn context first (B): invest time understanding organizational policies, cultural expectations, and work norms before heavy reliance on AI. Not transferring old practices directly (A) - different organizations have different contexts. Not immediate establishment (C) - you need understanding before implementation. AI use absolutely requires organizational awareness (D) to ensure appropriateness and effectiveness.",
+      "tags": [
+        "organizational-onboarding",
+        "context-learning",
+        "adaptive-integration"
+      ]
+    },
+    {
+      "id": "CXS-009",
+      "level": 1,
+      "points": 10,
+      "difficulty": 0.28,
+      "discrimination": 0.52,
+      "type": "multiple-choice",
+      "question": "What does having 'stakeholder awareness' mean when you are using AI?",
+      "options": [
+        "Knowing who owns stock in the company",
+        "Understanding who will be affected by your AI use and considering their perspectives and needs",
+        "Avoiding all stakeholders whenever possible",
+        "Recognizing that stakeholders don't matter for AI decisions"
+      ],
+      "correctAnswer": 1,
+      "explanation": "Stakeholder awareness (B) means identifying all parties who will be affected by your AI use, understanding their different perspectives, and actively considering their needs in your decisions. Not about stock ownership (A). Not about avoidance (C) - you need constructive engagement. Stakeholders matter greatly (D) - they experience the consequences of your AI-related choices.",
+      "tags": [
+        "stakeholder-awareness",
+        "affected-parties",
+        "perspective-taking"
+      ]
+    },
+    {
+      "id": "CXS-010",
+      "level": 1,
+      "points": 10,
+      "difficulty": 0.29,
+      "discrimination": 0.53,
+      "type": "multiple-choice",
+      "question": "What should you consider in a quick context check before using AI for any task?",
+      "options": [
+        "Nothing - you should just start working immediately",
+        "Who will be affected? What are the stakes? What are the organizational expectations? Are there any special requirements?",
+        "Only the technical requirements of the task",
+        "Just whether the deadline is pressing"
+      ],
+      "correctAnswer": 1,
+      "explanation": "Quick context assessment (B) should cover: who will be affected (stakeholders), what the stakes are (consequences), what organizational expectations exist (norms), and whether there are special requirements (constraints). Not skipping assessment entirely (A). Not limited to technical factors (C) or deadline pressure (D) - broader contextual awareness matters for appropriate AI use.",
+      "tags": [
+        "quick-assessment",
+        "context-checklist",
+        "situational-check"
+      ]
+    },
+    {
+      "id": "CXS-011",
+      "level": 2,
+      "points": 15,
+      "difficulty": 0.45,
+      "discrimination": 0.58,
+      "type": "scenario-analysis",
+      "question": "If you are using AI to draft executive communication in a conservative, formal organization versus in a startup with casual culture, how should your approach differ between these contexts?",
+      "options": [
+        "You should use the same approach - communication is communication",
+        "You should adapt: the conservative organization needs formal tone, careful review, and alignment with established norms; the startup allows experimentation, casual tone, and faster iteration",
+        "You should always use formal language everywhere",
+        "You should always use casual language everywhere"
+      ],
+      "correctAnswer": 1,
+      "explanation": "Cultural adaptation (B) is essential: conservative organizations require formality, careful alignment with tradition, and established approaches; startups typically permit casual communication, experimental methods, and rapid iteration. Not one-size-fits-all (A, C, D). Organizational culture profoundly shapes what communication style and process will be appropriate and effective.",
+      "tags": [
+        "cultural-adaptation",
+        "communication-style",
+        "organizational-norms"
+      ]
+    },
+    {
+      "id": "CXS-012",
+      "level": 2,
+      "points": 15,
+      "difficulty": 0.48,
+      "discrimination": 0.6,
+      "type": "stakeholder-analysis",
+      "question": "You are deploying an AI tool that will affect: employees (concerned about jobs), customers (want good service), executives (want ROI), and compliance officers (want controls). How should you prioritize and address these concerns?",
+      "options": [
+        "Focus only on executives since they make the decisions",
+        "Use an integrated approach: address all legitimate concerns, balance competing interests, communicate transparently, and use phased implementation to build trust",
+        "Ignore the concerns - AI adoption is inevitable",
+        "Focus only on customers since they generate revenue"
+      ],
+      "correctAnswer": 1,
+      "explanation": "Multi-stakeholder approach (B) is most appropriate: acknowledge and address all legitimate concerns (respect everyone), balance competing interests fairly, communicate transparently about changes (build trust), and phase implementation thoughtfully (manage risk and build confidence). Not single-stakeholder focus (A, D) - all groups have legitimate interests. Not ignoring concerns (C) - stakeholder buy-in matters for successful implementation.",
+      "tags": [
+        "multi-stakeholder",
+        "balanced-approach",
+        "concern-integration"
+      ]
+    },
+    {
+      "id": "CXS-013",
+      "level": 2,
+      "points": 15,
+      "difficulty": 0.46,
+      "discrimination": 0.57,
+      "type": "regulatory-context",
+      "question": "How should your AI use process differ between a heavily regulated industry and a lightly regulated industry for the same use case?",
+      "options": [
+        "There should be no difference in your process",
+        "Heavily regulated needs: compliance review, extensive documentation, formal oversight, audit trails, conservative deployment, and comprehensive risk management; light regulation allows faster, more experimental approaches",
+        "Both should operate completely without regulation",
+        "Regulations don't actually affect how you use AI"
+      ],
+      "correctAnswer": 1,
+      "explanation": "Regulatory adaptation (B) is critical: heavy regulation demands formal compliance review, thorough documentation, structured oversight, complete audit trails, conservative deployment approaches, and rigorous risk management; light regulation permits faster pace and more experimental methods. Not the same process (A). Both must comply with applicable regulations (C). Regulations definitely affect appropriate processes (D) - they exist to manage important risks.",
+      "tags": [
+        "regulatory-adaptation",
+        "compliance-requirements",
+        "process-adjustment"
+      ]
+    },
+    {
+      "id": "CXS-014",
+      "level": 2,
+      "points": 15,
+      "difficulty": 0.5,
+      "discrimination": 0.61,
+      "type": "cultural-sensitivity",
+      "question": "When you are using AI across an international team with different cultural norms about hierarchy, directness, and privacy, what is your best navigation strategy?",
+      "options": [
+        "You should impose a single standard globally",
+        "You should develop cultural intelligence: understand the differences, adapt your communication, respect local hierarchies, consider varied privacy norms, and provide options that accommodate variations",
+        "You should avoid considering cultural differences",
+        "You should let the AI decide how to handle culture"
+      ],
+      "correctAnswer": 1,
+      "explanation": "Cultural sensitivity (B) requires: understanding genuine differences (awareness), adapting communication appropriately (flexibility), respecting local hierarchy norms (cultural values), considering different privacy expectations (values), and accommodating legitimate variation (inclusion). Not cultural imperialism through imposition (A). Not avoiding cultural engagement (C) - respectful consideration is essential. AI cannot navigate cultural nuance (D) - this requires human cultural intelligence.",
+      "tags": [
+        "cultural-intelligence",
+        "international-teams",
+        "cross-cultural-adaptation"
+      ]
+    },
+    {
+      "id": "CXS-015",
+      "level": 2,
+      "points": 15,
+      "difficulty": 0.47,
+      "discrimination": 0.58,
+      "type": "timing-sensitivity",
+      "question": "How should your approach to using AI differ during an organizational crisis compared to a stable period?",
+      "options": [
+        "You should use the same approach regardless - crises don't change AI use",
+        "During crisis you need: higher scrutiny of outputs, more careful communication, increased consultation with others, more risk-averse choices, and enhanced human oversight; stable periods allow more experimentation",
+        "You should avoid using AI entirely during any crisis",
+        "Crises are actually the best opportunity for aggressive AI experimentation"
+      ],
+      "correctAnswer": 1,
+      "explanation": "Temporal sensitivity (B) is crucial: crises demand heightened scrutiny, extremely careful communication, broader consultation, risk-averse decision-making, and enhanced human oversight; stable periods permit more experimental approaches. Not ignoring timing (A) - organizational state matters greatly. Not complete avoidance (C) - AI may be helpful if used carefully. Not aggressive experimentation (D) - crises require extra caution, not risk-taking.",
+      "tags": [
+        "timing-sensitivity",
+        "crisis-context",
+        "temporal-adaptation"
+      ]
+    },
+    {
+      "id": "CXS-016",
+      "level": 2,
+      "points": 15,
+      "difficulty": 0.52,
+      "discrimination": 0.62,
+      "type": "power-dynamics",
+      "question": "How do power dynamics affect appropriate AI use when you are a junior employee versus a senior leader?",
+      "options": [
+        "Your power level doesn't matter for AI use",
+        "Power affects usage appropriately: juniors typically need approval for novel uses, careful stakeholder management, and transparency about AI; seniors have more autonomy but also responsibility for setting positive norms",
+        "Junior employees should not be allowed to use AI",
+        "Senior leaders can use AI however they want without constraints"
+      ],
+      "correctAnswer": 1,
+      "explanation": "Power-sensitive approach (B) recognizes: junior employees typically need approval for novel applications, must manage stakeholder perceptions carefully, and should be transparent about AI use; senior leaders have greater autonomy but bear responsibility for modeling appropriate use and setting organizational norms. Power level matters (A) significantly for what's appropriate. Not exclusion of juniors (C) or unlimited freedom for seniors (D). Power brings both additional access and additional responsibility.",
+      "tags": [
+        "power-dynamics",
+        "organizational-hierarchy",
+        "responsibility-matching"
+      ]
+    },
+    {
+      "id": "CXS-017",
+      "level": 2,
+      "points": 15,
+      "difficulty": 0.49,
+      "discrimination": 0.59,
+      "type": "audience-adaptation",
+      "question": "How should you adapt AI-generated content when your audiences are: (A) technical experts, (B) general public, or (C) children?",
+      "options": [
+        "You should create the same content for all audiences",
+        "You should adapt to each audience: experts need technical depth and nuance, the public needs clarity and accessibility, children need age-appropriate simplicity and safety",
+        "You should use the most technical version for everyone to appear smarter",
+        "You should use the simplest version for everyone to reach the broadest audience"
+      ],
+      "correctAnswer": 1,
+      "explanation": "Audience-appropriate adaptation (B) is essential: match sophistication to audience capability and needs - experts benefit from technical depth, general public needs clear accessible language, children require age-appropriate simplicity and safety considerations. Not one-level-fits-all (A, C, D). Effective communication requires carefully matching content to audience context and needs.",
+      "tags": [
+        "audience-adaptation",
+        "communication-matching",
+        "accessibility"
+      ]
+    },
+    {
+      "id": "CXS-018",
+      "level": 2,
+      "points": 15,
+      "difficulty": 0.51,
+      "discrimination": 0.61,
+      "type": "domain-specificity",
+      "question": "If you want to apply your AI prompting skills from marketing work to legal work, what adjustments will you need to make?",
+      "options": [
+        "You can directly transfer all skills - skills are universal",
+        "You need domain adaptation: understand legal precision requirements, regulatory constraints, different risk tolerance, specialized terminology, and more rigorous review processes",
+        "Marketing skills don't transfer at all to legal work",
+        "Legal work cannot appropriately use AI in any form"
+      ],
+      "correctAnswer": 1,
+      "explanation": "Domain-specific adaptation (B) is necessary: legal work demands precision, regulatory awareness, lower risk tolerance, specialized terminology, and much more rigorous review - very different from marketing's emphasis on creativity and persuasion. Core skills transfer but require significant adaptation (A, C). Legal work can use AI appropriately with proper contextual understanding (D).",
+      "tags": [
+        "domain-adaptation",
+        "skill-transfer",
+        "contextual-adjustment"
+      ]
+    },
+    {
+      "id": "CXS-019",
+      "level": 2,
+      "points": 15,
+      "difficulty": 0.44,
+      "discrimination": 0.56,
+      "type": "organizational-maturity",
+      "question": "How should your approach to using AI differ in an organization with no AI experience versus one with mature AI adoption?",
+      "options": [
+        "You should use the same approach regardless of organizational maturity",
+        "You should match maturity level: inexperienced organizations need education, simple starting points, and trust-building; mature organizations can handle greater complexity, experimentation, and autonomy",
+        "Inexperienced organizations should avoid AI entirely",
+        "Mature organizations need no guidance or support"
+      ],
+      "correctAnswer": 1,
+      "explanation": "Maturity-appropriate approach (B): inexperienced organizations need foundational education, simple starting points, and gradual trust-building; mature organizations can handle greater complexity, more experimentation, and increased autonomy. Not identical approaches (A) - organizational readiness differs significantly. Not avoidance for inexperienced orgs (C) - they can start appropriately. Mature organizations still benefit from guidance (D) when tackling new applications.",
+      "tags": [
+        "organizational-maturity",
+        "adoption-readiness",
+        "progressive-complexity"
+      ]
+    },
+    {
+      "id": "CXS-020",
+      "level": 2,
+      "points": 15,
+      "difficulty": 0.53,
+      "discrimination": 0.63,
+      "type": "multiple-choice-multiple",
+      "question": "When building a context-aware AI use practice, which contextual dimensions should you actively track? Select ALL that apply:",
+      "options": [
+        "Industry and regulatory environment",
+        "Weather patterns in your location",
+        "Organizational culture and policies",
+        "Stakeholder expectations and concerns",
+        "Your personal mood each day",
+        "Domain-specific requirements and norms"
+      ],
+      "correctAnswers": [
+        0,
+        2,
+        3,
+        5
+      ],
+      "partialCredit": {
+        "3correct": 11,
+        "2correct": 8,
+        "1correct": 4
+      },
+      "explanation": "Relevant contextual dimensions include: industry and regulatory environment (A), organizational culture and policies (C), stakeholder expectations (D), and domain-specific requirements (F). Irrelevant factors: local weather patterns (B) and daily personal mood (E) don't systematically affect appropriate AI use in professional contexts.",
+      "tags": [
+        "contextual-tracking",
+        "relevant-dimensions",
+        "systematic-awareness"
+      ]
+    },
+    {
+      "id": "CXS-021",
+      "level": 2,
+      "points": 15,
+      "difficulty": 0.48,
+      "discrimination": 0.59,
+      "type": "sensitivity-calibration",
+      "question": "How much contextual adaptation is too much, and what is the risk of over-adapting to context?",
+      "options": [
+        "You should always pursue maximum adaptation in every situation",
+        "You should balance appropriately: adapt to genuine contextual differences, avoid unnecessary over-complication, maintain consistency where appropriate, and practice principled flexibility",
+        "You should never adapt to different contexts",
+        "You should adapt based only on the effort required, not the actual need"
+      ],
+      "correctAnswer": 1,
+      "explanation": "Calibrated adaptation (B) is optimal: respond meaningfully to real contextual differences, avoid creating unnecessary complexity, maintain helpful consistency where appropriate, and practice principled flexibility. Over-adaptation (A) can create inconsistency and confusion. Under-adaptation (C) misses important differences. Effort-based adaptation (D) ignores actual contextual needs and appropriateness.",
+      "tags": [
+        "calibrated-adaptation",
+        "balanced-flexibility",
+        "principled-consistency"
+      ]
+    },
+    {
+      "id": "CXS-022",
+      "level": 2,
+      "points": 15,
+      "difficulty": 0.46,
+      "discrimination": 0.57,
+      "type": "context-learning",
+      "question": "When you enter a new context such as a new organization, domain, or stakeholder group, how can you quickly learn the contextual requirements?",
+      "options": [
+        "You should assume it's the same as your previous contexts",
+        "You should engage in active learning: ask direct questions, observe implicit norms, review written policies, consult with stakeholders, start conservatively, and iterate based on feedback",
+        "You should use pure trial and error without any guidance",
+        "You should do minimal learning and just jump in immediately"
+      ],
+      "correctAnswer": 1,
+      "explanation": "Systematic learning (B) is most effective: ask questions for direct information, observe carefully for implicit norms, review documentation for explicit rules, consult stakeholders for multiple perspectives, start with conservative approaches for safety, and iterate to refine based on feedback. Not blind assumption (A) - contexts genuinely differ. Not uninformed trial and error (C) - inefficient and unnecessarily risky. Not minimal learning (D) - inadequate preparation leads to mistakes.",
+      "tags": [
+        "context-learning",
+        "adaptive-onboarding",
+        "systematic-discovery"
+      ]
+    },
+    {
+      "id": "CXS-023",
+      "level": 2,
+      "points": 15,
+      "difficulty": 0.5,
+      "discrimination": 0.6,
+      "type": "situational-judgment",
+      "question": "If AI-generated content is appropriate for internal use but not for external publication, what judgment process should you use to make this distinction?",
+      "options": [
+        "If it works internally, it automatically works externally",
+        "You should conduct situation analysis: assess the audience differences, evaluate the stakes and consequences, consider how it represents the organization, determine the polish level needed, and identify approval requirements - recognizing external use has a higher bar",
+        "You should always use identical content internally and externally",
+        "External content should be completely different with no relation to internal versions"
+      ],
+      "correctAnswer": 1,
+      "explanation": "Situational assessment (B) requires analyzing: audience differences (internal vs. external expectations), stakes and consequences (higher for external), organizational representation (external is public face), polish standards (higher externally), and approval needs (more rigorous externally). Not automatic transfer (A, C) - contexts differ significantly. Not complete recreation (D) - you can adapt existing content appropriately. External use raises stakes and standards substantially.",
+      "tags": [
+        "internal-vs-external",
+        "situational-judgment",
+        "standard-adjustment"
+      ]
+    },
+    {
+      "id": "CXS-024",
+      "level": 2,
+      "points": 15,
+      "difficulty": 0.52,
+      "discrimination": 0.62,
+      "type": "cross-functional",
+      "question": "When using AI across different organizational functions such as engineering, marketing, and HR, should you maintain completely consistent approaches or adapt to each function?",
+      "options": [
+        "You should maintain completely consistent approaches across all functions",
+        "You should use function-appropriate adaptation: maintain core organizational principles for coherence, but adapt specific practices to align with each function's unique needs, norms, and constraints",
+        "You should use completely different approaches for each function with no consistency",
+        "All functions should be forced to conform to a single standard approach"
+      ],
+      "correctAnswer": 1,
+      "explanation": "Principled adaptation (B) is optimal: maintain consistent core principles for organizational coherence and fairness, but adapt specific practices to fit each function's legitimate needs, cultural norms, and operational constraints. Not rigid uniformity (A) - functions have genuinely different needs. Not total variation (C) - this loses valuable organizational coherence. Not forced conformity (D) - this ignores legitimate functional differences and reduces effectiveness.",
+      "tags": [
+        "cross-functional",
+        "principled-adaptation",
+        "functional-appropriateness"
+      ]
+    },
+    {
+      "id": "CXS-025",
+      "level": 2,
+      "points": 15,
+      "difficulty": 0.47,
+      "discrimination": 0.58,
+      "type": "escalation-awareness",
+      "question": "In which contextual situations should you escalate AI-related decisions to others rather than deciding independently?",
+      "options": [
+        "You should never escalate - you should handle everything yourself",
+        "You should escalate when facing: high stakes with significant consequences, novel situations without precedent, stakeholder sensitivity or political implications, policy ambiguity or conflicts, decisions that could set precedent, or significant resource commitments",
+        "You should always escalate everything regardless of situation",
+        "You should only escalate when you're already in trouble"
+      ],
+      "correctAnswer": 1,
+      "explanation": "Context-driven escalation (B) is appropriate for: high-stakes situations (serious consequences), novel situations (no precedent to guide you), stakeholder-sensitive issues (political complexity), policy ambiguity (unclear guidance), precedent-setting decisions (organizational impact), and significant resources (need authority). Not never escalating (A) or always escalating (C). Not just reactive escalation when in trouble (D) - proactive escalation for appropriate contextual triggers prevents problems.",
+      "tags": [
+        "escalation-triggers",
+        "contextual-judgment",
+        "appropriate-elevation"
+      ]
+    },
+    {
+      "id": "CXS-026",
+      "level": 2,
+      "points": 15,
+      "difficulty": 0.49,
+      "discrimination": 0.6,
+      "type": "temporal-context",
+      "question": "When a project has either (A) a tight deadline or (B) a comfortable timeline, how should this temporal context affect your AI use?",
+      "options": [
+        "The timeline doesn't affect how you should use AI",
+        "You should adapt to timeline: tight deadlines may require more AI assistance but you must maintain careful quality checks; comfortable timelines allow more experimentation, iteration, and skill development",
+        "You should always rush and cut corners with tight deadlines",
+        "You should always take maximum time regardless of actual schedule"
+      ],
+      "correctAnswer": 1,
+      "explanation": "Time-sensitive approach (B) adapts appropriately: tight deadlines may increase reliance on AI efficiency but must maintain quality checks to avoid rushed errors; comfortable timing permits valuable experimentation, multiple iterations, and conscious skill development. Timeline definitely matters (A) for appropriate approach. Not careless rushing (C) that compromises quality. Not ignoring efficiency opportunities (D) when time allows different choices. Balance speed needs with quality and appropriateness.",
+      "tags": [
+        "temporal-adaptation",
+        "deadline-sensitivity",
+        "time-pressure-response"
+      ]
+    },
+    {
+      "id": "CXS-027",
+      "level": 2,
+      "points": 15,
+      "difficulty": 0.51,
+      "discrimination": 0.61,
+      "type": "risk-context",
+      "question": "How should your approach differ when using AI for (A) low-stakes idea generation versus (B) high-stakes legal brief preparation?",
+      "options": [
+        "You should use the same risk approach for both situations",
+        "You should match rigor to risk: low-stakes tasks allow experimentation, minimal review, and learning opportunities; high-stakes tasks demand rigorous process, multiple reviews, expert validation, and conservative approaches",
+        "You should always use maximum rigor for everything",
+        "Risk level doesn't affect your appropriate approach"
+      ],
+      "correctAnswer": 1,
+      "explanation": "Risk-calibrated approach (B) is appropriate: match your rigor level to consequences - low-stakes situations permit helpful experimentation and learning, high-stakes situations demand thorough rigor, multiple reviews, expert validation, and conservative choices. Not identical approaches (A) - stakes differ significantly. Not always maximum rigor (C) - this over-processes low-stakes work unnecessarily. Risk level definitely affects appropriate approach (D) - this is fundamental to context sensitivity.",
+      "tags": [
+        "risk-calibration",
+        "stakes-matching",
+        "appropriate-rigor"
+      ]
+    },
+    {
+      "id": "CXS-028",
+      "level": 2,
+      "points": 15,
+      "difficulty": 0.45,
+      "discrimination": 0.57,
+      "type": "organizational-change",
+      "question": "When your organization is undergoing major change such as a merger or restructuring, how does this affect your AI use considerations?",
+      "options": [
+        "Organizational change doesn't affect your AI use at all",
+        "You should be change-aware: exercise heightened sensitivity, increase communication, manage stakeholders more carefully, verify alignment more frequently, and show patience with disruption - recognizing people have limited change capacity",
+        "Major change is the perfect time for aggressive AI adoption",
+        "You should pause all AI use completely during any organizational change"
+      ],
+      "correctAnswer": 1,
+      "explanation": "Change-sensitive approach (B) is appropriate: exercise heightened awareness, communicate more extensively, manage stakeholder concerns carefully, verify alignment frequently, and show patience - people's change capacity is limited. Not ignoring change context (A) - it matters greatly. Not aggressive adoption (C) - this adds to change burden when capacity is already strained. Not complete pause (D) - AI can help if used sensitively to the change context.",
+      "tags": [
+        "organizational-change",
+        "change-sensitivity",
+        "stakeholder-care"
+      ]
+    },
+    {
+      "id": "CXS-029",
+      "level": 2,
+      "points": 15,
+      "difficulty": 0.54,
+      "discrimination": 0.64,
+      "type": "contextual-conflicts",
+      "question": "When two contextual factors conflict - for example, organizational policy says minimize AI use but project needs demand significant AI assistance - how should you resolve this tension?",
+      "options": [
+        "You should always follow policy rigidly without exception",
+        "You should pursue principled resolution: understand the policy's underlying intent, document your genuine need clearly, seek appropriate guidance, propose a controlled approach that addresses concerns, and escalate if necessary",
+        "You should ignore the policy because project needs come first",
+        "You should avoid the project entirely to prevent the conflict"
+      ],
+      "correctAnswer": 1,
+      "explanation": "Thoughtful conflict resolution (B) involves: understanding policy rationale rather than just rules, documenting genuine needs clearly and honestly, seeking appropriate guidance from decision-makers, proposing controlled solutions that address underlying concerns, and escalating appropriately when needed. Not rigid rule-following without thinking (A) or policy violation (C). Not project avoidance (D) - conflicts can be navigated. Resolve conflicts through transparent communication and principled thinking.",
+      "tags": [
+        "contextual-conflicts",
+        "conflict-resolution",
+        "principled-navigation"
+      ]
+    },
+    {
+      "id": "CXS-030",
+      "level": 2,
+      "points": 15,
+      "difficulty": 0.48,
+      "discrimination": 0.59,
+      "type": "context-documentation",
+      "question": "When documenting your contextual considerations for AI use decisions, what should you capture?",
+      "options": [
+        "Nothing needs to be documented - context is obvious",
+        "You should comprehensively document: situation assessment, stakeholder considerations you weighed, contextual constraints you faced, rationale for your approach, key decision factors, and lessons learned for future application",
+        "You only need to document the final decision itself",
+        "You only need a compliance checkbox without substance"
+      ],
+      "correctAnswer": 1,
+      "explanation": "Comprehensive documentation (B) should capture: your situation assessment (what context), stakeholder considerations (who affected and their concerns), contextual constraints (what limited choices), rationale for approach (why you chose this path), decision factors (what weighed heavily), and lessons learned (what to remember). Not undocumented (A) - documentation enables learning and accountability. Not decision-only (C) - the reasoning process matters greatly. Not superficial checkbox (D) - substantive capture serves real purposes.",
+      "tags": [
+        "context-documentation",
+        "decision-rationale",
+        "organizational-learning"
+      ]
+    },
+    {
+      "id": "CXS-031",
+      "level": 3,
+      "points": 20,
+      "difficulty": 0.65,
+      "discrimination": 0.7,
+      "type": "framework-design",
+      "question": "How would you design a comprehensive context assessment framework for AI use in your organization?",
+      "options": [
+        "A simple one-page checklist would be sufficient",
+        "You would create a multi-dimensional framework covering: situational factors, stakeholder analysis, regulatory landscape, organizational context, cultural considerations, risk assessment, timing factors, and resource constraints - providing comprehensive context picture",
+        "You only need to consider technical requirements",
+        "You should just copy an existing framework from another organization"
+      ],
+      "correctAnswer": 1,
+      "explanation": "Holistic assessment framework (B) requires multiple dimensions: situational factors (what's happening), stakeholder analysis (who's involved), regulatory landscape (what rules apply), organizational context (culture and norms), cultural considerations (values and expectations), risk assessment (what could go wrong), timing factors (when matters), resource constraints (what's available). Not overly simple checklist (A) - too superficial for complexity. Not just technical (C) - context is much broader. Not copying others' frameworks (D) - must fit your specific organizational context.",
+      "tags": [
+        "context-frameworks",
+        "comprehensive-assessment",
+        "multidimensional-analysis"
+      ]
+    },
+    {
+      "id": "CXS-032",
+      "level": 3,
+      "points": 20,
+      "difficulty": 0.68,
+      "discrimination": 0.72,
+      "type": "complex-adaptation",
+      "question": "How would you navigate the complex context of a global organization with diverse cultures, multiple regulatory regimes, varying AI maturity levels, and conflicting stakeholder interests?",
+      "options": [
+        "This situation is impossible - you should give up",
+        "You would use a layered approach: establish universal principles for coherence, enable regional adaptation for appropriateness, support local implementation for context-fit, facilitate stakeholder dialogue for buy-in, implement progressive rollout for learning, and maintain continuous adaptation for evolution",
+        "You would force a completely uniform approach everywhere",
+        "You would allow completely separate approaches with no connection"
+      ],
+      "correctAnswer": 1,
+      "explanation": "Sophisticated multi-level strategy (B) involves: universal principles (organizational coherence and baseline), regional adaptation (geographic appropriateness), local implementation (specific context-fit), stakeholder dialogue (buy-in and refinement), progressive rollout (phased learning), continuous adaptation (ongoing evolution). Not giving up (A) - complexity can be navigated systematically. Not forced uniformity (C) or complete fragmentation (D) - neither extreme works. Navigate complexity through structured flexibility and multiple levels of appropriate adaptation.",
+      "tags": [
+        "complex-contexts",
+        "multi-level-adaptation",
+        "global-integration"
+      ]
+    },
+    {
+      "id": "CXS-033",
+      "level": 3,
+      "points": 20,
+      "difficulty": 0.63,
+      "discrimination": 0.69,
+      "type": "cultural-intelligence",
+      "question": "How would you build advanced cultural intelligence for using AI effectively across highly diverse contexts?",
+      "options": [
+        "Basic cultural awareness training would be sufficient",
+        "You would pursue immersive development: engage in deep cultural learning, seek diverse direct experiences, find mentorship from people in different cultures, reflect regularly on your own biases, and practice continuous adaptation based on learning",
+        "You should simply avoid dealing with cultural differences",
+        "You should assume universal standards apply everywhere"
+      ],
+      "correctAnswer": 1,
+      "explanation": "Deep cultural competence development (B) requires: immersive learning (true understanding beyond surface), diverse direct experiences (firsthand exposure), cross-cultural mentorship (guidance from those with lived experience), regular bias reflection (self-awareness and growth), continuous adaptation (ongoing refinement). Not superficial training only (A) - insufficient for genuine competence. Not cultural avoidance (C) or false universalism (D) - both deny important differences that matter for effectiveness. Develop genuine intercultural capability.",
+      "tags": [
+        "cultural-intelligence",
+        "deep-competence",
+        "cross-cultural-development"
+      ]
+    },
+    {
+      "id": "CXS-034",
+      "level": 3,
+      "points": 20,
+      "difficulty": 0.7,
+      "discrimination": 0.74,
+      "type": "contextual-leadership",
+      "question": "If you were leading AI adoption across an organization with widely varying contexts in different departments, locations, and functions, what leadership approach would you take?",
+      "options": [
+        "You would maintain centralized control of all AI use decisions",
+        "You would practice context-aware leadership: set clear principles for coherence, enable appropriate local adaptation, provide necessary resources and support, facilitate cross-context learning, and balance organizational consistency with context-appropriate flexibility",
+        "You would give complete local autonomy with no coordination",
+        "You would wait passively for natural adoption to occur"
+      ],
+      "correctAnswer": 1,
+      "explanation": "Adaptive leadership (B) involves: clear principles (organizational coherence and direction), local adaptation enablement (contextual appropriateness), resource provision (capability support), learning facilitation (knowledge sharing and improvement), and thoughtful balance (both consistency and flexibility). Not centralized control (A) that ignores legitimate context differences. Not complete autonomy (C) that loses organizational coherence. Not passive waiting (D) that abdicates leadership responsibility. Lead adaptively across diverse contexts.",
+      "tags": [
+        "contextual-leadership",
+        "adaptive-governance",
+        "balanced-autonomy"
+      ]
+    },
+    {
+      "id": "CXS-035",
+      "level": 3,
+      "points": 20,
+      "difficulty": 0.67,
+      "discrimination": 0.71,
+      "type": "stakeholder-orchestration",
+      "question": "How would you orchestrate a complex stakeholder landscape where the board wants innovation, employees fear displacement, customers want quality, and regulators want compliance?",
+      "options": [
+        "You would focus on whichever stakeholder has the most power",
+        "You would practice integrated stakeholder management: understand all stakeholder interests deeply, identify genuine common ground, communicate with complete transparency, address each group's legitimate concerns substantively, and use phased approach to build confidence across all groups",
+        "You would ignore some stakeholder groups to simplify",
+        "You would try to satisfy stakeholder groups sequentially one at a time"
+      ],
+      "correctAnswer": 1,
+      "explanation": "Holistic stakeholder approach (B) requires: deep understanding of all interests (comprehensive awareness), common ground identification (alignment opportunities), transparent communication (trust building), substantive concern addressing (legitimate needs), phased implementation (confidence building). Not power-based prioritization only (A) - all stakeholders matter. Not ignoring any groups (C) - creates resistance and risk. Not sequential satisfaction (D) - need integrated approach that works for all. Orchestrate complex stakeholder dynamics thoughtfully.",
+      "tags": [
+        "stakeholder-orchestration",
+        "interest-integration",
+        "complex-alignment"
+      ]
+    },
+    {
+      "id": "CXS-036",
+      "level": 3,
+      "points": 20,
+      "difficulty": 0.66,
+      "discrimination": 0.7,
+      "type": "regulatory-navigation",
+      "question": "How would you navigate overlapping and sometimes conflicting regulatory requirements across different jurisdictions for your AI use?",
+      "options": [
+        "You would comply with the strictest requirements everywhere",
+        "You would use sophisticated navigation: comprehensively map the regulatory landscape, identify actual conflicts, engage proactively with relevant regulators, document your rationale clearly, implement appropriate jurisdictional controls, and maintain flexibility for regulatory evolution",
+        "You would ignore regulations and hope for the best",
+        "You would apply only minimum compliance everywhere"
+      ],
+      "correctAnswer": 1,
+      "explanation": "Strategic regulatory management (B) involves: comprehensive landscape mapping (understand full picture), conflict identification (know where tensions exist), proactive regulator engagement (dialogue and clarification), clear rationale documentation (demonstrate thoughtfulness), jurisdictional control implementation (appropriate compliance), regulatory flexibility maintenance (adapt to changes). Not blanket strictest-everywhere (A) - may be unnecessarily restrictive. Not ignoring regulations (C) or bare minimum compliance (D) - both create unacceptable risk. Navigate regulatory complexity strategically and proactively.",
+      "tags": [
+        "regulatory-navigation",
+        "jurisdictional-complexity",
+        "compliance-strategy"
+      ]
+    },
+    {
+      "id": "CXS-037",
+      "level": 3,
+      "points": 20,
+      "difficulty": 0.64,
+      "discrimination": 0.69,
+      "type": "temporal-dynamics",
+      "question": "Given that AI use context evolves over time as technology changes, your organization matures, regulations develop, and culture shifts, how would you maintain contextual awareness?",
+      "options": [
+        "You would set your approach once and then forget about context",
+        "You would practice dynamic awareness: engage in continuous environmental scanning, conduct periodic systematic reassessment, maintain regular stakeholder pulse-checking, establish adaptation triggers for changes, and use flexible frameworks that can evolve",
+        "You would wait for major disruptive events to force changes",
+        "You would rely solely on annual reviews"
+      ],
+      "correctAnswer": 1,
+      "explanation": "Continuous adaptation (B) requires: ongoing environmental scanning (maintain awareness), periodic systematic reassessment (structured review), regular stakeholder checking (input and feedback), established adaptation triggers (responsive to changes), flexible frameworks (capability to evolve). Not set-and-forget (A) - context constantly evolves. Not event-only reactivity (C) or annual-only review (D) - contexts change more continuously. Maintain dynamic contextual awareness and adaptation capability.",
+      "tags": [
+        "temporal-dynamics",
+        "continuous-adaptation",
+        "environmental-scanning"
+      ]
+    },
+    {
+      "id": "CXS-038",
+      "level": 3,
+      "points": 20,
+      "difficulty": 0.69,
+      "discrimination": 0.73,
+      "type": "paradox-navigation",
+      "question": "How would you navigate contextual paradoxes where you need consistency AND flexibility, fast deployment AND careful consideration, innovation AND risk management simultaneously?",
+      "options": [
+        "You would choose one side of each paradox and commit to it",
+        "You would embrace paradox thinking: accept both poles as legitimate, let context determine appropriate emphasis, maintain dynamic rather than static balance, use creative tension productively, and avoid false either-or dichotomies through reframing",
+        "You would always compromise to the middle ground",
+        "You would simply ignore the contradictions"
+      ],
+      "correctAnswer": 1,
+      "explanation": "Sophisticated paradox navigation (B) involves: embracing both poles (integration not elimination), contextual emphasis determination (situational wisdom), dynamic balance (not static compromise), creative tension use (generative rather than destructive), false dichotomy avoidance (thoughtful reframing). Not forced choices (A) - both sides have value. Not always middle compromise (C) - context should guide emphasis. Not ignoring contradictions (D) - must actively navigate. Develop capability to hold and work productively with paradoxes.",
+      "tags": [
+        "paradox-navigation",
+        "both-and-thinking",
+        "dynamic-balance"
+      ]
+    },
+    {
+      "id": "CXS-039",
+      "level": 3,
+      "points": 20,
+      "difficulty": 0.71,
+      "discrimination": 0.75,
+      "type": "context-creation",
+      "question": "Rather than only adapting to existing context, how would you proactively shape a more favorable context for responsible AI use in your organization?",
+      "options": [
+        "Context is completely fixed - you can only adapt to it",
+        "You would engage in active context-shaping: educate stakeholders to increase awareness, develop supportive policies and frameworks, build organizational capabilities systematically, demonstrate value through examples, consciously evolve organizational culture, and enable necessary infrastructure",
+        "You would force context changes through your authority",
+        "You would wait passively for context to change naturally over time"
+      ],
+      "correctAnswer": 1,
+      "explanation": "Proactive context development (B) involves: stakeholder education (awareness building), policy development (supportive frameworks), capability building (enablement of skills), value demonstration (proof and confidence), cultural evolution (norm shifting), infrastructure enabling (technical and organizational support). Not passive acceptance (A) - context can be shaped. Not authoritarian forcing (C) - requires willing participation and buy-in. Not passive waiting (D) - actively shape favorable conditions. Become an agent of positive contextual change.",
+      "tags": [
+        "context-creation",
+        "proactive-shaping",
+        "enabling-environment"
+      ]
+    },
+    {
+      "id": "CXS-040",
+      "level": 3,
+      "points": 20,
+      "difficulty": 0.68,
+      "discrimination": 0.72,
+      "type": "meta-contextual",
+      "question": "How would you develop meta-contextual awareness - that is, understanding how you understand and respond to different contexts?",
+      "options": [
+        "Context assessment is automatic and doesn't require reflection",
+        "You would pursue meta-awareness development: reflect systematically on your contextual assumptions, examine your personal biases in reading contexts, study your past contextual judgment errors carefully, seek external feedback on your contextual assessment, and commit to continuous improvement of contextual capabilities",
+        "You should trust your intuition about context always",
+        "You should simply copy how others assess and respond to context"
+      ],
+      "correctAnswer": 1,
+      "explanation": "Meta-contextual development (B) requires: systematic assumption reflection (surface what you take for granted), bias examination (understand your blind spots and tendencies), error study (learn from contextual misjudgments), external feedback seeking (get other perspectives on your context-reading), continuous improvement commitment (ongoing capability growth). Not automatic without reflection (A) - requires conscious development. Not pure intuition (C) or copying others (D) - need personal meta-cognitive development. Develop awareness of your own contextual awareness and judgment processes.",
+      "tags": [
+        "meta-awareness",
+        "contextual-judgment",
+        "self-examination"
+      ]
+    },
+    {
+      "id": "CXS-041",
+      "level": 3,
+      "points": 20,
+      "difficulty": 0.65,
+      "discrimination": 0.7,
+      "type": "contextual-innovation",
+      "question": "How would you innovate with AI applications while still respecting important contextual boundaries and constraints?",
+      "options": [
+        "Real innovation requires completely ignoring context",
+        "You would practice contextually-grounded innovation: understand boundaries clearly, push thoughtfully within appropriate limits, test new approaches carefully, engage stakeholders throughout, and learn systematically from experiments - balancing innovation with appropriateness",
+        "Perfect contextual appropriateness blocks all innovation",
+        "You should separate innovation completely from contextual considerations"
+      ],
+      "correctAnswer": 1,
+      "explanation": "Responsible innovation (B) involves: clear boundary understanding (know real constraints), thoughtful pushing within limits (calibrated experimentation), careful testing (risk management), continuous stakeholder engagement (alignment and input), systematic learning (knowledge building). Not context-ignoring (A) or innovation-blocking appropriateness (C) - these are false dichotomies. Not separating innovation from context (D) - must integrate both. Innovate responsibly within contextual understanding.",
+      "tags": [
+        "contextual-innovation",
+        "responsible-experimentation",
+        "bounded-creativity"
+      ]
+    },
+    {
+      "id": "CXS-042",
+      "level": 3,
+      "points": 20,
+      "difficulty": 0.72,
+      "discrimination": 0.76,
+      "type": "contextual-expertise",
+      "question": "How would you develop true expertise in rapid contextual assessment and adaptation rather than just basic competence?",
+      "options": [
+        "Expert-level contextual skill cannot be systematically developed",
+        "You would cultivate expert capabilities: develop pattern recognition across many contexts, internalize contextual reading skills for intuitive assessment, build rapid adaptation design capability, practice anticipatory thinking about likely contexts, and refine increasingly nuanced contextual judgment through experience",
+        "Speed of assessment is the only thing that matters",
+        "Context expertise isn't a real skill that can be developed"
+      ],
+      "correctAnswer": 1,
+      "explanation": "Expert contextual intelligence development (B) requires: cross-context pattern recognition (learned through breadth of experience), intuitive contextual reading (internalized skills), rapid adaptation design (practiced capability), anticipatory thinking (foresight development), nuanced judgment cultivation (sophisticated discernment). Expert capability can be developed (A, D) through deliberate practice. Not speed-only (C) - depth and accuracy matter greatly. Systematically develop contextual expertise through extensive, reflective practice.",
+      "tags": [
+        "contextual-expertise",
+        "expert-development",
+        "rapid-assessment"
+      ]
+    },
+    {
+      "id": "CXS-043",
+      "level": 3,
+      "points": 20,
+      "difficulty": 0.67,
+      "discrimination": 0.71,
+      "type": "cross-boundary",
+      "question": "When you work across organizational boundaries with partner organizations, vendors, and customers who each have different contexts, how would you span these boundaries effectively?",
+      "options": [
+        "You should impose your organization's context on everyone",
+        "You would develop boundary intelligence: understand each party's distinct context thoroughly, negotiate shared understanding where you collaborate, establish clear communication protocols, genuinely respect differences, and actively build bridges between different contexts",
+        "You should avoid working across boundaries",
+        "You should ignore contextual differences at organizational boundaries"
+      ],
+      "correctAnswer": 1,
+      "explanation": "Sophisticated boundary-spanning (B) requires: thorough multi-context understanding (awareness of all parties), shared understanding negotiation (alignment on collaboration), clear communication protocols (reduce confusion), genuine difference respect (legitimacy), bridge-building (connection across contexts). Not context imposition (A) - must respect others. Not boundary avoidance (C) - this necessary work requires skill. Not ignoring differences (D) - they matter significantly at boundaries. Develop capability to work effectively across contextual boundaries.",
+      "tags": [
+        "boundary-spanning",
+        "cross-organizational",
+        "context-negotiation"
+      ]
+    },
+    {
+      "id": "CXS-044",
+      "level": 3,
+      "points": 20,
+      "difficulty": 0.7,
+      "discrimination": 0.74,
+      "type": "contextual-learning",
+      "question": "How would you build organizational capability to learn systematically from both contextual successes and failures?",
+      "options": [
+        "Individual learning is sufficient - no organizational system needed",
+        "You would create a systematic learning system: capture contextual insights deliberately, analyze patterns across situations, share learning organization-wide, update frameworks based on experience, build accessible knowledge base, and commit to continuous organizational improvement",
+        "Context is too obvious to require learning systems",
+        "You would rely on external consultants to handle all contextual learning"
+      ],
+      "correctAnswer": 1,
+      "explanation": "Organizational learning system (B) requires: deliberate insight capture (documentation), pattern analysis across situations (understanding), organization-wide learning sharing (distribution and leverage), framework updates based on experience (evolution), accessible knowledge base building (institutionalization), continuous improvement commitment (ongoing growth). Not individual-only learning (A) - must scale organizationally. Not obvious without systems (C) - context is complex and subtle. Not outsourcing to consultants (D) - internal capability essential. Build systematic organizational contextual learning.",
+      "tags": [
+        "organizational-learning",
+        "contextual-knowledge",
+        "systematic-improvement"
+      ]
+    },
+    {
+      "id": "CXS-045",
+      "level": 3,
+      "points": 20,
+      "difficulty": 0.73,
+      "discrimination": 0.77,
+      "type": "scenario-complexity",
+      "question": "How would you handle an extremely complex contextual scenario involving a global crisis, regulatory uncertainty, diverse stakeholders with conflicting needs, organizational stress, and rapid ongoing change?",
+      "options": [
+        "You would simplify by ignoring the actual complexity",
+        "You would navigate complexity systematically: conduct comprehensive assessment, prioritize the most critical factors, design phased response approach, communicate extensively with stakeholders, maintain maximum flexibility, and implement rapid learning cycles to adapt quickly",
+        "You would wait passively for the situation to simplify itself",
+        "You would apply your standard approach despite the complexity"
+      ],
+      "correctAnswer": 1,
+      "explanation": "Sophisticated complexity management (B) involves: comprehensive situation assessment (understand full picture), critical factor prioritization (focus on what matters most), phased response design (manageable steps), extensive stakeholder communication (alignment and trust), flexibility maintenance (adapt as situation evolves), rapid learning cycles (quick iteration and adjustment). Not ignoring complexity (A) - it's real and consequential. Not passive waiting (C) - must act despite complexity. Not standard approach (D) - extreme complexity demands adaptive response. Navigate complexity through systematic, flexible, learning-oriented approach.",
+      "tags": [
+        "complexity-navigation",
+        "crisis-management",
+        "adaptive-response"
+      ]
+    },
+    {
+      "id": "CXS-046",
+      "level": 3,
+      "points": 20,
+      "difficulty": 0.66,
+      "discrimination": 0.7,
+      "type": "contextual-influence",
+      "question": "How would you strategically influence organizational context to make it more favorable for responsible AI use over time?",
+      "options": [
+        "Organizational context cannot be changed at all",
+        "You would practice strategic influence: consistently demonstrate value through results, educate stakeholders systematically, build supportive coalitions, create visible quick wins, evolve policies thoughtfully, and develop organizational capabilities progressively",
+        "You would force immediate context change through authority alone",
+        "You would wait passively for natural context evolution"
+      ],
+      "correctAnswer": 1,
+      "explanation": "Strategic change leadership (B) involves: consistent value demonstration (proof builds confidence), systematic stakeholder education (awareness and understanding), supportive coalition building (multiply influence), visible quick wins (momentum and credibility), thoughtful policy evolution (framework development), progressive capability development (enable success). Context can change (A) with strategic effort. Not authoritarian forcing (C) - requires willing participation and buy-in. Not passive waiting (D) - actively shape contextual evolution. Lead strategic positive change in organizational context.",
+      "tags": [
+        "contextual-influence",
+        "change-leadership",
+        "strategic-evolution"
+      ]
+    },
+    {
+      "id": "CXS-047",
+      "level": 3,
+      "points": 20,
+      "difficulty": 0.74,
+      "discrimination": 0.78,
+      "type": "anticipatory-context",
+      "question": "How would you develop the capability to anticipate contextual changes before they fully occur rather than only reacting after changes happen?",
+      "options": [
+        "Anticipating context changes is impossible",
+        "You would develop foresight capability: systematically analyze emerging trends, detect weak signals early, engage in scenario planning, scan stakeholders for shifting expectations, recognize evolving patterns, and prepare for early adaptation before changes fully materialize",
+        "You should only react after changes happen completely",
+        "Simple prediction of future states is sufficient"
+      ],
+      "correctAnswer": 1,
+      "explanation": "Anticipatory capability development (B) requires: systematic trend analysis (direction and momentum), weak signal detection (early warning indicators), scenario planning (multiple future possibilities), stakeholder expectation scanning (shifting needs and concerns), pattern recognition (evolving dynamics), early adaptation preparation (proactive positioning). Foresight can be developed (A) through systematic practice. Not purely reactive (C) - anticipation enables better preparation. Not just prediction (D) - must include readiness for adaptation. Build organizational foresight and anticipatory capability.",
+      "tags": [
+        "anticipatory-capability",
+        "foresight",
+        "proactive-adaptation"
+      ]
+    },
+    {
+      "id": "CXS-048",
+      "level": 3,
+      "points": 20,
+      "difficulty": 0.71,
+      "discrimination": 0.75,
+      "type": "context-portfolio",
+      "question": "How would you effectively manage a diverse portfolio of contexts simultaneously when you are working on multiple projects with different stakeholders, regulations, and requirements?",
+      "options": [
+        "You would handle each context in complete isolation",
+        "You would practice portfolio management: create comprehensive context mapping, allocate priorities strategically, optimize resource use, recognize patterns that apply across contexts, and leverage learning from one context to benefit others",
+        "You would focus exclusively on one context at a time",
+        "You would simplify everything to lowest common denominator"
+      ],
+      "correctAnswer": 1,
+      "explanation": "Sophisticated portfolio management (B) involves: comprehensive context mapping (full picture and relationships), strategic priority allocation (appropriate focus), resource optimization (efficiency), cross-context pattern recognition (transferable learning), learning leverage (synergies across contexts). Not complete isolation (A) - miss valuable connections. Not single focus only (C) - must manage multiple simultaneously. Not over-simplification (D) - loses important contextual nuance. Manage context portfolio strategically and learn across contexts.",
+      "tags": [
+        "portfolio-management",
+        "multiple-contexts",
+        "cross-context-learning"
+      ]
+    },
+    {
+      "id": "CXS-049",
+      "level": 3,
+      "points": 20,
+      "difficulty": 0.69,
+      "discrimination": 0.73,
+      "type": "contextual-wisdom",
+      "question": "How would you develop true wisdom in contextual judgment - knowing when general rules apply, when to adapt flexibly, when to innovate beyond conventions, and when to escalate to others?",
+      "options": [
+        "Wisdom in context is entirely innate and cannot be developed",
+        "You would cultivate wisdom through: extensive and varied experience, deep reflection on successes and failures, deliberate learning from contextual errors, seeking mentorship from wise practitioners, internalizing contextual patterns at deep level, and maintaining continuous humility about contextual complexity",
+        "You should simply follow rules rigidly in all situations",
+        "Intuition alone without any reflection is sufficient"
+      ],
+      "correctAnswer": 1,
+      "explanation": "Wisdom development (B) requires: extensive varied experience (breadth of exposure), deep reflection (meaning-making from experience), error learning (growth from mistakes), wise practitioner mentorship (guided development), deep pattern internalization (intuitive capability), continuous humility (openness to ongoing learning). Wisdom can be deliberately cultivated (A) - not purely innate. Not rigid rule-following (C) or unreflective intuition (D) - wisdom integrates rules, adaptation, and intuition through experience and reflection. Commit to long-term wisdom development.",
+      "tags": [
+        "contextual-wisdom",
+        "judgment-development",
+        "practical-wisdom"
+      ]
+    },
+    {
+      "id": "CXS-050",
+      "level": 3,
+      "points": 20,
+      "difficulty": 0.75,
+      "discrimination": 0.79,
+      "type": "contextual-philosophy",
+      "question": "What is the fundamental philosophy that should guide context-sensitive AI use?",
+      "options": [
+        "Context is merely a secondary consideration",
+        "The philosophy should be context-first: develop deep situational awareness as foundation, maintain profound respect for stakeholders, cultivate adaptive mindset as core approach, commit to continuous learning, practice principled flexibility that balances consistency with appropriateness, and embrace humble expertise that recognizes contextual complexity",
+        "One-size-fits-all approaches are most efficient",
+        "Context is too complex to meaningfully consider"
+      ],
+      "correctAnswer": 1,
+      "explanation": "Context-centered philosophy (B) encompasses: situational awareness as foundation (context shapes appropriate action), stakeholder respect as core value (people matter), adaptive mindset as approach (flexibility within principles), continuous learning commitment (ongoing growth), principled flexibility (thoughtful balance), humble expertise (recognize complexity despite growing capability). Not treating context as secondary (A) - it's fundamental. Not one-size-fits-all efficiency (C) - denies important differences. Not dismissing complexity (D) - must engage despite difficulty. Embrace context-sensitivity as fundamental philosophy of practice.",
+      "tags": [
+        "contextual-philosophy",
+        "adaptive-mindset",
+        "situated-practice"
+      ]
+    },
+    {
+      "id": "CRS-001",
+      "level": 1,
+      "points": 10,
+      "difficulty": 0.22,
+      "discrimination": 0.46,
+      "type": "multiple-choice",
+      "question": "What does 'creative synthesis' mean when you are using AI?",
+      "options": [
+        "Using AI exactly as instructed without any changes",
+        "Combining AI capabilities with human creativity to produce novel and valuable outcomes",
+        "Simply copying whatever AI generates without modification",
+        "Avoiding creativity when using AI tools"
+      ],
+      "correctAnswer": 1,
+      "explanation": "Creative synthesis (B) is the skillful combination of AI's capabilities (pattern recognition, generation, processing) with human creativity (imagination, judgment, context understanding) to create something new and valuable. Not rote use (A), simple copying (C), or creativity avoidance (D). It's an active, intentional collaboration between human and AI capabilities.",
+      "tags": [
+        "creative-synthesis-definition",
+        "human-ai-collaboration",
+        "novel-outcomes"
+      ]
+    },
+    {
+      "id": "CRS-002",
+      "level": 1,
+      "points": 10,
+      "difficulty": 0.24,
+      "discrimination": 0.47,
+      "type": "multiple-choice-multiple",
+      "question": "Which of the following represent creative uses of AI? Select ALL that apply:",
+      "options": [
+        "Using AI for routine data entry tasks",
+        "Combining AI-generated ideas with your industry expertise to create new solutions",
+        "Following AI suggestions without any thought or modification",
+        "Iterating on AI outputs to develop unique approaches",
+        "Using AI exactly the same way everyone else does",
+        "Applying AI in unexpected ways to solve problems"
+      ],
+      "correctAnswers": [
+        1,
+        3,
+        5
+      ],
+      "partialCredit": {
+        "2correct": 6,
+        "1correct": 3
+      },
+      "explanation": "Creative AI uses include: combining AI with your expertise (B) - synthesis of strengths; iterating creatively on outputs (D) - developing unique versions; unexpected applications (F) - novel problem-solving. Not creative: routine tasks (A), thoughtless following (C), or conformist use (E).",
+      "tags": [
+        "creative-use-patterns",
+        "innovation-indicators",
+        "synthesis-examples"
+      ]
+    },
+    {
+      "id": "CRS-003",
+      "level": 1,
+      "points": 10,
+      "difficulty": 0.21,
+      "discrimination": 0.45,
+      "type": "multiple-choice",
+      "question": "Why is human creativity still important when you are using AI?",
+      "options": [
+        "It's not important - AI is creative enough on its own",
+        "Humans provide context, judgment, domain expertise, and imagination that AI lacks",
+        "Human creativity only matters for artistic work",
+        "It's just to make humans feel involved in the process"
+      ],
+      "correctAnswer": 1,
+      "explanation": "Human creativity is essential (B): humans provide contextual meaning, evaluative judgment, deep domain expertise, and imaginative direction that AI lacks. AI doesn't replace human creativity (A) - it augments it. Important beyond art (C) - applies to all domains. Not just participation (D) - humans add irreplaceable value to the creative process.",
+      "tags": [
+        "human-creativity-value",
+        "complementary-strengths",
+        "irreplaceable-human"
+      ]
+    },
+    {
+      "id": "CRS-004",
+      "level": 1,
+      "points": 10,
+      "difficulty": 0.23,
+      "discrimination": 0.48,
+      "type": "multiple-choice",
+      "question": "If AI generates three different ideas for you, what would be a creative next step to take?",
+      "options": [
+        "Pick the first one and use it exactly as generated",
+        "Combine elements from multiple ideas, add your own insights, and iterate to create something better than any single output",
+        "Use whichever one is shortest to save time",
+        "Reject all three and start completely over"
+      ],
+      "correctAnswer": 1,
+      "explanation": "Creative synthesis (B) involves: combining the best elements from multiple ideas (synthesis), adding your own insights (enhancement), iterating to improve (refinement) - creating something better than any single AI output. Not passive selection (A, C) or wholesale rejection (D). Engage actively and creatively with AI outputs.",
+      "tags": [
+        "idea-synthesis",
+        "creative-iteration",
+        "enhancement"
+      ]
+    },
+    {
+      "id": "CRS-005",
+      "level": 1,
+      "points": 10,
+      "difficulty": 0.25,
+      "discrimination": 0.49,
+      "type": "multiple-choice",
+      "question": "What mindset best supports creative use of AI?",
+      "options": [
+        "AI is the expert - you should just follow its outputs",
+        "AI is a creative partner and thought-starter, while you are the creative director",
+        "AI should do all the creative work while you focus on other tasks",
+        "You should avoid using AI for any creative tasks"
+      ],
+      "correctAnswer": 1,
+      "explanation": "Partnership mindset (B) is optimal: treat AI as a creative partner and stimulus for ideas, while you remain the creative director and synthesizer. Not AI authority (A) or AI replacement (C) - humans direct the creative process. Not AI avoidance (D) - collaborative creativity leverages both AI and human strengths effectively.",
+      "tags": [
+        "creative-mindset",
+        "partnership-thinking",
+        "creative-direction"
+      ]
+    },
+    {
+      "id": "CRS-006",
+      "level": 1,
+      "points": 10,
+      "difficulty": 0.26,
+      "discrimination": 0.5,
+      "type": "multiple-choice-multiple",
+      "question": "Which skills support creative synthesis with AI? Select ALL that apply:",
+      "options": [
+        "Divergent thinking - generating multiple possibilities",
+        "Rigid thinking - following rules strictly without deviation",
+        "Pattern recognition - seeing connections across ideas",
+        "Incurious acceptance - taking the first answer without question",
+        "Critical evaluation - assessing quality and fit",
+        "Closed-mindedness - rejecting new or unusual ideas"
+      ],
+      "correctAnswers": [
+        0,
+        2,
+        4
+      ],
+      "partialCredit": {
+        "2correct": 6,
+        "1correct": 3
+      },
+      "explanation": "Creative skills include: divergent thinking (A) - exploring multiple possibilities; pattern recognition (C) - connecting ideas; critical evaluation (E) - assessing quality. Creativity inhibitors: rigidity (B), incuriosity (D), and closed-mindedness (F) limit creative synthesis.",
+      "tags": [
+        "creative-skills",
+        "cognitive-capabilities",
+        "synthesis-enablers"
+      ]
+    },
+    {
+      "id": "CRS-007",
+      "level": 1,
+      "points": 10,
+      "difficulty": 0.2,
+      "discrimination": 0.44,
+      "type": "multiple-choice",
+      "question": "What is a simple way to start being more creative with AI?",
+      "options": [
+        "Always accept the first output without changes",
+        "Ask 'what if' questions and experiment with variations of prompts and outputs",
+        "Use shorter prompts to save time",
+        "Avoid making any unusual requests"
+      ],
+      "correctAnswer": 1,
+      "explanation": "Experimental mindset (B) encourages creativity: ask 'what if' questions (explore possibilities), experiment with prompt variations (test approaches), try output modifications (iterate). Not passive acceptance (A). Prompt length (C) doesn't determine creativity. Unusual requests (D) can actually spark creative outcomes.",
+      "tags": [
+        "creative-start",
+        "experimentation",
+        "exploration"
+      ]
+    },
+    {
+      "id": "CRS-008",
+      "level": 1,
+      "points": 10,
+      "difficulty": 0.27,
+      "discrimination": 0.51,
+      "type": "multiple-choice",
+      "question": "If AI gives you a solution that is technically correct but uninspired, what should you do to improve it?",
+      "options": [
+        "Use it as-is since it's technically correct",
+        "Use it as a starting point, add creative elements, and iterate until it's both correct and inspiring",
+        "Start completely over with a different approach",
+        "Blame the AI for lacking creativity"
+      ],
+      "correctAnswer": 1,
+      "explanation": "Creative enhancement (B) is the best approach: start with the correct foundation AI provided, add your creative elements (originality), iterate until the solution is both technically sound and inspiring. Not settling for uninspired correctness (A). Not wholesale rejection (C) - build on the strength. Not blaming AI (D) - adding creativity is your role.",
+      "tags": [
+        "creative-enhancement",
+        "iterative-improvement",
+        "beyond-correct"
+      ]
+    },
+    {
+      "id": "CRS-009",
+      "level": 1,
+      "points": 10,
+      "difficulty": 0.28,
+      "discrimination": 0.52,
+      "type": "multiple-choice",
+      "question": "What role should AI play in your creative process?",
+      "options": [
+        "AI should replace human creativity entirely",
+        "AI should augment human creativity by generating options, providing inspiration, and handling routine aspects",
+        "Creative work should never involve AI at all",
+        "AI should only do the final polishing of creative work"
+      ],
+      "correctAnswer": 1,
+      "explanation": "Augmentation role (B) is most effective: AI generates options (exploration), provides inspiration (stimulus), handles routine elements (efficiency) - enabling humans to focus on creative synthesis and direction. Not replacement (A). Not exclusion (C). Not just polish (D) - AI can contribute throughout the creative process.",
+      "tags": [
+        "ai-creative-role",
+        "augmentation",
+        "creative-collaboration"
+      ]
+    },
+    {
+      "id": "CRS-010",
+      "level": 1,
+      "points": 10,
+      "difficulty": 0.29,
+      "discrimination": 0.53,
+      "type": "multiple-choice",
+      "question": "What distinguishes creative use of AI from routine use?",
+      "options": [
+        "The amount of time spent using AI",
+        "Active synthesis, novel combinations, and going beyond obvious applications to create something new",
+        "Which specific AI tool you use",
+        "The type of project you're working on"
+      ],
+      "correctAnswer": 1,
+      "explanation": "Creative use characteristics (B) include: active synthesis (intentional engagement), novel combinations (originality), going beyond obvious (exploration), creating something new (innovation). Not just time spent (A), specific tool (C), or project type (D). Creative use is about your approach and the novelty of outcomes.",
+      "tags": [
+        "creative-vs-routine",
+        "defining-creativity",
+        "synthesis-characteristics"
+      ]
+    },
+    {
+      "id": "CRS-011",
+      "level": 2,
+      "points": 15,
+      "difficulty": 0.45,
+      "discrimination": 0.58,
+      "type": "scenario-analysis",
+      "question": "When using AI to develop a marketing campaign, how can you move beyond generic AI outputs to create a truly creative campaign?",
+      "options": [
+        "Use the first AI suggestions without modification",
+        "Employ creative synthesis: have AI generate a large volume of ideas, identify interesting patterns, combine unexpected elements, add your brand insights, iterate with AI, and inject human understanding of audience",
+        "Only use your own ideas without any AI input",
+        "Copy successful campaigns that AI finds"
+      ],
+      "correctAnswer": 1,
+      "explanation": "Sophisticated synthesis (B) involves: leveraging AI's volume (broad exploration), identifying patterns (insights), combining unexpected elements (innovation), adding brand context (relevance), iterating with AI (refinement), injecting human understanding (meaning). Not passive acceptance (A), AI exclusion (C), or imitation (D). Creative synthesis produces original, contextually appropriate campaigns.",
+      "tags": [
+        "marketing-creativity",
+        "synthesis-process",
+        "brand-insight"
+      ]
+    },
+    {
+      "id": "CRS-012",
+      "level": 2,
+      "points": 15,
+      "difficulty": 0.48,
+      "discrimination": 0.6,
+      "type": "creative-process",
+      "question": "How would you design an iterative creative process that integrates AI effectively?",
+      "options": [
+        "Have AI do everything, then you review the final output",
+        "Use iterative synthesis: diverge with AI to generate many options, converge using your judgment to select promising directions, synthesize by combining ideas, enhance by adding creativity, evaluate results, then iterate the cycle",
+        "Do everything yourself first, then have AI check your work",
+        "Use AI randomly whenever you feel stuck"
+      ],
+      "correctAnswer": 1,
+      "explanation": "Structured creative process (B) includes: diverge with AI (broad exploration), converge with judgment (focused selection), synthesize (creative combination), enhance (improvement), evaluate (assessment), iterate (refinement). Not AI-only then review (A) or AI-minimal (C). Not random AI use (D). Systematic integration of AI and human creativity produces better outcomes.",
+      "tags": [
+        "creative-process-design",
+        "iterative-synthesis",
+        "structured-creativity"
+      ]
+    },
+    {
+      "id": "CRS-013",
+      "level": 2,
+      "points": 15,
+      "difficulty": 0.46,
+      "discrimination": 0.57,
+      "type": "multiple-choice-multiple",
+      "question": "Which techniques can enhance creative synthesis with AI? Select ALL that apply:",
+      "options": [
+        "Combinatorial creativity - merging AI suggestions in novel ways",
+        "Passive acceptance - using outputs exactly as generated",
+        "Constraint-based exploration - giving AI interesting limitations to work within",
+        "Random generation without any direction or purpose",
+        "Analogical thinking - applying AI ideas from one domain to different domains",
+        "Avoiding iteration - using only the first attempt"
+      ],
+      "correctAnswers": [
+        0,
+        2,
+        4
+      ],
+      "partialCredit": {
+        "2correct": 9,
+        "1correct": 5
+      },
+      "explanation": "Effective creative techniques include: combinatorial creativity (A) - novel merging of ideas; constraint-based exploration (C) - productive limitations; analogical thinking (E) - cross-domain transfer. Ineffective: passive acceptance (B), aimless randomness (D), and avoiding iteration (F).",
+      "tags": [
+        "creative-techniques",
+        "synthesis-methods",
+        "innovation-approaches"
+      ]
+    },
+    {
+      "id": "CRS-014",
+      "level": 2,
+      "points": 15,
+      "difficulty": 0.5,
+      "discrimination": 0.61,
+      "type": "breakthrough-thinking",
+      "question": "How can you use AI to generate breakthrough ideas rather than just incremental improvements?",
+      "options": [
+        "Ask AI directly for breakthrough ideas",
+        "Use a multi-angle approach: try cross-domain prompting, reverse constraints, explore extreme scenarios, challenge fundamental assumptions, break existing patterns, and synthesize insights across these diverse approaches",
+        "Focus only on small incremental improvements",
+        "Wait passively for breakthroughs to emerge"
+      ],
+      "correctAnswer": 1,
+      "explanation": "Breakthrough generation (B) requires: cross-domain prompting (new perspectives), constraint reversal (reframing), extreme scenarios (boundary exploration), assumption challenging (first principles), pattern breaking (disruption), cross-approach synthesis (integration). Not direct asking (A), incremental-only focus (C), or passive waiting (D). Breakthroughs require deliberate creative strategies.",
+      "tags": [
+        "breakthrough-thinking",
+        "innovation-generation",
+        "creative-strategy"
+      ]
+    },
+    {
+      "id": "CRS-015",
+      "level": 2,
+      "points": 15,
+      "difficulty": 0.47,
+      "discrimination": 0.58,
+      "type": "cross-pollination",
+      "question": "How can you use AI to cross-pollinate ideas from different domains to generate innovation?",
+      "options": [
+        "Stay strictly within a single domain",
+        "Practice systematic cross-domain synthesis: explore multiple domains with AI, identify transferable patterns, adapt concepts across domains, and combine ideas in unexpected ways",
+        "Mix domains randomly without any strategy",
+        "Avoid cross-domain thinking because it creates confusion"
+      ],
+      "correctAnswer": 1,
+      "explanation": "Strategic cross-pollination (B) involves: multi-domain exploration (breadth), pattern identification (abstraction), cross-domain adaptation (transfer), unexpected combinations (innovation). Not single-domain limitation (A), random mixing without purpose (C), or domain separation (D). Cross-domain insights are powerful drivers of innovation.",
+      "tags": [
+        "cross-pollination",
+        "domain-transfer",
+        "pattern-abstraction"
+      ]
+    },
+    {
+      "id": "CRS-016",
+      "level": 2,
+      "points": 15,
+      "difficulty": 0.52,
+      "discrimination": 0.62,
+      "type": "creative-constraints",
+      "question": "How can you use constraints productively to drive creative AI use?",
+      "options": [
+        "Constraints always kill creativity and should be avoided",
+        "Use productive constraints strategically: give AI interesting limitations that force novel approaches, explore constrained spaces deeply, and synthesize within thoughtful boundaries",
+        "Apply extreme constraints that make tasks impossible",
+        "Use no constraints at all for pure creative freedom"
+      ],
+      "correctAnswer": 1,
+      "explanation": "Productive constraint use (B) includes: interesting limitations (focused creativity), forcing novel approaches (innovation), deep exploration within constraints (thoroughness), bounded synthesis (directed creativity). Constraints can enhance creativity when used well (A). Not impossible constraints (C) or complete absence of constraints (D). Strategic constraints enable focused innovation.",
+      "tags": [
+        "creative-constraints",
+        "productive-limitations",
+        "focused-innovation"
+      ]
+    },
+    {
+      "id": "CRS-017",
+      "level": 2,
+      "points": 15,
+      "difficulty": 0.49,
+      "discrimination": 0.59,
+      "type": "idea-evolution",
+      "question": "How would you evolve AI-generated ideas through multiple creative iterations?",
+      "options": [
+        "Accept the first generation of ideas",
+        "Use an evolutionary process: generate variety, select the most promising, mutate them creatively, recombine elements, evaluate outcomes, and iterate through multiple generations",
+        "Make only a single revision",
+        "Keep generating completely new ideas until a perfect one appears"
+      ],
+      "correctAnswer": 1,
+      "explanation": "Creative evolution (B) involves: generate variety (exploration), select promising candidates (judgment), mutate creatively (variation), recombine elements (synthesis), evaluate outcomes (assessment), iterate multiple generations (progressive improvement). Not first-generation acceptance (A), single revision (C), or waiting for perfection (D). Evolution through systematic iteration produces superior outcomes.",
+      "tags": [
+        "idea-evolution",
+        "creative-iteration",
+        "generative-process"
+      ]
+    },
+    {
+      "id": "CRS-018",
+      "level": 2,
+      "points": 15,
+      "difficulty": 0.51,
+      "discrimination": 0.61,
+      "type": "pattern-breaking",
+      "question": "How can you deliberately break conventional patterns with AI to generate novel solutions?",
+      "options": [
+        "Always follow established conventions because they're safer",
+        "Practice deliberate pattern disruption: challenge assumptions, reverse typical constraints, explore extreme variations, combine seemingly incompatible elements, and question what seems obvious",
+        "Make only slight variations on existing patterns",
+        "Avoid any disruption of established patterns"
+      ],
+      "correctAnswer": 1,
+      "explanation": "Deliberate pattern disruption (B) includes: challenging assumptions (questioning foundations), reversing constraints (reframing), exploring extremes (boundary testing), combining incompatibles (unexpected synthesis), questioning obviousness (first principles). Not clinging to conventions (A), making only slight variations (C), or avoiding disruption (D). Innovation often requires intentional pattern breaking.",
+      "tags": [
+        "pattern-breaking",
+        "assumption-challenging",
+        "disruptive-innovation"
+      ]
+    },
+    {
+      "id": "CRS-019",
+      "level": 2,
+      "points": 15,
+      "difficulty": 0.44,
+      "discrimination": 0.56,
+      "type": "creative-evaluation",
+      "question": "How should you evaluate the creative quality of AI-synthesized outputs?",
+      "options": [
+        "Focus only on novelty without considering other factors",
+        "Use multi-dimensional evaluation: assess novelty (originality), usefulness (practical value), appropriateness (contextual fit), elegance (simplicity and beauty), and impact (meaningful difference)",
+        "Evaluate only technical correctness",
+        "Rely solely on personal preference"
+      ],
+      "correctAnswer": 1,
+      "explanation": "Comprehensive creative assessment (B) considers: novelty (originality), usefulness (value), appropriateness (fit), elegance (aesthetics), impact (significance). Not novelty-only (A), technical-only (C), or preference-only (D). Quality creativity satisfies multiple dimensions simultaneously.",
+      "tags": [
+        "creative-evaluation",
+        "quality-criteria",
+        "multi-dimensional-assessment"
+      ]
+    },
+    {
+      "id": "CRS-020",
+      "level": 2,
+      "points": 15,
+      "difficulty": 0.53,
+      "discrimination": 0.63,
+      "type": "synthesis-layers",
+      "question": "How can you build increasingly sophisticated creative synthesis through multiple layers?",
+      "options": [
+        "Keep everything simple with single-layer synthesis",
+        "Use layered synthesis: AI generates raw material, you select and combine, AI elaborates on combinations, you refine and enhance, then iterate with increasing sophistication at each layer",
+        "Keep AI work and human work completely separate",
+        "Focus only on the final output layer"
+      ],
+      "correctAnswer": 1,
+      "explanation": "Sophisticated layering (B) involves: AI generates (exploration), human synthesizes (judgment and combination), AI elaborates (development), human refines (polish and enhancement), iterative deepening (progressive sophistication). Not single-layer simplicity (A). Not separation of AI and human work (C). Not final-layer-only focus (D). Layers build increasing creative depth and quality.",
+      "tags": [
+        "layered-synthesis",
+        "iterative-refinement",
+        "deepening-creativity"
+      ]
+    },
+    {
+      "id": "CRS-021",
+      "level": 2,
+      "points": 15,
+      "difficulty": 0.48,
+      "discrimination": 0.59,
+      "type": "creative-prompting",
+      "question": "How can you craft prompts that elicit more creative responses from AI?",
+      "options": [
+        "Use generic prompts that work for everyone",
+        "Design creative prompts: apply unusual constraints, use cross-domain analogies, explore extreme scenarios, shift perspectives dramatically, ask 'what if' questions, and enable open-ended exploration",
+        "Always use the shortest possible prompts",
+        "Stick to standard templates without variation"
+      ],
+      "correctAnswer": 1,
+      "explanation": "Sophisticated prompt crafting (B) includes: unusual constraints (creative focus), cross-domain analogies (perspective transfer), extreme scenarios (boundary exploration), perspective shifts (reframing), what-if questions (possibility exploration), open-ended prompts (freedom). Not generic prompts (A), brevity-focused (C), or template-only (D). Creative prompts expand the AI's creative possibility space.",
+      "tags": [
+        "creative-prompting",
+        "prompt-sophistication",
+        "possibility-expansion"
+      ]
+    },
+    {
+      "id": "CRS-022",
+      "level": 2,
+      "points": 15,
+      "difficulty": 0.46,
+      "discrimination": 0.57,
+      "type": "serendipity-engineering",
+      "question": "How can you engineer productive serendipity when using AI - creating conditions for valuable unexpected discoveries?",
+      "options": [
+        "Serendipity cannot be engineered at all",
+        "Create serendipity conditions: explore adjacent possibilities, follow interesting tangents, combine unrelated concepts, embrace productive accidents, and systematically capture unexpected insights",
+        "Use pure randomness without any structure",
+        "Stick rigidly to your original plan"
+      ],
+      "correctAnswer": 1,
+      "explanation": "Engineered serendipity (B) involves: exploring adjacencies (nearby possibilities), following tangents (interesting diversions), combining unrelated elements (unexpected connections), embracing accidents (opportunities), capturing insights (learning). Serendipity can be encouraged (A) through deliberate strategies. Not pure randomness (C) or rigid adherence to plans (D). Create favorable conditions for creative discovery.",
+      "tags": [
+        "serendipity-engineering",
+        "creative-accidents",
+        "insight-generation"
+      ]
+    },
+    {
+      "id": "CRS-023",
+      "level": 2,
+      "points": 15,
+      "difficulty": 0.5,
+      "discrimination": 0.6,
+      "type": "creative-momentum",
+      "question": "How can you maintain creative momentum across an extended AI-human creative collaboration?",
+      "options": [
+        "Work in one long session until you're exhausted",
+        "Manage momentum strategically: vary generation modes to maintain engagement, take strategic breaks for renewal, capture inspiration as it emerges, build progressively on successes, manage energy deliberately, and celebrate creative wins",
+        "Push through creative fatigue without breaks",
+        "Wait passively for inspiration to strike"
+      ],
+      "correctAnswer": 1,
+      "explanation": "Sustained creativity (B) requires: varied modes (maintain engagement), strategic breaks (renewal and perspective), inspiration capture (preserve ideas), progressive building (momentum), energy management (sustainability), celebration (motivation). Not exhaustion (A) or pushing through fatigue (C). Not passive waiting (D). Actively manage creative energy for sustained productivity.",
+      "tags": [
+        "creative-momentum",
+        "sustained-creativity",
+        "energy-management"
+      ]
+    },
+    {
+      "id": "CRS-024",
+      "level": 2,
+      "points": 15,
+      "difficulty": 0.52,
+      "discrimination": 0.62,
+      "type": "expertise-integration",
+      "question": "How can you integrate your deep domain expertise with AI's breadth to generate truly novel solutions?",
+      "options": [
+        "Choose to use either your expertise or AI, but not both",
+        "Practice complementary integration: AI provides breadth and diverse alternatives, your expertise provides depth and critical judgment, together creating novel solutions that neither could produce alone",
+        "Your expertise makes AI unnecessary",
+        "AI's capabilities replace the need for human expertise"
+      ],
+      "correctAnswer": 1,
+      "explanation": "Complementary synthesis (B) leverages: AI breadth (wide exploration), human expertise depth (specialized insight), human judgment (evaluation), emergent synthesis (unique combinations neither could produce alone). Not either-or choice (A). Both expertise and AI add irreplaceable value (C, D). Integration creates solutions beyond what either could achieve independently.",
+      "tags": [
+        "expertise-integration",
+        "complementary-strengths",
+        "emergent-solutions"
+      ]
+    },
+    {
+      "id": "CRS-025",
+      "level": 2,
+      "points": 15,
+      "difficulty": 0.47,
+      "discrimination": 0.58,
+      "type": "creative-divergence",
+      "question": "How can you use AI to maximize creative divergence and generate the widest variety of possibilities?",
+      "options": [
+        "Ask AI once and accept whatever results you get",
+        "Practice systematic divergence: use multiple prompt angles, apply varied constraints, explore different perspectives, generate extreme variations, try cross-domain analogies, and create combinatorial possibilities",
+        "Focus narrowly on a single best path from the start",
+        "Artificially limit options to save time"
+      ],
+      "correctAnswer": 1,
+      "explanation": "Structured divergence (B) includes: multiple angles (varied perspectives), varied constraints (exploration space), different viewpoints (perspective diversity), extreme variations (boundary testing), cross-domain analogies (transfer), combinatorial generation (multiply possibilities). Not single query (A), premature narrowing (C), or artificial limitation (D). Divergence precedes effective convergence.",
+      "tags": [
+        "creative-divergence",
+        "possibility-generation",
+        "exploration"
+      ]
+    },
+    {
+      "id": "CRS-026",
+      "level": 2,
+      "points": 15,
+      "difficulty": 0.49,
+      "discrimination": 0.6,
+      "type": "synthesis-judgment",
+      "question": "How can you develop better judgment for creative synthesis - knowing what to keep, combine, discard, or enhance?",
+      "options": [
+        "Always trust your gut feeling without analysis",
+        "Cultivate judgment systematically: evaluate against clear criteria, learn from outcome patterns, study successful examples, reflect on your decisions, and build a mental library of creative patterns",
+        "Accept everything AI generates without discrimination",
+        "Make random selections among options"
+      ],
+      "correctAnswer": 1,
+      "explanation": "Judgment cultivation (B) involves: criteria-based evaluation (framework), outcome learning (feedback), studying successes (models), decision reflection (meta-learning), pattern library building (knowledge accumulation). Not pure intuition only (A), uncritical acceptance (C), or random selection (D). Good creative judgment develops through deliberate, reflective practice.",
+      "tags": [
+        "synthesis-judgment",
+        "creative-discernment",
+        "decision-capability"
+      ]
+    },
+    {
+      "id": "CRS-027",
+      "level": 2,
+      "points": 15,
+      "difficulty": 0.51,
+      "discrimination": 0.61,
+      "type": "collaborative-creativity",
+      "question": "How can you facilitate creative synthesis when multiple team members are using AI together?",
+      "options": [
+        "Everyone should use AI individually without coordination",
+        "Enable collaborative synthesis: share AI exploration across the team, bring diverse perspectives together, practice combinatorial brainstorming, refine ideas collectively, and synthesize contributions from all members",
+        "Designate one person to use AI for the entire team",
+        "Avoid using AI in collaborative creative sessions"
+      ],
+      "correctAnswer": 1,
+      "explanation": "Team creative synthesis (B) includes: shared AI exploration (common starting points), diverse perspectives (richness), combinatorial brainstorming (idea multiplication), collective refinement (group improvement), contribution synthesis (integration). Not isolated individual work (A), single-person delegation (C), or AI avoidance (D). AI can significantly enhance collaborative creativity when used thoughtfully.",
+      "tags": [
+        "collaborative-creativity",
+        "team-synthesis",
+        "collective-innovation"
+      ]
+    },
+    {
+      "id": "CRS-028",
+      "level": 2,
+      "points": 15,
+      "difficulty": 0.45,
+      "discrimination": 0.57,
+      "type": "creative-recovery",
+      "question": "When your creative synthesis isn't working and outputs feel stale, what recovery strategy should you use?",
+      "options": [
+        "Keep doing exactly the same thing and hope for different results",
+        "Disrupt the pattern: change your prompt style, explore a different domain, add new constraints, try extreme variations, take a break and return fresh",
+        "Give up on the creative approach entirely",
+        "Force yourself to be creative through sheer willpower"
+      ],
+      "correctAnswer": 1,
+      "explanation": "Pattern disruption (B) for recovery includes: style changes (variation), domain shifts (new perspectives), constraint addition (focus), extreme variations (boundary exploration), strategic breaks (renewal). Not repetition expecting change (A), giving up (C), or forcing creativity (D). Staleness signals need for deliberate creative reset and fresh approaches.",
+      "tags": [
+        "creative-recovery",
+        "pattern-disruption",
+        "creative-renewal"
+      ]
+    },
+    {
+      "id": "CRS-029",
+      "level": 2,
+      "points": 15,
+      "difficulty": 0.54,
+      "discrimination": 0.64,
+      "type": "synthesis-capture",
+      "question": "What should you document about your creative synthesis process to enable learning and improvement?",
+      "options": [
+        "Only document the final output",
+        "Capture comprehensively: prompts you used, variations you explored, synthesis decisions you made, your rationale, the iterations, insights gained, what worked well and what didn't, and lessons for future use",
+        "Don't document anything - creativity should be spontaneous",
+        "Document only your successful attempts"
+      ],
+      "correctAnswer": 1,
+      "explanation": "Rich process documentation (B) includes: prompts (replication), variations (exploration record), decisions (process choices), rationale (reasoning), iterations (evolution), insights (learning), successes and failures (pattern recognition), future lessons (improvement). Not output-only (A), undocumented spontaneity (C), or success-only (D). Process documentation enables systematic creative improvement.",
+      "tags": [
+        "synthesis-documentation",
+        "creative-process-capture",
+        "learning-record"
+      ]
+    },
+    {
+      "id": "CRS-030",
+      "level": 2,
+      "points": 15,
+      "difficulty": 0.48,
+      "discrimination": 0.59,
+      "type": "creative-application",
+      "question": "How can you apply creative synthesis to an unexpected domain where AI is not typically used?",
+      "options": [
+        "AI only works in traditional domains",
+        "Use exploratory application: deeply understand the domain first, identify creative opportunities, experiment with AI possibilities, adapt based on learning, and synthesize novel approaches tailored to the domain",
+        "Force standard AI approaches regardless of fit",
+        "Avoid applying AI to non-traditional domains"
+      ],
+      "correctAnswer": 1,
+      "explanation": "Adaptive exploration (B) involves: deep domain understanding (context), opportunity identification (potential), experimental exploration (learning through doing), adaptive refinement (iteration), novel synthesis (domain-appropriate innovation). Not domain limitations (A), forcing misfit approaches (C), or categorical avoidance (D). Creative synthesis enables valuable AI applications in unexpected domains.",
+      "tags": [
+        "creative-application",
+        "domain-expansion",
+        "innovative-use"
+      ]
+    },
+    {
+      "id": "CRS-031",
+      "level": 3,
+      "points": 20,
+      "difficulty": 0.65,
+      "discrimination": 0.7,
+      "type": "framework-design",
+      "question": "How would you design a comprehensive creative synthesis framework that integrates AI with human creativity?",
+      "options": [
+        "Frameworks aren't needed - creativity should be completely unstructured",
+        "Build integrated framework: establish creative philosophy as foundation, design process structure, develop technique toolkit, define evaluation criteria, implement learning loops, and create capability development pathways",
+        "A simple checklist is sufficient for creative work",
+        "Just copy existing creativity frameworks without AI integration"
+      ],
+      "correctAnswer": 1,
+      "explanation": "Sophisticated framework (B) includes: philosophical foundation (guiding principles), process structure (systematic approach), technique toolkit (methods library), evaluation criteria (quality assessment), learning loops (continuous improvement), capability development (skill growth). Not completely unstructured (A) - systematic approaches enhance creativity. Not oversimplified checklist (C). Not generic copying (D) - must specifically integrate AI. Build comprehensive, AI-aware creative framework.",
+      "tags": [
+        "synthesis-framework",
+        "integrated-approach",
+        "systematic-creativity"
+      ]
+    },
+    {
+      "id": "CRS-032",
+      "level": 3,
+      "points": 20,
+      "difficulty": 0.68,
+      "discrimination": 0.72,
+      "type": "transformative-innovation",
+      "question": "How can you use AI for transformative innovation rather than just incremental improvement - achieving genuine paradigm shifts?",
+      "options": [
+        "Incremental improvement is safer and sufficient",
+        "Pursue transformative approach: challenge fundamental assumptions, explore radically different alternatives, synthesize across distant domains, embrace creative destruction of existing approaches, and iterate toward revolutionary rather than evolutionary change",
+        "Wait passively for breakthrough innovations to appear",
+        "Avoid the risks of transformation entirely"
+      ],
+      "correctAnswer": 1,
+      "explanation": "Revolutionary synthesis (B) requires: fundamental assumption challenging (first principles), radical alternative exploration (breakthrough thinking), distant domain synthesis (unexpected connections), creative destruction acceptance (replacement not improvement), iterative revolution (progressive transformation). Not incremental safety (A), passive waiting (C), or risk avoidance (D). True transformation demands intentional revolutionary strategies.",
+      "tags": [
+        "transformative-innovation",
+        "paradigm-shifts",
+        "revolutionary-thinking"
+      ]
+    },
+    {
+      "id": "CRS-033",
+      "level": 3,
+      "points": 20,
+      "difficulty": 0.63,
+      "discrimination": 0.69,
+      "type": "meta-creative",
+      "question": "How can you develop meta-creative capability - being creative about creativity itself when using AI?",
+      "options": [
+        "Creativity cannot be meta - it just happens",
+        "Develop meta-creativity through: analyzing your creative patterns, experimenting with process variations, reflecting deeply on synthesis decisions, evolving your creative approaches, and building creative capability about creative capability recursively",
+        "Focus exclusively on creative outputs without process reflection",
+        "Always use the same standard creative process"
+      ],
+      "correctAnswer": 1,
+      "explanation": "Meta-creative development (B) involves: pattern analysis (understanding your creativity), process experimentation (innovation about process), deep reflection (synthesis awareness), approach evolution (method improvement), recursive capability building (meta-level creativity). Creativity can be meta (A) - you can be creative about being creative. Not output-only focus (C) or rigid process (D). Develop creativity about the creative process itself.",
+      "tags": [
+        "meta-creativity",
+        "creative-recursion",
+        "process-innovation"
+      ]
+    },
+    {
+      "id": "CRS-034",
+      "level": 3,
+      "points": 20,
+      "difficulty": 0.7,
+      "discrimination": 0.74,
+      "type": "genius-amplification",
+      "question": "How can you use AI to amplify human genius - taking exceptional human insight to extraordinary levels?",
+      "options": [
+        "Genius cannot be amplified by AI",
+        "Practice strategic amplification: AI scales the exploration of genius insights, generates variations on brilliant ideas, enables rapid prototyping, allows parallel development of multiple directions, and frees genius for highest-level creative thinking",
+        "AI should replace human genius",
+        "Genius works better in complete isolation from AI"
+      ],
+      "correctAnswer": 1,
+      "explanation": "Genius amplification (B) includes: scaled exploration (breadth multiplication), variation generation (possibility expansion), rapid prototyping (quick iteration), parallel development (simultaneous paths), freed focus (highest-value thinking). Genius can be amplified (A) through thoughtful AI use. Not replacement (C). Not isolation (D) - AI enables genius to operate at unprecedented scale and speed. Strategic amplification multiplies exceptional human capability.",
+      "tags": [
+        "genius-amplification",
+        "exceptional-enhancement",
+        "creative-multiplication"
+      ]
+    },
+    {
+      "id": "CRS-035",
+      "level": 3,
+      "points": 20,
+      "difficulty": 0.67,
+      "discrimination": 0.71,
+      "type": "synthesis-across-scales",
+      "question": "How can you manage creative synthesis operating simultaneously at multiple scales from micro-details to macro-vision?",
+      "options": [
+        "Focus on only one scale at a time",
+        "Practice multi-scale synthesis: use AI for detail management while maintaining big picture, zoom fluidly between scales, ensure coherence across all levels, and synthesize insights from different scales of analysis",
+        "Separate different scales completely",
+        "Focus only on macro-level vision while ignoring details"
+      ],
+      "correctAnswer": 1,
+      "explanation": "Multi-scale integration (B) involves: AI detail management (micro-level handling), big picture maintenance (macro-level vision), fluid zooming (scale navigation), cross-scale coherence (integrity maintenance), multi-level synthesis (integration). Not single-scale limitation (A), scale separation (C), or macro-only focus (D). Excellence requires coherent creative synthesis across all scales simultaneously.",
+      "tags": [
+        "multi-scale-synthesis",
+        "detail-vision-integration",
+        "coherent-complexity"
+      ]
+    },
+    {
+      "id": "CRS-036",
+      "level": 3,
+      "points": 20,
+      "difficulty": 0.66,
+      "discrimination": 0.7,
+      "type": "creative-emergence",
+      "question": "How can you facilitate creative emergence where the synthesis becomes greater than the sum of AI and human parts?",
+      "options": [
+        "Emergence is purely random and cannot be facilitated",
+        "Create emergence conditions: design rich interaction spaces, provide diverse inputs, enable iterative synthesis, balance freedom with structure, systematically capture emergent insights, and amplify promising emergence",
+        "Avoid emergence because it's too unpredictable",
+        "Emergence happens automatically whenever AI is used"
+      ],
+      "correctAnswer": 1,
+      "explanation": "Engineered emergence (B) requires: rich interaction design (possibility space), diverse inputs (variation), iterative synthesis (evolution), freedom-structure balance (productive constraint), insight capture (learning), emergence amplification (growth). Not random (A) - can be deliberately facilitated. Not avoidance due to unpredictability (C) - emergence creates extraordinary value. Not automatic (D) - requires intentional design. Create conditions for creative transcendence.",
+      "tags": [
+        "creative-emergence",
+        "synthesis-transcendence",
+        "emergent-properties"
+      ]
+    },
+    {
+      "id": "CRS-037",
+      "level": 3,
+      "points": 20,
+      "difficulty": 0.64,
+      "discrimination": 0.69,
+      "type": "artistic-synthesis",
+      "question": "How should you apply creative synthesis in artistic domains where human expression and emotion are paramount?",
+      "options": [
+        "AI has no legitimate role in artistic creation",
+        "Practice sophisticated artistic balance: AI explores vast possibility spaces, humans provide artistic vision and emotional truth, synthesis creates new forms of expression that honor both technical capability and human artistry",
+        "AI can completely replace human artists",
+        "Keep AI and artistic creation completely separate"
+      ],
+      "correctAnswer": 1,
+      "explanation": "Artistic integration (B) involves: AI possibility exploration (breadth), human vision provision (meaning and direction), emotional truth (authenticity), synthesis of new forms (innovation), honoring both AI and human contributions. Not AI exclusion from art (A) or artist replacement (C). Not complete separation (D). AI can be a powerful tool for artistic exploration while preserving essential human artistry and expression.",
+      "tags": [
+        "artistic-synthesis",
+        "creative-expression",
+        "human-ai-art"
+      ]
+    },
+    {
+      "id": "CRS-038",
+      "level": 3,
+      "points": 20,
+      "difficulty": 0.69,
+      "discrimination": 0.73,
+      "type": "creative-leadership",
+      "question": "How would you lead creative synthesis at organizational scale across multiple teams and projects?",
+      "options": [
+        "Centralize all creative AI decisions at the top",
+        "Practice distributed creative leadership: enable widespread creative experimentation, provide synthesis frameworks and tools, celebrate creative achievements, build organizational creative capability, harvest and share innovations systematically",
+        "Control all creativity tightly from leadership",
+        "Let complete creative chaos reign"
+      ],
+      "correctAnswer": 1,
+      "explanation": "Enabling creative leadership (B) includes: widespread experimentation enablement (distributed innovation), framework provision (structured freedom), achievement celebration (culture building), capability development (skill growth), systematic innovation sharing (organizational learning). Not top-down centralization (A) or tight control (C) - these stifle creativity. Not chaos (D) - need enabling structure. Lead by empowering distributed creativity.",
+      "tags": [
+        "creative-leadership",
+        "organizational-creativity",
+        "innovation-culture"
+      ]
+    },
+    {
+      "id": "CRS-039",
+      "level": 3,
+      "points": 20,
+      "difficulty": 0.71,
+      "discrimination": 0.75,
+      "type": "temporal-synthesis",
+      "question": "How can you practice creative synthesis across time - learning from the past, creating in the present, and anticipating the future?",
+      "options": [
+        "Focus exclusively on present-moment creativity",
+        "Practice temporal synthesis: mine historical creative patterns for insights, execute creative action in the present, anticipate future implications of innovations, bridge temporal dimensions, and evolve approaches continuously across time",
+        "The past is irrelevant to creativity",
+        "The future is too unpredictable to consider"
+      ],
+      "correctAnswer": 1,
+      "explanation": "Time-spanning synthesis (B) involves: historical pattern mining (learning from past), present creative action (current creation), future implication anticipation (foresight), temporal bridging (connection across time), continuous evolution (temporal continuity). Not present-only focus (A). Past provides valuable patterns (C). Future direction matters for creativity (D). Synthesize insights and actions across all temporal dimensions.",
+      "tags": [
+        "temporal-synthesis",
+        "time-spanning-creativity",
+        "evolutionary-innovation"
+      ]
+    },
+    {
+      "id": "CRS-040",
+      "level": 3,
+      "points": 20,
+      "difficulty": 0.68,
+      "discrimination": 0.72,
+      "type": "collective-genius",
+      "question": "How would you orchestrate collective genius when multiple humans and AI systems are creating together?",
+      "options": [
+        "Create competition between all contributors",
+        "Practice symphonic orchestration: enable diverse contributions from all sources, use AI for coordination and integration, facilitate cross-pollination between contributors, synthesize across all inputs, and cultivate emergent collective intelligence",
+        "Process contributions only sequentially one at a time",
+        "Have one leader direct every contribution"
+      ],
+      "correctAnswer": 1,
+      "explanation": "Collective creativity orchestration (B) includes: diverse contribution enablement (richness), AI coordination (integration support), cross-pollination facilitation (interaction), comprehensive synthesis (combination), emergent intelligence cultivation (transcendence). Not competition (A) - collaboration produces better outcomes. Not sequential-only (C) - loses synergy. Not single direction (D) - need distributed genius. Orchestrate collaborative creativity symphonically.",
+      "tags": [
+        "collective-genius",
+        "orchestrated-creativity",
+        "emergent-intelligence"
+      ]
+    },
+    {
+      "id": "CRS-041",
+      "level": 3,
+      "points": 20,
+      "difficulty": 0.65,
+      "discrimination": 0.7,
+      "type": "creative-resilience",
+      "question": "How can you build resilience in creative synthesis to sustain creativity through challenges, failures, and creative blocks?",
+      "options": [
+        "Avoid all challenges to preserve creative flow",
+        "Cultivate creative resilience through: embracing creative struggle as growth, learning systematically from failed synthesis attempts, maintaining multiple creative pathways, practicing creative recovery techniques, and building sustained creative energy",
+        "Give up whenever you encounter a creative block",
+        "Force through all blocks with sheer determination"
+      ],
+      "correctAnswer": 1,
+      "explanation": "Creative resilience building (B) involves: struggle embrace (growth mindset), failure learning (development), multiple pathways (flexibility), recovery practices (renewal techniques), sustained energy (endurance). Not challenge avoidance (A) - growth requires difficulty. Not giving up (C) or purely forcing through (D). Build genuine capacity for sustained creativity through adversity.",
+      "tags": [
+        "creative-resilience",
+        "sustained-innovation",
+        "creative-endurance"
+      ]
+    },
+    {
+      "id": "CRS-042",
+      "level": 3,
+      "points": 20,
+      "difficulty": 0.72,
+      "discrimination": 0.76,
+      "type": "synthesis-aesthetics",
+      "question": "How can you develop sophisticated aesthetic sense for creative synthesis - recognizing beauty, elegance, and rightness?",
+      "options": [
+        "Aesthetics are purely subjective and cannot be developed",
+        "Cultivate aesthetic sophistication through: studying exemplary creative works, reflecting deeply on what makes synthesis effective, internalizing creative patterns, developing refined taste, and balancing intuitive aesthetic sense with analytical understanding",
+        "Ignore aesthetics and focus only on function",
+        "Simply copy others' aesthetic preferences"
+      ],
+      "correctAnswer": 1,
+      "explanation": "Aesthetic development (B) includes: exemplar study (learning from excellence), deep reflection (understanding quality), pattern internalization (intuition building), taste refinement (discernment growth), intuition-analysis balance (integrated judgment). Aesthetics can be developed (A) through deliberate practice. Not ignoring aesthetics (C) - they matter greatly for quality. Not copying (D) - develop your own aesthetic sense. Cultivate sophisticated creative taste.",
+      "tags": [
+        "synthesis-aesthetics",
+        "creative-taste",
+        "elegance-recognition"
+      ]
+    },
+    {
+      "id": "CRS-043",
+      "level": 3,
+      "points": 20,
+      "difficulty": 0.67,
+      "discrimination": 0.71,
+      "type": "boundary-transcendence",
+      "question": "How can you use creative synthesis to transcend traditional boundaries between domains, methods, and perspectives?",
+      "options": [
+        "All traditional boundaries should be strictly respected",
+        "Practice boundary transcendence through: identifying genuinely artificial boundaries, creating bridges across domains, synthesizing seemingly incompatible elements, generating hybrid approaches, and embracing productive contradictions creatively",
+        "Stay safely within all established boundaries",
+        "Boundaries exist for important reasons and shouldn't be questioned"
+      ],
+      "correctAnswer": 1,
+      "explanation": "Creative boundary-crossing (B) involves: identifying artificial boundaries (questioning assumptions), bridge creation (connection building), incompatible synthesis (integration of opposites), hybrid generation (new combinations), productive contradiction embrace (creative tension). Some boundaries are worth transcending (A, C, D) for breakthrough innovation. Strategic boundary transcendence enables transformative creativity.",
+      "tags": [
+        "boundary-transcendence",
+        "domain-bridging",
+        "hybrid-innovation"
+      ]
+    },
+    {
+      "id": "CRS-044",
+      "level": 3,
+      "points": 20,
+      "difficulty": 0.7,
+      "discrimination": 0.74,
+      "type": "creative-wisdom",
+      "question": "How can you develop wisdom in creative synthesis - not just skill but deep creative understanding and judgment?",
+      "options": [
+        "Creative wisdom only comes naturally with age",
+        "Cultivate creative wisdom through: extensive synthesis experience across many contexts, deep reflection on creative processes, learning from creative masters, recognizing patterns across diverse situations, and developing sophisticated creative judgment",
+        "Technical skill alone is sufficient for creativity",
+        "Creative wisdom cannot be deliberately developed"
+      ],
+      "correctAnswer": 1,
+      "explanation": "Creative wisdom cultivation (B) requires: extensive varied experience (breadth), deep process reflection (understanding), master learning (transmission of wisdom), cross-context pattern recognition (transfer), sophisticated judgment development (discernment). Not age-only (A) - can be deliberately cultivated. Not skill-only sufficiency (C) - wisdom transcends technique. Wisdom is developable (D) through committed practice. Build deep creative understanding over time.",
+      "tags": [
+        "creative-wisdom",
+        "synthesis-mastery",
+        "deep-understanding"
+      ]
+    },
+    {
+      "id": "CRS-045",
+      "level": 3,
+      "points": 20,
+      "difficulty": 0.73,
+      "discrimination": 0.77,
+      "type": "synthesis-at-scale",
+      "question": "How can you scale creative synthesis from individual to team to organizational to societal levels?",
+      "options": [
+        "Creative synthesis cannot be meaningfully scaled",
+        "Build scaling architecture: individual creativity as foundation, team synthesis for multiplication, organizational innovation systems for amplification, societal impact for transformation - with AI enablement woven throughout all levels",
+        "Focus exclusively on individual creativity",
+        "Only top-down organizational creativity works"
+      ],
+      "correctAnswer": 1,
+      "explanation": "Multi-level creative scaling (B) includes: individual creativity (foundation), team synthesis (collaborative multiplication), organizational systems (structural amplification), societal reach (transformative impact), AI enablement throughout (capability multiplier). Creativity can scale (A) with proper architecture. Not individual-only (C) or top-down-only (D) limitation. Design for creative impact at all scales.",
+      "tags": [
+        "creative-scaling",
+        "multi-level-innovation",
+        "societal-creativity"
+      ]
+    },
+    {
+      "id": "CRS-046",
+      "level": 3,
+      "points": 20,
+      "difficulty": 0.66,
+      "discrimination": 0.7,
+      "type": "paradoxical-synthesis",
+      "question": "How can you create synthesis from creative paradoxes - productively combining seemingly contradictory elements?",
+      "options": [
+        "Always avoid paradoxes by choosing one side",
+        "Practice paradoxical synthesis through: embracing contradiction as creative opportunity, finding higher-level integration, using tension productively, transcending false dichotomies through reframing, and generating novel solutions from opposition",
+        "Always split differences down the middle",
+        "Paradoxes cannot be creatively resolved"
+      ],
+      "correctAnswer": 1,
+      "explanation": "Productive paradox work (B) involves: contradiction embrace (opportunity seeing), higher integration (transcendence), productive tension use (creative energy), dichotomy transcendence (reframing), novel generation from opposition (synthesis). Not avoidance through choosing (A) or automatic splitting (C). Paradoxes can be resolved (D) through creative higher-level synthesis. Use creative tension generatively.",
+      "tags": [
+        "paradoxical-synthesis",
+        "contradiction-integration",
+        "transcendent-solutions"
+      ]
+    },
+    {
+      "id": "CRS-047",
+      "level": 3,
+      "points": 20,
+      "difficulty": 0.74,
+      "discrimination": 0.78,
+      "type": "future-creation",
+      "question": "How can you use creative synthesis not just to respond to possible futures but to actively create preferred futures?",
+      "options": [
+        "The future is predetermined and cannot be shaped",
+        "Practice proactive future-creation through: envisioning multiple possibilities, prototyping alternative futures, synthesizing compelling visions, building movements around ideas, and manifesting preferred futures through sustained creative action",
+        "Simply predict the future and adapt to it",
+        "The future happens to us regardless of our actions"
+      ],
+      "correctAnswer": 1,
+      "explanation": "Proactive future creation (B) includes: possibility envisioning (imagination), alternative prototyping (experimentation), vision synthesis (integration), movement building (collective action), manifestation (realization through sustained effort). Future not predetermined (A) or merely happening to us (D). Not just prediction/adaptation (C) - active creation. Use creative synthesis to shape desired futures.",
+      "tags": [
+        "future-creation",
+        "proactive-innovation",
+        "visionary-synthesis"
+      ]
+    },
+    {
+      "id": "CRS-048",
+      "level": 3,
+      "points": 20,
+      "difficulty": 0.71,
+      "discrimination": 0.75,
+      "type": "meaning-making",
+      "question": "How can you ensure creative synthesis serves deeper meaning-making rather than just producing novel outputs?",
+      "options": [
+        "Meaning is irrelevant - focus only on novelty",
+        "Practice meaning-centered creativity through: connecting synthesis to core values, considering human impact deeply, embedding purpose in creative work, creating genuine significance, and ensuring synthesis serves deeper meaning beyond novelty",
+        "Novelty and utility are sufficient goals",
+        "Meaning-making is too abstract to guide creativity"
+      ],
+      "correctAnswer": 1,
+      "explanation": "Meaningful synthesis (B) involves: values connection (grounding), deep human impact consideration (relevance), purpose embedding (direction), significance creation (importance), meaning service as ultimate goal. Meaning matters greatly (A). Not novelty/utility-only sufficiency (C). Not too abstract to guide (D) - meaning provides essential creative direction. Greatest creativity serves meaningful purposes.",
+      "tags": [
+        "meaning-making",
+        "purposeful-creativity",
+        "significance-creation"
+      ]
+    },
+    {
+      "id": "CRS-049",
+      "level": 3,
+      "points": 20,
+      "difficulty": 0.69,
+      "discrimination": 0.73,
+      "type": "creative-legacy",
+      "question": "How can you build a lasting creative legacy through AI-human synthesis that extends beyond your individual contributions?",
+      "options": [
+        "Focus only on immediate creative outputs",
+        "Build enduring legacy through: creating work of lasting value, teaching creative approaches to others, building creative systems that persist, inspiring future creators, and developing synthesis that transcends its original creator",
+        "Legacy building is not a worthy creative goal",
+        "Individual creative achievement is sufficient"
+      ],
+      "correctAnswer": 1,
+      "explanation": "Enduring creative impact (B) includes: lasting value creation (permanence), approach teaching (transmission), system building (scaling), inspiration of others (multiplication), transcendent synthesis (independence from creator). Not just immediate focus (A). Legacy is worthy goal (C) - greatest work outlasts creator. Not just individual achievement (D) - legacy multiplies through others. Create work that endures and inspires.",
+      "tags": [
+        "creative-legacy",
+        "enduring-impact",
+        "creative-transmission"
+      ]
+    },
+    {
+      "id": "CRS-050",
+      "level": 3,
+      "points": 20,
+      "difficulty": 0.75,
+      "discrimination": 0.79,
+      "type": "creative-philosophy",
+      "question": "What is the ultimate philosophy that should guide creative synthesis in the AI age?",
+      "options": [
+        "AI diminishes and replaces human creativity",
+        "Embrace creative philosophy: AI profoundly amplifies human creative potential, synthesis transcends individual capabilities of either human or AI alone, creativity becomes more essentially human rather than less, we can now create previously impossible futures, with ultimate goal of human flourishing through creative achievement",
+        "Technology eventually replaces all human creativity",
+        "We should return to pre-AI methods of creativity"
+      ],
+      "correctAnswer": 1,
+      "explanation": "Transcendent creative vision (B) encompasses: AI amplification of human potential (enhancement not replacement), synthesis transcendence (emergent capability), more essentially human creativity (deeper humanity not less), impossible futures now possible (breakthrough potential), human flourishing as ultimate purpose. Not diminishment (A), technological replacement (C), or nostalgic return (D). AI age enables unprecedented creative synthesis serving human potential. This represents the apex of the AIQ journey.",
+      "tags": [
+        "creative-philosophy",
+        "human-potential",
+        "transcendent-vision",
+        "ultimate-synthesis"
       ]
     }
   ]

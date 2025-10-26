@@ -33,7 +33,7 @@ Deno.serve(async (req) => {
     // Server-side validation with share code check
     const { data, error } = await supabase
       .from('public_results')
-      .select('id, overall_score, created_at, expires_at, dimension_scores')
+      .select('id, overall_score, created_at, expires_at, dimension_scores, user_name, test_duration_seconds, percentile_rank')
       .eq('share_code', shareCode)
       .gt('expires_at', new Date().toISOString())
       .maybeSingle();
@@ -85,6 +85,9 @@ Deno.serve(async (req) => {
         expiryDate: data.expires_at,
         scoreRange,
         level,
+        userName: data.user_name,
+        testDuration: data.test_duration_seconds ? `${Math.floor(data.test_duration_seconds / 60)}m ${data.test_duration_seconds % 60}s` : undefined,
+        percentile: data.percentile_rank,
       }),
       { 
         headers: { ...corsHeaders, 'Content-Type': 'application/json' }

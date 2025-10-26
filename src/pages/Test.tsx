@@ -50,7 +50,9 @@ const Test = () => {
     const resumeId = urlParams.get('resume');
     
     if (resumeId) {
-      // Resume existing test
+      // Resume existing test - skip consent
+      setShowConsent(false);
+      setConsentGiven(true);
       resumeTest(resumeId);
     } else if (consentGiven) {
       // Start new test
@@ -521,13 +523,25 @@ const Test = () => {
         return answered.length > 0 ? (correctCount / answered.length) * 100 : 0;
       });
 
+      // Get test start time and calculate duration
+      const { data: testData } = await supabase
+        .from("tests")
+        .select("start_time")
+        .eq("id", testId)
+        .single();
+      
+      const endTime = new Date();
+      const startTime = new Date(testData?.start_time);
+      const durationSeconds = Math.floor((endTime.getTime() - startTime.getTime()) / 1000);
+
       const { error } = await supabase
         .from("tests")
         .update({
           answers: JSON.stringify(answers),
           scores: JSON.stringify(scores),
           completed: true,
-          end_time: new Date().toISOString(),
+          end_time: endTime.toISOString(),
+          test_duration_seconds: durationSeconds,
         })
         .eq("id", testId);
 
@@ -612,6 +626,16 @@ const Test = () => {
     <div className="min-h-screen animate-fade-in">
       <Navigation isAuthenticated={true} />
       
+      {/* Fixed Timer in Top-Right Corner */}
+      <div className="fixed top-4 right-4 z-50 bg-background/95 backdrop-blur-sm border border-border rounded-lg px-4 py-2 shadow-lg">
+        <div className="flex items-center gap-2">
+          <Clock className="h-5 w-5 text-primary animate-pulse" />
+          <span className="text-lg font-mono tabular-nums font-semibold">
+            {formatTime(timeRemaining)}
+          </span>
+        </div>
+      </div>
+      
       <main className="container py-8 max-w-4xl">
         <div className="mb-8">
           <div className="flex justify-between items-center mb-6">
@@ -632,10 +656,6 @@ const Test = () => {
                 <Pause className="h-4 w-4 mr-2" />
                 Pause
               </Button>
-              <div className="flex items-center gap-3 text-muted-foreground">
-                <Clock className="h-6 w-6" />
-                <span className="font-mono text-xl font-semibold tabular-nums">{formatTime(timeRemaining)}</span>
-              </div>
             </div>
           </div>
           <Progress value={progress} className="h-3" />

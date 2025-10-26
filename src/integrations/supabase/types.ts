@@ -49,10 +49,14 @@ export type Database = {
           id: string
           overall_score: number
           pdf_url: string | null
+          percentile_rank: number | null
           report_generated_at: string | null
           share_code: string
+          test_completion_date: string | null
+          test_duration_seconds: number | null
           test_id: string
           user_id: string
+          user_name: string | null
         }
         Insert: {
           created_at?: string
@@ -61,10 +65,14 @@ export type Database = {
           id?: string
           overall_score: number
           pdf_url?: string | null
+          percentile_rank?: number | null
           report_generated_at?: string | null
           share_code: string
+          test_completion_date?: string | null
+          test_duration_seconds?: number | null
           test_id: string
           user_id: string
+          user_name?: string | null
         }
         Update: {
           created_at?: string
@@ -73,10 +81,14 @@ export type Database = {
           id?: string
           overall_score?: number
           pdf_url?: string | null
+          percentile_rank?: number | null
           report_generated_at?: string | null
           share_code?: string
+          test_completion_date?: string | null
+          test_duration_seconds?: number | null
           test_id?: string
           user_id?: string
+          user_name?: string | null
         }
         Relationships: [
           {
@@ -105,6 +117,7 @@ export type Database = {
           paused: boolean | null
           scores: Json
           start_time: string
+          test_duration_seconds: number | null
           time_remaining: number | null
           user_id: string
         }
@@ -124,6 +137,7 @@ export type Database = {
           paused?: boolean | null
           scores?: Json
           start_time?: string
+          test_duration_seconds?: number | null
           time_remaining?: number | null
           user_id: string
         }
@@ -143,6 +157,7 @@ export type Database = {
           paused?: boolean | null
           scores?: Json
           start_time?: string
+          test_duration_seconds?: number | null
           time_remaining?: number | null
           user_id?: string
         }
@@ -174,6 +189,7 @@ export type Database = {
       [_ in never]: never
     }
     Functions: {
+      calculate_percentile: { Args: { user_score: number }; Returns: number }
       has_role: {
         Args: {
           _role: Database["public"]["Enums"]["app_role"]

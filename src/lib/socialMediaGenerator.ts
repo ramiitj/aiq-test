@@ -4,6 +4,7 @@ interface SocialMediaImageData {
   verificationCode: string;
   dimensions: Array<{ name: string; score: number }>;
   verificationUrl: string;
+  percentile?: number | null;
 }
 
 export async function generateSocialMediaImage(data: SocialMediaImageData): Promise<Blob> {
@@ -120,6 +121,14 @@ export async function generateSocialMediaImage(data: SocialMediaImageData): Prom
     ctx.fillStyle = 'rgba(255, 255, 255, 0.8)';
     ctx.textAlign = 'center';
     ctx.fillText(`+ ${remainingCount} more dimensions`, 600, 515);
+  }
+
+  // Draw percentile if provided
+  if (data.percentile !== null && data.percentile !== undefined) {
+    ctx.font = '600 18px Inter, system-ui, sans-serif';
+    ctx.fillStyle = 'rgba(255, 255, 255, 0.95)';
+    ctx.textAlign = 'center';
+    ctx.fillText(`Top ${(100 - data.percentile).toFixed(0)}% • ${data.percentile.toFixed(1)}th Percentile`, 600, 540);
   }
 
   // Draw verification section

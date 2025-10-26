@@ -12,7 +12,10 @@ export async function generatePDFReport(
   dimensionScores: DimensionScore[],
   verificationCode: string,
   issueDate: Date,
-  expiryDate: Date
+  expiryDate: Date,
+  userName?: string,
+  testDurationSeconds?: number,
+  percentileRank?: number | null
 ): Promise<Blob> {
   const doc = new jsPDF({
     orientation: 'portrait',
@@ -57,12 +60,27 @@ export async function generatePDFReport(
   doc.setFont('helvetica', 'normal');
   doc.text(`Verification Code: ${verificationCode}`, pageWidth / 2, 45, { align: 'center' });
 
-  // Issue and expiry dates
+  // User name in bold
+  if (userName) {
+    doc.setTextColor(0, 0, 0);
+    doc.setFontSize(14);
+    doc.setFont('helvetica', 'bold');
+    doc.text(userName, pageWidth / 2, 55, { align: 'center' });
+  }
+
+  // Issue and expiry dates with test duration
   doc.setTextColor(0, 0, 0);
   doc.setFontSize(9);
   doc.setFont('helvetica', 'normal');
-  doc.text(`Issued: ${issueDate.toLocaleDateString()}`, margin, 68);
-  doc.text(`Valid Until: ${expiryDate.toLocaleDateString()}`, pageWidth - margin, 68, { align: 'right' });
+  doc.text(`Issued: ${issueDate.toLocaleDateString()}`, margin, userName ? 68 : 68);
+  doc.text(`Valid Until: ${expiryDate.toLocaleDateString()}`, pageWidth - margin, userName ? 68 : 68, { align: 'right' });
+  
+  if (testDurationSeconds) {
+    const minutes = Math.floor(testDurationSeconds / 60);
+    const seconds = testDurationSeconds % 60;
+    const durationText = `Duration: ${minutes}m ${seconds}s`;
+    doc.text(durationText, pageWidth / 2, userName ? 75 : 75, { align: 'center' });
+  }
 
   // Overall Score Circle
   const centerX = pageWidth / 2;
@@ -89,29 +107,44 @@ export async function generatePDFReport(
   doc.setTextColor(0, 0, 0);
   doc.setFontSize(16);
   doc.setFont('helvetica', 'bold');
-  doc.text(`${level} AI Collaborator`, centerX, centerY + radius + 15, { align: 'center' });
+  const yOffset = userName && testDurationSeconds ? 10 : 0;
+  doc.text(`${level} AI Collaborator`, centerX, centerY + radius + 15 + yOffset, { align: 'center' });
+
+  // Percentile Ranking
+  if (percentileRank !== null && percentileRank !== undefined) {
+    doc.setFontSize(12);
+    doc.setFont('helvetica', 'normal');
+    doc.setTextColor(59, 130, 246);
+    doc.text(`Top ${(100 - percentileRank).toFixed(0)}% of test-takers`, centerX, centerY + radius + 25 + yOffset, { align: 'center' });
+    
+    doc.setFontSize(10);
+    doc.setTextColor(80, 80, 80);
+    doc.text(`${percentileRank.toFixed(1)}th Percentile`, centerX, centerY + radius + 33 + yOffset, { align: 'center' });
+  }
 
   // Interpretation
   doc.setFontSize(10);
   doc.setFont('helvetica', 'normal');
   doc.setTextColor(60, 60, 60);
+  const interpretationY = percentileRank !== null ? 180 : 160;
   const interpretation = `This score represents ${level.toLowerCase()} proficiency in AI collaboration across eight research-validated dimensions. The assessment utilizes adaptive testing with Item Response Theory (IRT) to provide precise measurement of real-world AI collaboration capabilities.`;
   
   const interpretationLines = doc.splitTextToSize(interpretation, pageWidth - 2 * margin);
-  doc.text(interpretationLines, centerX, 160, { align: 'center', maxWidth: pageWidth - 2 * margin });
+  doc.text(interpretationLines, centerX, interpretationY, { align: 'center', maxWidth: pageWidth - 2 * margin });
 
   // Top 3 Dimensions
   const topDimensions = [...dimensionScores].sort((a, b) => b.score - a.score).slice(0, 3);
   
+  const topDimY = percentileRank !== null ? 205 : 185;
   doc.setFontSize(13);
   doc.setFont('helvetica', 'bold');
   doc.setTextColor(0, 0, 0);
-  doc.text('Top Strengths', margin, 185);
+  doc.text('Top Strengths', margin, topDimY);
 
   doc.setFontSize(10);
   doc.setFont('helvetica', 'normal');
   topDimensions.forEach((dim, idx) => {
-    doc.text(`• ${dim.name}: ${dim.score.toFixed(1)}`, margin + 3, 193 + idx * 7);
+    doc.text(`• ${dim.name}: ${dim.score.toFixed(1)}`, margin + 3, topDimY + 8 + idx * 7);
   });
 
   addPageNumber(1);
