@@ -7,6 +7,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Progress } from "@/components/ui/progress";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Label } from "@/components/ui/label";
+import { Checkbox } from "@/components/ui/checkbox";
 import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
 import { Clock, ChevronRight } from "lucide-react";
@@ -94,50 +95,82 @@ const Test = () => {
       // Accept multiple shapes: {dimensions: [...]}, [...], or { name: {items: [...]}, ... }
       let dimsRaw: any[] = [];
       if (Array.isArray(parsed)) {
-        dimsRaw = parsed;
-      } else if (Array.isArray(parsed?.dimensions)) {
-        dimsRaw = parsed.dimensions;
-      } else if (parsed && typeof parsed === 'object') {
-        dimsRaw = Object.keys(parsed).map((name) => {
-          const v = (parsed as any)[name];
-          const items = Array.isArray(v?.items) ? v.items : Array.isArray(v) ? v : [];
-          return { name, items };
-        });
-      }
+        // Accept multiple shapes: {dimensions: [...]}, [...], single dimension { id/name + items: [...] }, or { name: {items: [...]}, ... }
+        let dimsRaw: any[] = [];
+        if (Array.isArray(parsed)) {
+          dimsRaw = parsed;
+        } else if (Array.isArray(parsed?.dimensions)) {
+          dimsRaw = parsed.dimensions;
+        } else if (parsed && typeof parsed === 'object' && Array.isArray((parsed as any).items)) {
+          // Single-dimension object
+          dimsRaw = [{ name: (parsed as any).name || (parsed as any).id || 'Dimension 1', items: (parsed as any).items }];
+        } else if (parsed && typeof parsed === 'object') {
+          // Object map of dimensionName -> { items: [...] } or -> [...]
+          dimsRaw = Object.entries(parsed as Record<string, any>)
+            .map(([name, v]) => {
+              const items = Array.isArray(v?.items) ? v.items : Array.isArray(v) ? v : [];
+              return { name, items };
+            })
+            .filter((d) => Array.isArray(d.items) && d.items.length > 0);
+        }
 
-      if (!dimsRaw.length) {
-        throw new Error("Invalid test format: expected a 'dimensions' array or an array of dimensions.");
-      }
+        if (!dimsRaw.length) {
+          throw new Error("Invalid test format: expected dimensions with items.");
+        }
 
       const normalized: Dimension[] = dimsRaw.map((d: any, di: number) => ({
         name: d.name || `Dimension ${di + 1}`,
-        items: (d.items || []).map((it: any, ii: number) => ({
-          id: String(it.id ?? `${di}_${ii}`),
-          difficulty: it.difficulty,
-          question: it.question ?? '',
-          type: it.type ?? (Array.isArray(it.options) ? 'mcq' : 'short'),
-          options: Array.isArray(it.options)
-            ? it.options.map((op: any) => {
+        items: (d.items || []).map((it: any, ii: number) => {
+          // Normalize options into { value, label }
+          const options = Array.isArray(it.options)
+            ? it.options.map((op: any, oi: number) => {
                 if (typeof op === 'string') {
                   const val = op.includes(':') ? op.split(':')[0].trim() : String(op).trim();
                   return { value: val, label: op };
                 }
-                const valueRaw = (op?.value !== undefined && op?.value !== null) ? op.value : 
-                                 (op?.key !== undefined && op?.key !== null) ? op.key :
-                                 (op?.label !== undefined && op?.label !== null) ? op.label :
-                                 (op?.text !== undefined && op?.text !== null) ? op.text : '';
-                const value = String(valueRaw !== '' ? valueRaw : `${ii}`);
-                const labelRaw = (op?.label !== undefined && op?.label !== null) ? op.label :
-                                 (op?.text !== undefined && op?.text !== null) ? op.text :
-                                 (op?.value !== undefined && op?.value !== null) ? op.value :
-                                 (op?.key !== undefined && op?.key !== null) ? op.key : '';
-                const label = String(labelRaw !== '' ? labelRaw : value);
+                const valueRaw = (op?.value ?? op?.key ?? op?.label ?? op?.text ?? `${oi}`);
+                const value = String(valueRaw);
+                const labelRaw = (op?.label ?? op?.text ?? op?.value ?? op?.key ?? value);
+                const label = String(labelRaw);
                 return { value, label };
               })
-            : undefined,
-          correct: it.correct,
-          rubric: it.rubric,
-        })),
+            : undefined;
+
+          // Normalize type
+          const rawType = String(it.type || '').toLowerCase();
+          let type: string = 'short';
+          if (rawType.includes('multiple-choice-multiple') || (rawType.includes('multiple') && !rawType.includes('single'))) {
+            type = 'multi';
+          } else if (rawType.includes('multiple-choice') || Array.isArray(it.options)) {
+            type = 'mcq';
+          }
+
+          // Normalize correct answer(s)
+          let correct: string | undefined = undefined;
+          if (it.correct !== undefined && it.correct !== null) {
+            correct = String(it.correct);
+          } else if (typeof it.correctAnswer === 'number' && Array.isArray(options)) {
+            const opt = options[it.correctAnswer];
+            if (opt) correct = String(opt.value);
+          } else if (Array.isArray(it.correctAnswers) && Array.isArray(options)) {
+            const vals = it.correctAnswers
+              .map((idx: number) => options[idx]?.value)
+              .filter(Boolean)
+              .map(String)
+              .sort();
+            if (vals.length) correct = vals.join('||');
+          }
+
+          return {
+            id: String(it.id ?? `${di}_${ii}`),
+            difficulty: it.difficulty,
+            question: it.question ?? '',
+            type,
+            options,
+            correct,
+            rubric: it.explanation ?? it.rubric,
+          } as TestItem;
+        }),
       }));
 
       setDimensions(normalized);
@@ -151,8 +184,13 @@ const Test = () => {
       }));
       setDimStates(initStates);
 
-      // Choose first question for first dimension (prefer medium)
-      const firstItems = normalized[0]?.items || [];
+      // Choose first dimension with items and first question (prefer medium)
+      const firstDimIdx = normalized.findIndex((d: any) => Array.isArray(d.items) && d.items.length > 0);
+      if (firstDimIdx === -1) {
+        throw new Error('No items found in any dimension.');
+      }
+      setCurrentDimension(firstDimIdx);
+      const firstItems = normalized[firstDimIdx].items || [];
       const findIdx = (target: 'easy' | 'medium' | 'hard') => firstItems.findIndex((it: any) => mapDiff(it.difficulty) === target);
       const firstIdx = (findIdx('medium') !== -1 ? findIdx('medium') : (findIdx('easy') !== -1 ? findIdx('easy') : findIdx('hard')));
       setCurrentItem(firstIdx >= 0 ? firstIdx : 0);
@@ -385,6 +423,32 @@ const Test = () => {
                     })}
                   </div>
                 </RadioGroup>
+              ) : currentQuestion.type === "multi" ? (
+                <div className="space-y-3">
+                  {currentQuestion.options?.map((option: any, index: number) => {
+                    const optVal = typeof option === 'string' ? (option.includes(':') ? option.split(':')[0].trim() : option.trim()) : option.value;
+                    const optLabel = typeof option === 'string' ? option : option.label;
+                    const selected = (answers[currentQuestion.id] || "").split("||").filter(Boolean);
+                    const isChecked = selected.includes(optVal);
+                    return (
+                      <div key={index} className="flex items-center space-x-2">
+                        <Checkbox
+                          id={`option-${index}`}
+                          checked={isChecked}
+                          onCheckedChange={(checked) => {
+                            const next = new Set(selected);
+                            if (checked === true) next.add(optVal); else next.delete(optVal);
+                            const joined = Array.from(next).map(String).sort().join("||");
+                            setAnswers({ ...answers, [currentQuestion.id]: joined });
+                          }}
+                        />
+                        <Label htmlFor={`option-${index}`} className="cursor-pointer flex-1">
+                          {optLabel}
+                        </Label>
+                      </div>
+                    );
+                  })}
+                </div>
               ) : (
                 <Textarea
                   placeholder="Type your answer here..."
