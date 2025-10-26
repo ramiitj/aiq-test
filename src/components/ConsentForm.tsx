@@ -58,8 +58,7 @@ export const ConsentForm = ({ open, onConsent, onDecline }: ConsentFormProps) =>
               <h3 className="font-semibold text-base mb-2">Confidentiality and Data Use</h3>
               <p className="text-muted-foreground mb-2">
                 All data collected will be completely anonymized. We will collect your test responses, 
-                timing data, and performance patterns. We will NOT collect personally identifiable 
-                information such as your name, contact information, employment details, or IP addresses.
+                timing data, and performance patterns.
               </p>
               <p className="text-muted-foreground">
                 Anonymized data will be used for psychometric validation, research on AI collaboration 
