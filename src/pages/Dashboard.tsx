@@ -185,11 +185,18 @@ const Dashboard = () => {
             ) : (
               <div className="space-y-3">
                 {tests.map((test) => {
-                  const overallScore = test.scores 
-                    ? (typeof test.scores === 'string' ? JSON.parse(test.scores) : test.scores)
-                        .reduce((a: number, b: number) => a + b, 0) / 
-                      (typeof test.scores === 'string' ? JSON.parse(test.scores) : test.scores).length
-                    : 0;
+                  // Safely parse and calculate overall score
+                  let overallScore = 0;
+                  if (test.scores && test.completed) {
+                    try {
+                      const parsedScores = typeof test.scores === 'string' ? JSON.parse(test.scores) : test.scores;
+                      if (Array.isArray(parsedScores) && parsedScores.length > 0) {
+                        overallScore = parsedScores.reduce((a: number, b: number) => a + b, 0) / parsedScores.length;
+                      }
+                    } catch (e) {
+                      console.error('Error parsing scores:', e);
+                    }
+                  }
                   
                   return (
                     <div
