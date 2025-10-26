@@ -59,10 +59,10 @@ const Index = () => {
           <div className="inline-block p-3 bg-primary/10 rounded-full mb-6">
             <Brain className="h-12 w-12 text-primary" />
           </div>
-          <h1 className="text-5xl lg:text-6xl font-extrabold mb-6 tracking-tight leading-[1.1]">
+          <h1 className="text-4xl lg:text-5xl font-extrabold mb-6 tracking-tight leading-[1.1]">
             Measure Your <span className="text-primary">AI Collaboration</span> Intelligence
           </h1>
-          <p className="text-xl lg:text-2xl text-muted-foreground mb-8 max-w-3xl mx-auto leading-relaxed font-medium">
+          <p className="text-lg lg:text-xl text-muted-foreground mb-8 max-w-3xl mx-auto leading-relaxed font-medium">
             Take the research-validated Artificial Intelligence Quotient (AIQ) test to assess 
             your ability to collaborate effectively with AI systems across 8 key dimensions.
           </p>
@@ -91,7 +91,7 @@ const Index = () => {
         {/* Features Section */}
         <section className="bg-secondary/30 py-20">
           <div className="container max-w-6xl">
-            <h2 className="text-4xl lg:text-5xl font-bold text-center mb-16 tracking-tight">
+            <h2 className="text-3xl lg:text-4xl font-bold text-center mb-16 tracking-tight">
               Why Take the AIQ Test?
             </h2>
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">

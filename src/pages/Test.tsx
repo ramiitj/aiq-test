@@ -604,7 +604,7 @@ const Test = () => {
         <div className="mb-8">
           <div className="flex justify-between items-center mb-6">
             <div>
-              <h2 className="text-3xl lg:text-4xl font-bold tracking-tight">
+              <h2 className="text-2xl lg:text-3xl font-bold tracking-tight">
                 Section {currentDimension + 1} of 8
               </h2>
               <p className="text-base text-muted-foreground mt-1 font-medium">
@@ -632,7 +632,7 @@ const Test = () => {
         <Card className="shadow-elegant">
           <CardContent className="pt-8 pb-8 space-y-8">
             <div>
-              <p className="text-xl lg:text-2xl font-semibold mb-8 leading-relaxed">{currentQuestion.question}</p>
+              <p className="text-lg lg:text-xl font-semibold mb-8 leading-relaxed">{currentQuestion.question}</p>
               
               {currentQuestion.type === "multiple-choice-multiple" ? (
                 <div className="space-y-4">

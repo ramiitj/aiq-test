@@ -121,7 +121,7 @@ const Dashboard = () => {
       
       <main className="container py-8 max-w-6xl">
         <div className="mb-12">
-          <h1 className="text-4xl lg:text-5xl font-bold mb-4 tracking-tight">
+          <h1 className="text-3xl lg:text-4xl font-bold mb-4 tracking-tight">
             Welcome back, {profile?.name || "User"}!
           </h1>
           <p className="text-lg text-muted-foreground font-medium">

@@ -261,7 +261,7 @@ const Results = () => {
       <main className="container py-8 max-w-4xl">
         <div className="text-center mb-12">
           <Trophy className="h-20 w-20 text-primary mx-auto mb-6" />
-          <h1 className="text-5xl lg:text-6xl font-extrabold mb-4 tracking-tight">Your AIQ Results</h1>
+          <h1 className="text-4xl lg:text-5xl font-extrabold mb-4 tracking-tight">Your AIQ Results</h1>
           <p className="text-lg text-muted-foreground font-medium">
             Test completed on {new Date(result.created_at).toLocaleDateString()}
           </p>
@@ -270,7 +270,7 @@ const Results = () => {
         <Card className="mb-10 shadow-elegant">
           <CardHeader className="text-center pb-6">
             <CardTitle className="text-2xl lg:text-3xl font-semibold mb-2">Overall AIQ Score</CardTitle>
-            <div className="text-6xl lg:text-7xl font-bold text-primary tabular-nums tracking-tight">
+            <div className="text-5xl lg:text-6xl font-bold text-primary tabular-nums tracking-tight">
               {overallScore.toFixed(1)}
             </div>
           </CardHeader>
