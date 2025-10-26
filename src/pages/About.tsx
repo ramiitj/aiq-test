@@ -3,6 +3,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Brain, Target, Lightbulb, Shield, Users, Zap } from "lucide-react";
 import { useEffect, useState } from "react";
 import { supabase } from "@/integrations/supabase/client";
+import { checkUserRole } from "@/lib/roleUtils";
 
 const About = () => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -17,13 +18,8 @@ const About = () => {
     setIsAuthenticated(!!session);
     
     if (session) {
-      const { data } = await supabase
-        .from("profiles")
-        .select("is_admin")
-        .eq("user_id", session.user.id)
-        .single();
-      
-      setIsAdmin(data?.is_admin || false);
+      const adminStatus = await checkUserRole(session.user.id);
+      setIsAdmin(adminStatus);
     }
   };
 

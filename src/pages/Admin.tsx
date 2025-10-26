@@ -8,6 +8,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { useToast } from "@/hooks/use-toast";
 import { Upload, BarChart3, Users } from "lucide-react";
+import { checkUserRole } from "@/lib/roleUtils";
 
 const Admin = () => {
   const [isAdmin, setIsAdmin] = useState(false);
@@ -31,15 +32,9 @@ const Admin = () => {
     }
 
     try {
-      const { data, error } = await supabase
-        .from("profiles")
-        .select("is_admin")
-        .eq("user_id", session.user.id)
-        .single();
+      const isAdmin = await checkUserRole(session.user.id);
 
-      if (error) throw error;
-
-      if (!data.is_admin) {
+      if (!isAdmin) {
         toast({
           title: "Access Denied",
           description: "You don't have admin privileges.",

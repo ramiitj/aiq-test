@@ -20,7 +20,6 @@ const Auth = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [name, setName] = useState("");
-  const [signupCode, setSignupCode] = useState("");
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
   const { toast } = useToast();
@@ -86,7 +85,6 @@ const Auth = () => {
             emailRedirectTo: `${window.location.origin}/dashboard`,
             data: {
               name: name.trim(),
-              signup_code: signupCode.trim(),
             },
           },
         });
@@ -181,23 +179,6 @@ const Auth = () => {
                 required
               />
             </div>
-            {!isLogin && (
-              <div className="space-y-2">
-                <Label htmlFor="signupCode">
-                  Admin Code <span className="text-muted-foreground text-sm">(Optional)</span>
-                </Label>
-                <Input
-                  id="signupCode"
-                  type="text"
-                  placeholder="ADMIN123"
-                  value={signupCode}
-                  onChange={(e) => setSignupCode(e.target.value)}
-                />
-                <p className="text-xs text-muted-foreground">
-                  Enter "ADMIN123" for admin access
-                </p>
-              </div>
-            )}
             <Button type="submit" className="w-full" disabled={loading}>
               {loading ? "Loading..." : isLogin ? "Sign In" : "Sign Up"}
             </Button>

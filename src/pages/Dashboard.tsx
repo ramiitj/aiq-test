@@ -6,10 +6,10 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { PlayCircle, Trophy, User as UserIcon, Play, X } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
+import { checkUserRole } from "@/lib/roleUtils";
 
 interface Profile {
   name: string | null;
-  is_admin: boolean;
   region: string;
 }
 
@@ -27,6 +27,7 @@ const Dashboard = () => {
   const [profile, setProfile] = useState<Profile | null>(null);
   const [tests, setTests] = useState<Test[]>([]);
   const [loading, setLoading] = useState(true);
+  const [isAdmin, setIsAdmin] = useState(false);
   const navigate = useNavigate();
   const { toast } = useToast();
 
@@ -45,12 +46,16 @@ const Dashboard = () => {
     try {
       const { data: profileData, error: profileError } = await supabase
         .from("profiles")
-        .select("name, is_admin, region")
+        .select("name, region")
         .eq("user_id", session.user.id)
         .single();
 
       if (profileError) throw profileError;
       setProfile(profileData);
+
+      // Check admin role
+      const adminStatus = await checkUserRole(session.user.id);
+      setIsAdmin(adminStatus);
 
       const { data: testsData, error: testsError } = await supabase
         .from("tests")
@@ -107,7 +112,7 @@ const Dashboard = () => {
   if (loading) {
     return (
       <div className="min-h-screen">
-        <Navigation isAuthenticated={true} isAdmin={profile?.is_admin} />
+        <Navigation isAuthenticated={true} isAdmin={isAdmin} />
         <div className="container py-8">
           <div className="text-center">Loading...</div>
         </div>
@@ -117,7 +122,7 @@ const Dashboard = () => {
 
   return (
     <div className="min-h-screen animate-fade-in">
-      <Navigation isAuthenticated={true} isAdmin={profile?.is_admin} />
+      <Navigation isAuthenticated={true} isAdmin={isAdmin} />
       
       <main className="container py-8 max-w-6xl">
         <div className="mb-12">
@@ -163,7 +168,7 @@ const Dashboard = () => {
               <div className="flex justify-between text-base">
                 <span className="text-muted-foreground">Role:</span>
                 <span className="font-semibold">
-                  {profile?.is_admin ? "Admin" : "User"}
+                  {isAdmin ? "Admin" : "User"}
                 </span>
               </div>
               <div className="flex justify-between text-base">
