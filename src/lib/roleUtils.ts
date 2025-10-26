@@ -1,4 +1,5 @@
 import { supabase } from "@/integrations/supabase/client";
+import { logError } from "./logger";
 
 export const checkUserRole = async (userId: string): Promise<boolean> => {
   try {
@@ -10,13 +11,13 @@ export const checkUserRole = async (userId: string): Promise<boolean> => {
       .single();
 
     if (error && error.code !== 'PGRST116') { // PGRST116 is "not found" error
-      console.error("Error checking user role:", error);
+      logError("Error checking user role:", error);
       return false;
     }
 
     return !!data;
   } catch (error) {
-    console.error("Error checking user role:", error);
+    logError("Error checking user role:", error);
     return false;
   }
 };

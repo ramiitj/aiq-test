@@ -4,9 +4,20 @@ import { supabase } from "@/integrations/supabase/client";
 import { Navigation } from "@/components/Navigation";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { PlayCircle, Trophy, User as UserIcon, Play, X } from "lucide-react";
+import { PlayCircle, Trophy, User as UserIcon, Play, X, Download, Trash2 } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import { checkUserRole } from "@/lib/roleUtils";
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+  AlertDialogTrigger,
+} from "@/components/ui/alert-dialog";
 
 interface Profile {
   name: string | null;
@@ -103,6 +114,80 @@ const Dashboard = () => {
     } catch (error: any) {
       toast({
         title: "Error",
+        description: error.message,
+        variant: "destructive",
+      });
+    }
+  };
+
+  const handleLogout = async () => {
+    await supabase.auth.signOut();
+    navigate("/");
+  };
+
+  const handleExportData = async () => {
+    try {
+      const { data: { session } } = await supabase.auth.getSession();
+      if (!session) return;
+
+      const [profileRes, testsRes, resultsRes] = await Promise.all([
+        supabase.from("profiles").select("*").eq("user_id", session.user.id).single(),
+        supabase.from("tests").select("*").eq("user_id", session.user.id),
+        supabase.from("public_results").select("*").eq("user_id", session.user.id),
+      ]);
+
+      const exportData = {
+        exported_at: new Date().toISOString(),
+        user_id: session.user.id,
+        email: session.user.email,
+        profile: profileRes.data,
+        tests: testsRes.data,
+        shared_results: resultsRes.data,
+      };
+
+      const blob = new Blob([JSON.stringify(exportData, null, 2)], { type: 'application/json' });
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement('a');
+      link.href = url;
+      link.download = `aiq-data-export-${new Date().toISOString().split('T')[0]}.json`;
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      URL.revokeObjectURL(url);
+
+      toast({
+        title: "Data Exported",
+        description: "Your data has been downloaded as a JSON file.",
+      });
+    } catch (error: any) {
+      toast({
+        title: "Export Failed",
+        description: error.message,
+        variant: "destructive",
+      });
+    }
+  };
+
+  const handleDeleteAccount = async () => {
+    try {
+      const { data: { session } } = await supabase.auth.getSession();
+      if (!session) return;
+
+      await supabase.from("public_results").delete().eq("user_id", session.user.id);
+      await supabase.from("tests").delete().eq("user_id", session.user.id);
+      await supabase.from("profiles").delete().eq("user_id", session.user.id);
+
+      await supabase.auth.signOut();
+      
+      toast({
+        title: "Account Deleted",
+        description: "All your data has been permanently deleted.",
+      });
+
+      navigate("/");
+    } catch (error: any) {
+      toast({
+        title: "Deletion Failed",
         description: error.message,
         variant: "destructive",
       });
@@ -280,6 +365,76 @@ const Dashboard = () => {
                 ))}
               </div>
             )}
+          </CardContent>
+        </Card>
+
+        {/* GDPR Data Management */}
+        <Card className="shadow-elegant">
+          <CardHeader>
+            <CardTitle className="text-xl">Data Management</CardTitle>
+            <CardDescription>
+              Export or delete your data in compliance with GDPR
+            </CardDescription>
+          </CardHeader>
+          <CardContent className="space-y-4">
+            <div className="flex flex-col gap-3">
+              <Button 
+                onClick={handleExportData}
+                variant="outline"
+                className="w-full justify-start"
+              >
+                <Download className="mr-2 h-4 w-4" />
+                Export All My Data (JSON)
+              </Button>
+              
+              <AlertDialog>
+                <AlertDialogTrigger asChild>
+                  <Button 
+                    variant="destructive"
+                    className="w-full justify-start"
+                  >
+                    <Trash2 className="mr-2 h-4 w-4" />
+                    Delete My Account
+                  </Button>
+                </AlertDialogTrigger>
+                <AlertDialogContent>
+                  <AlertDialogHeader>
+                    <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
+                    <AlertDialogDescription className="space-y-2">
+                      <p>This action cannot be undone. This will permanently delete:</p>
+                      <ul className="list-disc pl-6">
+                        <li>Your profile information</li>
+                        <li>All test results and history</li>
+                        <li>All shared certificates</li>
+                        <li>Your account and login credentials</li>
+                      </ul>
+                      <p className="font-semibold mt-4">We recommend exporting your data first.</p>
+                    </AlertDialogDescription>
+                  </AlertDialogHeader>
+                  <AlertDialogFooter>
+                    <AlertDialogCancel>Cancel</AlertDialogCancel>
+                    <AlertDialogAction 
+                      onClick={handleDeleteAccount}
+                      className="bg-destructive text-destructive-foreground hover:bg-destructive/90"
+                    >
+                      Delete Everything
+                    </AlertDialogAction>
+                  </AlertDialogFooter>
+                </AlertDialogContent>
+              </AlertDialog>
+
+              <div className="text-xs text-muted-foreground pt-2">
+                <p>Your rights under GDPR:</p>
+                <ul className="list-disc pl-4 mt-1">
+                  <li>Right to access your data</li>
+                  <li>Right to data portability</li>
+                  <li>Right to erasure ("right to be forgotten")</li>
+                </ul>
+                <a href="/privacy" className="text-primary underline hover:no-underline mt-2 inline-block">
+                  View Privacy Policy
+                </a>
+              </div>
+            </div>
           </CardContent>
         </Card>
       </main>

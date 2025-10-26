@@ -69,7 +69,7 @@ export function ShareModal({
       const url = URL.createObjectURL(blob);
       setImageUrl(url);
     } catch (error) {
-      console.error("Failed to generate image:", error);
+      // Error already shown to user via toast
       toast({
         title: "Error",
         description: "Failed to generate share image. Please try again.",

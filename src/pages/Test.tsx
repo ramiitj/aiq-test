@@ -12,6 +12,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { ConsentForm } from "@/components/ConsentForm";
 import { useToast } from "@/hooks/use-toast";
 import { Clock, ChevronRight, Pause } from "lucide-react";
+import { validateAnswers } from "@/lib/validation";
 
 interface TestItem {
   id: string | number;
@@ -492,6 +493,17 @@ const Test = () => {
     if (!testId) return;
 
     try {
+      // Validate all answers before submission
+      const validation = validateAnswers(answers);
+      if (!validation.success) {
+        toast({
+          title: "Validation Error",
+          description: validation.error || "Please check your answers and try again.",
+          variant: "destructive",
+        });
+        return;
+      }
+
       const scores = dimensions.map((dim, di) => {
         const state = dimStates[di];
         const answered = Array.from(state.used).map(id => dim.items.find(it => String(it.id) === id)).filter(Boolean);

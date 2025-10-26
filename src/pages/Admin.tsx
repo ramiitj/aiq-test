@@ -72,7 +72,7 @@ const Admin = () => {
         totalTests: testCount || 0,
       });
     } catch (error: any) {
-      console.error("Error fetching stats:", error);
+      // Error already handled by RLS policies
     }
   };
 

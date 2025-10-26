@@ -32,21 +32,27 @@ const Verify = () => {
   const verifyCode = async (code: string) => {
     setLoading(true);
     try {
-      // Use shared_results view which excludes user_id for privacy
+      // Query public_results with share code and expiry validation
+      // RLS policy allows anonymous access for non-expired results
       const { data, error } = await supabase
-        .from("shared_results")
-        .select("created_at, overall_score, expires_at")
+        .from("public_results")
+        .select("id, test_id, overall_score, created_at, expires_at")
         .eq("share_code", code)
+        .gt("expires_at", new Date().toISOString())
         .maybeSingle();
 
       if (error) throw error;
 
       if (!data) {
         setResult({ valid: false });
+        toast({
+          title: "Invalid or Expired Code",
+          description: "The verification code you entered is not valid or has expired.",
+          variant: "destructive",
+        });
         return;
       }
 
-      // No need to check expiry - the view already filters expired results
       const expiryDate = new Date(data.expires_at);
 
       // Determine score range and level (privacy-preserving)

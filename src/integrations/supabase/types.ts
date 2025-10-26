@@ -171,50 +171,7 @@ export type Database = {
       }
     }
     Views: {
-      shared_results: {
-        Row: {
-          created_at: string | null
-          dimension_scores: Json | null
-          expires_at: string | null
-          id: string | null
-          overall_score: number | null
-          pdf_url: string | null
-          report_generated_at: string | null
-          share_code: string | null
-          test_id: string | null
-        }
-        Insert: {
-          created_at?: string | null
-          dimension_scores?: Json | null
-          expires_at?: string | null
-          id?: string | null
-          overall_score?: number | null
-          pdf_url?: string | null
-          report_generated_at?: string | null
-          share_code?: string | null
-          test_id?: string | null
-        }
-        Update: {
-          created_at?: string | null
-          dimension_scores?: Json | null
-          expires_at?: string | null
-          id?: string | null
-          overall_score?: number | null
-          pdf_url?: string | null
-          report_generated_at?: string | null
-          share_code?: string | null
-          test_id?: string | null
-        }
-        Relationships: [
-          {
-            foreignKeyName: "public_results_test_id_fkey"
-            columns: ["test_id"]
-            isOneToOne: false
-            referencedRelation: "tests"
-            referencedColumns: ["id"]
-          },
-        ]
-      }
+      [_ in never]: never
     }
     Functions: {
       has_role: {

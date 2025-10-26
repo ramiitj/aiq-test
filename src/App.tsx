@@ -11,6 +11,7 @@ import Test from "./pages/Test";
 import Results from "./pages/Results";
 import Admin from "./pages/Admin";
 import Verify from "./pages/Verify";
+import Privacy from "./pages/Privacy";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -30,6 +31,7 @@ const App = () => (
           <Route path="/results/:testId" element={<Results />} />
           <Route path="/admin" element={<Admin />} />
           <Route path="/verify/:code" element={<Verify />} />
+          <Route path="/privacy" element={<Privacy />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
