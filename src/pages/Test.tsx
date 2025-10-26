@@ -92,14 +92,37 @@ const Test = () => {
       const text = await fileData.text();
       const parsed = JSON.parse(text);
 
-      // Accept multiple shapes: array of dimensions, {dimensions: [...]}, single dimension object with items, or object map name->items
+      // Accept multiple shapes: array, {dimensions: [...]}, single dimension with items to split by prefix, or object map
       let dimsRaw: any[] = [];
       if (Array.isArray(parsed)) {
         dimsRaw = parsed;
       } else if (Array.isArray((parsed as any)?.dimensions)) {
         dimsRaw = (parsed as any).dimensions;
       } else if (parsed && typeof parsed === 'object' && Array.isArray((parsed as any).items)) {
-        dimsRaw = [{ name: (parsed as any).name || (parsed as any).id || 'Dimension 1', items: (parsed as any).items }];
+        // Single dimension with mixed items - split by ID prefix
+        const allItems = (parsed as any).items;
+        const grouped = new Map<string, any[]>();
+        
+        allItems.forEach((item: any) => {
+          const id = String(item.id || '');
+          const prefix = id.includes('-') ? id.split('-')[0] : 'MISC';
+          if (!grouped.has(prefix)) grouped.set(prefix, []);
+          grouped.get(prefix)!.push(item);
+        });
+
+        const dimensionNames: Record<string, string> = {
+          'ALC': 'Adaptive Learning & Continuous Improvement',
+          'CEC': 'Critical Evaluation & Calibration',
+          'EJU': 'Ethical Judgment & Use',
+          'ITI': 'Integration & Transformation Intelligence',
+          'CLM': 'Cognitive Load Management',
+          'KOI': 'Knowledge Organization & Insight'
+        };
+
+        dimsRaw = Array.from(grouped.entries()).map(([prefix, items]) => ({
+          name: dimensionNames[prefix] || prefix,
+          items
+        }));
       } else if (parsed && typeof parsed === 'object') {
         dimsRaw = Object.entries(parsed as Record<string, any>)
           .map(([name, v]) => {
@@ -116,6 +139,10 @@ const Test = () => {
       const normalized: Dimension[] = dimsRaw.map((d: any, di: number) => ({
         name: d.name || `Dimension ${di + 1}`,
         items: (d.items || []).map((it: any, ii: number) => {
+          // Clean question text: remove "Select ALL:" or similar patterns
+          let cleanQuestion = String(it.question ?? '').trim();
+          cleanQuestion = cleanQuestion.replace(/\bselect\s+all\s*:?\s*/gi, '').trim();
+
           // Normalize options into { value, label }
           const options = Array.isArray(it.options)
             ? it.options.map((op: any, oi: number) => {
@@ -159,7 +186,7 @@ const Test = () => {
           return {
             id: String(it.id ?? `${di}_${ii}`),
             difficulty: it.difficulty,
-            question: it.question ?? '',
+            question: cleanQuestion,
             type,
             options,
             correct,
