@@ -8,7 +8,7 @@ All colors MUST be HSL.
 
 @layer base {
   :root {
-    /* Premium color system - Deep purple with warm amber accents */
+    /* Minimalist color system - neutral with subtle blue accents */
     --background: 0 0% 100%;
     --foreground: 0 0% 10%;
     
@@ -18,55 +18,47 @@ All colors MUST be HSL.
     --popover: 0 0% 100%;
     --popover-foreground: 0 0% 10%;
     
-    /* Deep purple primary - sophisticated and premium */
-    --primary: 280 60% 50%;
+    /* Subtle blue primary for CTAs and links */
+    --primary: 217 91% 60%;
     --primary-foreground: 0 0% 100%;
-    --primary-glow: 280 60% 65%;
     
-    /* Warm amber for accents and achievements */
-    --secondary: 25 90% 55%;
-    --secondary-foreground: 0 0% 100%;
+    /* Very light gray for secondary elements */
+    --secondary: 0 0% 97%;
+    --secondary-foreground: 0 0% 10%;
     
-    /* Refined grays with subtle warmth */
+    /* Muted grays for less important content */
     --muted: 0 0% 96%;
     --muted-foreground: 0 0% 42%;
     
     /* Accent for highlights */
-    --accent: 280 60% 95%;
-    --accent-foreground: 280 60% 50%;
+    --accent: 217 91% 95%;
+    --accent-foreground: 217 91% 60%;
     
     /* Soft destructive colors */
     --destructive: 0 72% 51%;
     --destructive-foreground: 0 0% 100%;
     
-    /* Emerald success color */
-    --success: 160 70% 45%;
+    /* Success color */
+    --success: 142 71% 45%;
     --success-foreground: 0 0% 100%;
     
-    /* Warm warning color */
+    /* Warning color */
     --warning: 38 92% 50%;
     --warning-foreground: 0 0% 100%;
     
     /* Borders and inputs */
     --border: 0 0% 90%;
     --input: 0 0% 90%;
-    --ring: 280 60% 50%;
+    --ring: 217 91% 60%;
     
-    --radius: 0.75rem;
+    --radius: 0.5rem;
     
-    /* Premium design tokens */
-    --gradient-primary: linear-gradient(135deg, hsl(280 60% 50%), hsl(280 60% 65%));
-    --gradient-secondary: linear-gradient(135deg, hsl(25 90% 55%), hsl(35 90% 60%));
-    --gradient-hero: linear-gradient(135deg, hsl(280 60% 50%), hsl(300 55% 55%));
-    
+    /* Custom design tokens */
     --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
-    --shadow-md: 0 4px 12px -2px rgb(0 0 0 / 0.1);
-    --shadow-lg: 0 20px 25px -5px rgb(0 0 0 / 0.1);
-    --shadow-xl: 0 25px 50px -12px rgb(0 0 0 / 0.15);
-    --shadow-glow: 0 0 40px hsl(280 60% 65% / 0.3);
+    --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+    --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1);
     
     --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    --transition-bounce: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
   }
 
   .dark {
@@ -79,31 +71,30 @@ All colors MUST be HSL.
     --popover: 0 0% 10%;
     --popover-foreground: 0 0% 98%;
     
-    --primary: 280 60% 55%;
+    --primary: 217 91% 60%;
     --primary-foreground: 0 0% 100%;
-    --primary-glow: 280 60% 70%;
     
-    --secondary: 25 90% 60%;
-    --secondary-foreground: 0 0% 100%;
+    --secondary: 0 0% 15%;
+    --secondary-foreground: 0 0% 98%;
     
     --muted: 0 0% 15%;
     --muted-foreground: 0 0% 64%;
     
-    --accent: 280 60% 20%;
-    --accent-foreground: 280 60% 60%;
+    --accent: 217 91% 20%;
+    --accent-foreground: 217 91% 60%;
     
-    --destructive: 0 62% 40%;
+    --destructive: 0 62% 30%;
     --destructive-foreground: 0 0% 98%;
     
-    --success: 160 70% 40%;
+    --success: 142 71% 35%;
     --success-foreground: 0 0% 98%;
     
-    --warning: 38 92% 45%;
+    --warning: 38 92% 40%;
     --warning-foreground: 0 0% 98%;
     
     --border: 0 0% 20%;
     --input: 0 0% 20%;
-    --ring: 280 60% 55%;
+    --ring: 217 91% 60%;
   }
 }
 
@@ -125,38 +116,10 @@ All colors MUST be HSL.
 @layer utilities {
   /* Fade-in animation for page loads */
   .animate-fade-in {
-    animation: fade-in 0.6s ease-out;
+    animation: fade-in 0.5s ease-out;
   }
   
   @keyframes fade-in {
-    from {
-      opacity: 0;
-      transform: translateY(20px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-  
-  /* Scale animation */
-  .animate-scale-in {
-    animation: scale-in 0.4s ease-out;
-  }
-  
-  @keyframes scale-in {
-    from {
-      opacity: 0;
-      transform: scale(0.95);
-    }
-    to {
-      opacity: 1;
-      transform: scale(1);
-    }
-  }
-  
-  /* Count-up animation for numbers */
-  @keyframes count-up {
     from {
       opacity: 0;
       transform: translateY(10px);
@@ -172,58 +135,8 @@ All colors MUST be HSL.
     transition: var(--transition-smooth);
   }
   
-  .transition-bounce {
-    transition: var(--transition-bounce);
-  }
-  
   /* Custom shadows */
   .shadow-elegant {
     box-shadow: var(--shadow-md);
-  }
-  
-  .shadow-premium {
-    box-shadow: var(--shadow-lg);
-  }
-  
-  .shadow-glow {
-    box-shadow: var(--shadow-glow);
-  }
-  
-  /* Gradient text */
-  .gradient-text {
-    background: var(--gradient-primary);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-  }
-  
-  /* Hover effects */
-  .hover-lift {
-    transition: var(--transition-smooth);
-  }
-  
-  .hover-lift:hover {
-    transform: translateY(-2px);
-    box-shadow: var(--shadow-lg);
-  }
-  
-  /* Card with gradient border */
-  .card-gradient-border {
-    position: relative;
-    background: hsl(var(--card));
-    border-radius: var(--radius);
-  }
-  
-  .card-gradient-border::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    border-radius: var(--radius);
-    padding: 1px;
-    background: var(--gradient-primary);
-    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-    -webkit-mask-composite: xor;
-    mask-composite: exclude;
-    opacity: 0.2;
   }
 }

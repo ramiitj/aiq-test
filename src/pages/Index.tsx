@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { Sparkles, Target, Zap, Shield, CheckCircle } from "lucide-react";
+import { Brain, Target, Zap, Shield, CheckCircle } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { Navigation } from "@/components/Navigation";
 
@@ -20,7 +20,7 @@ const Index = () => {
 
   const features = [
     {
-      icon: Sparkles,
+      icon: Brain,
       title: "Research-Based Framework",
       description: "Built on peer-reviewed research from IIT Jodhpur scholars, measuring 8 critical dimensions of AI collaboration."
     },
@@ -55,33 +55,33 @@ const Index = () => {
       
       <main>
         {/* Hero Section */}
-        <section className="container py-24 text-center max-w-6xl">
-          <div className="inline-flex items-center justify-center w-20 h-20 rounded-full bg-gradient-to-br from-primary to-primary-glow mb-8 shadow-glow animate-scale-in">
-            <Sparkles className="h-10 w-10 text-white" />
+        <section className="container py-20 text-center max-w-5xl">
+          <div className="inline-block p-3 bg-primary/10 rounded-full mb-6">
+            <Brain className="h-12 w-12 text-primary" />
           </div>
-          <h1 className="text-6xl font-bold mb-6 leading-tight">
-            Measure Your <span className="gradient-text">AI Collaboration</span> Intelligence
+          <h1 className="text-5xl font-bold mb-6 leading-tight">
+            Measure Your <span className="text-primary">AI Collaboration</span> Intelligence
           </h1>
-          <p className="text-xl text-muted-foreground mb-10 max-w-3xl mx-auto leading-relaxed">
+          <p className="text-xl text-muted-foreground mb-8 max-w-3xl mx-auto">
             Take the research-validated Artificial Intelligence Quotient (AIQ) test to assess 
             your ability to collaborate effectively with AI systems across 8 key dimensions.
           </p>
-          <div className="flex gap-4 justify-center flex-wrap">
+          <div className="flex gap-4 justify-center">
             {isAuthenticated ? (
               <Link to="/dashboard">
-                <Button variant="gradient" size="lg" className="text-lg px-10">
+                <Button size="lg" className="text-lg px-8">
                   Go to Dashboard
                 </Button>
               </Link>
             ) : (
               <Link to="/auth">
-                <Button variant="gradient" size="lg" className="text-lg px-10">
+                <Button size="lg" className="text-lg px-8">
                   Get Started Free
                 </Button>
               </Link>
             )}
             <Link to="/about">
-              <Button size="lg" variant="outline" className="text-lg px-10">
+              <Button size="lg" variant="outline" className="text-lg px-8">
                 Learn More
               </Button>
             </Link>
@@ -98,13 +98,13 @@ const Index = () => {
               {features.map((feature, index) => {
                 const Icon = feature.icon;
                 return (
-                  <Card key={index} className="shadow-premium hover-lift border-2">
-                    <CardContent className="pt-8 text-center">
-                      <div className="inline-block p-4 bg-gradient-to-br from-primary/10 to-primary-glow/10 rounded-2xl mb-5">
-                        <Icon className="h-8 w-8 text-primary" />
+                  <Card key={index} className="shadow-elegant">
+                    <CardContent className="pt-6 text-center">
+                      <div className="inline-block p-3 bg-primary/10 rounded-full mb-4">
+                        <Icon className="h-6 w-6 text-primary" />
                       </div>
-                      <h3 className="font-bold mb-3 text-lg">{feature.title}</h3>
-                      <p className="text-sm text-muted-foreground leading-relaxed">
+                      <h3 className="font-semibold mb-2">{feature.title}</h3>
+                      <p className="text-sm text-muted-foreground">
                         {feature.description}
                       </p>
                     </CardContent>
@@ -174,13 +174,13 @@ const Index = () => {
             </p>
             {isAuthenticated ? (
               <Link to="/dashboard">
-                <Button variant="gradient" size="lg" className="text-lg px-10">
+                <Button size="lg" className="text-lg px-8">
                   Start Your Test
                 </Button>
               </Link>
             ) : (
               <Link to="/auth">
-                <Button variant="gradient" size="lg" className="text-lg px-10">
+                <Button size="lg" className="text-lg px-8">
                   Sign Up Now
                 </Button>
               </Link>

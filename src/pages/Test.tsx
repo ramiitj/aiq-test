@@ -10,8 +10,7 @@ import { Label } from "@/components/ui/label";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
-import { Timer, ChevronRight } from "lucide-react";
-import { cn } from "@/lib/utils";
+import { Clock, ChevronRight } from "lucide-react";
 
 interface TestItem {
   id: string | number;
@@ -385,33 +384,29 @@ const Test = () => {
     <div className="min-h-screen animate-fade-in">
       <Navigation isAuthenticated={true} />
       
-      {/* Fixed progress bar at top */}
-      <div className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-sm border-b">
-        <Progress value={progress} className="h-1 rounded-none" />
-      </div>
-      
-      <main className="container py-8 max-w-4xl mt-8">
-        <div className="mb-8">
-          <div className="flex justify-between items-center mb-6">
+      <main className="container py-8 max-w-4xl">
+        <div className="mb-6">
+          <div className="flex justify-between items-center mb-4">
             <div>
-              <h2 className="text-3xl font-bold">
-                Section {currentDimension + 1} of {dimensions.length}
+              <h2 className="text-2xl font-bold capitalize">
+                {dimensions[currentDimension].name}
               </h2>
-              <p className="text-lg text-muted-foreground mt-1">
+              <p className="text-sm text-muted-foreground">
                 Question {dimStates[currentDimension].answered + 1} of 10
               </p>
             </div>
-            <div className="flex items-center gap-3 px-4 py-2 rounded-full bg-accent/50 border">
-              <Timer className="h-5 w-5 text-primary" />
-              <span className="font-mono text-xl font-semibold">{formatTime(timeRemaining)}</span>
+            <div className="flex items-center gap-2 text-muted-foreground">
+              <Clock className="h-5 w-5" />
+              <span className="font-mono text-lg">{formatTime(timeRemaining)}</span>
             </div>
           </div>
+          <Progress value={progress} className="h-2" />
         </div>
 
-        <Card className="shadow-premium hover-lift border-2">
-          <CardContent className="pt-8 space-y-8">
+        <Card className="shadow-elegant">
+          <CardContent className="pt-6 space-y-6">
             <div>
-              <p className="text-2xl font-bold mb-8 leading-relaxed">{currentQuestion.question}</p>
+              <p className="text-lg font-bold mb-6">{currentQuestion.question}</p>
               
               {currentQuestion.type === "multiple-choice-multiple" ? (
                 <div className="space-y-3">
@@ -419,27 +414,20 @@ const Test = () => {
                     const selectedIndices = (answers[currentQuestion.id] || "").split(",").filter(Boolean).map(s => parseInt(s.trim()));
                     const isChecked = selectedIndices.includes(index);
                     return (
-                      <div 
-                        key={index} 
-                        className={cn(
-                          "flex items-start gap-3 p-4 rounded-lg border-2 cursor-pointer transition-all hover:border-primary/50 hover:bg-accent/50",
-                          isChecked && "border-primary bg-accent"
-                        )}
-                        onClick={() => {
-                          const current = selectedIndices.filter((i: number) => i !== index);
-                          if (!isChecked) current.push(index);
-                          setAnswers({
-                            ...answers,
-                            [currentQuestion.id]: current.sort((a: number, b: number) => a - b).join(","),
-                          });
-                        }}
-                      >
+                      <div key={index} className="flex items-center space-x-2">
                         <Checkbox
                           id={`option-${index}`}
                           checked={isChecked}
-                          className="mt-0.5"
+                          onCheckedChange={(checked) => {
+                            const current = selectedIndices.filter((i: number) => i !== index);
+                            if (checked) current.push(index);
+                            setAnswers({
+                              ...answers,
+                              [currentQuestion.id]: current.sort((a: number, b: number) => a - b).join(","),
+                            });
+                          }}
                         />
-                        <Label htmlFor={`option-${index}`} className="cursor-pointer flex-1 font-medium leading-relaxed">
+                        <Label htmlFor={`option-${index}`} className="cursor-pointer flex-1">
                           {option}
                         </Label>
                       </div>
@@ -454,23 +442,14 @@ const Test = () => {
                   }
                 >
                   <div className="space-y-3">
-                    {currentQuestion.options.map((option: string, index: number) => {
-                      const isSelected = answers[currentQuestion.id] === String(index);
-                      return (
-                        <div 
-                          key={index} 
-                          className={cn(
-                            "flex items-start gap-3 p-4 rounded-lg border-2 cursor-pointer transition-all hover:border-primary/50 hover:bg-accent/50",
-                            isSelected && "border-primary bg-accent"
-                          )}
-                        >
-                          <RadioGroupItem value={String(index)} id={`option-${index}`} className="mt-0.5" />
-                          <Label htmlFor={`option-${index}`} className="cursor-pointer flex-1 font-medium leading-relaxed">
-                            {option}
-                          </Label>
-                        </div>
-                      );
-                    })}
+                    {currentQuestion.options.map((option: string, index: number) => (
+                      <div key={index} className="flex items-center space-x-2">
+                        <RadioGroupItem value={String(index)} id={`option-${index}`} />
+                        <Label htmlFor={`option-${index}`} className="cursor-pointer flex-1">
+                          {option}
+                        </Label>
+                      </div>
+                    ))}
                   </div>
                 </RadioGroup>
               ) : (

@@ -5,11 +5,8 @@ import { Navigation } from "@/components/Navigation";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Progress } from "@/components/ui/progress";
-import { Share2, Download, TrendingUp, Sparkles, Target, Zap, Shield, Layers, Brain, Award } from "lucide-react";
-import { CircularProgress } from "@/components/ui/circular-progress";
-import { AnimatedNumber } from "@/components/ui/animated-number";
+import { Share2, Download, Trophy } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
-import { cn } from "@/lib/utils";
 
 interface TestResult {
   id: string;
@@ -28,8 +25,6 @@ const dimensionNames = [
   "Context Sensitivity",
   "Creative Synthesis"
 ];
-
-const dimensionIcons = [Brain, Sparkles, Target, Layers, TrendingUp, Shield, Zap, Award];
 
 const Results = () => {
   const { testId } = useParams();
@@ -142,115 +137,67 @@ const Results = () => {
     <div className="min-h-screen animate-fade-in">
       <Navigation isAuthenticated={true} />
       
-      <main className="container py-12 max-w-6xl">
-        {/* Hero Section */}
-        <div className="text-center mb-12">
-          <div className="inline-flex items-center justify-center w-24 h-24 rounded-full bg-gradient-to-br from-primary to-primary-glow mb-6 shadow-glow">
-            <TrendingUp className="h-12 w-12 text-white" />
-          </div>
-          <h1 className="text-5xl font-bold mb-3">
-            <span className="gradient-text">Your AIQ Results</span>
-          </h1>
-          <p className="text-muted-foreground text-lg">
-            Test completed on {new Date(result.created_at).toLocaleDateString('en-US', { 
-              weekday: 'long', 
-              year: 'numeric', 
-              month: 'long', 
-              day: 'numeric' 
-            })}
+      <main className="container py-8 max-w-4xl">
+        <div className="text-center mb-8">
+          <Trophy className="h-16 w-16 text-primary mx-auto mb-4" />
+          <h1 className="text-4xl font-bold mb-2">Your AIQ Results</h1>
+          <p className="text-muted-foreground">
+            Test completed on {new Date(result.created_at).toLocaleDateString()}
           </p>
         </div>
 
-        {/* Overall Score Card */}
-        <Card className="mb-12 shadow-premium hover-lift border-2 animate-scale-in">
-          <CardContent className="pt-12 pb-12">
-            <div className="flex flex-col items-center">
-              <CircularProgress 
-                value={overallScore} 
-                size={200} 
-                strokeWidth={12}
-                className="mb-8"
-                valueClassName="flex-col"
-              />
-              <div className="text-center">
-                <h2 className="text-2xl font-bold mb-2">Overall AIQ Score</h2>
-                <p className="text-4xl font-bold gradient-text mb-4">
-                  <AnimatedNumber value={overallScore} decimals={1} />
-                </p>
-                <div className={cn(
-                  "inline-block px-6 py-2 rounded-full text-lg font-semibold",
-                  overallScore >= 80 ? "bg-success/10 text-success" :
-                  overallScore >= 60 ? "bg-primary/10 text-primary" :
-                  overallScore >= 40 ? "bg-secondary/10 text-secondary" : "bg-muted text-muted-foreground"
-                )}>
-                  {overallScore >= 80 ? "🎉 Exceptional" :
-                   overallScore >= 60 ? "✨ Proficient" :
-                   overallScore >= 40 ? "📈 Developing" : "🌱 Beginner"} AI Collaboration Skills
-                </div>
-              </div>
-            </div>
-          </CardContent>
-        </Card>
-
-        {/* Dimension Breakdown */}
-        <Card className="mb-12 shadow-premium border-2">
-          <CardHeader>
-            <CardTitle className="text-2xl flex items-center gap-2">
-              <Layers className="h-6 w-6 text-primary" />
-              Dimension Breakdown
+        <Card className="mb-8 shadow-elegant">
+          <CardHeader className="text-center">
+            <CardTitle className="text-3xl">
+              Overall AIQ Score: {overallScore.toFixed(1)}
             </CardTitle>
           </CardHeader>
           <CardContent>
-            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-              {result.scores.map((score, index) => {
-                const Icon = dimensionIcons[index] || Brain;
-                return (
-                  <div 
-                    key={index} 
-                    className="flex flex-col items-center p-6 rounded-xl border-2 hover:border-primary/50 transition-all hover-lift bg-gradient-to-br from-accent/20 to-transparent"
-                  >
-                    <div className="mb-4 p-3 rounded-full bg-primary/10">
-                      <Icon className="h-6 w-6 text-primary" />
-                    </div>
-                    <CircularProgress 
-                      value={score} 
-                      size={100} 
-                      strokeWidth={8}
-                      className="mb-4"
-                    />
-                    <h3 className="font-semibold text-center text-sm leading-tight mb-1">
-                      {dimensionNames[index]}
-                    </h3>
-                    <p className="text-xs text-muted-foreground">
-                      <AnimatedNumber value={score} decimals={1} /> / 100
-                    </p>
-                  </div>
-                );
-              })}
-            </div>
+            <Progress value={overallScore} className="h-4" />
+            <p className="text-center text-muted-foreground mt-4">
+              {overallScore >= 80 ? "Exceptional" :
+               overallScore >= 60 ? "Proficient" :
+               overallScore >= 40 ? "Developing" : "Beginner"} AI Collaboration Skills
+            </p>
           </CardContent>
         </Card>
 
-        {/* Actions Card */}
-        <Card className="shadow-premium border-2">
+        <Card className="mb-8 shadow-elegant">
           <CardHeader>
-            <CardTitle className="text-xl">Share Your Achievement</CardTitle>
+            <CardTitle>Dimension Breakdown</CardTitle>
           </CardHeader>
-          <CardContent className="flex flex-col sm:flex-row gap-4">
-            <Button onClick={handleShare} variant="gradient" className="flex-1" size="lg">
-              <Share2 className="mr-2 h-5 w-5" />
+          <CardContent className="space-y-6">
+            {result.scores.map((score, index) => (
+              <div key={index}>
+                <div className="flex justify-between mb-2">
+                  <span className="font-medium">{dimensionNames[index]}</span>
+                  <span className="text-muted-foreground">{score.toFixed(1)}</span>
+                </div>
+                <Progress value={score} className="h-2" />
+              </div>
+            ))}
+          </CardContent>
+        </Card>
+
+        <Card className="shadow-elegant">
+          <CardHeader>
+            <CardTitle>Share Your Results</CardTitle>
+          </CardHeader>
+          <CardContent className="flex gap-4">
+            <Button onClick={handleShare} className="flex-1">
+              <Share2 className="mr-2 h-4 w-4" />
               Generate Share Link
             </Button>
-            <Button variant="outline" className="flex-1 hover:border-secondary hover:text-secondary" size="lg">
-              <Download className="mr-2 h-5 w-5" />
-              Download Certificate
+            <Button variant="outline" className="flex-1">
+              <Download className="mr-2 h-4 w-4" />
+              Download PDF
             </Button>
           </CardContent>
         </Card>
 
-        <div className="mt-12 text-center">
-          <Button variant="ghost" size="lg" onClick={() => navigate("/dashboard")}>
-            ← Back to Dashboard
+        <div className="mt-8 text-center">
+          <Button variant="outline" onClick={() => navigate("/dashboard")}>
+            Back to Dashboard
           </Button>
         </div>
       </main>
