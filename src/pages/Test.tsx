@@ -444,8 +444,8 @@ const Test = () => {
 
     // Check if dimension complete (exactly 10 items answered)
     if (newAnswered >= 10) {
-      if (currentDimension < 5) {
-        // Move to next dimension (we have exactly 6 dimensions, 0-5)
+      if (currentDimension < 7) {
+        // Move to next dimension (we have exactly 8 dimensions, 0-7)
         const nextDim = currentDimension + 1;
         setCurrentDimension(nextDim);
         const nextIdx = selectNextItem(nextDim, updatedStates[nextDim].theta, updatedStates[nextDim].used, updatedStates[nextDim].counts);
@@ -460,7 +460,7 @@ const Test = () => {
           setCurrentItem(nextIdx);
         }
       } else {
-        // Completed all 6 dimensions (60 questions total)
+        // Completed all 8 dimensions (80 questions total)
         await handleSubmit();
       }
     } else {

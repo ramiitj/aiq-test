@@ -22,7 +22,7 @@ const Index = () => {
     {
       icon: Brain,
       title: "Research-Based Framework",
-      description: "Built on peer-reviewed research from IIT Jodhpur scholars, measuring 8 critical dimensions of AI collaboration."
+      description: "Built on peer-reviewed research measuring 8 critical dimensions of AI collaboration."
     },
     {
       icon: Target,
