@@ -4,7 +4,7 @@ import { supabase } from "@/integrations/supabase/client";
 import { Navigation } from "@/components/Navigation";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { PlayCircle, Trophy, User as UserIcon } from "lucide-react";
+import { PlayCircle, Trophy, User as UserIcon, Play, X } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 
 interface Profile {
@@ -18,6 +18,9 @@ interface Test {
   created_at: string;
   completed: boolean;
   scores: any;
+  paused: boolean;
+  time_remaining: number;
+  current_dimension: number;
 }
 
 const Dashboard = () => {
@@ -51,7 +54,7 @@ const Dashboard = () => {
 
       const { data: testsData, error: testsError } = await supabase
         .from("tests")
-        .select("id, created_at, completed, scores")
+        .select("id, created_at, completed, scores, paused, time_remaining, current_dimension")
         .eq("user_id", session.user.id)
         .order("created_at", { ascending: false })
         .limit(5);
@@ -71,6 +74,34 @@ const Dashboard = () => {
 
   const handleStartTest = () => {
     navigate("/test");
+  };
+
+  const handleResumeTest = (testId: string) => {
+    navigate(`/test?resume=${testId}`);
+  };
+
+  const handleAbandonTest = async (testId: string) => {
+    try {
+      const { error } = await supabase
+        .from("tests")
+        .delete()
+        .eq("id", testId);
+
+      if (error) throw error;
+
+      toast({
+        title: "Test Abandoned",
+        description: "The paused test has been removed",
+      });
+
+      checkAuth(); // Refresh the list
+    } catch (error: any) {
+      toast({
+        title: "Error",
+        description: error.message,
+        variant: "destructive",
+      });
+    }
   };
 
   if (loading) {
@@ -143,6 +174,69 @@ const Dashboard = () => {
           </Card>
         </div>
 
+        {/* Paused Test Card */}
+        {tests.some(t => t.paused) && (
+          <Card className="shadow-elegant border-amber-500 mb-8">
+            <CardHeader>
+              <CardTitle className="flex items-center gap-3 text-xl lg:text-2xl text-amber-600">
+                <Play className="h-6 w-6" />
+                Resume Paused Test
+              </CardTitle>
+              <CardDescription className="text-base">
+                Continue where you left off
+              </CardDescription>
+            </CardHeader>
+            <CardContent>
+              {tests.filter(t => t.paused).map((test) => (
+                <div key={test.id} className="p-5 border border-amber-200 rounded-lg bg-amber-50 dark:bg-amber-950">
+                  <div className="flex items-center justify-between mb-4">
+                    <div>
+                      <p className="text-base font-semibold">AIQ Assessment in Progress</p>
+                      <p className="text-sm text-muted-foreground mt-1">
+                        Paused on {new Date(test.created_at).toLocaleDateString()}
+                      </p>
+                    </div>
+                    <Button
+                      variant="ghost"
+                      size="sm"
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        handleAbandonTest(test.id);
+                      }}
+                    >
+                      <X className="h-4 w-4" />
+                    </Button>
+                  </div>
+                  
+                  <div className="grid grid-cols-2 gap-4 mb-4 text-sm">
+                    <div>
+                      <span className="text-muted-foreground">Progress:</span>
+                      <span className="ml-2 font-semibold">
+                        Section {test.current_dimension + 1}/8
+                      </span>
+                    </div>
+                    <div>
+                      <span className="text-muted-foreground">Time Left:</span>
+                      <span className="ml-2 font-semibold">
+                        {Math.floor(test.time_remaining / 60)}:{(test.time_remaining % 60).toString().padStart(2, '0')}
+                      </span>
+                    </div>
+                  </div>
+
+                  <Button 
+                    onClick={() => handleResumeTest(test.id)} 
+                    className="w-full"
+                    size="lg"
+                  >
+                    <Play className="mr-2 h-4 w-4" />
+                    Resume Test
+                  </Button>
+                </div>
+              ))}
+            </CardContent>
+          </Card>
+        )}
+
         <Card className="shadow-elegant">
           <CardHeader>
             <CardTitle className="flex items-center gap-3 text-xl lg:text-2xl">
@@ -160,7 +254,7 @@ const Dashboard = () => {
               </p>
             ) : (
               <div className="space-y-4">
-                {tests.map((test) => (
+                {tests.filter(t => !t.paused).map((test) => (
                   <div
                     key={test.id}
                     className="flex items-center justify-between p-5 border rounded-lg hover:bg-accent/50 transition-smooth cursor-pointer"

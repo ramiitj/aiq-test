@@ -9,8 +9,9 @@ import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Label } from "@/components/ui/label";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Textarea } from "@/components/ui/textarea";
+import { ConsentForm } from "@/components/ConsentForm";
 import { useToast } from "@/hooks/use-toast";
-import { Clock, ChevronRight } from "lucide-react";
+import { Clock, ChevronRight, Pause } from "lucide-react";
 
 interface TestItem {
   id: string | number;
@@ -37,23 +38,103 @@ const Test = () => {
   const [loading, setLoading] = useState(true);
   const [dimensions, setDimensions] = useState<Dimension[]>([]);
   const [dimStates, setDimStates] = useState<Array<{ theta: number; used: Set<string>; counts: { easy: number; medium: number; hard: number }; answered: number }>>([]);
+  const [consentGiven, setConsentGiven] = useState(false);
+  const [showConsent, setShowConsent] = useState(true);
+  const [timerInterval, setTimerInterval] = useState<NodeJS.Timeout | null>(null);
   const navigate = useNavigate();
   const { toast } = useToast();
 
   useEffect(() => {
-    initializeTest();
-    const timer = setInterval(() => {
-      setTimeRemaining((prev) => {
-        if (prev <= 1) {
-          handleSubmit();
-          return 0;
-        }
-        return prev - 1;
-      });
-    }, 1000);
+    const urlParams = new URLSearchParams(window.location.search);
+    const resumeId = urlParams.get('resume');
+    
+    if (resumeId) {
+      // Resume existing test
+      resumeTest(resumeId);
+    } else if (consentGiven) {
+      // Start new test
+      initializeTest();
+    }
 
-    return () => clearInterval(timer);
-  }, []);
+    if (consentGiven || resumeId) {
+      const timer = setInterval(() => {
+        setTimeRemaining((prev) => {
+          if (prev <= 1) {
+            handleSubmit();
+            return 0;
+          }
+          return prev - 1;
+        });
+      }, 1000);
+      setTimerInterval(timer);
+
+      return () => clearInterval(timer);
+    }
+  }, [consentGiven]);
+
+  const resumeTest = async (testId: string) => {
+    try {
+      const { data, error } = await supabase
+        .from("tests")
+        .select("*")
+        .eq("id", testId)
+        .single();
+
+      if (error) throw error;
+
+      // Restore all state
+      setTestId(data.id);
+      setTimeRemaining(data.time_remaining || 3600);
+      setCurrentDimension(data.current_dimension || 0);
+      setCurrentItem(data.current_item || 0);
+      setAnswers(typeof data.answers === 'string' ? JSON.parse(data.answers) : data.answers);
+      
+      const parsedStates = typeof data.dimension_states === 'string' 
+        ? JSON.parse(data.dimension_states) 
+        : data.dimension_states;
+      
+      const restoredStates = parsedStates.map((s: any) => ({
+        theta: s.theta,
+        used: new Set(s.used),
+        counts: s.counts,
+        answered: s.answered,
+      }));
+      setDimStates(restoredStates);
+
+      // Load test items
+      const { data: fileData } = await supabase.storage
+        .from("aiq-items")
+        .download(data.json_version);
+
+      const text = await fileData!.text();
+      const parsed = JSON.parse(text);
+      const allItems = Array.isArray((parsed as any).items) ? (parsed as any).items : [];
+      
+      // Group and rebuild dimensions (simplified for resume)
+      const grouped = new Map<string, any[]>();
+      allItems.forEach((item: any) => {
+        const code = String(item.id || '').split('-')[0].toUpperCase();
+        if (!grouped.has(code)) grouped.set(code, []);
+        grouped.get(code)!.push(item);
+      });
+
+      const sortedCodes = Array.from(grouped.entries()).sort((a, b) => b[1].length - a[1].length).slice(0, 8);
+      const normalized = sortedCodes.map(([code, items]) => ({ name: code, items }));
+      setDimensions(normalized);
+
+      // Unpause
+      await supabase.from("tests").update({ paused: false }).eq("id", testId);
+
+      setConsentGiven(true);
+      setShowConsent(false);
+      setLoading(false);
+
+      toast({ title: "Test Resumed", description: "Continuing from where you left off" });
+    } catch (error: any) {
+      toast({ title: "Error", description: error.message, variant: "destructive" });
+      navigate("/dashboard");
+    }
+  };
 
   const initializeTest = async () => {
     const { data: { session } } = await supabase.auth.getSession();
@@ -134,13 +215,13 @@ const Test = () => {
         grouped.get(code)!.push(item);
       });
 
-      // Select exactly 6 dimensions with the most items
+      // Select exactly 8 dimensions with the most items
       const sortedCodes = Array.from(grouped.entries())
         .sort((a, b) => b[1].length - a[1].length)
-        .slice(0, 6);
+        .slice(0, 8);
 
-      if (sortedCodes.length < 6) {
-        throw new Error(`Not enough dimensions found. Expected 6, found ${sortedCodes.length}. Please upload a complete test set.`);
+      if (sortedCodes.length < 8) {
+        throw new Error(`Not enough dimensions found. Expected 8, found ${sortedCodes.length}. Please upload a complete test set.`);
       }
 
       // Validate each dimension has at least 10 items
@@ -193,7 +274,7 @@ const Test = () => {
 
       setDimensions(normalized);
 
-      // Initialize adaptive state for 6 dimensions
+      // Initialize adaptive state for 8 dimensions
       const initStates = normalized.map(() => ({
         theta: 0,
         used: new Set<string>(),
@@ -211,13 +292,15 @@ const Test = () => {
       const startIdx = mediumIdx >= 0 ? mediumIdx : (easyIdx >= 0 ? easyIdx : (hardIdx >= 0 ? hardIdx : 0));
       setCurrentItem(startIdx);
 
-      // Create test record
+      // Create test record with consent
       const { data, error } = await supabase
         .from("tests")
         .insert({
           user_id: session.user.id,
           json_version: latestFile,
           completed: false,
+          consent_given: true,
+          consent_timestamp: new Date().toISOString(),
         })
         .select()
         .single();
@@ -275,6 +358,51 @@ const Test = () => {
 
     // Should not happen if we have enough items, but return -1 if exhausted
     return -1;
+  };
+
+  const handlePause = async () => {
+    if (!testId) return;
+
+    try {
+      // Stop the timer
+      if (timerInterval) {
+        clearInterval(timerInterval);
+      }
+
+      // Save current state to database
+      const { error } = await supabase
+        .from("tests")
+        .update({
+          paused: true,
+          pause_timestamp: new Date().toISOString(),
+          time_remaining: timeRemaining,
+          current_dimension: currentDimension,
+          current_item: currentItem,
+          dimension_states: JSON.stringify(dimStates.map(s => ({
+            theta: s.theta,
+            used: Array.from(s.used),
+            counts: s.counts,
+            answered: s.answered,
+          }))),
+          answers: JSON.stringify(answers),
+        })
+        .eq("id", testId);
+
+      if (error) throw error;
+
+      toast({
+        title: "Test Paused",
+        description: "You can resume anytime from your dashboard",
+      });
+
+      navigate("/dashboard");
+    } catch (error: any) {
+      toast({
+        title: "Error",
+        description: error.message,
+        variant: "destructive",
+      });
+    }
   };
 
   const handleNext = async () => {
@@ -408,6 +536,33 @@ const Test = () => {
     }
   };
 
+  const handleConsentAccept = () => {
+    setConsentGiven(true);
+    setShowConsent(false);
+  };
+
+  const handleConsentDecline = () => {
+    toast({
+      title: "Consent Required",
+      description: "You must consent to participate in the research assessment",
+      variant: "destructive",
+    });
+    navigate("/dashboard");
+  };
+
+  if (showConsent && !consentGiven) {
+    return (
+      <div className="min-h-screen">
+        <Navigation isAuthenticated={true} />
+        <ConsentForm
+          open={showConsent}
+          onConsent={handleConsentAccept}
+          onDecline={handleConsentDecline}
+        />
+      </div>
+    );
+  }
+
   if (loading || dimensions.length === 0) {
     return (
       <div className="min-h-screen">
@@ -421,7 +576,7 @@ const Test = () => {
 
   const currentQuestion = dimensions[currentDimension]?.items[currentItem];
   const totalAnswered = dimStates.reduce((sum, s) => sum + s.answered, 0);
-  const totalRequired = 60; // Fixed: 6 dimensions × 10 items each
+  const totalRequired = 80; // Fixed: 8 dimensions × 10 items each
   const progress = (totalAnswered / totalRequired) * 100;
 
   if (!currentQuestion) {
@@ -450,15 +605,25 @@ const Test = () => {
           <div className="flex justify-between items-center mb-6">
             <div>
               <h2 className="text-3xl lg:text-4xl font-bold tracking-tight">
-                Section {currentDimension + 1} of 6
+                Section {currentDimension + 1} of 8
               </h2>
               <p className="text-base text-muted-foreground mt-1 font-medium">
                 Question {dimStates[currentDimension].answered + 1} of 10
               </p>
             </div>
-            <div className="flex items-center gap-3 text-muted-foreground">
-              <Clock className="h-6 w-6" />
-              <span className="font-mono text-xl font-semibold tabular-nums">{formatTime(timeRemaining)}</span>
+            <div className="flex items-center gap-6">
+              <Button
+                variant="outline"
+                size="sm"
+                onClick={handlePause}
+              >
+                <Pause className="h-4 w-4 mr-2" />
+                Pause
+              </Button>
+              <div className="flex items-center gap-3 text-muted-foreground">
+                <Clock className="h-6 w-6" />
+                <span className="font-mono text-xl font-semibold tabular-nums">{formatTime(timeRemaining)}</span>
+              </div>
             </div>
           </div>
           <Progress value={progress} className="h-3" />
@@ -527,7 +692,7 @@ const Test = () => {
 
             <div className="flex justify-end pt-4">
               <Button onClick={handleNext}>
-                {totalAnswered >= 59 ? "Submit Test" : "Next"}
+                {totalAnswered >= 79 ? "Submit Test" : "Next"}
                 <ChevronRight className="ml-2 h-4 w-4" />
               </Button>
             </div>

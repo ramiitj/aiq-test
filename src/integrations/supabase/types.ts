@@ -48,8 +48,11 @@ export type Database = {
         Row: {
           created_at: string
           dimension_scores: Json
+          expires_at: string | null
           id: string
           overall_score: number
+          pdf_url: string | null
+          report_generated_at: string | null
           share_code: string
           test_id: string
           user_id: string
@@ -57,8 +60,11 @@ export type Database = {
         Insert: {
           created_at?: string
           dimension_scores: Json
+          expires_at?: string | null
           id?: string
           overall_score: number
+          pdf_url?: string | null
+          report_generated_at?: string | null
           share_code: string
           test_id: string
           user_id: string
@@ -66,8 +72,11 @@ export type Database = {
         Update: {
           created_at?: string
           dimension_scores?: Json
+          expires_at?: string | null
           id?: string
           overall_score?: number
+          pdf_url?: string | null
+          report_generated_at?: string | null
           share_code?: string
           test_id?: string
           user_id?: string
@@ -86,34 +95,58 @@ export type Database = {
         Row: {
           answers: Json
           completed: boolean
+          consent_given: boolean | null
+          consent_timestamp: string | null
           created_at: string
+          current_dimension: number | null
+          current_item: number | null
+          dimension_states: Json | null
           end_time: string | null
           id: string
           json_version: string
+          pause_timestamp: string | null
+          paused: boolean | null
           scores: Json
           start_time: string
+          time_remaining: number | null
           user_id: string
         }
         Insert: {
           answers?: Json
           completed?: boolean
+          consent_given?: boolean | null
+          consent_timestamp?: string | null
           created_at?: string
+          current_dimension?: number | null
+          current_item?: number | null
+          dimension_states?: Json | null
           end_time?: string | null
           id?: string
           json_version: string
+          pause_timestamp?: string | null
+          paused?: boolean | null
           scores?: Json
           start_time?: string
+          time_remaining?: number | null
           user_id: string
         }
         Update: {
           answers?: Json
           completed?: boolean
+          consent_given?: boolean | null
+          consent_timestamp?: string | null
           created_at?: string
+          current_dimension?: number | null
+          current_item?: number | null
+          dimension_states?: Json | null
           end_time?: string | null
           id?: string
           json_version?: string
+          pause_timestamp?: string | null
+          paused?: boolean | null
           scores?: Json
           start_time?: string
+          time_remaining?: number | null
           user_id?: string
         }
         Relationships: []

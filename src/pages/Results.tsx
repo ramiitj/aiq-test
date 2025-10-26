@@ -5,9 +5,10 @@ import { Navigation } from "@/components/Navigation";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Progress } from "@/components/ui/progress";
-import { Share2, Download, Trophy } from "lucide-react";
+import { Share2, Download, Trophy, Copy } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import { ShareModal } from "@/components/ShareModal";
+import { generatePDFReport } from "@/lib/pdfGenerator";
 
 interface TestResult {
   id: string;
@@ -27,12 +28,24 @@ const dimensionNames = [
   "Creative Synthesis"
 ];
 
+const dimensionCodeMap: Record<string, string> = {
+  'SAU': 'Strategic AI Understanding',
+  'PEI': 'Prompt Engineering & Iteration',
+  'CEC': 'Critical Evaluation & Calibration',
+  'ITI': 'Intelligent Task Integration',
+  'ALC': 'Adaptive Learning & Continuous Improvement',
+  'EJU': 'Ethical Judgment & Use',
+  'CXS': 'Context Sensitivity',
+  'CRS': 'Creative Synthesis',
+};
+
 const Results = () => {
   const { testId } = useParams();
   const [result, setResult] = useState<TestResult | null>(null);
   const [loading, setLoading] = useState(true);
   const [shareModalOpen, setShareModalOpen] = useState(false);
   const [verificationCode, setVerificationCode] = useState<string>("");
+  const [downloadingPDF, setDownloadingPDF] = useState(false);
   const navigate = useNavigate();
   const { toast } = useToast();
 
@@ -83,6 +96,90 @@ const Results = () => {
       navigate("/dashboard");
     } finally {
       setLoading(false);
+    }
+  };
+
+  const handleDownloadPDF = async () => {
+    if (!result) return;
+
+    setDownloadingPDF(true);
+    try {
+      const overallScore = result.scores.reduce((a, b) => a + b, 0) / result.scores.length;
+      const dimensionsWithNames = result.scores.map((score, index) => ({
+        name: dimensionNames[index],
+        score: score,
+      }));
+
+      const issueDate = new Date(result.created_at);
+      const expiryDate = new Date(issueDate);
+      expiryDate.setFullYear(expiryDate.getFullYear() + 1);
+
+      // Check if verification code exists, if not create one
+      let code = verificationCode;
+      if (!code) {
+        const { data: existingShare } = await supabase
+          .from("public_results")
+          .select("share_code")
+          .eq("test_id", result.id)
+          .single();
+
+        if (existingShare) {
+          code = existingShare.share_code;
+        } else {
+          const year = new Date().getFullYear();
+          const randomPart = Math.random().toString(36).substring(2, 6).toUpperCase();
+          code = `AIQ-${year}-${randomPart}`;
+
+          const { error } = await supabase.from("public_results").insert({
+            test_id: result.id,
+            user_id: (await supabase.auth.getUser()).data.user!.id,
+            share_code: code,
+            overall_score: overallScore,
+            dimension_scores: JSON.stringify(result.scores),
+          });
+
+          if (error) throw error;
+        }
+        setVerificationCode(code);
+      }
+
+      // Generate PDF
+      const pdfBlob = await generatePDFReport(
+        overallScore,
+        dimensionsWithNames,
+        code,
+        issueDate,
+        expiryDate
+      );
+
+      // Update report_generated_at
+      await supabase
+        .from("public_results")
+        .update({ report_generated_at: new Date().toISOString() })
+        .eq("share_code", code);
+
+      // Download
+      const url = URL.createObjectURL(pdfBlob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = `AIQ-Certificate-${code}.pdf`;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+
+      toast({
+        title: "PDF Downloaded",
+        description: "Your AIQ certificate has been downloaded",
+      });
+    } catch (error: any) {
+      toast({
+        title: "Error",
+        description: error.message,
+        variant: "destructive",
+      });
+    } finally {
+      setDownloadingPDF(false);
     }
   };
 
@@ -213,12 +310,43 @@ const Results = () => {
               <Share2 className="mr-2 h-5 w-5" />
               Generate Shareable Post
             </Button>
-            <Button variant="outline" className="flex-1 text-base" size="lg">
+            <Button variant="outline" className="flex-1 text-base" size="lg" onClick={handleDownloadPDF} disabled={downloadingPDF}>
               <Download className="mr-2 h-5 w-5" />
-              Download PDF
+              {downloadingPDF ? "Generating..." : "Download PDF"}
             </Button>
           </CardContent>
         </Card>
+
+        {verificationCode && (
+          <Card className="shadow-elegant mt-8">
+            <CardHeader>
+              <CardTitle className="text-xl">Certificate Verification</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <div className="flex items-center gap-3">
+                <div className="flex-1 p-3 bg-muted rounded-lg font-mono text-lg">
+                  {verificationCode}
+                </div>
+                <Button
+                  variant="outline"
+                  size="icon"
+                  onClick={() => {
+                    navigator.clipboard.writeText(verificationCode);
+                    toast({
+                      title: "Copied",
+                      description: "Verification code copied to clipboard",
+                    });
+                  }}
+                >
+                  <Copy className="h-4 w-4" />
+                </Button>
+              </div>
+              <p className="text-sm text-muted-foreground mt-3">
+                Verify this certificate at: {window.location.origin}/verify/{verificationCode}
+              </p>
+            </CardContent>
+          </Card>
+        )}
 
         <ShareModal
           open={shareModalOpen}
