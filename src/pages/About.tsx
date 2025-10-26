@@ -187,9 +187,7 @@ const About = () => {
 
         <div className="mt-12 p-6 bg-accent/30 rounded-lg text-center">
           <p className="text-sm text-muted-foreground">
-            <strong>Citation:</strong> Ganuthula, V. R. R., & Balaraman, K. K. (2025). 
-            Artificial intelligence quotient framework for measuring human collaboration with 
-            artificial intelligence. <em>Journal of Management Research</em>.
+            <strong>Citation:</strong> Ganuthula, V.R.R., Balaraman, K.K. Artificial intelligence quotient framework for measuring human collaboration with artificial intelligence. <em>Discover Artificial Intelligence</em>, 5, 268 (2025). https://doi.org/10.1007/s44163-025-00516-1
           </p>
         </div>
       </main>

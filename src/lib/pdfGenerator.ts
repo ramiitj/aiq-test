@@ -40,36 +40,34 @@ export async function generatePDFReport(
   };
 
   // ========== PAGE 1: RESULTS SUMMARY ==========
-  
-  // Header with gradient effect (simulated with rectangles)
-  doc.setFillColor(59, 130, 246); // Blue
-  doc.rect(0, 0, pageWidth, 60, 'F');
+  // Header with gradient effect
+  doc.setFillColor(59, 130, 246);
+  doc.rect(0, 0, pageWidth, 55, 'F');
   
   doc.setTextColor(255, 255, 255);
-  doc.setFontSize(28);
+  doc.setFontSize(26);
   doc.setFont('helvetica', 'bold');
-  doc.text('AIQ™ Assessment Results', pageWidth / 2, 25, { align: 'center' });
+  doc.text('AIQ™ Assessment Results', pageWidth / 2, 22, { align: 'center' });
   
-  doc.setFontSize(12);
+  doc.setFontSize(11);
   doc.setFont('helvetica', 'normal');
-  doc.text('Certificate of Completion', pageWidth / 2, 35, { align: 'center' });
+  doc.text('Certificate of Completion', pageWidth / 2, 32, { align: 'center' });
 
-  // Verification code
-  doc.setFontSize(16);
-  doc.setFont('helvetica', 'bold');
-  doc.text(`Verification: ${verificationCode}`, pageWidth / 2, 50, { align: 'center' });
+  doc.setFontSize(10);
+  doc.setFont('helvetica', 'normal');
+  doc.text(`Verification Code: ${verificationCode}`, pageWidth / 2, 45, { align: 'center' });
 
   // Issue and expiry dates
   doc.setTextColor(0, 0, 0);
-  doc.setFontSize(10);
+  doc.setFontSize(9);
   doc.setFont('helvetica', 'normal');
-  doc.text(`Issued: ${issueDate.toLocaleDateString()}`, margin, 75);
-  doc.text(`Valid Until: ${expiryDate.toLocaleDateString()}`, pageWidth - margin, 75, { align: 'right' });
+  doc.text(`Issued: ${issueDate.toLocaleDateString()}`, margin, 68);
+  doc.text(`Valid Until: ${expiryDate.toLocaleDateString()}`, pageWidth - margin, 68, { align: 'right' });
 
   // Overall Score Circle
   const centerX = pageWidth / 2;
-  const centerY = 120;
-  const radius = 30;
+  const centerY = 105;
+  const radius = 28;
 
   // Draw circle
   doc.setDrawColor(59, 130, 246);
@@ -87,34 +85,33 @@ export async function generatePDFReport(
 
   // Proficiency Level
   const level = getProficiencyLevel(overallScore);
-  const levelEmoji = overallScore >= 80 ? '🌟' : overallScore >= 60 ? '🎯' : overallScore >= 40 ? '📈' : '🌱';
   
   doc.setTextColor(0, 0, 0);
-  doc.setFontSize(18);
+  doc.setFontSize(16);
   doc.setFont('helvetica', 'bold');
-  doc.text(`${levelEmoji} ${level} AI Collaborator`, centerX, centerY + radius + 20, { align: 'center' });
+  doc.text(`${level} AI Collaborator`, centerX, centerY + radius + 15, { align: 'center' });
 
   // Interpretation
-  doc.setFontSize(11);
+  doc.setFontSize(10);
   doc.setFont('helvetica', 'normal');
-  doc.setTextColor(80, 80, 80);
-  const interpretation = `This score represents ${level.toLowerCase()} proficiency in AI collaboration across 8 research-validated dimensions. The assessment uses adaptive testing with Item Response Theory (IRT) to provide an accurate measure of real-world AI collaboration capabilities.`;
+  doc.setTextColor(60, 60, 60);
+  const interpretation = `This score represents ${level.toLowerCase()} proficiency in AI collaboration across eight research-validated dimensions. The assessment utilizes adaptive testing with Item Response Theory (IRT) to provide precise measurement of real-world AI collaboration capabilities.`;
   
   const interpretationLines = doc.splitTextToSize(interpretation, pageWidth - 2 * margin);
-  doc.text(interpretationLines, centerX, 180, { align: 'center', maxWidth: pageWidth - 2 * margin });
+  doc.text(interpretationLines, centerX, 160, { align: 'center', maxWidth: pageWidth - 2 * margin });
 
   // Top 3 Dimensions
   const topDimensions = [...dimensionScores].sort((a, b) => b.score - a.score).slice(0, 3);
   
-  doc.setFontSize(14);
+  doc.setFontSize(13);
   doc.setFont('helvetica', 'bold');
   doc.setTextColor(0, 0, 0);
-  doc.text('Top Strengths:', margin, 210);
+  doc.text('Top Strengths', margin, 185);
 
-  doc.setFontSize(11);
+  doc.setFontSize(10);
   doc.setFont('helvetica', 'normal');
   topDimensions.forEach((dim, idx) => {
-    doc.text(`✓ ${dim.name} (${dim.score.toFixed(1)})`, margin + 5, 220 + idx * 8);
+    doc.text(`• ${dim.name}: ${dim.score.toFixed(1)}`, margin + 3, 193 + idx * 7);
   });
 
   addPageNumber(1);
@@ -201,14 +198,14 @@ export async function generatePDFReport(
   doc.setFont('helvetica', 'normal');
   doc.setTextColor(60, 60, 60);
   
-  const foundationText = `The AIQ Assessment is based on rigorous research into AI collaboration competencies. The test design incorporates Item Response Theory (IRT) principles, with:
+  const foundationText = `The AIQ Assessment is grounded in rigorous research on AI collaboration competencies. The test design incorporates Item Response Theory (IRT) principles with the following specifications:
 
-• 400 calibrated items across 8 validated dimensions
-• Adaptive difficulty selection based on response patterns
-• Psychometric validation through pilot studies
+• 400 calibrated items across eight validated dimensions
+• Adaptive difficulty selection based on individual response patterns
+• Psychometric validation through comprehensive pilot studies
 • Discrimination parameters ranging from 0.44 to 0.79
-• Difficulty parameters calibrated across 3 proficiency levels
-• 10 items per dimension selected adaptively`;
+• Difficulty parameters calibrated across three proficiency levels
+• Ten items per dimension selected adaptively for optimal precision`;
 
   const foundationLines = doc.splitTextToSize(foundationText, pageWidth - 2 * margin);
   doc.text(foundationLines, margin, 55);
@@ -255,7 +252,7 @@ export async function generatePDFReport(
   doc.setFontSize(9);
   doc.setFont('helvetica', 'italic');
   doc.setTextColor(80, 80, 80);
-  const disclaimerText = `This assessment measures self-reported AI collaboration capabilities at a specific point in time. Results should be used alongside other evaluation methods. Skills can be developed through practice, training, and experience. This certificate is valid for 12 months from the issue date.`;
+  const disclaimerText = `This assessment measures AI collaboration capabilities at a specific point in time. Results should be interpreted alongside other evaluation methods and professional judgment. AI collaboration skills can be enhanced through deliberate practice, structured training, and ongoing experience. This certificate remains valid for twelve months from the issue date.`;
   
   const disclaimerLines = doc.splitTextToSize(disclaimerText, pageWidth - 2 * margin);
   doc.text(disclaimerLines, margin, disclaimerY + 8);
@@ -270,7 +267,7 @@ export async function generatePDFReport(
   doc.setFontSize(9);
   doc.setFont('helvetica', 'normal');
   doc.setTextColor(60, 60, 60);
-  const methodText = `Item Response Theory (IRT): A modern psychometric framework that provides more accurate ability estimates than classical test theory. IRT models the probability of correct responses based on both item difficulty and individual ability, enabling adaptive testing that selects optimal items for each respondent.`;
+  const methodText = `Item Response Theory (IRT) is a contemporary psychometric framework that provides more precise ability estimates than classical test theory. IRT models the probability of correct responses based on both item difficulty and individual ability, enabling adaptive testing that selects optimal items for each respondent based on their demonstrated proficiency level.`;
   
   const methodLines = doc.splitTextToSize(methodText, pageWidth - 2 * margin);
   doc.text(methodLines, margin, methodY + 8);
@@ -288,10 +285,10 @@ export async function generatePDFReport(
   // Identify lowest scoring dimensions
   const lowestDimensions = [...dimensionScores].sort((a, b) => a.score - b.score).slice(0, 3);
 
-  doc.setFontSize(12);
+  doc.setFontSize(11);
   doc.setFont('helvetica', 'normal');
   doc.setTextColor(60, 60, 60);
-  doc.text('Focus areas for continued development:', margin, 45);
+  doc.text('Recommended focus areas for continued development:', margin, 45);
 
   let currentY = 55;
   lowestDimensions.forEach((dim, idx) => {
@@ -327,7 +324,7 @@ export async function generatePDFReport(
   doc.setFontSize(10);
   doc.setFont('helvetica', 'normal');
   doc.setTextColor(60, 60, 60);
-  const retakeText = `You may retake this assessment after 30 days to measure your progress. We recommend focused practice in your development areas before retaking to see meaningful improvement.`;
+  const retakeText = `You may retake this assessment after thirty days to measure your progress. We recommend focused practice in identified development areas before retaking to observe meaningful improvement in your AI collaboration capabilities.`;
   const retakeLines = doc.splitTextToSize(retakeText, pageWidth - 2 * margin);
   doc.text(retakeLines, margin, currentY + 20);
 
