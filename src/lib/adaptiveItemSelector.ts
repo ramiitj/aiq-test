@@ -62,10 +62,10 @@ const VERSION_CONFIGS: Record<TestVersion, VersionConfig> = {
   },
   expert: {
     itemsPerDimension: 10,
-    totalTime: 3600, // 60 minutes
-    level1Count: 3,
-    level2Count: 4,
-    level3Count: 3,
+    totalTime: 3600, // 60 minutes (80 items total: 10 per dimension × 8 dimensions)
+    level1Count: 4, // ~40% of items at foundational level
+    level2Count: 3, // ~30% at application level
+    level3Count: 3, // ~30% at evaluation level
   },
 };
 
@@ -145,37 +145,47 @@ export async function loadTestItems(version: TestVersion): Promise<Dimension[]> 
 
     const config = getVersionConfig(version);
 
-    // Beginner version: items are already pre-selected
+    // Beginner version: Pre-selected items in dimensions array
     if (version === 'beginner') {
-      return data.dimensions as Dimension[];
+      // Structure: { dimensions: [ { dimensionCode, dimensionName, items: [3 items] } ] }
+      if (data.dimensions && Array.isArray(data.dimensions)) {
+        return data.dimensions.map((dimension: any) => ({
+          dimensionCode: dimension.dimensionCode,
+          dimensionName: dimension.dimensionName,
+          description: dimension.description,
+          items: dimension.items,
+          questionsInAssessment: dimension.questionsInAssessment,
+          pointsAvailable: dimension.pointsAvailable,
+        }));
+      }
+      throw new Error('Beginner assessment missing dimensions array');
     }
 
-    // Professional/Expert: Need to handle different JSON structure
-    // Note: The uploaded Professional/Expert JSONs appear to be incomplete
-    // They show single dimensions. For now, we'll handle what we have.
-    
-    // Check if it's a single dimension object or array of dimensions
+    // Professional/Expert: Single dimension or array of dimensions with random selection
     if (Array.isArray(data)) {
-      // Array of dimensions - ideal structure
-      return data.map((dimension: Dimension) => ({
-        ...dimension,
+      // Array of dimension objects - select items from each
+      return data.map((dimension: any) => ({
+        dimensionCode: dimension.dimensionCode || dimension.id,
+        dimensionName: dimension.dimensionName || dimension.name,
+        description: dimension.description,
         items: selectItemsForDimension(dimension.items, config),
       }));
-    } else if (data.dimensionCode && data.items) {
-      // Single dimension object - wrap it in array
-      // This is temporary until we have complete 8-dimension files
+    } else if (data.items && Array.isArray(data.items)) {
+      // Single dimension object with items array
       return [
         {
-          dimensionCode: data.dimensionCode,
-          dimensionName: data.name || data.dimensionName,
+          dimensionCode: data.dimensionCode || data.id,
+          dimensionName: data.dimensionName || data.name,
           description: data.description,
           items: selectItemsForDimension(data.items, config),
         },
       ];
-    } else if (data.dimensions) {
-      // Has dimensions property
-      return data.dimensions.map((dimension: Dimension) => ({
-        ...dimension,
+    } else if (data.dimensions && Array.isArray(data.dimensions)) {
+      // Dimensions array - select items from each
+      return data.dimensions.map((dimension: any) => ({
+        dimensionCode: dimension.dimensionCode || dimension.id,
+        dimensionName: dimension.dimensionName || dimension.name,
+        description: dimension.description,
         items: selectItemsForDimension(dimension.items, config),
       }));
     }
@@ -192,18 +202,28 @@ export async function loadTestItems(version: TestVersion): Promise<Dimension[]> 
  */
 export function getVersionInfo(version: TestVersion) {
   const config = getVersionConfig(version);
-  const totalQuestions = config.itemsPerDimension * 8; // 8 dimensions
+  
+  // Calculate total questions based on actual structure
+  let totalQuestions: number;
+  if (version === 'beginner') {
+    totalQuestions = 24; // 3 items per dimension × 8 dimensions
+  } else if (version === 'professional') {
+    totalQuestions = 80; // 10 items per dimension × 8 dimensions
+  } else { // expert
+    totalQuestions = 80; // 10 items selected from 20 per dimension × 8 dimensions
+  }
+  
   const timeMinutes = config.totalTime / 60;
 
   const descriptions = {
     beginner: 'Foundational AI literacy assessment for those new to AI',
-    professional: 'Comprehensive assessment for AI practitioners',
-    expert: 'Advanced assessment for AI experts and leaders',
+    professional: 'Comprehensive assessment for AI practitioners and professionals',
+    expert: 'Advanced assessment for AI experts and leaders (80 items randomly selected from 160-item pool)',
   };
 
   const audiences = {
     beginner: 'Beginners and those new to AI',
-    professional: 'Professionals actively using AI',
+    professional: 'Professionals actively using AI in their work',
     expert: 'AI experts, leaders, and advanced practitioners',
   };
 
