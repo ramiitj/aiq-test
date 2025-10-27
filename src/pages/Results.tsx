@@ -218,9 +218,9 @@ const Results = () => {
       if (existingShare) {
         shareCode = existingShare.share_code;
       } else {
-        // Generate new verification code in format: AIQ-YYYY-XXXX
+        // Generate cryptographically secure verification code in format: AIQ-YYYY-XXXXXXXXXXXXXXXX
         const year = new Date().getFullYear();
-        const randomPart = Math.random().toString(36).substring(2, 6).toUpperCase();
+        const randomPart = crypto.randomUUID().replace(/-/g, '').substring(0, 16).toUpperCase();
         shareCode = `AIQ-${year}-${randomPart}`;
 
         const overallScore = result.scores.reduce((a, b) => a + b, 0) / result.scores.length;
