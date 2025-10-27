@@ -13,7 +13,11 @@ import { checkUserRole } from "@/lib/roleUtils";
 const Admin = () => {
   const [isAdmin, setIsAdmin] = useState(false);
   const [loading, setLoading] = useState(true);
-  const [uploading, setUploading] = useState(false);
+  const [uploading, setUploading] = useState<{
+    beginner: boolean;
+    professional: boolean;
+    expert: boolean;
+  }>({ beginner: false, professional: false, expert: false });
   const [stats, setStats] = useState({ totalUsers: 0, totalTests: 0 });
   const navigate = useNavigate();
   const { toast } = useToast();
@@ -76,7 +80,10 @@ const Admin = () => {
     }
   };
 
-  const handleFileUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleFileUpload = async (
+    e: React.ChangeEvent<HTMLInputElement>,
+    version: 'beginner' | 'professional' | 'expert'
+  ) => {
     const file = e.target.files?.[0];
     if (!file) return;
 
@@ -89,20 +96,49 @@ const Admin = () => {
       return;
     }
 
-    setUploading(true);
+    setUploading(prev => ({ ...prev, [version]: true }));
 
     try {
-      const fileName = `items_${Date.now()}.json`;
+      // Read and validate JSON file
+      const fileContent = await file.text();
+      const jsonData = JSON.parse(fileContent);
+
+      // Basic validation
+      if (!jsonData.dimensions || !Array.isArray(jsonData.dimensions)) {
+        throw new Error("Invalid JSON structure: missing 'dimensions' array");
+      }
+
+      const fileName = `${version}-assessment.json`;
+      
+      // Delete old file if exists
+      const { data: existingFiles } = await supabase.storage
+        .from("aiq-items")
+        .list();
+
+      const existingFile = existingFiles?.find(f => f.name === fileName);
+      if (existingFile) {
+        await supabase.storage
+          .from("aiq-items")
+          .remove([fileName]);
+      }
+
+      // Upload new file
       const { error: uploadError } = await supabase.storage
         .from("aiq-items")
-        .upload(fileName, file);
+        .upload(fileName, file, {
+          contentType: "application/json",
+          upsert: true
+        });
 
       if (uploadError) throw uploadError;
 
       toast({
         title: "Success",
-        description: "Test items uploaded successfully!",
+        description: `${version.charAt(0).toUpperCase() + version.slice(1)} test items uploaded successfully!`,
       });
+
+      // Clear the input
+      e.target.value = "";
     } catch (error: any) {
       toast({
         title: "Upload Failed",
@@ -110,7 +146,7 @@ const Admin = () => {
         variant: "destructive",
       });
     } finally {
-      setUploading(false);
+      setUploading(prev => ({ ...prev, [version]: false }));
     }
   };
 
@@ -162,25 +198,79 @@ const Admin = () => {
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
               <Upload className="h-5 w-5 text-primary" />
-              Upload Test Items
+              Upload Test Items by Version
             </CardTitle>
             <CardDescription>
-              Upload a JSON file containing test questions for the AIQ assessment
+              Upload JSON files for each test version separately (Beginner, Professional, Expert)
             </CardDescription>
           </CardHeader>
-          <CardContent className="space-y-4">
-            <div>
-              <Label htmlFor="file-upload">JSON File</Label>
+          <CardContent className="space-y-6">
+            {/* Beginner Version */}
+            <div className="p-4 border rounded-lg">
+              <div className="flex items-center gap-2 mb-3">
+                <div className="px-2 py-1 bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-300 rounded text-sm font-semibold">
+                  Beginner
+                </div>
+                <span className="text-sm text-muted-foreground">40 questions • 30 minutes</span>
+              </div>
+              <Label htmlFor="beginner-upload">Beginner Assessment JSON</Label>
               <Input
-                id="file-upload"
+                id="beginner-upload"
                 type="file"
                 accept=".json"
-                onChange={handleFileUpload}
-                disabled={uploading}
+                onChange={(e) => handleFileUpload(e, 'beginner')}
+                disabled={uploading.beginner}
                 className="mt-2"
               />
+              {uploading.beginner && (
+                <p className="text-sm text-muted-foreground mt-2">Uploading beginner assessment...</p>
+              )}
             </div>
-            {uploading && <p className="text-sm text-muted-foreground">Uploading...</p>}
+
+            {/* Professional Version */}
+            <div className="p-4 border rounded-lg border-primary">
+              <div className="flex items-center gap-2 mb-3">
+                <div className="px-2 py-1 bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 rounded text-sm font-semibold">
+                  Professional
+                </div>
+                <span className="text-sm text-muted-foreground">80 questions • 60 minutes</span>
+              </div>
+              <Label htmlFor="professional-upload">Professional Assessment JSON</Label>
+              <Input
+                id="professional-upload"
+                type="file"
+                accept=".json"
+                onChange={(e) => handleFileUpload(e, 'professional')}
+                disabled={uploading.professional}
+                className="mt-2"
+              />
+              {uploading.professional && (
+                <p className="text-sm text-muted-foreground mt-2">Uploading professional assessment...</p>
+              )}
+            </div>
+
+            {/* Expert Version */}
+            <div className="p-4 border rounded-lg">
+              <div className="flex items-center gap-2 mb-3">
+                <div className="px-2 py-1 bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-300 rounded text-sm font-semibold">
+                  Expert
+                </div>
+                <span className="text-sm text-muted-foreground">200 questions • 120 minutes</span>
+              </div>
+              <Label htmlFor="expert-upload">Expert Assessment JSON</Label>
+              <Input
+                id="expert-upload"
+                type="file"
+                accept=".json"
+                onChange={(e) => handleFileUpload(e, 'expert')}
+                disabled={uploading.expert}
+                className="mt-2"
+              />
+              {uploading.expert && (
+                <p className="text-sm text-muted-foreground mt-2">Uploading expert assessment...</p>
+              )}
+            </div>
+
             <div className="p-4 bg-accent/30 rounded-lg">
               <p className="text-sm font-semibold mb-2">Expected JSON Format:</p>
               <pre className="text-xs bg-background p-3 rounded border overflow-x-auto">
@@ -202,6 +292,11 @@ const Admin = () => {
   ]
 }`}
               </pre>
+              <p className="text-xs text-muted-foreground mt-3">
+                Files will be saved as: <code className="bg-background px-1 rounded">beginner-assessment.json</code>,{" "}
+                <code className="bg-background px-1 rounded">professional-assessment.json</code>, and{" "}
+                <code className="bg-background px-1 rounded">expert-assessment.json</code>
+              </p>
             </div>
           </CardContent>
         </Card>

@@ -116,52 +116,75 @@ export function getVersionConfig(version: TestVersion): VersionConfig {
  * Load and prepare test items based on version
  */
 export async function loadTestItems(version: TestVersion): Promise<Dimension[]> {
-  const fileName = `${version}-assessment.json`;
-  const response = await fetch(`/test-items/${fileName}`);
-  
-  if (!response.ok) {
-    throw new Error(`Failed to load ${version} assessment`);
+  try {
+    const fileName = `${version}-assessment.json`;
+    
+    // First try to load from Supabase Storage
+    const { supabase } = await import("@/integrations/supabase/client");
+    const { data: fileData, error: storageError } = await supabase.storage
+      .from("aiq-items")
+      .download(fileName);
+
+    let data;
+    
+    if (storageError || !fileData) {
+      // Fallback to public folder if file not in storage
+      console.log(`Loading ${version} from public folder (storage error: ${storageError?.message})`);
+      const response = await fetch(`/test-items/${fileName}`);
+      
+      if (!response.ok) {
+        throw new Error(`Failed to load ${version} assessment from both storage and public folder`);
+      }
+      
+      data = await response.json();
+    } else {
+      // Parse file from storage
+      const text = await fileData.text();
+      data = JSON.parse(text);
+    }
+
+    const config = getVersionConfig(version);
+
+    // Beginner version: items are already pre-selected
+    if (version === 'beginner') {
+      return data.dimensions as Dimension[];
+    }
+
+    // Professional/Expert: Need to handle different JSON structure
+    // Note: The uploaded Professional/Expert JSONs appear to be incomplete
+    // They show single dimensions. For now, we'll handle what we have.
+    
+    // Check if it's a single dimension object or array of dimensions
+    if (Array.isArray(data)) {
+      // Array of dimensions - ideal structure
+      return data.map((dimension: Dimension) => ({
+        ...dimension,
+        items: selectItemsForDimension(dimension.items, config),
+      }));
+    } else if (data.dimensionCode && data.items) {
+      // Single dimension object - wrap it in array
+      // This is temporary until we have complete 8-dimension files
+      return [
+        {
+          dimensionCode: data.dimensionCode,
+          dimensionName: data.name || data.dimensionName,
+          description: data.description,
+          items: selectItemsForDimension(data.items, config),
+        },
+      ];
+    } else if (data.dimensions) {
+      // Has dimensions property
+      return data.dimensions.map((dimension: Dimension) => ({
+        ...dimension,
+        items: selectItemsForDimension(dimension.items, config),
+      }));
+    }
+
+    throw new Error(`Unexpected ${version} assessment format`);
+  } catch (error) {
+    console.error(`Error loading ${version} test items:`, error);
+    throw error;
   }
-
-  const data = await response.json();
-  const config = getVersionConfig(version);
-
-  // Beginner version: items are already pre-selected
-  if (version === 'beginner') {
-    return data.dimensions as Dimension[];
-  }
-
-  // Professional/Expert: Need to handle different JSON structure
-  // Note: The uploaded Professional/Expert JSONs appear to be incomplete
-  // They show single dimensions. For now, we'll handle what we have.
-  
-  // Check if it's a single dimension object or array of dimensions
-  if (Array.isArray(data)) {
-    // Array of dimensions - ideal structure
-    return data.map((dimension: Dimension) => ({
-      ...dimension,
-      items: selectItemsForDimension(dimension.items, config),
-    }));
-  } else if (data.dimensionCode && data.items) {
-    // Single dimension object - wrap it in array
-    // This is temporary until we have complete 8-dimension files
-    return [
-      {
-        dimensionCode: data.dimensionCode,
-        dimensionName: data.name || data.dimensionName,
-        description: data.description,
-        items: selectItemsForDimension(data.items, config),
-      },
-    ];
-  } else if (data.dimensions) {
-    // Has dimensions property
-    return data.dimensions.map((dimension: Dimension) => ({
-      ...dimension,
-      items: selectItemsForDimension(dimension.items, config),
-    }));
-  }
-
-  throw new Error(`Unexpected ${version} assessment format`);
 }
 
 /**
