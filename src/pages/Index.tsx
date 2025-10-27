@@ -51,7 +51,9 @@ const Index = () => {
           </h1>
           <p className="text-lg lg:text-xl text-muted-foreground mb-8 max-w-3xl mx-auto leading-relaxed font-medium">
             Take the research-validated Artificial Intelligence Quotient (AIQ) test to assess 
-            your ability to collaborate effectively with AI systems across 8 key dimensions.
+            your ability to collaborate effectively with AI systems across 8 key dimensions. 
+            Choose from three assessment levels tailored to your experience—from foundational 
+            literacy to advanced expertise.
           </p>
           <div className="flex gap-4 justify-center">
             {isAuthenticated ? <Link to="/dashboard">
@@ -93,6 +95,116 @@ const Index = () => {
                   </Card>;
             })}
             </div>
+          </div>
+        </section>
+
+        {/* Test Variations Section */}
+        <section className="container py-20 max-w-6xl">
+          <h2 className="text-3xl lg:text-4xl font-bold text-center mb-6 tracking-tight">
+            Choose Your Assessment Level
+          </h2>
+          <p className="text-lg text-muted-foreground text-center mb-12 max-w-3xl mx-auto leading-relaxed">
+            Select the assessment that matches your AI experience level
+          </p>
+          <div className="grid md:grid-cols-3 gap-6 mb-8">
+            <Card className="shadow-elegant">
+              <CardContent className="pt-6">
+                <div className="inline-block px-3 py-1 bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-300 rounded-full text-sm font-semibold mb-4">
+                  Beginner
+                </div>
+                <h3 className="text-2xl font-bold mb-3">Foundational</h3>
+                <p className="text-muted-foreground mb-4 leading-relaxed">
+                  For those new to AI and looking to build foundational literacy
+                </p>
+                <ul className="space-y-2 text-sm mb-4">
+                  <li className="flex items-center gap-2">
+                    <CheckCircle className="h-4 w-4 text-success flex-shrink-0" />
+                    <span>40 questions</span>
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <CheckCircle className="h-4 w-4 text-success flex-shrink-0" />
+                    <span>30 minutes</span>
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <CheckCircle className="h-4 w-4 text-success flex-shrink-0" />
+                    <span>8 core dimensions</span>
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <CheckCircle className="h-4 w-4 text-success flex-shrink-0" />
+                    <span>Basic difficulty levels</span>
+                  </li>
+                </ul>
+                <p className="text-xs text-muted-foreground italic">
+                  Ideal for: Students, beginners, and AI newcomers
+                </p>
+              </CardContent>
+            </Card>
+
+            <Card className="shadow-elegant border-primary border-2">
+              <CardContent className="pt-6">
+                <div className="inline-block px-3 py-1 bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 rounded-full text-sm font-semibold mb-4">
+                  Professional
+                </div>
+                <h3 className="text-2xl font-bold mb-3">Comprehensive</h3>
+                <p className="text-muted-foreground mb-4 leading-relaxed">
+                  For professionals actively using AI in their work
+                </p>
+                <ul className="space-y-2 text-sm mb-4">
+                  <li className="flex items-center gap-2">
+                    <CheckCircle className="h-4 w-4 text-success flex-shrink-0" />
+                    <span>80 questions</span>
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <CheckCircle className="h-4 w-4 text-success flex-shrink-0" />
+                    <span>60 minutes</span>
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <CheckCircle className="h-4 w-4 text-success flex-shrink-0" />
+                    <span>8 core dimensions</span>
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <CheckCircle className="h-4 w-4 text-success flex-shrink-0" />
+                    <span>Multi-level difficulty</span>
+                  </li>
+                </ul>
+                <p className="text-xs text-muted-foreground italic">
+                  Ideal for: AI practitioners and active users
+                </p>
+              </CardContent>
+            </Card>
+
+            <Card className="shadow-elegant">
+              <CardContent className="pt-6">
+                <div className="inline-block px-3 py-1 bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-300 rounded-full text-sm font-semibold mb-4">
+                  Expert
+                </div>
+                <h3 className="text-2xl font-bold mb-3">Advanced</h3>
+                <p className="text-muted-foreground mb-4 leading-relaxed">
+                  For AI experts, leaders, and advanced practitioners
+                </p>
+                <ul className="space-y-2 text-sm mb-4">
+                  <li className="flex items-center gap-2">
+                    <CheckCircle className="h-4 w-4 text-success flex-shrink-0" />
+                    <span>200 questions</span>
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <CheckCircle className="h-4 w-4 text-success flex-shrink-0" />
+                    <span>120 minutes</span>
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <CheckCircle className="h-4 w-4 text-success flex-shrink-0" />
+                    <span>8 core dimensions</span>
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <CheckCircle className="h-4 w-4 text-success flex-shrink-0" />
+                    <span>Advanced difficulty</span>
+                  </li>
+                </ul>
+                <p className="text-xs text-muted-foreground italic">
+                  Ideal for: AI leaders, researchers, and experts
+                </p>
+              </CardContent>
+            </Card>
           </div>
         </section>
 

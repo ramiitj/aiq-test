@@ -16,25 +16,37 @@ export type Database = {
     Tables: {
       profiles: {
         Row: {
+          city: string | null
+          country: string | null
           created_at: string
           email: string
           id: string
+          latitude: number | null
+          longitude: number | null
           name: string | null
           region: string | null
           user_id: string
         }
         Insert: {
+          city?: string | null
+          country?: string | null
           created_at?: string
           email: string
           id?: string
+          latitude?: number | null
+          longitude?: number | null
           name?: string | null
           region?: string | null
           user_id: string
         }
         Update: {
+          city?: string | null
+          country?: string | null
           created_at?: string
           email?: string
           id?: string
+          latitude?: number | null
+          longitude?: number | null
           name?: string | null
           region?: string | null
           user_id?: string

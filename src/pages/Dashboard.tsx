@@ -7,6 +7,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { PlayCircle, Trophy, User as UserIcon, Play, X, Download, Trash2 } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import { checkUserRole } from "@/lib/roleUtils";
+import { captureUserLocation } from "@/lib/geolocation";
 import {
   AlertDialog,
   AlertDialogAction,
@@ -63,6 +64,13 @@ const Dashboard = () => {
 
       if (profileError) throw profileError;
       setProfile(profileData);
+
+      // Capture user location if region is not set
+      if (!profileData?.region || profileData.region === "Unknown") {
+        captureUserLocation(session.user.id).catch((error) => {
+          console.error("Failed to capture location:", error);
+        });
+      }
 
       // Check admin role
       const adminStatus = await checkUserRole(session.user.id);
