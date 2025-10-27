@@ -88,8 +88,8 @@ const Dashboard = () => {
     }
   };
 
-  const handleStartTest = () => {
-    navigate("/test");
+  const handleStartTest = (version: 'beginner' | 'professional' | 'expert') => {
+    navigate(`/test?version=${version}`);
   };
 
   const handleResumeTest = (testId: string) => {
@@ -219,50 +219,114 @@ const Dashboard = () => {
           </p>
         </div>
 
-        <div className="grid gap-6 md:grid-cols-2 mb-8">
-          <Card className="shadow-elegant">
-            <CardHeader>
-              <CardTitle className="flex items-center gap-3 text-xl lg:text-2xl">
-                <PlayCircle className="h-6 w-6 text-primary" />
-                Start New Test
-              </CardTitle>
-              <CardDescription className="text-base">
-                Take the adaptive AIQ assessment (approximately 60 minutes)
-              </CardDescription>
-            </CardHeader>
-            <CardContent>
-              <Button onClick={handleStartTest} className="w-full text-base" size="lg">
-                Begin AIQ Test
-              </Button>
-            </CardContent>
-          </Card>
+        {/* Test Version Selection */}
+        <div className="mb-12">
+          <h2 className="text-2xl font-bold mb-4">Choose Your Assessment Level</h2>
+          <p className="text-muted-foreground mb-6">
+            Select the version that matches your experience level with AI
+          </p>
+          
+          <div className="grid gap-6 md:grid-cols-3 mb-8">
+            {/* Beginner Version */}
+            <Card className="shadow-elegant hover:shadow-xl transition-shadow border-2 hover:border-primary cursor-pointer" onClick={() => handleStartTest('beginner')}>
+              <CardHeader>
+                <div className="inline-block px-3 py-1 bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-100 rounded-full text-sm font-semibold mb-2">
+                  Beginner
+                </div>
+                <CardTitle className="flex items-center gap-3 text-xl">
+                  <PlayCircle className="h-5 w-5 text-primary" />
+                  15-Minute Assessment
+                </CardTitle>
+                <CardDescription className="text-base">
+                  24 questions • Foundational level
+                </CardDescription>
+              </CardHeader>
+              <CardContent>
+                <p className="text-sm text-muted-foreground mb-4">
+                  Perfect for those new to AI or looking to establish baseline knowledge
+                </p>
+                <Button className="w-full" size="lg">
+                  Start Beginner Test
+                </Button>
+              </CardContent>
+            </Card>
 
-          <Card className="shadow-elegant">
-            <CardHeader>
-              <CardTitle className="flex items-center gap-3 text-xl lg:text-2xl">
-                <UserIcon className="h-6 w-6 text-primary" />
-                Your Profile
-              </CardTitle>
-              <CardDescription className="text-base">Account information</CardDescription>
-            </CardHeader>
-            <CardContent className="space-y-3">
-              <div className="flex justify-between text-base">
-                <span className="text-muted-foreground">Region:</span>
-                <span className="font-semibold">{profile?.region || "Global"}</span>
-              </div>
-              <div className="flex justify-between text-base">
-                <span className="text-muted-foreground">Role:</span>
-                <span className="font-semibold">
-                  {isAdmin ? "Admin" : "User"}
-                </span>
-              </div>
-              <div className="flex justify-between text-base">
-                <span className="text-muted-foreground">Tests Taken:</span>
-                <span className="font-semibold tabular-nums">{tests.length}</span>
-              </div>
-            </CardContent>
-          </Card>
+            {/* Professional Version */}
+            <Card className="shadow-elegant hover:shadow-xl transition-shadow border-2 hover:border-primary cursor-pointer" onClick={() => handleStartTest('professional')}>
+              <CardHeader>
+                <div className="inline-block px-3 py-1 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-100 rounded-full text-sm font-semibold mb-2">
+                  Professional
+                </div>
+                <CardTitle className="flex items-center gap-3 text-xl">
+                  <PlayCircle className="h-5 w-5 text-primary" />
+                  60-Minute Assessment
+                </CardTitle>
+                <CardDescription className="text-base">
+                  80 questions • Comprehensive level
+                </CardDescription>
+              </CardHeader>
+              <CardContent>
+                <p className="text-sm text-muted-foreground mb-4">
+                  For professionals actively using AI in their work
+                </p>
+                <Button className="w-full" size="lg">
+                  Start Professional Test
+                </Button>
+              </CardContent>
+            </Card>
+
+            {/* Expert Version */}
+            <Card className="shadow-elegant hover:shadow-xl transition-shadow border-2 hover:border-primary cursor-pointer" onClick={() => handleStartTest('expert')}>
+              <CardHeader>
+                <div className="inline-block px-3 py-1 bg-purple-100 dark:bg-purple-900 text-purple-800 dark:text-purple-100 rounded-full text-sm font-semibold mb-2">
+                  Expert
+                </div>
+                <CardTitle className="flex items-center gap-3 text-xl">
+                  <PlayCircle className="h-5 w-5 text-primary" />
+                  60-Minute Assessment
+                </CardTitle>
+                <CardDescription className="text-base">
+                  80 questions • Advanced level
+                </CardDescription>
+              </CardHeader>
+              <CardContent>
+                <p className="text-sm text-muted-foreground mb-4">
+                  For AI experts, leaders, and advanced practitioners
+                </p>
+                <Button className="w-full" size="lg">
+                  Start Expert Test
+                </Button>
+              </CardContent>
+            </Card>
+          </div>
         </div>
+
+        {/* Profile Card */}
+        <Card className="shadow-elegant mb-8">
+          <CardHeader>
+            <CardTitle className="flex items-center gap-3 text-xl lg:text-2xl">
+              <UserIcon className="h-6 w-6 text-primary" />
+              Your Profile
+            </CardTitle>
+            <CardDescription className="text-base">Account information</CardDescription>
+          </CardHeader>
+          <CardContent className="space-y-3">
+            <div className="flex justify-between text-base">
+              <span className="text-muted-foreground">Region:</span>
+              <span className="font-semibold">{profile?.region || "Global"}</span>
+            </div>
+            <div className="flex justify-between text-base">
+              <span className="text-muted-foreground">Role:</span>
+              <span className="font-semibold">
+                {isAdmin ? "Admin" : "User"}
+              </span>
+            </div>
+            <div className="flex justify-between text-base">
+              <span className="text-muted-foreground">Tests Taken:</span>
+              <span className="font-semibold tabular-nums">{tests.length}</span>
+            </div>
+          </CardContent>
+        </Card>
 
         {/* Paused Test Card */}
         {tests.some(t => t.paused) && (

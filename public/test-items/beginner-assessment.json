@@ -1,0 +1,413 @@
+{
+  "assessmentName": "AIQ Beginner Assessment",
+  "version": "1.0",
+  "description": "A 15-minute foundational AI literacy assessment covering all 8 core dimensions",
+  "totalQuestions": 24,
+  "estimatedTime": "15 minutes",
+  "targetAudience": "Beginners and those new to AI",
+  "totalPoints": 240,
+  "passingScore": 168,
+  "passingPercentage": 70,
+  "scoringGuidelines": {
+    "0-40%": "Novice - Significant learning needed",
+    "41-60%": "Beginner - Basic awareness established",
+    "61-80%": "Developing - Good foundational understanding",
+    "81-90%": "Proficient - Strong grasp of fundamentals",
+    "91-100%": "Advanced - Excellent foundational mastery"
+  },
+  "instructions": "This assessment evaluates foundational AI literacy across 8 key dimensions. Each dimension has 3 questions representing different difficulty levels. Answer all questions to the best of your ability.",
+  "dimensions": [
+    {
+      "dimensionCode": "AIL",
+      "dimensionName": "Strategic AI Understanding",
+      "description": "Understanding of AI capabilities, limitations, and appropriate applications",
+      "questionsInAssessment": 3,
+      "pointsAvailable": 30,
+      "items": [
+        {
+          "id": "SAU-001",
+          "level": 1,
+          "type": "multiple-choice",
+          "dimension": "AIL",
+          "points": 10,
+          "difficulty": 0.18,
+          "bloomLevel": "Remember",
+          "question": "Which of the following best describes the primary limitation of current large language models (LLMs)?",
+          "format": "multiple-choice",
+          "options": [
+            "They cannot process text longer than 1000 words",
+            "They have a knowledge cutoff date and don't have real-time information",
+            "They can only work with English language inputs",
+            "They require manual programming for each new task"
+          ],
+          "correctAnswer": 1,
+          "rationale": "LLMs are trained on data up to a specific cutoff date and do not have access to real-time information unless connected to external tools."
+        },
+        {
+          "id": "SAU-021",
+          "level": 2,
+          "type": "case-study",
+          "dimension": "AIL",
+          "points": 10,
+          "difficulty": 0.45,
+          "bloomLevel": "Apply",
+          "question": "A marketing team wants to use AI to generate social media posts. They're considering: (A) Using AI to create and post content automatically every day, or (B) Having AI generate draft posts that team members review and edit before publishing. Analyze both approaches and recommend the better option.",
+          "format": "case-study",
+          "rationale": ""
+        },
+        {
+          "id": "SAU-036",
+          "level": 3,
+          "type": "strategic-planning",
+          "dimension": "AIL",
+          "points": 10,
+          "difficulty": 0.65,
+          "bloomLevel": "Evaluate",
+          "question": "A regional hospital network is considering implementing AI diagnostic assistance tools for radiology. Develop a comprehensive evaluation framework to determine if and how they should proceed. Your framework should address: 1) Key benefits and risks, 2) Stakeholder concerns, 3) Implementation requirements, 4) Success metrics.",
+          "format": "strategic-planning",
+          "rationale": ""
+        }
+      ]
+    },
+    {
+      "dimensionCode": "PEI",
+      "dimensionName": "Prompt Engineering Intelligence",
+      "description": "Ability to craft effective prompts and interact productively with AI systems",
+      "questionsInAssessment": 3,
+      "pointsAvailable": 30,
+      "items": [
+        {
+          "id": "PEI-002",
+          "level": 1,
+          "type": "multiple-choice",
+          "dimension": "PEI",
+          "points": 10,
+          "difficulty": 0.22,
+          "bloomLevel": "Remember",
+          "question": "What is 'few-shot prompting'?",
+          "format": "multiple-choice",
+          "options": [
+            "Asking the AI the same question multiple times",
+            "Providing examples in the prompt to guide the AI's response format",
+            "Limiting prompts to a few sentences",
+            "Using bullet points instead of full sentences"
+          ],
+          "correctAnswer": 1,
+          "rationale": "Few-shot prompting involves providing examples in the prompt to demonstrate the desired output format or style, helping the AI understand expectations."
+        },
+        {
+          "id": "PEI-022",
+          "level": 2,
+          "type": "prompt-revision",
+          "dimension": "PEI",
+          "points": 10,
+          "difficulty": 0.45,
+          "bloomLevel": "Apply",
+          "question": "Revise this overly complicated prompt to be clearer and more effective: 'I need you to write something that talks about different ways that companies can use social media but also include some statistics maybe about how many people use it and what platforms are popular and also some examples of companies doing it well but not too many examples maybe 2 or 3 and it should be professional but not boring and about 500 words or so give or take.'",
+          "format": "prompt-revision",
+          "rationale": ""
+        },
+        {
+          "id": "PEI-037",
+          "level": 3,
+          "type": "prompt-writing",
+          "dimension": "PEI",
+          "points": 10,
+          "difficulty": 0.65,
+          "bloomLevel": "Create",
+          "question": "Create a 'meta-prompt' that helps users generate better prompts. Your meta-prompt should guide someone through the process of creating an effective prompt for any task they want to accomplish with AI.",
+          "format": "prompt-writing",
+          "rationale": ""
+        }
+      ]
+    },
+    {
+      "dimensionCode": "CEC",
+      "dimensionName": "Critical Evaluation Capability",
+      "description": "Capacity to assess AI outputs for accuracy, bias, and reliability",
+      "questionsInAssessment": 3,
+      "pointsAvailable": 30,
+      "items": [
+        {
+          "id": "CEC-003",
+          "level": 1,
+          "type": "true-false",
+          "dimension": "CEC",
+          "points": 10,
+          "difficulty": 0.18,
+          "bloomLevel": "Remember",
+          "question": "Level 1 evaluation question 3",
+          "format": "true-false",
+          "correctAnswer": true,
+          "rationale": "Rationale for question 3"
+        },
+        {
+          "id": "CEC-023",
+          "level": 2,
+          "type": "output-analysis",
+          "dimension": "CEC",
+          "points": 10,
+          "difficulty": 0.515,
+          "bloomLevel": "Apply",
+          "question": "Analyze this AI output for reliability and accuracy (Level 2 question 23)",
+          "format": "output-analysis",
+          "rationale": ""
+        },
+        {
+          "id": "CEC-038",
+          "level": 3,
+          "type": "comprehensive-evaluation",
+          "dimension": "CEC",
+          "points": 10,
+          "difficulty": 0.954,
+          "bloomLevel": "Evaluate",
+          "question": "Complex evaluation scenario 38 requiring multi-faceted analysis",
+          "format": "comprehensive-evaluation",
+          "rationale": ""
+        }
+      ]
+    },
+    {
+      "dimensionCode": "ITI",
+      "dimensionName": "Interdisciplinary Thinking Intelligence",
+      "description": "Ability to apply AI insights across different domains and contexts",
+      "questionsInAssessment": 3,
+      "pointsAvailable": 30,
+      "items": [
+        {
+          "id": "ITI-001",
+          "level": 1,
+          "type": "matching",
+          "dimension": "ITI",
+          "points": 10,
+          "difficulty": 0.17700000000000002,
+          "bloomLevel": "Remember",
+          "question": "Interdisciplinary thinking foundational question 1",
+          "format": "matching",
+          "rationale": "Rationale for foundational ITI concept 1"
+        },
+        {
+          "id": "ITI-021",
+          "level": 2,
+          "type": "cross-domain-application",
+          "dimension": "ITI",
+          "points": 10,
+          "difficulty": 0.45,
+          "bloomLevel": "Apply",
+          "question": "Sentiment analysis AI application across three domains with detailed adaptations",
+          "format": "cross-domain-application",
+          "rationale": ""
+        },
+        {
+          "id": "ITI-036",
+          "level": 3,
+          "type": "framework-development",
+          "dimension": "ITI",
+          "points": 10,
+          "difficulty": 0.65,
+          "bloomLevel": "Create",
+          "question": "Develop a comprehensive framework for evaluating whether an AI solution from one domain can be successfully transferred to another. Your framework should include: (1) Key evaluation criteria, (2) Risk assessment factors, (3) Decision matrix, (4) Adaptation guidelines. Make it practical and usable.",
+          "format": "framework-development",
+          "rationale": ""
+        }
+      ]
+    },
+    {
+      "dimensionCode": "ALC",
+      "dimensionName": "Adaptive Learning Capability",
+      "description": "Capacity to learn from AI interactions and improve prompting strategies over time",
+      "questionsInAssessment": 3,
+      "pointsAvailable": 30,
+      "items": [
+        {
+          "id": "ALC-002",
+          "level": 1,
+          "type": "scenario-selection",
+          "dimension": "ALC",
+          "points": 10,
+          "difficulty": 0.17200000000000001,
+          "bloomLevel": "Remember",
+          "question": "Adaptive learning foundational question 2",
+          "format": "multiple-choice",
+          "options": [],
+          "correctAnswer": 0,
+          "rationale": "Rationale for ALC concept 2"
+        },
+        {
+          "id": "ALC-022",
+          "level": 2,
+          "type": "hypothesis-testing",
+          "dimension": "ALC",
+          "points": 10,
+          "difficulty": 0.445,
+          "bloomLevel": "Apply",
+          "question": "Applied adaptive learning scenario 22",
+          "format": "hypothesis-testing",
+          "rationale": ""
+        },
+        {
+          "id": "ALC-037",
+          "level": 3,
+          "type": "teaching-design",
+          "dimension": "ALC",
+          "points": 10,
+          "difficulty": 0.648,
+          "bloomLevel": "Evaluate",
+          "question": "Expert-level adaptive learning challenge 37",
+          "format": "teaching-design",
+          "rationale": ""
+        }
+      ]
+    },
+    {
+      "dimensionCode": "EJU",
+      "dimensionName": "Ethical Judgment & Use",
+      "description": "Understanding of ethical implications and responsible use of AI",
+      "questionsInAssessment": 3,
+      "pointsAvailable": 30,
+      "items": [
+        {
+          "id": "EJU-004",
+          "level": 1,
+          "type": "multiple-choice",
+          "dimension": "EJU",
+          "points": 10,
+          "difficulty": 0.19,
+          "bloomLevel": "Understand",
+          "question": "A company uses AI to screen job applications. Which scenario raises the most serious ethical concern?",
+          "format": "multiple-choice",
+          "options": [
+            "The AI saves HR staff time by handling high application volumes",
+            "The AI consistently ranks candidates from certain demographic groups lower, perpetuating workplace inequality",
+            "The AI occasionally makes mistakes that humans catch in review",
+            "The AI uses a complex algorithm that's hard to explain"
+          ],
+          "correctAnswer": 1,
+          "rationale": "Systematic discrimination against demographic groups is the most serious ethical issue\u2014it perpetuates inequality and violates fairness principles, even if unintentional."
+        },
+        {
+          "id": "EJU-024",
+          "level": 2,
+          "type": "policy-evaluation",
+          "dimension": "EJU",
+          "points": 10,
+          "difficulty": 0.458,
+          "bloomLevel": "Apply",
+          "question": "Applied ethical reasoning scenario 24",
+          "format": "policy-evaluation",
+          "rationale": ""
+        },
+        {
+          "id": "EJU-038",
+          "level": 3,
+          "type": "complex-dilemma",
+          "dimension": "EJU",
+          "points": 10,
+          "difficulty": 0.658,
+          "bloomLevel": "Evaluate",
+          "question": "Expert-level ethical judgment challenge 38",
+          "format": "complex-dilemma",
+          "rationale": ""
+        }
+      ]
+    },
+    {
+      "dimensionCode": "CXS",
+      "dimensionName": "Contextual Sensitivity",
+      "description": "Awareness of how context affects AI effectiveness and appropriateness",
+      "questionsInAssessment": 3,
+      "pointsAvailable": 30,
+      "items": [
+        {
+          "id": "CXS-003",
+          "level": 1,
+          "type": "multiple-choice",
+          "dimension": "CXS",
+          "points": 10,
+          "difficulty": 0.19,
+          "bloomLevel": "Understand",
+          "question": "Which factor is MOST important to consider when adapting AI use to different contexts?",
+          "format": "multiple-choice",
+          "options": [
+            "How fast the AI can generate results",
+            "Who the audience is and what they need or expect",
+            "How much the AI costs to use",
+            "What time of day you're using it"
+          ],
+          "correctAnswer": 1,
+          "rationale": "Audience needs and expectations are central to context. The same content can be excellent for one audience but inappropriate for another, regardless of speed or cost."
+        },
+        {
+          "id": "CXS-023",
+          "level": 2,
+          "type": "cross-cultural-scenario",
+          "dimension": "CXS",
+          "points": 10,
+          "difficulty": 0.452,
+          "bloomLevel": "Apply",
+          "question": "Applied contextual sensitivity scenario 23",
+          "format": "cross-cultural-scenario",
+          "rationale": ""
+        },
+        {
+          "id": "CXS-037",
+          "level": 3,
+          "type": "organizational-strategy",
+          "dimension": "CXS",
+          "points": 10,
+          "difficulty": 0.649,
+          "bloomLevel": "Evaluate",
+          "question": "Expert-level contextual sensitivity challenge 37",
+          "format": "organizational-strategy",
+          "rationale": ""
+        }
+      ]
+    },
+    {
+      "dimensionCode": "CRS",
+      "dimensionName": "Creative & Strategic Prompting",
+      "description": "Ability to craft innovative prompts and use AI strategically for complex tasks",
+      "questionsInAssessment": 3,
+      "pointsAvailable": 30,
+      "items": [
+        {
+          "id": "CRS-001",
+          "level": 1,
+          "type": "true-false",
+          "dimension": "CRS",
+          "points": 10,
+          "difficulty": 0.166,
+          "bloomLevel": "Remember",
+          "question": "Creative and strategic prompting foundational question 1",
+          "format": "true-false",
+          "correctAnswer": true,
+          "rationale": "Rationale for CRS concept 1"
+        },
+        {
+          "id": "CRS-021",
+          "level": 2,
+          "type": "prompt-design",
+          "dimension": "CRS",
+          "points": 10,
+          "difficulty": 0.44,
+          "bloomLevel": "Apply",
+          "question": "Applied creative and strategic prompting scenario 21",
+          "format": "prompt-design",
+          "rationale": ""
+        },
+        {
+          "id": "CRS-036",
+          "level": 3,
+          "type": "advanced-prompt-engineering",
+          "dimension": "CRS",
+          "points": 10,
+          "difficulty": 0.64,
+          "bloomLevel": "Evaluate",
+          "question": "Expert-level creative and strategic challenge 36",
+          "format": "advanced-prompt-engineering",
+          "rationale": ""
+        }
+      ]
+    }
+  ]
+}

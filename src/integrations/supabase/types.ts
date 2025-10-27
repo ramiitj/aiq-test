@@ -55,6 +55,7 @@ export type Database = {
           test_completion_date: string | null
           test_duration_seconds: number | null
           test_id: string
+          test_version: string
           user_id: string
           user_name: string | null
         }
@@ -71,6 +72,7 @@ export type Database = {
           test_completion_date?: string | null
           test_duration_seconds?: number | null
           test_id: string
+          test_version?: string
           user_id: string
           user_name?: string | null
         }
@@ -87,6 +89,7 @@ export type Database = {
           test_completion_date?: string | null
           test_duration_seconds?: number | null
           test_id?: string
+          test_version?: string
           user_id?: string
           user_name?: string | null
         }
@@ -118,6 +121,7 @@ export type Database = {
           scores: Json
           start_time: string
           test_duration_seconds: number | null
+          test_version: string
           time_remaining: number | null
           user_id: string
         }
@@ -138,6 +142,7 @@ export type Database = {
           scores?: Json
           start_time?: string
           test_duration_seconds?: number | null
+          test_version?: string
           time_remaining?: number | null
           user_id: string
         }
@@ -158,6 +163,7 @@ export type Database = {
           scores?: Json
           start_time?: string
           test_duration_seconds?: number | null
+          test_version?: string
           time_remaining?: number | null
           user_id?: string
         }

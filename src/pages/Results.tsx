@@ -16,6 +16,7 @@ interface TestResult {
   created_at: string;
   completed: boolean;
   test_duration_seconds: number;
+  test_version?: string;
 }
 
 const dimensionNames = [
@@ -89,6 +90,7 @@ const Results = () => {
         created_at: data.created_at,
         completed: data.completed,
         test_duration_seconds: data.test_duration_seconds || 0,
+        test_version: data.test_version || 'beginner',
       });
 
       // Get user profile for name

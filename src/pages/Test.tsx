@@ -13,6 +13,7 @@ import { ConsentForm } from "@/components/ConsentForm";
 import { useToast } from "@/hooks/use-toast";
 import { Clock, ChevronRight, Pause } from "lucide-react";
 import { validateAnswers } from "@/lib/validation";
+import { loadTestItems, getVersionConfig, type TestVersion } from "@/lib/adaptiveItemSelector";
 
 interface TestItem {
   id: string | number;
@@ -20,7 +21,7 @@ interface TestItem {
   question: string;
   type: string;
   options?: string[];
-  correctAnswer?: number;
+  correctAnswer?: number | boolean;
   correctAnswers?: number[];
   rubric?: string;
 }
@@ -34,7 +35,7 @@ const Test = () => {
   const [currentDimension, setCurrentDimension] = useState(0);
   const [currentItem, setCurrentItem] = useState(0);
   const [answers, setAnswers] = useState<Record<string, string>>({});
-  const [timeRemaining, setTimeRemaining] = useState(3600); // 60 minutes
+  const [timeRemaining, setTimeRemaining] = useState(3600); // Default 60 minutes
   const [testId, setTestId] = useState<string | null>(null);
   const [loading, setLoading] = useState(true);
   const [dimensions, setDimensions] = useState<Dimension[]>([]);
@@ -42,12 +43,20 @@ const Test = () => {
   const [consentGiven, setConsentGiven] = useState(false);
   const [showConsent, setShowConsent] = useState(true);
   const [timerInterval, setTimerInterval] = useState<NodeJS.Timeout | null>(null);
+  const [testVersion, setTestVersion] = useState<TestVersion>('beginner');
   const navigate = useNavigate();
   const { toast } = useToast();
 
   useEffect(() => {
     const urlParams = new URLSearchParams(window.location.search);
     const resumeId = urlParams.get('resume');
+    const version = (urlParams.get('version') || 'beginner') as TestVersion;
+    
+    setTestVersion(version);
+    
+    // Set initial time based on version
+    const config = getVersionConfig(version);
+    setTimeRemaining(config.totalTime);
     
     if (resumeId) {
       // Resume existing test - skip consent
@@ -56,7 +65,7 @@ const Test = () => {
       resumeTest(resumeId);
     } else if (consentGiven) {
       // Start new test
-      initializeTest();
+      initializeTest(version);
     }
 
     if (consentGiven || resumeId) {
@@ -139,7 +148,7 @@ const Test = () => {
     }
   };
 
-  const initializeTest = async () => {
+  const initializeTest = async (version: TestVersion) => {
     const { data: { session } } = await supabase.auth.getSession();
     
     if (!session) {
@@ -150,134 +159,34 @@ const Test = () => {
     const mapDiff = (d: any): 'easy' | 'medium' | 'hard' => {
       if (typeof d === 'number') return d <= -0.5 ? 'easy' : d >= 0.5 ? 'hard' : 'medium';
       const s = String(d || '').toLowerCase();
-      if (s.includes('easy') || s === 'e' || s === '-1') return 'easy';
-      if (s.includes('hard') || s === 'h' || s === '1') return 'hard';
+      if (s.includes('easy') || s === 'e' || s === '-1' || s === '1') return 'easy';
+      if (s.includes('hard') || s === 'h' || s === '3') return 'hard';
       return 'medium';
     };
 
-    const shuffleArray = <T,>(array: T[]): T[] => {
-      const shuffled = [...array];
-      for (let i = shuffled.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1));
-        [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
-      }
-      return shuffled;
-    };
-
     try {
-      // Load latest test items from Storage
-      const { data: files, error: listError } = await supabase.storage
-        .from("aiq-items")
-        .list("", { sortBy: { column: "created_at", order: "desc" }, limit: 1 });
-
-      if (listError) throw listError;
-
-      if (!files || files.length === 0) {
-        throw new Error("No test items found. Please contact admin.");
-      }
-
-      const latestFile = files[0].name;
-      const { data: fileData, error: downloadError } = await supabase.storage
-        .from("aiq-items")
-        .download(latestFile);
-
-      if (downloadError) throw downloadError;
-
-      const text = await fileData.text();
-      const parsed = JSON.parse(text);
-
-      // Accept multiple shapes and group by ID prefix
-      let allItems: any[] = [];
+      // Load test items using the adaptive selector
+      const loadedDimensions = await loadTestItems(version);
+      const config = getVersionConfig(version);
       
-      if (Array.isArray(parsed)) {
-        // Array of dimension objects: [{ name, items }, ...]
-        allItems = parsed.flatMap((d: any) => d.items || []);
-      } else if (Array.isArray((parsed as any)?.dimensions)) {
-        // { dimensions: [{ name, items }, ...] }
-        allItems = (parsed as any).dimensions.flatMap((d: any) => d.items || []);
-      } else if (parsed && typeof parsed === 'object' && Array.isArray((parsed as any).items)) {
-        // { items: [...] }
-        allItems = (parsed as any).items;
-      } else if (parsed && typeof parsed === 'object') {
-        // Map-like: { SAU: { items: [...] }, PEI: { items: [...] }, ... }
-        allItems = Object.values(parsed as Record<string, any>).flatMap((v: any) => 
-          Array.isArray((v as any)?.items) ? (v as any).items : (Array.isArray(v) ? v : [])
-        );
-      }
-
-      if (!allItems.length) {
-        throw new Error("Invalid test format: no items found.");
-      }
-
-      // Group items by ID prefix
-      const grouped = new Map<string, any[]>();
-      allItems.forEach((item: any) => {
-        const id = String(item.id || '');
-        const code = id.includes('-') ? id.split('-')[0].toUpperCase() : 'MISC';
-        if (!grouped.has(code)) grouped.set(code, []);
-        grouped.get(code)!.push(item);
-      });
-
-      // Select exactly 8 dimensions with the most items
-      const sortedCodes = Array.from(grouped.entries())
-        .sort((a, b) => b[1].length - a[1].length)
-        .slice(0, 8);
-
-      if (sortedCodes.length < 8) {
-        throw new Error(`Not enough dimensions found. Expected 8, found ${sortedCodes.length}. Please upload a complete test set.`);
-      }
-
-      // Validate each dimension has at least 10 items
-      for (const [code, items] of sortedCodes) {
-        if (items.length < 10) {
-          throw new Error(`Dimension ${code} has only ${items.length} items. Need at least 10 items per dimension.`);
-        }
-      }
-
-      // Build normalized dimensions with shuffled difficulty pools
-      const normalized: Dimension[] = sortedCodes.map(([code, rawItems]) => {
-        const items = rawItems.map((it: any) => {
-          // Enhanced removal of "Select ALL" variations
-          let cleanQuestion = String(it.question ?? '').trim();
-          cleanQuestion = cleanQuestion
-            .replace(/\bselect\s+all\s*(?:that\s+apply)?\s*:?\s*/gi, '')
-            .replace(/^\s*:?\s*/, '')
-            .trim();
-          
-          // Capitalize first letter if needed
-          if (cleanQuestion && cleanQuestion[0] === cleanQuestion[0].toLowerCase()) {
-            cleanQuestion = cleanQuestion.charAt(0).toUpperCase() + cleanQuestion.slice(1);
-          }
-
-          return {
-            id: String(it.id ?? `${code}_${Math.random()}`),
-            difficulty: it.difficulty ?? 'medium',
-            question: cleanQuestion,
-            type: it.type ?? 'multiple-choice',
-            options: Array.isArray(it.options) ? it.options.map((o: any) => String(o)) : undefined,
-            correctAnswer: it.correctAnswer,
-            correctAnswers: it.correctAnswers,
-            rubric: it.explanation ?? it.rubric,
-          } as TestItem;
-        });
-
-        // Partition and shuffle by difficulty
-        const easy = shuffleArray(items.filter(it => mapDiff(it.difficulty) === 'easy'));
-        const medium = shuffleArray(items.filter(it => mapDiff(it.difficulty) === 'medium'));
-        const hard = shuffleArray(items.filter(it => mapDiff(it.difficulty) === 'hard'));
-
-        // Recombine shuffled pools
-        const shuffledItems = [...easy, ...medium, ...hard];
-
-        return {
-          name: code,
-          items: shuffledItems,
-        };
-      });
+      // Normalize dimensions to match expected structure
+      const normalized: Dimension[] = loadedDimensions.map((dim) => ({
+        name: dim.dimensionName || dim.dimensionCode,
+        items: dim.items.map((item) => ({
+          id: item.id,
+          difficulty: item.level === 1 ? 'easy' : item.level === 3 ? 'hard' : 'medium',
+          question: item.question,
+          type: item.type,
+          options: item.options,
+          correctAnswer: item.correctAnswer,
+          correctAnswers: item.correctAnswers,
+          rubric: item.explanation || item.rationale,
+        }))
+      }));
 
       setDimensions(normalized);
 
-      // Initialize adaptive state for 8 dimensions
+      // Initialize adaptive state for dimensions
       const initStates = normalized.map(() => ({
         theta: 0,
         used: new Set<string>(),
@@ -286,21 +195,17 @@ const Test = () => {
       }));
       setDimStates(initStates);
 
-      // Start with first dimension, first medium item (or fallback)
+      // Start with first dimension, first item
       setCurrentDimension(0);
-      const firstItems = normalized[0].items;
-      const mediumIdx = firstItems.findIndex(it => mapDiff(it.difficulty) === 'medium');
-      const easyIdx = firstItems.findIndex(it => mapDiff(it.difficulty) === 'easy');
-      const hardIdx = firstItems.findIndex(it => mapDiff(it.difficulty) === 'hard');
-      const startIdx = mediumIdx >= 0 ? mediumIdx : (easyIdx >= 0 ? easyIdx : (hardIdx >= 0 ? hardIdx : 0));
-      setCurrentItem(startIdx);
+      setCurrentItem(0);
 
-      // Create test record with consent
+      // Create test record with consent and version
       const { data, error } = await supabase
         .from("tests")
         .insert({
           user_id: session.user.id,
-          json_version: latestFile,
+          json_version: `${version}-v1.0`,
+          test_version: version,
           completed: false,
           consent_given: true,
           consent_timestamp: new Date().toISOString(),
