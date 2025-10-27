@@ -211,7 +211,6 @@ const Admin = () => {
                 <div className="px-2 py-1 bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-300 rounded text-sm font-semibold">
                   Beginner
                 </div>
-                <span className="text-sm text-muted-foreground">40 questions • 30 minutes</span>
               </div>
               <Label htmlFor="beginner-upload">Beginner Assessment JSON</Label>
               <Input
@@ -233,7 +232,6 @@ const Admin = () => {
                 <div className="px-2 py-1 bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 rounded text-sm font-semibold">
                   Professional
                 </div>
-                <span className="text-sm text-muted-foreground">80 questions • 60 minutes</span>
               </div>
               <Label htmlFor="professional-upload">Professional Assessment JSON</Label>
               <Input
@@ -255,7 +253,6 @@ const Admin = () => {
                 <div className="px-2 py-1 bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-300 rounded text-sm font-semibold">
                   Expert
                 </div>
-                <span className="text-sm text-muted-foreground">200 questions • 120 minutes</span>
               </div>
               <Label htmlFor="expert-upload">Expert Assessment JSON</Label>
               <Input
