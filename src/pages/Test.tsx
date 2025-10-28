@@ -584,7 +584,8 @@ const Test = () => {
 
   const currentQuestion = dimensions[currentDimension]?.items[currentItem];
   const totalAnswered = dimStates.reduce((sum, s) => sum + s.answered, 0);
-  const totalRequired = 80; // Fixed: 8 dimensions × 10 items each
+  const config = getVersionConfig(testVersion);
+  const totalRequired = dimensions.length * config.itemsPerDimension;
   const progress = (totalAnswered / totalRequired) * 100;
 
   if (!currentQuestion) {
@@ -626,7 +627,7 @@ const Test = () => {
                 Section {currentDimension + 1} of 8
               </h2>
               <p className="text-base text-muted-foreground mt-1 font-medium">
-                Question {Math.min(dimStates[currentDimension].answered + 1, 10)} of 10
+                Question {Math.min(dimStates[currentDimension].answered + 1, config.itemsPerDimension)} of {config.itemsPerDimension}
               </p>
             </div>
             <div className="flex items-center gap-6">
@@ -706,7 +707,7 @@ const Test = () => {
 
             <div className="flex justify-end pt-4">
               <Button onClick={handleNext}>
-                {totalAnswered >= 79 ? "Submit Test" : "Next"}
+                {totalAnswered >= totalRequired - 1 ? "Submit Test" : "Next"}
                 <ChevronRight className="ml-2 h-4 w-4" />
               </Button>
             </div>
