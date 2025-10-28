@@ -103,9 +103,13 @@ const Admin = () => {
       const fileContent = await file.text();
       const jsonData = JSON.parse(fileContent);
 
-      // Basic validation
-      if (!jsonData.dimensions || !Array.isArray(jsonData.dimensions)) {
-        throw new Error("Invalid JSON structure: missing 'dimensions' array");
+      // Basic validation - accept multiple formats
+      const hasDimensionsArray = jsonData.dimensions && Array.isArray(jsonData.dimensions);
+      const isSingleDimension = jsonData.items && Array.isArray(jsonData.items);
+      const isArrayOfDimensions = Array.isArray(jsonData);
+      
+      if (!hasDimensionsArray && !isSingleDimension && !isArrayOfDimensions) {
+        throw new Error("Invalid JSON structure: must have 'dimensions' array, 'items' array, or be an array of dimensions");
       }
 
       const fileName = `${version}-assessment.json`;
@@ -269,28 +273,46 @@ const Admin = () => {
             </div>
 
             <div className="p-4 bg-accent/30 rounded-lg">
-              <p className="text-sm font-semibold mb-2">Expected JSON Format:</p>
-              <pre className="text-xs bg-background p-3 rounded border overflow-x-auto">
+              <p className="text-sm font-semibold mb-2">Accepted JSON Formats:</p>
+              <div className="space-y-3">
+                <div>
+                  <p className="text-xs font-medium mb-1">Format 1: Dimensions Array (Beginner)</p>
+                  <pre className="text-xs bg-background p-3 rounded border overflow-x-auto">
 {`{
   "dimensions": [
     {
-      "name": "Strategic AI Understanding",
-      "items": [
-        {
-          "id": 1,
-          "difficulty": "easy",
-          "question": "...",
-          "type": "mcq",
-          "options": ["A: ...", "B: ..."],
-          "correct": "A"
-        }
-      ]
+      "dimensionCode": "AIL",
+      "dimensionName": "...",
+      "items": [...]
     }
   ]
 }`}
-              </pre>
+                  </pre>
+                </div>
+                <div>
+                  <p className="text-xs font-medium mb-1">Format 2: Single Dimension (Professional/Expert)</p>
+                  <pre className="text-xs bg-background p-3 rounded border overflow-x-auto">
+{`{
+  "dimensionCode": "CXS",
+  "dimensionName": "...",
+  "items": [...]
+}`}
+                  </pre>
+                </div>
+                <div>
+                  <p className="text-xs font-medium mb-1">Format 3: Array of Dimensions</p>
+                  <pre className="text-xs bg-background p-3 rounded border overflow-x-auto">
+{`[
+  {
+    "dimensionCode": "AIL",
+    "items": [...]
+  }
+]`}
+                  </pre>
+                </div>
+              </div>
               <p className="text-xs text-muted-foreground mt-3">
-                Files will be saved as: <code className="bg-background px-1 rounded">beginner-assessment.json</code>,{" "}
+                Files are saved as: <code className="bg-background px-1 rounded">beginner-assessment.json</code>,{" "}
                 <code className="bg-background px-1 rounded">professional-assessment.json</code>, and{" "}
                 <code className="bg-background px-1 rounded">expert-assessment.json</code>
               </p>
