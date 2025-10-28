@@ -7,7 +7,7 @@ import { Label } from "@/components/ui/label";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { useToast } from "@/hooks/use-toast";
 import { z } from "zod";
-import aiqBrainLogo from "@/assets/aiq-brain-logo.png";
+import { Mail, Lock, User, ArrowRight, AlertCircle } from "lucide-react";
 
 const authSchema = z.object({
   email: z.string().email("Please enter a valid email address"),
@@ -31,7 +31,9 @@ const Auth = () => {
       }
     });
 
-    const { data: { subscription } } = supabase.auth.onAuthStateChange((event, session) => {
+    const {
+      data: { subscription },
+    } = supabase.auth.onAuthStateChange((event, session) => {
       if (session) {
         navigate("/dashboard");
       }
@@ -45,10 +47,8 @@ const Auth = () => {
     setLoading(true);
 
     try {
-      const validationData = isLogin 
-        ? { email, password }
-        : { email, password, name };
-      
+      const validationData = isLogin ? { email, password } : { email, password, name };
+
       authSchema.parse(validationData);
 
       if (isLogin) {
@@ -125,76 +125,174 @@ const Auth = () => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-secondary/30 p-4 animate-fade-in">
-      <Card className="w-full max-w-md shadow-elegant">
-        <CardHeader className="space-y-1 text-center">
-          <div className="flex justify-center mb-4">
-            <div className="p-3 bg-primary/10 rounded-full">
-              <img src={aiqBrainLogo} alt="AIQ Logo" className="h-8 w-8" />
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-gray-950 dark:to-gray-900 p-4 animate-fade-in">
+      <div className="w-full max-w-md">
+        {/* Logo Header */}
+        <div className="text-center mb-6">
+          <div className="inline-flex items-center gap-2 mb-3">
+            <div className="w-10 h-10 bg-gradient-to-br from-blue-900 to-blue-600 rounded-xl flex items-center justify-center">
+              <span className="text-white font-black text-xl">A</span>
             </div>
+            <span className="text-2xl font-black tracking-tight bg-gradient-to-r from-blue-900 to-blue-600 bg-clip-text text-transparent">
+              AIQ
+            </span>
           </div>
-          <CardTitle className="text-2xl font-semibold">
-            {isLogin ? "Welcome Back" : "Create Account"}
-          </CardTitle>
-          <CardDescription>
-            {isLogin 
-              ? "Sign in to access your AIQ test results" 
-              : "Take your first AIQ test and measure your AI collaboration skills"}
-          </CardDescription>
-        </CardHeader>
-        <CardContent>
-          <form onSubmit={handleSubmit} className="space-y-4">
-            {!isLogin && (
+          <p className="text-sm text-muted-foreground font-medium">Measure Your AI Intelligence</p>
+        </div>
+
+        {/* Auth Card */}
+        <Card className="shadow-lg border">
+          <CardHeader className="pb-4">
+            <CardTitle className="text-2xl font-black text-center">
+              {isLogin ? "Welcome Back" : "Get Started"}
+            </CardTitle>
+            <CardDescription className="text-center">
+              {isLogin
+                ? "Sign in to access your dashboard and results"
+                : "Create your account to take the AIQ assessment"}
+            </CardDescription>
+          </CardHeader>
+          <CardContent>
+            <form onSubmit={handleSubmit} className="space-y-4">
+              {!isLogin && (
+                <div className="space-y-2">
+                  <Label htmlFor="name" className="text-sm font-semibold">
+                    Full Name
+                  </Label>
+                  <div className="relative">
+                    <User className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
+                    <Input
+                      id="name"
+                      type="text"
+                      placeholder="John Doe"
+                      className="pl-10"
+                      value={name}
+                      onChange={(e) => setName(e.target.value)}
+                      required={!isLogin}
+                    />
+                  </div>
+                </div>
+              )}
+
               <div className="space-y-2">
-                <Label htmlFor="name">Full Name</Label>
-                <Input
-                  id="name"
-                  type="text"
-                  placeholder="John Doe"
-                  value={name}
-                  onChange={(e) => setName(e.target.value)}
-                  required={!isLogin}
-                />
+                <Label htmlFor="email" className="text-sm font-semibold">
+                  Email Address
+                </Label>
+                <div className="relative">
+                  <Mail className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
+                  <Input
+                    id="email"
+                    type="email"
+                    placeholder="you@example.com"
+                    className="pl-10"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    required
+                  />
+                </div>
               </div>
-            )}
-            <div className="space-y-2">
-              <Label htmlFor="email">Email</Label>
-              <Input
-                id="email"
-                type="email"
-                placeholder="you@example.com"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                required
-              />
+
+              <div className="space-y-2">
+                <Label htmlFor="password" className="text-sm font-semibold">
+                  Password
+                </Label>
+                <div className="relative">
+                  <Lock className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
+                  <Input
+                    id="password"
+                    type="password"
+                    placeholder="••••••••"
+                    className="pl-10"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                    required
+                  />
+                </div>
+                {!isLogin && (
+                  <p className="text-xs text-muted-foreground flex items-center gap-1">
+                    <AlertCircle className="h-3 w-3" />
+                    Minimum 6 characters
+                  </p>
+                )}
+              </div>
+
+              <Button
+                type="submit"
+                className="w-full bg-blue-900 hover:bg-blue-800 font-semibold h-11"
+                disabled={loading}
+              >
+                {loading ? (
+                  "Processing..."
+                ) : (
+                  <>
+                    {isLogin ? "Sign In" : "Create Account"}
+                    <ArrowRight className="ml-2 h-4 w-4" />
+                  </>
+                )}
+              </Button>
+            </form>
+
+            <div className="relative my-6">
+              <div className="absolute inset-0 flex items-center">
+                <div className="w-full border-t"></div>
+              </div>
+              <div className="relative flex justify-center text-xs uppercase">
+                <span className="bg-background px-2 text-muted-foreground font-medium">Or</span>
+              </div>
             </div>
-            <div className="space-y-2">
-              <Label htmlFor="password">Password</Label>
-              <Input
-                id="password"
-                type="password"
-                placeholder="••••••••"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                required
-              />
-            </div>
-            <Button type="submit" className="w-full" disabled={loading}>
-              {loading ? "Loading..." : isLogin ? "Sign In" : "Sign Up"}
-            </Button>
-          </form>
-          
-          <div className="mt-4 text-center text-sm">
-            <button
+
+            <Button
               type="button"
-              onClick={() => setIsLogin(!isLogin)}
-              className="text-primary hover:underline"
+              variant="outline"
+              onClick={() => {
+                setIsLogin(!isLogin);
+                setName("");
+                setEmail("");
+                setPassword("");
+              }}
+              className="w-full font-semibold"
             >
-              {isLogin ? "Don't have an account? Sign up" : "Already have an account? Sign in"}
-            </button>
+              {isLogin ? "Create New Account" : "Sign In to Existing Account"}
+            </Button>
+          </CardContent>
+        </Card>
+
+        {/* Footer Info */}
+        <div className="mt-6 text-center">
+          <p className="text-xs text-muted-foreground">
+            By continuing, you agree to our{" "}
+            <a href="/terms" className="text-primary hover:underline font-medium">
+              Terms of Service
+            </a>{" "}
+            and{" "}
+            <a href="/privacy" className="text-primary hover:underline font-medium">
+              Privacy Policy
+            </a>
+          </p>
+        </div>
+
+        {/* Features */}
+        <div className="mt-8 grid grid-cols-3 gap-4">
+          <div className="text-center">
+            <div className="w-12 h-12 bg-blue-100 dark:bg-blue-900/30 rounded-lg flex items-center justify-center mx-auto mb-2">
+              <span className="text-2xl">🎯</span>
+            </div>
+            <p className="text-xs font-semibold">Research-Based</p>
           </div>
-        </CardContent>
-      </Card>
+          <div className="text-center">
+            <div className="w-12 h-12 bg-green-100 dark:bg-green-900/30 rounded-lg flex items-center justify-center mx-auto mb-2">
+              <span className="text-2xl">⚡</span>
+            </div>
+            <p className="text-xs font-semibold">Instant Results</p>
+          </div>
+          <div className="text-center">
+            <div className="w-12 h-12 bg-purple-100 dark:bg-purple-900/30 rounded-lg flex items-center justify-center mx-auto mb-2">
+              <span className="text-2xl">🏆</span>
+            </div>
+            <p className="text-xs font-semibold">Certified</p>
+          </div>
+        </div>
+      </div>
     </div>
   );
 };
