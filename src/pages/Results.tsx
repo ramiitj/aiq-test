@@ -84,9 +84,26 @@ const Results = () => {
         return;
       }
 
+      // Parse scores - handle both object and array formats
+      let parsedScores = typeof data.scores === 'string' ? JSON.parse(data.scores) : data.scores;
+      
+      // Convert object to array if needed
+      let scoresArray: number[];
+      if (Array.isArray(parsedScores)) {
+        scoresArray = parsedScores;
+      } else if (typeof parsedScores === 'object' && parsedScores !== null) {
+        // Convert object with dimension codes to array
+        scoresArray = Object.keys(dimensionCodeMap).map(code => 
+          parsedScores[code] || 0
+        );
+      } else {
+        // Default to zeros if no scores
+        scoresArray = new Array(8).fill(0);
+      }
+
       setResult({
         id: data.id,
-        scores: typeof data.scores === 'string' ? JSON.parse(data.scores) : data.scores,
+        scores: scoresArray,
         created_at: data.created_at,
         completed: data.completed,
         test_duration_seconds: data.test_duration_seconds || 0,
