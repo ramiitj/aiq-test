@@ -391,10 +391,12 @@ const Dashboard = () => {
                 {tests.filter(t => !t.paused).slice(0, 5).map((test) => (
                   <div
                     key={test.id}
-                    className="flex items-center justify-between p-4 border rounded-lg hover:bg-accent/50 transition-colors cursor-pointer group"
-                    onClick={() => navigate(`/results/${test.id}`)}
+                    className="flex items-center justify-between p-4 border rounded-lg hover:bg-accent/50 transition-colors group"
                   >
-                    <div>
+                    <div
+                      className="flex-1 cursor-pointer"
+                      onClick={() => navigate(`/results/${test.id}`)}
+                    >
                       <p className="text-sm font-bold">
                         {test.completed ? "Completed Assessment" : "In Progress"}
                       </p>
@@ -406,14 +408,49 @@ const Dashboard = () => {
                         })}
                       </p>
                     </div>
-                    <Button 
-                      variant="ghost" 
-                      size="sm" 
-                      className="text-xs group-hover:bg-accent"
-                    >
-                      View
-                      <ArrowRight className="ml-1 h-3 w-3" />
-                    </Button>
+                    <div className="flex items-center gap-2">
+                      <Button 
+                        variant="ghost" 
+                        size="sm" 
+                        className="text-xs group-hover:bg-accent"
+                        onClick={() => navigate(`/results/${test.id}`)}
+                      >
+                        View
+                        <ArrowRight className="ml-1 h-3 w-3" />
+                      </Button>
+                      <AlertDialog>
+                        <AlertDialogTrigger asChild>
+                          <Button 
+                            variant="ghost" 
+                            size="sm"
+                            className="h-8 w-8 p-0 text-destructive hover:text-destructive hover:bg-destructive/10"
+                            onClick={(e) => e.stopPropagation()}
+                          >
+                            <Trash2 className="h-4 w-4" />
+                          </Button>
+                        </AlertDialogTrigger>
+                        <AlertDialogContent>
+                          <AlertDialogHeader>
+                            <AlertDialogTitle className="font-black">Delete Test?</AlertDialogTitle>
+                            <AlertDialogDescription>
+                              This will permanently delete this test and its results. This action cannot be undone.
+                            </AlertDialogDescription>
+                          </AlertDialogHeader>
+                          <AlertDialogFooter>
+                            <AlertDialogCancel>Cancel</AlertDialogCancel>
+                            <AlertDialogAction
+                              onClick={(e) => {
+                                e.stopPropagation();
+                                handleAbandonTest(test.id);
+                              }}
+                              className="bg-destructive hover:bg-destructive/90"
+                            >
+                              Delete
+                            </AlertDialogAction>
+                          </AlertDialogFooter>
+                        </AlertDialogContent>
+                      </AlertDialog>
+                    </div>
                   </div>
                 ))}
               </div>

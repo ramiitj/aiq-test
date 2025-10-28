@@ -109,12 +109,14 @@ const Test = () => {
     try {
       const loadedDimensions = await loadTestItems(version as TestVersion);
       setDimensions(loadedDimensions);
+      setLoading(false);
     } catch (error: any) {
       toast({
         title: "Error Loading Test",
         description: "Failed to load test items. Please try again.",
         variant: "destructive",
       });
+      setLoading(false);
     }
   };
 
@@ -146,6 +148,7 @@ const Test = () => {
       } else {
         // New test - show consent
         setTimeRemaining(testDuration);
+        setLoading(false);
       }
     } catch (error: any) {
       toast({
@@ -153,7 +156,6 @@ const Test = () => {
         description: error.message,
         variant: "destructive",
       });
-    } finally {
       setLoading(false);
     }
   };
@@ -287,7 +289,7 @@ const Test = () => {
 
   const progress = ((currentDimension * questionsPerDimension + currentQuestion) / totalQuestions) * 100;
 
-  if (loading) {
+  if (loading || dimensions.length === 0) {
     return (
       <div className="min-h-screen">
         <Navigation isAuthenticated={true} />
