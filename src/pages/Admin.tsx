@@ -9,6 +9,7 @@ import { Label } from "@/components/ui/label";
 import { useToast } from "@/hooks/use-toast";
 import { Upload, BarChart3, Users } from "lucide-react";
 import { checkUserRole } from "@/lib/roleUtils";
+import { sanitizeJsonString } from "@/lib/jsonSanitizer";
 
 const Admin = () => {
   const [isAdmin, setIsAdmin] = useState(false);
@@ -101,7 +102,8 @@ const Admin = () => {
     try {
       // Read and validate JSON file
       const fileContent = await file.text();
-      const jsonData = JSON.parse(fileContent);
+      const sanitized = sanitizeJsonString(fileContent);
+      const jsonData = JSON.parse(sanitized);
 
       // Validate AIQ assessment structure
       const hasItemBank = jsonData.itemBank && 
