@@ -10,6 +10,7 @@ import { useToast } from "@/hooks/use-toast";
 import { Upload, BarChart3, Users } from "lucide-react";
 import { checkUserRole } from "@/lib/roleUtils";
 import { sanitizeJsonString } from "@/lib/jsonSanitizer";
+import JSON5 from "json5";
 
 const Admin = () => {
   const [isAdmin, setIsAdmin] = useState(false);
@@ -103,7 +104,13 @@ const Admin = () => {
       // Read and validate JSON file
       const fileContent = await file.text();
       const sanitized = sanitizeJsonString(fileContent);
-      const jsonData = JSON.parse(sanitized);
+      let jsonData: any;
+      try {
+        jsonData = JSON.parse(sanitized);
+      } catch (err) {
+        // Fallback to tolerant JSON5 parser
+        jsonData = JSON5.parse(fileContent);
+      }
 
       // Validate AIQ assessment structure
       const hasItemBank = jsonData.itemBank && 
