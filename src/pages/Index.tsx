@@ -47,10 +47,10 @@ const Index = () => {
             <img src={aiqBrainLogo} alt="AIQ Logo" className="h-12 w-12" />
           </div>
           <h1 className="text-4xl lg:text-5xl font-extrabold mb-6 tracking-tight leading-[1.1]">
-            The World's First Comprehensive <span className="text-blue-900">AI Quotient</span> Assessment
+            The World's First Comprehensive <span className="text-blue-900 whitespace-nowrap">AI Quotient (AIQ)</span> Assessment
           </h1>
           <p className="text-lg lg:text-xl text-muted-foreground mb-8 max-w-3xl mx-auto leading-relaxed font-medium">
-            Measure your AI collaboration intelligence through the world's most comprehensive research-based assessment. 
+            Measure your <span className="whitespace-nowrap">AI Quotient (AIQ)</span> collaboration intelligence through the world's most comprehensive research-based assessment. 
             Backed by rigorous peer-reviewed academic research with 400+ calibrated items and validated 
             across 8 critical dimensions of AI competency.
           </p>
@@ -76,7 +76,7 @@ const Index = () => {
         <section className="bg-secondary/30 py-20">
           <div className="container max-w-6xl">
             <h2 className="text-3xl lg:text-4xl font-bold text-center mb-16 tracking-tight">
-              The World's Most Comprehensive AI Quotient Assessment
+              The World's Most Comprehensive <span className="whitespace-nowrap">AI Quotient (AIQ)</span> Assessment
             </h2>
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
               {features.map((feature, index) => {
@@ -134,7 +134,7 @@ const Index = () => {
             Choose Your Assessment Level
           </h2>
           <p className="text-lg text-muted-foreground text-center mb-12 max-w-3xl mx-auto leading-relaxed">
-            Select the assessment that matches your AI experience level
+            Select the assessment that matches your <span className="whitespace-nowrap">AI Quotient (AIQ)</span> experience level
           </p>
           <div className="grid md:grid-cols-3 gap-6 mb-8">
             <Card className="shadow-elegant">
@@ -157,7 +157,7 @@ const Index = () => {
                   </li>
                   <li className="flex items-center gap-2">
                     <CheckCircle className="h-4 w-4 text-success flex-shrink-0" />
-                    <span>8 core dimensions</span>
+                    <span>8 core <span className="whitespace-nowrap">AI Quotient (AIQ)</span> dimensions</span>
                   </li>
                   <li className="flex items-center gap-2">
                     <CheckCircle className="h-4 w-4 text-success flex-shrink-0" />
@@ -190,7 +190,7 @@ const Index = () => {
                   </li>
                   <li className="flex items-center gap-2">
                     <CheckCircle className="h-4 w-4 text-success flex-shrink-0" />
-                    <span>8 core dimensions</span>
+                    <span>8 core <span className="whitespace-nowrap">AI Quotient (AIQ)</span> dimensions</span>
                   </li>
                   <li className="flex items-center gap-2">
                     <CheckCircle className="h-4 w-4 text-success flex-shrink-0" />
@@ -223,7 +223,7 @@ const Index = () => {
                   </li>
                   <li className="flex items-center gap-2">
                     <CheckCircle className="h-4 w-4 text-success flex-shrink-0" />
-                    <span>8 core dimensions</span>
+                    <span>8 core <span className="whitespace-nowrap">AI Quotient (AIQ)</span> dimensions</span>
                   </li>
                   <li className="flex items-center gap-2">
                     <CheckCircle className="h-4 w-4 text-success flex-shrink-0" />
@@ -246,7 +246,7 @@ const Index = () => {
                 What You'll Gain
               </h2>
               <p className="text-lg text-muted-foreground mb-8 leading-relaxed">
-                The AIQ test provides comprehensive insights into your AI collaboration 
+                The <span className="whitespace-nowrap">AI Quotient (AIQ)</span> test provides comprehensive insights into your AI collaboration 
                 capabilities, helping you understand where you excel and where you can improve.
               </p>
               <ul className="space-y-3">
@@ -287,7 +287,7 @@ const Index = () => {
         <section className="bg-primary/5 py-20">
           <div className="container text-center max-w-3xl">
             <h2 className="text-4xl lg:text-5xl font-bold mb-6 tracking-tight">
-              Ready to Discover Your AIQ?
+              Ready to Discover Your <span className="whitespace-nowrap">AI Quotient (AIQ)</span>?
             </h2>
             <p className="text-lg text-muted-foreground mb-10 leading-relaxed">
               Join professionals and students worldwide in measuring and improving their 
