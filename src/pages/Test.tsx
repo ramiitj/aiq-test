@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import { supabase } from "@/integrations/supabase/client";
 import { Navigation } from "@/components/Navigation";
+import { loadTestItems, type Dimension, type TestVersion } from "@/lib/adaptiveItemSelector";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Progress } from "@/components/ui/progress";
@@ -56,6 +57,7 @@ const Test = () => {
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [timeRemaining, setTimeRemaining] = useState(3600); // 60 minutes
   const [answers, setAnswers] = useState<Record<string, string>>({});
+  const [dimensions, setDimensions] = useState<Dimension[]>([]);
   const [showConsent, setShowConsent] = useState(true);
   const [showDemographics, setShowDemographics] = useState(false);
   const [consentData, setConsentData] = useState<ConsentData>({
@@ -76,17 +78,6 @@ const Test = () => {
   const version = searchParams.get('version') || 'professional';
   const resumeId = searchParams.get('resume');
 
-  const dimensions = [
-    "Strategic AI Understanding",
-    "Prompt Engineering Intelligence",
-    "Critical Evaluation Capability",
-    "Integration Intelligence",
-    "Adaptive Learning Capability",
-    "Ethical Judgment in AI Utilization",
-    "Context Sensitivity",
-    "Creative Synthesis"
-  ];
-
   const questionsPerDimension = version === 'beginner' ? 3 : 10;
   const totalQuestions = version === 'beginner' ? 24 : 80;
   const testDuration = version === 'beginner' ? 900 : 3600; // 15 or 60 minutes
@@ -94,6 +85,10 @@ const Test = () => {
   useEffect(() => {
     initializeTest();
   }, []);
+
+  useEffect(() => {
+    loadTestData();
+  }, [version]);
 
   useEffect(() => {
     if (!showConsent && timeRemaining > 0) {
@@ -109,6 +104,19 @@ const Test = () => {
       return () => clearInterval(timer);
     }
   }, [showConsent, timeRemaining]);
+
+  const loadTestData = async () => {
+    try {
+      const loadedDimensions = await loadTestItems(version as TestVersion);
+      setDimensions(loadedDimensions);
+    } catch (error: any) {
+      toast({
+        title: "Error Loading Test",
+        description: "Failed to load test items. Please try again.",
+        variant: "destructive",
+      });
+    }
+  };
 
   const initializeTest = async () => {
     const { data: { session } } = await supabase.auth.getSession();
@@ -783,7 +791,9 @@ const Test = () => {
               Dimension {currentDimension + 1}/8
             </span>
           </div>
-          <h2 className="text-2xl font-black mb-1">{dimensions[currentDimension]}</h2>
+          <h2 className="text-2xl font-black mb-1">
+            {dimensions[currentDimension]?.dimensionName || "Loading..."}
+          </h2>
           <p className="text-sm text-muted-foreground">
             Question {currentQuestion + 1} of {questionsPerDimension}
           </p>
@@ -792,26 +802,54 @@ const Test = () => {
         {/* Question Card */}
         <Card className="mb-6 shadow-sm border">
           <CardContent className="pt-6 pb-6">
-            <div className="prose prose-sm max-w-none">
-              <p className="text-base leading-relaxed mb-6">
-                [Question content would be dynamically loaded here based on currentDimension and currentQuestion]
-                This is a placeholder for the actual question. In the real implementation, questions would be 
-                loaded from your database based on the current dimension and question index.
-              </p>
-              
-              {/* Answer Options or Text Area */}
-              <div className="space-y-3">
-                <textarea
-                  className="w-full min-h-[120px] p-4 border rounded-lg resize-none text-sm"
-                  placeholder="Type your answer here..."
-                  value={answers[`${currentDimension}-${currentQuestion}`] || ''}
-                  onChange={(e) => setAnswers(prev => ({
-                    ...prev,
-                    [`${currentDimension}-${currentQuestion}`]: e.target.value
-                  }))}
-                />
+            {dimensions[currentDimension]?.items[currentQuestion] ? (
+              <div className="prose prose-sm max-w-none">
+                <p className="text-base leading-relaxed mb-6">
+                  {dimensions[currentDimension].items[currentQuestion].question}
+                </p>
+                
+                {/* Answer Options or Text Area */}
+                <div className="space-y-3">
+                  {dimensions[currentDimension].items[currentQuestion].options ? (
+                    // Multiple choice
+                    dimensions[currentDimension].items[currentQuestion].options?.map((option, idx) => (
+                      <label
+                        key={idx}
+                        className="flex items-start gap-3 p-4 border rounded-lg cursor-pointer hover:bg-accent/50 transition-colors"
+                      >
+                        <input
+                          type="radio"
+                          name={`q-${currentDimension}-${currentQuestion}`}
+                          value={idx.toString()}
+                          checked={answers[`${currentDimension}-${currentQuestion}`] === idx.toString()}
+                          onChange={(e) => setAnswers(prev => ({
+                            ...prev,
+                            [`${currentDimension}-${currentQuestion}`]: e.target.value
+                          }))}
+                          className="mt-1"
+                        />
+                        <span className="text-sm flex-1">{option}</span>
+                      </label>
+                    ))
+                  ) : (
+                    // Open-ended
+                    <textarea
+                      className="w-full min-h-[120px] p-4 border rounded-lg resize-none text-sm"
+                      placeholder="Type your answer here..."
+                      value={answers[`${currentDimension}-${currentQuestion}`] || ''}
+                      onChange={(e) => setAnswers(prev => ({
+                        ...prev,
+                        [`${currentDimension}-${currentQuestion}`]: e.target.value
+                      }))}
+                    />
+                  )}
+                </div>
               </div>
-            </div>
+            ) : (
+              <div className="text-center py-8">
+                <p className="text-muted-foreground">Loading question...</p>
+              </div>
+            )}
           </CardContent>
         </Card>
 
