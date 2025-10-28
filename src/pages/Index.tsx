@@ -51,7 +51,7 @@ const Index = () => {
           </h1>
           <p className="text-lg lg:text-xl text-muted-foreground mb-8 max-w-3xl mx-auto leading-relaxed font-medium">
             Measure your AI collaboration intelligence through the world's most comprehensive research-based assessment. 
-            Developed through rigorous academic research at IIT Jodhpur with 400+ calibrated items and validated 
+            Backed by rigorous peer-reviewed academic research with 400+ calibrated items and validated 
             across 8 critical dimensions of AI competency.
           </p>
           <div className="flex gap-4 justify-center">
@@ -117,7 +117,7 @@ const Index = () => {
                 <p className="text-muted-foreground">Item Response Theory Methodology</p>
               </div>
               <div className="text-center">
-                <div className="text-4xl font-bold text-primary mb-2">IIT Jodhpur</div>
+                <div className="text-4xl font-bold text-primary mb-2">Peer-Reviewed</div>
                 <p className="text-muted-foreground">Academic Research Foundation</p>
               </div>
             </div>
