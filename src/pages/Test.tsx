@@ -15,14 +15,34 @@ import {
   Pause,
   Shield,
   FileText,
-  Brain
+  Brain,
+  User
 } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 
 interface ConsentData {
   dataCollection: boolean;
   researchParticipation: boolean;
   ageConfirmation: boolean;
+}
+
+interface DemographicsData {
+  age: string;
+  gender: string;
+  education: string;
+  occupation: string;
+  aiExperience: string;
+  industry: string;
+  country: string;
 }
 
 const Test = () => {
@@ -37,10 +57,20 @@ const Test = () => {
   const [timeRemaining, setTimeRemaining] = useState(3600); // 60 minutes
   const [answers, setAnswers] = useState<Record<string, string>>({});
   const [showConsent, setShowConsent] = useState(true);
+  const [showDemographics, setShowDemographics] = useState(false);
   const [consentData, setConsentData] = useState<ConsentData>({
     dataCollection: false,
     researchParticipation: false,
     ageConfirmation: false
+  });
+  const [demographicsData, setDemographicsData] = useState<DemographicsData>({
+    age: '',
+    gender: '',
+    education: '',
+    occupation: '',
+    aiExperience: '',
+    industry: '',
+    country: ''
   });
 
   const version = searchParams.get('version') || 'professional';
@@ -101,9 +131,9 @@ const Test = () => {
 
         setTestId(testData.id);
         setCurrentDimension(testData.current_dimension || 0);
-        setCurrentQuestion(testData.current_item || 0);
+        setCurrentQuestion(testData.current_question || 0);
         setTimeRemaining(testData.time_remaining || testDuration);
-        setAnswers((testData.answers as Record<string, string>) || {});
+        setAnswers(testData.responses || {});
         setShowConsent(false);
       } else {
         // New test - show consent
@@ -120,11 +150,27 @@ const Test = () => {
     }
   };
 
-  const handleConsentSubmit = async () => {
+  const handleConsentSubmit = () => {
     if (!consentData.dataCollection || !consentData.ageConfirmation) {
       toast({
         title: "Consent Required",
         description: "Please accept the required terms to continue",
+        variant: "destructive",
+      });
+      return;
+    }
+
+    setShowConsent(false);
+    setShowDemographics(true);
+  };
+
+  const handleDemographicsSubmit = async () => {
+    // Validate required fields
+    if (!demographicsData.age || !demographicsData.gender || !demographicsData.education || 
+        !demographicsData.aiExperience) {
+      toast({
+        title: "Required Information",
+        description: "Please complete all required fields",
         variant: "destructive",
       });
       return;
@@ -136,23 +182,24 @@ const Test = () => {
     try {
       const { data: newTest, error } = await supabase
         .from("tests")
-        .insert([{
+        .insert({
           user_id: session.user.id,
+          version: version,
           consent_given: true,
+          research_consent: consentData.researchParticipation,
+          demographics: demographicsData,
           time_remaining: testDuration,
           current_dimension: 0,
-          current_item: 0,
-          answers: {},
-          json_version: version,
-          test_version: version
-        }])
+          current_question: 0,
+          responses: {}
+        })
         .select()
         .single();
 
       if (error) throw error;
 
       setTestId(newTest.id);
-      setShowConsent(false);
+      setShowDemographics(false);
       
       toast({
         title: "Assessment Started",
@@ -177,8 +224,8 @@ const Test = () => {
           paused: true,
           time_remaining: timeRemaining,
           current_dimension: currentDimension,
-          current_item: currentQuestion,
-          answers: answers
+          current_question: currentQuestion,
+          responses: answers
         })
         .eq("id", testId);
 
@@ -205,7 +252,7 @@ const Test = () => {
         .from("tests")
         .update({
           completed: true,
-          answers: answers,
+          responses: answers,
           time_remaining: timeRemaining
         })
         .eq("id", testId);
@@ -420,7 +467,7 @@ const Test = () => {
               disabled={!consentData.dataCollection || !consentData.ageConfirmation}
               className="flex-1 bg-blue-900 hover:bg-blue-800 font-semibold"
             >
-              Accept & Start Assessment
+              Accept & Continue
               <ChevronRight className="ml-2 h-4 w-4" />
             </Button>
           </div>
@@ -430,6 +477,265 @@ const Test = () => {
             By proceeding, you acknowledge that you have read and understood the consent information above.
             For questions, contact: ram@iitj.ac.in
           </p>
+        </main>
+      </div>
+    );
+  }
+
+  if (showDemographics) {
+    return (
+      <div className="min-h-screen">
+        <Navigation isAuthenticated={true} />
+        
+        <main className="container py-8 max-w-4xl">
+          {/* Demographics Header */}
+          <div className="mb-6">
+            <div className="flex items-center gap-3 mb-3">
+              <div className="p-2 bg-green-100 dark:bg-green-900/30 rounded-lg">
+                <User className="h-6 w-6 text-green-700 dark:text-green-300" />
+              </div>
+              <div>
+                <h1 className="text-3xl font-black tracking-tight">Demographics Information</h1>
+                <p className="text-sm text-muted-foreground font-medium">
+                  Help us understand your background (used for research purposes only)
+                </p>
+              </div>
+            </div>
+          </div>
+
+          {/* Progress Indicator */}
+          <div className="mb-6 flex items-center justify-center gap-2">
+            <div className="flex items-center gap-2">
+              <div className="w-8 h-8 rounded-full bg-green-600 text-white flex items-center justify-center text-sm font-bold">
+                ✓
+              </div>
+              <span className="text-sm font-semibold">Consent</span>
+            </div>
+            <div className="w-12 h-0.5 bg-green-600" />
+            <div className="flex items-center gap-2">
+              <div className="w-8 h-8 rounded-full bg-blue-600 text-white flex items-center justify-center text-sm font-bold">
+                2
+              </div>
+              <span className="text-sm font-semibold">Demographics</span>
+            </div>
+            <div className="w-12 h-0.5 bg-gray-300 dark:bg-gray-700" />
+            <div className="flex items-center gap-2">
+              <div className="w-8 h-8 rounded-full bg-gray-300 dark:bg-gray-700 text-gray-600 dark:text-gray-400 flex items-center justify-center text-sm font-bold">
+                3
+              </div>
+              <span className="text-sm text-muted-foreground">Assessment</span>
+            </div>
+          </div>
+
+          {/* Demographics Form */}
+          <Card className="mb-6 shadow-sm border">
+            <CardContent className="pt-6 pb-6">
+              <div className="grid md:grid-cols-2 gap-5">
+                {/* Age Range */}
+                <div className="space-y-2">
+                  <Label htmlFor="age" className="text-sm font-bold">
+                    Age Range <span className="text-destructive">*</span>
+                  </Label>
+                  <Select
+                    value={demographicsData.age}
+                    onValueChange={(value) => 
+                      setDemographicsData(prev => ({ ...prev, age: value }))
+                    }
+                  >
+                    <SelectTrigger id="age">
+                      <SelectValue placeholder="Select age range" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="18-24">18-24</SelectItem>
+                      <SelectItem value="25-34">25-34</SelectItem>
+                      <SelectItem value="35-44">35-44</SelectItem>
+                      <SelectItem value="45-54">45-54</SelectItem>
+                      <SelectItem value="55-64">55-64</SelectItem>
+                      <SelectItem value="65+">65+</SelectItem>
+                    </SelectContent>
+                  </Select>
+                </div>
+
+                {/* Gender */}
+                <div className="space-y-2">
+                  <Label htmlFor="gender" className="text-sm font-bold">
+                    Gender <span className="text-destructive">*</span>
+                  </Label>
+                  <Select
+                    value={demographicsData.gender}
+                    onValueChange={(value) => 
+                      setDemographicsData(prev => ({ ...prev, gender: value }))
+                    }
+                  >
+                    <SelectTrigger id="gender">
+                      <SelectValue placeholder="Select gender" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="male">Male</SelectItem>
+                      <SelectItem value="female">Female</SelectItem>
+                      <SelectItem value="non-binary">Non-binary</SelectItem>
+                      <SelectItem value="prefer-not-to-say">Prefer not to say</SelectItem>
+                    </SelectContent>
+                  </Select>
+                </div>
+
+                {/* Education Level */}
+                <div className="space-y-2">
+                  <Label htmlFor="education" className="text-sm font-bold">
+                    Education Level <span className="text-destructive">*</span>
+                  </Label>
+                  <Select
+                    value={demographicsData.education}
+                    onValueChange={(value) => 
+                      setDemographicsData(prev => ({ ...prev, education: value }))
+                    }
+                  >
+                    <SelectTrigger id="education">
+                      <SelectValue placeholder="Select education level" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="high-school">High School</SelectItem>
+                      <SelectItem value="bachelors">Bachelor's Degree</SelectItem>
+                      <SelectItem value="masters">Master's Degree</SelectItem>
+                      <SelectItem value="phd">Ph.D. or Doctorate</SelectItem>
+                      <SelectItem value="other">Other</SelectItem>
+                    </SelectContent>
+                  </Select>
+                </div>
+
+                {/* AI Experience */}
+                <div className="space-y-2">
+                  <Label htmlFor="aiExperience" className="text-sm font-bold">
+                    AI Experience Level <span className="text-destructive">*</span>
+                  </Label>
+                  <Select
+                    value={demographicsData.aiExperience}
+                    onValueChange={(value) => 
+                      setDemographicsData(prev => ({ ...prev, aiExperience: value }))
+                    }
+                  >
+                    <SelectTrigger id="aiExperience">
+                      <SelectValue placeholder="Select experience level" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="none">No experience</SelectItem>
+                      <SelectItem value="beginner">Beginner (< 1 year)</SelectItem>
+                      <SelectItem value="intermediate">Intermediate (1-3 years)</SelectItem>
+                      <SelectItem value="advanced">Advanced (3-5 years)</SelectItem>
+                      <SelectItem value="expert">Expert (5+ years)</SelectItem>
+                    </SelectContent>
+                  </Select>
+                </div>
+
+                {/* Occupation */}
+                <div className="space-y-2">
+                  <Label htmlFor="occupation" className="text-sm font-bold">
+                    Current Occupation
+                  </Label>
+                  <Input
+                    id="occupation"
+                    placeholder="e.g., Software Engineer, Student, etc."
+                    value={demographicsData.occupation}
+                    onChange={(e) => 
+                      setDemographicsData(prev => ({ ...prev, occupation: e.target.value }))
+                    }
+                  />
+                </div>
+
+                {/* Industry */}
+                <div className="space-y-2">
+                  <Label htmlFor="industry" className="text-sm font-bold">
+                    Industry/Field
+                  </Label>
+                  <Select
+                    value={demographicsData.industry}
+                    onValueChange={(value) => 
+                      setDemographicsData(prev => ({ ...prev, industry: value }))
+                    }
+                  >
+                    <SelectTrigger id="industry">
+                      <SelectValue placeholder="Select industry" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="technology">Technology</SelectItem>
+                      <SelectItem value="healthcare">Healthcare</SelectItem>
+                      <SelectItem value="finance">Finance</SelectItem>
+                      <SelectItem value="education">Education</SelectItem>
+                      <SelectItem value="manufacturing">Manufacturing</SelectItem>
+                      <SelectItem value="retail">Retail</SelectItem>
+                      <SelectItem value="consulting">Consulting</SelectItem>
+                      <SelectItem value="government">Government</SelectItem>
+                      <SelectItem value="student">Student</SelectItem>
+                      <SelectItem value="other">Other</SelectItem>
+                    </SelectContent>
+                  </Select>
+                </div>
+
+                {/* Country */}
+                <div className="space-y-2 md:col-span-2">
+                  <Label htmlFor="country" className="text-sm font-bold">
+                    Country/Region
+                  </Label>
+                  <Input
+                    id="country"
+                    placeholder="e.g., United States, India, United Kingdom, etc."
+                    value={demographicsData.country}
+                    onChange={(e) => 
+                      setDemographicsData(prev => ({ ...prev, country: e.target.value }))
+                    }
+                  />
+                </div>
+              </div>
+
+              <p className="text-xs text-muted-foreground mt-4">
+                <span className="text-destructive">*</span> Required fields. All information is kept confidential 
+                and used only for research purposes to improve the AIQ framework.
+              </p>
+            </CardContent>
+          </Card>
+
+          {/* Why We Ask */}
+          <Card className="mb-6 shadow-sm border bg-blue-50 dark:bg-blue-950/20">
+            <CardContent className="pt-5 pb-5">
+              <div className="flex gap-3">
+                <AlertCircle className="h-5 w-5 text-blue-700 dark:text-blue-300 flex-shrink-0 mt-0.5" />
+                <div>
+                  <h3 className="text-sm font-bold text-blue-900 dark:text-blue-100 mb-1">
+                    Why We Collect Demographics
+                  </h3>
+                  <p className="text-xs text-blue-700 dark:text-blue-300 leading-relaxed">
+                    This information helps researchers understand how AI collaboration skills vary across different 
+                    populations, ensuring the AIQ framework remains valid and fair for all users. Your responses are 
+                    anonymized and aggregated for research purposes only.
+                  </p>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+
+          {/* Action Buttons */}
+          <div className="flex gap-3">
+            <Button
+              onClick={() => {
+                setShowDemographics(false);
+                setShowConsent(true);
+              }}
+              variant="outline"
+              className="font-semibold"
+            >
+              <ChevronLeft className="mr-2 h-4 w-4" />
+              Back
+            </Button>
+            <Button
+              onClick={handleDemographicsSubmit}
+              disabled={!demographicsData.age || !demographicsData.gender || 
+                       !demographicsData.education || !demographicsData.aiExperience}
+              className="flex-1 bg-blue-900 hover:bg-blue-800 font-semibold"
+            >
+              Start Assessment
+              <ChevronRight className="ml-2 h-4 w-4" />
+            </Button>
+          </div>
         </main>
       </div>
     );
