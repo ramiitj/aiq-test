@@ -103,13 +103,27 @@ const Admin = () => {
       const fileContent = await file.text();
       const jsonData = JSON.parse(fileContent);
 
-      // Basic validation - accept multiple formats
-      const hasDimensionsArray = jsonData.dimensions && Array.isArray(jsonData.dimensions);
-      const isSingleDimension = jsonData.items && Array.isArray(jsonData.items);
-      const isArrayOfDimensions = Array.isArray(jsonData);
+      // Validate AIQ assessment structure
+      const hasItemBank = jsonData.itemBank && 
+                         jsonData.itemBank.dimensions && 
+                         Array.isArray(jsonData.itemBank.dimensions);
       
-      if (!hasDimensionsArray && !isSingleDimension && !isArrayOfDimensions) {
-        throw new Error("Invalid JSON structure: must have 'dimensions' array, 'items' array, or be an array of dimensions");
+      const hasMetadata = jsonData.assessmentName && 
+                         jsonData.version && 
+                         jsonData.assessmentType &&
+                         jsonData.scoringConfiguration;
+      
+      if (!hasItemBank || !hasMetadata) {
+        throw new Error("Invalid AIQ assessment structure: must include assessmentName, version, assessmentType, scoringConfiguration, and itemBank.dimensions array");
+      }
+
+      // Validate assessment type matches version
+      if (version === 'beginner' && jsonData.assessmentType !== 'fixed') {
+        console.warn('Beginner assessment should have assessmentType: "fixed"');
+      }
+      
+      if ((version === 'professional' || version === 'expert') && jsonData.assessmentType !== 'adaptive') {
+        console.warn(`${version} assessment should have assessmentType: "adaptive"`);
       }
 
       const fileName = `${version}-assessment.json`;
@@ -272,46 +286,74 @@ const Admin = () => {
               )}
             </div>
 
-            <div className="p-4 bg-accent/30 rounded-lg">
-              <p className="text-sm font-semibold mb-2">Accepted JSON Formats:</p>
-              <div className="space-y-3">
-                <div>
-                  <p className="text-xs font-medium mb-1">Format 1: Dimensions Array (Beginner)</p>
-                  <pre className="text-xs bg-background p-3 rounded border overflow-x-auto">
+            <div className="p-4 bg-accent/30 rounded-lg space-y-4">
+              <div>
+                <p className="text-sm font-semibold mb-2">Required AIQ Assessment Structure:</p>
+                <pre className="text-xs bg-background p-3 rounded border overflow-x-auto">
 {`{
-  "dimensions": [
-    {
-      "dimensionCode": "AIL",
-      "dimensionName": "...",
-      "items": [...]
+  "assessmentName": "AIQ Beginner/Professional/Expert Assessment",
+  "version": "1.0",
+  "assessmentType": "fixed" | "adaptive",
+  "description": "Assessment description",
+  
+  // For Beginner (fixed)
+  "assessmentConfiguration": {
+    "totalQuestions": 24,
+    "questionsPerDimension": 3,
+    "estimatedTime": "15 minutes"
+  },
+  
+  // For Professional/Expert (adaptive)
+  "adaptiveConfiguration": {
+    "totalQuestions": 80,
+    "questionsPerDimension": 10,
+    "itemBankSize": {
+      "totalItems": 400,  // 400 for Professional, 160 for Expert
+      "itemsPerDimension": 50  // 50 for Professional, 20 for Expert
     }
-  ]
-}`}
-                  </pre>
-                </div>
-                <div>
-                  <p className="text-xs font-medium mb-1">Format 2: Single Dimension (Professional/Expert)</p>
-                  <pre className="text-xs bg-background p-3 rounded border overflow-x-auto">
-{`{
-  "dimensionCode": "CXS",
-  "dimensionName": "...",
-  "items": [...]
-}`}
-                  </pre>
-                </div>
-                <div>
-                  <p className="text-xs font-medium mb-1">Format 3: Array of Dimensions</p>
-                  <pre className="text-xs bg-background p-3 rounded border overflow-x-auto">
-{`[
-  {
-    "dimensionCode": "AIL",
-    "items": [...]
+  },
+  
+  "scoringConfiguration": {
+    "totalPoints": 240,
+    "pointsPerDimension": 30,
+    "passingScore": 168
+  },
+  
+  "itemBank": {
+    "totalItems": 24,
+    "itemsPerDimension": 3,
+    "dimensions": [
+      {
+        "dimensionCode": "SAU",
+        "dimensionName": "Strategic AI Understanding",
+        "items": [
+          {
+            "id": "SAU-001",
+            "level": 1,
+            "type": "multiple-choice",
+            "difficulty": 0.18,
+            "question": "Question text...",
+            "options": ["A", "B", "C", "D"],
+            "correctAnswer": 1
+          }
+        ]
+      }
+    ]
   }
-]`}
-                  </pre>
-                </div>
+}`}
+                </pre>
               </div>
-              <p className="text-xs text-muted-foreground mt-3">
+              
+              <div className="p-3 bg-blue-50 dark:bg-blue-950 rounded border border-blue-200 dark:border-blue-800">
+                <p className="text-xs font-semibold text-blue-900 dark:text-blue-100 mb-2">Assessment Type Requirements:</p>
+                <ul className="text-xs text-blue-800 dark:text-blue-200 space-y-1">
+                  <li>• <strong>Beginner:</strong> assessmentType: "fixed" - 24 items (3 per dimension), all presented</li>
+                  <li>• <strong>Professional:</strong> assessmentType: "adaptive" - 80 from 400 items (10 from 50 per dimension)</li>
+                  <li>• <strong>Expert:</strong> assessmentType: "adaptive" - 80 from 160 items (10 from 20 per dimension)</li>
+                </ul>
+              </div>
+              
+              <p className="text-xs text-muted-foreground">
                 Files are saved as: <code className="bg-background px-1 rounded">beginner-assessment.json</code>,{" "}
                 <code className="bg-background px-1 rounded">professional-assessment.json</code>, and{" "}
                 <code className="bg-background px-1 rounded">expert-assessment.json</code>

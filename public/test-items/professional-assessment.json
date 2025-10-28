@@ -1,3 +1,90 @@
+Aiq professional assessment template · JSON
+Copy
+
+{
+  "assessmentName": "AIQ Professional Assessment",
+  "version": "1.0",
+  "assessmentType": "adaptive",
+  "description": "An adaptive AI literacy assessment that dynamically selects 80 questions from a 400-item bank based on candidate performance",
+  
+  "adaptiveConfiguration": {
+    "totalQuestions": 80,
+    "questionsPerDimension": 10,
+    "estimatedTime": "60 minutes",
+    "targetAudience": "Professionals actively using AI in their work",
+    "timePerQuestion": "45 seconds average",
+    
+    "itemBankSize": {
+      "totalItems": 400,
+      "itemsPerDimension": 50,
+      "selectionRatio": "10 from 50 per dimension"
+    },
+    
+    "selectionAlgorithm": {
+      "type": "CAT",
+      "name": "Computer Adaptive Testing",
+      "description": "Questions adapt to candidate ability level in real-time",
+      "startingDifficulty": 0.45,
+      "difficultyRange": [0.15, 0.85],
+      "adjustmentStep": 0.12
+    },
+    
+    "dimensionSequencing": {
+      "type": "fixed-order",
+      "sequence": ["SAU", "PEI", "OEA", "CXS", "EJC", "HLM", "ALC", "SRA"],
+      "description": "Candidates complete 10 questions per dimension in sequence"
+    },
+    
+    "itemSelectionRules": {
+      "startingLevel": "medium difficulty (0.40-0.50)",
+      "adaptiveProgression": "adjust based on response pattern",
+      "constraints": {
+        "noRepeatItems": true,
+        "maxExposureRate": 0.30,
+        "balanceTypes": true,
+        "coverContent": true
+      }
+    }
+  },
+  
+  "scoringConfiguration": {
+    "totalPoints": 800,
+    "pointsPerDimension": 100,
+    "passingScore": 560,
+    "passingPercentage": 70,
+    
+    "scoringMethod": {
+      "type": "weighted",
+      "description": "Questions weighted by difficulty and discrimination parameters",
+      "basePoints": 10,
+      "formula": "points = basePoints × (1 + difficulty × 0.5) × (discrimination / 1.0)"
+    },
+    
+    "scoringGuidelines": {
+      "0-40%": "Novice - Fundamental learning needed",
+      "41-60%": "Developing - Basic competency emerging",
+      "61-80%": "Proficient - Strong professional capability",
+      "81-90%": "Advanced - Expert-level understanding",
+      "91-100%": "Mastery - Outstanding professional expertise"
+    }
+  },
+  
+  "instructions": "This adaptive assessment evaluates your AI literacy across 8 dimensions. You will answer 10 questions per dimension (80 total) in approximately 60 minutes. Questions adapt to your performance—correct answers lead to more challenging questions while incorrect answers present more foundational content. This ensures accurate measurement of your capability level.",
+  
+  "itemBank": {
+    "totalItems": 400,
+    "itemsPerDimension": 50,
+    "description": "Complete item bank from which assessment questions are dynamically selected",
+    
+    "bankStatistics": {
+      "averageDifficulty": 0.45,
+      "difficultySD": 0.18,
+      "averageDiscrimination": 1.25,
+      "discriminationSD": 0.35,
+      "contentCoverageIndex": 0.90,
+      "estimatedReliability": 0.88
+    },
+  "dimensions": [
 {
   "id": "CXS",
   "name": "Context Sensitivity",

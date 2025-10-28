@@ -145,52 +145,36 @@ export async function loadTestItems(version: TestVersion): Promise<Dimension[]> 
 
     const config = getVersionConfig(version);
 
+    // Extract dimensions from itemBank structure
+    let dimensions;
+    if (data.itemBank && data.itemBank.dimensions) {
+      dimensions = data.itemBank.dimensions;
+    } else if (data.dimensions) {
+      // Fallback for older format
+      dimensions = data.dimensions;
+    } else {
+      throw new Error(`Invalid assessment format: missing itemBank.dimensions or dimensions array`);
+    }
+
     // Beginner version: Pre-selected items in dimensions array
     if (version === 'beginner') {
-      // Structure: { dimensions: [ { dimensionCode, dimensionName, items: [3 items] } ] }
-      if (data.dimensions && Array.isArray(data.dimensions)) {
-        return data.dimensions.map((dimension: any) => ({
-          dimensionCode: dimension.dimensionCode,
-          dimensionName: dimension.dimensionName,
-          description: dimension.description,
-          items: dimension.items,
-          questionsInAssessment: dimension.questionsInAssessment,
-          pointsAvailable: dimension.pointsAvailable,
-        }));
-      }
-      throw new Error('Beginner assessment missing dimensions array');
-    }
-
-    // Professional/Expert: Single dimension or array of dimensions with random selection
-    if (Array.isArray(data)) {
-      // Array of dimension objects - select items from each
-      return data.map((dimension: any) => ({
-        dimensionCode: dimension.dimensionCode || dimension.id,
-        dimensionName: dimension.dimensionName || dimension.name,
+      return dimensions.map((dimension: any) => ({
+        dimensionCode: dimension.dimensionCode,
+        dimensionName: dimension.dimensionName,
         description: dimension.description,
-        items: selectItemsForDimension(dimension.items, config),
-      }));
-    } else if (data.items && Array.isArray(data.items)) {
-      // Single dimension object with items array
-      return [
-        {
-          dimensionCode: data.dimensionCode || data.id,
-          dimensionName: data.dimensionName || data.name,
-          description: data.description,
-          items: selectItemsForDimension(data.items, config),
-        },
-      ];
-    } else if (data.dimensions && Array.isArray(data.dimensions)) {
-      // Dimensions array - select items from each
-      return data.dimensions.map((dimension: any) => ({
-        dimensionCode: dimension.dimensionCode || dimension.id,
-        dimensionName: dimension.dimensionName || dimension.name,
-        description: dimension.description,
-        items: selectItemsForDimension(dimension.items, config),
+        items: dimension.items,
+        questionsInAssessment: dimension.questionsInAssessment,
+        pointsAvailable: dimension.pointsAvailable,
       }));
     }
 
-    throw new Error(`Unexpected ${version} assessment format`);
+    // Professional/Expert: Select items from larger item pool
+    return dimensions.map((dimension: any) => ({
+      dimensionCode: dimension.dimensionCode || dimension.id,
+      dimensionName: dimension.dimensionName || dimension.name,
+      description: dimension.description,
+      items: selectItemsForDimension(dimension.items, config),
+    }));
   } catch (error) {
     console.error(`Error loading ${version} test items:`, error);
     throw error;

@@ -1,22 +1,79 @@
 {
   "assessmentName": "AIQ Beginner Assessment",
   "version": "1.0",
-  "description": "A 15-minute foundational AI literacy assessment covering all 8 core dimensions",
-  "totalQuestions": 24,
-  "estimatedTime": "15 minutes",
-  "targetAudience": "Beginners and those new to AI",
-  "totalPoints": 240,
-  "passingScore": 168,
-  "passingPercentage": 70,
-  "scoringGuidelines": {
-    "0-40%": "Novice - Significant learning needed",
-    "41-60%": "Beginner - Basic awareness established",
-    "61-80%": "Developing - Good foundational understanding",
-    "81-90%": "Proficient - Strong grasp of fundamentals",
-    "91-100%": "Advanced - Excellent foundational mastery"
+  "assessmentType": "fixed",
+  "description": "A foundational AI literacy assessment covering all 8 core dimensions with emphasis on basic understanding and awareness",
+  "assessmentConfiguration": {
+    "totalQuestions": 24,
+    "questionsPerDimension": 3,
+    "estimatedTime": "15 minutes",
+    "targetAudience": "Beginners and those new to AI",
+    "timePerQuestion": "37 seconds average",
+    "presentationMode": {
+      "type": "fixed-sequential",
+      "description": "All questions presented in fixed order",
+      "sequencing": "By dimension, 3 questions per dimension"
+    },
+    "questionDistribution": {
+      "totalItems": 24,
+      "itemsPerDimension": 3,
+      "selectionRatio": "100% (all items presented)"
+    },
+    "dimensionSequencing": {
+      "type": "fixed-order",
+      "sequence": [
+        "SAU",
+        "PEI",
+        "OEA",
+        "CXS",
+        "EJC",
+        "HLM",
+        "ALC",
+        "SRA"
+      ],
+      "description": "Candidates complete 3 questions per dimension in sequence"
+    }
   },
-  "instructions": "This assessment evaluates foundational AI literacy across 8 key dimensions. Each dimension has 3 questions representing different difficulty levels. Answer all questions to the best of your ability.",
-  "dimensions": [
+  "scoringConfiguration": {
+    "totalPoints": 240,
+    "pointsPerDimension": 30,
+    "passingScore": 168,
+    "passingPercentage": 70,
+    "scoringMethod": {
+      "type": "simple-sum",
+      "description": "Direct sum of points from correct answers",
+      "basePoints": 10,
+      "formula": "points = 10 per correct answer"
+    },
+    "scoringGuidelines": {
+      "0-40%": "Novice - Significant learning needed",
+      "41-60%": "Beginner - Basic awareness established",
+      "61-80%": "Developing - Good foundational understanding",
+      "81-90%": "Proficient - Strong grasp of fundamentals",
+      "91-100%": "Advanced - Excellent foundational mastery"
+    }
+  },
+  "instructions": "This assessment evaluates foundational AI literacy across 8 key dimensions. Each dimension has 3 questions representing different difficulty levels. Answer all questions to the best of your ability. The assessment takes approximately 15 minutes to complete.",
+  "assessmentGuidelines": {
+    "targetLevel": "Foundational awareness and basic understanding",
+    "cognitiveEmphasis": "70% Remember/Understand (Bloom's levels 1-2)",
+    "questionTypes": "Primarily multiple-choice with some case studies",
+    "difficultyProfile": "Skewed toward easier items with gradual progression",
+    "timeAllocation": "Quick assessment suitable for initial screening"
+  },
+  "itemBank": {
+    "totalItems": 24,
+    "itemsPerDimension": 3,
+    "description": "Complete fixed item set presented to all candidates",
+    "bankStatistics": {
+      "averageDifficulty": 0.35,
+      "difficultySD": 0.15,
+      "averageDiscrimination": 1.05,
+      "discriminationSD": 0.25,
+      "contentCoverageIndex": 0.95,
+      "estimatedReliability": 0.78
+    },
+    "dimensions": [
     {
       "dimensionCode": "AIL",
       "dimensionName": "Strategic AI Understanding",
