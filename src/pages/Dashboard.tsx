@@ -65,9 +65,21 @@ const Dashboard = () => {
       if (profileError) throw profileError;
       setProfile(profileData);
 
-      // Capture user location if region is not set
-      if (!profileData?.region || profileData.region === "Unknown") {
-        captureUserLocation(session.user.id).catch((error) => {
+      // Capture user location if region is not set or is default
+      if (!profileData?.region || profileData.region === "Unknown" || profileData.region === "global") {
+        captureUserLocation(session.user.id).then((success) => {
+          if (success) {
+            // Refresh profile to show updated location
+            supabase
+              .from("profiles")
+              .select("name, region")
+              .eq("user_id", session.user.id)
+              .single()
+              .then(({ data }) => {
+                if (data) setProfile(data);
+              });
+          }
+        }).catch((error) => {
           console.error("Failed to capture location:", error);
         });
       }
