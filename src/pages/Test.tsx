@@ -135,9 +135,19 @@ const Test = () => {
           .from("tests")
           .select("*")
           .eq("id", resumeId)
-          .single();
+          .maybeSingle();
 
         if (error) throw error;
+        if (!testData) {
+          toast({
+            title: "Test Not Found",
+            description: "We couldn't find that paused test. It may have been deleted.",
+            variant: "destructive",
+          });
+          navigate("/dashboard");
+          setLoading(false);
+          return;
+        }
 
         setTestId(testData.id);
         setCurrentDimension(testData.current_dimension || 0);
@@ -261,6 +271,7 @@ const Test = () => {
         .from("tests")
         .update({
           completed: true,
+          paused: false,
           answers: answers,
           time_remaining: timeRemaining
         })
@@ -794,7 +805,7 @@ const Test = () => {
             </span>
           </div>
           <h2 className="text-2xl font-black mb-1">
-            {dimensions[currentDimension]?.dimensionName || "Loading..."}
+            {dimensions[currentDimension]?.dimensionName || dimensions[currentDimension]?.dimensionCode || `Dimension ${currentDimension + 1}`}
           </h2>
           <p className="text-sm text-muted-foreground">
             Question {currentQuestion + 1} of {questionsPerDimension}

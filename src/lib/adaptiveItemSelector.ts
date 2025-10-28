@@ -158,10 +158,10 @@ export async function loadTestItems(version: TestVersion): Promise<Dimension[]> 
 
     // Beginner version: Pre-selected items in dimensions array
     if (version === 'beginner') {
-      return dimensions.map((dimension: any) => ({
-        dimensionCode: dimension.dimensionCode,
-        dimensionName: dimension.dimensionName,
-        description: dimension.description,
+      return dimensions.map((dimension: any, idx: number) => ({
+        dimensionCode: dimension.dimensionCode || dimension.id || `D${idx + 1}`,
+        dimensionName: dimension.dimensionName || dimension.name || dimension.title || dimension.dimension || `Dimension ${idx + 1}`,
+        description: dimension.description || '',
         items: dimension.items,
         questionsInAssessment: dimension.questionsInAssessment,
         pointsAvailable: dimension.pointsAvailable,
@@ -169,10 +169,10 @@ export async function loadTestItems(version: TestVersion): Promise<Dimension[]> 
     }
 
     // Professional/Expert: Select items from larger item pool
-    return dimensions.map((dimension: any) => ({
-      dimensionCode: dimension.dimensionCode || dimension.id,
-      dimensionName: dimension.dimensionName || dimension.name,
-      description: dimension.description,
+    return dimensions.map((dimension: any, idx: number) => ({
+      dimensionCode: dimension.dimensionCode || dimension.id || `D${idx + 1}`,
+      dimensionName: dimension.dimensionName || dimension.name || dimension.title || dimension.dimension || `Dimension ${idx + 1}`,
+      description: dimension.description || '',
       items: selectItemsForDimension(dimension.items, config),
     }));
   } catch (error) {
