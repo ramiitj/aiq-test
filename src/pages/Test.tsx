@@ -795,10 +795,12 @@ const Test = () => {
               <Button
                 onClick={handleSubmitTest}
                 size="sm"
-                className="bg-green-600 hover:bg-green-700 font-semibold"
+                disabled={Object.keys(answers).length < totalQuestions}
+                className="bg-green-600 hover:bg-green-700 font-semibold disabled:opacity-50 disabled:cursor-not-allowed"
+                title={Object.keys(answers).length < totalQuestions ? "Please answer all questions before submitting" : "Submit test"}
               >
                 <CheckCircle className="h-4 w-4 mr-2" />
-                Submit
+                Submit {Object.keys(answers).length < totalQuestions && `(${Object.keys(answers).length}/${totalQuestions})`}
               </Button>
             </div>
           </div>
