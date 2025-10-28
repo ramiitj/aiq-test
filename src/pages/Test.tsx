@@ -782,15 +782,25 @@ const Test = () => {
                 Question {currentDimension * questionsPerDimension + currentQuestion + 1} of {totalQuestions}
               </span>
             </div>
-            <Button
-              onClick={handlePauseTest}
-              variant="outline"
-              size="sm"
-              className="font-semibold"
-            >
-              <Pause className="h-4 w-4 mr-2" />
-              Pause
-            </Button>
+            <div className="flex gap-2">
+              <Button
+                onClick={handlePauseTest}
+                variant="outline"
+                size="sm"
+                className="font-semibold"
+              >
+                <Pause className="h-4 w-4 mr-2" />
+                Pause
+              </Button>
+              <Button
+                onClick={handleSubmitTest}
+                size="sm"
+                className="bg-green-600 hover:bg-green-700 font-semibold"
+              >
+                <CheckCircle className="h-4 w-4 mr-2" />
+                Submit
+              </Button>
+            </div>
           </div>
           <Progress value={progress} className="h-2" />
         </div>
