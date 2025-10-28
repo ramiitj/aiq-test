@@ -112,7 +112,7 @@ const Admin = () => {
         jsonData = JSON5.parse(fileContent);
       }
 
-      // Validate AIQ assessment structure
+      // Validate AIQ assessment structure based on version
       const hasItemBank = jsonData.itemBank && 
                          jsonData.itemBank.dimensions && 
                          Array.isArray(jsonData.itemBank.dimensions);
@@ -126,13 +126,23 @@ const Admin = () => {
         throw new Error("Invalid AIQ assessment structure: must include assessmentName, version, assessmentType, scoringConfiguration, and itemBank.dimensions array");
       }
 
-      // Validate assessment type matches version
-      if (version === 'beginner' && jsonData.assessmentType !== 'fixed') {
-        console.warn('Beginner assessment should have assessmentType: "fixed"');
+      // Version-specific validation
+      if (version === 'beginner') {
+        if (jsonData.assessmentType !== 'fixed') {
+          throw new Error('Beginner assessment must have assessmentType: "fixed"');
+        }
+        if (!jsonData.assessmentConfiguration) {
+          throw new Error('Beginner assessment must include assessmentConfiguration');
+        }
       }
       
-      if ((version === 'professional' || version === 'expert') && jsonData.assessmentType !== 'adaptive') {
-        console.warn(`${version} assessment should have assessmentType: "adaptive"`);
+      if (version === 'professional' || version === 'expert') {
+        if (jsonData.assessmentType !== 'adaptive') {
+          throw new Error(`${version.charAt(0).toUpperCase() + version.slice(1)} assessment must have assessmentType: "adaptive"`);
+        }
+        if (!jsonData.adaptiveConfiguration) {
+          throw new Error(`${version.charAt(0).toUpperCase() + version.slice(1)} assessment must include adaptiveConfiguration`);
+        }
       }
 
       const fileName = `${version}-assessment.json`;
@@ -297,60 +307,82 @@ const Admin = () => {
 
             <div className="p-4 bg-accent/30 rounded-lg space-y-4">
               <div>
-                <p className="text-sm font-semibold mb-2">Required AIQ Assessment Structure:</p>
-                <pre className="text-xs bg-background p-3 rounded border overflow-x-auto">
+                <p className="text-sm font-semibold mb-2">Required Structure by Version:</p>
+                
+                {/* Beginner Structure */}
+                <div className="mb-4">
+                  <div className="px-2 py-1 bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-300 rounded text-xs font-semibold inline-block mb-2">
+                    Beginner (Fixed)
+                  </div>
+                  <pre className="text-xs bg-background p-3 rounded border overflow-x-auto">
 {`{
-  "assessmentName": "AIQ Beginner/Professional/Expert Assessment",
+  "assessmentName": "AIQ Beginner Assessment",
   "version": "1.0",
-  "assessmentType": "fixed" | "adaptive",
-  "description": "Assessment description",
-  
-  // For Beginner (fixed)
+  "assessmentType": "fixed",
   "assessmentConfiguration": {
     "totalQuestions": 24,
     "questionsPerDimension": 3,
     "estimatedTime": "15 minutes"
   },
-  
-  // For Professional/Expert (adaptive)
+  "scoringConfiguration": { ... },
+  "itemBank": {
+    "dimensions": [ ... ]
+  }
+}`}
+                  </pre>
+                </div>
+
+                {/* Professional Structure */}
+                <div className="mb-4">
+                  <div className="px-2 py-1 bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 rounded text-xs font-semibold inline-block mb-2">
+                    Professional (Adaptive)
+                  </div>
+                  <pre className="text-xs bg-background p-3 rounded border overflow-x-auto">
+{`{
+  "assessmentName": "AIQ Professional Assessment",
+  "version": "1.0",
+  "assessmentType": "adaptive",
   "adaptiveConfiguration": {
     "totalQuestions": 80,
     "questionsPerDimension": 10,
     "itemBankSize": {
-      "totalItems": 400,  // 400 for Professional, 160 for Expert
-      "itemsPerDimension": 50  // 50 for Professional, 20 for Expert
+      "totalItems": 400,
+      "itemsPerDimension": 50
     }
   },
-  
-  "scoringConfiguration": {
-    "totalPoints": 240,
-    "pointsPerDimension": 30,
-    "passingScore": 168
-  },
-  
+  "scoringConfiguration": { ... },
   "itemBank": {
-    "totalItems": 24,
-    "itemsPerDimension": 3,
-    "dimensions": [
-      {
-        "dimensionCode": "SAU",
-        "dimensionName": "Strategic AI Understanding",
-        "items": [
-          {
-            "id": "SAU-001",
-            "level": 1,
-            "type": "multiple-choice",
-            "difficulty": 0.18,
-            "question": "Question text...",
-            "options": ["A", "B", "C", "D"],
-            "correctAnswer": 1
-          }
-        ]
-      }
-    ]
+    "dimensions": [ ... ]
   }
 }`}
-                </pre>
+                  </pre>
+                </div>
+
+                {/* Expert Structure */}
+                <div>
+                  <div className="px-2 py-1 bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-300 rounded text-xs font-semibold inline-block mb-2">
+                    Expert (Adaptive)
+                  </div>
+                  <pre className="text-xs bg-background p-3 rounded border overflow-x-auto">
+{`{
+  "assessmentName": "AIQ Expert Assessment",
+  "version": "1.0",
+  "assessmentType": "adaptive",
+  "adaptiveConfiguration": {
+    "totalQuestions": 80,
+    "questionsPerDimension": 10,
+    "itemBankSize": {
+      "totalItems": 160,
+      "itemsPerDimension": 20
+    }
+  },
+  "scoringConfiguration": { ... },
+  "itemBank": {
+    "dimensions": [ ... ]
+  }
+}`}
+                  </pre>
+                </div>
               </div>
               
               <div className="p-3 bg-blue-50 dark:bg-blue-950 rounded border border-blue-200 dark:border-blue-800">
