@@ -5,7 +5,6 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Brain, TrendingUp, Award, Lightbulb, CheckCircle, ArrowRight } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { Navigation } from "@/components/Navigation";
-import aiqBrainLogo from "@/assets/aiq-brain-logo.png";
 
 const Index = () => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -83,10 +82,7 @@ const Index = () => {
       
       <main>
         {/* Hero Section */}
-        <section className="container py-16 text-center max-w-5xl">
-          <div className="inline-block p-3 bg-primary/10 rounded-full mb-4">
-            <img src={aiqBrainLogo} alt="AIQ Logo" className="h-12 w-12" />
-          </div>
+        <section className="container pt-6 pb-12 text-center max-w-5xl">
           <h1 className="text-5xl lg:text-7xl font-black mb-4 tracking-tight leading-[1.05] bg-gradient-to-r from-blue-900 to-blue-600 bg-clip-text text-transparent">
             Measure Your AI Intelligence
           </h1>
