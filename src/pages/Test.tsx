@@ -495,9 +495,57 @@ const Test = () => {
     }
   };
 
-  const handleConsentAccept = () => {
-    setConsentGiven(true);
-    setShowConsent(false);
+  const handleConsentAccept = async (demographicsData: any) => {
+    try {
+      const { data: { session } } = await supabase.auth.getSession();
+      if (!session) {
+        navigate("/auth");
+        return;
+      }
+
+      // Create test record first if it doesn't exist
+      if (!testId) {
+        const { data: newTest, error: testError } = await supabase
+          .from("tests")
+          .insert({
+            user_id: session.user.id,
+            test_version: testVersion,
+            json_version: `${testVersion}-assessment.json`,
+            consent_given: true,
+            consent_timestamp: new Date().toISOString(),
+          })
+          .select()
+          .single();
+
+        if (testError) throw testError;
+        setTestId(newTest.id);
+
+        // Save demographics data
+        const { error: demoError } = await supabase
+          .from("test_demographics")
+          .insert({
+            test_id: newTest.id,
+            user_id: session.user.id,
+            ...demographicsData,
+          });
+
+        if (demoError) throw demoError;
+      }
+
+      setConsentGiven(true);
+      setShowConsent(false);
+      
+      toast({
+        title: "Consent Recorded",
+        description: "Starting your assessment now",
+      });
+    } catch (error: any) {
+      toast({
+        title: "Error",
+        description: error.message || "Failed to save consent data",
+        variant: "destructive",
+      });
+    }
   };
 
   const handleConsentDecline = () => {
@@ -517,6 +565,7 @@ const Test = () => {
           open={showConsent}
           onConsent={handleConsentAccept}
           onDecline={handleConsentDecline}
+          testVersion={testVersion}
         />
       </div>
     );

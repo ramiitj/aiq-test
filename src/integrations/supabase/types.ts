@@ -115,6 +115,113 @@ export type Database = {
           },
         ]
       }
+      test_demographics: {
+        Row: {
+          age_range: string | null
+          ai_familiarity: string
+          ai_tools_used: Json
+          ai_training: string
+          ai_usage_frequency: string
+          ai_use_cases: Json | null
+          assessment_reasons: Json
+          assessment_tier: string
+          consent_assessment: boolean
+          consent_communications: boolean | null
+          consent_data_usage: boolean
+          consent_research: boolean | null
+          consent_results_access: boolean
+          country: string | null
+          created_at: string
+          education_level: string | null
+          email: string
+          full_name: string
+          id: string
+          industry_sector: string
+          job_role: string
+          organization_size: string | null
+          organization_type: string
+          phone_number: string | null
+          primary_language: string | null
+          results_usage: Json | null
+          technical_background: string | null
+          test_id: string
+          user_id: string
+          years_experience: string
+        }
+        Insert: {
+          age_range?: string | null
+          ai_familiarity: string
+          ai_tools_used?: Json
+          ai_training: string
+          ai_usage_frequency: string
+          ai_use_cases?: Json | null
+          assessment_reasons?: Json
+          assessment_tier: string
+          consent_assessment?: boolean
+          consent_communications?: boolean | null
+          consent_data_usage?: boolean
+          consent_research?: boolean | null
+          consent_results_access?: boolean
+          country?: string | null
+          created_at?: string
+          education_level?: string | null
+          email: string
+          full_name: string
+          id?: string
+          industry_sector: string
+          job_role: string
+          organization_size?: string | null
+          organization_type: string
+          phone_number?: string | null
+          primary_language?: string | null
+          results_usage?: Json | null
+          technical_background?: string | null
+          test_id: string
+          user_id: string
+          years_experience: string
+        }
+        Update: {
+          age_range?: string | null
+          ai_familiarity?: string
+          ai_tools_used?: Json
+          ai_training?: string
+          ai_usage_frequency?: string
+          ai_use_cases?: Json | null
+          assessment_reasons?: Json
+          assessment_tier?: string
+          consent_assessment?: boolean
+          consent_communications?: boolean | null
+          consent_data_usage?: boolean
+          consent_research?: boolean | null
+          consent_results_access?: boolean
+          country?: string | null
+          created_at?: string
+          education_level?: string | null
+          email?: string
+          full_name?: string
+          id?: string
+          industry_sector?: string
+          job_role?: string
+          organization_size?: string | null
+          organization_type?: string
+          phone_number?: string | null
+          primary_language?: string | null
+          results_usage?: Json | null
+          technical_background?: string | null
+          test_id?: string
+          user_id?: string
+          years_experience?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "test_demographics_test_id_fkey"
+            columns: ["test_id"]
+            isOneToOne: true
+            referencedRelation: "tests"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       tests: {
         Row: {
           answers: Json
