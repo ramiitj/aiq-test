@@ -326,6 +326,18 @@ const Test = () => {
     }
 
     const state = dimStates[currentDimension];
+    
+    // Safety check for undefined state
+    if (!state) {
+      console.error('State undefined for dimension', currentDimension);
+      toast({
+        title: "Error",
+        description: "Test state error. Please refresh and try again.",
+        variant: "destructive",
+      });
+      return;
+    }
+    
     const userAnswer = answers[currentQuestion.id];
     
     // Check correctness based on answer format
@@ -350,12 +362,28 @@ const Test = () => {
     updatedStates[currentDimension] = { theta: newTheta, used: newUsed, counts: newCounts, answered: newAnswered };
     setDimStates(updatedStates);
 
-    // Check if dimension complete (exactly 10 items answered)
-    if (newAnswered >= 10) {
-      if (currentDimension < 7) {
-        // Move to next dimension (we have exactly 8 dimensions, 0-7)
+    // Get items per dimension based on test version
+    const config = getVersionConfig(testVersion);
+    const itemsPerDimension = config.itemsPerDimension;
+    const totalDimensions = dimensions.length;
+
+    // Check if dimension complete
+    if (newAnswered >= itemsPerDimension) {
+      if (currentDimension < totalDimensions - 1) {
+        // Move to next dimension
         const nextDim = currentDimension + 1;
         setCurrentDimension(nextDim);
+        
+        if (!updatedStates[nextDim]) {
+          toast({ 
+            title: "Error", 
+            description: `Next dimension state not initialized.`,
+            variant: "destructive"
+          });
+          await handleSubmit();
+          return;
+        }
+        
         const nextIdx = selectNextItem(nextDim, updatedStates[nextDim].theta, updatedStates[nextDim].used, updatedStates[nextDim].counts);
         if (nextIdx < 0) {
           toast({ 
@@ -368,14 +396,14 @@ const Test = () => {
           setCurrentItem(nextIdx);
         }
       } else {
-        // Completed all 8 dimensions (80 questions total)
+        // Completed all dimensions
         await handleSubmit();
       }
     } else {
       // Continue in current dimension
       const nextIdx = selectNextItem(currentDimension, newTheta, newUsed, newCounts);
       if (nextIdx < 0) {
-        // Ran out of items before reaching 10 - should not happen with validation
+        // Ran out of items before reaching target
         toast({ 
           title: "Error", 
           description: "Insufficient items in current dimension.",
