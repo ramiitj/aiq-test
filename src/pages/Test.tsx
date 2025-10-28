@@ -101,9 +101,9 @@ const Test = () => {
 
         setTestId(testData.id);
         setCurrentDimension(testData.current_dimension || 0);
-        setCurrentQuestion(testData.current_question || 0);
+        setCurrentQuestion(testData.current_item || 0);
         setTimeRemaining(testData.time_remaining || testDuration);
-        setAnswers(testData.responses || {});
+        setAnswers((testData.answers as Record<string, string>) || {});
         setShowConsent(false);
       } else {
         // New test - show consent
@@ -136,16 +136,16 @@ const Test = () => {
     try {
       const { data: newTest, error } = await supabase
         .from("tests")
-        .insert({
+        .insert([{
           user_id: session.user.id,
-          version: version,
           consent_given: true,
-          research_consent: consentData.researchParticipation,
           time_remaining: testDuration,
           current_dimension: 0,
-          current_question: 0,
-          responses: {}
-        })
+          current_item: 0,
+          answers: {},
+          json_version: version,
+          test_version: version
+        }])
         .select()
         .single();
 
@@ -177,8 +177,8 @@ const Test = () => {
           paused: true,
           time_remaining: timeRemaining,
           current_dimension: currentDimension,
-          current_question: currentQuestion,
-          responses: answers
+          current_item: currentQuestion,
+          answers: answers
         })
         .eq("id", testId);
 
@@ -205,7 +205,7 @@ const Test = () => {
         .from("tests")
         .update({
           completed: true,
-          responses: answers,
+          answers: answers,
           time_remaining: timeRemaining
         })
         .eq("id", testId);
