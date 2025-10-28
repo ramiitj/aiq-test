@@ -93,14 +93,14 @@ const Results = () => {
         test_version: data.test_version || 'beginner',
       });
 
-      // Get user profile for name
-      const { data: profile } = await supabase
-        .from("profiles")
-        .select("name")
-        .eq("user_id", session.user.id)
-        .single();
+      // Get user name from demographics (used for certificate)
+      const { data: demographics } = await supabase
+        .from("test_demographics")
+        .select("full_name")
+        .eq("test_id", testId)
+        .maybeSingle();
       
-      setUserName(profile?.name || session.user.email || "AIQ Participant");
+      setUserName(demographics?.full_name || session.user.email || "AIQ Participant");
     } catch (error: any) {
       toast({
         title: "Error",

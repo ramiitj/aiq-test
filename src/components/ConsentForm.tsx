@@ -244,6 +244,9 @@ export const ConsentForm = ({ open, onConsent, onDecline, testVersion }: Consent
                   placeholder="Enter your full name"
                   maxLength={100}
                 />
+                <p className="text-xs text-muted-foreground">
+                  This name will appear on your certificate and be used for results verification
+                </p>
               </div>
 
               <div className="space-y-2">
@@ -643,7 +646,7 @@ export const ConsentForm = ({ open, onConsent, onDecline, testVersion }: Consent
                     onCheckedChange={(checked) => setConsentAssessment(checked as boolean)}
                   />
                   <Label htmlFor="consent1" className="text-sm cursor-pointer leading-relaxed">
-                    <span className="text-destructive">*</span> I consent to taking this AI literacy assessment and understand that my responses will be used to evaluate my AI competency across 8 dimensions.
+                    <span className="text-destructive">*</span> I consent to taking this AI Quotient assessment and understand that my responses will be used to evaluate my AI competency across 8 dimensions.
                   </Label>
                 </div>
 
@@ -665,7 +668,7 @@ export const ConsentForm = ({ open, onConsent, onDecline, testVersion }: Consent
                     onCheckedChange={(checked) => setConsentResultsAccess(checked as boolean)}
                   />
                   <Label htmlFor="consent3" className="text-sm cursor-pointer leading-relaxed">
-                    <span className="text-destructive">*</span> I understand that my assessment results and certificate will be available for download as a PDF from my dashboard, and I may optionally receive a notification email when results are ready.
+                    <span className="text-destructive">*</span> I understand that my assessment results and certificate will be available for download as a PDF from my dashboard.
                   </Label>
                 </div>
               </div>
@@ -680,7 +683,7 @@ export const ConsentForm = ({ open, onConsent, onDecline, testVersion }: Consent
                     onCheckedChange={(checked) => setConsentResearch(checked as boolean)}
                   />
                   <Label htmlFor="consent4" className="text-sm cursor-pointer leading-relaxed">
-                    I consent to my anonymized data being used for research purposes to advance AI literacy understanding and improve educational resources.
+                    I consent to my anonymized data being used for research purposes to advance AI Quotient understanding and improve educational resources.
                   </Label>
                 </div>
 

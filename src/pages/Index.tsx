@@ -47,13 +47,12 @@ const Index = () => {
             <img src={aiqBrainLogo} alt="AIQ Logo" className="h-12 w-12" />
           </div>
           <h1 className="text-4xl lg:text-5xl font-extrabold mb-6 tracking-tight leading-[1.1]">
-            Measure Your <span className="text-blue-900">AI Collaboration</span> Intelligence
+            The World's First Comprehensive <span className="text-blue-900">AI Quotient</span> Assessment
           </h1>
           <p className="text-lg lg:text-xl text-muted-foreground mb-8 max-w-3xl mx-auto leading-relaxed font-medium">
-            Take the research-validated Artificial Intelligence Quotient (AIQ) test to assess 
-            your ability to collaborate effectively with AI systems across 8 key dimensions. 
-            Choose from three assessment levels tailored to your experience—from foundational 
-            literacy to advanced expertise.
+            Measure your AI collaboration intelligence through the world's most comprehensive research-based assessment. 
+            Developed through rigorous academic research at IIT Jodhpur with 400+ calibrated items and validated 
+            across 8 critical dimensions of AI competency.
           </p>
           <div className="flex gap-4 justify-center">
             {isAuthenticated ? <Link to="/dashboard">
@@ -77,7 +76,7 @@ const Index = () => {
         <section className="bg-secondary/30 py-20">
           <div className="container max-w-6xl">
             <h2 className="text-3xl lg:text-4xl font-bold text-center mb-16 tracking-tight">
-              Why Take the AIQ Test?
+              The World's Most Comprehensive AI Quotient Assessment
             </h2>
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
               {features.map((feature, index) => {
@@ -95,6 +94,37 @@ const Index = () => {
                   </Card>;
             })}
             </div>
+          </div>
+        </section>
+
+        {/* Research Validation Section */}
+        <section className="container py-20 max-w-6xl">
+          <div className="bg-card rounded-lg p-8 border shadow-elegant">
+            <h2 className="text-3xl lg:text-4xl font-bold text-center mb-8 tracking-tight">
+              Backed by Rigorous Academic Research
+            </h2>
+            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-6">
+              <div className="text-center">
+                <div className="text-4xl font-bold text-primary mb-2">400+</div>
+                <p className="text-muted-foreground">Calibrated Assessment Items</p>
+              </div>
+              <div className="text-center">
+                <div className="text-4xl font-bold text-primary mb-2">8</div>
+                <p className="text-muted-foreground">Validated AI Competency Dimensions</p>
+              </div>
+              <div className="text-center">
+                <div className="text-4xl font-bold text-primary mb-2">IRT</div>
+                <p className="text-muted-foreground">Item Response Theory Methodology</p>
+              </div>
+              <div className="text-center">
+                <div className="text-4xl font-bold text-primary mb-2">IIT Jodhpur</div>
+                <p className="text-muted-foreground">Academic Research Foundation</p>
+              </div>
+            </div>
+            <p className="text-center text-muted-foreground max-w-3xl mx-auto leading-relaxed">
+              Our assessment is built on peer-reviewed research with psychometric validation, ensuring accurate 
+              and reliable measurement of your AI collaboration capabilities across all proficiency levels.
+            </p>
           </div>
         </section>
 
@@ -119,11 +149,11 @@ const Index = () => {
                 <ul className="space-y-2 text-sm mb-4">
                   <li className="flex items-center gap-2">
                     <CheckCircle className="h-4 w-4 text-success flex-shrink-0" />
-                    <span>40 questions</span>
+                    <span>24 questions</span>
                   </li>
                   <li className="flex items-center gap-2">
                     <CheckCircle className="h-4 w-4 text-success flex-shrink-0" />
-                    <span>30 minutes</span>
+                    <span>15 minutes</span>
                   </li>
                   <li className="flex items-center gap-2">
                     <CheckCircle className="h-4 w-4 text-success flex-shrink-0" />
@@ -185,11 +215,11 @@ const Index = () => {
                 <ul className="space-y-2 text-sm mb-4">
                   <li className="flex items-center gap-2">
                     <CheckCircle className="h-4 w-4 text-success flex-shrink-0" />
-                    <span>200 questions</span>
+                    <span>80 questions</span>
                   </li>
                   <li className="flex items-center gap-2">
                     <CheckCircle className="h-4 w-4 text-success flex-shrink-0" />
-                    <span>120 minutes</span>
+                    <span>60 minutes</span>
                   </li>
                   <li className="flex items-center gap-2">
                     <CheckCircle className="h-4 w-4 text-success flex-shrink-0" />
