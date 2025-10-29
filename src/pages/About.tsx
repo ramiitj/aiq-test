@@ -80,7 +80,7 @@ const About = () => {
               <CardContent className="pt-8 pb-8 text-center">
                 <AlertCircle className="h-12 w-12 text-red-600 mx-auto mb-4" />
                 <div className="text-4xl font-extrabold text-red-600 mb-2">No Standard</div>
-                <p className="text-sm text-muted-foreground">
+                <p className="text-sm text-muted-foreground mb-2">
                   Until now, no validated assessment existed for AI collaboration skills
                 </p>
               </CardContent>
@@ -89,16 +89,22 @@ const About = () => {
             <Card className="shadow-sm border bg-orange-50 dark:bg-orange-950/20">
               <CardContent className="pt-8 pb-8 text-center">
                 <Users className="h-12 w-12 text-orange-600 mx-auto mb-4" />
-                <div className="text-4xl font-extrabold text-orange-600 mb-2">65%</div>
-                <p className="text-sm text-muted-foreground">of employees receive no formal AI literacy training</p>
+                <div className="text-4xl font-extrabold text-orange-600 mb-2">55%</div>
+                <p className="text-sm text-muted-foreground mb-2">
+                  of companies lack resources to train employees on AI effectively
+                </p>
+                <p className="text-xs text-muted-foreground/70">Express Employment 2025</p>
               </CardContent>
             </Card>
 
             <Card className="shadow-sm border bg-yellow-50 dark:bg-yellow-950/20">
               <CardContent className="pt-8 pb-8 text-center">
                 <TrendingUp className="h-12 w-12 text-yellow-600 mx-auto mb-4" />
-                <div className="text-4xl font-extrabold text-yellow-600 mb-2">$16T</div>
-                <p className="text-sm text-muted-foreground">potential value at stake if we bridge the AI skills gap</p>
+                <div className="text-4xl font-extrabold text-yellow-600 mb-2">$13T</div>
+                <p className="text-sm text-muted-foreground mb-2">
+                  potential economic value if we develop AI collaboration skills
+                </p>
+                <p className="text-xs text-muted-foreground/70">McKinsey Global Institute</p>
               </CardContent>
             </Card>
           </div>
