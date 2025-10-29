@@ -141,7 +141,7 @@ export async function generatePDFReport(
   doc.setTextColor(primaryBlue[0], primaryBlue[1], primaryBlue[2]);
   doc.setFontSize(42);
   doc.setFont("helvetica", "bold");
-  doc.text(overallScore.toFixed(1), centerX, centerY - 2, { align: "center", baseline: "middle" });
+  doc.text(String(overallScore.toFixed(1)), centerX, centerY - 2, { align: "center", baseline: "middle" });
 
   doc.setFontSize(14);
   doc.setFont("helvetica", "normal");
@@ -201,7 +201,7 @@ export async function generatePDFReport(
 
     doc.setFont("helvetica", "bold");
     doc.setTextColor(accentBlue[0], accentBlue[1], accentBlue[2]);
-    doc.text(dim.score.toFixed(1), pageWidth - margin - 3, currentY + 3, { align: "right" });
+    doc.text(String(dim.score.toFixed(1)), pageWidth - margin - 3, currentY + 3, { align: "right" });
 
     currentY += 12;
   });
@@ -226,7 +226,7 @@ export async function generatePDFReport(
   autoTable(doc, {
     startY: 50,
     head: [["Dimension", "Score", "Proficiency Level"]],
-    body: dimensionScores.map((dim) => [dim.name, dim.score.toFixed(1), getProficiencyLevel(dim.score)]),
+    body: dimensionScores.map((dim) => [dim.name, String(dim.score.toFixed(1)), getProficiencyLevel(dim.score)]),
     theme: "plain",
     headStyles: {
       fillColor: primaryBlue,
@@ -293,7 +293,7 @@ export async function generatePDFReport(
     doc.setFontSize(10);
     doc.setFont("helvetica", "bold");
     doc.setTextColor(barColor[0], barColor[1], barColor[2]);
-    doc.text(dim.score.toFixed(1), margin + barMaxWidth + 5, currentY + 11);
+    doc.text(String(dim.score.toFixed(1)), margin + barMaxWidth + 5, currentY + 11);
 
     currentY += 16;
   });
@@ -454,7 +454,7 @@ export async function generatePDFReport(
 
     const scoreColor = getLevelColor(dim.score);
     doc.setTextColor(scoreColor[0], scoreColor[1], scoreColor[2]);
-    doc.text("Current: " + dim.score.toFixed(1), pageWidth - margin - 2, currentY + 2, { align: "right" });
+    doc.text("Current: " + String(dim.score.toFixed(1)), pageWidth - margin - 2, currentY + 2, { align: "right" });
 
     // Development suggestions
     doc.setFontSize(9);
