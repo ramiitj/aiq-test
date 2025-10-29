@@ -155,62 +155,140 @@ const About = () => {
           </CardContent>
         </Card>
 
-        {/* The Problem & Solution - Visual Cards */}
-        <div className="grid md:grid-cols-2 gap-6 mb-16">
-          <Card className="shadow-sm border">
-            <CardContent className="pt-6 pb-6">
-              <div className="flex items-center gap-2 mb-3">
-                <BookOpen className="h-5 w-5 text-red-600" />
-                <h3 className="text-xl font-extrabold">The Challenge</h3>
-              </div>
-              <p className="text-sm text-muted-foreground leading-relaxed mb-4">
-                Traditional assessments fail to measure AI collaboration skills. There's a critical gap in standardized,
-                performance-based tools for this essential capability.
-              </p>
-              <div className="space-y-2">
-                <div className="flex items-start gap-2 text-sm">
-                  <span className="text-red-600 font-bold">×</span>
-                  <span className="text-muted-foreground">Only 30% can describe common AI uses</span>
+        {/* Key Research Insights */}
+        <div className="mb-16">
+          <h2 className="text-4xl font-extrabold mb-3 text-center">Key Research Insights</h2>
+          <p className="text-center text-muted-foreground mb-10 max-w-2xl mx-auto">
+            Findings from our peer-reviewed research on AI collaboration competencies
+          </p>
+          <div className="grid md:grid-cols-3 gap-6">
+            <Card className="shadow-sm border bg-blue-50 dark:bg-blue-950/20">
+              <CardContent className="pt-6 pb-6">
+                <div className="text-center mb-4">
+                  <div className="text-5xl font-extrabold text-blue-900 mb-2">0/16</div>
+                  <p className="text-xs font-semibold text-muted-foreground">Existing AI Literacy Scales</p>
                 </div>
-                <div className="flex items-start gap-2 text-sm">
-                  <span className="text-red-600 font-bold">×</span>
-                  <span className="text-muted-foreground">38% report more fear than excitement about AI</span>
-                </div>
-                <div className="flex items-start gap-2 text-sm">
-                  <span className="text-red-600 font-bold">×</span>
-                  <span className="text-muted-foreground">No validated AI literacy scales exist</span>
-                </div>
-              </div>
-            </CardContent>
-          </Card>
+                <p className="text-sm text-muted-foreground leading-relaxed text-center">
+                  showed positive evidence for all psychometric properties - highlighting the critical need for
+                  validated assessment tools
+                </p>
+              </CardContent>
+            </Card>
 
-          <Card className="shadow-sm border bg-green-50 dark:bg-green-950/20">
-            <CardContent className="pt-6 pb-6">
-              <div className="flex items-center gap-2 mb-3">
-                <Award className="h-5 w-5 text-green-600" />
-                <h3 className="text-xl font-extrabold">Our Solution</h3>
-              </div>
-              <p className="text-sm text-muted-foreground leading-relaxed mb-4">
-                AIQ uses rigorous psychometric methods grounded in cognitive science and human-computer interaction
-                research to provide validated, performance-based assessment.
-              </p>
-              <div className="space-y-2">
-                <div className="flex items-start gap-2 text-sm">
-                  <span className="text-green-600 font-bold">✓</span>
-                  <span className="text-muted-foreground">Performance-based real-world tasks</span>
+            <Card className="shadow-sm border bg-green-50 dark:bg-green-950/20">
+              <CardContent className="pt-6 pb-6">
+                <div className="text-center mb-4">
+                  <div className="text-5xl font-extrabold text-green-700 mb-2">8</div>
+                  <p className="text-xs font-semibold text-muted-foreground">Core Dimensions Identified</p>
                 </div>
-                <div className="flex items-start gap-2 text-sm">
-                  <span className="text-green-600 font-bold">✓</span>
-                  <span className="text-muted-foreground">Rigorous psychometric validation</span>
+                <p className="text-sm text-muted-foreground leading-relaxed text-center">
+                  through comprehensive literature review spanning cognitive science, HCI research, and organizational
+                  behavior studies
+                </p>
+              </CardContent>
+            </Card>
+
+            <Card className="shadow-sm border bg-purple-50 dark:bg-purple-950/20">
+              <CardContent className="pt-6 pb-6">
+                <div className="text-center mb-4">
+                  <div className="text-5xl font-extrabold text-purple-700 mb-2">IRT</div>
+                  <p className="text-xs font-semibold text-muted-foreground">Adaptive Methodology</p>
                 </div>
-                <div className="flex items-start gap-2 text-sm">
-                  <span className="text-green-600 font-bold">✓</span>
-                  <span className="text-muted-foreground">Adaptive IRT-based testing</span>
-                </div>
-              </div>
-            </CardContent>
-          </Card>
+                <p className="text-sm text-muted-foreground leading-relaxed text-center">
+                  Item Response Theory enables precise measurement across all proficiency levels, from novice to expert
+                  practitioners
+                </p>
+              </CardContent>
+            </Card>
+          </div>
         </div>
+
+        {/* Research Findings - What We Discovered */}
+        <Card className="mb-16 shadow-sm border">
+          <CardContent className="pt-8 pb-8">
+            <h2 className="text-3xl font-extrabold mb-6 text-center">What Makes AIQ Different</h2>
+            <div className="grid md:grid-cols-2 gap-8">
+              <div>
+                <div className="flex items-center gap-2 mb-4">
+                  <div className="p-2 bg-red-100 dark:bg-red-900/30 rounded-lg">
+                    <Target className="h-5 w-5 text-red-600 dark:text-red-400" />
+                  </div>
+                  <h3 className="font-bold text-lg">Traditional Approaches</h3>
+                </div>
+                <ul className="space-y-3">
+                  <li className="flex items-start gap-3 text-sm">
+                    <span className="text-red-600 font-bold mt-0.5">×</span>
+                    <div>
+                      <span className="font-semibold">Self-reported measures:</span>
+                      <span className="text-muted-foreground ml-1">Lack objective performance validation</span>
+                    </div>
+                  </li>
+                  <li className="flex items-start gap-3 text-sm">
+                    <span className="text-red-600 font-bold mt-0.5">×</span>
+                    <div>
+                      <span className="font-semibold">Limited scope:</span>
+                      <span className="text-muted-foreground ml-1">Focus on isolated technical skills only</span>
+                    </div>
+                  </li>
+                  <li className="flex items-start gap-3 text-sm">
+                    <span className="text-red-600 font-bold mt-0.5">×</span>
+                    <div>
+                      <span className="font-semibold">Static testing:</span>
+                      <span className="text-muted-foreground ml-1">Same questions for all proficiency levels</span>
+                    </div>
+                  </li>
+                  <li className="flex items-start gap-3 text-sm">
+                    <span className="text-red-600 font-bold mt-0.5">×</span>
+                    <div>
+                      <span className="font-semibold">Poor validation:</span>
+                      <span className="text-muted-foreground ml-1">No rigorous psychometric testing</span>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+              <div>
+                <div className="flex items-center gap-2 mb-4">
+                  <div className="p-2 bg-green-100 dark:bg-green-900/30 rounded-lg">
+                    <Award className="h-5 w-5 text-green-600 dark:text-green-400" />
+                  </div>
+                  <h3 className="font-bold text-lg">AIQ Framework</h3>
+                </div>
+                <ul className="space-y-3">
+                  <li className="flex items-start gap-3 text-sm">
+                    <span className="text-green-600 font-bold mt-0.5">✓</span>
+                    <div>
+                      <span className="font-semibold">Performance-based:</span>
+                      <span className="text-muted-foreground ml-1">
+                        Real-world task scenarios with observable outcomes
+                      </span>
+                    </div>
+                  </li>
+                  <li className="flex items-start gap-3 text-sm">
+                    <span className="text-green-600 font-bold mt-0.5">✓</span>
+                    <div>
+                      <span className="font-semibold">Holistic assessment:</span>
+                      <span className="text-muted-foreground ml-1">Measures collaborative intelligence ecosystem</span>
+                    </div>
+                  </li>
+                  <li className="flex items-start gap-3 text-sm">
+                    <span className="text-green-600 font-bold mt-0.5">✓</span>
+                    <div>
+                      <span className="font-semibold">Adaptive IRT:</span>
+                      <span className="text-muted-foreground ml-1">Dynamically adjusts difficulty for precision</span>
+                    </div>
+                  </li>
+                  <li className="flex items-start gap-3 text-sm">
+                    <span className="text-green-600 font-bold mt-0.5">✓</span>
+                    <div>
+                      <span className="font-semibold">Peer-reviewed:</span>
+                      <span className="text-muted-foreground ml-1">Rigorous validation through academic research</span>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </CardContent>
+        </Card>
 
         {/* The 8 Dimensions - Visual Grid */}
         <div className="mb-16">
@@ -391,22 +469,32 @@ const About = () => {
           </div>
         </div>
 
-        {/* Citation Banner */}
-        <Card className="shadow-lg border-2 border-blue-900">
-          <CardContent className="pt-6 pb-6 text-center">
-            <p className="text-xs text-muted-foreground leading-relaxed max-w-3xl mx-auto">
-              <span className="font-bold text-blue-900">Citation:</span> Ganuthula, V.R.R., Balaraman, K.K. (2025).
-              Artificial intelligence quotient framework for measuring human collaboration with artificial intelligence.
-              <span className="italic"> Discover Artificial Intelligence</span>, 5, 268.
+        {/* Final CTA - Read the Full Paper */}
+        <Card className="shadow-xl border-2 border-blue-900 bg-gradient-to-br from-blue-900 to-blue-800 text-white">
+          <CardContent className="pt-10 pb-10 text-center">
+            <FileText className="h-16 w-16 mx-auto mb-4 opacity-90" />
+            <h2 className="text-3xl font-extrabold mb-3">Read the Complete Research</h2>
+            <p className="text-base opacity-90 mb-6 max-w-2xl mx-auto">
+              Dive deep into the methodology, validation studies, and comprehensive framework behind the AIQ assessment
             </p>
+            <div className="bg-white/10 backdrop-blur-sm rounded-lg p-4 mb-6 max-w-3xl mx-auto">
+              <p className="text-sm leading-relaxed mb-2">
+                <span className="font-bold">Citation:</span> Ganuthula, V.R.R., Balaraman, K.K. (2025). Artificial
+                intelligence quotient framework for measuring human collaboration with artificial intelligence.
+                <span className="italic"> Discover Artificial Intelligence</span>, 5, 268.
+              </p>
+              <p className="text-xs font-mono opacity-75">DOI: 10.1007/s44163-025-00516-1</p>
+            </div>
             <a
               href="https://link.springer.com/epdf/10.1007/s44163-025-00516-1?sharing_token=T6xe9nZzrWS-C-ANGiDQV_e4RwlQNchNByi7wbcMAY6YdayLiwdIOdDO4XNZbgLvZSQyi_Fj10NE-qC63u4Uuk-HXsnEOE776OwTqhqvFbE7eSi796eIPBck33pH9cCkWzgkpfBXUyX1LgBPrj5DS1iggJOQ9h91dxbrHABq1wk%3D"
               target="_blank"
               rel="noopener noreferrer"
-              className="mt-3 inline-block"
             >
-              <Button variant="outline" size="sm" className="font-semibold">
-                View Paper <ExternalLink className="ml-2 h-4 w-4" />
+              <Button
+                size="lg"
+                className="bg-white text-blue-900 hover:bg-gray-100 font-semibold text-base px-8 py-6 shadow-xl"
+              >
+                Access Full Paper <ExternalLink className="ml-2 h-5 w-5" />
               </Button>
             </a>
           </CardContent>
