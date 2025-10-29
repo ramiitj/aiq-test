@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { Brain, TrendingUp, Award, Lightbulb, CheckCircle, ArrowRight, Sparkles } from "lucide-react";
+import { Brain, TrendingUp, Award, Lightbulb, CheckCircle, ArrowRight } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { Navigation } from "@/components/Navigation";
 
@@ -65,7 +65,6 @@ const Index = () => {
       duration: "60 minutes",
       dimensions: "8 full dimensions",
       idealFor: "AI practitioners",
-      highlighted: true,
     },
     {
       badge: "Expert",
@@ -185,19 +184,8 @@ const Index = () => {
             </p>
             <div className="grid md:grid-cols-3 gap-6">
               {assessmentLevels.map((level, index) => (
-                <Card
-                  key={index}
-                  className={`shadow-sm hover:shadow-lg transition-all hover:scale-[1.02] border ${
-                    level.highlighted ? "border-blue-900 border-2 ring-2 ring-blue-900/20" : ""
-                  }`}
-                >
+                <Card key={index} className="shadow-sm border">
                   <CardContent className="pt-6 pb-6">
-                    {level.highlighted && (
-                      <div className="text-xs font-bold text-blue-900 mb-2 flex items-center gap-1">
-                        <Sparkles className="h-3 w-3" />
-                        MOST POPULAR
-                      </div>
-                    )}
                     <div className={`inline-block px-3 py-1 ${level.badgeColor} rounded-full text-xs font-bold mb-3`}>
                       {level.badge}
                     </div>
