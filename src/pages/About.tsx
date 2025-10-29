@@ -71,7 +71,7 @@ const About = () => {
           <div className="text-center mb-8">
             <h2 className="text-4xl font-extrabold mb-3">The Skills Gap in the AI Era</h2>
             <p className="text-muted-foreground max-w-2xl mx-auto">
-              Organizations are adopting AI rapidly, but lack tools to measure who can actually use it effectively
+              Organizations are adopting AI rapidly, but lack validated tools to measure collaboration effectiveness
             </p>
           </div>
 
@@ -79,32 +79,33 @@ const About = () => {
             <Card className="shadow-sm border bg-red-50 dark:bg-red-950/20">
               <CardContent className="pt-8 pb-8 text-center">
                 <AlertCircle className="h-12 w-12 text-red-600 mx-auto mb-4" />
-                <div className="text-4xl font-extrabold text-red-600 mb-2">No Standard</div>
+                <div className="text-4xl font-extrabold text-red-600 mb-2">70%</div>
                 <p className="text-sm text-muted-foreground mb-2">
-                  Until now, no validated assessment existed for AI collaboration skills
+                  of skills used in jobs will change by 2030 due to AI
                 </p>
+                <p className="text-xs text-muted-foreground/70">LinkedIn Work Change Report</p>
               </CardContent>
             </Card>
 
             <Card className="shadow-sm border bg-orange-50 dark:bg-orange-950/20">
               <CardContent className="pt-8 pb-8 text-center">
                 <Users className="h-12 w-12 text-orange-600 mx-auto mb-4" />
-                <div className="text-4xl font-extrabold text-orange-600 mb-2">55%</div>
+                <div className="text-4xl font-extrabold text-orange-600 mb-2">56%</div>
                 <p className="text-sm text-muted-foreground mb-2">
-                  of companies lack resources to train employees on AI effectively
+                  wage premium for professionals with demonstrated AI skills
                 </p>
-                <p className="text-xs text-muted-foreground/70">Express Employment 2025</p>
+                <p className="text-xs text-muted-foreground/70">PwC Global AI Jobs Barometer 2025</p>
               </CardContent>
             </Card>
 
             <Card className="shadow-sm border bg-yellow-50 dark:bg-yellow-950/20">
               <CardContent className="pt-8 pb-8 text-center">
                 <TrendingUp className="h-12 w-12 text-yellow-600 mx-auto mb-4" />
-                <div className="text-4xl font-extrabold text-yellow-600 mb-2">$13T</div>
+                <div className="text-4xl font-extrabold text-yellow-600 mb-2">74%</div>
                 <p className="text-sm text-muted-foreground mb-2">
-                  potential economic value if we develop AI collaboration skills
+                  of companies struggle to realize full benefits from AI adoption
                 </p>
-                <p className="text-xs text-muted-foreground/70">McKinsey Global Institute</p>
+                <p className="text-xs text-muted-foreground/70">Industry AI Adoption Report 2024</p>
               </CardContent>
             </Card>
           </div>
