@@ -363,12 +363,13 @@ const Dashboard = () => {
                 </Button>
                 <Button 
                   onClick={() => handleStartTest('professional')}
-                  className="h-auto py-3 px-2 flex-col gap-1 bg-blue-900 hover:bg-blue-800 font-semibold"
+                  variant="outline"
+                  className="h-auto py-3 px-2 flex-col gap-1 bg-white dark:bg-gray-900 hover:bg-gray-50 dark:hover:bg-gray-800"
                   size="sm"
                 >
                   <span className="text-xs font-bold">Comprehensive</span>
-                  <span className="text-[10px]">80 questions</span>
-                  <span className="text-[10px]">60 min</span>
+                  <span className="text-[10px] text-muted-foreground">80 questions</span>
+                  <span className="text-[10px] text-muted-foreground">60 min</span>
                 </Button>
                 <Button 
                   onClick={() => handleStartTest('expert')}

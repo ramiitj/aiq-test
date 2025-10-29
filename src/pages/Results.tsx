@@ -106,7 +106,7 @@ const Results = () => {
         scores: scoresArray,
         created_at: data.created_at,
         completed: data.completed,
-        test_duration_seconds: data.test_duration_seconds || 0,
+        test_duration_seconds: Number(data.test_duration_seconds) || 0,
         test_version: data.test_version || "beginner",
       });
 
@@ -177,7 +177,7 @@ const Results = () => {
         setVerificationCode(code);
       }
 
-      // Generate PDF
+      // Generate PDF - ensure duration is a valid number
       const pdfBlob = await generatePDFReport(
         overallScore,
         dimensionsWithNames,
@@ -185,7 +185,7 @@ const Results = () => {
         issueDate,
         expiryDate,
         userName,
-        result.test_duration_seconds,
+        result.test_duration_seconds || 0,
       );
 
       // Update report_generated_at
@@ -289,7 +289,7 @@ const Results = () => {
     score: score,
   }));
 
-  const verificationUrl = verificationCode ? `${window.location.origin}/shared/${verificationCode}` : "";
+  const verificationUrl = verificationCode ? `${window.location.origin}/verify/${verificationCode}` : "";
 
   const getScoreLevel = (score: number) => {
     if (score >= 80)
