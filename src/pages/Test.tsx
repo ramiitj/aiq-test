@@ -807,16 +807,6 @@ const Test = () => {
                 <Pause className="h-4 w-4 mr-2" />
                 Pause
               </Button>
-              <Button
-                onClick={() => handleSubmitTest()}
-                size="sm"
-                disabled={Object.keys(answers).length < totalQuestions}
-                className="bg-green-600 hover:bg-green-700 font-semibold disabled:opacity-50 disabled:cursor-not-allowed"
-                title={Object.keys(answers).length < totalQuestions ? "Please answer all questions before submitting" : "Submit test"}
-              >
-                <CheckCircle className="h-4 w-4 mr-2" />
-                Submit
-              </Button>
             </div>
           </div>
           <Progress value={progress} className="h-2" />
@@ -847,26 +837,62 @@ const Test = () => {
                 {/* Answer Options or Text Area */}
                 <div className="space-y-3">
                   {dimensions[currentDimension].items[currentQuestion].options ? (
-                    // Multiple choice
-                    dimensions[currentDimension].items[currentQuestion].options?.map((option, idx) => (
-                      <label
-                        key={idx}
-                        className="flex items-start gap-3 p-4 border rounded-lg cursor-pointer hover:bg-accent/50 transition-colors"
-                      >
-                        <input
-                          type="radio"
-                          name={`q-${currentDimension}-${currentQuestion}`}
-                          value={idx.toString()}
-                          checked={answers[`${currentDimension}-${currentQuestion}`] === idx.toString()}
-                          onChange={(e) => setAnswers(prev => ({
-                            ...prev,
-                            [`${currentDimension}-${currentQuestion}`]: e.target.value
-                          }))}
-                          className="mt-1"
-                        />
-                        <span className="text-sm flex-1">{option}</span>
-                      </label>
-                    ))
+                    dimensions[currentDimension].items[currentQuestion].type === 'multiple-choice-multiple' ? (
+                      // Multiple selection (checkboxes)
+                      dimensions[currentDimension].items[currentQuestion].options?.map((option, idx) => {
+                        const currentAnswers = answers[`${currentDimension}-${currentQuestion}`]?.split(',').filter(Boolean) || [];
+                        const isChecked = currentAnswers.includes(idx.toString());
+                        
+                        return (
+                          <label
+                            key={idx}
+                            className="flex items-start gap-3 p-4 border rounded-lg cursor-pointer hover:bg-accent/50 transition-colors"
+                          >
+                            <Checkbox
+                              checked={isChecked}
+                              onCheckedChange={(checked) => {
+                                const currentAnswers = answers[`${currentDimension}-${currentQuestion}`]?.split(',').filter(Boolean) || [];
+                                let newAnswers: string[];
+                                
+                                if (checked) {
+                                  newAnswers = [...currentAnswers, idx.toString()];
+                                } else {
+                                  newAnswers = currentAnswers.filter(a => a !== idx.toString());
+                                }
+                                
+                                setAnswers(prev => ({
+                                  ...prev,
+                                  [`${currentDimension}-${currentQuestion}`]: newAnswers.join(',')
+                                }));
+                              }}
+                              className="mt-1"
+                            />
+                            <span className="text-sm flex-1">{option}</span>
+                          </label>
+                        );
+                      })
+                    ) : (
+                      // Single selection (radio buttons)
+                      dimensions[currentDimension].items[currentQuestion].options?.map((option, idx) => (
+                        <label
+                          key={idx}
+                          className="flex items-start gap-3 p-4 border rounded-lg cursor-pointer hover:bg-accent/50 transition-colors"
+                        >
+                          <input
+                            type="radio"
+                            name={`q-${currentDimension}-${currentQuestion}`}
+                            value={idx.toString()}
+                            checked={answers[`${currentDimension}-${currentQuestion}`] === idx.toString()}
+                            onChange={(e) => setAnswers(prev => ({
+                              ...prev,
+                              [`${currentDimension}-${currentQuestion}`]: e.target.value
+                            }))}
+                            className="mt-1"
+                          />
+                          <span className="text-sm flex-1">{option}</span>
+                        </label>
+                      ))
+                    )
                   ) : (
                     // Open-ended
                     <textarea
