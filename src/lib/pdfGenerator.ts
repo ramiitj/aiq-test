@@ -27,11 +27,11 @@ export async function generatePDFReport(
   const margin = 20;
 
   // Brand colors matching the website theme
-  const primaryBlue = [30, 58, 138]; // blue-900
-  const accentBlue = [37, 99, 235]; // blue-600
-  const lightGray = [243, 244, 246]; // gray-100
-  const mediumGray = [107, 114, 128]; // gray-500
-  const darkText = [17, 24, 39]; // gray-900
+  const primaryBlue = [30, 58, 138] as [number, number, number]; // blue-900
+  const accentBlue = [37, 99, 235] as [number, number, number]; // blue-600
+  const lightGray = [243, 244, 246] as [number, number, number]; // gray-100
+  const mediumGray = [107, 114, 128] as [number, number, number]; // gray-500
+  const darkText = [17, 24, 39] as [number, number, number]; // gray-900
 
   // Helper function to get proficiency level
   const getProficiencyLevel = (score: number): string => {
@@ -42,7 +42,7 @@ export async function generatePDFReport(
   };
 
   // Helper function to get level color
-  const getLevelColor = (score: number): number[] => {
+  const getLevelColor = (score: number): [number, number, number] => {
     if (score >= 80) return [34, 197, 94]; // green-500
     if (score >= 60) return [59, 130, 246]; // blue-500
     if (score >= 40) return [251, 146, 60]; // orange-400
