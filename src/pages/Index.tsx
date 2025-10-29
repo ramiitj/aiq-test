@@ -128,20 +128,27 @@ const Index = () => {
             <div className="grid md:grid-cols-3 gap-6">
               <Card className="text-center shadow-sm border-2 hover:shadow-lg transition-shadow">
                 <CardContent className="pt-8 pb-8">
-                  <div className="text-5xl font-extrabold text-blue-900 mb-2">92%</div>
-                  <p className="text-sm text-muted-foreground">of companies are increasing AI adoption</p>
+                  <div className="text-5xl font-extrabold text-blue-900 mb-2">78%</div>
+                  <p className="text-sm text-muted-foreground mb-2">
+                    of organizations now use AI in at least one function
+                  </p>
+                  <p className="text-xs text-muted-foreground/70">Stanford HAI AI Index 2025</p>
                 </CardContent>
               </Card>
               <Card className="text-center shadow-sm border-2 hover:shadow-lg transition-shadow">
                 <CardContent className="pt-8 pb-8">
-                  <div className="text-5xl font-extrabold text-blue-900 mb-2">65%</div>
-                  <p className="text-sm text-muted-foreground">of employees lack any AI literacy training</p>
+                  <div className="text-5xl font-extrabold text-blue-900 mb-2">55%</div>
+                  <p className="text-sm text-muted-foreground mb-2">
+                    of companies lack resources to train employees on AI
+                  </p>
+                  <p className="text-xs text-muted-foreground/70">Express Employment 2025</p>
                 </CardContent>
               </Card>
               <Card className="text-center shadow-sm border-2 hover:shadow-lg transition-shadow">
                 <CardContent className="pt-8 pb-8">
-                  <div className="text-5xl font-extrabold text-blue-900 mb-2">$16T</div>
-                  <p className="text-sm text-muted-foreground">projected AI economic impact by 2030</p>
+                  <div className="text-5xl font-extrabold text-blue-900 mb-2">$13T</div>
+                  <p className="text-sm text-muted-foreground mb-2">potential AI economic value by 2030</p>
+                  <p className="text-xs text-muted-foreground/70">McKinsey Global Institute</p>
                 </CardContent>
               </Card>
             </div>
