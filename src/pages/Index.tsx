@@ -15,7 +15,7 @@ const Index = () => {
 
   const checkAuth = async () => {
     const {
-      data: { session }
+      data: { session },
     } = await supabase.auth.getSession();
     setIsAuthenticated(!!session);
   };
@@ -24,23 +24,27 @@ const Index = () => {
     {
       icon: Brain,
       title: "Adaptive Testing",
-      description: "Questions adjust to your skill level in real-time, ensuring accurate measurement across all proficiency ranges."
+      description:
+        "Questions adjust to your skill level in real-time, ensuring accurate measurement across all proficiency ranges.",
     },
     {
       icon: TrendingUp,
       title: "Dimension Insights",
-      description: "Get detailed breakdowns across 8 key areas of AI competency, from prompt engineering to ethical reasoning."
+      description:
+        "Get detailed breakdowns across 8 key areas of AI competency, from prompt engineering to ethical reasoning.",
     },
     {
       icon: Award,
       title: "Shareable Certification",
-      description: "Receive a verified certificate you can share with employers, add to your resume, or showcase on LinkedIn."
+      description:
+        "Receive a verified certificate you can share with employers, add to your resume, or showcase on LinkedIn.",
     },
     {
       icon: Lightbulb,
       title: "Personalized Growth Path",
-      description: "Get actionable recommendations tailored to your results, with resources to strengthen your weak areas."
-    }
+      description:
+        "Get actionable recommendations tailored to your results, with resources to strengthen your weak areas.",
+    },
   ];
 
   const assessmentLevels = [
@@ -52,7 +56,7 @@ const Index = () => {
       questions: "24 questions",
       duration: "15 minutes",
       dimensions: "Core concepts",
-      idealFor: "Students and beginners"
+      idealFor: "Students and beginners",
     },
     {
       badge: "Professional",
@@ -62,7 +66,7 @@ const Index = () => {
       questions: "80 questions",
       duration: "60 minutes",
       dimensions: "8 full dimensions",
-      idealFor: "AI practitioners"
+      idealFor: "AI practitioners",
     },
     {
       badge: "Expert",
@@ -72,14 +76,14 @@ const Index = () => {
       questions: "80 questions",
       duration: "60 minutes",
       dimensions: "Advanced topics",
-      idealFor: "Experts and researchers"
-    }
+      idealFor: "Experts and researchers",
+    },
   ];
 
   return (
     <div className="min-h-screen animate-fade-in">
       <Navigation isAuthenticated={isAuthenticated} />
-      
+
       <main>
         {/* Hero Section */}
         <section className="container pt-6 pb-12 text-center max-w-5xl">
@@ -87,8 +91,8 @@ const Index = () => {
             Measure Your AI Intelligence
           </h1>
           <p className="text-lg lg:text-xl text-muted-foreground mb-8 max-w-3xl mx-auto leading-relaxed font-medium">
-            Discover how effectively you work with AI through the world's first research-backed 
-            assessment of AI collaboration skills.
+            Discover how effectively you work with AI through the world's first research-backed assessment of AI
+            collaboration skills.
           </p>
           <div className="flex gap-3 justify-center flex-wrap">
             {isAuthenticated ? (
@@ -118,17 +122,17 @@ const Index = () => {
         {/* Why It Matters Section */}
         <section className="bg-secondary/30 py-14">
           <div className="container max-w-4xl text-center">
-            <h2 className="text-3xl lg:text-4xl font-black mb-3 tracking-tight">
-              Why Your AIQ Matters
-            </h2>
+            <h2 className="text-3xl lg:text-4xl font-black mb-3 tracking-tight">Why Your AIQ Matters</h2>
             <p className="text-base text-muted-foreground mb-10 leading-relaxed max-w-2xl mx-auto">
-              AI is transforming every industry. Your ability to effectively collaborate with AI tools 
-              is becoming as important as any technical skill. Know where you stand.
+              AI is transforming every industry. Your ability to effectively collaborate with AI tools is becoming as
+              important as any technical skill. Know where you stand.
             </p>
             <div className="grid md:grid-cols-3 gap-6 text-left">
               <div className="bg-card p-5 rounded-lg shadow-sm border">
                 <div className="text-4xl font-black text-primary mb-1">92%</div>
-                <p className="text-sm text-muted-foreground leading-snug">of companies plan to increase AI adoption in 2025</p>
+                <p className="text-sm text-muted-foreground leading-snug">
+                  of companies plan to increase AI adoption in 2030
+                </p>
               </div>
               <div className="bg-card p-5 rounded-lg shadow-sm border">
                 <div className="text-4xl font-black text-primary mb-1">65%</div>
@@ -161,9 +165,7 @@ const Index = () => {
                       </div>
                       <div>
                         <h3 className="text-lg font-bold mb-1.5">{feature.title}</h3>
-                        <p className="text-sm text-muted-foreground leading-relaxed">
-                          {feature.description}
-                        </p>
+                        <p className="text-sm text-muted-foreground leading-relaxed">{feature.description}</p>
                       </div>
                     </div>
                   </CardContent>
@@ -176,18 +178,13 @@ const Index = () => {
         {/* Assessment Levels Section */}
         <section className="bg-secondary/30 py-14">
           <div className="container max-w-6xl">
-            <h2 className="text-3xl lg:text-4xl font-black text-center mb-3 tracking-tight">
-              Choose Your Path
-            </h2>
+            <h2 className="text-3xl lg:text-4xl font-black text-center mb-3 tracking-tight">Choose Your Path</h2>
             <p className="text-base text-muted-foreground text-center mb-10 max-w-2xl mx-auto">
               Select the assessment that matches your experience level with AI
             </p>
             <div className="grid md:grid-cols-3 gap-5">
               {assessmentLevels.map((level, index) => (
-                <Card 
-                  key={index} 
-                  className="shadow-sm hover:shadow-lg transition-all hover:scale-105 border"
-                >
+                <Card key={index} className="shadow-sm hover:shadow-lg transition-all hover:scale-105 border">
                   <CardContent className="pt-5 pb-5">
                     <div className={`inline-block px-3 py-1 ${level.badgeColor} rounded-full text-xs font-bold mb-3`}>
                       {level.badge}
@@ -208,9 +205,7 @@ const Index = () => {
                         <span className="font-medium">{level.dimensions}</span>
                       </li>
                     </ul>
-                    <p className="text-xs text-muted-foreground italic font-medium">
-                      Ideal for: {level.idealFor}
-                    </p>
+                    <p className="text-xs text-muted-foreground italic font-medium">Ideal for: {level.idealFor}</p>
                   </CardContent>
                 </Card>
               ))}
@@ -221,12 +216,10 @@ const Index = () => {
         {/* Research Foundation Section */}
         <section className="container py-14 max-w-5xl">
           <div className="bg-card rounded-lg p-8 border shadow-sm text-center">
-            <h2 className="text-2xl lg:text-3xl font-black mb-3 tracking-tight">
-              Built on Rigorous Research
-            </h2>
+            <h2 className="text-2xl lg:text-3xl font-black mb-3 tracking-tight">Built on Rigorous Research</h2>
             <p className="text-sm text-muted-foreground mb-8 max-w-2xl mx-auto leading-relaxed">
-              This assessment uses Item Response Theory (IRT) and has been validated through 
-              peer-reviewed academic research measuring 8 critical dimensions of AI competency.
+              This assessment uses Item Response Theory (IRT) and has been validated through peer-reviewed academic
+              research measuring 8 critical dimensions of AI competency.
             </p>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
               <div>
@@ -252,22 +245,25 @@ const Index = () => {
         {/* CTA Section */}
         <section className="bg-gradient-to-br from-blue-900 to-blue-800 text-white py-16">
           <div className="container text-center max-w-3xl">
-            <h2 className="text-4xl lg:text-5xl font-black mb-4 tracking-tight">
-              Ready to Discover Your AIQ?
-            </h2>
+            <h2 className="text-4xl lg:text-5xl font-black mb-4 tracking-tight">Ready to Discover Your AIQ?</h2>
             <p className="text-lg mb-8 opacity-90 font-medium">
-              Join thousands of professionals and students measuring and improving 
-              their AI collaboration skills.
+              Join thousands of professionals and students measuring and improving their AI collaboration skills.
             </p>
             {isAuthenticated ? (
               <Link to="/dashboard">
-                <Button size="lg" className="text-base px-8 py-5 bg-white text-blue-900 hover:bg-gray-100 font-semibold shadow-lg">
+                <Button
+                  size="lg"
+                  className="text-base px-8 py-5 bg-white text-blue-900 hover:bg-gray-100 font-semibold shadow-lg"
+                >
                   Get Started <ArrowRight className="ml-2 h-5 w-5" />
                 </Button>
               </Link>
             ) : (
               <Link to="/auth">
-                <Button size="lg" className="text-base px-8 py-5 bg-white text-blue-900 hover:bg-gray-100 font-semibold shadow-lg">
+                <Button
+                  size="lg"
+                  className="text-base px-8 py-5 bg-white text-blue-900 hover:bg-gray-100 font-semibold shadow-lg"
+                >
                   Get Started <ArrowRight className="ml-2 h-5 w-5" />
                 </Button>
               </Link>
@@ -281,12 +277,8 @@ const Index = () => {
 
       <footer className="border-t py-6 bg-secondary/20">
         <div className="container text-center text-xs text-muted-foreground">
-          <p className="font-semibold">
-            Research by Venkat Ram Reddy Ganuthula & Krishna Kumar Balaraman
-          </p>
-          <p className="mt-1">
-            School of Management and Entrepreneurship, IIT Jodhpur
-          </p>
+          <p className="font-semibold">Research by Venkat Ram Reddy Ganuthula & Krishna Kumar Balaraman</p>
+          <p className="mt-1">School of Management and Entrepreneurship, IIT Jodhpur</p>
         </div>
       </footer>
     </div>
