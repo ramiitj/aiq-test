@@ -10,6 +10,7 @@ import { useToast } from "@/hooks/use-toast";
 import { Upload, BarChart3, Users } from "lucide-react";
 import { checkUserRole } from "@/lib/roleUtils";
 import { sanitizeJsonString } from "@/lib/jsonSanitizer";
+import { AdminDataTables } from "@/components/AdminDataTables";
 import JSON5 from "json5";
 
 const Admin = () => {
@@ -230,6 +231,8 @@ const Admin = () => {
             </CardContent>
           </Card>
         </div>
+
+        <AdminDataTables />
 
         <Card className="shadow-elegant">
           <CardHeader>
