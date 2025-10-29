@@ -255,17 +255,38 @@ const Dashboard = () => {
                         </p>
                       </div>
                     </div>
-                    <Button
-                      variant="ghost"
-                      size="sm"
-                      className="h-7 w-7 p-0"
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        handleAbandonTest(test.id);
-                      }}
-                    >
-                      <X className="h-4 w-4" />
-                    </Button>
+                    <AlertDialog>
+                      <AlertDialogTrigger asChild>
+                        <Button
+                          variant="ghost"
+                          size="sm"
+                          className="h-7 w-7 p-0"
+                          onClick={(e) => e.stopPropagation()}
+                        >
+                          <X className="h-4 w-4" />
+                        </Button>
+                      </AlertDialogTrigger>
+                      <AlertDialogContent>
+                        <AlertDialogHeader>
+                          <AlertDialogTitle className="font-black">Abandon Paused Test?</AlertDialogTitle>
+                          <AlertDialogDescription>
+                            This will permanently delete this paused test. This action cannot be undone.
+                          </AlertDialogDescription>
+                        </AlertDialogHeader>
+                        <AlertDialogFooter>
+                          <AlertDialogCancel>Cancel</AlertDialogCancel>
+                          <AlertDialogAction
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              handleAbandonTest(test.id);
+                            }}
+                            className="bg-destructive hover:bg-destructive/90"
+                          >
+                            Delete
+                          </AlertDialogAction>
+                        </AlertDialogFooter>
+                      </AlertDialogContent>
+                    </AlertDialog>
                   </div>
                   
                   <div className="flex items-center gap-4 mb-3">
@@ -391,11 +412,11 @@ const Dashboard = () => {
                 {tests.filter(t => !t.paused).slice(0, 5).map((test) => (
                   <div
                     key={test.id}
-                    className="flex items-center justify-between p-4 border rounded-lg hover:bg-accent/50 transition-colors group"
+                    className="flex items-center justify-between p-4 border rounded-lg transition-colors group"
                   >
                     <div
-                      className="flex-1 cursor-pointer"
-                      onClick={() => navigate(`/results/${test.id}`)}
+                      className={`flex-1 ${test.completed ? 'cursor-pointer hover:bg-accent/50 rounded-md -m-1 p-1' : ''}`}
+                      onClick={() => test.completed && navigate(`/results/${test.id}`)}
                     >
                       <p className="text-sm font-bold">
                         {test.completed ? "Completed Assessment" : "In Progress"}
@@ -407,17 +428,27 @@ const Dashboard = () => {
                           year: 'numeric' 
                         })}
                       </p>
+                      {!test.completed && (
+                        <p className="text-xs text-muted-foreground mt-1">Results will be available on completion.</p>
+                      )}
                     </div>
                     <div className="flex items-center gap-2">
-                      <Button 
-                        variant="ghost" 
-                        size="sm" 
-                        className="text-xs group-hover:bg-accent"
-                        onClick={() => navigate(`/results/${test.id}`)}
-                      >
-                        View
-                        <ArrowRight className="ml-1 h-3 w-3" />
-                      </Button>
+                      {test.completed ? (
+                        <Button 
+                          variant="ghost" 
+                          size="sm" 
+                          className="text-xs group-hover:bg-accent"
+                          onClick={() => navigate(`/results/${test.id}`)}
+                        >
+                          View
+                          <ArrowRight className="ml-1 h-3 w-3" />
+                        </Button>
+                      ) : (
+                        <Button variant="ghost" size="sm" disabled className="text-xs">
+                          View
+                          <ArrowRight className="ml-1 h-3 w-3" />
+                        </Button>
+                      )}
                       <AlertDialog>
                         <AlertDialogTrigger asChild>
                           <Button 

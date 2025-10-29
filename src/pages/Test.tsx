@@ -75,7 +75,7 @@ const Test = () => {
     country: ''
   });
 
-  const version = searchParams.get('version') || 'professional';
+  const [version, setVersion] = useState<TestVersion>((searchParams.get('version') as TestVersion) || 'professional');
   const resumeId = searchParams.get('resume');
 
   const questionsPerDimension = version === 'beginner' ? 3 : 10;
@@ -150,9 +150,13 @@ const Test = () => {
         }
 
         setTestId(testData.id);
+        // Ensure we use the original test version when resuming
+        setVersion((testData.test_version as TestVersion) || 'professional');
         setCurrentDimension(testData.current_dimension || 0);
         setCurrentQuestion(testData.current_item || 0);
-        setTimeRemaining(testData.time_remaining || testDuration);
+        // Fallback to duration based on saved test version if time_remaining is missing
+        const fallbackDuration = (testData.test_version === 'beginner') ? 900 : 3600;
+        setTimeRemaining(typeof testData.time_remaining === 'number' ? testData.time_remaining : fallbackDuration);
         setAnswers((testData.answers as Record<string, string>) || {});
         setShowConsent(false);
       } else {
