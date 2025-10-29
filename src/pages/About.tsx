@@ -69,9 +69,9 @@ const About = () => {
         {/* The Problem We're Solving */}
         <div className="mb-16">
           <div className="text-center mb-8">
-            <h2 className="text-4xl font-extrabold mb-3">The Skills Gap in the AI Era</h2>
+            <h2 className="text-4xl font-extrabold mb-3">Why AIQ Assessment Is Essential</h2>
             <p className="text-muted-foreground max-w-2xl mx-auto">
-              Organizations are adopting AI rapidly, but lack validated tools to measure collaboration effectiveness
+              The workforce is transforming rapidly—measurement and validation are critical to success
             </p>
           </div>
 
@@ -80,21 +80,8 @@ const About = () => {
               <CardContent className="pt-8 pb-8 text-center">
                 <AlertCircle className="h-12 w-12 text-red-600 mx-auto mb-4" />
                 <div className="text-4xl font-extrabold text-red-600 mb-2">70%</div>
-                <p className="text-sm text-muted-foreground mb-2">
-                  of skills used in jobs will change by 2030 due to AI
-                </p>
+                <p className="text-sm text-muted-foreground mb-2">of job skills will transform by 2030 due to AI</p>
                 <p className="text-xs text-muted-foreground/70">LinkedIn Work Change Report</p>
-              </CardContent>
-            </Card>
-
-            <Card className="shadow-sm border bg-orange-50 dark:bg-orange-950/20">
-              <CardContent className="pt-8 pb-8 text-center">
-                <Users className="h-12 w-12 text-orange-600 mx-auto mb-4" />
-                <div className="text-4xl font-extrabold text-orange-600 mb-2">56%</div>
-                <p className="text-sm text-muted-foreground mb-2">
-                  wage premium for professionals with demonstrated AI skills
-                </p>
-                <p className="text-xs text-muted-foreground/70">PwC Global AI Jobs Barometer 2025</p>
               </CardContent>
             </Card>
 
@@ -103,9 +90,18 @@ const About = () => {
                 <TrendingUp className="h-12 w-12 text-yellow-600 mx-auto mb-4" />
                 <div className="text-4xl font-extrabold text-yellow-600 mb-2">74%</div>
                 <p className="text-sm text-muted-foreground mb-2">
-                  of companies struggle to realize full benefits from AI adoption
+                  of companies struggle to realize full benefits from AI
                 </p>
                 <p className="text-xs text-muted-foreground/70">Industry AI Adoption Report 2024</p>
+              </CardContent>
+            </Card>
+
+            <Card className="shadow-sm border bg-green-50 dark:bg-green-950/20">
+              <CardContent className="pt-8 pb-8 text-center">
+                <Award className="h-12 w-12 text-green-600 mx-auto mb-4" />
+                <div className="text-4xl font-extrabold text-green-600 mb-2">56%</div>
+                <p className="text-sm text-muted-foreground mb-2">higher earnings for those with validated AI skills</p>
+                <p className="text-xs text-muted-foreground/70">PwC Global AI Jobs Barometer 2025</p>
               </CardContent>
             </Card>
           </div>
