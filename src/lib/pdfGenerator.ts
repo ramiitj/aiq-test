@@ -16,6 +16,9 @@ export async function generatePDFReport(
   userName?: string,
   testDurationSeconds?: number,
 ): Promise<Blob> {
+  // Ensure all text values are strings to prevent charCodeAt errors
+  const safeUserName = userName || "AIQ Participant";
+  const safeVerificationCode = String(verificationCode || "");
   const doc = new jsPDF({
     orientation: "portrait",
     unit: "mm",
@@ -89,16 +92,16 @@ export async function generatePDFReport(
   doc.text("Certificate of Completion", pageWidth / 2, 38, { align: "center" });
 
   doc.setFontSize(10);
-  doc.text(`Verification: ${verificationCode}`, pageWidth / 2, 50, { align: "center" });
+  doc.text(`Verification: ${safeVerificationCode}`, pageWidth / 2, 50, { align: "center" });
 
   // User information section
   let currentY = 75;
 
-  if (userName) {
+  if (safeUserName) {
     doc.setTextColor(...darkText);
     doc.setFontSize(18);
     doc.setFont("helvetica", "bold");
-    doc.text(userName, pageWidth / 2, currentY, { align: "center" });
+    doc.text(safeUserName, pageWidth / 2, currentY, { align: "center" });
     currentY += 10;
   }
 
@@ -119,7 +122,7 @@ export async function generatePDFReport(
   );
   currentY += 10;
 
-  if (testDurationSeconds) {
+  if (testDurationSeconds && testDurationSeconds > 0) {
     const minutes = Math.floor(testDurationSeconds / 60);
     const seconds = testDurationSeconds % 60;
     const durationText = `Test Duration: ${minutes} minutes ${seconds} seconds`;
@@ -344,7 +347,7 @@ export async function generatePDFReport(
   doc.text("Certificate Verification", margin, currentY + 3);
 
   // Generate QR code
-  const verificationUrl = `${window.location.origin}/verify/${verificationCode}`;
+  const verificationUrl = `${window.location.origin}/verify/${safeVerificationCode}`;
   const qrDataUrl = await QRCode.toDataURL(verificationUrl, {
     width: 200,
     margin: 1,
@@ -365,7 +368,7 @@ export async function generatePDFReport(
   doc.setFont("helvetica", "bold");
   doc.setFontSize(11);
   doc.setTextColor(...primaryBlue);
-  doc.text(verificationCode, qrX, currentY + 23);
+  doc.text(safeVerificationCode, qrX, currentY + 23);
 
   doc.setFont("helvetica", "normal");
   doc.setFontSize(9);
