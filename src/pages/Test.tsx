@@ -95,7 +95,8 @@ const Test = () => {
       const timer = setInterval(() => {
         setTimeRemaining(prev => {
           if (prev <= 1) {
-            handleSubmitTest();
+            // Auto-submit on time expiry (allow even if not all questions are answered)
+            handleSubmitTest({ force: true });
             return 0;
           }
           return prev - 1;
@@ -267,8 +268,18 @@ const Test = () => {
     }
   };
 
-  const handleSubmitTest = async () => {
+  const handleSubmitTest = async (opts?: { force?: boolean }) => {
     if (!testId) return;
+
+    const answeredCount = Object.keys(answers).length;
+    if (!opts?.force && answeredCount < totalQuestions) {
+      toast({
+        title: "Incomplete assessment",
+        description: `Please answer all questions before submitting (${answeredCount}/${totalQuestions})`,
+        variant: "destructive",
+      });
+      return;
+    }
 
     try {
       await supabase
@@ -797,14 +808,14 @@ const Test = () => {
                 Pause
               </Button>
               <Button
-                onClick={handleSubmitTest}
+                onClick={() => handleSubmitTest()}
                 size="sm"
                 disabled={Object.keys(answers).length < totalQuestions}
                 className="bg-green-600 hover:bg-green-700 font-semibold disabled:opacity-50 disabled:cursor-not-allowed"
                 title={Object.keys(answers).length < totalQuestions ? "Please answer all questions before submitting" : "Submit test"}
               >
                 <CheckCircle className="h-4 w-4 mr-2" />
-                Submit {Object.keys(answers).length < totalQuestions && `(${Object.keys(answers).length}/${totalQuestions})`}
+                Submit
               </Button>
             </div>
           </div>
@@ -813,17 +824,13 @@ const Test = () => {
       </div>
 
       <main className="container py-6 max-w-4xl">
-        {/* Current Dimension */}
+        {/* Current Dimension (streamlined to reduce numeric clutter) */}
         <div className="mb-6">
-          <div className="inline-block px-3 py-1 bg-primary/10 rounded-full mb-2">
-            <span className="text-xs font-bold text-primary">
-              Dimension {currentDimension + 1}/8
-            </span>
-          </div>
           <h2 className="text-2xl font-black mb-1">
             {dimensions[currentDimension]?.dimensionName || dimensions[currentDimension]?.dimensionCode || `Dimension ${currentDimension + 1}`}
           </h2>
-          <p className="text-sm text-muted-foreground">
+          {/* Keep per-dimension question number for screen readers only */}
+          <p className="sr-only">
             Question {currentQuestion + 1} of {questionsPerDimension}
           </p>
         </div>
@@ -903,8 +910,10 @@ const Test = () => {
           
           {currentDimension === dimensions.length - 1 && currentQuestion === questionsPerDimension - 1 ? (
             <Button
-              onClick={handleSubmitTest}
-              className="flex-1 bg-green-600 hover:bg-green-700 font-semibold"
+              onClick={() => handleSubmitTest()}
+              disabled={Object.keys(answers).length < totalQuestions}
+              className="flex-1 bg-green-600 hover:bg-green-700 font-semibold disabled:opacity-50 disabled:cursor-not-allowed"
+              title={Object.keys(answers).length < totalQuestions ? "Please answer all questions before submitting" : "Submit test"}
             >
               <CheckCircle className="h-4 w-4 mr-2" />
               Submit Assessment
