@@ -245,11 +245,12 @@ export async function generatePDFReport(
       fillColor: lightGray,
     },
     columnStyles: {
-      0: { cellWidth: 100, fontStyle: "bold" },
-      1: { cellWidth: 30, halign: "center", fontStyle: "bold", textColor: accentBlue },
-      2: { cellWidth: 40, halign: "center" },
+      0: { cellWidth: 95, fontStyle: "bold", halign: "left" },
+      1: { cellWidth: 25, halign: "center", fontStyle: "bold", textColor: accentBlue },
+      2: { cellWidth: 45, halign: "center" },
     },
     margin: { left: margin, right: margin },
+    tableWidth: "auto",
   });
 
   // Visual performance bars
@@ -345,8 +346,9 @@ export async function generatePDFReport(
   doc.setTextColor(primaryBlue[0], primaryBlue[1], primaryBlue[2]);
   doc.text("Certificate Verification", margin, currentY + 3);
 
-  // Generate QR code
-  const verificationUrl = window.location.origin + "/verify/" + verificationCode;
+  // Generate QR code - use production URL if available, otherwise current origin
+  const productionUrl = "https://aiq-test.lovableproject.com";
+  const verificationUrl = productionUrl + "/verify/" + verificationCode;
   const qrDataUrl = await QRCode.toDataURL(verificationUrl, {
     width: 200,
     margin: 1,

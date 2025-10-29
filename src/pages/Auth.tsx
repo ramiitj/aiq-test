@@ -149,7 +149,7 @@ const Auth = () => {
             <CardDescription className="text-center">
               {isLogin
                 ? "Sign in to access your dashboard and results"
-                : "Create your account to take the AIQ assessment"}
+                : "Your certificate will be generated with the full name you provide"}
             </CardDescription>
           </CardHeader>
           <CardContent>
