@@ -114,35 +114,39 @@ const Admin = () => {
       }
 
       // Validate AIQ assessment structure based on version
-      const hasItemBank = jsonData.itemBank && 
-                         jsonData.itemBank.dimensions && 
-                         Array.isArray(jsonData.itemBank.dimensions);
+      const hasBasicMetadata = jsonData.assessmentName && 
+                               jsonData.version;
       
-      const hasMetadata = jsonData.assessmentName && 
-                         jsonData.version && 
-                         jsonData.assessmentType &&
-                         jsonData.scoringConfiguration;
-      
-      if (!hasItemBank || !hasMetadata) {
-        throw new Error("Invalid AIQ assessment structure: must include assessmentName, version, assessmentType, scoringConfiguration, and itemBank.dimensions array");
+      if (!hasBasicMetadata) {
+        throw new Error("Invalid AIQ assessment structure: must include assessmentName and version");
       }
 
       // Version-specific validation
       if (version === 'beginner') {
-        if (jsonData.assessmentType !== 'fixed') {
-          throw new Error('Beginner assessment must have assessmentType: "fixed"');
+        // Beginner: wrapped structure with itemBank.dimensions
+        const hasItemBank = jsonData.itemBank && 
+                           jsonData.itemBank.dimensions && 
+                           Array.isArray(jsonData.itemBank.dimensions);
+        
+        if (!hasItemBank) {
+          throw new Error('Beginner assessment must have itemBank.dimensions array');
         }
-        if (!jsonData.assessmentConfiguration) {
-          throw new Error('Beginner assessment must include assessmentConfiguration');
+        
+        if (jsonData.assessmentType && jsonData.assessmentType !== 'fixed') {
+          throw new Error('Beginner assessment must have assessmentType: "fixed"');
         }
       }
       
       if (version === 'professional' || version === 'expert') {
-        if (jsonData.assessmentType !== 'adaptive') {
-          throw new Error(`${version.charAt(0).toUpperCase() + version.slice(1)} assessment must have assessmentType: "adaptive"`);
+        // Professional/Expert: direct itemBank array
+        const hasItemBank = jsonData.itemBank && Array.isArray(jsonData.itemBank);
+        
+        if (!hasItemBank) {
+          throw new Error(`${version.charAt(0).toUpperCase() + version.slice(1)} assessment must have itemBank as direct array`);
         }
-        if (!jsonData.adaptiveConfiguration) {
-          throw new Error(`${version.charAt(0).toUpperCase() + version.slice(1)} assessment must include adaptiveConfiguration`);
+        
+        if (jsonData.assessmentType && jsonData.assessmentType !== 'adaptive') {
+          throw new Error(`${version.charAt(0).toUpperCase() + version.slice(1)} assessment must have assessmentType: "adaptive"`);
         }
       }
 
@@ -320,16 +324,33 @@ const Admin = () => {
                   <pre className="text-xs bg-background p-3 rounded border overflow-x-auto">
 {`{
   "assessmentName": "AIQ Beginner Assessment",
-  "version": "1.0",
+  "version": "2.0",
   "assessmentType": "fixed",
   "assessmentConfiguration": {
-    "totalQuestions": 24,
-    "questionsPerDimension": 3,
-    "estimatedTime": "15 minutes"
+    "totalQuestions": 60,
+    "questionsPerDimension": "7-8",
+    "estimatedTime": "90 minutes"
   },
   "scoringConfiguration": { ... },
   "itemBank": {
-    "dimensions": [ ... ]
+    "dimensions": [
+      {
+        "dimensionCode": "SAU",
+        "dimensionName": "Strategic AI Understanding",
+        "items": [
+          {
+            "id": "SAU-B-001",
+            "level": 1,
+            "type": "multiple-choice",
+            "question": "...",
+            "options": ["...", "..."],
+            "correctAnswer": 1,
+            "points": 10,
+            "difficulty": 0.18
+          }
+        ]
+      }
+    ]
   }
 }`}
                   </pre>
@@ -343,20 +364,40 @@ const Admin = () => {
                   <pre className="text-xs bg-background p-3 rounded border overflow-x-auto">
 {`{
   "assessmentName": "AIQ Professional Assessment",
-  "version": "1.0",
-  "assessmentType": "adaptive",
-  "adaptiveConfiguration": {
-    "totalQuestions": 80,
-    "questionsPerDimension": 10,
-    "itemBankSize": {
-      "totalItems": 400,
-      "itemsPerDimension": 50
-    }
+  "version": "4.0_STANDARDIZED",
+  "description": "...",
+  "assessmentMetadata": {
+    "totalItems": 160,
+    "itemsPerDimension": 20,
+    "itemTypes": ["Multiple-Choice", "Multiple-Response"],
+    "estimatedDuration": "120 minutes"
   },
-  "scoringConfiguration": { ... },
-  "itemBank": {
-    "dimensions": [ ... ]
-  }
+  "itemBank": [
+    {
+      "dimensionCode": "SAU",
+      "dimensionName": "Strategic AI Understanding",
+      "items": [
+        {
+          "id": "SAU-P-001",
+          "type": "multiple-choice",
+          "question": "...",
+          "options": ["...", "..."],
+          "correctAnswer": 1,
+          "points": 12,
+          "difficulty": 0.56
+        },
+        {
+          "id": "SAU-P-002",
+          "type": "multiple-response",
+          "question": "...",
+          "options": ["...", "..."],
+          "correctAnswers": [0, 2],
+          "points": 13,
+          "difficulty": 0.58
+        }
+      ]
+    }
+  ]
 }`}
                   </pre>
                 </div>
@@ -369,31 +410,53 @@ const Admin = () => {
                   <pre className="text-xs bg-background p-3 rounded border overflow-x-auto">
 {`{
   "assessmentName": "AIQ Expert Assessment",
-  "version": "1.0",
-  "assessmentType": "adaptive",
-  "adaptiveConfiguration": {
-    "totalQuestions": 80,
-    "questionsPerDimension": 10,
-    "itemBankSize": {
-      "totalItems": 160,
-      "itemsPerDimension": 20
-    }
+  "version": "4.0_STANDARDIZED",
+  "description": "...",
+  "assessmentMetadata": {
+    "totalItems": 160,
+    "itemsPerDimension": 20,
+    "itemTypes": ["Multiple-Choice", "Multiple-Response"],
+    "estimatedDuration": "150 minutes",
+    "targetAudience": "Senior professionals, researchers"
   },
-  "scoringConfiguration": { ... },
-  "itemBank": {
-    "dimensions": [ ... ]
-  }
+  "itemBank": [
+    {
+      "dimensionCode": "SAU",
+      "dimensionName": "Strategic AI Understanding",
+      "items": [
+        {
+          "id": "SAU-E-001",
+          "type": "multiple-choice",
+          "question": "...",
+          "options": ["...", "..."],
+          "correctAnswer": 1,
+          "points": 15,
+          "difficulty": 0.69
+        },
+        {
+          "id": "SAU-E-002",
+          "type": "multiple-response",
+          "question": "...",
+          "options": ["...", "..."],
+          "correctAnswers": [0, 2],
+          "points": 16,
+          "difficulty": 0.79
+        }
+      ]
+    }
+  ]
 }`}
                   </pre>
                 </div>
               </div>
               
               <div className="p-3 bg-blue-50 dark:bg-blue-950 rounded border border-blue-200 dark:border-blue-800">
-                <p className="text-xs font-semibold text-blue-900 dark:text-blue-100 mb-2">Assessment Type Requirements:</p>
+                <p className="text-xs font-semibold text-blue-900 dark:text-blue-100 mb-2">Key Differences:</p>
                 <ul className="text-xs text-blue-800 dark:text-blue-200 space-y-1">
-                  <li>• <strong>Beginner:</strong> assessmentType: "fixed" - 24 items (3 per dimension), all presented</li>
-                  <li>• <strong>Professional:</strong> assessmentType: "adaptive" - 80 from 400 items (10 from 50 per dimension)</li>
-                  <li>• <strong>Expert:</strong> assessmentType: "adaptive" - 80 from 160 items (10 from 20 per dimension)</li>
+                  <li>• <strong>Beginner:</strong> itemBank has "dimensions" wrapper, 60 items (8 per dimension), includes "level" field</li>
+                  <li>• <strong>Professional:</strong> itemBank is direct array, 160 items (20 per dimension), 10 selected adaptively</li>
+                  <li>• <strong>Expert:</strong> itemBank is direct array, 160 items (20 per dimension), 10 selected adaptively</li>
+                  <li>• <strong>Types:</strong> Beginner uses true-false/scenario-based; Pro/Expert use multiple-response</li>
                 </ul>
               </div>
               
