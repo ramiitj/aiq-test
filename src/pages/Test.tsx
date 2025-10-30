@@ -1071,7 +1071,6 @@ const Test = () => {
               <p className="font-semibold mb-1">Assessment Tips:</p>
               <ul className="text-xs space-y-1 text-blue-700 dark:text-blue-300">
                 <li>• Take your time to read each question carefully</li>
-                <li>• There are no right or wrong answers - be honest</li>
                 <li>• You can navigate back to review previous questions</li>
                 <li>• Your progress is automatically saved</li>
               </ul>
