@@ -144,12 +144,13 @@ const Test = () => {
 
   // Initialize rank order and matching when question changes
   useEffect(() => {
-    if (dimensions.length > 0 && dimensions[currentDimension]?.items[currentQuestion]) {
-      const item = dimensions[currentDimension].items[currentQuestion];
-      const questionKey = `${currentDimension}-${currentQuestion}`;
-      
-      // Initialize rank-ordering
-      if (item.type === 'rank-ordering' || item.type === 'scenario-ranking') {
+    const item = dimensions[currentDimension]?.items?.[currentQuestion];
+    if (!item) return;
+    
+    const questionKey = `${currentDimension}-${currentQuestion}`;
+    
+    // Initialize rank-ordering
+    if (item.type === 'rank-ordering' || item.type === 'scenario-ranking') {
         const existingAnswer = answers[questionKey];
         if (existingAnswer) {
           setRankOrder(existingAnswer.split(',').map(Number));
@@ -158,19 +159,18 @@ const Test = () => {
         }
       }
       
-      // Initialize matching
-      if (item.type === 'matching') {
-        const existingAnswer = answers[questionKey];
-        if (existingAnswer) {
-          const pairs: Record<number, number> = {};
-          existingAnswer.split(',').forEach(pair => {
-            const [left, right] = pair.split(':').map(Number);
-            pairs[left] = right;
-          });
-          setMatchingPairs(pairs);
-        } else {
-          setMatchingPairs({});
-        }
+    // Initialize matching
+    if (item.type === 'matching') {
+      const existingAnswer = answers[questionKey];
+      if (existingAnswer) {
+        const pairs: Record<number, number> = {};
+        existingAnswer.split(',').forEach(pair => {
+          const [left, right] = pair.split(':').map(Number);
+          pairs[left] = right;
+        });
+        setMatchingPairs(pairs);
+      } else {
+        setMatchingPairs({});
       }
     }
   }, [currentDimension, currentQuestion, dimensions]);
@@ -921,8 +921,20 @@ const Test = () => {
   }
 
   // Main Test Interface
-  const currentItem = dimensions[currentDimension]?.items[currentQuestion];
+  const currentItem = dimensions[currentDimension]?.items?.[currentQuestion];
   const questionKey = `${currentDimension}-${currentQuestion}`;
+  
+  // Safety check - if no current item, show loading
+  if (!currentItem) {
+    return (
+      <div className="min-h-screen">
+        <Navigation isAuthenticated={true} />
+        <div className="container py-12 text-center">
+          <p className="text-muted-foreground">Loading question...</p>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen">
