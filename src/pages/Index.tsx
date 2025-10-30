@@ -51,7 +51,7 @@ const Index = () => {
       id: "beginner",
       title: "Beginner",
       subtitle: "For beginners and students",
-      description: "Foundational AI literacy assessment for newcomers to AI collaboration",
+      description: "Beginner AI literacy assessment for newcomers to AI collaboration",
       questions: "60 questions",
       time: "90 minutes",
       icon: GraduationCap,
@@ -63,7 +63,7 @@ const Index = () => {
       demonstrates: [
         "Understanding of AI basics and core concepts",
         "Ability to work with AI tools in simple scenarios",
-        "Foundational awareness of AI ethics and limitations",
+        "Basic awareness of AI ethics and limitations",
         "Basic prompt engineering techniques"
       ]
     },

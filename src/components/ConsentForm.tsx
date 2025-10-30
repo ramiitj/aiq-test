@@ -186,9 +186,9 @@ export const ConsentForm = ({ open, onConsent, onDecline, testVersion }: Consent
   };
 
   const getAssessmentTierDisplay = () => {
-    if (testVersion === "beginner") return "Beginner (15 minutes - Foundational)";
-    if (testVersion === "professional") return "Professional (60 minutes - Comprehensive)";
-    if (testVersion === "expert") return "Advanced (60 minutes - Expert)";
+    if (testVersion === "beginner") return "Beginner (90 minutes)";
+    if (testVersion === "professional") return "Professional (120 minutes)";
+    if (testVersion === "expert") return "Advanced (150 minutes)";
     return testVersion;
   };
 

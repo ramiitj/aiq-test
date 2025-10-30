@@ -359,14 +359,14 @@ const Dashboard = () => {
               </div>
               
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                {/* Beginner/Foundational */}
+                {/* Beginner */}
                 <div className="bg-white dark:bg-gray-900 rounded-lg p-5 hover:shadow-xl transition-all hover:scale-105 cursor-pointer border-2 border-transparent hover:border-blue-400"
                      onClick={() => handleStartTest('beginner')}>
                   <div className="flex items-center gap-2 mb-3">
                     <div className="p-2 bg-blue-100 dark:bg-blue-900/30 rounded">
                       <PlayCircle className="h-5 w-5 text-blue-600" />
                     </div>
-                    <h3 className="text-base font-black">Foundational</h3>
+                    <h3 className="text-base font-black">Beginner</h3>
                   </div>
                   <div className="space-y-2 mb-4">
                     <p className="text-xs text-muted-foreground font-semibold">60 questions • 90 minutes</p>
@@ -388,14 +388,14 @@ const Dashboard = () => {
                       handleStartTest('beginner');
                     }}
                   >
-                    Start Foundational
+                    Start Beginner
                   </Button>
                 </div>
 
-                {/* Professional - Highlighted as Recommended */}
+                {/* Professional */}
                 <div className="bg-white dark:bg-gray-900 rounded-lg p-5 hover:shadow-xl transition-all hover:scale-105 cursor-pointer border-2 border-transparent hover:border-violet-400"
                      onClick={() => handleStartTest('professional')}>
-                  <div className="flex items-center gap-2 mb-3 mt-2">
+                  <div className="flex items-center gap-2 mb-3">
                     <div className="p-2 bg-violet-100 dark:bg-violet-900/50 rounded">
                       <PlayCircle className="h-5 w-5 text-violet-600" />
                     </div>

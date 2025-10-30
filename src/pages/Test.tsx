@@ -514,7 +514,8 @@ const Test = () => {
     );
   }
 
-  if (dimensions.length === 0 && !loading) {
+  // Only show error if we've finished loading and still have no dimensions
+  if (dimensions.length === 0 && !loading && !showConsent && !showDemographics) {
     return (
       <div className="min-h-screen">
         <Navigation isAuthenticated={true} />
@@ -555,7 +556,7 @@ const Test = () => {
               <div className="flex items-center justify-between">
                 <div>
                 <h2 className="text-lg font-black mb-1">
-                  {version === 'beginner' ? 'Foundational' : version === 'professional' ? 'Professional' : 'Advanced'} Assessment
+                  {version === 'beginner' ? 'Beginner' : version === 'professional' ? 'Professional' : 'Advanced'} Assessment
                 </h2>
                   <p className="text-sm text-muted-foreground">
                     {totalQuestions} questions • {version === 'beginner' ? '90' : version === 'professional' ? '120' : '150'} minutes • 8 dimensions

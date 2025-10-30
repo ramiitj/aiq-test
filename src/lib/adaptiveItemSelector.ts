@@ -233,7 +233,7 @@ export function getVersionInfo(version: TestVersion) {
   
   switch (version) {
     case 'beginner':
-      description = 'Foundational AI literacy assessment for newcomers';
+      description = 'Beginner AI literacy assessment for newcomers';
       audience = 'Students and beginners to AI';
       adaptive = 'All 60 questions presented (fixed)';
       break;
