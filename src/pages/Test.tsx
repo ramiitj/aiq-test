@@ -1041,8 +1041,9 @@ const Test = () => {
               <Button
                 onClick={advanceToNextQuestion}
                 disabled={
-                  dimensions[currentDimension].items[currentQuestion].type === 'multiple-choice-multiple' &&
-                  !answers[`${currentDimension}-${currentQuestion}`]
+                  !answers[`${currentDimension}-${currentQuestion}`] || 
+                  (typeof answers[`${currentDimension}-${currentQuestion}`] === 'string' && 
+                   answers[`${currentDimension}-${currentQuestion}`].trim() === '')
                 }
                 className="flex-1 bg-blue-900 hover:bg-blue-800 font-semibold"
               >
