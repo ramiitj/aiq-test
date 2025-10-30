@@ -179,7 +179,9 @@ const Test = ({ version = "professional" }: { version?: TestVersion }) => {
               value={order.indexOf(idx) >= 0 ? (order.indexOf(idx) + 1).toString() : ""}
               onValueChange={val => handleOrderChange(idx, val)}
             >
-              <SelectTrigger className="w-20" placeholder="Position" />
+              <SelectTrigger className="w-20">
+                <SelectValue placeholder="Position" />
+              </SelectTrigger>
               <SelectContent>
                 {options.map((_, i) => (
                   <SelectItem key={i} value={(i + 1).toString()}>{i + 1}</SelectItem>
@@ -212,7 +214,9 @@ const Test = ({ version = "professional" }: { version?: TestVersion }) => {
               value={pairs.find(p => p[0] === idx)?.[1]?.toString() || ""}
               onValueChange={val => handleMatchChange(idx, val)}
             >
-              <SelectTrigger className="w-48" placeholder="Select match" />
+              <SelectTrigger className="w-48">
+                <SelectValue placeholder="Select match" />
+              </SelectTrigger>
               <SelectContent>
                 {rightColumn.map((rightItem, i) => (
                   <SelectItem key={i} value={i.toString()}>{rightItem}</SelectItem>
@@ -242,7 +246,9 @@ const Test = ({ version = "professional" }: { version?: TestVersion }) => {
               value={order.indexOf(idx) >= 0 ? (order.indexOf(idx) + 1).toString() : ""}
               onValueChange={val => handleOrderChange(idx, val)}
             >
-              <SelectTrigger className="w-20" placeholder="Rank" />
+              <SelectTrigger className="w-20">
+                <SelectValue placeholder="Rank" />
+              </SelectTrigger>
               <SelectContent>
                 {items.map((_, i) => (
                   <SelectItem key={i} value={(i + 1).toString()}>{i + 1}</SelectItem>
