@@ -456,7 +456,7 @@ const Test = () => {
   };
 
   const actualTotalQuestions = dimensions?.reduce((sum, dim) => sum + (dim.items?.length ?? 0), 0) ?? 0;
-  const globalQuestionNumber = dimensions?.slice(0, currentDimension).reduce((sum, dim) => sum + (dim.items?.length ?? 0), 0) + currentQuestion + 1 ?? 0;
+  const globalQuestionNumber = (dimensions?.slice(0, currentDimension).reduce((sum, dim) => sum + (dim.items?.length ?? 0), 0) ?? 0) + currentQuestion + 1;
   const progress = actualTotalQuestions > 0 ? (globalQuestionNumber / actualTotalQuestions) * 100 : 0;
   const isLastQuestion = currentDimension === dimensions.length - 1 && currentQuestion === (dimensions[currentDimension]?.items?.length ?? 0) - 1;
 
