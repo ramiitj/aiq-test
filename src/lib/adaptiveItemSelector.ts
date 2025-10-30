@@ -4,100 +4,78 @@
  * difficulty balance and ensuring diversity
  */
 
+import { supabase } from "@/integrations/supabase/client";
+
 export interface TestItem {
   id: string;
-  level: number;
-  type: 'multiple-choice' | 'true-false' | 'scenario-based' | 'multiple-response' | 'scenario-ranking' | 'matching' | 'rank-ordering';
+  level?: number; // Only for Beginner
+  type: 'multiple-choice' | 'true-false' | 'multiple-response' | 'scenario-based';
   dimension?: string;
   dimensionCode?: string;
   points: number;
   difficulty: number;
+  discrimination?: number;
+  bloomLevel?: string;
   question: string;
-  format?: string;
   
-  // For multiple-choice, true-false, scenario-based, multiple-response
+  // For multiple-choice, multiple-response, and scenario-based
   options?: string[];
+  
+  // For multiple-choice, true-false, and scenario-based (single answer)
   correctAnswer?: number | boolean;
   
-  // For multiple-response (checkboxes)
+  // For multiple-response (multiple correct answers)
   correctAnswers?: number[];
   
-  // For scenario-ranking and rank-ordering
-  correctOrder?: number[];
-  
-  // IMPORTANT: 
-  // - rank-ordering uses `items` property
-  // - scenario-ranking uses `options` property
-  items?: string[]; // For rank-ordering only
-  
-  // For matching
-  leftColumn?: string[];
-  rightColumn?: string[];
-  correctPairs?: [number, number][];
-  
-  // Scoring
-  scoringMethod?: string;
-  scoringLogic?: string;
-  
   // Metadata
-  rationale?: string;
   explanation?: string;
-  expectedLength?: string;
-  scoringRubric?: any;
-  partialCredit?: any;
-  bloomLevel?: string;
-  discrimination?: number;
+  rationale?: string;
+  scoringMethod?: string;
   tags?: string[];
 }
 
 export interface Dimension {
   dimensionCode: string;
   dimensionName: string;
-  description: string;
+  description?: string | null;
   items: TestItem[];
   questionsInAssessment?: number;
   pointsAvailable?: number;
+  weight?: number;
+  totalPoints?: number;
 }
 
 export type TestVersion = 'beginner' | 'professional' | 'expert';
 
 export interface VersionConfig {
   itemsPerDimension: number;
-  totalTime: number; // in seconds
-  totalPoints: number;
-  pointsPerDimension: number;
-  level1Count: number; // easy items
-  level2Count: number; // medium items
-  level3Count: number; // hard items
+  totalTime: number; // in minutes
+  easyCount: number;
+  mediumCount: number;
+  hardCount: number;
 }
 
 const VERSION_CONFIGS: Record<TestVersion, VersionConfig> = {
   beginner: {
-    itemsPerDimension: 8,
-    totalTime: 5400, // 90 minutes
-    totalPoints: 600,
-    pointsPerDimension: 75,
-    level1Count: 3,
-    level2Count: 3,
-    level3Count: 2,
+    itemsPerDimension: 8, // 8 fixed items per dimension (60 total questions)
+    totalTime: 90, // 90 minutes
+    easyCount: 4, // 50% of items (easier distribution)
+    mediumCount: 3, // 37.5% of items
+    hardCount: 1, // 12.5% of items
   },
   professional: {
-    itemsPerDimension: 10,
-    totalTime: 7200, // 120 minutes
-    totalPoints: 800,
-    pointsPerDimension: 100,
-    level1Count: 4,
-    level2Count: 3,
-    level3Count: 3,
+    itemsPerDimension: 10, // Select 10 from 20 (80 total questions)
+    totalTime: 120, // 120 minutes
+    easyCount: 3, // 30% of items
+    mediumCount: 4, // 40% of items
+    hardCount: 3, // 30% of items
   },
   expert: {
-    itemsPerDimension: 10,
-    totalTime: 9000, // 150 minutes
-    totalPoints: 800,
-    pointsPerDimension: 100,
-    level1Count: 4,
-    level2Count: 3,
-    level3Count: 3,
+    itemsPerDimension: 10, // Select 10 from 20 (80 total questions)
+    totalTime: 150, // 150 minutes
+    easyCount: 2, // 20% of items (harder distribution)
+    mediumCount: 3, // 30% of items
+    hardCount: 5, // 50% of items
   },
 };
 
@@ -114,8 +92,8 @@ function shuffleArray<T>(array: T[]): T[] {
 }
 
 /**
- * Select random items from a pool based on difficulty distribution
- * Uses difficulty-based tiering instead of fixed level filtering
+ * Select items from a pool based on difficulty distribution
+ * Uses difficulty-based tiering
  */
 export function selectItemsForDimension(
   items: TestItem[],
@@ -127,7 +105,6 @@ export function selectItemsForDimension(
   const sortedItems = [...items].sort((a, b) => a.difficulty - b.difficulty);
   
   const totalItems = sortedItems.length;
-  const itemsToSelect = config.itemsPerDimension;
   
   // Divide into three difficulty tiers
   const tierSize = Math.floor(totalItems / 3);
@@ -138,9 +115,9 @@ export function selectItemsForDimension(
   // Select proportionally from each tier based on config
   const selectedItems: TestItem[] = [];
   
-  const easyItems = shuffleArray(easyTier).slice(0, config.level1Count);
-  const mediumItems = shuffleArray(mediumTier).slice(0, config.level2Count);
-  const hardItems = shuffleArray(hardTier).slice(0, config.level3Count);
+  const easyItems = shuffleArray(easyTier).slice(0, config.easyCount);
+  const mediumItems = shuffleArray(mediumTier).slice(0, config.mediumCount);
+  const hardItems = shuffleArray(hardTier).slice(0, config.hardCount);
   
   selectedItems.push(...easyItems, ...mediumItems, ...hardItems);
   
@@ -158,68 +135,86 @@ export function getVersionConfig(version: TestVersion): VersionConfig {
 /**
  * Load and prepare test items based on version
  */
-export async function loadTestItems(version: TestVersion): Promise<Dimension[]> {
+export async function loadTestItems(version: TestVersion = 'beginner'): Promise<Dimension[]> {
+  console.log(`[loadTestItems] Loading test items for version: ${version}`);
+  
   try {
-    const fileName = `${version}-assessment.json`;
-    
-    // First try to load from Supabase Storage
-    const { supabase } = await import("@/integrations/supabase/client");
-    const { data: fileData, error: storageError } = await supabase.storage
-      .from("aiq-items")
-      .download(fileName);
-
     let data;
     
-    if (storageError || !fileData) {
-      // Fallback to public folder if file not in storage
-      console.log(`Loading ${version} from public folder (storage error: ${storageError?.message})`);
-      const response = await fetch(`/test-items/${fileName}`);
+    // Try to download from Supabase Storage first
+    try {
+      const { data: fileData, error: downloadError } = await supabase.storage
+        .from('aiq-items')
+        .download(`${version}-assessment.json`);
       
-      if (!response.ok) {
-        throw new Error(`Failed to load ${version} assessment from both storage and public folder`);
+      if (downloadError) {
+        console.log(`[loadTestItems] Could not download from storage, falling back to public folder:`, downloadError.message);
+        throw downloadError;
       }
       
-      data = await response.json();
-    } else {
-      // Parse file from storage
+      if (!fileData) {
+        throw new Error('No file data returned from storage');
+      }
+      
       const text = await fileData.text();
       data = JSON.parse(text);
+      console.log(`[loadTestItems] Successfully loaded from Supabase Storage`);
+    } catch (storageError) {
+      // Fallback to public folder
+      console.log(`[loadTestItems] Loading from public folder`);
+      const response = await fetch(`/test-items/${version}-assessment.json`);
+      if (!response.ok) {
+        throw new Error(`Failed to fetch test items: ${response.statusText}`);
+      }
+      data = await response.json();
+      console.log(`[loadTestItems] Successfully loaded from public folder`);
     }
-
-    const config = getVersionConfig(version);
-
-    // Extract dimensions from itemBank structure
-    let dimensions;
-    if (data.itemBank && data.itemBank.dimensions) {
-      dimensions = data.itemBank.dimensions;
-    } else if (data.dimensions) {
-      // Fallback for older format
-      dimensions = data.dimensions;
-    } else {
-      throw new Error(`Invalid assessment format: missing itemBank.dimensions or dimensions array`);
-    }
-
-    // Beginner version: Pre-selected items in dimensions array
+    
+    console.log(`[loadTestItems] Raw data structure:`, {
+      hasItemBank: !!data.itemBank,
+      itemBankType: Array.isArray(data.itemBank) ? 'array' : typeof data.itemBank,
+      hasDimensions: !!data.itemBank?.dimensions,
+      dimensionsCount: data.itemBank?.dimensions?.length || data.itemBank?.length || 0
+    });
+    
+    // Get the appropriate version config
+    const config = VERSION_CONFIGS[version];
+    console.log(`[loadTestItems] Using config:`, config);
+    
+    // Handle different data structures
+    let dimensions: Dimension[];
+    
     if (version === 'beginner') {
-      return dimensions.map((dimension: any, idx: number) => ({
-        dimensionCode: dimension.dimensionCode || dimension.id || `D${idx + 1}`,
-        dimensionName: dimension.dimensionName || dimension.name || dimension.title || dimension.dimension || `Dimension ${idx + 1}`,
-        description: dimension.description || '',
-        items: dimension.items,
-        questionsInAssessment: dimension.questionsInAssessment,
-        pointsAvailable: dimension.pointsAvailable,
+      // Beginner: wrapped structure with itemBank.dimensions
+      if (!data.itemBank?.dimensions) {
+        throw new Error('Invalid beginner assessment structure: missing itemBank.dimensions');
+      }
+      dimensions = data.itemBank.dimensions;
+      console.log(`[loadTestItems] Beginner: Using all ${dimensions[0]?.items?.length || 0} items per dimension (fixed, 60 total)`);
+    } else {
+      // Professional/Expert: direct itemBank array
+      if (!Array.isArray(data.itemBank)) {
+        throw new Error(`Invalid ${version} assessment structure: itemBank must be an array`);
+      }
+      dimensions = data.itemBank;
+      console.log(`[loadTestItems] ${version}: Selecting ${config.itemsPerDimension} from ${dimensions[0]?.items?.length || 0} items per dimension (adaptive, 80 total)`);
+      
+      // Apply adaptive selection for professional and expert
+      dimensions = dimensions.map(dimension => ({
+        ...dimension,
+        items: selectItemsForDimension(dimension.items, config)
       }));
     }
-
-    // Professional/Expert: Select items from larger item pool
-    return dimensions.map((dimension: any, idx: number) => ({
-      dimensionCode: dimension.dimensionCode || dimension.id || `D${idx + 1}`,
-      dimensionName: dimension.dimensionName || dimension.name || dimension.title || dimension.dimension || `Dimension ${idx + 1}`,
-      description: dimension.description || '',
-      items: selectItemsForDimension(dimension.items, config),
-    }));
+    
+    console.log(`[loadTestItems] Final dimensions:`, {
+      count: dimensions.length,
+      itemsPerDimension: dimensions.map(d => d.items.length),
+      totalItems: dimensions.reduce((sum, d) => sum + d.items.length, 0)
+    });
+    
+    return dimensions;
   } catch (error) {
-    console.error(`Error loading ${version} test items:`, error);
+    console.error('[loadTestItems] Error loading test items:', error);
     throw error;
   }
 }
@@ -228,38 +223,39 @@ export async function loadTestItems(version: TestVersion): Promise<Dimension[]> 
  * Get display information for a version
  */
 export function getVersionInfo(version: TestVersion) {
-  const config = getVersionConfig(version);
+  const config = VERSION_CONFIGS[version];
+  const totalQuestions = config.itemsPerDimension * 8; // 8 dimensions
+  const timeInMinutes = config.totalTime;
   
-  // Calculate total questions based on actual structure
-  let totalQuestions: number;
-  if (version === 'beginner') {
-    totalQuestions = 60; // 8 items per dimension × 8 dimensions
-  } else if (version === 'professional') {
-    totalQuestions = 80; // 10 items per dimension × 8 dimensions
-  } else { // expert
-    totalQuestions = 80; // 10 items selected from 20 per dimension × 8 dimensions
+  let description = '';
+  let audience = '';
+  let adaptive = '';
+  
+  switch (version) {
+    case 'beginner':
+      description = 'Foundational AI literacy assessment for newcomers';
+      audience = 'Students and beginners to AI';
+      adaptive = 'All 60 questions presented (fixed)';
+      break;
+    case 'professional':
+      description = 'Professional-level AI collaboration assessment';
+      audience = 'Working professionals';
+      adaptive = '10 questions per dimension (adaptive selection from 20)';
+      break;
+    case 'expert':
+      description = 'Expert-level strategic AI assessment';
+      audience = 'AI leaders and researchers';
+      adaptive = '10 questions per dimension (adaptive selection from 20)';
+      break;
   }
   
-  const timeMinutes = config.totalTime / 60;
-
-  const descriptions = {
-    beginner: 'Foundational AI literacy assessment for those new to AI (60 items across 8 dimensions)',
-    professional: 'Comprehensive assessment for AI practitioners (80 items adaptively selected from 160-item pool)',
-    expert: 'Advanced assessment for AI experts and leaders (80 items adaptively selected from 160-item pool)',
-  };
-
-  const audiences = {
-    beginner: 'Beginners and those new to AI',
-    professional: 'Professionals actively using AI in their work',
-    expert: 'AI experts, leaders, and advanced practitioners',
-  };
-
   return {
     version,
     totalQuestions,
-    timeMinutes,
-    description: descriptions[version],
-    audience: audiences[version],
-    config,
+    timeInMinutes,
+    description,
+    audience,
+    adaptive,
+    config
   };
 }

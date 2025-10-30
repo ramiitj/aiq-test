@@ -2,13 +2,13 @@
   "assessmentName": "AIQ Beginner Assessment - Complete Item Bank",
   "version": "2.0",
   "assessmentType": "fixed",
-  "description": "A comprehensive foundational AI literacy assessment covering all 8 core AIQ dimensions with psychometrically rigorous items designed for beginners and those new to AI collaboration",
+  "description": "A foundational AI literacy assessment with 60 items (7-8 per dimension) covering all 8 core AIQ dimensions with emphasis on basic understanding and foundational awareness.",
   "assessmentConfiguration": {
     "totalQuestions": 60,
-    "questionsPerDimension": 8,
-    "estimatedTime": "90 minutes",
+    "questionsPerDimension": "7-8",
+    "estimatedTime": "60 minutes",
     "targetAudience": "High school students, undergraduate students, entry-level professionals, individuals with minimal AI exposure",
-    "timePerQuestion": "90 seconds average",
+    "timePerQuestion": "60 seconds average",
     "presentationMode": {
       "type": "fixed-sequential",
       "description": "All questions presented in fixed order",
@@ -16,7 +16,7 @@
     },
     "questionDistribution": {
       "totalItems": 60,
-      "itemsPerDimension": 8,
+      "itemsPerDimension": "7-8 per dimension",
       "selectionRatio": "100% (all items presented)"
     },
     "dimensionSequencing": {
@@ -72,13 +72,14 @@
       "averageDiscrimination": 1.08,
       "discriminationSD": 0.22,
       "contentCoverageIndex": 0.92,
-      "estimatedReliability": 0.82
+      "estimatedReliability": 0.82,
+      "totalItems": 60
     },
     "dimensions": [
       {
         "dimensionCode": "SAU",
         "dimensionName": "Strategic AI Understanding",
-        "dimensionDescription": "Understanding of AI capabilities, limitations, appropriate applications, and when to use or not use AI",
+        "description": null,
         "weight": 0.125,
         "totalPoints": 75,
         "items": [
@@ -269,7 +270,7 @@
       {
         "dimensionCode": "PEI",
         "dimensionName": "Prompt Engineering Intelligence",
-        "dimensionDescription": "Ability to craft clear, specific prompts and interact effectively with AI systems to get useful outputs",
+        "description": null,
         "weight": 0.125,
         "totalPoints": 75,
         "items": [
@@ -458,7 +459,7 @@
       {
         "dimensionCode": "CEC",
         "dimensionName": "Critical Evaluation Capability",
-        "dimensionDescription": "Capacity to assess AI outputs for accuracy, bias, reliability, and credibility before using or sharing them",
+        "description": null,
         "weight": 0.125,
         "totalPoints": 75,
         "items": [
@@ -647,7 +648,7 @@
       {
         "dimensionCode": "II",
         "dimensionName": "Integration Intelligence",
-        "dimensionDescription": "Ability to effectively combine AI assistance with human expertise, knowing which tasks to delegate to AI and which to retain human control",
+        "description": null,
         "weight": 0.125,
         "totalPoints": 75,
         "items": [
@@ -836,7 +837,7 @@
       {
         "dimensionCode": "ALC",
         "dimensionName": "Adaptive Learning Capability",
-        "dimensionDescription": "Capacity to learn from AI interactions and improve approaches over time through reflection and experimentation",
+        "description": null,
         "weight": 0.125,
         "totalPoints": 75,
         "items": [
@@ -995,37 +996,13 @@
               "strategic-application",
               "expertise"
             ]
-          },
-          {
-            "id": "ALC-B-008",
-            "level": 3,
-            "type": "multiple-choice",
-            "points": 10,
-            "difficulty": 0.53,
-            "discrimination": 1.25,
-            "bloomLevel": "Apply",
-            "question": "Which best describes adaptive learning capability with AI?",
-            "options": [
-              "Using AI the same way every time",
-              "Continuous improvement through experimentation, reflection, and applying lessons to new situations",
-              "Memorizing effective prompts without understanding why they work",
-              "Treating each AI interaction as completely independent"
-            ],
-            "correctAnswer": 1,
-            "rationale": "Adaptive learning is cyclical: try \u2192 observe \u2192 reflect \u2192 adjust \u2192 apply. It's growth-oriented, strategic, and builds toward genuine expertise.",
-            "explanation": "True capability grows through systematic learning.",
-            "tags": [
-              "adaptive-learning",
-              "continuous-improvement",
-              "expertise-building"
-            ]
           }
         ]
       },
       {
         "dimensionCode": "EJC",
         "dimensionName": "Ethical Judgment Capability",
-        "dimensionDescription": "Understanding of ethical implications in AI use and making responsible decisions about implementation and data use",
+        "description": null,
         "weight": 0.125,
         "totalPoints": 75,
         "items": [
@@ -1184,37 +1161,13 @@
               "monitoring",
               "employee-rights"
             ]
-          },
-          {
-            "id": "EJC-B-008",
-            "level": 3,
-            "type": "multiple-choice",
-            "points": 10,
-            "difficulty": 0.54,
-            "discrimination": 1.26,
-            "bloomLevel": "Apply",
-            "question": "Which demonstrates strong ethical judgment in AI use?",
-            "options": [
-              "Using AI whenever possible to maximize efficiency",
-              "Avoiding all AI to prevent any ethical issues",
-              "Thoughtfully considering impacts, biases, and fairness before implementing AI",
-              "Doing whatever technically works as long as it's legal"
-            ],
-            "correctAnswer": 2,
-            "rationale": "Ethical judgment isn't about avoidance or unlimited use. It's about thoughtful consideration: What are the potential harms? Who might be affected? How do we ensure fairness? This requires reflection, not just compliance.",
-            "explanation": "Ethical judgment requires active thinking and consideration.",
-            "tags": [
-              "ethical-judgment",
-              "responsible-innovation",
-              "stakeholder-consideration"
-            ]
           }
         ]
       },
       {
         "dimensionCode": "CS",
         "dimensionName": "Context Sensitivity",
-        "dimensionDescription": "Awareness of how situational factors\u2014audience, domain, cultural norms, organizational context\u2014shape appropriate AI use and interpretation",
+        "description": null,
         "weight": 0.125,
         "totalPoints": 75,
         "items": [
@@ -1373,37 +1326,13 @@
               "technical-communication",
               "clarity"
             ]
-          },
-          {
-            "id": "CS-B-008",
-            "level": 3,
-            "type": "multiple-choice",
-            "points": 10,
-            "difficulty": 0.55,
-            "discrimination": 1.27,
-            "bloomLevel": "Apply",
-            "question": "Which demonstrates strong context sensitivity?",
-            "options": [
-              "Using AI identically across all situations",
-              "Analyzing how audience, domain, stakes, and culture shape appropriate use and adapting accordingly",
-              "Never considering context",
-              "Assuming all situations are identical"
-            ],
-            "correctAnswer": 1,
-            "rationale": "Context sensitivity means active analysis of situational factors and thoughtful adaptation. It's sophisticated judgment, not rigid application.",
-            "explanation": "Strong judgment requires constant consideration of context.",
-            "tags": [
-              "contextual-judgment",
-              "adaptation",
-              "sophistication"
-            ]
           }
         ]
       },
       {
         "dimensionCode": "CRS",
         "dimensionName": "Creative Reasoning Synthesis",
-        "dimensionDescription": "Capacity for using AI to support creative thinking, generating novel solutions, and combining ideas in innovative ways",
+        "description": null,
         "weight": 0.125,
         "totalPoints": 75,
         "items": [
@@ -1561,30 +1490,6 @@
               "creative-limits",
               "human-creativity",
               "strategic-use"
-            ]
-          },
-          {
-            "id": "CRS-B-008",
-            "level": 3,
-            "type": "multiple-choice",
-            "points": 10,
-            "difficulty": 0.56,
-            "discrimination": 1.28,
-            "bloomLevel": "Apply",
-            "question": "Which demonstrates excellent creative reasoning with AI support?",
-            "options": [
-              "Using only your own ideas, never consulting AI",
-              "Using only AI's ideas, following them exactly",
-              "Leveraging AI for inspiration and options, then applying human judgment to create something novel and excellent",
-              "Assuming one source (AI or human) is always superior"
-            ],
-            "correctAnswer": 2,
-            "rationale": "Excellence combines complementary strengths: AI's broad pattern recognition and option generation with human judgment, ethics, and creativity. Together they exceed either alone.",
-            "explanation": "Sophisticated creative reasoning requires strategic partnership.",
-            "tags": [
-              "creative-partnership",
-              "excellence",
-              "strategic-thinking"
             ]
           }
         ]

@@ -142,42 +142,7 @@ const Test = () => {
     }
   }, [showConsent, timeRemaining]);
 
-  // Initialize rank order and matching when question changes
-  useEffect(() => {
-    const item = dimensions[currentDimension]?.items?.[currentQuestion];
-    if (!item) return;
-    
-    const questionKey = `${currentDimension}-${currentQuestion}`;
-    
-    // Initialize rank-ordering using items or options
-    if (item.type === 'rank-ordering' || item.type === 'scenario-ranking') {
-      const existingAnswer = answers[questionKey];
-      if (existingAnswer) {
-        setRankOrder(existingAnswer.split(',').map(Number));
-      } else {
-        // Use items array first, then options as fallback
-        const availableItems = (item as any).items || item.options;
-        if (availableItems) {
-          setRankOrder(availableItems.map((_: any, idx: number) => idx));
-        }
-      }
-    }
-      
-    // Initialize matching
-    if (item.type === 'matching') {
-      const existingAnswer = answers[questionKey];
-      if (existingAnswer) {
-        const pairs: Record<number, number> = {};
-        existingAnswer.split(',').forEach(pair => {
-          const [left, right] = pair.split(':').map(Number);
-          pairs[left] = right;
-        });
-        setMatchingPairs(pairs);
-      } else {
-        setMatchingPairs({});
-      }
-    }
-  }, [currentDimension, currentQuestion, dimensions]);
+  // Questions are ready to display (no initialization needed for current types)
 
   const loadTestData = async () => {
     // Skip if we're resuming (dimensions loaded in initializeTest)
@@ -1147,150 +1112,7 @@ const Test = () => {
                         );
                       })}
                     </>
-                  )}
-
-                   {/* RANK-ORDERING / SCENARIO-RANKING */}
-                   {(currentItem.type === 'rank-ordering' || currentItem.type === 'scenario-ranking') && (
-                     <>
-                       {(() => {
-                         const rankItems = (currentItem as any).items || currentItem.options;
-                         if (rankItems && rankOrder.length > 0) {
-                           return (
-                             <>
-                               <p className="text-sm font-semibold text-blue-900 mb-3">
-                                 {currentItem.type === 'rank-ordering' ? 'Rank by importance:' : 'Order the sequence:'}
-                               </p>
-                               <div className="space-y-2">
-                                 {rankOrder.map((itemIndex, position) => {
-                                   const option = rankItems[itemIndex];
-                                   return (
-                                     <div
-                                       key={itemIndex}
-                                       className="flex items-center gap-3 p-4 border-2 border-border rounded-lg bg-white dark:bg-gray-900"
-                                     >
-                                       <div className="flex items-center gap-2">
-                                         <span className="text-sm font-bold text-blue-900 dark:text-blue-100 w-6">
-                                           {position + 1}.
-                                         </span>
-                                         <GripVertical className="h-5 w-5 text-muted-foreground" />
-                                       </div>
-                                       <span className="text-sm flex-1 leading-relaxed">{option}</span>
-                                       <div className="flex gap-1">
-                                         <Button
-                                           size="sm"
-                                           variant="outline"
-                                           onClick={() => position > 0 && moveRankItem(position, position - 1)}
-                                           disabled={position === 0}
-                                           className="h-8 w-8 p-0"
-                                           title="Move up"
-                                         >
-                                           ↑
-                                         </Button>
-                                         <Button
-                                           size="sm"
-                                           variant="outline"
-                                           onClick={() => position < rankOrder.length - 1 && moveRankItem(position, position + 1)}
-                                           disabled={position === rankOrder.length - 1}
-                                           className="h-8 w-8 p-0"
-                                           title="Move down"
-                                         >
-                                           ↓
-                                         </Button>
-                                       </div>
-                                     </div>
-                                   );
-                                 })}
-                               </div>
-                             </>
-                           );
-                         } else {
-                           return (
-                             <div className="p-4 bg-yellow-50 dark:bg-yellow-900/20 border-2 border-yellow-300 dark:border-yellow-700 rounded-lg">
-                               <p className="text-sm text-yellow-800 dark:text-yellow-200">
-                                 This ranking question is missing items. Please contact support.
-                               </p>
-                             </div>
-                           );
-                         }
-                       })()}
-                     </>
-                   )}
-
-                  {/* MATCHING */}
-                  {currentItem.type === 'matching' && (currentItem as any).leftColumn && (currentItem as any).rightColumn && (
-                    <>
-                      <p className="text-sm font-semibold text-blue-900 mb-3">
-                        Match items from the left column to the right column:
-                      </p>
-                      <div className="grid md:grid-cols-2 gap-4">
-                        {/* Left Column */}
-                        <div className="space-y-2">
-                          <p className="text-xs font-bold text-muted-foreground mb-2">LEFT COLUMN</p>
-                          {(currentItem as any).leftColumn.map((leftItem: string, leftIdx: number) => (
-                            <div
-                              key={leftIdx}
-                              className={`p-3 border-2 rounded-lg transition-all ${
-                                matchingPairs[leftIdx] !== undefined
-                                  ? 'border-primary bg-primary/5'
-                                  : 'border-border bg-white dark:bg-gray-900'
-                              }`}
-                            >
-                              <p className="text-sm leading-relaxed">{leftItem}</p>
-                              {matchingPairs[leftIdx] !== undefined && (
-                                <p className="text-xs text-primary font-semibold mt-2">
-                                  → Matched to: {(currentItem as any).rightColumn[matchingPairs[leftIdx]]}
-                                </p>
-                              )}
-                            </div>
-                          ))}
-                        </div>
-
-                        {/* Right Column */}
-                        <div className="space-y-2">
-                          <p className="text-xs font-bold text-muted-foreground mb-2">RIGHT COLUMN (click to match)</p>
-                          {(currentItem as any).rightColumn.map((rightItem: string, rightIdx: number) => {
-                            // Find which left item is matched to this right item
-                            const matchedLeftIdx = Object.entries(matchingPairs).find(
-                              ([_, right]) => right === rightIdx
-                            )?.[0];
-
-                            return (
-                              <button
-                                key={rightIdx}
-                                onClick={() => {
-                                  // Find the first unmatched left item or the one currently matched to this right item
-                                  const leftIdx = matchedLeftIdx !== undefined 
-                                    ? parseInt(matchedLeftIdx)
-                                    : (currentItem as any).leftColumn.findIndex((_: any, idx: number) => 
-                                        matchingPairs[idx] === undefined
-                                      );
-                                  
-                                  if (leftIdx >= 0) {
-                                    handleMatchingSelection(leftIdx, rightIdx);
-                                  }
-                                }}
-                                className={`w-full p-3 border-2 rounded-lg text-left transition-all ${
-                                  matchedLeftIdx !== undefined
-                                    ? 'border-primary bg-primary/5'
-                                    : 'border-border bg-white dark:bg-gray-900 hover:border-primary/50'
-                                }`}
-                              >
-                                <p className="text-sm leading-relaxed">{rightItem}</p>
-                                {matchedLeftIdx !== undefined && (
-                                  <p className="text-xs text-primary font-semibold mt-2">
-                                    ← Matched from: {(currentItem as any).leftColumn[parseInt(matchedLeftIdx)]}
-                                  </p>
-                                )}
-                              </button>
-                            );
-                          })}
-                        </div>
-                      </div>
-                      <p className="text-xs text-muted-foreground mt-3">
-                        Tip: Click items in the right column to match them with items from the left column in order.
-                      </p>
-                    </>
-                  )}
+                 )}
 
                   {/* MULTIPLE-CHOICE / SCENARIO-BASED (single selection with auto-advance) */}
                   {(currentItem.type === 'multiple-choice' || currentItem.type === 'scenario-based') && currentItem.options && (
@@ -1326,12 +1148,10 @@ const Test = () => {
                     </>
                   )}
 
-                  {/* OPEN-ENDED (text area) */}
+                  {/* OPEN-ENDED (text area) - Not used in current assessments */}
                   {!currentItem.options && 
-                   currentItem.type !== 'matching' && 
-                   currentItem.type !== 'rank-ordering' && 
-                   currentItem.type !== 'scenario-ranking' &&
-                   currentItem.type !== 'true-false' && (
+                   currentItem.type !== 'true-false' &&
+                   currentItem.type !== 'multiple-response' && (
                     <textarea
                       className="w-full min-h-[120px] p-4 border-2 rounded-lg resize-none text-sm focus:border-primary focus:outline-none transition-colors"
                       placeholder="Type your answer here..."
@@ -1397,11 +1217,8 @@ const Test = () => {
                 <li>• Take your time to read each question carefully</li>
                 <li>• You can navigate back to review previous questions</li>
                 <li>• Your progress is automatically saved</li>
-                {(currentItem.type === 'rank-ordering' || currentItem.type === 'scenario-ranking') && (
-                  <li>• Use the arrows to reorder items in the correct sequence</li>
-                )}
-                {currentItem.type === 'matching' && (
-                  <li>• Click right column items to match them with left column items</li>
+                {currentItem.type === 'multiple-response' && (
+                  <li>• Select ALL options that apply for multiple-response questions</li>
                 )}
               </ul>
             </div>

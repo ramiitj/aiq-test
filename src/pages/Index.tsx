@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { Brain, TrendingUp, Award, Lightbulb, CheckCircle, ArrowRight } from "lucide-react";
+import { Brain, TrendingUp, Award, Lightbulb, CheckCircle, ArrowRight, GraduationCap, Briefcase, Rocket } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { Navigation } from "@/components/Navigation";
 
@@ -48,34 +48,43 @@ const Index = () => {
 
   const assessmentLevels = [
     {
-      badge: "Beginner",
-      badgeColor: "bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-300",
-      title: "Foundational",
-      description: "Core AI collaboration concepts for newcomers",
+      id: "beginner",
+      title: "Beginner",
+      subtitle: "For beginners and students",
+      description: "Foundational AI literacy assessment for newcomers",
       questions: "60 questions",
-      duration: "90 minutes",
-      dimensions: "8 questions per dimension",
-      idealFor: "Students and beginners",
+      time: "90 minutes",
+      icon: GraduationCap,
+      gradient: "from-blue-500 to-indigo-600",
+      recommended: false,
+      idealFor: "Students, beginners, and those new to AI",
+      details: "8 questions per dimension (fixed)",
     },
     {
-      badge: "Professional",
-      badgeColor: "bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300",
-      title: "Comprehensive",
-      description: "Full assessment across all 8 dimensions",
+      id: "professional",
+      title: "Professional",
+      subtitle: "For working professionals",
+      description: "Professional-level AI collaboration assessment",
       questions: "80 questions",
-      duration: "120 minutes",
-      dimensions: "Adaptive selection from 160-item pool",
-      idealFor: "Working professionals",
+      time: "120 minutes",
+      icon: Briefcase,
+      gradient: "from-violet-500 to-purple-600",
+      recommended: true,
+      idealFor: "Working professionals and practitioners",
+      details: "10 questions per dimension (adaptive selection)",
     },
     {
-      badge: "Expert",
-      badgeColor: "bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-300",
-      title: "Advanced",
-      description: "Complex scenarios for AI specialists",
+      id: "expert",
+      title: "Expert",
+      subtitle: "For AI leaders",
+      description: "Expert-level strategic AI assessment",
       questions: "80 questions",
-      duration: "150 minutes",
-      dimensions: "Adaptive selection from 160-item pool",
-      idealFor: "AI leaders and researchers",
+      time: "150 minutes",
+      icon: Rocket,
+      gradient: "from-amber-500 to-orange-600",
+      recommended: false,
+      idealFor: "Senior professionals, researchers, and leaders",
+      details: "10 questions per dimension (adaptive selection)",
     },
   ];
 
@@ -192,32 +201,40 @@ const Index = () => {
               Select the assessment that matches your current experience with AI
             </p>
             <div className="grid md:grid-cols-3 gap-6">
-              {assessmentLevels.map((level, index) => (
-                <Card key={index} className="shadow-sm border">
-                  <CardContent className="pt-6 pb-6">
-                    <div className={`inline-block px-3 py-1 ${level.badgeColor} rounded-full text-xs font-bold mb-3`}>
-                      {level.badge}
-                    </div>
-                    <h3 className="text-2xl font-extrabold mb-2">{level.title}</h3>
-                    <p className="text-sm text-muted-foreground mb-5">{level.description}</p>
-                    <ul className="space-y-2 text-sm mb-5">
-                      <li className="flex items-center gap-2">
-                        <CheckCircle className="h-4 w-4 text-green-600 flex-shrink-0" />
-                        <span>{level.questions}</span>
-                      </li>
-                      <li className="flex items-center gap-2">
-                        <CheckCircle className="h-4 w-4 text-green-600 flex-shrink-0" />
-                        <span>{level.duration}</span>
-                      </li>
-                      <li className="flex items-center gap-2">
-                        <CheckCircle className="h-4 w-4 text-green-600 flex-shrink-0" />
-                        <span>{level.dimensions}</span>
-                      </li>
-                    </ul>
-                    <p className="text-xs text-muted-foreground italic">Best for: {level.idealFor}</p>
-                  </CardContent>
-                </Card>
-              ))}
+              {assessmentLevels.map((level) => {
+                const Icon = level.icon;
+                return (
+                  <Card key={level.id} className="shadow-sm border relative overflow-hidden">
+                    {level.recommended && (
+                      <div className="absolute top-4 right-4 bg-primary text-primary-foreground px-3 py-1 rounded-full text-xs font-bold">
+                        Recommended
+                      </div>
+                    )}
+                    <CardContent className="pt-6 pb-6">
+                      <div className={`inline-flex items-center gap-2 mb-3 p-3 bg-gradient-to-br ${level.gradient} rounded-lg`}>
+                        <Icon className="h-6 w-6 text-white" />
+                      </div>
+                      <h3 className="text-2xl font-extrabold mb-2">{level.title}</h3>
+                      <p className="text-sm text-muted-foreground mb-5">{level.description}</p>
+                      <ul className="space-y-2 text-sm mb-5">
+                        <li className="flex items-center gap-2">
+                          <CheckCircle className="h-4 w-4 text-green-600 flex-shrink-0" />
+                          <span>{level.questions}</span>
+                        </li>
+                        <li className="flex items-center gap-2">
+                          <CheckCircle className="h-4 w-4 text-green-600 flex-shrink-0" />
+                          <span>{level.time}</span>
+                        </li>
+                        <li className="flex items-center gap-2">
+                          <CheckCircle className="h-4 w-4 text-green-600 flex-shrink-0" />
+                          <span>{level.details}</span>
+                        </li>
+                      </ul>
+                      <p className="text-xs text-muted-foreground italic">Best for: {level.idealFor}</p>
+                    </CardContent>
+                  </Card>
+                );
+              })}
             </div>
           </div>
         </section>
