@@ -46,6 +46,31 @@ interface DemographicsData {
   country: string;
 }
 
+// Utility to parse question text and separate list items
+const parseQuestionText = (text: string) => {
+  if (!text) return { main: '', items: [] };
+  
+  // Patterns to detect list items: "1.", "2.", "a)", "b)", "(a)", "(b)", "A.", "B."
+  const listPattern = /^(?:\d+\.|[a-zA-Z]\)|\([a-zA-Z]\)|[a-zA-Z]\.)\s/;
+  const lines = text.split('\n').filter(line => line.trim());
+  
+  const mainQuestion: string[] = [];
+  const listItems: string[] = [];
+  
+  for (const line of lines) {
+    if (listPattern.test(line.trim())) {
+      listItems.push(line.trim());
+    } else {
+      mainQuestion.push(line);
+    }
+  }
+  
+  return {
+    main: mainQuestion.join(' ').trim(),
+    items: listItems
+  };
+};
+
 const Test = () => {
   const [searchParams] = useSearchParams();
   const navigate = useNavigate();
@@ -313,7 +338,42 @@ const Test = () => {
     return `${mins}:${secs.toString().padStart(2, '0')}`;
   };
 
+  // Handle answer selection and auto-advance for single-choice questions
+  const handleAnswerAndAdvance = (questionKey: string, value: string, questionType?: string) => {
+    setAnswers(prev => ({
+      ...prev,
+      [questionKey]: value
+    }));
+    
+    // Auto-advance only for single-choice (radio button) questions
+    if (questionType === 'multiple-choice') {
+      setTimeout(() => {
+        advanceToNextQuestion();
+      }, 300);
+    }
+  };
+
+  const advanceToNextQuestion = () => {
+    if (currentQuestion < questionsPerDimension - 1) {
+      setCurrentQuestion(prev => prev + 1);
+    } else if (currentDimension < dimensions.length - 1) {
+      setCurrentDimension(prev => prev + 1);
+      setCurrentQuestion(0);
+    }
+  };
+
+  const goToPreviousQuestion = () => {
+    if (currentQuestion > 0) {
+      setCurrentQuestion(prev => prev - 1);
+    } else if (currentDimension > 0) {
+      setCurrentDimension(prev => prev - 1);
+      setCurrentQuestion(questionsPerDimension - 1);
+    }
+  };
+
   const progress = ((currentDimension * questionsPerDimension + currentQuestion) / totalQuestions) * 100;
+  const globalQuestionNumber = currentDimension * questionsPerDimension + currentQuestion + 1;
+  const isLastQuestion = globalQuestionNumber === totalQuestions;
 
   if (loading || dimensions.length === 0) {
     return (
@@ -829,74 +889,111 @@ const Test = () => {
         <Card className="mb-6 shadow-sm border">
           <CardContent className="pt-6 pb-6">
             {dimensions[currentDimension]?.items[currentQuestion] ? (
-              <div className="prose prose-sm max-w-none">
-                <p className="text-base leading-relaxed mb-6">
-                  {dimensions[currentDimension].items[currentQuestion].question}
-                </p>
+              <div className="space-y-6">
+                {(() => {
+                  const { main, items } = parseQuestionText(dimensions[currentDimension].items[currentQuestion].question);
+                  
+                  return (
+                    <>
+                      {/* Main Question */}
+                      {main && (
+                        <p className="text-lg font-semibold leading-relaxed text-foreground">
+                          {main}
+                        </p>
+                      )}
+                      
+                      {/* Numbered/Lettered List Items */}
+                      {items.length > 0 && (
+                        <ul className="space-y-2 pl-1">
+                          {items.map((item, idx) => (
+                            <li key={idx} className="text-sm text-muted-foreground leading-relaxed">
+                              {item}
+                            </li>
+                          ))}
+                        </ul>
+                      )}
+                    </>
+                  );
+                })()}
                 
                 {/* Answer Options or Text Area */}
                 <div className="space-y-3">
                   {dimensions[currentDimension].items[currentQuestion].options ? (
                     dimensions[currentDimension].items[currentQuestion].type === 'multiple-choice-multiple' ? (
                       // Multiple selection (checkboxes)
+                      <>
+                        {dimensions[currentDimension].items[currentQuestion].options?.map((option, idx) => {
+                          const currentAnswers = answers[`${currentDimension}-${currentQuestion}`]?.split(',').filter(Boolean) || [];
+                          const isChecked = currentAnswers.includes(idx.toString());
+                          
+                          return (
+                            <label
+                              key={idx}
+                              className={`flex items-start gap-3 p-4 border-2 rounded-lg cursor-pointer transition-all ${
+                                isChecked 
+                                  ? 'border-primary bg-primary/5' 
+                                  : 'border-border hover:border-primary/50 hover:bg-accent/30'
+                              }`}
+                            >
+                              <Checkbox
+                                checked={isChecked}
+                                onCheckedChange={(checked) => {
+                                  const currentAnswers = answers[`${currentDimension}-${currentQuestion}`]?.split(',').filter(Boolean) || [];
+                                  let newAnswers: string[];
+                                  
+                                  if (checked) {
+                                    newAnswers = [...currentAnswers, idx.toString()];
+                                  } else {
+                                    newAnswers = currentAnswers.filter(a => a !== idx.toString());
+                                  }
+                                  
+                                  setAnswers(prev => ({
+                                    ...prev,
+                                    [`${currentDimension}-${currentQuestion}`]: newAnswers.join(',')
+                                  }));
+                                }}
+                                className="mt-0.5"
+                              />
+                              <span className="text-sm flex-1 leading-relaxed">{option}</span>
+                            </label>
+                          );
+                        })}
+                      </>
+                    ) : (
+                      // Single selection (radio buttons) - auto-advance
                       dimensions[currentDimension].items[currentQuestion].options?.map((option, idx) => {
-                        const currentAnswers = answers[`${currentDimension}-${currentQuestion}`]?.split(',').filter(Boolean) || [];
-                        const isChecked = currentAnswers.includes(idx.toString());
+                        const isSelected = answers[`${currentDimension}-${currentQuestion}`] === idx.toString();
                         
                         return (
                           <label
                             key={idx}
-                            className="flex items-start gap-3 p-4 border rounded-lg cursor-pointer hover:bg-accent/50 transition-colors"
+                            className={`flex items-start gap-3 p-4 border-2 rounded-lg cursor-pointer transition-all ${
+                              isSelected 
+                                ? 'border-primary bg-primary/5' 
+                                : 'border-border hover:border-primary/50 hover:bg-accent/30'
+                            }`}
                           >
-                            <Checkbox
-                              checked={isChecked}
-                              onCheckedChange={(checked) => {
-                                const currentAnswers = answers[`${currentDimension}-${currentQuestion}`]?.split(',').filter(Boolean) || [];
-                                let newAnswers: string[];
-                                
-                                if (checked) {
-                                  newAnswers = [...currentAnswers, idx.toString()];
-                                } else {
-                                  newAnswers = currentAnswers.filter(a => a !== idx.toString());
-                                }
-                                
-                                setAnswers(prev => ({
-                                  ...prev,
-                                  [`${currentDimension}-${currentQuestion}`]: newAnswers.join(',')
-                                }));
-                              }}
-                              className="mt-1"
+                            <input
+                              type="radio"
+                              name={`q-${currentDimension}-${currentQuestion}`}
+                              value={idx.toString()}
+                              checked={isSelected}
+                              onChange={(e) => handleAnswerAndAdvance(
+                                `${currentDimension}-${currentQuestion}`,
+                                e.target.value,
+                                'multiple-choice'
+                              )}
+                              className="mt-0.5 w-4 h-4 accent-primary"
                             />
-                            <span className="text-sm flex-1">{option}</span>
+                            <span className="text-sm flex-1 leading-relaxed">{option}</span>
                           </label>
                         );
                       })
-                    ) : (
-                      // Single selection (radio buttons)
-                      dimensions[currentDimension].items[currentQuestion].options?.map((option, idx) => (
-                        <label
-                          key={idx}
-                          className="flex items-start gap-3 p-4 border rounded-lg cursor-pointer hover:bg-accent/50 transition-colors"
-                        >
-                          <input
-                            type="radio"
-                            name={`q-${currentDimension}-${currentQuestion}`}
-                            value={idx.toString()}
-                            checked={answers[`${currentDimension}-${currentQuestion}`] === idx.toString()}
-                            onChange={(e) => setAnswers(prev => ({
-                              ...prev,
-                              [`${currentDimension}-${currentQuestion}`]: e.target.value
-                            }))}
-                            className="mt-1"
-                          />
-                          <span className="text-sm flex-1">{option}</span>
-                        </label>
-                      ))
                     )
                   ) : (
                     // Open-ended
                     <textarea
-                      className="w-full min-h-[120px] p-4 border rounded-lg resize-none text-sm"
+                      className="w-full min-h-[120px] p-4 border-2 rounded-lg resize-none text-sm focus:border-primary focus:outline-none transition-colors"
                       placeholder="Type your answer here..."
                       value={answers[`${currentDimension}-${currentQuestion}`] || ''}
                       onChange={(e) => setAnswers(prev => ({
@@ -918,14 +1015,7 @@ const Test = () => {
         {/* Navigation Buttons */}
         <div className="flex gap-3">
           <Button
-            onClick={() => {
-              if (currentQuestion > 0) {
-                setCurrentQuestion(prev => prev - 1);
-              } else if (currentDimension > 0) {
-                setCurrentDimension(prev => prev - 1);
-                setCurrentQuestion(questionsPerDimension - 1);
-              }
-            }}
+            onClick={goToPreviousQuestion}
             disabled={currentDimension === 0 && currentQuestion === 0}
             variant="outline"
             className="font-semibold"
@@ -934,7 +1024,7 @@ const Test = () => {
             Previous
           </Button>
           
-          {currentDimension === dimensions.length - 1 && currentQuestion === questionsPerDimension - 1 ? (
+          {isLastQuestion ? (
             <Button
               onClick={() => handleSubmitTest()}
               disabled={Object.keys(answers).length < totalQuestions}
@@ -945,20 +1035,30 @@ const Test = () => {
               Submit Assessment
             </Button>
           ) : (
-            <Button
-              onClick={() => {
-                if (currentQuestion < questionsPerDimension - 1) {
-                  setCurrentQuestion(prev => prev + 1);
-                } else if (currentDimension < dimensions.length - 1) {
-                  setCurrentDimension(prev => prev + 1);
-                  setCurrentQuestion(0);
+            // Show Next button only for checkboxes and text inputs
+            dimensions[currentDimension].items[currentQuestion].type === 'multiple-choice-multiple' || 
+            !dimensions[currentDimension].items[currentQuestion].options ? (
+              <Button
+                onClick={advanceToNextQuestion}
+                disabled={
+                  dimensions[currentDimension].items[currentQuestion].type === 'multiple-choice-multiple' &&
+                  !answers[`${currentDimension}-${currentQuestion}`]
                 }
-              }}
-              className="flex-1 bg-blue-900 hover:bg-blue-800 font-semibold"
-            >
-              Next Question
-              <ChevronRight className="h-4 w-4 ml-2" />
-            </Button>
+                className="flex-1 bg-blue-900 hover:bg-blue-800 font-semibold"
+              >
+                {dimensions[currentDimension].items[currentQuestion].type === 'multiple-choice-multiple' 
+                  ? 'Continue' 
+                  : 'Next Question'}
+                <ChevronRight className="h-4 w-4 ml-2" />
+              </Button>
+            ) : (
+              // For single-choice (radio), show a placeholder or nothing (auto-advances)
+              <div className="flex-1 flex items-center justify-center text-sm text-muted-foreground">
+                {!answers[`${currentDimension}-${currentQuestion}`] && (
+                  <span>Select an option to continue</span>
+                )}
+              </div>
+            )
           )}
         </div>
 
