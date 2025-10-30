@@ -393,11 +393,7 @@ const Dashboard = () => {
                 </div>
 
                 {/* Professional - Highlighted as Recommended */}
-                <div className="bg-gradient-to-br from-violet-50 to-purple-50 dark:from-violet-950/30 dark:to-purple-950/30 rounded-lg p-5 hover:shadow-xl transition-all hover:scale-105 cursor-pointer border-2 border-violet-400 relative"
                      onClick={() => handleStartTest('professional')}>
-                  <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-violet-600 text-white px-3 py-1 rounded-full text-xs font-bold">
-                    RECOMMENDED
-                  </div>
                   <div className="flex items-center gap-2 mb-3 mt-2">
                     <div className="p-2 bg-violet-100 dark:bg-violet-900/50 rounded">
                       <PlayCircle className="h-5 w-5 text-violet-600" />
