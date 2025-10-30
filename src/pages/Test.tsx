@@ -1069,52 +1069,62 @@ const Test = () => {
                   )}
 
                   {/* RANK-ORDERING / SCENARIO-RANKING */}
-                  {(currentItem.type === 'rank-ordering' || currentItem.type === 'scenario-ranking') && currentItem.options && (
+                  {(currentItem.type === 'rank-ordering' || currentItem.type === 'scenario-ranking') && (
                     <>
-                      <p className="text-sm font-semibold text-blue-900 mb-3">
-                        Drag to reorder items from first to last:
-                      </p>
-                      <div className="space-y-2">
-                        {rankOrder.map((itemIndex, position) => {
-                          const option = currentItem.options![itemIndex];
-                          return (
-                            <div
-                              key={itemIndex}
-                              className="flex items-center gap-3 p-4 border-2 border-border rounded-lg bg-white dark:bg-gray-900"
-                            >
-                              <div className="flex items-center gap-2">
-                                <span className="text-sm font-bold text-blue-900 dark:text-blue-100 w-6">
-                                  {position + 1}.
-                                </span>
-                                <GripVertical className="h-5 w-5 text-muted-foreground" />
-                              </div>
-                              <span className="text-sm flex-1 leading-relaxed">{option}</span>
-                              <div className="flex gap-1">
-                                <Button
-                                  size="sm"
-                                  variant="outline"
-                                  onClick={() => position > 0 && moveRankItem(position, position - 1)}
-                                  disabled={position === 0}
-                                  className="h-8 w-8 p-0"
-                                  title="Move up"
+                      {currentItem.options && rankOrder.length > 0 ? (
+                        <>
+                          <p className="text-sm font-semibold text-blue-900 mb-3">
+                            Rank by importance:
+                          </p>
+                          <div className="space-y-2">
+                            {rankOrder.map((itemIndex, position) => {
+                              const option = currentItem.options![itemIndex];
+                              return (
+                                <div
+                                  key={itemIndex}
+                                  className="flex items-center gap-3 p-4 border-2 border-border rounded-lg bg-white dark:bg-gray-900"
                                 >
-                                  ↑
-                                </Button>
-                                <Button
-                                  size="sm"
-                                  variant="outline"
-                                  onClick={() => position < rankOrder.length - 1 && moveRankItem(position, position + 1)}
-                                  disabled={position === rankOrder.length - 1}
-                                  className="h-8 w-8 p-0"
-                                  title="Move down"
-                                >
-                                  ↓
-                                </Button>
-                              </div>
-                            </div>
-                          );
-                        })}
-                      </div>
+                                  <div className="flex items-center gap-2">
+                                    <span className="text-sm font-bold text-blue-900 dark:text-blue-100 w-6">
+                                      {position + 1}.
+                                    </span>
+                                    <GripVertical className="h-5 w-5 text-muted-foreground" />
+                                  </div>
+                                  <span className="text-sm flex-1 leading-relaxed">{option}</span>
+                                  <div className="flex gap-1">
+                                    <Button
+                                      size="sm"
+                                      variant="outline"
+                                      onClick={() => position > 0 && moveRankItem(position, position - 1)}
+                                      disabled={position === 0}
+                                      className="h-8 w-8 p-0"
+                                      title="Move up"
+                                    >
+                                      ↑
+                                    </Button>
+                                    <Button
+                                      size="sm"
+                                      variant="outline"
+                                      onClick={() => position < rankOrder.length - 1 && moveRankItem(position, position + 1)}
+                                      disabled={position === rankOrder.length - 1}
+                                      className="h-8 w-8 p-0"
+                                      title="Move down"
+                                    >
+                                      ↓
+                                    </Button>
+                                  </div>
+                                </div>
+                              );
+                            })}
+                          </div>
+                        </>
+                      ) : (
+                        <div className="p-4 bg-yellow-50 dark:bg-yellow-900/20 border-2 border-yellow-300 dark:border-yellow-700 rounded-lg">
+                          <p className="text-sm text-yellow-800 dark:text-yellow-200">
+                            This ranking question is missing options. Please contact support.
+                          </p>
+                        </div>
+                      )}
                     </>
                   )}
 
@@ -1229,7 +1239,11 @@ const Test = () => {
                   )}
 
                   {/* OPEN-ENDED (text area) */}
-                  {!currentItem.options && currentItem.type !== 'matching' && (
+                  {!currentItem.options && 
+                   currentItem.type !== 'matching' && 
+                   currentItem.type !== 'rank-ordering' && 
+                   currentItem.type !== 'scenario-ranking' &&
+                   currentItem.type !== 'true-false' && (
                     <textarea
                       className="w-full min-h-[120px] p-4 border-2 rounded-lg resize-none text-sm focus:border-primary focus:outline-none transition-colors"
                       placeholder="Type your answer here..."
