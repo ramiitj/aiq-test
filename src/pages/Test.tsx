@@ -149,15 +149,19 @@ const Test = () => {
     
     const questionKey = `${currentDimension}-${currentQuestion}`;
     
-    // Initialize rank-ordering
+    // Initialize rank-ordering using items or options
     if (item.type === 'rank-ordering' || item.type === 'scenario-ranking') {
-        const existingAnswer = answers[questionKey];
-        if (existingAnswer) {
-          setRankOrder(existingAnswer.split(',').map(Number));
-        } else if (item.options) {
-          setRankOrder(item.options.map((_, idx) => idx));
+      const existingAnswer = answers[questionKey];
+      if (existingAnswer) {
+        setRankOrder(existingAnswer.split(',').map(Number));
+      } else {
+        // Use items array first, then options as fallback
+        const availableItems = (item as any).items || item.options;
+        if (availableItems) {
+          setRankOrder(availableItems.map((_: any, idx: number) => idx));
         }
       }
+    }
       
     // Initialize matching
     if (item.type === 'matching') {
@@ -341,10 +345,11 @@ const Test = () => {
     if (!testId) return;
 
     const answeredCount = Object.keys(answers).length;
-    if (!opts?.force && answeredCount < totalQuestions) {
+    const actualTotal = dimensions?.reduce((sum, dim) => sum + (dim.items?.length ?? 0), 0) ?? 0;
+    if (!opts?.force && answeredCount < actualTotal) {
       toast({
         title: "Incomplete assessment",
-        description: `Please answer all questions before submitting (${answeredCount}/${totalQuestions})`,
+        description: `Please answer all questions before submitting (${answeredCount}/${actualTotal})`,
         variant: "destructive",
       });
       return;
@@ -382,23 +387,17 @@ const Test = () => {
     return `${mins}:${secs.toString().padStart(2, '0')}`;
   };
 
-  // Handle answer selection and auto-advance for single-choice questions  
-  const handleAnswerAndAdvance = (questionKey: string, value: string, questionType?: string) => {
+  // Handle answer selection without auto-advance
+  const handleAnswerSelection = (questionKey: string, value: string, questionType?: string) => {
     setAnswers(prev => ({
       ...prev,
       [questionKey]: value
     }));
-    
-    // Auto-advance only for single-choice (radio button) types: multiple-choice, true-false, scenario-based
-    if (questionType === 'multiple-choice' || questionType === 'true-false' || questionType === 'scenario-based') {
-      setTimeout(() => {
-        advanceToNextQuestion();
-      }, 300);
-    }
   };
 
   const advanceToNextQuestion = () => {
-    if (currentQuestion < questionsPerDimension - 1) {
+    const currentDimensionItems = dimensions[currentDimension]?.items || [];
+    if (currentQuestion < currentDimensionItems.length - 1) {
       setCurrentQuestion(prev => prev + 1);
     } else if (currentDimension < dimensions.length - 1) {
       setCurrentDimension(prev => prev + 1);
@@ -410,8 +409,9 @@ const Test = () => {
     if (currentQuestion > 0) {
       setCurrentQuestion(prev => prev - 1);
     } else if (currentDimension > 0) {
+      const prevDimensionItems = dimensions[currentDimension - 1]?.items || [];
       setCurrentDimension(prev => prev - 1);
-      setCurrentQuestion(questionsPerDimension - 1);
+      setCurrentQuestion(prevDimensionItems.length - 1);
     }
   };
 
@@ -455,9 +455,10 @@ const Test = () => {
     }));
   };
 
-  const progress = ((currentDimension * questionsPerDimension + currentQuestion) / totalQuestions) * 100;
-  const globalQuestionNumber = currentDimension * questionsPerDimension + currentQuestion + 1;
-  const isLastQuestion = globalQuestionNumber === totalQuestions;
+  const actualTotalQuestions = dimensions?.reduce((sum, dim) => sum + (dim.items?.length ?? 0), 0) ?? 0;
+  const globalQuestionNumber = dimensions?.slice(0, currentDimension).reduce((sum, dim) => sum + (dim.items?.length ?? 0), 0) + currentQuestion + 1 ?? 0;
+  const progress = actualTotalQuestions > 0 ? (globalQuestionNumber / actualTotalQuestions) * 100 : 0;
+  const isLastQuestion = currentDimension === dimensions.length - 1 && currentQuestion === (dimensions[currentDimension]?.items?.length ?? 0) - 1;
 
   if (loading || dimensions.length === 0) {
     return (
@@ -952,9 +953,9 @@ const Test = () => {
                 </span>
               </div>
               <div className="h-4 w-px bg-border" />
-              <span className="text-sm font-medium text-muted-foreground">
-                Question {globalQuestionNumber} of {totalQuestions}
-              </span>
+               <span className="text-sm font-medium text-muted-foreground">
+                 Question {globalQuestionNumber} of {actualTotalQuestions}
+               </span>
             </div>
             <div className="flex gap-2">
               <Button
@@ -978,9 +979,9 @@ const Test = () => {
           <h2 className="text-2xl font-black mb-1">
             {dimensions[currentDimension]?.dimensionName || dimensions[currentDimension]?.dimensionCode || `Dimension ${currentDimension + 1}`}
           </h2>
-          <p className="sr-only">
-            Question {currentQuestion + 1} of {questionsPerDimension}
-          </p>
+           <p className="sr-only">
+             Question {currentQuestion + 1} of {dimensions[currentDimension]?.items?.length ?? 0}
+           </p>
         </div>
 
         {/* Question Card */}
@@ -1021,7 +1022,7 @@ const Test = () => {
                     <TrueFalseQuestion
                       questionKey={questionKey}
                       currentAnswer={answers[questionKey]}
-                      onAnswerChange={handleAnswerAndAdvance}
+                      onAnswerChange={handleAnswerSelection}
                     />
                   )}
 
@@ -1068,65 +1069,72 @@ const Test = () => {
                     </>
                   )}
 
-                  {/* RANK-ORDERING / SCENARIO-RANKING */}
-                  {(currentItem.type === 'rank-ordering' || currentItem.type === 'scenario-ranking') && (
-                    <>
-                      {currentItem.options && rankOrder.length > 0 ? (
-                        <>
-                          <p className="text-sm font-semibold text-blue-900 mb-3">
-                            Rank by importance:
-                          </p>
-                          <div className="space-y-2">
-                            {rankOrder.map((itemIndex, position) => {
-                              const option = currentItem.options![itemIndex];
-                              return (
-                                <div
-                                  key={itemIndex}
-                                  className="flex items-center gap-3 p-4 border-2 border-border rounded-lg bg-white dark:bg-gray-900"
-                                >
-                                  <div className="flex items-center gap-2">
-                                    <span className="text-sm font-bold text-blue-900 dark:text-blue-100 w-6">
-                                      {position + 1}.
-                                    </span>
-                                    <GripVertical className="h-5 w-5 text-muted-foreground" />
-                                  </div>
-                                  <span className="text-sm flex-1 leading-relaxed">{option}</span>
-                                  <div className="flex gap-1">
-                                    <Button
-                                      size="sm"
-                                      variant="outline"
-                                      onClick={() => position > 0 && moveRankItem(position, position - 1)}
-                                      disabled={position === 0}
-                                      className="h-8 w-8 p-0"
-                                      title="Move up"
-                                    >
-                                      ↑
-                                    </Button>
-                                    <Button
-                                      size="sm"
-                                      variant="outline"
-                                      onClick={() => position < rankOrder.length - 1 && moveRankItem(position, position + 1)}
-                                      disabled={position === rankOrder.length - 1}
-                                      className="h-8 w-8 p-0"
-                                      title="Move down"
-                                    >
-                                      ↓
-                                    </Button>
-                                  </div>
-                                </div>
-                              );
-                            })}
-                          </div>
-                        </>
-                      ) : (
-                        <div className="p-4 bg-yellow-50 dark:bg-yellow-900/20 border-2 border-yellow-300 dark:border-yellow-700 rounded-lg">
-                          <p className="text-sm text-yellow-800 dark:text-yellow-200">
-                            This ranking question is missing options. Please contact support.
-                          </p>
-                        </div>
-                      )}
-                    </>
-                  )}
+                   {/* RANK-ORDERING / SCENARIO-RANKING */}
+                   {(currentItem.type === 'rank-ordering' || currentItem.type === 'scenario-ranking') && (
+                     <>
+                       {(() => {
+                         const rankItems = (currentItem as any).items || currentItem.options;
+                         if (rankItems && rankOrder.length > 0) {
+                           return (
+                             <>
+                               <p className="text-sm font-semibold text-blue-900 mb-3">
+                                 {currentItem.type === 'rank-ordering' ? 'Rank by importance:' : 'Order the sequence:'}
+                               </p>
+                               <div className="space-y-2">
+                                 {rankOrder.map((itemIndex, position) => {
+                                   const option = rankItems[itemIndex];
+                                   return (
+                                     <div
+                                       key={itemIndex}
+                                       className="flex items-center gap-3 p-4 border-2 border-border rounded-lg bg-white dark:bg-gray-900"
+                                     >
+                                       <div className="flex items-center gap-2">
+                                         <span className="text-sm font-bold text-blue-900 dark:text-blue-100 w-6">
+                                           {position + 1}.
+                                         </span>
+                                         <GripVertical className="h-5 w-5 text-muted-foreground" />
+                                       </div>
+                                       <span className="text-sm flex-1 leading-relaxed">{option}</span>
+                                       <div className="flex gap-1">
+                                         <Button
+                                           size="sm"
+                                           variant="outline"
+                                           onClick={() => position > 0 && moveRankItem(position, position - 1)}
+                                           disabled={position === 0}
+                                           className="h-8 w-8 p-0"
+                                           title="Move up"
+                                         >
+                                           ↑
+                                         </Button>
+                                         <Button
+                                           size="sm"
+                                           variant="outline"
+                                           onClick={() => position < rankOrder.length - 1 && moveRankItem(position, position + 1)}
+                                           disabled={position === rankOrder.length - 1}
+                                           className="h-8 w-8 p-0"
+                                           title="Move down"
+                                         >
+                                           ↓
+                                         </Button>
+                                       </div>
+                                     </div>
+                                   );
+                                 })}
+                               </div>
+                             </>
+                           );
+                         } else {
+                           return (
+                             <div className="p-4 bg-yellow-50 dark:bg-yellow-900/20 border-2 border-yellow-300 dark:border-yellow-700 rounded-lg">
+                               <p className="text-sm text-yellow-800 dark:text-yellow-200">
+                                 This ranking question is missing items. Please contact support.
+                               </p>
+                             </div>
+                           );
+                         }
+                       })()}
+                     </>
+                   )}
 
                   {/* MATCHING */}
                   {currentItem.type === 'matching' && (currentItem as any).leftColumn && (currentItem as any).rightColumn && (
@@ -1224,11 +1232,11 @@ const Test = () => {
                               name={`q-${questionKey}`}
                               value={idx.toString()}
                               checked={isSelected}
-                              onChange={(e) => handleAnswerAndAdvance(
-                                questionKey,
-                                e.target.value,
-                                currentItem.type
-                              )}
+                               onChange={(e) => handleAnswerSelection(
+                                 questionKey,
+                                 e.target.value,
+                                 currentItem.type
+                               )}
                               className="mt-0.5 w-4 h-4 accent-primary"
                             />
                             <span className="text-sm flex-1 leading-relaxed">{option}</span>
@@ -1278,37 +1286,25 @@ const Test = () => {
           
           {isLastQuestion ? (
             <Button
-              onClick={() => handleSubmitTest()}
-              disabled={Object.keys(answers).length < totalQuestions}
+             onClick={() => handleSubmitTest()}
+             disabled={Object.keys(answers).length < actualTotalQuestions}
               className="flex-1 bg-green-600 hover:bg-green-700 font-semibold disabled:opacity-50 disabled:cursor-not-allowed"
-              title={Object.keys(answers).length < totalQuestions ? "Please answer all questions before submitting" : "Submit test"}
+              title={Object.keys(answers).length < actualTotalQuestions ? "Please answer all questions before submitting" : "Submit test"}
             >
               <CheckCircle className="h-4 w-4 mr-2" />
               Submit Assessment
             </Button>
-          ) : (
-            // Show Next button for complex types that don't auto-advance
-            (currentItem.type === 'multiple-response' || 
-             currentItem.type === 'rank-ordering' || 
-             currentItem.type === 'scenario-ranking' || 
-             currentItem.type === 'matching' ||
-             !currentItem.options) ? (
-              <Button
-                onClick={advanceToNextQuestion}
-                disabled={!answers[questionKey] || answers[questionKey].trim() === ''}
-                className="flex-1 bg-blue-900 hover:bg-blue-800 font-semibold"
-              >
-                {currentItem.type === 'multiple-response' ? 'Continue' : 'Next Question'}
-                <ChevronRight className="h-4 w-4 ml-2" />
-              </Button>
-            ) : (
-              <div className="flex-1 flex items-center justify-center text-sm text-muted-foreground">
-                {!answers[questionKey] && (
-                  <span>Select an option to continue</span>
-                )}
-              </div>
-            )
-          )}
+           ) : (
+             // Show Next button for all question types
+             <Button
+               onClick={advanceToNextQuestion}
+               disabled={!answers[questionKey] || answers[questionKey].trim() === ''}
+               className="flex-1 bg-blue-900 hover:bg-blue-800 font-semibold"
+             >
+               Next Question
+               <ChevronRight className="h-4 w-4 ml-2" />
+             </Button>
+           )}
         </div>
 
         {/* Helper Text */}
