@@ -180,6 +180,9 @@ const Test = () => {
   }, [currentDimension, currentQuestion, dimensions]);
 
   const loadTestData = async () => {
+    // Skip if we're resuming (dimensions loaded in initializeTest)
+    if (resumeId) return;
+    
     try {
       const loadedDimensions = await loadTestItems(version as TestVersion);
       setDimensions(loadedDimensions);
@@ -204,6 +207,10 @@ const Test = () => {
 
     try {
       if (resumeId) {
+        // Skip consent/demographics for resumed tests immediately
+        setShowConsent(false);
+        setShowDemographics(false);
+        
         // Resume existing test
         const { data: testData, error } = await supabase
           .from("tests")
@@ -219,20 +226,47 @@ const Test = () => {
             variant: "destructive",
           });
           navigate("/dashboard");
-          setLoading(false);
           return;
         }
 
         setTestId(testData.id);
         // Ensure we use the original test version when resuming
         setVersion((testData.test_version as TestVersion) || 'professional');
-        setCurrentDimension(testData.current_dimension || 0);
-        setCurrentQuestion(testData.current_item || 0);
+        
+        // Load dimensions first, then validate indices
+        const loadedDimensions = await loadTestItems((testData.test_version as TestVersion) || 'professional');
+        setDimensions(loadedDimensions);
+        
+        // Validate and set dimension/question indices with boundary checks
+        let validDimension = testData.current_dimension || 0;
+        let validQuestion = testData.current_item || 0;
+        
+        if (validDimension >= loadedDimensions.length) {
+          validDimension = Math.max(0, loadedDimensions.length - 1);
+        }
+        
+        if (loadedDimensions[validDimension]?.items) {
+          const itemsInDimension = loadedDimensions[validDimension].items.length;
+          if (validQuestion >= itemsInDimension) {
+            validQuestion = Math.max(0, itemsInDimension - 1);
+          }
+        }
+        
+        setCurrentDimension(validDimension);
+        setCurrentQuestion(validQuestion);
+        
         // Fallback to duration based on saved test version if time_remaining is missing
         const fallbackDuration = (testData.test_version === 'beginner') ? 5400 : (testData.test_version === 'professional' ? 7200 : 9000);
         setTimeRemaining(typeof testData.time_remaining === 'number' ? testData.time_remaining : fallbackDuration);
         setAnswers((testData.answers as Record<string, string>) || {});
-        setShowConsent(false);
+        
+        // Finished loading - hide loading state
+        setLoading(false);
+        
+        toast({
+          title: "Test Resumed",
+          description: `Resuming from question ${validQuestion + 1} in ${loadedDimensions[validDimension]?.dimensionName || 'dimension ' + (validDimension + 1)}`,
+        });
       } else {
         // New test - show consent
         setTimeRemaining(testDuration);
@@ -395,13 +429,42 @@ const Test = () => {
     }));
   };
 
-  const advanceToNextQuestion = () => {
+  const advanceToNextQuestion = async () => {
     const currentDimensionItems = dimensions[currentDimension]?.items || [];
+    
     if (currentQuestion < currentDimensionItems.length - 1) {
+      // Move to next question in current dimension
       setCurrentQuestion(prev => prev + 1);
     } else if (currentDimension < dimensions.length - 1) {
+      // Move to next dimension
       setCurrentDimension(prev => prev + 1);
       setCurrentQuestion(0);
+      
+      toast({
+        title: `${dimensions[currentDimension + 1]?.dimensionName || 'Next Dimension'}`,
+        description: `Starting dimension ${currentDimension + 2} of ${dimensions.length}`,
+      });
+    }
+    
+    // Auto-save progress
+    if (testId) {
+      try {
+        await supabase
+          .from("tests")
+          .update({
+            current_dimension: currentDimension < dimensions.length - 1 && currentQuestion === currentDimensionItems.length - 1 
+              ? currentDimension + 1 
+              : currentDimension,
+            current_item: currentQuestion < currentDimensionItems.length - 1 
+              ? currentQuestion + 1 
+              : 0,
+            answers: answers,
+            time_remaining: timeRemaining
+          })
+          .eq("id", testId);
+      } catch (error) {
+        console.error("Failed to auto-save progress:", error);
+      }
     }
   };
 
@@ -460,12 +523,29 @@ const Test = () => {
   const progress = actualTotalQuestions > 0 ? (globalQuestionNumber / actualTotalQuestions) * 100 : 0;
   const isLastQuestion = currentDimension === dimensions.length - 1 && currentQuestion === (dimensions[currentDimension]?.items?.length ?? 0) - 1;
 
-  if (loading || dimensions.length === 0) {
+  if (loading) {
     return (
       <div className="min-h-screen">
         <Navigation isAuthenticated={true} />
-        <div className="container py-12 text-center">
+        <div className="container py-12 text-center space-y-4">
+          <div className="animate-pulse">
+            <Brain className="h-12 w-12 mx-auto text-primary" />
+          </div>
           <p className="text-muted-foreground">Loading assessment...</p>
+        </div>
+      </div>
+    );
+  }
+
+  if (dimensions.length === 0 && !loading) {
+    return (
+      <div className="min-h-screen">
+        <Navigation isAuthenticated={true} />
+        <div className="container py-12 text-center space-y-4">
+          <AlertCircle className="h-12 w-12 mx-auto text-destructive" />
+          <h2 className="text-xl font-bold">Failed to Load Assessment</h2>
+          <p className="text-muted-foreground">Could not load test questions. Please try again.</p>
+          <Button onClick={() => navigate("/dashboard")}>Return to Dashboard</Button>
         </div>
       </div>
     );
