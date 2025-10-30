@@ -393,6 +393,7 @@ const Dashboard = () => {
                 </div>
 
                 {/* Professional - Highlighted as Recommended */}
+                <div className="bg-white dark:bg-gray-900 rounded-lg p-5 hover:shadow-xl transition-all hover:scale-105 cursor-pointer border-2 border-transparent hover:border-violet-400"
                      onClick={() => handleStartTest('professional')}>
                   <div className="flex items-center gap-2 mb-3 mt-2">
                     <div className="p-2 bg-violet-100 dark:bg-violet-900/50 rounded">
