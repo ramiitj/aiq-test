@@ -51,40 +51,61 @@ const Index = () => {
       id: "beginner",
       title: "Beginner",
       subtitle: "For beginners and students",
-      description: "Foundational AI literacy assessment for newcomers",
+      description: "Foundational AI literacy assessment for newcomers to AI collaboration",
       questions: "60 questions",
       time: "90 minutes",
       icon: GraduationCap,
       gradient: "from-blue-500 to-indigo-600",
       recommended: false,
-      idealFor: "Students, beginners, and those new to AI",
+      idealFor: "Students, career changers, and those new to AI",
       details: "8 questions per dimension (fixed)",
+      prerequisites: "Basic computer skills and curiosity about AI",
+      demonstrates: [
+        "Understanding of AI basics and core concepts",
+        "Ability to work with AI tools in simple scenarios",
+        "Foundational awareness of AI ethics and limitations",
+        "Basic prompt engineering techniques"
+      ]
     },
     {
       id: "professional",
       title: "Professional",
       subtitle: "For working professionals",
-      description: "Professional-level AI collaboration assessment",
+      description: "Comprehensive assessment for professionals actively using AI in their work",
       questions: "80 questions",
       time: "120 minutes",
       icon: Briefcase,
       gradient: "from-violet-500 to-purple-600",
       recommended: true,
-      idealFor: "Working professionals and practitioners",
+      idealFor: "Working professionals, managers, and AI practitioners",
       details: "10 questions per dimension (adaptive selection)",
+      prerequisites: "Regular AI tool usage and 6+ months of practical experience",
+      demonstrates: [
+        "Advanced prompt engineering and iteration strategies",
+        "Critical evaluation of AI outputs and quality assessment",
+        "Integration of AI into complex workflows",
+        "Strategic understanding of AI capabilities and limitations"
+      ]
     },
     {
       id: "expert",
       title: "Expert",
-      subtitle: "For AI leaders",
-      description: "Expert-level strategic AI assessment",
+      subtitle: "For AI leaders and researchers",
+      description: "Advanced assessment for AI strategists, leaders, and research professionals",
       questions: "80 questions",
       time: "150 minutes",
       icon: Rocket,
       gradient: "from-amber-500 to-orange-600",
       recommended: false,
-      idealFor: "Senior professionals, researchers, and leaders",
+      idealFor: "Senior professionals, AI researchers, and organizational leaders",
       details: "10 questions per dimension (adaptive selection)",
+      prerequisites: "Extensive AI experience, strategic decision-making role, or research background",
+      demonstrates: [
+        "Deep strategic understanding of AI technologies",
+        "Expert-level prompt engineering and optimization",
+        "Ethical AI governance and responsible deployment",
+        "Innovation leadership and creative AI synthesis"
+      ]
     },
   ];
 
@@ -204,9 +225,9 @@ const Index = () => {
               {assessmentLevels.map((level) => {
                 const Icon = level.icon;
                 return (
-                  <Card key={level.id} className="shadow-sm border relative overflow-hidden">
+                  <Card key={level.id} className="shadow-sm border relative overflow-hidden hover:shadow-lg transition-shadow">
                     {level.recommended && (
-                      <div className="absolute top-4 right-4 bg-primary text-primary-foreground px-3 py-1 rounded-full text-xs font-bold">
+                      <div className="absolute top-4 right-4 bg-primary text-primary-foreground px-3 py-1 rounded-full text-xs font-bold z-10">
                         Recommended
                       </div>
                     )}
@@ -215,22 +236,44 @@ const Index = () => {
                         <Icon className="h-6 w-6 text-white" />
                       </div>
                       <h3 className="text-2xl font-extrabold mb-2">{level.title}</h3>
-                      <p className="text-sm text-muted-foreground mb-5">{level.description}</p>
-                      <ul className="space-y-2 text-sm mb-5">
-                        <li className="flex items-center gap-2">
+                      <p className="text-sm text-muted-foreground mb-4">{level.description}</p>
+                      
+                      {/* Assessment Details */}
+                      <div className="space-y-2 mb-4">
+                        <div className="flex items-center gap-2 text-sm">
                           <CheckCircle className="h-4 w-4 text-green-600 flex-shrink-0" />
-                          <span>{level.questions}</span>
-                        </li>
-                        <li className="flex items-center gap-2">
+                          <span className="font-semibold">{level.questions}</span>
+                        </div>
+                        <div className="flex items-center gap-2 text-sm">
                           <CheckCircle className="h-4 w-4 text-green-600 flex-shrink-0" />
-                          <span>{level.time}</span>
-                        </li>
-                        <li className="flex items-center gap-2">
+                          <span className="font-semibold">{level.time}</span>
+                        </div>
+                        <div className="flex items-center gap-2 text-sm">
                           <CheckCircle className="h-4 w-4 text-green-600 flex-shrink-0" />
-                          <span>{level.details}</span>
-                        </li>
-                      </ul>
-                      <p className="text-xs text-muted-foreground italic">Best for: {level.idealFor}</p>
+                          <span className="text-muted-foreground text-xs">{level.details}</span>
+                        </div>
+                      </div>
+
+                      {/* Ideal For */}
+                      <div className="mb-4 p-3 bg-secondary/30 rounded-lg">
+                        <p className="text-xs font-bold text-muted-foreground mb-1">IDEAL FOR:</p>
+                        <p className="text-xs font-semibold">{level.idealFor}</p>
+                      </div>
+
+                      {/* What You'll Demonstrate */}
+                      {level.demonstrates && (
+                        <div className="space-y-2">
+                          <p className="text-xs font-bold text-muted-foreground">YOU'LL DEMONSTRATE:</p>
+                          <ul className="space-y-1.5">
+                            {level.demonstrates.slice(0, 3).map((item, idx) => (
+                              <li key={idx} className="flex items-start gap-2 text-xs">
+                                <span className="text-green-600 mt-0.5">•</span>
+                                <span className="text-muted-foreground leading-tight">{item}</span>
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+                      )}
                     </CardContent>
                   </Card>
                 );

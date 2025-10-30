@@ -355,13 +355,25 @@ const Test = () => {
     }
 
     try {
+      // Import scoring function
+      const { calculateTestScores } = await import("@/lib/scoreCalculator");
+      
+      // Calculate scores before completing
+      const scoringResult = calculateTestScores(answers, dimensions);
+      
+      // Calculate test duration
+      const testStartTime = timeRemaining === testDuration ? Date.now() : Date.now() - ((testDuration - timeRemaining) * 1000);
+      const testDurationSeconds = Math.floor((Date.now() - testStartTime) / 1000);
+
       await supabase
         .from("tests")
         .update({
           completed: true,
           paused: false,
           answers: answers,
-          time_remaining: timeRemaining
+          scores: scoringResult.dimensionScores,
+          time_remaining: timeRemaining,
+          test_duration_seconds: testDurationSeconds,
         })
         .eq("id", testId);
 
@@ -542,9 +554,9 @@ const Test = () => {
             <CardContent className="pt-5 pb-5">
               <div className="flex items-center justify-between">
                 <div>
-                  <h2 className="text-lg font-black mb-1">
-                    {version === 'beginner' ? 'Foundational' : version === 'professional' ? 'Comprehensive' : 'Advanced'} Assessment
-                  </h2>
+                <h2 className="text-lg font-black mb-1">
+                  {version === 'beginner' ? 'Foundational' : version === 'professional' ? 'Professional' : 'Advanced'} Assessment
+                </h2>
                   <p className="text-sm text-muted-foreground">
                     {totalQuestions} questions • {version === 'beginner' ? '90' : version === 'professional' ? '120' : '150'} minutes • 8 dimensions
                   </p>
@@ -1195,11 +1207,12 @@ const Test = () => {
               Submit Assessment
             </Button>
            ) : (
-             // Show Next button for all question types
+             // Show Next button - validate answer exists and is not empty
              <Button
                onClick={advanceToNextQuestion}
                disabled={!answers[questionKey] || answers[questionKey].trim() === ''}
-               className="flex-1 bg-blue-900 hover:bg-blue-800 font-semibold"
+               className="flex-1 bg-blue-900 hover:bg-blue-800 font-semibold disabled:opacity-50 disabled:cursor-not-allowed"
+               title={!answers[questionKey] || answers[questionKey].trim() === '' ? "Please select an answer before continuing" : "Continue to next question"}
              >
                Next Question
                <ChevronRight className="h-4 w-4 ml-2" />

@@ -289,7 +289,7 @@ const Results = () => {
     score: score,
   }));
 
-  const verificationUrl = verificationCode ? `${window.location.origin}/verify/${verificationCode}` : "";
+  const verificationUrl = verificationCode ? `https://aiq.works/verify/${verificationCode}` : "";
 
   const getScoreLevel = (score: number) => {
     if (score >= 80)
@@ -478,7 +478,7 @@ const Results = () => {
                   <p className="text-xs text-muted-foreground mt-2">
                     Verify at:{" "}
                     <span className="font-mono">
-                      {window.location.origin}/verify/{verificationCode}
+                      aiq.works/verify/{verificationCode}
                     </span>
                   </p>
                 </div>

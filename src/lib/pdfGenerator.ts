@@ -346,8 +346,8 @@ export async function generatePDFReport(
   doc.setTextColor(primaryBlue[0], primaryBlue[1], primaryBlue[2]);
   doc.text("Certificate Verification", margin, currentY + 3);
 
-  // Generate QR code - use production URL if available, otherwise current origin
-  const productionUrl = "https://aiq-test.lovableproject.com";
+  // Generate QR code - use aiq.works domain
+  const productionUrl = "https://aiq.works";
   const verificationUrl = productionUrl + "/verify/" + verificationCode;
   const qrDataUrl = await QRCode.toDataURL(verificationUrl, {
     width: 200,

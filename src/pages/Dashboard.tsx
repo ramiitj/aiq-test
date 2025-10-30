@@ -345,42 +345,121 @@ const Dashboard = () => {
             </CardContent>
           </Card>
 
-          {/* Start New Test CTA */}
-          <Card className="lg:col-span-2 shadow-sm border bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-blue-950/20 dark:to-indigo-950/20">
-            <CardContent className="pt-5 pb-5">
-              <h2 className="text-xl font-black mb-2">Start New Assessment</h2>
-              <p className="text-sm text-muted-foreground mb-4">Choose the level that matches your AI experience</p>
-              <div className="grid grid-cols-3 gap-3">
-                <Button 
-                  onClick={() => handleStartTest('beginner')}
-                  variant="outline"
-                  className="h-auto py-3 px-2 flex-col gap-1 bg-white dark:bg-gray-900 hover:bg-gray-50 dark:hover:bg-gray-800"
-                  size="sm"
-                >
-                  <span className="text-xs font-bold">Foundational</span>
-                  <span className="text-[10px] text-muted-foreground">60 questions</span>
-                  <span className="text-[10px] text-muted-foreground">90 min</span>
-                </Button>
-                <Button 
-                  onClick={() => handleStartTest('professional')}
-                  variant="outline"
-                  className="h-auto py-3 px-2 flex-col gap-1 bg-white dark:bg-gray-900 hover:bg-gray-50 dark:hover:bg-gray-800"
-                  size="sm"
-                >
-                  <span className="text-xs font-bold">Comprehensive</span>
-                  <span className="text-[10px] text-muted-foreground">80 questions</span>
-                  <span className="text-[10px] text-muted-foreground">120 min</span>
-                </Button>
-                <Button 
-                  onClick={() => handleStartTest('expert')}
-                  variant="outline"
-                  className="h-auto py-3 px-2 flex-col gap-1 bg-white dark:bg-gray-900 hover:bg-gray-50 dark:hover:bg-gray-800"
-                  size="sm"
-                >
-                  <span className="text-xs font-bold">Advanced</span>
-                  <span className="text-[10px] text-muted-foreground">80 questions</span>
-                  <span className="text-[10px] text-muted-foreground">150 min</span>
-                </Button>
+          {/* Start New Test CTA - Enhanced for visibility */}
+          <Card className="lg:col-span-2 shadow-lg border-2 border-blue-900 bg-gradient-to-br from-blue-900 to-indigo-900">
+            <CardContent className="pt-8 pb-8">
+              <div className="flex items-start gap-4 mb-6">
+                <div className="p-3 bg-white/10 rounded-lg">
+                  <PlayCircle className="h-8 w-8 text-white" />
+                </div>
+                <div className="flex-1">
+                  <h2 className="text-2xl font-black mb-2 text-white">Start New Assessment</h2>
+                  <p className="text-sm text-white/80 mb-4">Choose the level that matches your AI experience and demonstrate your skills</p>
+                </div>
+              </div>
+              
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                {/* Beginner/Foundational */}
+                <div className="bg-white dark:bg-gray-900 rounded-lg p-5 hover:shadow-xl transition-all hover:scale-105 cursor-pointer border-2 border-transparent hover:border-blue-400"
+                     onClick={() => handleStartTest('beginner')}>
+                  <div className="flex items-center gap-2 mb-3">
+                    <div className="p-2 bg-blue-100 dark:bg-blue-900/30 rounded">
+                      <PlayCircle className="h-5 w-5 text-blue-600" />
+                    </div>
+                    <h3 className="text-base font-black">Foundational</h3>
+                  </div>
+                  <div className="space-y-2 mb-4">
+                    <p className="text-xs text-muted-foreground font-semibold">60 questions • 90 minutes</p>
+                    <p className="text-xs text-muted-foreground">All questions fixed per dimension</p>
+                  </div>
+                  <div className="space-y-1.5">
+                    <p className="text-xs font-bold text-blue-900 dark:text-blue-100">BEST FOR:</p>
+                    <ul className="text-xs text-muted-foreground space-y-1">
+                      <li>• Students & beginners</li>
+                      <li>• Career changers</li>
+                      <li>• New to AI tools</li>
+                    </ul>
+                  </div>
+                  <Button 
+                    className="w-full mt-4 bg-blue-900 hover:bg-blue-800"
+                    size="sm"
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      handleStartTest('beginner');
+                    }}
+                  >
+                    Start Foundational
+                  </Button>
+                </div>
+
+                {/* Professional - Highlighted as Recommended */}
+                <div className="bg-gradient-to-br from-violet-50 to-purple-50 dark:from-violet-950/30 dark:to-purple-950/30 rounded-lg p-5 hover:shadow-xl transition-all hover:scale-105 cursor-pointer border-2 border-violet-400 relative"
+                     onClick={() => handleStartTest('professional')}>
+                  <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-violet-600 text-white px-3 py-1 rounded-full text-xs font-bold">
+                    RECOMMENDED
+                  </div>
+                  <div className="flex items-center gap-2 mb-3 mt-2">
+                    <div className="p-2 bg-violet-100 dark:bg-violet-900/50 rounded">
+                      <PlayCircle className="h-5 w-5 text-violet-600" />
+                    </div>
+                    <h3 className="text-base font-black">Professional</h3>
+                  </div>
+                  <div className="space-y-2 mb-4">
+                    <p className="text-xs text-muted-foreground font-semibold">80 questions • 120 minutes</p>
+                    <p className="text-xs text-muted-foreground">Adaptive item selection</p>
+                  </div>
+                  <div className="space-y-1.5">
+                    <p className="text-xs font-bold text-violet-900 dark:text-violet-100">BEST FOR:</p>
+                    <ul className="text-xs text-muted-foreground space-y-1">
+                      <li>• Working professionals</li>
+                      <li>• AI practitioners</li>
+                      <li>• Managers & leaders</li>
+                    </ul>
+                  </div>
+                  <Button 
+                    className="w-full mt-4 bg-violet-600 hover:bg-violet-700"
+                    size="sm"
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      handleStartTest('professional');
+                    }}
+                  >
+                    Start Professional
+                  </Button>
+                </div>
+
+                {/* Expert/Advanced */}
+                <div className="bg-white dark:bg-gray-900 rounded-lg p-5 hover:shadow-xl transition-all hover:scale-105 cursor-pointer border-2 border-transparent hover:border-amber-400"
+                     onClick={() => handleStartTest('expert')}>
+                  <div className="flex items-center gap-2 mb-3">
+                    <div className="p-2 bg-amber-100 dark:bg-amber-900/30 rounded">
+                      <PlayCircle className="h-5 w-5 text-amber-600" />
+                    </div>
+                    <h3 className="text-base font-black">Advanced</h3>
+                  </div>
+                  <div className="space-y-2 mb-4">
+                    <p className="text-xs text-muted-foreground font-semibold">80 questions • 150 minutes</p>
+                    <p className="text-xs text-muted-foreground">Adaptive item selection</p>
+                  </div>
+                  <div className="space-y-1.5">
+                    <p className="text-xs font-bold text-amber-900 dark:text-amber-100">BEST FOR:</p>
+                    <ul className="text-xs text-muted-foreground space-y-1">
+                      <li>• AI researchers</li>
+                      <li>• Senior leaders</li>
+                      <li>• Strategic roles</li>
+                    </ul>
+                  </div>
+                  <Button 
+                    className="w-full mt-4 bg-amber-600 hover:bg-amber-700"
+                    size="sm"
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      handleStartTest('expert');
+                    }}
+                  >
+                    Start Advanced
+                  </Button>
+                </div>
               </div>
             </CardContent>
           </Card>
