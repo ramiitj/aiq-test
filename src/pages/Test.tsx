@@ -69,9 +69,9 @@ const Test = ({ version = "professional" }: { version?: TestVersion }) => {
     });
   }, [version]);
 
-  const totalQuestions = dimensions.reduce((sum, dim) => sum + (dim.items?.length ?? 0), 0);
+  const totalQuestions = dimensions?.reduce((sum, dim) => sum + (dim.items?.length ?? 0), 0) ?? 0;
   const globalQuestionNumber =
-    dimensions.slice(0, currentDimension).reduce((sum, dim) => sum + (dim.items?.length ?? 0), 0) +
+    (dimensions?.slice(0, currentDimension).reduce((sum, dim) => sum + (dim.items?.length ?? 0), 0) ?? 0) +
     currentQuestion + 1;
   const isLastQuestion = globalQuestionNumber === totalQuestions;
 
@@ -92,9 +92,17 @@ const Test = ({ version = "professional" }: { version?: TestVersion }) => {
     }
   };
 
-  const currentItem = dimensions[currentDimension]?.items?.[currentQuestion] || null;
+  const currentItem = dimensions?.[currentDimension]?.items?.[currentQuestion] || null;
   const questionKey = `${currentDimension}-${currentQuestion}`;
   const currentAnswer = answers[questionKey];
+  
+  if (loading) {
+    return <div className="flex items-center justify-center min-h-screen">Loading assessment...</div>;
+  }
+  
+  if (!dimensions || dimensions.length === 0) {
+    return <div className="flex items-center justify-center min-h-screen">No assessment data available.</div>;
+  }
 
   const handleAnswerAndAdvance = (value: string) => {
     setAnswers(prev => ({ ...prev, [questionKey]: value }));
@@ -279,7 +287,7 @@ const Test = ({ version = "professional" }: { version?: TestVersion }) => {
 
   const handleSubmitTest = () => {
     let totalScore = 0;
-    dimensions.forEach((dim, dIdx) => {
+    dimensions?.forEach((dim, dIdx) => {
       dim.items.forEach((item, qIdx) => {
         const key = `${dIdx}-${qIdx}`;
         totalScore += calculateScore(item, answers[key]);
@@ -294,11 +302,12 @@ const Test = ({ version = "professional" }: { version?: TestVersion }) => {
 
   if (score !== null) {
     // Results view
+    const totalPoints = dimensions?.reduce((sum, dim) => sum + (dim.items?.reduce((t, i) => t + (i.points || 0), 0) ?? 0), 0) ?? 0;
     return (
       <Card>
         <CardContent>
           <h2 className="text-xl font-bold mb-2">Assessment Complete!</h2>
-          <p className="mb-4 font-semibold">Your raw score: {score} / {dimensions.reduce((sum, dim) => sum + dim.items.reduce((t, i) => t + i.points, 0), 0)}</p>
+          <p className="mb-4 font-semibold">Your raw score: {score} / {totalPoints}</p>
           {/* Add more result breakdowns/statistics here */}
         </CardContent>
       </Card>
