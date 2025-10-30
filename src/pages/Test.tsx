@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Progress } from "@/components/ui/progress";
 import { Checkbox } from "@/components/ui/checkbox";
+import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { 
   Clock, 
   CheckCircle, 
@@ -29,6 +30,8 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+
+import { TrueFalseQuestion } from "@/components/TrueFalseQuestion";
 
 interface ConsentData {
   dataCollection: boolean;
@@ -103,9 +106,9 @@ const Test = () => {
   const [version, setVersion] = useState<TestVersion>((searchParams.get('version') as TestVersion) || 'professional');
   const resumeId = searchParams.get('resume');
 
-  const questionsPerDimension = version === 'beginner' ? 3 : 10;
-  const totalQuestions = version === 'beginner' ? 24 : 80;
-  const testDuration = version === 'beginner' ? 900 : 3600; // 15 or 60 minutes
+  const questionsPerDimension = version === 'beginner' ? 8 : 10;
+  const totalQuestions = version === 'beginner' ? 60 : 80;
+  const testDuration = version === 'beginner' ? 5400 : (version === 'professional' ? 7200 : 9000); // 90, 120, or 150 minutes
 
   useEffect(() => {
     initializeTest();
@@ -181,7 +184,7 @@ const Test = () => {
         setCurrentDimension(testData.current_dimension || 0);
         setCurrentQuestion(testData.current_item || 0);
         // Fallback to duration based on saved test version if time_remaining is missing
-        const fallbackDuration = (testData.test_version === 'beginner') ? 900 : 3600;
+        const fallbackDuration = (testData.test_version === 'beginner') ? 5400 : (testData.test_version === 'professional' ? 7200 : 9000);
         setTimeRemaining(typeof testData.time_remaining === 'number' ? testData.time_remaining : fallbackDuration);
         setAnswers((testData.answers as Record<string, string>) || {});
         setShowConsent(false);
@@ -338,15 +341,15 @@ const Test = () => {
     return `${mins}:${secs.toString().padStart(2, '0')}`;
   };
 
-  // Handle answer selection and auto-advance for single-choice questions
+  // Handle answer selection and auto-advance for single-choice questions  
   const handleAnswerAndAdvance = (questionKey: string, value: string, questionType?: string) => {
     setAnswers(prev => ({
       ...prev,
       [questionKey]: value
     }));
     
-    // Auto-advance only for single-choice (radio button) questions
-    if (questionType === 'multiple-choice') {
+    // Auto-advance only for single-choice (radio button) types: multiple-choice, true-false, scenario-based
+    if (questionType === 'multiple-choice' || questionType === 'true-false' || questionType === 'scenario-based') {
       setTimeout(() => {
         advanceToNextQuestion();
       }, 300);
@@ -416,7 +419,7 @@ const Test = () => {
                     {version === 'beginner' ? 'Foundational' : version === 'professional' ? 'Comprehensive' : 'Advanced'} Assessment
                   </h2>
                   <p className="text-sm text-muted-foreground">
-                    {totalQuestions} questions • {version === 'beginner' ? '15' : '60'} minutes • 8 dimensions
+                    {totalQuestions} questions • {version === 'beginner' ? '90' : version === 'professional' ? '120' : '150'} minutes • 8 dimensions
                   </p>
                 </div>
                 <div className="text-right">
@@ -918,78 +921,84 @@ const Test = () => {
                 
                 {/* Answer Options or Text Area */}
                 <div className="space-y-3">
-                  {dimensions[currentDimension].items[currentQuestion].options ? (
-                    dimensions[currentDimension].items[currentQuestion].type === 'multiple-choice-multiple' ? (
-                      // Multiple selection (checkboxes)
-                      <>
-                        {dimensions[currentDimension].items[currentQuestion].options?.map((option, idx) => {
-                          const currentAnswers = answers[`${currentDimension}-${currentQuestion}`]?.split(',').filter(Boolean) || [];
-                          const isChecked = currentAnswers.includes(idx.toString());
-                          
-                          return (
-                            <label
-                              key={idx}
-                              className={`flex items-start gap-3 p-4 border-2 rounded-lg cursor-pointer transition-all ${
-                                isChecked 
-                                  ? 'border-primary bg-primary/5' 
-                                  : 'border-border hover:border-primary/50 hover:bg-accent/30'
-                              }`}
-                            >
-                              <Checkbox
-                                checked={isChecked}
-                                onCheckedChange={(checked) => {
-                                  const currentAnswers = answers[`${currentDimension}-${currentQuestion}`]?.split(',').filter(Boolean) || [];
-                                  let newAnswers: string[];
-                                  
-                                  if (checked) {
-                                    newAnswers = [...currentAnswers, idx.toString()];
-                                  } else {
-                                    newAnswers = currentAnswers.filter(a => a !== idx.toString());
-                                  }
-                                  
-                                  setAnswers(prev => ({
-                                    ...prev,
-                                    [`${currentDimension}-${currentQuestion}`]: newAnswers.join(',')
-                                  }));
-                                }}
-                                className="mt-0.5"
-                              />
-                              <span className="text-sm flex-1 leading-relaxed">{option}</span>
-                            </label>
-                          );
-                        })}
-                      </>
-                    ) : (
-                      // Single selection (radio buttons) - auto-advance
-                      dimensions[currentDimension].items[currentQuestion].options?.map((option, idx) => {
-                        const isSelected = answers[`${currentDimension}-${currentQuestion}`] === idx.toString();
+                  {dimensions[currentDimension].items[currentQuestion].type === 'true-false' ? (
+                    // True/False with hint component
+                    <TrueFalseQuestion
+                      questionKey={`${currentDimension}-${currentQuestion}`}
+                      currentAnswer={answers[`${currentDimension}-${currentQuestion}`]}
+                      onAnswerChange={handleAnswerAndAdvance}
+                    />
+                  ) : dimensions[currentDimension].items[currentQuestion].type === 'multiple-response' ? (
+                    // Multiple selection (checkboxes)
+                    <>
+                      <p className="text-sm font-semibold text-blue-900 mb-2">SELECT ALL that apply:</p>
+                      {dimensions[currentDimension].items[currentQuestion].options?.map((option, idx) => {
+                        const currentAnswers = answers[`${currentDimension}-${currentQuestion}`]?.split(',').filter(Boolean) || [];
+                        const isChecked = currentAnswers.includes(idx.toString());
                         
                         return (
                           <label
                             key={idx}
                             className={`flex items-start gap-3 p-4 border-2 rounded-lg cursor-pointer transition-all ${
-                              isSelected 
+                              isChecked 
                                 ? 'border-primary bg-primary/5' 
                                 : 'border-border hover:border-primary/50 hover:bg-accent/30'
                             }`}
                           >
-                            <input
-                              type="radio"
-                              name={`q-${currentDimension}-${currentQuestion}`}
-                              value={idx.toString()}
-                              checked={isSelected}
-                              onChange={(e) => handleAnswerAndAdvance(
-                                `${currentDimension}-${currentQuestion}`,
-                                e.target.value,
-                                'multiple-choice'
-                              )}
-                              className="mt-0.5 w-4 h-4 accent-primary"
+                            <Checkbox
+                              checked={isChecked}
+                              onCheckedChange={(checked) => {
+                                const currentAnswers = answers[`${currentDimension}-${currentQuestion}`]?.split(',').filter(Boolean) || [];
+                                let newAnswers: string[];
+                                
+                                if (checked) {
+                                  newAnswers = [...currentAnswers, idx.toString()];
+                                } else {
+                                  newAnswers = currentAnswers.filter(a => a !== idx.toString());
+                                }
+                                
+                                setAnswers(prev => ({
+                                  ...prev,
+                                  [`${currentDimension}-${currentQuestion}`]: newAnswers.join(',')
+                                }));
+                              }}
+                              className="mt-0.5"
                             />
                             <span className="text-sm flex-1 leading-relaxed">{option}</span>
                           </label>
                         );
-                      })
-                    )
+                      })}
+                    </>
+                  ) : dimensions[currentDimension].items[currentQuestion].options ? (
+                    // Single selection (radio buttons) - auto-advance for multiple-choice and scenario-based
+                    dimensions[currentDimension].items[currentQuestion].options?.map((option, idx) => {
+                      const isSelected = answers[`${currentDimension}-${currentQuestion}`] === idx.toString();
+                      
+                      return (
+                        <label
+                          key={idx}
+                          className={`flex items-start gap-3 p-4 border-2 rounded-lg cursor-pointer transition-all ${
+                            isSelected 
+                              ? 'border-primary bg-primary/5' 
+                              : 'border-border hover:border-primary/50 hover:bg-accent/30'
+                          }`}
+                        >
+                          <input
+                            type="radio"
+                            name={`q-${currentDimension}-${currentQuestion}`}
+                            value={idx.toString()}
+                            checked={isSelected}
+                            onChange={(e) => handleAnswerAndAdvance(
+                              `${currentDimension}-${currentQuestion}`,
+                              e.target.value,
+                              dimensions[currentDimension].items[currentQuestion].type
+                            )}
+                            className="mt-0.5 w-4 h-4 accent-primary"
+                          />
+                          <span className="text-sm flex-1 leading-relaxed">{option}</span>
+                        </label>
+                      );
+                    })
                   ) : (
                     // Open-ended
                     <textarea
@@ -1035,8 +1044,8 @@ const Test = () => {
               Submit Assessment
             </Button>
           ) : (
-            // Show Next button only for checkboxes and text inputs
-            dimensions[currentDimension].items[currentQuestion].type === 'multiple-choice-multiple' || 
+            // Show Next button only for complex response types and text inputs
+            dimensions[currentDimension].items[currentQuestion].type === 'multiple-response' || 
             !dimensions[currentDimension].items[currentQuestion].options ? (
               <Button
                 onClick={advanceToNextQuestion}
@@ -1047,7 +1056,7 @@ const Test = () => {
                 }
                 className="flex-1 bg-blue-900 hover:bg-blue-800 font-semibold"
               >
-                {dimensions[currentDimension].items[currentQuestion].type === 'multiple-choice-multiple' 
+                {dimensions[currentDimension].items[currentQuestion].type === 'multiple-response' 
                   ? 'Continue' 
                   : 'Next Question'}
                 <ChevronRight className="h-4 w-4 ml-2" />

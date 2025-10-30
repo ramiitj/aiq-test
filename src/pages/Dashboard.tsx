@@ -358,8 +358,8 @@ const Dashboard = () => {
                   size="sm"
                 >
                   <span className="text-xs font-bold">Foundational</span>
-                  <span className="text-[10px] text-muted-foreground">24 questions</span>
-                  <span className="text-[10px] text-muted-foreground">15 min</span>
+                  <span className="text-[10px] text-muted-foreground">60 questions</span>
+                  <span className="text-[10px] text-muted-foreground">90 min</span>
                 </Button>
                 <Button 
                   onClick={() => handleStartTest('professional')}
@@ -369,7 +369,7 @@ const Dashboard = () => {
                 >
                   <span className="text-xs font-bold">Comprehensive</span>
                   <span className="text-[10px] text-muted-foreground">80 questions</span>
-                  <span className="text-[10px] text-muted-foreground">60 min</span>
+                  <span className="text-[10px] text-muted-foreground">120 min</span>
                 </Button>
                 <Button 
                   onClick={() => handleStartTest('expert')}
@@ -379,7 +379,7 @@ const Dashboard = () => {
                 >
                   <span className="text-xs font-bold">Advanced</span>
                   <span className="text-[10px] text-muted-foreground">80 questions</span>
-                  <span className="text-[10px] text-muted-foreground">60 min</span>
+                  <span className="text-[10px] text-muted-foreground">150 min</span>
                 </Button>
               </div>
             </CardContent>

@@ -7,22 +7,42 @@
 export interface TestItem {
   id: string;
   level: number;
-  type: string;
+  type: 'multiple-choice' | 'true-false' | 'scenario-based' | 'multiple-response' | 'scenario-ranking' | 'matching' | 'rank-ordering';
   dimension?: string;
   dimensionCode?: string;
   points: number;
   difficulty: number;
   question: string;
   format?: string;
+  
+  // For multiple-choice, true-false, scenario-based
   options?: string[];
   correctAnswer?: number | boolean;
+  
+  // For multiple-response (checkboxes)
   correctAnswers?: number[];
+  
+  // For scenario-ranking and rank-ordering
+  correctOrder?: number[];
+  items?: string[]; // For rank-ordering
+  
+  // For matching
+  leftColumn?: string[];
+  rightColumn?: string[];
+  correctPairs?: [number, number][];
+  
+  // Scoring
+  scoringMethod?: string;
+  scoringLogic?: string;
+  
+  // Metadata
   rationale?: string;
   explanation?: string;
   expectedLength?: string;
   scoringRubric?: any;
   partialCredit?: any;
   bloomLevel?: string;
+  discrimination?: number;
   tags?: string[];
 }
 
@@ -40,6 +60,8 @@ export type TestVersion = 'beginner' | 'professional' | 'expert';
 export interface VersionConfig {
   itemsPerDimension: number;
   totalTime: number; // in seconds
+  totalPoints: number;
+  pointsPerDimension: number;
   level1Count: number; // easy items
   level2Count: number; // medium items
   level3Count: number; // hard items
@@ -47,25 +69,31 @@ export interface VersionConfig {
 
 const VERSION_CONFIGS: Record<TestVersion, VersionConfig> = {
   beginner: {
-    itemsPerDimension: 3,
-    totalTime: 900, // 15 minutes
-    level1Count: 1,
-    level2Count: 1,
-    level3Count: 1,
+    itemsPerDimension: 8,
+    totalTime: 5400, // 90 minutes
+    totalPoints: 600,
+    pointsPerDimension: 75,
+    level1Count: 3,
+    level2Count: 3,
+    level3Count: 2,
   },
   professional: {
     itemsPerDimension: 10,
-    totalTime: 3600, // 60 minutes
+    totalTime: 7200, // 120 minutes
+    totalPoints: 800,
+    pointsPerDimension: 100,
     level1Count: 4,
     level2Count: 3,
     level3Count: 3,
   },
   expert: {
     itemsPerDimension: 10,
-    totalTime: 3600, // 60 minutes (80 items total: 10 per dimension × 8 dimensions)
-    level1Count: 4, // ~40% of items at foundational level
-    level2Count: 3, // ~30% at application level
-    level3Count: 3, // ~30% at evaluation level
+    totalTime: 9000, // 150 minutes
+    totalPoints: 800,
+    pointsPerDimension: 100,
+    level1Count: 4,
+    level2Count: 3,
+    level3Count: 3,
   },
 };
 
@@ -190,7 +218,7 @@ export function getVersionInfo(version: TestVersion) {
   // Calculate total questions based on actual structure
   let totalQuestions: number;
   if (version === 'beginner') {
-    totalQuestions = 24; // 3 items per dimension × 8 dimensions
+    totalQuestions = 60; // 8 items per dimension × 8 dimensions
   } else if (version === 'professional') {
     totalQuestions = 80; // 10 items per dimension × 8 dimensions
   } else { // expert
@@ -200,9 +228,9 @@ export function getVersionInfo(version: TestVersion) {
   const timeMinutes = config.totalTime / 60;
 
   const descriptions = {
-    beginner: 'Foundational AI literacy assessment for those new to AI',
-    professional: 'Comprehensive assessment for AI practitioners and professionals',
-    expert: 'Advanced assessment for AI experts and leaders (80 items randomly selected from 160-item pool)',
+    beginner: 'Foundational AI literacy assessment for those new to AI (60 items across 8 dimensions)',
+    professional: 'Comprehensive assessment for AI practitioners (80 items adaptively selected from 160-item pool)',
+    expert: 'Advanced assessment for AI experts and leaders (80 items adaptively selected from 160-item pool)',
   };
 
   const audiences = {
