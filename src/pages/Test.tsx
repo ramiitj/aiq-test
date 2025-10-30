@@ -18,7 +18,9 @@ import {
   Shield,
   FileText,
   Brain,
-  User
+  User,
+  GripVertical,
+  ArrowUpDown
 } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import { Input } from "@/components/ui/input";
@@ -103,6 +105,12 @@ const Test = () => {
     country: ''
   });
 
+  // State for rank-ordering questions (drag and drop)
+  const [rankOrder, setRankOrder] = useState<number[]>([]);
+  
+  // State for matching questions
+  const [matchingPairs, setMatchingPairs] = useState<Record<number, number>>({});
+
   const [version, setVersion] = useState<TestVersion>((searchParams.get('version') as TestVersion) || 'professional');
   const resumeId = searchParams.get('resume');
 
@@ -133,6 +141,39 @@ const Test = () => {
       return () => clearInterval(timer);
     }
   }, [showConsent, timeRemaining]);
+
+  // Initialize rank order and matching when question changes
+  useEffect(() => {
+    if (dimensions.length > 0 && dimensions[currentDimension]?.items[currentQuestion]) {
+      const item = dimensions[currentDimension].items[currentQuestion];
+      const questionKey = `${currentDimension}-${currentQuestion}`;
+      
+      // Initialize rank-ordering
+      if (item.type === 'rank-ordering' || item.type === 'scenario-ranking') {
+        const existingAnswer = answers[questionKey];
+        if (existingAnswer) {
+          setRankOrder(existingAnswer.split(',').map(Number));
+        } else if (item.options) {
+          setRankOrder(item.options.map((_, idx) => idx));
+        }
+      }
+      
+      // Initialize matching
+      if (item.type === 'matching') {
+        const existingAnswer = answers[questionKey];
+        if (existingAnswer) {
+          const pairs: Record<number, number> = {};
+          existingAnswer.split(',').forEach(pair => {
+            const [left, right] = pair.split(':').map(Number);
+            pairs[left] = right;
+          });
+          setMatchingPairs(pairs);
+        } else {
+          setMatchingPairs({});
+        }
+      }
+    }
+  }, [currentDimension, currentQuestion, dimensions]);
 
   const loadTestData = async () => {
     try {
@@ -372,6 +413,46 @@ const Test = () => {
       setCurrentDimension(prev => prev - 1);
       setCurrentQuestion(questionsPerDimension - 1);
     }
+  };
+
+  // Rank ordering handlers
+  const moveRankItem = (fromIndex: number, toIndex: number) => {
+    const newOrder = [...rankOrder];
+    const [movedItem] = newOrder.splice(fromIndex, 1);
+    newOrder.splice(toIndex, 0, movedItem);
+    setRankOrder(newOrder);
+    
+    // Save to answers
+    const questionKey = `${currentDimension}-${currentQuestion}`;
+    setAnswers(prev => ({
+      ...prev,
+      [questionKey]: newOrder.join(',')
+    }));
+  };
+
+  // Matching handlers
+  const handleMatchingSelection = (leftIndex: number, rightIndex: number) => {
+    const newPairs = { ...matchingPairs };
+    
+    // Toggle: if this pair already exists, remove it; otherwise add it
+    if (newPairs[leftIndex] === rightIndex) {
+      delete newPairs[leftIndex];
+    } else {
+      newPairs[leftIndex] = rightIndex;
+    }
+    
+    setMatchingPairs(newPairs);
+    
+    // Save to answers as "leftIndex:rightIndex,leftIndex:rightIndex,..."
+    const questionKey = `${currentDimension}-${currentQuestion}`;
+    const pairsString = Object.entries(newPairs)
+      .map(([left, right]) => `${left}:${right}`)
+      .join(',');
+    
+    setAnswers(prev => ({
+      ...prev,
+      [questionKey]: pairsString
+    }));
   };
 
   const progress = ((currentDimension * questionsPerDimension + currentQuestion) / totalQuestions) * 100;
@@ -840,6 +921,9 @@ const Test = () => {
   }
 
   // Main Test Interface
+  const currentItem = dimensions[currentDimension]?.items[currentQuestion];
+  const questionKey = `${currentDimension}-${currentQuestion}`;
+
   return (
     <div className="min-h-screen">
       <Navigation isAuthenticated={true} />
@@ -857,7 +941,7 @@ const Test = () => {
               </div>
               <div className="h-4 w-px bg-border" />
               <span className="text-sm font-medium text-muted-foreground">
-                Question {currentDimension * questionsPerDimension + currentQuestion + 1} of {totalQuestions}
+                Question {globalQuestionNumber} of {totalQuestions}
               </span>
             </div>
             <div className="flex gap-2">
@@ -877,12 +961,11 @@ const Test = () => {
       </div>
 
       <main className="container py-6 max-w-4xl">
-        {/* Current Dimension (streamlined to reduce numeric clutter) */}
+        {/* Current Dimension */}
         <div className="mb-6">
           <h2 className="text-2xl font-black mb-1">
             {dimensions[currentDimension]?.dimensionName || dimensions[currentDimension]?.dimensionCode || `Dimension ${currentDimension + 1}`}
           </h2>
-          {/* Keep per-dimension question number for screen readers only */}
           <p className="sr-only">
             Question {currentQuestion + 1} of {questionsPerDimension}
           </p>
@@ -891,10 +974,10 @@ const Test = () => {
         {/* Question Card */}
         <Card className="mb-6 shadow-sm border">
           <CardContent className="pt-6 pb-6">
-            {dimensions[currentDimension]?.items[currentQuestion] ? (
+            {currentItem ? (
               <div className="space-y-6">
                 {(() => {
-                  const { main, items } = parseQuestionText(dimensions[currentDimension].items[currentQuestion].question);
+                  const { main, items } = parseQuestionText(currentItem.question);
                   
                   return (
                     <>
@@ -919,21 +1002,23 @@ const Test = () => {
                   );
                 })()}
                 
-                {/* Answer Options or Text Area */}
+                {/* Answer Options Based on Type */}
                 <div className="space-y-3">
-                  {dimensions[currentDimension].items[currentQuestion].type === 'true-false' ? (
-                    // True/False with hint component
+                  {/* TRUE-FALSE */}
+                  {currentItem.type === 'true-false' && (
                     <TrueFalseQuestion
-                      questionKey={`${currentDimension}-${currentQuestion}`}
-                      currentAnswer={answers[`${currentDimension}-${currentQuestion}`]}
+                      questionKey={questionKey}
+                      currentAnswer={answers[questionKey]}
                       onAnswerChange={handleAnswerAndAdvance}
                     />
-                  ) : dimensions[currentDimension].items[currentQuestion].type === 'multiple-response' ? (
-                    // Multiple selection (checkboxes)
+                  )}
+
+                  {/* MULTIPLE-RESPONSE (checkboxes) */}
+                  {currentItem.type === 'multiple-response' && (
                     <>
                       <p className="text-sm font-semibold text-blue-900 mb-2">SELECT ALL that apply:</p>
-                      {dimensions[currentDimension].items[currentQuestion].options?.map((option, idx) => {
-                        const currentAnswers = answers[`${currentDimension}-${currentQuestion}`]?.split(',').filter(Boolean) || [];
+                      {currentItem.options?.map((option, idx) => {
+                        const currentAnswers = answers[questionKey]?.split(',').filter(Boolean) || [];
                         const isChecked = currentAnswers.includes(idx.toString());
                         
                         return (
@@ -948,7 +1033,7 @@ const Test = () => {
                             <Checkbox
                               checked={isChecked}
                               onCheckedChange={(checked) => {
-                                const currentAnswers = answers[`${currentDimension}-${currentQuestion}`]?.split(',').filter(Boolean) || [];
+                                const currentAnswers = answers[questionKey]?.split(',').filter(Boolean) || [];
                                 let newAnswers: string[];
                                 
                                 if (checked) {
@@ -959,7 +1044,7 @@ const Test = () => {
                                 
                                 setAnswers(prev => ({
                                   ...prev,
-                                  [`${currentDimension}-${currentQuestion}`]: newAnswers.join(',')
+                                  [questionKey]: newAnswers.join(',')
                                 }));
                               }}
                               className="mt-0.5"
@@ -969,45 +1054,177 @@ const Test = () => {
                         );
                       })}
                     </>
-                  ) : dimensions[currentDimension].items[currentQuestion].options ? (
-                    // Single selection (radio buttons) - auto-advance for multiple-choice and scenario-based
-                    dimensions[currentDimension].items[currentQuestion].options?.map((option, idx) => {
-                      const isSelected = answers[`${currentDimension}-${currentQuestion}`] === idx.toString();
-                      
-                      return (
-                        <label
-                          key={idx}
-                          className={`flex items-start gap-3 p-4 border-2 rounded-lg cursor-pointer transition-all ${
-                            isSelected 
-                              ? 'border-primary bg-primary/5' 
-                              : 'border-border hover:border-primary/50 hover:bg-accent/30'
-                          }`}
-                        >
-                          <input
-                            type="radio"
-                            name={`q-${currentDimension}-${currentQuestion}`}
-                            value={idx.toString()}
-                            checked={isSelected}
-                            onChange={(e) => handleAnswerAndAdvance(
-                              `${currentDimension}-${currentQuestion}`,
-                              e.target.value,
-                              dimensions[currentDimension].items[currentQuestion].type
-                            )}
-                            className="mt-0.5 w-4 h-4 accent-primary"
-                          />
-                          <span className="text-sm flex-1 leading-relaxed">{option}</span>
-                        </label>
-                      );
-                    })
-                  ) : (
-                    // Open-ended
+                  )}
+
+                  {/* RANK-ORDERING / SCENARIO-RANKING */}
+                  {(currentItem.type === 'rank-ordering' || currentItem.type === 'scenario-ranking') && currentItem.options && (
+                    <>
+                      <p className="text-sm font-semibold text-blue-900 mb-3">
+                        Drag to reorder items from first to last:
+                      </p>
+                      <div className="space-y-2">
+                        {rankOrder.map((itemIndex, position) => {
+                          const option = currentItem.options![itemIndex];
+                          return (
+                            <div
+                              key={itemIndex}
+                              className="flex items-center gap-3 p-4 border-2 border-border rounded-lg bg-white dark:bg-gray-900"
+                            >
+                              <div className="flex items-center gap-2">
+                                <span className="text-sm font-bold text-blue-900 dark:text-blue-100 w-6">
+                                  {position + 1}.
+                                </span>
+                                <GripVertical className="h-5 w-5 text-muted-foreground" />
+                              </div>
+                              <span className="text-sm flex-1 leading-relaxed">{option}</span>
+                              <div className="flex gap-1">
+                                <Button
+                                  size="sm"
+                                  variant="outline"
+                                  onClick={() => position > 0 && moveRankItem(position, position - 1)}
+                                  disabled={position === 0}
+                                  className="h-8 w-8 p-0"
+                                  title="Move up"
+                                >
+                                  ↑
+                                </Button>
+                                <Button
+                                  size="sm"
+                                  variant="outline"
+                                  onClick={() => position < rankOrder.length - 1 && moveRankItem(position, position + 1)}
+                                  disabled={position === rankOrder.length - 1}
+                                  className="h-8 w-8 p-0"
+                                  title="Move down"
+                                >
+                                  ↓
+                                </Button>
+                              </div>
+                            </div>
+                          );
+                        })}
+                      </div>
+                    </>
+                  )}
+
+                  {/* MATCHING */}
+                  {currentItem.type === 'matching' && (currentItem as any).leftColumn && (currentItem as any).rightColumn && (
+                    <>
+                      <p className="text-sm font-semibold text-blue-900 mb-3">
+                        Match items from the left column to the right column:
+                      </p>
+                      <div className="grid md:grid-cols-2 gap-4">
+                        {/* Left Column */}
+                        <div className="space-y-2">
+                          <p className="text-xs font-bold text-muted-foreground mb-2">LEFT COLUMN</p>
+                          {(currentItem as any).leftColumn.map((leftItem: string, leftIdx: number) => (
+                            <div
+                              key={leftIdx}
+                              className={`p-3 border-2 rounded-lg transition-all ${
+                                matchingPairs[leftIdx] !== undefined
+                                  ? 'border-primary bg-primary/5'
+                                  : 'border-border bg-white dark:bg-gray-900'
+                              }`}
+                            >
+                              <p className="text-sm leading-relaxed">{leftItem}</p>
+                              {matchingPairs[leftIdx] !== undefined && (
+                                <p className="text-xs text-primary font-semibold mt-2">
+                                  → Matched to: {(currentItem as any).rightColumn[matchingPairs[leftIdx]]}
+                                </p>
+                              )}
+                            </div>
+                          ))}
+                        </div>
+
+                        {/* Right Column */}
+                        <div className="space-y-2">
+                          <p className="text-xs font-bold text-muted-foreground mb-2">RIGHT COLUMN (click to match)</p>
+                          {(currentItem as any).rightColumn.map((rightItem: string, rightIdx: number) => {
+                            // Find which left item is matched to this right item
+                            const matchedLeftIdx = Object.entries(matchingPairs).find(
+                              ([_, right]) => right === rightIdx
+                            )?.[0];
+
+                            return (
+                              <button
+                                key={rightIdx}
+                                onClick={() => {
+                                  // Find the first unmatched left item or the one currently matched to this right item
+                                  const leftIdx = matchedLeftIdx !== undefined 
+                                    ? parseInt(matchedLeftIdx)
+                                    : (currentItem as any).leftColumn.findIndex((_: any, idx: number) => 
+                                        matchingPairs[idx] === undefined
+                                      );
+                                  
+                                  if (leftIdx >= 0) {
+                                    handleMatchingSelection(leftIdx, rightIdx);
+                                  }
+                                }}
+                                className={`w-full p-3 border-2 rounded-lg text-left transition-all ${
+                                  matchedLeftIdx !== undefined
+                                    ? 'border-primary bg-primary/5'
+                                    : 'border-border bg-white dark:bg-gray-900 hover:border-primary/50'
+                                }`}
+                              >
+                                <p className="text-sm leading-relaxed">{rightItem}</p>
+                                {matchedLeftIdx !== undefined && (
+                                  <p className="text-xs text-primary font-semibold mt-2">
+                                    ← Matched from: {(currentItem as any).leftColumn[parseInt(matchedLeftIdx)]}
+                                  </p>
+                                )}
+                              </button>
+                            );
+                          })}
+                        </div>
+                      </div>
+                      <p className="text-xs text-muted-foreground mt-3">
+                        Tip: Click items in the right column to match them with items from the left column in order.
+                      </p>
+                    </>
+                  )}
+
+                  {/* MULTIPLE-CHOICE / SCENARIO-BASED (single selection with auto-advance) */}
+                  {(currentItem.type === 'multiple-choice' || currentItem.type === 'scenario-based') && currentItem.options && (
+                    <>
+                      {currentItem.options.map((option, idx) => {
+                        const isSelected = answers[questionKey] === idx.toString();
+                        
+                        return (
+                          <label
+                            key={idx}
+                            className={`flex items-start gap-3 p-4 border-2 rounded-lg cursor-pointer transition-all ${
+                              isSelected 
+                                ? 'border-primary bg-primary/5' 
+                                : 'border-border hover:border-primary/50 hover:bg-accent/30'
+                            }`}
+                          >
+                            <input
+                              type="radio"
+                              name={`q-${questionKey}`}
+                              value={idx.toString()}
+                              checked={isSelected}
+                              onChange={(e) => handleAnswerAndAdvance(
+                                questionKey,
+                                e.target.value,
+                                currentItem.type
+                              )}
+                              className="mt-0.5 w-4 h-4 accent-primary"
+                            />
+                            <span className="text-sm flex-1 leading-relaxed">{option}</span>
+                          </label>
+                        );
+                      })}
+                    </>
+                  )}
+
+                  {/* OPEN-ENDED (text area) */}
+                  {!currentItem.options && currentItem.type !== 'matching' && (
                     <textarea
                       className="w-full min-h-[120px] p-4 border-2 rounded-lg resize-none text-sm focus:border-primary focus:outline-none transition-colors"
                       placeholder="Type your answer here..."
-                      value={answers[`${currentDimension}-${currentQuestion}`] || ''}
+                      value={answers[questionKey] || ''}
                       onChange={(e) => setAnswers(prev => ({
                         ...prev,
-                        [`${currentDimension}-${currentQuestion}`]: e.target.value
+                        [questionKey]: e.target.value
                       }))}
                     />
                   )}
@@ -1044,27 +1261,23 @@ const Test = () => {
               Submit Assessment
             </Button>
           ) : (
-            // Show Next button only for complex response types and text inputs
-            dimensions[currentDimension].items[currentQuestion].type === 'multiple-response' || 
-            !dimensions[currentDimension].items[currentQuestion].options ? (
+            // Show Next button for complex types that don't auto-advance
+            (currentItem.type === 'multiple-response' || 
+             currentItem.type === 'rank-ordering' || 
+             currentItem.type === 'scenario-ranking' || 
+             currentItem.type === 'matching' ||
+             !currentItem.options) ? (
               <Button
                 onClick={advanceToNextQuestion}
-                disabled={
-                  !answers[`${currentDimension}-${currentQuestion}`] || 
-                  (typeof answers[`${currentDimension}-${currentQuestion}`] === 'string' && 
-                   answers[`${currentDimension}-${currentQuestion}`].trim() === '')
-                }
+                disabled={!answers[questionKey] || answers[questionKey].trim() === ''}
                 className="flex-1 bg-blue-900 hover:bg-blue-800 font-semibold"
               >
-                {dimensions[currentDimension].items[currentQuestion].type === 'multiple-response' 
-                  ? 'Continue' 
-                  : 'Next Question'}
+                {currentItem.type === 'multiple-response' ? 'Continue' : 'Next Question'}
                 <ChevronRight className="h-4 w-4 ml-2" />
               </Button>
             ) : (
-              // For single-choice (radio), show a placeholder or nothing (auto-advances)
               <div className="flex-1 flex items-center justify-center text-sm text-muted-foreground">
-                {!answers[`${currentDimension}-${currentQuestion}`] && (
+                {!answers[questionKey] && (
                   <span>Select an option to continue</span>
                 )}
               </div>
@@ -1082,6 +1295,12 @@ const Test = () => {
                 <li>• Take your time to read each question carefully</li>
                 <li>• You can navigate back to review previous questions</li>
                 <li>• Your progress is automatically saved</li>
+                {(currentItem.type === 'rank-ordering' || currentItem.type === 'scenario-ranking') && (
+                  <li>• Use the arrows to reorder items in the correct sequence</li>
+                )}
+                {currentItem.type === 'matching' && (
+                  <li>• Click right column items to match them with left column items</li>
+                )}
               </ul>
             </div>
           </div>
