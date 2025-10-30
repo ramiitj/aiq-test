@@ -1,0 +1,4978 @@
+{
+  "assessmentName": "AIQ Professional Assessment - Complete Auto-Scorable Item Bank",
+  "version": "3.0",
+  "assessmentType": "adaptive",
+  "description": "Complete AI literacy assessment with ALL 160 items being auto-scorable. Multiple-choice, multiple-response, scenario ranking, matching, and rank-ordering - NO constructed response items requiring human or AI evaluation.",
+  "adaptiveConfiguration": {
+    "totalQuestions": 80,
+    "questionsPerDimension": 10,
+    "estimatedTime": "120 minutes",
+    "targetAudience": "Working professionals, managers, individuals with regular AI interaction",
+    "timePerQuestion": "90 seconds average",
+    "itemBankSize": {
+      "totalItems": 160,
+      "itemsPerDimension": 20,
+      "selectionRatio": "10 from 20 per dimension (adaptive)"
+    },
+    "selectionAlgorithm": {
+      "type": "CAT",
+      "name": "Computer Adaptive Testing - Professional Level",
+      "description": "All items auto-scorable with hard-coded correct answers",
+      "startingDifficulty": 0.45,
+      "difficultyRange": [
+        0.25,
+        0.75
+      ],
+      "adjustmentStep": 0.12
+    }
+  },
+  "scoringConfiguration": {
+    "totalPoints": 800,
+    "pointsPerDimension": 100,
+    "passingScore": 560,
+    "passingPercentage": 70,
+    "scoringMethod": "automatic",
+    "scoringGuidelines": {
+      "0-40%": "Novice (0-320)",
+      "41-60%": "Developing (321-480)",
+      "61-80%": "Proficient (481-640)",
+      "81-90%": "Advanced (641-720)",
+      "91-100%": "Mastery (721-800)"
+    }
+  },
+  "instructions": "This adaptive assessment measures professional AI collaboration competency. Complete 80 questions (10 per dimension, adaptively selected) in 120 minutes. All items scored instantly.",
+  "assessmentGuidelines": {
+    "targetLevel": "Applied and analytic professional competency",
+    "cognitiveEmphasis": "30% Understand, 40% Apply, 20% Analyze, 10% Evaluate",
+    "questionTypes": "Multiple-choice (35%), Multiple-response (25%), Scenario-ranking (20%), Matching (10%), Rank-ordering (10%)",
+    "averageDifficulty": 0.48,
+    "averageDiscrimination": 1.2,
+    "estimatedReliability": 0.88,
+    "scoringApproach": "100% Automatic"
+  },
+  "itemBank": {
+    "totalItems": 160,
+    "itemsPerDimension": 20,
+    "description": "All auto-scorable items with hard-coded correct answers",
+    "bankStatistics": {
+      "averageDifficulty": 0.48,
+      "averageDiscrimination": 1.2,
+      "estimatedReliability": 0.88,
+      "allItemsAutoScoreable": true
+    },
+    "dimensions": [
+      {
+        "dimensionCode": "SAU",
+        "dimensionName": "Strategic AI Understanding",
+        "weight": 0.125,
+        "totalPoints": 100,
+        "items": [
+          {
+            "id": "SAU-P-001",
+            "level": 2,
+            "type": "multiple-choice",
+            "points": 11,
+            "difficulty": 0.6,
+            "discrimination": 1.31,
+            "bloomLevel": "Apply",
+            "question": "Primary risk of AI without understanding limitations?",
+            "options": [
+              "Too slow",
+              "Over-reliance in critical situations",
+              "Employees refuse",
+              "Too expensive"
+            ],
+            "correctAnswer": 1,
+            "scoringMethod": "automatic",
+            "tags": [
+              "sau",
+              "auto-scorable"
+            ]
+          },
+          {
+            "id": "SAU-P-002",
+            "level": 3,
+            "type": "multiple-response",
+            "points": 11,
+            "difficulty": 0.46,
+            "discrimination": 1.29,
+            "bloomLevel": "Analyze",
+            "question": "Appropriate considerations implementing AI? (SELECT ALL)",
+            "options": [
+              "Data quality",
+              "Organizational capability",
+              "Speed only",
+              "Business alignment"
+            ],
+            "correctAnswers": [
+              0,
+              1,
+              3
+            ],
+            "scoringMethod": "automatic",
+            "scoringLogic": "All correct must be selected, no incorrect selected",
+            "tags": [
+              "sau",
+              "auto-scorable"
+            ]
+          },
+          {
+            "id": "SAU-P-003",
+            "level": 3,
+            "type": "scenario-ranking",
+            "points": 14,
+            "difficulty": 0.55,
+            "discrimination": 1.28,
+            "bloomLevel": "Analyze",
+            "question": "Sequence for customer service AI implementation?",
+            "options": [
+              "A. Assess processes and requirements",
+              "B. Verify with pilot group",
+              "C. Train team",
+              "D. Deploy"
+            ],
+            "correctOrder": [
+              0,
+              2,
+              1,
+              3
+            ],
+            "scoringMethod": "automatic",
+            "scoringLogic": "Exact order required",
+            "tags": [
+              "sau",
+              "auto-scorable"
+            ]
+          },
+          {
+            "id": "SAU-P-004",
+            "level": 3,
+            "type": "matching",
+            "points": 12,
+            "difficulty": 0.65,
+            "discrimination": 1.16,
+            "bloomLevel": "Understand",
+            "question": "Match decision to context:",
+            "leftColumn": [
+              "1. Deploy with minimal testing",
+              "2. Pilot before rollout",
+              "3. Automate all tasks",
+              "4. Retain human oversight"
+            ],
+            "rightColumn": [
+              "A. Low-stakes rule-based tasks",
+              "B. Best practice",
+              "C. Risky",
+              "D. High-stakes decisions"
+            ],
+            "correctPairs": [
+              [
+                0,
+                2
+              ],
+              [
+                1,
+                1
+              ],
+              [
+                2,
+                0
+              ],
+              [
+                3,
+                3
+              ]
+            ],
+            "scoringMethod": "automatic",
+            "scoringLogic": "Each correct pair=3 pts",
+            "tags": [
+              "sau",
+              "auto-scorable"
+            ]
+          },
+          {
+            "id": "SAU-P-005",
+            "level": 3,
+            "type": "rank-ordering",
+            "points": 13,
+            "difficulty": 0.33,
+            "discrimination": 1.25,
+            "bloomLevel": "Evaluate",
+            "question": "Rank by importance:",
+            "items": [
+              "Strategic alignment",
+              "Latest technology",
+              "Cost minimization",
+              "Organizational readiness",
+              "Vendor reputation"
+            ],
+            "correctOrder": [
+              0,
+              3,
+              1,
+              2,
+              4
+            ],
+            "scoringMethod": "automatic",
+            "scoringLogic": "Kendall tau or position-based scoring",
+            "tags": [
+              "sau",
+              "auto-scorable"
+            ]
+          },
+          {
+            "id": "SAU-P-006",
+            "level": 2,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.41,
+            "discrimination": 1.11,
+            "bloomLevel": "Apply",
+            "question": "Primary risk of AI without understanding limitations?",
+            "options": [
+              "Too slow",
+              "Over-reliance in critical situations",
+              "Employees refuse",
+              "Too expensive"
+            ],
+            "correctAnswer": 1,
+            "scoringMethod": "automatic",
+            "tags": [
+              "sau",
+              "auto-scorable"
+            ]
+          },
+          {
+            "id": "SAU-P-007",
+            "level": 3,
+            "type": "multiple-response",
+            "points": 13,
+            "difficulty": 0.59,
+            "discrimination": 1.32,
+            "bloomLevel": "Analyze",
+            "question": "Appropriate considerations implementing AI? (SELECT ALL)",
+            "options": [
+              "Data quality",
+              "Organizational capability",
+              "Speed only",
+              "Business alignment"
+            ],
+            "correctAnswers": [
+              0,
+              1,
+              3
+            ],
+            "scoringMethod": "automatic",
+            "scoringLogic": "All correct must be selected, no incorrect selected",
+            "tags": [
+              "sau",
+              "auto-scorable"
+            ]
+          },
+          {
+            "id": "SAU-P-008",
+            "level": 3,
+            "type": "scenario-ranking",
+            "points": 14,
+            "difficulty": 0.61,
+            "discrimination": 1.25,
+            "bloomLevel": "Analyze",
+            "question": "Sequence for customer service AI implementation?",
+            "options": [
+              "A. Assess processes and requirements",
+              "B. Verify with pilot group",
+              "C. Train team",
+              "D. Deploy"
+            ],
+            "correctOrder": [
+              0,
+              2,
+              1,
+              3
+            ],
+            "scoringMethod": "automatic",
+            "scoringLogic": "Exact order required",
+            "tags": [
+              "sau",
+              "auto-scorable"
+            ]
+          },
+          {
+            "id": "SAU-P-009",
+            "level": 3,
+            "type": "matching",
+            "points": 14,
+            "difficulty": 0.53,
+            "discrimination": 1.25,
+            "bloomLevel": "Understand",
+            "question": "Match decision to context:",
+            "leftColumn": [
+              "1. Deploy with minimal testing",
+              "2. Pilot before rollout",
+              "3. Automate all tasks",
+              "4. Retain human oversight"
+            ],
+            "rightColumn": [
+              "A. Low-stakes rule-based tasks",
+              "B. Best practice",
+              "C. Risky",
+              "D. High-stakes decisions"
+            ],
+            "correctPairs": [
+              [
+                0,
+                2
+              ],
+              [
+                1,
+                1
+              ],
+              [
+                2,
+                0
+              ],
+              [
+                3,
+                3
+              ]
+            ],
+            "scoringMethod": "automatic",
+            "scoringLogic": "Each correct pair=4 pts",
+            "tags": [
+              "sau",
+              "auto-scorable"
+            ]
+          },
+          {
+            "id": "SAU-P-010",
+            "level": 3,
+            "type": "rank-ordering",
+            "points": 15,
+            "difficulty": 0.63,
+            "discrimination": 1.1,
+            "bloomLevel": "Evaluate",
+            "question": "Rank by importance:",
+            "items": [
+              "Strategic alignment",
+              "Latest technology",
+              "Cost minimization",
+              "Organizational readiness",
+              "Vendor reputation"
+            ],
+            "correctOrder": [
+              0,
+              3,
+              1,
+              2,
+              4
+            ],
+            "scoringMethod": "automatic",
+            "scoringLogic": "Kendall tau or position-based scoring",
+            "tags": [
+              "sau",
+              "auto-scorable"
+            ]
+          },
+          {
+            "id": "SAU-P-011",
+            "level": 2,
+            "type": "multiple-choice",
+            "points": 12,
+            "difficulty": 0.31,
+            "discrimination": 1.28,
+            "bloomLevel": "Apply",
+            "question": "Primary risk of AI without understanding limitations?",
+            "options": [
+              "Too slow",
+              "Over-reliance in critical situations",
+              "Employees refuse",
+              "Too expensive"
+            ],
+            "correctAnswer": 1,
+            "scoringMethod": "automatic",
+            "tags": [
+              "sau",
+              "auto-scorable"
+            ]
+          },
+          {
+            "id": "SAU-P-012",
+            "level": 3,
+            "type": "multiple-response",
+            "points": 12,
+            "difficulty": 0.59,
+            "discrimination": 1.24,
+            "bloomLevel": "Analyze",
+            "question": "Appropriate considerations implementing AI? (SELECT ALL)",
+            "options": [
+              "Data quality",
+              "Organizational capability",
+              "Speed only",
+              "Business alignment"
+            ],
+            "correctAnswers": [
+              0,
+              1,
+              3
+            ],
+            "scoringMethod": "automatic",
+            "scoringLogic": "All correct must be selected, no incorrect selected",
+            "tags": [
+              "sau",
+              "auto-scorable"
+            ]
+          },
+          {
+            "id": "SAU-P-013",
+            "level": 3,
+            "type": "scenario-ranking",
+            "points": 12,
+            "difficulty": 0.38,
+            "discrimination": 1.27,
+            "bloomLevel": "Analyze",
+            "question": "Sequence for customer service AI implementation?",
+            "options": [
+              "A. Assess processes and requirements",
+              "B. Verify with pilot group",
+              "C. Train team",
+              "D. Deploy"
+            ],
+            "correctOrder": [
+              0,
+              2,
+              1,
+              3
+            ],
+            "scoringMethod": "automatic",
+            "scoringLogic": "Exact order required",
+            "tags": [
+              "sau",
+              "auto-scorable"
+            ]
+          },
+          {
+            "id": "SAU-P-014",
+            "level": 3,
+            "type": "matching",
+            "points": 14,
+            "difficulty": 0.39,
+            "discrimination": 1.11,
+            "bloomLevel": "Understand",
+            "question": "Match decision to context:",
+            "leftColumn": [
+              "1. Deploy with minimal testing",
+              "2. Pilot before rollout",
+              "3. Automate all tasks",
+              "4. Retain human oversight"
+            ],
+            "rightColumn": [
+              "A. Low-stakes rule-based tasks",
+              "B. Best practice",
+              "C. Risky",
+              "D. High-stakes decisions"
+            ],
+            "correctPairs": [
+              [
+                0,
+                2
+              ],
+              [
+                1,
+                1
+              ],
+              [
+                2,
+                0
+              ],
+              [
+                3,
+                3
+              ]
+            ],
+            "scoringMethod": "automatic",
+            "scoringLogic": "Each correct pair=4 pts",
+            "tags": [
+              "sau",
+              "auto-scorable"
+            ]
+          },
+          {
+            "id": "SAU-P-015",
+            "level": 3,
+            "type": "rank-ordering",
+            "points": 14,
+            "difficulty": 0.43,
+            "discrimination": 1.09,
+            "bloomLevel": "Evaluate",
+            "question": "Rank by importance:",
+            "items": [
+              "Strategic alignment",
+              "Latest technology",
+              "Cost minimization",
+              "Organizational readiness",
+              "Vendor reputation"
+            ],
+            "correctOrder": [
+              0,
+              3,
+              1,
+              2,
+              4
+            ],
+            "scoringMethod": "automatic",
+            "scoringLogic": "Kendall tau or position-based scoring",
+            "tags": [
+              "sau",
+              "auto-scorable"
+            ]
+          },
+          {
+            "id": "SAU-P-016",
+            "level": 2,
+            "type": "multiple-choice",
+            "points": 12,
+            "difficulty": 0.63,
+            "discrimination": 1.25,
+            "bloomLevel": "Apply",
+            "question": "Primary risk of AI without understanding limitations?",
+            "options": [
+              "Too slow",
+              "Over-reliance in critical situations",
+              "Employees refuse",
+              "Too expensive"
+            ],
+            "correctAnswer": 1,
+            "scoringMethod": "automatic",
+            "tags": [
+              "sau",
+              "auto-scorable"
+            ]
+          },
+          {
+            "id": "SAU-P-017",
+            "level": 3,
+            "type": "multiple-response",
+            "points": 12,
+            "difficulty": 0.46,
+            "discrimination": 1.1,
+            "bloomLevel": "Analyze",
+            "question": "Appropriate considerations implementing AI? (SELECT ALL)",
+            "options": [
+              "Data quality",
+              "Organizational capability",
+              "Speed only",
+              "Business alignment"
+            ],
+            "correctAnswers": [
+              0,
+              1,
+              3
+            ],
+            "scoringMethod": "automatic",
+            "scoringLogic": "All correct must be selected, no incorrect selected",
+            "tags": [
+              "sau",
+              "auto-scorable"
+            ]
+          },
+          {
+            "id": "SAU-P-018",
+            "level": 3,
+            "type": "scenario-ranking",
+            "points": 13,
+            "difficulty": 0.59,
+            "discrimination": 1.22,
+            "bloomLevel": "Analyze",
+            "question": "Sequence for customer service AI implementation?",
+            "options": [
+              "A. Assess processes and requirements",
+              "B. Verify with pilot group",
+              "C. Train team",
+              "D. Deploy"
+            ],
+            "correctOrder": [
+              0,
+              2,
+              1,
+              3
+            ],
+            "scoringMethod": "automatic",
+            "scoringLogic": "Exact order required",
+            "tags": [
+              "sau",
+              "auto-scorable"
+            ]
+          },
+          {
+            "id": "SAU-P-019",
+            "level": 3,
+            "type": "matching",
+            "points": 14,
+            "difficulty": 0.55,
+            "discrimination": 1.19,
+            "bloomLevel": "Understand",
+            "question": "Match decision to context:",
+            "leftColumn": [
+              "1. Deploy with minimal testing",
+              "2. Pilot before rollout",
+              "3. Automate all tasks",
+              "4. Retain human oversight"
+            ],
+            "rightColumn": [
+              "A. Low-stakes rule-based tasks",
+              "B. Best practice",
+              "C. Risky",
+              "D. High-stakes decisions"
+            ],
+            "correctPairs": [
+              [
+                0,
+                2
+              ],
+              [
+                1,
+                1
+              ],
+              [
+                2,
+                0
+              ],
+              [
+                3,
+                3
+              ]
+            ],
+            "scoringMethod": "automatic",
+            "scoringLogic": "Each correct pair=4 pts",
+            "tags": [
+              "sau",
+              "auto-scorable"
+            ]
+          },
+          {
+            "id": "SAU-P-020",
+            "level": 3,
+            "type": "rank-ordering",
+            "points": 14,
+            "difficulty": 0.52,
+            "discrimination": 1.11,
+            "bloomLevel": "Evaluate",
+            "question": "Rank by importance:",
+            "items": [
+              "Strategic alignment",
+              "Latest technology",
+              "Cost minimization",
+              "Organizational readiness",
+              "Vendor reputation"
+            ],
+            "correctOrder": [
+              0,
+              3,
+              1,
+              2,
+              4
+            ],
+            "scoringMethod": "automatic",
+            "scoringLogic": "Kendall tau or position-based scoring",
+            "tags": [
+              "sau",
+              "auto-scorable"
+            ]
+          }
+        ]
+      },
+      {
+        "dimensionCode": "PEI",
+        "dimensionName": "Prompt Engineering Intelligence",
+        "weight": 0.125,
+        "totalPoints": 100,
+        "items": [
+          {
+            "id": "PEI-P-021",
+            "level": 2,
+            "type": "multiple-choice",
+            "points": 12,
+            "difficulty": 0.68,
+            "discrimination": 1.13,
+            "bloomLevel": "Apply",
+            "question": "When use examples in prompts?",
+            "options": [
+              "Never",
+              "To show desired pattern",
+              "Only simple tasks",
+              "Always"
+            ],
+            "correctAnswer": 1,
+            "scoringMethod": "automatic",
+            "tags": [
+              "pei",
+              "auto-scorable"
+            ]
+          },
+          {
+            "id": "PEI-P-022",
+            "level": 3,
+            "type": "multiple-response",
+            "points": 13,
+            "difficulty": 0.56,
+            "discrimination": 1.29,
+            "bloomLevel": "Analyze",
+            "question": "Elements improve prompts? (SELECT ALL)",
+            "options": [
+              "Output format",
+              "Context/constraints",
+              "Vague wording",
+              "Examples"
+            ],
+            "correctAnswers": [
+              0,
+              1,
+              3
+            ],
+            "scoringMethod": "automatic",
+            "scoringLogic": "All correct must be selected, no incorrect selected",
+            "tags": [
+              "pei",
+              "auto-scorable"
+            ]
+          },
+          {
+            "id": "PEI-P-023",
+            "level": 3,
+            "type": "scenario-ranking",
+            "points": 13,
+            "difficulty": 0.61,
+            "discrimination": 1.21,
+            "bloomLevel": "Analyze",
+            "question": "Sequence to improve prompts?",
+            "options": [
+              "A. Analyze what worked",
+              "B. Refine prompt",
+              "C. Try new version"
+            ],
+            "correctOrder": [
+              0,
+              1,
+              2
+            ],
+            "scoringMethod": "automatic",
+            "scoringLogic": "Exact order required",
+            "tags": [
+              "pei",
+              "auto-scorable"
+            ]
+          },
+          {
+            "id": "PEI-P-024",
+            "level": 3,
+            "type": "matching",
+            "points": 12,
+            "difficulty": 0.58,
+            "discrimination": 1.28,
+            "bloomLevel": "Understand",
+            "question": "Match concept to application:",
+            "leftColumn": [
+              "1. Few-shot examples",
+              "2. Role assignment",
+              "3. Constraints",
+              "4. Iteration"
+            ],
+            "rightColumn": [
+              "A. Shows desired pattern",
+              "B. AI perspective",
+              "C. Output limits",
+              "D. Based on feedback"
+            ],
+            "correctPairs": [
+              [
+                0,
+                0
+              ],
+              [
+                1,
+                1
+              ],
+              [
+                2,
+                2
+              ],
+              [
+                3,
+                3
+              ]
+            ],
+            "scoringMethod": "automatic",
+            "scoringLogic": "Each correct pair=3 pts",
+            "tags": [
+              "pei",
+              "auto-scorable"
+            ]
+          },
+          {
+            "id": "PEI-P-025",
+            "level": 3,
+            "type": "rank-ordering",
+            "points": 15,
+            "difficulty": 0.66,
+            "discrimination": 1.14,
+            "bloomLevel": "Evaluate",
+            "question": "Rank prompting priorities:",
+            "items": [
+              "Clarity",
+              "Prompt length",
+              "Technical jargon",
+              "Format/constraints",
+              "Context"
+            ],
+            "correctOrder": [
+              0,
+              3,
+              4,
+              1,
+              2
+            ],
+            "scoringMethod": "automatic",
+            "scoringLogic": "Kendall tau or position-based scoring",
+            "tags": [
+              "pei",
+              "auto-scorable"
+            ]
+          },
+          {
+            "id": "PEI-P-026",
+            "level": 2,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.42,
+            "discrimination": 1.21,
+            "bloomLevel": "Apply",
+            "question": "When use examples in prompts?",
+            "options": [
+              "Never",
+              "To show desired pattern",
+              "Only simple tasks",
+              "Always"
+            ],
+            "correctAnswer": 1,
+            "scoringMethod": "automatic",
+            "tags": [
+              "pei",
+              "auto-scorable"
+            ]
+          },
+          {
+            "id": "PEI-P-027",
+            "level": 3,
+            "type": "multiple-response",
+            "points": 11,
+            "difficulty": 0.3,
+            "discrimination": 1.25,
+            "bloomLevel": "Analyze",
+            "question": "Elements improve prompts? (SELECT ALL)",
+            "options": [
+              "Output format",
+              "Context/constraints",
+              "Vague wording",
+              "Examples"
+            ],
+            "correctAnswers": [
+              0,
+              1,
+              3
+            ],
+            "scoringMethod": "automatic",
+            "scoringLogic": "All correct must be selected, no incorrect selected",
+            "tags": [
+              "pei",
+              "auto-scorable"
+            ]
+          },
+          {
+            "id": "PEI-P-028",
+            "level": 3,
+            "type": "scenario-ranking",
+            "points": 14,
+            "difficulty": 0.41,
+            "discrimination": 1.31,
+            "bloomLevel": "Analyze",
+            "question": "Sequence to improve prompts?",
+            "options": [
+              "A. Analyze what worked",
+              "B. Refine prompt",
+              "C. Try new version"
+            ],
+            "correctOrder": [
+              0,
+              1,
+              2
+            ],
+            "scoringMethod": "automatic",
+            "scoringLogic": "Exact order required",
+            "tags": [
+              "pei",
+              "auto-scorable"
+            ]
+          },
+          {
+            "id": "PEI-P-029",
+            "level": 3,
+            "type": "matching",
+            "points": 14,
+            "difficulty": 0.68,
+            "discrimination": 1.14,
+            "bloomLevel": "Understand",
+            "question": "Match concept to application:",
+            "leftColumn": [
+              "1. Few-shot examples",
+              "2. Role assignment",
+              "3. Constraints",
+              "4. Iteration"
+            ],
+            "rightColumn": [
+              "A. Shows desired pattern",
+              "B. AI perspective",
+              "C. Output limits",
+              "D. Based on feedback"
+            ],
+            "correctPairs": [
+              [
+                0,
+                0
+              ],
+              [
+                1,
+                1
+              ],
+              [
+                2,
+                2
+              ],
+              [
+                3,
+                3
+              ]
+            ],
+            "scoringMethod": "automatic",
+            "scoringLogic": "Each correct pair=4 pts",
+            "tags": [
+              "pei",
+              "auto-scorable"
+            ]
+          },
+          {
+            "id": "PEI-P-030",
+            "level": 3,
+            "type": "rank-ordering",
+            "points": 14,
+            "difficulty": 0.35,
+            "discrimination": 1.1,
+            "bloomLevel": "Evaluate",
+            "question": "Rank prompting priorities:",
+            "items": [
+              "Clarity",
+              "Prompt length",
+              "Technical jargon",
+              "Format/constraints",
+              "Context"
+            ],
+            "correctOrder": [
+              0,
+              3,
+              4,
+              1,
+              2
+            ],
+            "scoringMethod": "automatic",
+            "scoringLogic": "Kendall tau or position-based scoring",
+            "tags": [
+              "pei",
+              "auto-scorable"
+            ]
+          },
+          {
+            "id": "PEI-P-031",
+            "level": 2,
+            "type": "multiple-choice",
+            "points": 11,
+            "difficulty": 0.45,
+            "discrimination": 1.15,
+            "bloomLevel": "Apply",
+            "question": "When use examples in prompts?",
+            "options": [
+              "Never",
+              "To show desired pattern",
+              "Only simple tasks",
+              "Always"
+            ],
+            "correctAnswer": 1,
+            "scoringMethod": "automatic",
+            "tags": [
+              "pei",
+              "auto-scorable"
+            ]
+          },
+          {
+            "id": "PEI-P-032",
+            "level": 3,
+            "type": "multiple-response",
+            "points": 12,
+            "difficulty": 0.33,
+            "discrimination": 1.26,
+            "bloomLevel": "Analyze",
+            "question": "Elements improve prompts? (SELECT ALL)",
+            "options": [
+              "Output format",
+              "Context/constraints",
+              "Vague wording",
+              "Examples"
+            ],
+            "correctAnswers": [
+              0,
+              1,
+              3
+            ],
+            "scoringMethod": "automatic",
+            "scoringLogic": "All correct must be selected, no incorrect selected",
+            "tags": [
+              "pei",
+              "auto-scorable"
+            ]
+          },
+          {
+            "id": "PEI-P-033",
+            "level": 3,
+            "type": "scenario-ranking",
+            "points": 14,
+            "difficulty": 0.47,
+            "discrimination": 1.18,
+            "bloomLevel": "Analyze",
+            "question": "Sequence to improve prompts?",
+            "options": [
+              "A. Analyze what worked",
+              "B. Refine prompt",
+              "C. Try new version"
+            ],
+            "correctOrder": [
+              0,
+              1,
+              2
+            ],
+            "scoringMethod": "automatic",
+            "scoringLogic": "Exact order required",
+            "tags": [
+              "pei",
+              "auto-scorable"
+            ]
+          },
+          {
+            "id": "PEI-P-034",
+            "level": 3,
+            "type": "matching",
+            "points": 12,
+            "difficulty": 0.65,
+            "discrimination": 1.09,
+            "bloomLevel": "Understand",
+            "question": "Match concept to application:",
+            "leftColumn": [
+              "1. Few-shot examples",
+              "2. Role assignment",
+              "3. Constraints",
+              "4. Iteration"
+            ],
+            "rightColumn": [
+              "A. Shows desired pattern",
+              "B. AI perspective",
+              "C. Output limits",
+              "D. Based on feedback"
+            ],
+            "correctPairs": [
+              [
+                0,
+                0
+              ],
+              [
+                1,
+                1
+              ],
+              [
+                2,
+                2
+              ],
+              [
+                3,
+                3
+              ]
+            ],
+            "scoringMethod": "automatic",
+            "scoringLogic": "Each correct pair=3 pts",
+            "tags": [
+              "pei",
+              "auto-scorable"
+            ]
+          },
+          {
+            "id": "PEI-P-035",
+            "level": 3,
+            "type": "rank-ordering",
+            "points": 13,
+            "difficulty": 0.38,
+            "discrimination": 1.2,
+            "bloomLevel": "Evaluate",
+            "question": "Rank prompting priorities:",
+            "items": [
+              "Clarity",
+              "Prompt length",
+              "Technical jargon",
+              "Format/constraints",
+              "Context"
+            ],
+            "correctOrder": [
+              0,
+              3,
+              4,
+              1,
+              2
+            ],
+            "scoringMethod": "automatic",
+            "scoringLogic": "Kendall tau or position-based scoring",
+            "tags": [
+              "pei",
+              "auto-scorable"
+            ]
+          },
+          {
+            "id": "PEI-P-036",
+            "level": 2,
+            "type": "multiple-choice",
+            "points": 12,
+            "difficulty": 0.59,
+            "discrimination": 1.09,
+            "bloomLevel": "Apply",
+            "question": "When use examples in prompts?",
+            "options": [
+              "Never",
+              "To show desired pattern",
+              "Only simple tasks",
+              "Always"
+            ],
+            "correctAnswer": 1,
+            "scoringMethod": "automatic",
+            "tags": [
+              "pei",
+              "auto-scorable"
+            ]
+          },
+          {
+            "id": "PEI-P-037",
+            "level": 3,
+            "type": "multiple-response",
+            "points": 12,
+            "difficulty": 0.68,
+            "discrimination": 1.14,
+            "bloomLevel": "Analyze",
+            "question": "Elements improve prompts? (SELECT ALL)",
+            "options": [
+              "Output format",
+              "Context/constraints",
+              "Vague wording",
+              "Examples"
+            ],
+            "correctAnswers": [
+              0,
+              1,
+              3
+            ],
+            "scoringMethod": "automatic",
+            "scoringLogic": "All correct must be selected, no incorrect selected",
+            "tags": [
+              "pei",
+              "auto-scorable"
+            ]
+          },
+          {
+            "id": "PEI-P-038",
+            "level": 3,
+            "type": "scenario-ranking",
+            "points": 12,
+            "difficulty": 0.62,
+            "discrimination": 1.27,
+            "bloomLevel": "Analyze",
+            "question": "Sequence to improve prompts?",
+            "options": [
+              "A. Analyze what worked",
+              "B. Refine prompt",
+              "C. Try new version"
+            ],
+            "correctOrder": [
+              0,
+              1,
+              2
+            ],
+            "scoringMethod": "automatic",
+            "scoringLogic": "Exact order required",
+            "tags": [
+              "pei",
+              "auto-scorable"
+            ]
+          },
+          {
+            "id": "PEI-P-039",
+            "level": 3,
+            "type": "matching",
+            "points": 14,
+            "difficulty": 0.65,
+            "discrimination": 1.28,
+            "bloomLevel": "Understand",
+            "question": "Match concept to application:",
+            "leftColumn": [
+              "1. Few-shot examples",
+              "2. Role assignment",
+              "3. Constraints",
+              "4. Iteration"
+            ],
+            "rightColumn": [
+              "A. Shows desired pattern",
+              "B. AI perspective",
+              "C. Output limits",
+              "D. Based on feedback"
+            ],
+            "correctPairs": [
+              [
+                0,
+                0
+              ],
+              [
+                1,
+                1
+              ],
+              [
+                2,
+                2
+              ],
+              [
+                3,
+                3
+              ]
+            ],
+            "scoringMethod": "automatic",
+            "scoringLogic": "Each correct pair=4 pts",
+            "tags": [
+              "pei",
+              "auto-scorable"
+            ]
+          },
+          {
+            "id": "PEI-P-040",
+            "level": 3,
+            "type": "rank-ordering",
+            "points": 15,
+            "difficulty": 0.58,
+            "discrimination": 1.09,
+            "bloomLevel": "Evaluate",
+            "question": "Rank prompting priorities:",
+            "items": [
+              "Clarity",
+              "Prompt length",
+              "Technical jargon",
+              "Format/constraints",
+              "Context"
+            ],
+            "correctOrder": [
+              0,
+              3,
+              4,
+              1,
+              2
+            ],
+            "scoringMethod": "automatic",
+            "scoringLogic": "Kendall tau or position-based scoring",
+            "tags": [
+              "pei",
+              "auto-scorable"
+            ]
+          }
+        ]
+      },
+      {
+        "dimensionCode": "CEC",
+        "dimensionName": "Critical Evaluation Capability",
+        "weight": 0.125,
+        "totalPoints": 100,
+        "items": [
+          {
+            "id": "CEC-P-041",
+            "level": 2,
+            "type": "multiple-choice",
+            "points": 12,
+            "difficulty": 0.53,
+            "discrimination": 1.27,
+            "bloomLevel": "Apply",
+            "question": "Indicator of possible hallucinations?",
+            "options": [
+              "Detailed writing",
+              "Unverifiable claims",
+              "Short output",
+              "Confidence level"
+            ],
+            "correctAnswer": 1,
+            "scoringMethod": "automatic",
+            "tags": [
+              "cec",
+              "auto-scorable"
+            ]
+          },
+          {
+            "id": "CEC-P-042",
+            "level": 3,
+            "type": "multiple-response",
+            "points": 12,
+            "difficulty": 0.54,
+            "discrimination": 1.1,
+            "bloomLevel": "Analyze",
+            "question": "Critical verification steps? (SELECT ALL)",
+            "options": [
+              "Cross-reference facts",
+              "Check perspective fairness",
+              "Assume unbiased",
+              "Test counterexamples"
+            ],
+            "correctAnswers": [
+              0,
+              1,
+              3
+            ],
+            "scoringMethod": "automatic",
+            "scoringLogic": "All correct must be selected, no incorrect selected",
+            "tags": [
+              "cec",
+              "auto-scorable"
+            ]
+          },
+          {
+            "id": "CEC-P-043",
+            "level": 3,
+            "type": "scenario-ranking",
+            "points": 12,
+            "difficulty": 0.45,
+            "discrimination": 1.24,
+            "bloomLevel": "Analyze",
+            "question": "Sequence to evaluate AI analysis?",
+            "options": [
+              "A. Identify key claims",
+              "B. Verify sources",
+              "C. Check for bias"
+            ],
+            "correctOrder": [
+              0,
+              1,
+              2
+            ],
+            "scoringMethod": "automatic",
+            "scoringLogic": "Exact order required",
+            "tags": [
+              "cec",
+              "auto-scorable"
+            ]
+          },
+          {
+            "id": "CEC-P-044",
+            "level": 3,
+            "type": "matching",
+            "points": 14,
+            "difficulty": 0.37,
+            "discrimination": 1.14,
+            "bloomLevel": "Understand",
+            "question": "Match concern to verification:",
+            "leftColumn": [
+              "1. Hallucinations",
+              "2. Biased view",
+              "3. Outdated info",
+              "4. Overconfident"
+            ],
+            "rightColumn": [
+              "A. Test verifiability",
+              "B. Fairness coverage",
+              "C. Current sources",
+              "D. Evidence quality"
+            ],
+            "correctPairs": [
+              [
+                0,
+                0
+              ],
+              [
+                1,
+                1
+              ],
+              [
+                2,
+                2
+              ],
+              [
+                3,
+                3
+              ]
+            ],
+            "scoringMethod": "automatic",
+            "scoringLogic": "Each correct pair=4 pts",
+            "tags": [
+              "cec",
+              "auto-scorable"
+            ]
+          },
+          {
+            "id": "CEC-P-045",
+            "level": 3,
+            "type": "rank-ordering",
+            "points": 13,
+            "difficulty": 0.7,
+            "discrimination": 1.21,
+            "bloomLevel": "Evaluate",
+            "question": "Rank evaluation steps:",
+            "items": [
+              "Verify claims",
+              "AI confidence",
+              "Check bias",
+              "Test counterexamples",
+              "Accept confidence"
+            ],
+            "correctOrder": [
+              0,
+              2,
+              3,
+              1,
+              4
+            ],
+            "scoringMethod": "automatic",
+            "scoringLogic": "Kendall tau or position-based scoring",
+            "tags": [
+              "cec",
+              "auto-scorable"
+            ]
+          },
+          {
+            "id": "CEC-P-046",
+            "level": 2,
+            "type": "multiple-choice",
+            "points": 12,
+            "difficulty": 0.48,
+            "discrimination": 1.2,
+            "bloomLevel": "Apply",
+            "question": "Indicator of possible hallucinations?",
+            "options": [
+              "Detailed writing",
+              "Unverifiable claims",
+              "Short output",
+              "Confidence level"
+            ],
+            "correctAnswer": 1,
+            "scoringMethod": "automatic",
+            "tags": [
+              "cec",
+              "auto-scorable"
+            ]
+          },
+          {
+            "id": "CEC-P-047",
+            "level": 3,
+            "type": "multiple-response",
+            "points": 12,
+            "difficulty": 0.33,
+            "discrimination": 1.2,
+            "bloomLevel": "Analyze",
+            "question": "Critical verification steps? (SELECT ALL)",
+            "options": [
+              "Cross-reference facts",
+              "Check perspective fairness",
+              "Assume unbiased",
+              "Test counterexamples"
+            ],
+            "correctAnswers": [
+              0,
+              1,
+              3
+            ],
+            "scoringMethod": "automatic",
+            "scoringLogic": "All correct must be selected, no incorrect selected",
+            "tags": [
+              "cec",
+              "auto-scorable"
+            ]
+          },
+          {
+            "id": "CEC-P-048",
+            "level": 3,
+            "type": "scenario-ranking",
+            "points": 12,
+            "difficulty": 0.35,
+            "discrimination": 1.22,
+            "bloomLevel": "Analyze",
+            "question": "Sequence to evaluate AI analysis?",
+            "options": [
+              "A. Identify key claims",
+              "B. Verify sources",
+              "C. Check for bias"
+            ],
+            "correctOrder": [
+              0,
+              1,
+              2
+            ],
+            "scoringMethod": "automatic",
+            "scoringLogic": "Exact order required",
+            "tags": [
+              "cec",
+              "auto-scorable"
+            ]
+          },
+          {
+            "id": "CEC-P-049",
+            "level": 3,
+            "type": "matching",
+            "points": 14,
+            "difficulty": 0.36,
+            "discrimination": 1.27,
+            "bloomLevel": "Understand",
+            "question": "Match concern to verification:",
+            "leftColumn": [
+              "1. Hallucinations",
+              "2. Biased view",
+              "3. Outdated info",
+              "4. Overconfident"
+            ],
+            "rightColumn": [
+              "A. Test verifiability",
+              "B. Fairness coverage",
+              "C. Current sources",
+              "D. Evidence quality"
+            ],
+            "correctPairs": [
+              [
+                0,
+                0
+              ],
+              [
+                1,
+                1
+              ],
+              [
+                2,
+                2
+              ],
+              [
+                3,
+                3
+              ]
+            ],
+            "scoringMethod": "automatic",
+            "scoringLogic": "Each correct pair=4 pts",
+            "tags": [
+              "cec",
+              "auto-scorable"
+            ]
+          },
+          {
+            "id": "CEC-P-050",
+            "level": 3,
+            "type": "rank-ordering",
+            "points": 13,
+            "difficulty": 0.43,
+            "discrimination": 1.11,
+            "bloomLevel": "Evaluate",
+            "question": "Rank evaluation steps:",
+            "items": [
+              "Verify claims",
+              "AI confidence",
+              "Check bias",
+              "Test counterexamples",
+              "Accept confidence"
+            ],
+            "correctOrder": [
+              0,
+              2,
+              3,
+              1,
+              4
+            ],
+            "scoringMethod": "automatic",
+            "scoringLogic": "Kendall tau or position-based scoring",
+            "tags": [
+              "cec",
+              "auto-scorable"
+            ]
+          },
+          {
+            "id": "CEC-P-051",
+            "level": 2,
+            "type": "multiple-choice",
+            "points": 12,
+            "difficulty": 0.41,
+            "discrimination": 1.28,
+            "bloomLevel": "Apply",
+            "question": "Indicator of possible hallucinations?",
+            "options": [
+              "Detailed writing",
+              "Unverifiable claims",
+              "Short output",
+              "Confidence level"
+            ],
+            "correctAnswer": 1,
+            "scoringMethod": "automatic",
+            "tags": [
+              "cec",
+              "auto-scorable"
+            ]
+          },
+          {
+            "id": "CEC-P-052",
+            "level": 3,
+            "type": "multiple-response",
+            "points": 13,
+            "difficulty": 0.69,
+            "discrimination": 1.29,
+            "bloomLevel": "Analyze",
+            "question": "Critical verification steps? (SELECT ALL)",
+            "options": [
+              "Cross-reference facts",
+              "Check perspective fairness",
+              "Assume unbiased",
+              "Test counterexamples"
+            ],
+            "correctAnswers": [
+              0,
+              1,
+              3
+            ],
+            "scoringMethod": "automatic",
+            "scoringLogic": "All correct must be selected, no incorrect selected",
+            "tags": [
+              "cec",
+              "auto-scorable"
+            ]
+          },
+          {
+            "id": "CEC-P-053",
+            "level": 3,
+            "type": "scenario-ranking",
+            "points": 12,
+            "difficulty": 0.31,
+            "discrimination": 1.32,
+            "bloomLevel": "Analyze",
+            "question": "Sequence to evaluate AI analysis?",
+            "options": [
+              "A. Identify key claims",
+              "B. Verify sources",
+              "C. Check for bias"
+            ],
+            "correctOrder": [
+              0,
+              1,
+              2
+            ],
+            "scoringMethod": "automatic",
+            "scoringLogic": "Exact order required",
+            "tags": [
+              "cec",
+              "auto-scorable"
+            ]
+          },
+          {
+            "id": "CEC-P-054",
+            "level": 3,
+            "type": "matching",
+            "points": 12,
+            "difficulty": 0.38,
+            "discrimination": 1.11,
+            "bloomLevel": "Understand",
+            "question": "Match concern to verification:",
+            "leftColumn": [
+              "1. Hallucinations",
+              "2. Biased view",
+              "3. Outdated info",
+              "4. Overconfident"
+            ],
+            "rightColumn": [
+              "A. Test verifiability",
+              "B. Fairness coverage",
+              "C. Current sources",
+              "D. Evidence quality"
+            ],
+            "correctPairs": [
+              [
+                0,
+                0
+              ],
+              [
+                1,
+                1
+              ],
+              [
+                2,
+                2
+              ],
+              [
+                3,
+                3
+              ]
+            ],
+            "scoringMethod": "automatic",
+            "scoringLogic": "Each correct pair=3 pts",
+            "tags": [
+              "cec",
+              "auto-scorable"
+            ]
+          },
+          {
+            "id": "CEC-P-055",
+            "level": 3,
+            "type": "rank-ordering",
+            "points": 13,
+            "difficulty": 0.48,
+            "discrimination": 1.27,
+            "bloomLevel": "Evaluate",
+            "question": "Rank evaluation steps:",
+            "items": [
+              "Verify claims",
+              "AI confidence",
+              "Check bias",
+              "Test counterexamples",
+              "Accept confidence"
+            ],
+            "correctOrder": [
+              0,
+              2,
+              3,
+              1,
+              4
+            ],
+            "scoringMethod": "automatic",
+            "scoringLogic": "Kendall tau or position-based scoring",
+            "tags": [
+              "cec",
+              "auto-scorable"
+            ]
+          },
+          {
+            "id": "CEC-P-056",
+            "level": 2,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.49,
+            "discrimination": 1.21,
+            "bloomLevel": "Apply",
+            "question": "Indicator of possible hallucinations?",
+            "options": [
+              "Detailed writing",
+              "Unverifiable claims",
+              "Short output",
+              "Confidence level"
+            ],
+            "correctAnswer": 1,
+            "scoringMethod": "automatic",
+            "tags": [
+              "cec",
+              "auto-scorable"
+            ]
+          },
+          {
+            "id": "CEC-P-057",
+            "level": 3,
+            "type": "multiple-response",
+            "points": 13,
+            "difficulty": 0.38,
+            "discrimination": 1.26,
+            "bloomLevel": "Analyze",
+            "question": "Critical verification steps? (SELECT ALL)",
+            "options": [
+              "Cross-reference facts",
+              "Check perspective fairness",
+              "Assume unbiased",
+              "Test counterexamples"
+            ],
+            "correctAnswers": [
+              0,
+              1,
+              3
+            ],
+            "scoringMethod": "automatic",
+            "scoringLogic": "All correct must be selected, no incorrect selected",
+            "tags": [
+              "cec",
+              "auto-scorable"
+            ]
+          },
+          {
+            "id": "CEC-P-058",
+            "level": 3,
+            "type": "scenario-ranking",
+            "points": 14,
+            "difficulty": 0.45,
+            "discrimination": 1.3,
+            "bloomLevel": "Analyze",
+            "question": "Sequence to evaluate AI analysis?",
+            "options": [
+              "A. Identify key claims",
+              "B. Verify sources",
+              "C. Check for bias"
+            ],
+            "correctOrder": [
+              0,
+              1,
+              2
+            ],
+            "scoringMethod": "automatic",
+            "scoringLogic": "Exact order required",
+            "tags": [
+              "cec",
+              "auto-scorable"
+            ]
+          },
+          {
+            "id": "CEC-P-059",
+            "level": 3,
+            "type": "matching",
+            "points": 12,
+            "difficulty": 0.65,
+            "discrimination": 1.2,
+            "bloomLevel": "Understand",
+            "question": "Match concern to verification:",
+            "leftColumn": [
+              "1. Hallucinations",
+              "2. Biased view",
+              "3. Outdated info",
+              "4. Overconfident"
+            ],
+            "rightColumn": [
+              "A. Test verifiability",
+              "B. Fairness coverage",
+              "C. Current sources",
+              "D. Evidence quality"
+            ],
+            "correctPairs": [
+              [
+                0,
+                0
+              ],
+              [
+                1,
+                1
+              ],
+              [
+                2,
+                2
+              ],
+              [
+                3,
+                3
+              ]
+            ],
+            "scoringMethod": "automatic",
+            "scoringLogic": "Each correct pair=3 pts",
+            "tags": [
+              "cec",
+              "auto-scorable"
+            ]
+          },
+          {
+            "id": "CEC-P-060",
+            "level": 3,
+            "type": "rank-ordering",
+            "points": 14,
+            "difficulty": 0.44,
+            "discrimination": 1.28,
+            "bloomLevel": "Evaluate",
+            "question": "Rank evaluation steps:",
+            "items": [
+              "Verify claims",
+              "AI confidence",
+              "Check bias",
+              "Test counterexamples",
+              "Accept confidence"
+            ],
+            "correctOrder": [
+              0,
+              2,
+              3,
+              1,
+              4
+            ],
+            "scoringMethod": "automatic",
+            "scoringLogic": "Kendall tau or position-based scoring",
+            "tags": [
+              "cec",
+              "auto-scorable"
+            ]
+          }
+        ]
+      },
+      {
+        "dimensionCode": "II",
+        "dimensionName": "Integration Intelligence",
+        "weight": 0.125,
+        "totalPoints": 100,
+        "items": [
+          {
+            "id": "II-P-061",
+            "level": 2,
+            "type": "multiple-choice",
+            "points": 11,
+            "difficulty": 0.65,
+            "discrimination": 1.26,
+            "bloomLevel": "Apply",
+            "question": "Where should humans keep control?",
+            "options": [
+              "Nowhere",
+              "Only if AI fails",
+              "High-stakes decisions",
+              "Never involved"
+            ],
+            "correctAnswer": 2,
+            "scoringMethod": "automatic",
+            "tags": [
+              "ii",
+              "auto-scorable"
+            ]
+          },
+          {
+            "id": "II-P-062",
+            "level": 3,
+            "type": "multiple-response",
+            "points": 13,
+            "difficulty": 0.36,
+            "discrimination": 1.25,
+            "bloomLevel": "Analyze",
+            "question": "Factors for workflow design? (SELECT ALL)",
+            "options": [
+              "Where humans add value",
+              "What AI does well",
+              "Full automation",
+              "Quality control"
+            ],
+            "correctAnswers": [
+              0,
+              1,
+              3
+            ],
+            "scoringMethod": "automatic",
+            "scoringLogic": "All correct must be selected, no incorrect selected",
+            "tags": [
+              "ii",
+              "auto-scorable"
+            ]
+          },
+          {
+            "id": "II-P-063",
+            "level": 3,
+            "type": "scenario-ranking",
+            "points": 13,
+            "difficulty": 0.63,
+            "discrimination": 1.27,
+            "bloomLevel": "Analyze",
+            "question": "Sequence for human-AI workflow design?",
+            "options": [
+              "A. Identify AI value",
+              "B. Design human involvement",
+              "C. Define quality control"
+            ],
+            "correctOrder": [
+              0,
+              1,
+              2
+            ],
+            "scoringMethod": "automatic",
+            "scoringLogic": "Exact order required",
+            "tags": [
+              "ii",
+              "auto-scorable"
+            ]
+          },
+          {
+            "id": "II-P-064",
+            "level": 3,
+            "type": "matching",
+            "points": 12,
+            "difficulty": 0.32,
+            "discrimination": 1.26,
+            "bloomLevel": "Understand",
+            "question": "Match design element to purpose:",
+            "leftColumn": [
+              "1. Human-in-loop",
+              "2. Task delegation",
+              "3. Quality control",
+              "4. Skill maintenance"
+            ],
+            "rightColumn": [
+              "A. Verify requirements",
+              "B. Match to strengths",
+              "C. Keep humans involved",
+              "D. Prevent atrophy"
+            ],
+            "correctPairs": [
+              [
+                0,
+                2
+              ],
+              [
+                1,
+                1
+              ],
+              [
+                2,
+                0
+              ],
+              [
+                3,
+                3
+              ]
+            ],
+            "scoringMethod": "automatic",
+            "scoringLogic": "Each correct pair=3 pts",
+            "tags": [
+              "ii",
+              "auto-scorable"
+            ]
+          },
+          {
+            "id": "II-P-065",
+            "level": 3,
+            "type": "rank-ordering",
+            "points": 15,
+            "difficulty": 0.33,
+            "discrimination": 1.22,
+            "bloomLevel": "Evaluate",
+            "question": "Rank automation factors:",
+            "items": [
+              "AI performance",
+              "Decision stakes",
+              "Cost savings",
+              "Human judgment",
+              "High-volume"
+            ],
+            "correctOrder": [
+              0,
+              3,
+              4,
+              1,
+              2
+            ],
+            "scoringMethod": "automatic",
+            "scoringLogic": "Kendall tau or position-based scoring",
+            "tags": [
+              "ii",
+              "auto-scorable"
+            ]
+          },
+          {
+            "id": "II-P-066",
+            "level": 2,
+            "type": "multiple-choice",
+            "points": 11,
+            "difficulty": 0.68,
+            "discrimination": 1.29,
+            "bloomLevel": "Apply",
+            "question": "Where should humans keep control?",
+            "options": [
+              "Nowhere",
+              "Only if AI fails",
+              "High-stakes decisions",
+              "Never involved"
+            ],
+            "correctAnswer": 2,
+            "scoringMethod": "automatic",
+            "tags": [
+              "ii",
+              "auto-scorable"
+            ]
+          },
+          {
+            "id": "II-P-067",
+            "level": 3,
+            "type": "multiple-response",
+            "points": 13,
+            "difficulty": 0.46,
+            "discrimination": 1.13,
+            "bloomLevel": "Analyze",
+            "question": "Factors for workflow design? (SELECT ALL)",
+            "options": [
+              "Where humans add value",
+              "What AI does well",
+              "Full automation",
+              "Quality control"
+            ],
+            "correctAnswers": [
+              0,
+              1,
+              3
+            ],
+            "scoringMethod": "automatic",
+            "scoringLogic": "All correct must be selected, no incorrect selected",
+            "tags": [
+              "ii",
+              "auto-scorable"
+            ]
+          },
+          {
+            "id": "II-P-068",
+            "level": 3,
+            "type": "scenario-ranking",
+            "points": 13,
+            "difficulty": 0.69,
+            "discrimination": 1.18,
+            "bloomLevel": "Analyze",
+            "question": "Sequence for human-AI workflow design?",
+            "options": [
+              "A. Identify AI value",
+              "B. Design human involvement",
+              "C. Define quality control"
+            ],
+            "correctOrder": [
+              0,
+              1,
+              2
+            ],
+            "scoringMethod": "automatic",
+            "scoringLogic": "Exact order required",
+            "tags": [
+              "ii",
+              "auto-scorable"
+            ]
+          },
+          {
+            "id": "II-P-069",
+            "level": 3,
+            "type": "matching",
+            "points": 14,
+            "difficulty": 0.46,
+            "discrimination": 1.14,
+            "bloomLevel": "Understand",
+            "question": "Match design element to purpose:",
+            "leftColumn": [
+              "1. Human-in-loop",
+              "2. Task delegation",
+              "3. Quality control",
+              "4. Skill maintenance"
+            ],
+            "rightColumn": [
+              "A. Verify requirements",
+              "B. Match to strengths",
+              "C. Keep humans involved",
+              "D. Prevent atrophy"
+            ],
+            "correctPairs": [
+              [
+                0,
+                2
+              ],
+              [
+                1,
+                1
+              ],
+              [
+                2,
+                0
+              ],
+              [
+                3,
+                3
+              ]
+            ],
+            "scoringMethod": "automatic",
+            "scoringLogic": "Each correct pair=4 pts",
+            "tags": [
+              "ii",
+              "auto-scorable"
+            ]
+          },
+          {
+            "id": "II-P-070",
+            "level": 3,
+            "type": "rank-ordering",
+            "points": 14,
+            "difficulty": 0.51,
+            "discrimination": 1.1,
+            "bloomLevel": "Evaluate",
+            "question": "Rank automation factors:",
+            "items": [
+              "AI performance",
+              "Decision stakes",
+              "Cost savings",
+              "Human judgment",
+              "High-volume"
+            ],
+            "correctOrder": [
+              0,
+              3,
+              4,
+              1,
+              2
+            ],
+            "scoringMethod": "automatic",
+            "scoringLogic": "Kendall tau or position-based scoring",
+            "tags": [
+              "ii",
+              "auto-scorable"
+            ]
+          },
+          {
+            "id": "II-P-071",
+            "level": 2,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.34,
+            "discrimination": 1.16,
+            "bloomLevel": "Apply",
+            "question": "Where should humans keep control?",
+            "options": [
+              "Nowhere",
+              "Only if AI fails",
+              "High-stakes decisions",
+              "Never involved"
+            ],
+            "correctAnswer": 2,
+            "scoringMethod": "automatic",
+            "tags": [
+              "ii",
+              "auto-scorable"
+            ]
+          },
+          {
+            "id": "II-P-072",
+            "level": 3,
+            "type": "multiple-response",
+            "points": 13,
+            "difficulty": 0.69,
+            "discrimination": 1.09,
+            "bloomLevel": "Analyze",
+            "question": "Factors for workflow design? (SELECT ALL)",
+            "options": [
+              "Where humans add value",
+              "What AI does well",
+              "Full automation",
+              "Quality control"
+            ],
+            "correctAnswers": [
+              0,
+              1,
+              3
+            ],
+            "scoringMethod": "automatic",
+            "scoringLogic": "All correct must be selected, no incorrect selected",
+            "tags": [
+              "ii",
+              "auto-scorable"
+            ]
+          },
+          {
+            "id": "II-P-073",
+            "level": 3,
+            "type": "scenario-ranking",
+            "points": 13,
+            "difficulty": 0.35,
+            "discrimination": 1.3,
+            "bloomLevel": "Analyze",
+            "question": "Sequence for human-AI workflow design?",
+            "options": [
+              "A. Identify AI value",
+              "B. Design human involvement",
+              "C. Define quality control"
+            ],
+            "correctOrder": [
+              0,
+              1,
+              2
+            ],
+            "scoringMethod": "automatic",
+            "scoringLogic": "Exact order required",
+            "tags": [
+              "ii",
+              "auto-scorable"
+            ]
+          },
+          {
+            "id": "II-P-074",
+            "level": 3,
+            "type": "matching",
+            "points": 12,
+            "difficulty": 0.64,
+            "discrimination": 1.24,
+            "bloomLevel": "Understand",
+            "question": "Match design element to purpose:",
+            "leftColumn": [
+              "1. Human-in-loop",
+              "2. Task delegation",
+              "3. Quality control",
+              "4. Skill maintenance"
+            ],
+            "rightColumn": [
+              "A. Verify requirements",
+              "B. Match to strengths",
+              "C. Keep humans involved",
+              "D. Prevent atrophy"
+            ],
+            "correctPairs": [
+              [
+                0,
+                2
+              ],
+              [
+                1,
+                1
+              ],
+              [
+                2,
+                0
+              ],
+              [
+                3,
+                3
+              ]
+            ],
+            "scoringMethod": "automatic",
+            "scoringLogic": "Each correct pair=3 pts",
+            "tags": [
+              "ii",
+              "auto-scorable"
+            ]
+          },
+          {
+            "id": "II-P-075",
+            "level": 3,
+            "type": "rank-ordering",
+            "points": 14,
+            "difficulty": 0.59,
+            "discrimination": 1.16,
+            "bloomLevel": "Evaluate",
+            "question": "Rank automation factors:",
+            "items": [
+              "AI performance",
+              "Decision stakes",
+              "Cost savings",
+              "Human judgment",
+              "High-volume"
+            ],
+            "correctOrder": [
+              0,
+              3,
+              4,
+              1,
+              2
+            ],
+            "scoringMethod": "automatic",
+            "scoringLogic": "Kendall tau or position-based scoring",
+            "tags": [
+              "ii",
+              "auto-scorable"
+            ]
+          },
+          {
+            "id": "II-P-076",
+            "level": 2,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.62,
+            "discrimination": 1.22,
+            "bloomLevel": "Apply",
+            "question": "Where should humans keep control?",
+            "options": [
+              "Nowhere",
+              "Only if AI fails",
+              "High-stakes decisions",
+              "Never involved"
+            ],
+            "correctAnswer": 2,
+            "scoringMethod": "automatic",
+            "tags": [
+              "ii",
+              "auto-scorable"
+            ]
+          },
+          {
+            "id": "II-P-077",
+            "level": 3,
+            "type": "multiple-response",
+            "points": 12,
+            "difficulty": 0.35,
+            "discrimination": 1.13,
+            "bloomLevel": "Analyze",
+            "question": "Factors for workflow design? (SELECT ALL)",
+            "options": [
+              "Where humans add value",
+              "What AI does well",
+              "Full automation",
+              "Quality control"
+            ],
+            "correctAnswers": [
+              0,
+              1,
+              3
+            ],
+            "scoringMethod": "automatic",
+            "scoringLogic": "All correct must be selected, no incorrect selected",
+            "tags": [
+              "ii",
+              "auto-scorable"
+            ]
+          },
+          {
+            "id": "II-P-078",
+            "level": 3,
+            "type": "scenario-ranking",
+            "points": 13,
+            "difficulty": 0.57,
+            "discrimination": 1.23,
+            "bloomLevel": "Analyze",
+            "question": "Sequence for human-AI workflow design?",
+            "options": [
+              "A. Identify AI value",
+              "B. Design human involvement",
+              "C. Define quality control"
+            ],
+            "correctOrder": [
+              0,
+              1,
+              2
+            ],
+            "scoringMethod": "automatic",
+            "scoringLogic": "Exact order required",
+            "tags": [
+              "ii",
+              "auto-scorable"
+            ]
+          },
+          {
+            "id": "II-P-079",
+            "level": 3,
+            "type": "matching",
+            "points": 14,
+            "difficulty": 0.62,
+            "discrimination": 1.17,
+            "bloomLevel": "Understand",
+            "question": "Match design element to purpose:",
+            "leftColumn": [
+              "1. Human-in-loop",
+              "2. Task delegation",
+              "3. Quality control",
+              "4. Skill maintenance"
+            ],
+            "rightColumn": [
+              "A. Verify requirements",
+              "B. Match to strengths",
+              "C. Keep humans involved",
+              "D. Prevent atrophy"
+            ],
+            "correctPairs": [
+              [
+                0,
+                2
+              ],
+              [
+                1,
+                1
+              ],
+              [
+                2,
+                0
+              ],
+              [
+                3,
+                3
+              ]
+            ],
+            "scoringMethod": "automatic",
+            "scoringLogic": "Each correct pair=4 pts",
+            "tags": [
+              "ii",
+              "auto-scorable"
+            ]
+          },
+          {
+            "id": "II-P-080",
+            "level": 3,
+            "type": "rank-ordering",
+            "points": 14,
+            "difficulty": 0.52,
+            "discrimination": 1.31,
+            "bloomLevel": "Evaluate",
+            "question": "Rank automation factors:",
+            "items": [
+              "AI performance",
+              "Decision stakes",
+              "Cost savings",
+              "Human judgment",
+              "High-volume"
+            ],
+            "correctOrder": [
+              0,
+              3,
+              4,
+              1,
+              2
+            ],
+            "scoringMethod": "automatic",
+            "scoringLogic": "Kendall tau or position-based scoring",
+            "tags": [
+              "ii",
+              "auto-scorable"
+            ]
+          }
+        ]
+      },
+      {
+        "dimensionCode": "ALC",
+        "dimensionName": "Adaptive Learning Capability",
+        "weight": 0.125,
+        "totalPoints": 100,
+        "items": [
+          {
+            "id": "ALC-P-081",
+            "level": 2,
+            "type": "multiple-choice",
+            "points": 11,
+            "difficulty": 0.47,
+            "discrimination": 1.09,
+            "bloomLevel": "Apply",
+            "question": "How capture learning from implementations?",
+            "options": [
+              "Keep private",
+              "Document successes/failures",
+              "Never discuss",
+              "Too time-consuming"
+            ],
+            "correctAnswer": 1,
+            "scoringMethod": "automatic",
+            "tags": [
+              "alc",
+              "auto-scorable"
+            ]
+          },
+          {
+            "id": "ALC-P-082",
+            "level": 3,
+            "type": "multiple-response",
+            "points": 13,
+            "difficulty": 0.49,
+            "discrimination": 1.11,
+            "bloomLevel": "Analyze",
+            "question": "Elements supporting learning? (SELECT ALL)",
+            "options": [
+              "Document cases",
+              "Cross-team sharing",
+              "No reflection",
+              "Assessment tracking"
+            ],
+            "correctAnswers": [
+              0,
+              1,
+              3
+            ],
+            "scoringMethod": "automatic",
+            "scoringLogic": "All correct must be selected, no incorrect selected",
+            "tags": [
+              "alc",
+              "auto-scorable"
+            ]
+          },
+          {
+            "id": "ALC-P-083",
+            "level": 3,
+            "type": "scenario-ranking",
+            "points": 13,
+            "difficulty": 0.57,
+            "discrimination": 1.25,
+            "bloomLevel": "Analyze",
+            "question": "Logical learning sequence?",
+            "options": [
+              "A. Observe results",
+              "B. Reflect on outcomes",
+              "C. Document",
+              "D. Apply to new"
+            ],
+            "correctOrder": [
+              0,
+              1,
+              2,
+              3
+            ],
+            "scoringMethod": "automatic",
+            "scoringLogic": "Exact order required",
+            "tags": [
+              "alc",
+              "auto-scorable"
+            ]
+          },
+          {
+            "id": "ALC-P-084",
+            "level": 3,
+            "type": "matching",
+            "points": 12,
+            "difficulty": 0.59,
+            "discrimination": 1.29,
+            "bloomLevel": "Understand",
+            "question": "Match learning to outcome:",
+            "leftColumn": [
+              "1. Documentation",
+              "2. Experimentation",
+              "3. Reflection",
+              "4. Sharing"
+            ],
+            "rightColumn": [
+              "A. Discovers context fit",
+              "B. Transfers across",
+              "C. Captures insights",
+              "D. Converts experience"
+            ],
+            "correctPairs": [
+              [
+                0,
+                2
+              ],
+              [
+                1,
+                0
+              ],
+              [
+                2,
+                3
+              ],
+              [
+                3,
+                1
+              ]
+            ],
+            "scoringMethod": "automatic",
+            "scoringLogic": "Each correct pair=3 pts",
+            "tags": [
+              "alc",
+              "auto-scorable"
+            ]
+          },
+          {
+            "id": "ALC-P-085",
+            "level": 3,
+            "type": "rank-ordering",
+            "points": 14,
+            "difficulty": 0.42,
+            "discrimination": 1.18,
+            "bloomLevel": "Evaluate",
+            "question": "Rank learning activities:",
+            "items": [
+              "Documenting",
+              "Knowledge sharing",
+              "Experimentation",
+              "Reflection",
+              "Quick wins only"
+            ],
+            "correctOrder": [
+              1,
+              2,
+              3,
+              0,
+              4
+            ],
+            "scoringMethod": "automatic",
+            "scoringLogic": "Kendall tau or position-based scoring",
+            "tags": [
+              "alc",
+              "auto-scorable"
+            ]
+          },
+          {
+            "id": "ALC-P-086",
+            "level": 2,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.45,
+            "discrimination": 1.32,
+            "bloomLevel": "Apply",
+            "question": "How capture learning from implementations?",
+            "options": [
+              "Keep private",
+              "Document successes/failures",
+              "Never discuss",
+              "Too time-consuming"
+            ],
+            "correctAnswer": 1,
+            "scoringMethod": "automatic",
+            "tags": [
+              "alc",
+              "auto-scorable"
+            ]
+          },
+          {
+            "id": "ALC-P-087",
+            "level": 3,
+            "type": "multiple-response",
+            "points": 11,
+            "difficulty": 0.53,
+            "discrimination": 1.16,
+            "bloomLevel": "Analyze",
+            "question": "Elements supporting learning? (SELECT ALL)",
+            "options": [
+              "Document cases",
+              "Cross-team sharing",
+              "No reflection",
+              "Assessment tracking"
+            ],
+            "correctAnswers": [
+              0,
+              1,
+              3
+            ],
+            "scoringMethod": "automatic",
+            "scoringLogic": "All correct must be selected, no incorrect selected",
+            "tags": [
+              "alc",
+              "auto-scorable"
+            ]
+          },
+          {
+            "id": "ALC-P-088",
+            "level": 3,
+            "type": "scenario-ranking",
+            "points": 13,
+            "difficulty": 0.68,
+            "discrimination": 1.26,
+            "bloomLevel": "Analyze",
+            "question": "Logical learning sequence?",
+            "options": [
+              "A. Observe results",
+              "B. Reflect on outcomes",
+              "C. Document",
+              "D. Apply to new"
+            ],
+            "correctOrder": [
+              0,
+              1,
+              2,
+              3
+            ],
+            "scoringMethod": "automatic",
+            "scoringLogic": "Exact order required",
+            "tags": [
+              "alc",
+              "auto-scorable"
+            ]
+          },
+          {
+            "id": "ALC-P-089",
+            "level": 3,
+            "type": "matching",
+            "points": 14,
+            "difficulty": 0.49,
+            "discrimination": 1.22,
+            "bloomLevel": "Understand",
+            "question": "Match learning to outcome:",
+            "leftColumn": [
+              "1. Documentation",
+              "2. Experimentation",
+              "3. Reflection",
+              "4. Sharing"
+            ],
+            "rightColumn": [
+              "A. Discovers context fit",
+              "B. Transfers across",
+              "C. Captures insights",
+              "D. Converts experience"
+            ],
+            "correctPairs": [
+              [
+                0,
+                2
+              ],
+              [
+                1,
+                0
+              ],
+              [
+                2,
+                3
+              ],
+              [
+                3,
+                1
+              ]
+            ],
+            "scoringMethod": "automatic",
+            "scoringLogic": "Each correct pair=4 pts",
+            "tags": [
+              "alc",
+              "auto-scorable"
+            ]
+          },
+          {
+            "id": "ALC-P-090",
+            "level": 3,
+            "type": "rank-ordering",
+            "points": 14,
+            "difficulty": 0.64,
+            "discrimination": 1.15,
+            "bloomLevel": "Evaluate",
+            "question": "Rank learning activities:",
+            "items": [
+              "Documenting",
+              "Knowledge sharing",
+              "Experimentation",
+              "Reflection",
+              "Quick wins only"
+            ],
+            "correctOrder": [
+              1,
+              2,
+              3,
+              0,
+              4
+            ],
+            "scoringMethod": "automatic",
+            "scoringLogic": "Kendall tau or position-based scoring",
+            "tags": [
+              "alc",
+              "auto-scorable"
+            ]
+          },
+          {
+            "id": "ALC-P-091",
+            "level": 2,
+            "type": "multiple-choice",
+            "points": 11,
+            "difficulty": 0.61,
+            "discrimination": 1.16,
+            "bloomLevel": "Apply",
+            "question": "How capture learning from implementations?",
+            "options": [
+              "Keep private",
+              "Document successes/failures",
+              "Never discuss",
+              "Too time-consuming"
+            ],
+            "correctAnswer": 1,
+            "scoringMethod": "automatic",
+            "tags": [
+              "alc",
+              "auto-scorable"
+            ]
+          },
+          {
+            "id": "ALC-P-092",
+            "level": 3,
+            "type": "multiple-response",
+            "points": 11,
+            "difficulty": 0.34,
+            "discrimination": 1.23,
+            "bloomLevel": "Analyze",
+            "question": "Elements supporting learning? (SELECT ALL)",
+            "options": [
+              "Document cases",
+              "Cross-team sharing",
+              "No reflection",
+              "Assessment tracking"
+            ],
+            "correctAnswers": [
+              0,
+              1,
+              3
+            ],
+            "scoringMethod": "automatic",
+            "scoringLogic": "All correct must be selected, no incorrect selected",
+            "tags": [
+              "alc",
+              "auto-scorable"
+            ]
+          },
+          {
+            "id": "ALC-P-093",
+            "level": 3,
+            "type": "scenario-ranking",
+            "points": 13,
+            "difficulty": 0.6,
+            "discrimination": 1.32,
+            "bloomLevel": "Analyze",
+            "question": "Logical learning sequence?",
+            "options": [
+              "A. Observe results",
+              "B. Reflect on outcomes",
+              "C. Document",
+              "D. Apply to new"
+            ],
+            "correctOrder": [
+              0,
+              1,
+              2,
+              3
+            ],
+            "scoringMethod": "automatic",
+            "scoringLogic": "Exact order required",
+            "tags": [
+              "alc",
+              "auto-scorable"
+            ]
+          },
+          {
+            "id": "ALC-P-094",
+            "level": 3,
+            "type": "matching",
+            "points": 14,
+            "difficulty": 0.36,
+            "discrimination": 1.14,
+            "bloomLevel": "Understand",
+            "question": "Match learning to outcome:",
+            "leftColumn": [
+              "1. Documentation",
+              "2. Experimentation",
+              "3. Reflection",
+              "4. Sharing"
+            ],
+            "rightColumn": [
+              "A. Discovers context fit",
+              "B. Transfers across",
+              "C. Captures insights",
+              "D. Converts experience"
+            ],
+            "correctPairs": [
+              [
+                0,
+                2
+              ],
+              [
+                1,
+                0
+              ],
+              [
+                2,
+                3
+              ],
+              [
+                3,
+                1
+              ]
+            ],
+            "scoringMethod": "automatic",
+            "scoringLogic": "Each correct pair=4 pts",
+            "tags": [
+              "alc",
+              "auto-scorable"
+            ]
+          },
+          {
+            "id": "ALC-P-095",
+            "level": 3,
+            "type": "rank-ordering",
+            "points": 15,
+            "difficulty": 0.55,
+            "discrimination": 1.08,
+            "bloomLevel": "Evaluate",
+            "question": "Rank learning activities:",
+            "items": [
+              "Documenting",
+              "Knowledge sharing",
+              "Experimentation",
+              "Reflection",
+              "Quick wins only"
+            ],
+            "correctOrder": [
+              1,
+              2,
+              3,
+              0,
+              4
+            ],
+            "scoringMethod": "automatic",
+            "scoringLogic": "Kendall tau or position-based scoring",
+            "tags": [
+              "alc",
+              "auto-scorable"
+            ]
+          },
+          {
+            "id": "ALC-P-096",
+            "level": 2,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.63,
+            "discrimination": 1.13,
+            "bloomLevel": "Apply",
+            "question": "How capture learning from implementations?",
+            "options": [
+              "Keep private",
+              "Document successes/failures",
+              "Never discuss",
+              "Too time-consuming"
+            ],
+            "correctAnswer": 1,
+            "scoringMethod": "automatic",
+            "tags": [
+              "alc",
+              "auto-scorable"
+            ]
+          },
+          {
+            "id": "ALC-P-097",
+            "level": 3,
+            "type": "multiple-response",
+            "points": 11,
+            "difficulty": 0.68,
+            "discrimination": 1.29,
+            "bloomLevel": "Analyze",
+            "question": "Elements supporting learning? (SELECT ALL)",
+            "options": [
+              "Document cases",
+              "Cross-team sharing",
+              "No reflection",
+              "Assessment tracking"
+            ],
+            "correctAnswers": [
+              0,
+              1,
+              3
+            ],
+            "scoringMethod": "automatic",
+            "scoringLogic": "All correct must be selected, no incorrect selected",
+            "tags": [
+              "alc",
+              "auto-scorable"
+            ]
+          },
+          {
+            "id": "ALC-P-098",
+            "level": 3,
+            "type": "scenario-ranking",
+            "points": 14,
+            "difficulty": 0.57,
+            "discrimination": 1.32,
+            "bloomLevel": "Analyze",
+            "question": "Logical learning sequence?",
+            "options": [
+              "A. Observe results",
+              "B. Reflect on outcomes",
+              "C. Document",
+              "D. Apply to new"
+            ],
+            "correctOrder": [
+              0,
+              1,
+              2,
+              3
+            ],
+            "scoringMethod": "automatic",
+            "scoringLogic": "Exact order required",
+            "tags": [
+              "alc",
+              "auto-scorable"
+            ]
+          },
+          {
+            "id": "ALC-P-099",
+            "level": 3,
+            "type": "matching",
+            "points": 14,
+            "difficulty": 0.33,
+            "discrimination": 1.22,
+            "bloomLevel": "Understand",
+            "question": "Match learning to outcome:",
+            "leftColumn": [
+              "1. Documentation",
+              "2. Experimentation",
+              "3. Reflection",
+              "4. Sharing"
+            ],
+            "rightColumn": [
+              "A. Discovers context fit",
+              "B. Transfers across",
+              "C. Captures insights",
+              "D. Converts experience"
+            ],
+            "correctPairs": [
+              [
+                0,
+                2
+              ],
+              [
+                1,
+                0
+              ],
+              [
+                2,
+                3
+              ],
+              [
+                3,
+                1
+              ]
+            ],
+            "scoringMethod": "automatic",
+            "scoringLogic": "Each correct pair=4 pts",
+            "tags": [
+              "alc",
+              "auto-scorable"
+            ]
+          },
+          {
+            "id": "ALC-P-100",
+            "level": 3,
+            "type": "rank-ordering",
+            "points": 15,
+            "difficulty": 0.3,
+            "discrimination": 1.2,
+            "bloomLevel": "Evaluate",
+            "question": "Rank learning activities:",
+            "items": [
+              "Documenting",
+              "Knowledge sharing",
+              "Experimentation",
+              "Reflection",
+              "Quick wins only"
+            ],
+            "correctOrder": [
+              1,
+              2,
+              3,
+              0,
+              4
+            ],
+            "scoringMethod": "automatic",
+            "scoringLogic": "Kendall tau or position-based scoring",
+            "tags": [
+              "alc",
+              "auto-scorable"
+            ]
+          }
+        ]
+      },
+      {
+        "dimensionCode": "EJC",
+        "dimensionName": "Ethical Judgment Capability",
+        "weight": 0.125,
+        "totalPoints": 100,
+        "items": [
+          {
+            "id": "EJC-P-101",
+            "level": 2,
+            "type": "multiple-choice",
+            "points": 12,
+            "difficulty": 0.56,
+            "discrimination": 1.27,
+            "bloomLevel": "Apply",
+            "question": "Primary ethical concern with AI hiring?",
+            "options": [
+              "Too fast",
+              "May perpetuate biases",
+              "Requires data",
+              "No concerns"
+            ],
+            "correctAnswer": 1,
+            "scoringMethod": "automatic",
+            "tags": [
+              "ejc",
+              "auto-scorable"
+            ]
+          },
+          {
+            "id": "EJC-P-102",
+            "level": 3,
+            "type": "multiple-response",
+            "points": 11,
+            "difficulty": 0.64,
+            "discrimination": 1.13,
+            "bloomLevel": "Analyze",
+            "question": "Ethical deployment considerations? (SELECT ALL)",
+            "options": [
+              "Stakeholder impact",
+              "Fairness/bias",
+              "Profit only",
+              "Transparency"
+            ],
+            "correctAnswers": [
+              0,
+              1,
+              3
+            ],
+            "scoringMethod": "automatic",
+            "scoringLogic": "All correct must be selected, no incorrect selected",
+            "tags": [
+              "ejc",
+              "auto-scorable"
+            ]
+          },
+          {
+            "id": "EJC-P-103",
+            "level": 3,
+            "type": "scenario-ranking",
+            "points": 14,
+            "difficulty": 0.61,
+            "discrimination": 1.18,
+            "bloomLevel": "Analyze",
+            "question": "Ethical consideration sequence?",
+            "options": [
+              "A. Identify stakeholders",
+              "B. Assess fairness",
+              "C. Design safeguards"
+            ],
+            "correctOrder": [
+              0,
+              1,
+              2
+            ],
+            "scoringMethod": "automatic",
+            "scoringLogic": "Exact order required",
+            "tags": [
+              "ejc",
+              "auto-scorable"
+            ]
+          },
+          {
+            "id": "EJC-P-104",
+            "level": 3,
+            "type": "matching",
+            "points": 12,
+            "difficulty": 0.4,
+            "discrimination": 1.22,
+            "bloomLevel": "Understand",
+            "question": "Match concern to mitigation:",
+            "leftColumn": [
+              "1. Bias",
+              "2. Privacy",
+              "3. Accountability",
+              "4. Misuse"
+            ],
+            "rightColumn": [
+              "A. Governance",
+              "B. Protections",
+              "C. Fairness audit",
+              "D. Safeguards"
+            ],
+            "correctPairs": [
+              [
+                0,
+                2
+              ],
+              [
+                1,
+                1
+              ],
+              [
+                2,
+                0
+              ],
+              [
+                3,
+                3
+              ]
+            ],
+            "scoringMethod": "automatic",
+            "scoringLogic": "Each correct pair=3 pts",
+            "tags": [
+              "ejc",
+              "auto-scorable"
+            ]
+          },
+          {
+            "id": "EJC-P-105",
+            "level": 3,
+            "type": "rank-ordering",
+            "points": 15,
+            "difficulty": 0.46,
+            "discrimination": 1.25,
+            "bloomLevel": "Evaluate",
+            "question": "Rank ethical priorities:",
+            "items": [
+              "Stakeholder impact",
+              "Fairness",
+              "Transparency",
+              "Profit",
+              "Governance"
+            ],
+            "correctOrder": [
+              0,
+              1,
+              4,
+              2,
+              3
+            ],
+            "scoringMethod": "automatic",
+            "scoringLogic": "Kendall tau or position-based scoring",
+            "tags": [
+              "ejc",
+              "auto-scorable"
+            ]
+          },
+          {
+            "id": "EJC-P-106",
+            "level": 2,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.62,
+            "discrimination": 1.19,
+            "bloomLevel": "Apply",
+            "question": "Primary ethical concern with AI hiring?",
+            "options": [
+              "Too fast",
+              "May perpetuate biases",
+              "Requires data",
+              "No concerns"
+            ],
+            "correctAnswer": 1,
+            "scoringMethod": "automatic",
+            "tags": [
+              "ejc",
+              "auto-scorable"
+            ]
+          },
+          {
+            "id": "EJC-P-107",
+            "level": 3,
+            "type": "multiple-response",
+            "points": 11,
+            "difficulty": 0.38,
+            "discrimination": 1.28,
+            "bloomLevel": "Analyze",
+            "question": "Ethical deployment considerations? (SELECT ALL)",
+            "options": [
+              "Stakeholder impact",
+              "Fairness/bias",
+              "Profit only",
+              "Transparency"
+            ],
+            "correctAnswers": [
+              0,
+              1,
+              3
+            ],
+            "scoringMethod": "automatic",
+            "scoringLogic": "All correct must be selected, no incorrect selected",
+            "tags": [
+              "ejc",
+              "auto-scorable"
+            ]
+          },
+          {
+            "id": "EJC-P-108",
+            "level": 3,
+            "type": "scenario-ranking",
+            "points": 12,
+            "difficulty": 0.35,
+            "discrimination": 1.17,
+            "bloomLevel": "Analyze",
+            "question": "Ethical consideration sequence?",
+            "options": [
+              "A. Identify stakeholders",
+              "B. Assess fairness",
+              "C. Design safeguards"
+            ],
+            "correctOrder": [
+              0,
+              1,
+              2
+            ],
+            "scoringMethod": "automatic",
+            "scoringLogic": "Exact order required",
+            "tags": [
+              "ejc",
+              "auto-scorable"
+            ]
+          },
+          {
+            "id": "EJC-P-109",
+            "level": 3,
+            "type": "matching",
+            "points": 14,
+            "difficulty": 0.58,
+            "discrimination": 1.3,
+            "bloomLevel": "Understand",
+            "question": "Match concern to mitigation:",
+            "leftColumn": [
+              "1. Bias",
+              "2. Privacy",
+              "3. Accountability",
+              "4. Misuse"
+            ],
+            "rightColumn": [
+              "A. Governance",
+              "B. Protections",
+              "C. Fairness audit",
+              "D. Safeguards"
+            ],
+            "correctPairs": [
+              [
+                0,
+                2
+              ],
+              [
+                1,
+                1
+              ],
+              [
+                2,
+                0
+              ],
+              [
+                3,
+                3
+              ]
+            ],
+            "scoringMethod": "automatic",
+            "scoringLogic": "Each correct pair=4 pts",
+            "tags": [
+              "ejc",
+              "auto-scorable"
+            ]
+          },
+          {
+            "id": "EJC-P-110",
+            "level": 3,
+            "type": "rank-ordering",
+            "points": 14,
+            "difficulty": 0.59,
+            "discrimination": 1.13,
+            "bloomLevel": "Evaluate",
+            "question": "Rank ethical priorities:",
+            "items": [
+              "Stakeholder impact",
+              "Fairness",
+              "Transparency",
+              "Profit",
+              "Governance"
+            ],
+            "correctOrder": [
+              0,
+              1,
+              4,
+              2,
+              3
+            ],
+            "scoringMethod": "automatic",
+            "scoringLogic": "Kendall tau or position-based scoring",
+            "tags": [
+              "ejc",
+              "auto-scorable"
+            ]
+          },
+          {
+            "id": "EJC-P-111",
+            "level": 2,
+            "type": "multiple-choice",
+            "points": 12,
+            "difficulty": 0.62,
+            "discrimination": 1.11,
+            "bloomLevel": "Apply",
+            "question": "Primary ethical concern with AI hiring?",
+            "options": [
+              "Too fast",
+              "May perpetuate biases",
+              "Requires data",
+              "No concerns"
+            ],
+            "correctAnswer": 1,
+            "scoringMethod": "automatic",
+            "tags": [
+              "ejc",
+              "auto-scorable"
+            ]
+          },
+          {
+            "id": "EJC-P-112",
+            "level": 3,
+            "type": "multiple-response",
+            "points": 11,
+            "difficulty": 0.5,
+            "discrimination": 1.08,
+            "bloomLevel": "Analyze",
+            "question": "Ethical deployment considerations? (SELECT ALL)",
+            "options": [
+              "Stakeholder impact",
+              "Fairness/bias",
+              "Profit only",
+              "Transparency"
+            ],
+            "correctAnswers": [
+              0,
+              1,
+              3
+            ],
+            "scoringMethod": "automatic",
+            "scoringLogic": "All correct must be selected, no incorrect selected",
+            "tags": [
+              "ejc",
+              "auto-scorable"
+            ]
+          },
+          {
+            "id": "EJC-P-113",
+            "level": 3,
+            "type": "scenario-ranking",
+            "points": 14,
+            "difficulty": 0.43,
+            "discrimination": 1.31,
+            "bloomLevel": "Analyze",
+            "question": "Ethical consideration sequence?",
+            "options": [
+              "A. Identify stakeholders",
+              "B. Assess fairness",
+              "C. Design safeguards"
+            ],
+            "correctOrder": [
+              0,
+              1,
+              2
+            ],
+            "scoringMethod": "automatic",
+            "scoringLogic": "Exact order required",
+            "tags": [
+              "ejc",
+              "auto-scorable"
+            ]
+          },
+          {
+            "id": "EJC-P-114",
+            "level": 3,
+            "type": "matching",
+            "points": 12,
+            "difficulty": 0.34,
+            "discrimination": 1.23,
+            "bloomLevel": "Understand",
+            "question": "Match concern to mitigation:",
+            "leftColumn": [
+              "1. Bias",
+              "2. Privacy",
+              "3. Accountability",
+              "4. Misuse"
+            ],
+            "rightColumn": [
+              "A. Governance",
+              "B. Protections",
+              "C. Fairness audit",
+              "D. Safeguards"
+            ],
+            "correctPairs": [
+              [
+                0,
+                2
+              ],
+              [
+                1,
+                1
+              ],
+              [
+                2,
+                0
+              ],
+              [
+                3,
+                3
+              ]
+            ],
+            "scoringMethod": "automatic",
+            "scoringLogic": "Each correct pair=3 pts",
+            "tags": [
+              "ejc",
+              "auto-scorable"
+            ]
+          },
+          {
+            "id": "EJC-P-115",
+            "level": 3,
+            "type": "rank-ordering",
+            "points": 13,
+            "difficulty": 0.68,
+            "discrimination": 1.15,
+            "bloomLevel": "Evaluate",
+            "question": "Rank ethical priorities:",
+            "items": [
+              "Stakeholder impact",
+              "Fairness",
+              "Transparency",
+              "Profit",
+              "Governance"
+            ],
+            "correctOrder": [
+              0,
+              1,
+              4,
+              2,
+              3
+            ],
+            "scoringMethod": "automatic",
+            "scoringLogic": "Kendall tau or position-based scoring",
+            "tags": [
+              "ejc",
+              "auto-scorable"
+            ]
+          },
+          {
+            "id": "EJC-P-116",
+            "level": 2,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.37,
+            "discrimination": 1.25,
+            "bloomLevel": "Apply",
+            "question": "Primary ethical concern with AI hiring?",
+            "options": [
+              "Too fast",
+              "May perpetuate biases",
+              "Requires data",
+              "No concerns"
+            ],
+            "correctAnswer": 1,
+            "scoringMethod": "automatic",
+            "tags": [
+              "ejc",
+              "auto-scorable"
+            ]
+          },
+          {
+            "id": "EJC-P-117",
+            "level": 3,
+            "type": "multiple-response",
+            "points": 12,
+            "difficulty": 0.52,
+            "discrimination": 1.31,
+            "bloomLevel": "Analyze",
+            "question": "Ethical deployment considerations? (SELECT ALL)",
+            "options": [
+              "Stakeholder impact",
+              "Fairness/bias",
+              "Profit only",
+              "Transparency"
+            ],
+            "correctAnswers": [
+              0,
+              1,
+              3
+            ],
+            "scoringMethod": "automatic",
+            "scoringLogic": "All correct must be selected, no incorrect selected",
+            "tags": [
+              "ejc",
+              "auto-scorable"
+            ]
+          },
+          {
+            "id": "EJC-P-118",
+            "level": 3,
+            "type": "scenario-ranking",
+            "points": 13,
+            "difficulty": 0.37,
+            "discrimination": 1.24,
+            "bloomLevel": "Analyze",
+            "question": "Ethical consideration sequence?",
+            "options": [
+              "A. Identify stakeholders",
+              "B. Assess fairness",
+              "C. Design safeguards"
+            ],
+            "correctOrder": [
+              0,
+              1,
+              2
+            ],
+            "scoringMethod": "automatic",
+            "scoringLogic": "Exact order required",
+            "tags": [
+              "ejc",
+              "auto-scorable"
+            ]
+          },
+          {
+            "id": "EJC-P-119",
+            "level": 3,
+            "type": "matching",
+            "points": 12,
+            "difficulty": 0.57,
+            "discrimination": 1.12,
+            "bloomLevel": "Understand",
+            "question": "Match concern to mitigation:",
+            "leftColumn": [
+              "1. Bias",
+              "2. Privacy",
+              "3. Accountability",
+              "4. Misuse"
+            ],
+            "rightColumn": [
+              "A. Governance",
+              "B. Protections",
+              "C. Fairness audit",
+              "D. Safeguards"
+            ],
+            "correctPairs": [
+              [
+                0,
+                2
+              ],
+              [
+                1,
+                1
+              ],
+              [
+                2,
+                0
+              ],
+              [
+                3,
+                3
+              ]
+            ],
+            "scoringMethod": "automatic",
+            "scoringLogic": "Each correct pair=3 pts",
+            "tags": [
+              "ejc",
+              "auto-scorable"
+            ]
+          },
+          {
+            "id": "EJC-P-120",
+            "level": 3,
+            "type": "rank-ordering",
+            "points": 13,
+            "difficulty": 0.37,
+            "discrimination": 1.29,
+            "bloomLevel": "Evaluate",
+            "question": "Rank ethical priorities:",
+            "items": [
+              "Stakeholder impact",
+              "Fairness",
+              "Transparency",
+              "Profit",
+              "Governance"
+            ],
+            "correctOrder": [
+              0,
+              1,
+              4,
+              2,
+              3
+            ],
+            "scoringMethod": "automatic",
+            "scoringLogic": "Kendall tau or position-based scoring",
+            "tags": [
+              "ejc",
+              "auto-scorable"
+            ]
+          }
+        ]
+      },
+      {
+        "dimensionCode": "CS",
+        "dimensionName": "Context Sensitivity",
+        "weight": 0.125,
+        "totalPoints": 100,
+        "items": [
+          {
+            "id": "CS-P-121",
+            "level": 2,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.31,
+            "discrimination": 1.18,
+            "bloomLevel": "Apply",
+            "question": "How should culture influence strategy?",
+            "options": [
+              "Shouldn't",
+              "Culture shapes readiness",
+              "Hiring only",
+              "AI overrides culture"
+            ],
+            "correctAnswer": 1,
+            "scoringMethod": "automatic",
+            "tags": [
+              "cs",
+              "auto-scorable"
+            ]
+          },
+          {
+            "id": "CS-P-122",
+            "level": 3,
+            "type": "multiple-response",
+            "points": 11,
+            "difficulty": 0.64,
+            "discrimination": 1.31,
+            "bloomLevel": "Analyze",
+            "question": "Contextual factors for strategy? (SELECT ALL)",
+            "options": [
+              "Organizational maturity",
+              "Regulatory requirements",
+              "Copy competitors",
+              "Industry challenges"
+            ],
+            "correctAnswers": [
+              0,
+              1,
+              3
+            ],
+            "scoringMethod": "automatic",
+            "scoringLogic": "All correct must be selected, no incorrect selected",
+            "tags": [
+              "cs",
+              "auto-scorable"
+            ]
+          },
+          {
+            "id": "CS-P-123",
+            "level": 3,
+            "type": "scenario-ranking",
+            "points": 13,
+            "difficulty": 0.46,
+            "discrimination": 1.31,
+            "bloomLevel": "Analyze",
+            "question": "Deploy AI across markets sequence?",
+            "options": [
+              "A. Understand context",
+              "B. Adapt to local",
+              "C. Pilot test"
+            ],
+            "correctOrder": [
+              0,
+              1,
+              2
+            ],
+            "scoringMethod": "automatic",
+            "scoringLogic": "Exact order required",
+            "tags": [
+              "cs",
+              "auto-scorable"
+            ]
+          },
+          {
+            "id": "CS-P-124",
+            "level": 3,
+            "type": "matching",
+            "points": 14,
+            "difficulty": 0.43,
+            "discrimination": 1.25,
+            "bloomLevel": "Understand",
+            "question": "Match factor to influence:",
+            "leftColumn": [
+              "1. Maturity",
+              "2. Regulation",
+              "3. Industry",
+              "4. Competition"
+            ],
+            "rightColumn": [
+              "A. Compliance needs",
+              "B. Timeline",
+              "C. Positioning",
+              "D. Implementation"
+            ],
+            "correctPairs": [
+              [
+                0,
+                1
+              ],
+              [
+                1,
+                0
+              ],
+              [
+                2,
+                3
+              ],
+              [
+                3,
+                2
+              ]
+            ],
+            "scoringMethod": "automatic",
+            "scoringLogic": "Each correct pair=4 pts",
+            "tags": [
+              "cs",
+              "auto-scorable"
+            ]
+          },
+          {
+            "id": "CS-P-125",
+            "level": 3,
+            "type": "rank-ordering",
+            "points": 13,
+            "difficulty": 0.39,
+            "discrimination": 1.3,
+            "bloomLevel": "Evaluate",
+            "question": "Rank contextual factors:",
+            "items": [
+              "Change capacity",
+              "Regulations",
+              "Industry",
+              "Competitors",
+              "Culture"
+            ],
+            "correctOrder": [
+              1,
+              0,
+              4,
+              2,
+              3
+            ],
+            "scoringMethod": "automatic",
+            "scoringLogic": "Kendall tau or position-based scoring",
+            "tags": [
+              "cs",
+              "auto-scorable"
+            ]
+          },
+          {
+            "id": "CS-P-126",
+            "level": 2,
+            "type": "multiple-choice",
+            "points": 11,
+            "difficulty": 0.35,
+            "discrimination": 1.13,
+            "bloomLevel": "Apply",
+            "question": "How should culture influence strategy?",
+            "options": [
+              "Shouldn't",
+              "Culture shapes readiness",
+              "Hiring only",
+              "AI overrides culture"
+            ],
+            "correctAnswer": 1,
+            "scoringMethod": "automatic",
+            "tags": [
+              "cs",
+              "auto-scorable"
+            ]
+          },
+          {
+            "id": "CS-P-127",
+            "level": 3,
+            "type": "multiple-response",
+            "points": 11,
+            "difficulty": 0.37,
+            "discrimination": 1.28,
+            "bloomLevel": "Analyze",
+            "question": "Contextual factors for strategy? (SELECT ALL)",
+            "options": [
+              "Organizational maturity",
+              "Regulatory requirements",
+              "Copy competitors",
+              "Industry challenges"
+            ],
+            "correctAnswers": [
+              0,
+              1,
+              3
+            ],
+            "scoringMethod": "automatic",
+            "scoringLogic": "All correct must be selected, no incorrect selected",
+            "tags": [
+              "cs",
+              "auto-scorable"
+            ]
+          },
+          {
+            "id": "CS-P-128",
+            "level": 3,
+            "type": "scenario-ranking",
+            "points": 14,
+            "difficulty": 0.32,
+            "discrimination": 1.14,
+            "bloomLevel": "Analyze",
+            "question": "Deploy AI across markets sequence?",
+            "options": [
+              "A. Understand context",
+              "B. Adapt to local",
+              "C. Pilot test"
+            ],
+            "correctOrder": [
+              0,
+              1,
+              2
+            ],
+            "scoringMethod": "automatic",
+            "scoringLogic": "Exact order required",
+            "tags": [
+              "cs",
+              "auto-scorable"
+            ]
+          },
+          {
+            "id": "CS-P-129",
+            "level": 3,
+            "type": "matching",
+            "points": 12,
+            "difficulty": 0.33,
+            "discrimination": 1.17,
+            "bloomLevel": "Understand",
+            "question": "Match factor to influence:",
+            "leftColumn": [
+              "1. Maturity",
+              "2. Regulation",
+              "3. Industry",
+              "4. Competition"
+            ],
+            "rightColumn": [
+              "A. Compliance needs",
+              "B. Timeline",
+              "C. Positioning",
+              "D. Implementation"
+            ],
+            "correctPairs": [
+              [
+                0,
+                1
+              ],
+              [
+                1,
+                0
+              ],
+              [
+                2,
+                3
+              ],
+              [
+                3,
+                2
+              ]
+            ],
+            "scoringMethod": "automatic",
+            "scoringLogic": "Each correct pair=3 pts",
+            "tags": [
+              "cs",
+              "auto-scorable"
+            ]
+          },
+          {
+            "id": "CS-P-130",
+            "level": 3,
+            "type": "rank-ordering",
+            "points": 15,
+            "difficulty": 0.54,
+            "discrimination": 1.19,
+            "bloomLevel": "Evaluate",
+            "question": "Rank contextual factors:",
+            "items": [
+              "Change capacity",
+              "Regulations",
+              "Industry",
+              "Competitors",
+              "Culture"
+            ],
+            "correctOrder": [
+              1,
+              0,
+              4,
+              2,
+              3
+            ],
+            "scoringMethod": "automatic",
+            "scoringLogic": "Kendall tau or position-based scoring",
+            "tags": [
+              "cs",
+              "auto-scorable"
+            ]
+          },
+          {
+            "id": "CS-P-131",
+            "level": 2,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.6,
+            "discrimination": 1.24,
+            "bloomLevel": "Apply",
+            "question": "How should culture influence strategy?",
+            "options": [
+              "Shouldn't",
+              "Culture shapes readiness",
+              "Hiring only",
+              "AI overrides culture"
+            ],
+            "correctAnswer": 1,
+            "scoringMethod": "automatic",
+            "tags": [
+              "cs",
+              "auto-scorable"
+            ]
+          },
+          {
+            "id": "CS-P-132",
+            "level": 3,
+            "type": "multiple-response",
+            "points": 13,
+            "difficulty": 0.6,
+            "discrimination": 1.19,
+            "bloomLevel": "Analyze",
+            "question": "Contextual factors for strategy? (SELECT ALL)",
+            "options": [
+              "Organizational maturity",
+              "Regulatory requirements",
+              "Copy competitors",
+              "Industry challenges"
+            ],
+            "correctAnswers": [
+              0,
+              1,
+              3
+            ],
+            "scoringMethod": "automatic",
+            "scoringLogic": "All correct must be selected, no incorrect selected",
+            "tags": [
+              "cs",
+              "auto-scorable"
+            ]
+          },
+          {
+            "id": "CS-P-133",
+            "level": 3,
+            "type": "scenario-ranking",
+            "points": 13,
+            "difficulty": 0.6,
+            "discrimination": 1.27,
+            "bloomLevel": "Analyze",
+            "question": "Deploy AI across markets sequence?",
+            "options": [
+              "A. Understand context",
+              "B. Adapt to local",
+              "C. Pilot test"
+            ],
+            "correctOrder": [
+              0,
+              1,
+              2
+            ],
+            "scoringMethod": "automatic",
+            "scoringLogic": "Exact order required",
+            "tags": [
+              "cs",
+              "auto-scorable"
+            ]
+          },
+          {
+            "id": "CS-P-134",
+            "level": 3,
+            "type": "matching",
+            "points": 14,
+            "difficulty": 0.58,
+            "discrimination": 1.26,
+            "bloomLevel": "Understand",
+            "question": "Match factor to influence:",
+            "leftColumn": [
+              "1. Maturity",
+              "2. Regulation",
+              "3. Industry",
+              "4. Competition"
+            ],
+            "rightColumn": [
+              "A. Compliance needs",
+              "B. Timeline",
+              "C. Positioning",
+              "D. Implementation"
+            ],
+            "correctPairs": [
+              [
+                0,
+                1
+              ],
+              [
+                1,
+                0
+              ],
+              [
+                2,
+                3
+              ],
+              [
+                3,
+                2
+              ]
+            ],
+            "scoringMethod": "automatic",
+            "scoringLogic": "Each correct pair=4 pts",
+            "tags": [
+              "cs",
+              "auto-scorable"
+            ]
+          },
+          {
+            "id": "CS-P-135",
+            "level": 3,
+            "type": "rank-ordering",
+            "points": 14,
+            "difficulty": 0.7,
+            "discrimination": 1.22,
+            "bloomLevel": "Evaluate",
+            "question": "Rank contextual factors:",
+            "items": [
+              "Change capacity",
+              "Regulations",
+              "Industry",
+              "Competitors",
+              "Culture"
+            ],
+            "correctOrder": [
+              1,
+              0,
+              4,
+              2,
+              3
+            ],
+            "scoringMethod": "automatic",
+            "scoringLogic": "Kendall tau or position-based scoring",
+            "tags": [
+              "cs",
+              "auto-scorable"
+            ]
+          },
+          {
+            "id": "CS-P-136",
+            "level": 2,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.58,
+            "discrimination": 1.3,
+            "bloomLevel": "Apply",
+            "question": "How should culture influence strategy?",
+            "options": [
+              "Shouldn't",
+              "Culture shapes readiness",
+              "Hiring only",
+              "AI overrides culture"
+            ],
+            "correctAnswer": 1,
+            "scoringMethod": "automatic",
+            "tags": [
+              "cs",
+              "auto-scorable"
+            ]
+          },
+          {
+            "id": "CS-P-137",
+            "level": 3,
+            "type": "multiple-response",
+            "points": 12,
+            "difficulty": 0.46,
+            "discrimination": 1.15,
+            "bloomLevel": "Analyze",
+            "question": "Contextual factors for strategy? (SELECT ALL)",
+            "options": [
+              "Organizational maturity",
+              "Regulatory requirements",
+              "Copy competitors",
+              "Industry challenges"
+            ],
+            "correctAnswers": [
+              0,
+              1,
+              3
+            ],
+            "scoringMethod": "automatic",
+            "scoringLogic": "All correct must be selected, no incorrect selected",
+            "tags": [
+              "cs",
+              "auto-scorable"
+            ]
+          },
+          {
+            "id": "CS-P-138",
+            "level": 3,
+            "type": "scenario-ranking",
+            "points": 12,
+            "difficulty": 0.69,
+            "discrimination": 1.3,
+            "bloomLevel": "Analyze",
+            "question": "Deploy AI across markets sequence?",
+            "options": [
+              "A. Understand context",
+              "B. Adapt to local",
+              "C. Pilot test"
+            ],
+            "correctOrder": [
+              0,
+              1,
+              2
+            ],
+            "scoringMethod": "automatic",
+            "scoringLogic": "Exact order required",
+            "tags": [
+              "cs",
+              "auto-scorable"
+            ]
+          },
+          {
+            "id": "CS-P-139",
+            "level": 3,
+            "type": "matching",
+            "points": 12,
+            "difficulty": 0.42,
+            "discrimination": 1.24,
+            "bloomLevel": "Understand",
+            "question": "Match factor to influence:",
+            "leftColumn": [
+              "1. Maturity",
+              "2. Regulation",
+              "3. Industry",
+              "4. Competition"
+            ],
+            "rightColumn": [
+              "A. Compliance needs",
+              "B. Timeline",
+              "C. Positioning",
+              "D. Implementation"
+            ],
+            "correctPairs": [
+              [
+                0,
+                1
+              ],
+              [
+                1,
+                0
+              ],
+              [
+                2,
+                3
+              ],
+              [
+                3,
+                2
+              ]
+            ],
+            "scoringMethod": "automatic",
+            "scoringLogic": "Each correct pair=3 pts",
+            "tags": [
+              "cs",
+              "auto-scorable"
+            ]
+          },
+          {
+            "id": "CS-P-140",
+            "level": 3,
+            "type": "rank-ordering",
+            "points": 15,
+            "difficulty": 0.58,
+            "discrimination": 1.31,
+            "bloomLevel": "Evaluate",
+            "question": "Rank contextual factors:",
+            "items": [
+              "Change capacity",
+              "Regulations",
+              "Industry",
+              "Competitors",
+              "Culture"
+            ],
+            "correctOrder": [
+              1,
+              0,
+              4,
+              2,
+              3
+            ],
+            "scoringMethod": "automatic",
+            "scoringLogic": "Kendall tau or position-based scoring",
+            "tags": [
+              "cs",
+              "auto-scorable"
+            ]
+          }
+        ]
+      },
+      {
+        "dimensionCode": "CRS",
+        "dimensionName": "Creative Reasoning Synthesis",
+        "weight": 0.125,
+        "totalPoints": 100,
+        "items": [
+          {
+            "id": "CRS-P-141",
+            "level": 2,
+            "type": "multiple-choice",
+            "points": 12,
+            "difficulty": 0.41,
+            "discrimination": 1.21,
+            "bloomLevel": "Apply",
+            "question": "When NOT use AI in strategy?",
+            "options": [
+              "Never exclude",
+              "Novel or values-based problems",
+              "Always use",
+              "All strategies"
+            ],
+            "correctAnswer": 1,
+            "scoringMethod": "automatic",
+            "tags": [
+              "crs",
+              "auto-scorable"
+            ]
+          },
+          {
+            "id": "CRS-P-142",
+            "level": 3,
+            "type": "multiple-response",
+            "points": 12,
+            "difficulty": 0.57,
+            "discrimination": 1.14,
+            "bloomLevel": "Analyze",
+            "question": "Supports creative innovation? (SELECT ALL)",
+            "options": [
+              "AI diverse options",
+              "Human judgment",
+              "Strict AI adherence",
+              "Cross-domain thinking"
+            ],
+            "correctAnswers": [
+              0,
+              1,
+              3
+            ],
+            "scoringMethod": "automatic",
+            "scoringLogic": "All correct must be selected, no incorrect selected",
+            "tags": [
+              "crs",
+              "auto-scorable"
+            ]
+          },
+          {
+            "id": "CRS-P-143",
+            "level": 3,
+            "type": "scenario-ranking",
+            "points": 12,
+            "difficulty": 0.46,
+            "discrimination": 1.25,
+            "bloomLevel": "Analyze",
+            "question": "AI-supported innovation sequence?",
+            "options": [
+              "A. Generate options",
+              "B. Human synthesizes",
+              "C. Create novel solution"
+            ],
+            "correctOrder": [
+              0,
+              1,
+              2
+            ],
+            "scoringMethod": "automatic",
+            "scoringLogic": "Exact order required",
+            "tags": [
+              "crs",
+              "auto-scorable"
+            ]
+          },
+          {
+            "id": "CRS-P-144",
+            "level": 3,
+            "type": "matching",
+            "points": 14,
+            "difficulty": 0.61,
+            "discrimination": 1.3,
+            "bloomLevel": "Understand",
+            "question": "Match concept to role:",
+            "leftColumn": [
+              "1. AI option gen",
+              "2. Human synthesis",
+              "3. Cross-domain",
+              "4. Evaluation"
+            ],
+            "rightColumn": [
+              "A. Novel integrated",
+              "B. Apply ideas",
+              "C. Diverse options",
+              "D. Assess innovation"
+            ],
+            "correctPairs": [
+              [
+                0,
+                2
+              ],
+              [
+                1,
+                0
+              ],
+              [
+                2,
+                1
+              ],
+              [
+                3,
+                3
+              ]
+            ],
+            "scoringMethod": "automatic",
+            "scoringLogic": "Each correct pair=4 pts",
+            "tags": [
+              "crs",
+              "auto-scorable"
+            ]
+          },
+          {
+            "id": "CRS-P-145",
+            "level": 3,
+            "type": "rank-ordering",
+            "points": 15,
+            "difficulty": 0.43,
+            "discrimination": 1.23,
+            "bloomLevel": "Evaluate",
+            "question": "Rank innovation drivers:",
+            "items": [
+              "AI options",
+              "Human judgment",
+              "Cross-domain",
+              "Vendor recommendations",
+              "Creative synthesis"
+            ],
+            "correctOrder": [
+              1,
+              4,
+              0,
+              2,
+              3
+            ],
+            "scoringMethod": "automatic",
+            "scoringLogic": "Kendall tau or position-based scoring",
+            "tags": [
+              "crs",
+              "auto-scorable"
+            ]
+          },
+          {
+            "id": "CRS-P-146",
+            "level": 2,
+            "type": "multiple-choice",
+            "points": 11,
+            "difficulty": 0.61,
+            "discrimination": 1.1,
+            "bloomLevel": "Apply",
+            "question": "When NOT use AI in strategy?",
+            "options": [
+              "Never exclude",
+              "Novel or values-based problems",
+              "Always use",
+              "All strategies"
+            ],
+            "correctAnswer": 1,
+            "scoringMethod": "automatic",
+            "tags": [
+              "crs",
+              "auto-scorable"
+            ]
+          },
+          {
+            "id": "CRS-P-147",
+            "level": 3,
+            "type": "multiple-response",
+            "points": 11,
+            "difficulty": 0.58,
+            "discrimination": 1.18,
+            "bloomLevel": "Analyze",
+            "question": "Supports creative innovation? (SELECT ALL)",
+            "options": [
+              "AI diverse options",
+              "Human judgment",
+              "Strict AI adherence",
+              "Cross-domain thinking"
+            ],
+            "correctAnswers": [
+              0,
+              1,
+              3
+            ],
+            "scoringMethod": "automatic",
+            "scoringLogic": "All correct must be selected, no incorrect selected",
+            "tags": [
+              "crs",
+              "auto-scorable"
+            ]
+          },
+          {
+            "id": "CRS-P-148",
+            "level": 3,
+            "type": "scenario-ranking",
+            "points": 14,
+            "difficulty": 0.41,
+            "discrimination": 1.3,
+            "bloomLevel": "Analyze",
+            "question": "AI-supported innovation sequence?",
+            "options": [
+              "A. Generate options",
+              "B. Human synthesizes",
+              "C. Create novel solution"
+            ],
+            "correctOrder": [
+              0,
+              1,
+              2
+            ],
+            "scoringMethod": "automatic",
+            "scoringLogic": "Exact order required",
+            "tags": [
+              "crs",
+              "auto-scorable"
+            ]
+          },
+          {
+            "id": "CRS-P-149",
+            "level": 3,
+            "type": "matching",
+            "points": 14,
+            "difficulty": 0.59,
+            "discrimination": 1.13,
+            "bloomLevel": "Understand",
+            "question": "Match concept to role:",
+            "leftColumn": [
+              "1. AI option gen",
+              "2. Human synthesis",
+              "3. Cross-domain",
+              "4. Evaluation"
+            ],
+            "rightColumn": [
+              "A. Novel integrated",
+              "B. Apply ideas",
+              "C. Diverse options",
+              "D. Assess innovation"
+            ],
+            "correctPairs": [
+              [
+                0,
+                2
+              ],
+              [
+                1,
+                0
+              ],
+              [
+                2,
+                1
+              ],
+              [
+                3,
+                3
+              ]
+            ],
+            "scoringMethod": "automatic",
+            "scoringLogic": "Each correct pair=4 pts",
+            "tags": [
+              "crs",
+              "auto-scorable"
+            ]
+          },
+          {
+            "id": "CRS-P-150",
+            "level": 3,
+            "type": "rank-ordering",
+            "points": 14,
+            "difficulty": 0.67,
+            "discrimination": 1.08,
+            "bloomLevel": "Evaluate",
+            "question": "Rank innovation drivers:",
+            "items": [
+              "AI options",
+              "Human judgment",
+              "Cross-domain",
+              "Vendor recommendations",
+              "Creative synthesis"
+            ],
+            "correctOrder": [
+              1,
+              4,
+              0,
+              2,
+              3
+            ],
+            "scoringMethod": "automatic",
+            "scoringLogic": "Kendall tau or position-based scoring",
+            "tags": [
+              "crs",
+              "auto-scorable"
+            ]
+          },
+          {
+            "id": "CRS-P-151",
+            "level": 2,
+            "type": "multiple-choice",
+            "points": 11,
+            "difficulty": 0.4,
+            "discrimination": 1.27,
+            "bloomLevel": "Apply",
+            "question": "When NOT use AI in strategy?",
+            "options": [
+              "Never exclude",
+              "Novel or values-based problems",
+              "Always use",
+              "All strategies"
+            ],
+            "correctAnswer": 1,
+            "scoringMethod": "automatic",
+            "tags": [
+              "crs",
+              "auto-scorable"
+            ]
+          },
+          {
+            "id": "CRS-P-152",
+            "level": 3,
+            "type": "multiple-response",
+            "points": 11,
+            "difficulty": 0.66,
+            "discrimination": 1.16,
+            "bloomLevel": "Analyze",
+            "question": "Supports creative innovation? (SELECT ALL)",
+            "options": [
+              "AI diverse options",
+              "Human judgment",
+              "Strict AI adherence",
+              "Cross-domain thinking"
+            ],
+            "correctAnswers": [
+              0,
+              1,
+              3
+            ],
+            "scoringMethod": "automatic",
+            "scoringLogic": "All correct must be selected, no incorrect selected",
+            "tags": [
+              "crs",
+              "auto-scorable"
+            ]
+          },
+          {
+            "id": "CRS-P-153",
+            "level": 3,
+            "type": "scenario-ranking",
+            "points": 12,
+            "difficulty": 0.66,
+            "discrimination": 1.21,
+            "bloomLevel": "Analyze",
+            "question": "AI-supported innovation sequence?",
+            "options": [
+              "A. Generate options",
+              "B. Human synthesizes",
+              "C. Create novel solution"
+            ],
+            "correctOrder": [
+              0,
+              1,
+              2
+            ],
+            "scoringMethod": "automatic",
+            "scoringLogic": "Exact order required",
+            "tags": [
+              "crs",
+              "auto-scorable"
+            ]
+          },
+          {
+            "id": "CRS-P-154",
+            "level": 3,
+            "type": "matching",
+            "points": 12,
+            "difficulty": 0.39,
+            "discrimination": 1.17,
+            "bloomLevel": "Understand",
+            "question": "Match concept to role:",
+            "leftColumn": [
+              "1. AI option gen",
+              "2. Human synthesis",
+              "3. Cross-domain",
+              "4. Evaluation"
+            ],
+            "rightColumn": [
+              "A. Novel integrated",
+              "B. Apply ideas",
+              "C. Diverse options",
+              "D. Assess innovation"
+            ],
+            "correctPairs": [
+              [
+                0,
+                2
+              ],
+              [
+                1,
+                0
+              ],
+              [
+                2,
+                1
+              ],
+              [
+                3,
+                3
+              ]
+            ],
+            "scoringMethod": "automatic",
+            "scoringLogic": "Each correct pair=3 pts",
+            "tags": [
+              "crs",
+              "auto-scorable"
+            ]
+          },
+          {
+            "id": "CRS-P-155",
+            "level": 3,
+            "type": "rank-ordering",
+            "points": 14,
+            "difficulty": 0.69,
+            "discrimination": 1.15,
+            "bloomLevel": "Evaluate",
+            "question": "Rank innovation drivers:",
+            "items": [
+              "AI options",
+              "Human judgment",
+              "Cross-domain",
+              "Vendor recommendations",
+              "Creative synthesis"
+            ],
+            "correctOrder": [
+              1,
+              4,
+              0,
+              2,
+              3
+            ],
+            "scoringMethod": "automatic",
+            "scoringLogic": "Kendall tau or position-based scoring",
+            "tags": [
+              "crs",
+              "auto-scorable"
+            ]
+          },
+          {
+            "id": "CRS-P-156",
+            "level": 2,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.39,
+            "discrimination": 1.29,
+            "bloomLevel": "Apply",
+            "question": "When NOT use AI in strategy?",
+            "options": [
+              "Never exclude",
+              "Novel or values-based problems",
+              "Always use",
+              "All strategies"
+            ],
+            "correctAnswer": 1,
+            "scoringMethod": "automatic",
+            "tags": [
+              "crs",
+              "auto-scorable"
+            ]
+          },
+          {
+            "id": "CRS-P-157",
+            "level": 3,
+            "type": "multiple-response",
+            "points": 13,
+            "difficulty": 0.57,
+            "discrimination": 1.31,
+            "bloomLevel": "Analyze",
+            "question": "Supports creative innovation? (SELECT ALL)",
+            "options": [
+              "AI diverse options",
+              "Human judgment",
+              "Strict AI adherence",
+              "Cross-domain thinking"
+            ],
+            "correctAnswers": [
+              0,
+              1,
+              3
+            ],
+            "scoringMethod": "automatic",
+            "scoringLogic": "All correct must be selected, no incorrect selected",
+            "tags": [
+              "crs",
+              "auto-scorable"
+            ]
+          },
+          {
+            "id": "CRS-P-158",
+            "level": 3,
+            "type": "scenario-ranking",
+            "points": 12,
+            "difficulty": 0.44,
+            "discrimination": 1.14,
+            "bloomLevel": "Analyze",
+            "question": "AI-supported innovation sequence?",
+            "options": [
+              "A. Generate options",
+              "B. Human synthesizes",
+              "C. Create novel solution"
+            ],
+            "correctOrder": [
+              0,
+              1,
+              2
+            ],
+            "scoringMethod": "automatic",
+            "scoringLogic": "Exact order required",
+            "tags": [
+              "crs",
+              "auto-scorable"
+            ]
+          },
+          {
+            "id": "CRS-P-159",
+            "level": 3,
+            "type": "matching",
+            "points": 14,
+            "difficulty": 0.63,
+            "discrimination": 1.1,
+            "bloomLevel": "Understand",
+            "question": "Match concept to role:",
+            "leftColumn": [
+              "1. AI option gen",
+              "2. Human synthesis",
+              "3. Cross-domain",
+              "4. Evaluation"
+            ],
+            "rightColumn": [
+              "A. Novel integrated",
+              "B. Apply ideas",
+              "C. Diverse options",
+              "D. Assess innovation"
+            ],
+            "correctPairs": [
+              [
+                0,
+                2
+              ],
+              [
+                1,
+                0
+              ],
+              [
+                2,
+                1
+              ],
+              [
+                3,
+                3
+              ]
+            ],
+            "scoringMethod": "automatic",
+            "scoringLogic": "Each correct pair=4 pts",
+            "tags": [
+              "crs",
+              "auto-scorable"
+            ]
+          },
+          {
+            "id": "CRS-P-160",
+            "level": 3,
+            "type": "rank-ordering",
+            "points": 14,
+            "difficulty": 0.69,
+            "discrimination": 1.14,
+            "bloomLevel": "Evaluate",
+            "question": "Rank innovation drivers:",
+            "items": [
+              "AI options",
+              "Human judgment",
+              "Cross-domain",
+              "Vendor recommendations",
+              "Creative synthesis"
+            ],
+            "correctOrder": [
+              1,
+              4,
+              0,
+              2,
+              3
+            ],
+            "scoringMethod": "automatic",
+            "scoringLogic": "Kendall tau or position-based scoring",
+            "tags": [
+              "crs",
+              "auto-scorable"
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

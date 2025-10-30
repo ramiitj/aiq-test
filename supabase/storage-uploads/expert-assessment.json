@@ -1,0 +1,5286 @@
+{
+  "assessmentName": "AIQ Expert Assessment - Complete Auto-Scorable Item Bank",
+  "version": "3.0",
+  "assessmentType": "adaptive",
+  "description": "Expert-level AI assessment with ALL 160 items auto-scorable. Advanced multiple-choice, multiple-response, scenario ranking, matching, and rank-ordering - NO constructed response items requiring evaluation.",
+  "adaptiveConfiguration": {
+    "totalQuestions": 80,
+    "questionsPerDimension": 10,
+    "estimatedTime": "150 minutes",
+    "targetAudience": "Senior professionals, researchers, organizational leaders, AI strategists",
+    "timePerQuestion": "110 seconds average",
+    "itemBankSize": {
+      "totalItems": 160,
+      "itemsPerDimension": 20,
+      "selectionRatio": "10 from 20 per dimension (adaptive)"
+    },
+    "selectionAlgorithm": {
+      "type": "CAT",
+      "name": "Computer Adaptive Testing - Expert Level",
+      "description": "All items auto-scorable with hard-coded correct answers and strategic frameworks",
+      "startingDifficulty": 0.65,
+      "difficultyRange": [
+        0.5,
+        0.9
+      ],
+      "adjustmentStep": 0.13
+    }
+  },
+  "scoringConfiguration": {
+    "totalPoints": 800,
+    "pointsPerDimension": 100,
+    "passingScore": 600,
+    "passingPercentage": 75,
+    "scoringMethod": "automatic",
+    "scoringGuidelines": {
+      "0-40%": "Developing (0-320)",
+      "41-60%": "Proficient (321-480)",
+      "61-80%": "Advanced (481-640)",
+      "81-90%": "Expert (641-720)",
+      "91-100%": "Thought Leader (721-800)"
+    }
+  },
+  "instructions": "This adaptive expert-level assessment measures strategic AI leadership competency. Complete 80 questions (10 per dimension, adaptively selected) in 150 minutes. All items scored instantly with immediate feedback.",
+  "assessmentGuidelines": {
+    "targetLevel": "Strategic, analytic, and evaluative competency for senior practitioners",
+    "cognitiveEmphasis": "15% Analyze, 40% Evaluate, 35% Create, 10% Apply (Bloom's 4-6)",
+    "questionTypes": "Advanced MC (25%), Complex Multi-response (25%), Strategic Ranking (25%), Expert Matching (12%), Priority Rank-ordering (13%)",
+    "averageDifficulty": 0.72,
+    "averageDiscrimination": 1.37,
+    "estimatedReliability": 0.91,
+    "scoringApproach": "100% Automatic"
+  },
+  "itemBank": {
+    "totalItems": 160,
+    "itemsPerDimension": 20,
+    "description": "All auto-scorable items with hard-coded correct answers for strategic scenarios",
+    "bankStatistics": {
+      "averageDifficulty": 0.72,
+      "averageDiscrimination": 1.37,
+      "estimatedReliability": 0.91,
+      "allItemsAutoScoreable": true
+    },
+    "dimensions": [
+      {
+        "dimensionCode": "SAU",
+        "dimensionName": "Strategic AI Understanding",
+        "weight": 0.125,
+        "totalPoints": 100,
+        "items": [
+          {
+            "id": "SAU-E-001",
+            "level": 5,
+            "type": "multiple-choice",
+            "points": 14,
+            "difficulty": 0.72,
+            "discrimination": 1.41,
+            "bloomLevel": "Evaluate",
+            "question": "When evaluating AI generalization across domains, the primary risk is:",
+            "options": [
+              "Technology cost",
+              "Organizational learning curve",
+              "Transfer requires domain-specific adaptation",
+              "User interface complexity"
+            ],
+            "correctAnswer": 2,
+            "scoringMethod": "automatic",
+            "tags": [
+              "sau",
+              "auto-scorable",
+              "expert"
+            ]
+          },
+          {
+            "id": "SAU-E-002",
+            "level": 5,
+            "type": "multiple-response",
+            "points": 16,
+            "difficulty": 0.63,
+            "discrimination": 1.38,
+            "bloomLevel": "Analyze",
+            "question": "Which factors drive sustainable competitive advantage through AI? (SELECT ALL)",
+            "options": [
+              "Defensible organizational capabilities",
+              "First-mover speed",
+              "Technology ownership",
+              "Continuous learning systems",
+              "Vendor relationships"
+            ],
+            "correctAnswers": [
+              0,
+              3
+            ],
+            "scoringMethod": "automatic",
+            "scoringLogic": "All correct must be selected, no incorrect",
+            "tags": [
+              "sau",
+              "auto-scorable",
+              "expert"
+            ]
+          },
+          {
+            "id": "SAU-E-003",
+            "level": 5,
+            "type": "scenario-ranking",
+            "points": 17,
+            "difficulty": 0.68,
+            "discrimination": 1.38,
+            "bloomLevel": "Evaluate",
+            "question": "Sequence for strategic AI capability transformation:",
+            "options": [
+              "A. Assess organizational readiness and capability gaps",
+              "B. Develop learning systems and governance frameworks",
+              "C. Execute pilot programs with metrics",
+              "D. Scale based on learning and organizational absorption capacity",
+              "E. Evolve strategy based on capability changes"
+            ],
+            "correctOrder": [
+              0,
+              1,
+              2,
+              3,
+              4
+            ],
+            "scoringMethod": "automatic",
+            "scoringLogic": "Exact sequence required",
+            "tags": [
+              "sau",
+              "auto-scorable",
+              "expert"
+            ]
+          },
+          {
+            "id": "SAU-E-004",
+            "level": 5,
+            "type": "matching",
+            "points": 16,
+            "difficulty": 0.68,
+            "discrimination": 1.33,
+            "bloomLevel": "Analyze",
+            "question": "Match strategic consideration to sustainability factor:",
+            "leftColumn": [
+              "1. Continuous learning",
+              "2. Organizational moat",
+              "3. Technology cost",
+              "4. Process redesign"
+            ],
+            "rightColumn": [
+              "A. Enables adaptation as capabilities evolve",
+              "B. Creates defensible competitive position",
+              "C. Important but not strategic",
+              "D. Executes strategy"
+            ],
+            "correctPairs": [
+              [
+                0,
+                0
+              ],
+              [
+                1,
+                1
+              ],
+              [
+                2,
+                2
+              ],
+              [
+                3,
+                3
+              ]
+            ],
+            "scoringMethod": "automatic",
+            "scoringLogic": "Each correct pair scored proportionally",
+            "tags": [
+              "sau",
+              "auto-scorable",
+              "expert"
+            ]
+          },
+          {
+            "id": "SAU-E-005",
+            "level": 6,
+            "type": "rank-ordering",
+            "points": 16,
+            "difficulty": 0.68,
+            "discrimination": 1.34,
+            "bloomLevel": "Create",
+            "question": "Rank by strategic importance for AI capability sustainability:",
+            "items": [
+              "Organizational learning systems",
+              "First-mover advantage",
+              "Technology cost",
+              "Continuous adaptation",
+              "Process efficiency"
+            ],
+            "correctOrder": [
+              0,
+              3,
+              2,
+              1,
+              4
+            ],
+            "scoringMethod": "automatic",
+            "scoringLogic": "Kendall tau or position-based scoring",
+            "tags": [
+              "sau",
+              "auto-scorable",
+              "expert"
+            ]
+          },
+          {
+            "id": "SAU-E-006",
+            "level": 5,
+            "type": "multiple-choice",
+            "points": 14,
+            "difficulty": 0.67,
+            "discrimination": 1.45,
+            "bloomLevel": "Evaluate",
+            "question": "When evaluating AI generalization across domains, the primary risk is:",
+            "options": [
+              "Technology cost",
+              "Organizational learning curve",
+              "Transfer requires domain-specific adaptation",
+              "User interface complexity"
+            ],
+            "correctAnswer": 2,
+            "scoringMethod": "automatic",
+            "tags": [
+              "sau",
+              "auto-scorable",
+              "expert"
+            ]
+          },
+          {
+            "id": "SAU-E-007",
+            "level": 5,
+            "type": "multiple-response",
+            "points": 16,
+            "difficulty": 0.71,
+            "discrimination": 1.3,
+            "bloomLevel": "Analyze",
+            "question": "Which factors drive sustainable competitive advantage through AI? (SELECT ALL)",
+            "options": [
+              "Defensible organizational capabilities",
+              "First-mover speed",
+              "Technology ownership",
+              "Continuous learning systems",
+              "Vendor relationships"
+            ],
+            "correctAnswers": [
+              0,
+              3
+            ],
+            "scoringMethod": "automatic",
+            "scoringLogic": "All correct must be selected, no incorrect",
+            "tags": [
+              "sau",
+              "auto-scorable",
+              "expert"
+            ]
+          },
+          {
+            "id": "SAU-E-008",
+            "level": 5,
+            "type": "scenario-ranking",
+            "points": 17,
+            "difficulty": 0.79,
+            "discrimination": 1.46,
+            "bloomLevel": "Evaluate",
+            "question": "Sequence for strategic AI capability transformation:",
+            "options": [
+              "A. Assess organizational readiness and capability gaps",
+              "B. Develop learning systems and governance frameworks",
+              "C. Execute pilot programs with metrics",
+              "D. Scale based on learning and organizational absorption capacity",
+              "E. Evolve strategy based on capability changes"
+            ],
+            "correctOrder": [
+              0,
+              1,
+              2,
+              3,
+              4
+            ],
+            "scoringMethod": "automatic",
+            "scoringLogic": "Exact sequence required",
+            "tags": [
+              "sau",
+              "auto-scorable",
+              "expert"
+            ]
+          },
+          {
+            "id": "SAU-E-009",
+            "level": 5,
+            "type": "matching",
+            "points": 16,
+            "difficulty": 0.71,
+            "discrimination": 1.46,
+            "bloomLevel": "Analyze",
+            "question": "Match strategic consideration to sustainability factor:",
+            "leftColumn": [
+              "1. Continuous learning",
+              "2. Organizational moat",
+              "3. Technology cost",
+              "4. Process redesign"
+            ],
+            "rightColumn": [
+              "A. Enables adaptation as capabilities evolve",
+              "B. Creates defensible competitive position",
+              "C. Important but not strategic",
+              "D. Executes strategy"
+            ],
+            "correctPairs": [
+              [
+                0,
+                0
+              ],
+              [
+                1,
+                1
+              ],
+              [
+                2,
+                2
+              ],
+              [
+                3,
+                3
+              ]
+            ],
+            "scoringMethod": "automatic",
+            "scoringLogic": "Each correct pair scored proportionally",
+            "tags": [
+              "sau",
+              "auto-scorable",
+              "expert"
+            ]
+          },
+          {
+            "id": "SAU-E-010",
+            "level": 6,
+            "type": "rank-ordering",
+            "points": 16,
+            "difficulty": 0.62,
+            "discrimination": 1.36,
+            "bloomLevel": "Create",
+            "question": "Rank by strategic importance for AI capability sustainability:",
+            "items": [
+              "Organizational learning systems",
+              "First-mover advantage",
+              "Technology cost",
+              "Continuous adaptation",
+              "Process efficiency"
+            ],
+            "correctOrder": [
+              0,
+              3,
+              2,
+              1,
+              4
+            ],
+            "scoringMethod": "automatic",
+            "scoringLogic": "Kendall tau or position-based scoring",
+            "tags": [
+              "sau",
+              "auto-scorable",
+              "expert"
+            ]
+          },
+          {
+            "id": "SAU-E-011",
+            "level": 5,
+            "type": "multiple-choice",
+            "points": 14,
+            "difficulty": 0.83,
+            "discrimination": 1.3,
+            "bloomLevel": "Evaluate",
+            "question": "When evaluating AI generalization across domains, the primary risk is:",
+            "options": [
+              "Technology cost",
+              "Organizational learning curve",
+              "Transfer requires domain-specific adaptation",
+              "User interface complexity"
+            ],
+            "correctAnswer": 2,
+            "scoringMethod": "automatic",
+            "tags": [
+              "sau",
+              "auto-scorable",
+              "expert"
+            ]
+          },
+          {
+            "id": "SAU-E-012",
+            "level": 5,
+            "type": "multiple-response",
+            "points": 16,
+            "difficulty": 0.81,
+            "discrimination": 1.28,
+            "bloomLevel": "Analyze",
+            "question": "Which factors drive sustainable competitive advantage through AI? (SELECT ALL)",
+            "options": [
+              "Defensible organizational capabilities",
+              "First-mover speed",
+              "Technology ownership",
+              "Continuous learning systems",
+              "Vendor relationships"
+            ],
+            "correctAnswers": [
+              0,
+              3
+            ],
+            "scoringMethod": "automatic",
+            "scoringLogic": "All correct must be selected, no incorrect",
+            "tags": [
+              "sau",
+              "auto-scorable",
+              "expert"
+            ]
+          },
+          {
+            "id": "SAU-E-013",
+            "level": 5,
+            "type": "scenario-ranking",
+            "points": 17,
+            "difficulty": 0.73,
+            "discrimination": 1.41,
+            "bloomLevel": "Evaluate",
+            "question": "Sequence for strategic AI capability transformation:",
+            "options": [
+              "A. Assess organizational readiness and capability gaps",
+              "B. Develop learning systems and governance frameworks",
+              "C. Execute pilot programs with metrics",
+              "D. Scale based on learning and organizational absorption capacity",
+              "E. Evolve strategy based on capability changes"
+            ],
+            "correctOrder": [
+              0,
+              1,
+              2,
+              3,
+              4
+            ],
+            "scoringMethod": "automatic",
+            "scoringLogic": "Exact sequence required",
+            "tags": [
+              "sau",
+              "auto-scorable",
+              "expert"
+            ]
+          },
+          {
+            "id": "SAU-E-014",
+            "level": 5,
+            "type": "matching",
+            "points": 16,
+            "difficulty": 0.77,
+            "discrimination": 1.37,
+            "bloomLevel": "Analyze",
+            "question": "Match strategic consideration to sustainability factor:",
+            "leftColumn": [
+              "1. Continuous learning",
+              "2. Organizational moat",
+              "3. Technology cost",
+              "4. Process redesign"
+            ],
+            "rightColumn": [
+              "A. Enables adaptation as capabilities evolve",
+              "B. Creates defensible competitive position",
+              "C. Important but not strategic",
+              "D. Executes strategy"
+            ],
+            "correctPairs": [
+              [
+                0,
+                0
+              ],
+              [
+                1,
+                1
+              ],
+              [
+                2,
+                2
+              ],
+              [
+                3,
+                3
+              ]
+            ],
+            "scoringMethod": "automatic",
+            "scoringLogic": "Each correct pair scored proportionally",
+            "tags": [
+              "sau",
+              "auto-scorable",
+              "expert"
+            ]
+          },
+          {
+            "id": "SAU-E-015",
+            "level": 6,
+            "type": "rank-ordering",
+            "points": 17,
+            "difficulty": 0.62,
+            "discrimination": 1.26,
+            "bloomLevel": "Create",
+            "question": "Rank by strategic importance for AI capability sustainability:",
+            "items": [
+              "Organizational learning systems",
+              "First-mover advantage",
+              "Technology cost",
+              "Continuous adaptation",
+              "Process efficiency"
+            ],
+            "correctOrder": [
+              0,
+              3,
+              2,
+              1,
+              4
+            ],
+            "scoringMethod": "automatic",
+            "scoringLogic": "Kendall tau or position-based scoring",
+            "tags": [
+              "sau",
+              "auto-scorable",
+              "expert"
+            ]
+          },
+          {
+            "id": "SAU-E-016",
+            "level": 5,
+            "type": "multiple-choice",
+            "points": 14,
+            "difficulty": 0.62,
+            "discrimination": 1.45,
+            "bloomLevel": "Evaluate",
+            "question": "When evaluating AI generalization across domains, the primary risk is:",
+            "options": [
+              "Technology cost",
+              "Organizational learning curve",
+              "Transfer requires domain-specific adaptation",
+              "User interface complexity"
+            ],
+            "correctAnswer": 2,
+            "scoringMethod": "automatic",
+            "tags": [
+              "sau",
+              "auto-scorable",
+              "expert"
+            ]
+          },
+          {
+            "id": "SAU-E-017",
+            "level": 5,
+            "type": "multiple-response",
+            "points": 14,
+            "difficulty": 0.73,
+            "discrimination": 1.3,
+            "bloomLevel": "Analyze",
+            "question": "Which factors drive sustainable competitive advantage through AI? (SELECT ALL)",
+            "options": [
+              "Defensible organizational capabilities",
+              "First-mover speed",
+              "Technology ownership",
+              "Continuous learning systems",
+              "Vendor relationships"
+            ],
+            "correctAnswers": [
+              0,
+              3
+            ],
+            "scoringMethod": "automatic",
+            "scoringLogic": "All correct must be selected, no incorrect",
+            "tags": [
+              "sau",
+              "auto-scorable",
+              "expert"
+            ]
+          },
+          {
+            "id": "SAU-E-018",
+            "level": 5,
+            "type": "scenario-ranking",
+            "points": 15,
+            "difficulty": 0.85,
+            "discrimination": 1.33,
+            "bloomLevel": "Evaluate",
+            "question": "Sequence for strategic AI capability transformation:",
+            "options": [
+              "A. Assess organizational readiness and capability gaps",
+              "B. Develop learning systems and governance frameworks",
+              "C. Execute pilot programs with metrics",
+              "D. Scale based on learning and organizational absorption capacity",
+              "E. Evolve strategy based on capability changes"
+            ],
+            "correctOrder": [
+              0,
+              1,
+              2,
+              3,
+              4
+            ],
+            "scoringMethod": "automatic",
+            "scoringLogic": "Exact sequence required",
+            "tags": [
+              "sau",
+              "auto-scorable",
+              "expert"
+            ]
+          },
+          {
+            "id": "SAU-E-019",
+            "level": 5,
+            "type": "matching",
+            "points": 15,
+            "difficulty": 0.76,
+            "discrimination": 1.47,
+            "bloomLevel": "Analyze",
+            "question": "Match strategic consideration to sustainability factor:",
+            "leftColumn": [
+              "1. Continuous learning",
+              "2. Organizational moat",
+              "3. Technology cost",
+              "4. Process redesign"
+            ],
+            "rightColumn": [
+              "A. Enables adaptation as capabilities evolve",
+              "B. Creates defensible competitive position",
+              "C. Important but not strategic",
+              "D. Executes strategy"
+            ],
+            "correctPairs": [
+              [
+                0,
+                0
+              ],
+              [
+                1,
+                1
+              ],
+              [
+                2,
+                2
+              ],
+              [
+                3,
+                3
+              ]
+            ],
+            "scoringMethod": "automatic",
+            "scoringLogic": "Each correct pair scored proportionally",
+            "tags": [
+              "sau",
+              "auto-scorable",
+              "expert"
+            ]
+          },
+          {
+            "id": "SAU-E-020",
+            "level": 6,
+            "type": "rank-ordering",
+            "points": 17,
+            "difficulty": 0.7,
+            "discrimination": 1.42,
+            "bloomLevel": "Create",
+            "question": "Rank by strategic importance for AI capability sustainability:",
+            "items": [
+              "Organizational learning systems",
+              "First-mover advantage",
+              "Technology cost",
+              "Continuous adaptation",
+              "Process efficiency"
+            ],
+            "correctOrder": [
+              0,
+              3,
+              2,
+              1,
+              4
+            ],
+            "scoringMethod": "automatic",
+            "scoringLogic": "Kendall tau or position-based scoring",
+            "tags": [
+              "sau",
+              "auto-scorable",
+              "expert"
+            ]
+          }
+        ]
+      },
+      {
+        "dimensionCode": "PEI",
+        "dimensionName": "Prompt Engineering Intelligence",
+        "weight": 0.125,
+        "totalPoints": 100,
+        "items": [
+          {
+            "id": "PEI-E-021",
+            "level": 5,
+            "type": "multiple-choice",
+            "points": 13,
+            "difficulty": 0.84,
+            "discrimination": 1.3,
+            "bloomLevel": "Evaluate",
+            "question": "When designing system prompts for specialized tasks, the critical trade-off is:",
+            "options": [
+              "Specificity vs. generalization capability",
+              "Length vs. clarity",
+              "Technical vs. simple",
+              "Speed vs. accuracy"
+            ],
+            "correctAnswer": 0,
+            "scoringMethod": "automatic",
+            "tags": [
+              "pei",
+              "auto-scorable",
+              "expert"
+            ]
+          },
+          {
+            "id": "PEI-E-022",
+            "level": 5,
+            "type": "multiple-response",
+            "points": 16,
+            "difficulty": 0.72,
+            "discrimination": 1.42,
+            "bloomLevel": "Analyze",
+            "question": "Advanced prompting architectures require which design decisions? (SELECT ALL)",
+            "options": [
+              "Reasoning pathway constraints",
+              "Model parameter tuning",
+              "Output format specifications",
+              "Feedback loop mechanisms",
+              "Single prompt simplicity"
+            ],
+            "correctAnswers": [
+              0,
+              2,
+              3
+            ],
+            "scoringMethod": "automatic",
+            "scoringLogic": "All correct must be selected, no incorrect",
+            "tags": [
+              "pei",
+              "auto-scorable",
+              "expert"
+            ]
+          },
+          {
+            "id": "PEI-E-023",
+            "level": 5,
+            "type": "scenario-ranking",
+            "points": 16,
+            "difficulty": 0.79,
+            "discrimination": 1.4,
+            "bloomLevel": "Evaluate",
+            "question": "Sequence for advanced prompt architecture design:",
+            "options": [
+              "A. Identify reasoning requirements and constraints",
+              "B. Design system prompt structure",
+              "C. Implement feedback loop mechanisms",
+              "D. Test adversarial robustness",
+              "E. Optimize based on performance patterns"
+            ],
+            "correctOrder": [
+              0,
+              1,
+              2,
+              3,
+              4
+            ],
+            "scoringMethod": "automatic",
+            "scoringLogic": "Exact sequence required",
+            "tags": [
+              "pei",
+              "auto-scorable",
+              "expert"
+            ]
+          },
+          {
+            "id": "PEI-E-024",
+            "level": 5,
+            "type": "matching",
+            "points": 16,
+            "difficulty": 0.81,
+            "discrimination": 1.42,
+            "bloomLevel": "Analyze",
+            "question": "Match prompting architecture component to function:",
+            "leftColumn": [
+              "1. System prompt",
+              "2. Constraint specification",
+              "3. Feedback loops",
+              "4. Adversarial testing"
+            ],
+            "rightColumn": [
+              "A. Identifies robustness limitations",
+              "B. Enables continuous improvement",
+              "C. Defines perspective/context",
+              "D. Constrains output space"
+            ],
+            "correctPairs": [
+              [
+                0,
+                2
+              ],
+              [
+                1,
+                3
+              ],
+              [
+                2,
+                1
+              ],
+              [
+                3,
+                0
+              ]
+            ],
+            "scoringMethod": "automatic",
+            "scoringLogic": "Each correct pair scored proportionally",
+            "tags": [
+              "pei",
+              "auto-scorable",
+              "expert"
+            ]
+          },
+          {
+            "id": "PEI-E-025",
+            "level": 6,
+            "type": "rank-ordering",
+            "points": 16,
+            "difficulty": 0.82,
+            "discrimination": 1.37,
+            "bloomLevel": "Create",
+            "question": "Rank prompting design priorities by impact:",
+            "items": [
+              "Reasoning pathway constraints",
+              "Model selection",
+              "Prompt length",
+              "Output specifications",
+              "Feedback mechanisms"
+            ],
+            "correctOrder": [
+              0,
+              3,
+              4,
+              1,
+              2
+            ],
+            "scoringMethod": "automatic",
+            "scoringLogic": "Kendall tau or position-based scoring",
+            "tags": [
+              "pei",
+              "auto-scorable",
+              "expert"
+            ]
+          },
+          {
+            "id": "PEI-E-026",
+            "level": 5,
+            "type": "multiple-choice",
+            "points": 14,
+            "difficulty": 0.67,
+            "discrimination": 1.45,
+            "bloomLevel": "Evaluate",
+            "question": "When designing system prompts for specialized tasks, the critical trade-off is:",
+            "options": [
+              "Specificity vs. generalization capability",
+              "Length vs. clarity",
+              "Technical vs. simple",
+              "Speed vs. accuracy"
+            ],
+            "correctAnswer": 0,
+            "scoringMethod": "automatic",
+            "tags": [
+              "pei",
+              "auto-scorable",
+              "expert"
+            ]
+          },
+          {
+            "id": "PEI-E-027",
+            "level": 5,
+            "type": "multiple-response",
+            "points": 15,
+            "difficulty": 0.79,
+            "discrimination": 1.36,
+            "bloomLevel": "Analyze",
+            "question": "Advanced prompting architectures require which design decisions? (SELECT ALL)",
+            "options": [
+              "Reasoning pathway constraints",
+              "Model parameter tuning",
+              "Output format specifications",
+              "Feedback loop mechanisms",
+              "Single prompt simplicity"
+            ],
+            "correctAnswers": [
+              0,
+              2,
+              3
+            ],
+            "scoringMethod": "automatic",
+            "scoringLogic": "All correct must be selected, no incorrect",
+            "tags": [
+              "pei",
+              "auto-scorable",
+              "expert"
+            ]
+          },
+          {
+            "id": "PEI-E-028",
+            "level": 5,
+            "type": "scenario-ranking",
+            "points": 15,
+            "difficulty": 0.62,
+            "discrimination": 1.39,
+            "bloomLevel": "Evaluate",
+            "question": "Sequence for advanced prompt architecture design:",
+            "options": [
+              "A. Identify reasoning requirements and constraints",
+              "B. Design system prompt structure",
+              "C. Implement feedback loop mechanisms",
+              "D. Test adversarial robustness",
+              "E. Optimize based on performance patterns"
+            ],
+            "correctOrder": [
+              0,
+              1,
+              2,
+              3,
+              4
+            ],
+            "scoringMethod": "automatic",
+            "scoringLogic": "Exact sequence required",
+            "tags": [
+              "pei",
+              "auto-scorable",
+              "expert"
+            ]
+          },
+          {
+            "id": "PEI-E-029",
+            "level": 5,
+            "type": "matching",
+            "points": 15,
+            "difficulty": 0.61,
+            "discrimination": 1.4,
+            "bloomLevel": "Analyze",
+            "question": "Match prompting architecture component to function:",
+            "leftColumn": [
+              "1. System prompt",
+              "2. Constraint specification",
+              "3. Feedback loops",
+              "4. Adversarial testing"
+            ],
+            "rightColumn": [
+              "A. Identifies robustness limitations",
+              "B. Enables continuous improvement",
+              "C. Defines perspective/context",
+              "D. Constrains output space"
+            ],
+            "correctPairs": [
+              [
+                0,
+                2
+              ],
+              [
+                1,
+                3
+              ],
+              [
+                2,
+                1
+              ],
+              [
+                3,
+                0
+              ]
+            ],
+            "scoringMethod": "automatic",
+            "scoringLogic": "Each correct pair scored proportionally",
+            "tags": [
+              "pei",
+              "auto-scorable",
+              "expert"
+            ]
+          },
+          {
+            "id": "PEI-E-030",
+            "level": 6,
+            "type": "rank-ordering",
+            "points": 18,
+            "difficulty": 0.8,
+            "discrimination": 1.36,
+            "bloomLevel": "Create",
+            "question": "Rank prompting design priorities by impact:",
+            "items": [
+              "Reasoning pathway constraints",
+              "Model selection",
+              "Prompt length",
+              "Output specifications",
+              "Feedback mechanisms"
+            ],
+            "correctOrder": [
+              0,
+              3,
+              4,
+              1,
+              2
+            ],
+            "scoringMethod": "automatic",
+            "scoringLogic": "Kendall tau or position-based scoring",
+            "tags": [
+              "pei",
+              "auto-scorable",
+              "expert"
+            ]
+          },
+          {
+            "id": "PEI-E-031",
+            "level": 5,
+            "type": "multiple-choice",
+            "points": 15,
+            "difficulty": 0.64,
+            "discrimination": 1.5,
+            "bloomLevel": "Evaluate",
+            "question": "When designing system prompts for specialized tasks, the critical trade-off is:",
+            "options": [
+              "Specificity vs. generalization capability",
+              "Length vs. clarity",
+              "Technical vs. simple",
+              "Speed vs. accuracy"
+            ],
+            "correctAnswer": 0,
+            "scoringMethod": "automatic",
+            "tags": [
+              "pei",
+              "auto-scorable",
+              "expert"
+            ]
+          },
+          {
+            "id": "PEI-E-032",
+            "level": 5,
+            "type": "multiple-response",
+            "points": 16,
+            "difficulty": 0.85,
+            "discrimination": 1.26,
+            "bloomLevel": "Analyze",
+            "question": "Advanced prompting architectures require which design decisions? (SELECT ALL)",
+            "options": [
+              "Reasoning pathway constraints",
+              "Model parameter tuning",
+              "Output format specifications",
+              "Feedback loop mechanisms",
+              "Single prompt simplicity"
+            ],
+            "correctAnswers": [
+              0,
+              2,
+              3
+            ],
+            "scoringMethod": "automatic",
+            "scoringLogic": "All correct must be selected, no incorrect",
+            "tags": [
+              "pei",
+              "auto-scorable",
+              "expert"
+            ]
+          },
+          {
+            "id": "PEI-E-033",
+            "level": 5,
+            "type": "scenario-ranking",
+            "points": 17,
+            "difficulty": 0.63,
+            "discrimination": 1.26,
+            "bloomLevel": "Evaluate",
+            "question": "Sequence for advanced prompt architecture design:",
+            "options": [
+              "A. Identify reasoning requirements and constraints",
+              "B. Design system prompt structure",
+              "C. Implement feedback loop mechanisms",
+              "D. Test adversarial robustness",
+              "E. Optimize based on performance patterns"
+            ],
+            "correctOrder": [
+              0,
+              1,
+              2,
+              3,
+              4
+            ],
+            "scoringMethod": "automatic",
+            "scoringLogic": "Exact sequence required",
+            "tags": [
+              "pei",
+              "auto-scorable",
+              "expert"
+            ]
+          },
+          {
+            "id": "PEI-E-034",
+            "level": 5,
+            "type": "matching",
+            "points": 15,
+            "difficulty": 0.72,
+            "discrimination": 1.44,
+            "bloomLevel": "Analyze",
+            "question": "Match prompting architecture component to function:",
+            "leftColumn": [
+              "1. System prompt",
+              "2. Constraint specification",
+              "3. Feedback loops",
+              "4. Adversarial testing"
+            ],
+            "rightColumn": [
+              "A. Identifies robustness limitations",
+              "B. Enables continuous improvement",
+              "C. Defines perspective/context",
+              "D. Constrains output space"
+            ],
+            "correctPairs": [
+              [
+                0,
+                2
+              ],
+              [
+                1,
+                3
+              ],
+              [
+                2,
+                1
+              ],
+              [
+                3,
+                0
+              ]
+            ],
+            "scoringMethod": "automatic",
+            "scoringLogic": "Each correct pair scored proportionally",
+            "tags": [
+              "pei",
+              "auto-scorable",
+              "expert"
+            ]
+          },
+          {
+            "id": "PEI-E-035",
+            "level": 6,
+            "type": "rank-ordering",
+            "points": 18,
+            "difficulty": 0.7,
+            "discrimination": 1.31,
+            "bloomLevel": "Create",
+            "question": "Rank prompting design priorities by impact:",
+            "items": [
+              "Reasoning pathway constraints",
+              "Model selection",
+              "Prompt length",
+              "Output specifications",
+              "Feedback mechanisms"
+            ],
+            "correctOrder": [
+              0,
+              3,
+              4,
+              1,
+              2
+            ],
+            "scoringMethod": "automatic",
+            "scoringLogic": "Kendall tau or position-based scoring",
+            "tags": [
+              "pei",
+              "auto-scorable",
+              "expert"
+            ]
+          },
+          {
+            "id": "PEI-E-036",
+            "level": 5,
+            "type": "multiple-choice",
+            "points": 14,
+            "difficulty": 0.83,
+            "discrimination": 1.47,
+            "bloomLevel": "Evaluate",
+            "question": "When designing system prompts for specialized tasks, the critical trade-off is:",
+            "options": [
+              "Specificity vs. generalization capability",
+              "Length vs. clarity",
+              "Technical vs. simple",
+              "Speed vs. accuracy"
+            ],
+            "correctAnswer": 0,
+            "scoringMethod": "automatic",
+            "tags": [
+              "pei",
+              "auto-scorable",
+              "expert"
+            ]
+          },
+          {
+            "id": "PEI-E-037",
+            "level": 5,
+            "type": "multiple-response",
+            "points": 15,
+            "difficulty": 0.75,
+            "discrimination": 1.49,
+            "bloomLevel": "Analyze",
+            "question": "Advanced prompting architectures require which design decisions? (SELECT ALL)",
+            "options": [
+              "Reasoning pathway constraints",
+              "Model parameter tuning",
+              "Output format specifications",
+              "Feedback loop mechanisms",
+              "Single prompt simplicity"
+            ],
+            "correctAnswers": [
+              0,
+              2,
+              3
+            ],
+            "scoringMethod": "automatic",
+            "scoringLogic": "All correct must be selected, no incorrect",
+            "tags": [
+              "pei",
+              "auto-scorable",
+              "expert"
+            ]
+          },
+          {
+            "id": "PEI-E-038",
+            "level": 5,
+            "type": "scenario-ranking",
+            "points": 15,
+            "difficulty": 0.83,
+            "discrimination": 1.35,
+            "bloomLevel": "Evaluate",
+            "question": "Sequence for advanced prompt architecture design:",
+            "options": [
+              "A. Identify reasoning requirements and constraints",
+              "B. Design system prompt structure",
+              "C. Implement feedback loop mechanisms",
+              "D. Test adversarial robustness",
+              "E. Optimize based on performance patterns"
+            ],
+            "correctOrder": [
+              0,
+              1,
+              2,
+              3,
+              4
+            ],
+            "scoringMethod": "automatic",
+            "scoringLogic": "Exact sequence required",
+            "tags": [
+              "pei",
+              "auto-scorable",
+              "expert"
+            ]
+          },
+          {
+            "id": "PEI-E-039",
+            "level": 5,
+            "type": "matching",
+            "points": 16,
+            "difficulty": 0.68,
+            "discrimination": 1.32,
+            "bloomLevel": "Analyze",
+            "question": "Match prompting architecture component to function:",
+            "leftColumn": [
+              "1. System prompt",
+              "2. Constraint specification",
+              "3. Feedback loops",
+              "4. Adversarial testing"
+            ],
+            "rightColumn": [
+              "A. Identifies robustness limitations",
+              "B. Enables continuous improvement",
+              "C. Defines perspective/context",
+              "D. Constrains output space"
+            ],
+            "correctPairs": [
+              [
+                0,
+                2
+              ],
+              [
+                1,
+                3
+              ],
+              [
+                2,
+                1
+              ],
+              [
+                3,
+                0
+              ]
+            ],
+            "scoringMethod": "automatic",
+            "scoringLogic": "Each correct pair scored proportionally",
+            "tags": [
+              "pei",
+              "auto-scorable",
+              "expert"
+            ]
+          },
+          {
+            "id": "PEI-E-040",
+            "level": 6,
+            "type": "rank-ordering",
+            "points": 17,
+            "difficulty": 0.73,
+            "discrimination": 1.28,
+            "bloomLevel": "Create",
+            "question": "Rank prompting design priorities by impact:",
+            "items": [
+              "Reasoning pathway constraints",
+              "Model selection",
+              "Prompt length",
+              "Output specifications",
+              "Feedback mechanisms"
+            ],
+            "correctOrder": [
+              0,
+              3,
+              4,
+              1,
+              2
+            ],
+            "scoringMethod": "automatic",
+            "scoringLogic": "Kendall tau or position-based scoring",
+            "tags": [
+              "pei",
+              "auto-scorable",
+              "expert"
+            ]
+          }
+        ]
+      },
+      {
+        "dimensionCode": "CEC",
+        "dimensionName": "Critical Evaluation Capability",
+        "weight": 0.125,
+        "totalPoints": 100,
+        "items": [
+          {
+            "id": "CEC-E-041",
+            "level": 5,
+            "type": "multiple-choice",
+            "points": 14,
+            "difficulty": 0.73,
+            "discrimination": 1.28,
+            "bloomLevel": "Evaluate",
+            "question": "Calibration of AI predictions means:",
+            "options": [
+              "Output probabilities match actual frequency of events",
+              "Model certainty",
+              "Confidence scaling",
+              "Accuracy measurement"
+            ],
+            "correctAnswer": 0,
+            "scoringMethod": "automatic",
+            "tags": [
+              "cec",
+              "auto-scorable",
+              "expert"
+            ]
+          },
+          {
+            "id": "CEC-E-042",
+            "level": 5,
+            "type": "multiple-response",
+            "points": 14,
+            "difficulty": 0.66,
+            "discrimination": 1.45,
+            "bloomLevel": "Analyze",
+            "question": "Rigorous AI trustworthiness assessment includes (SELECT ALL):",
+            "options": [
+              "Calibration verification",
+              "Benchmark validity testing",
+              "Adversarial robustness",
+              "User surveys only",
+              "Statistical power analysis"
+            ],
+            "correctAnswers": [
+              0,
+              1,
+              2,
+              4
+            ],
+            "scoringMethod": "automatic",
+            "scoringLogic": "All correct must be selected, no incorrect",
+            "tags": [
+              "cec",
+              "auto-scorable",
+              "expert"
+            ]
+          },
+          {
+            "id": "CEC-E-043",
+            "level": 5,
+            "type": "scenario-ranking",
+            "points": 15,
+            "difficulty": 0.71,
+            "discrimination": 1.34,
+            "bloomLevel": "Evaluate",
+            "question": "Sequence for rigorous AI trustworthiness assessment:",
+            "options": [
+              "A. Define trustworthiness dimensions for use case",
+              "B. Conduct benchmark validity analysis",
+              "C. Test calibration and adversarial robustness",
+              "D. Assess real-world deployment performance",
+              "E. Monitor for degradation and distributional shift"
+            ],
+            "correctOrder": [
+              0,
+              1,
+              2,
+              3,
+              4
+            ],
+            "scoringMethod": "automatic",
+            "scoringLogic": "Exact sequence required",
+            "tags": [
+              "cec",
+              "auto-scorable",
+              "expert"
+            ]
+          },
+          {
+            "id": "CEC-E-044",
+            "level": 5,
+            "type": "matching",
+            "points": 15,
+            "difficulty": 0.82,
+            "discrimination": 1.31,
+            "bloomLevel": "Analyze",
+            "question": "Match trustworthiness dimension to assessment method:",
+            "leftColumn": [
+              "1. Calibration",
+              "2. Robustness",
+              "3. Generalization",
+              "4. Stability"
+            ],
+            "rightColumn": [
+              "A. Probability-reality alignment",
+              "B. Adversarial performance",
+              "C. New distribution handling",
+              "D. Temporal consistency"
+            ],
+            "correctPairs": [
+              [
+                0,
+                0
+              ],
+              [
+                1,
+                1
+              ],
+              [
+                2,
+                2
+              ],
+              [
+                3,
+                3
+              ]
+            ],
+            "scoringMethod": "automatic",
+            "scoringLogic": "Each correct pair scored proportionally",
+            "tags": [
+              "cec",
+              "auto-scorable",
+              "expert"
+            ]
+          },
+          {
+            "id": "CEC-E-045",
+            "level": 6,
+            "type": "rank-ordering",
+            "points": 16,
+            "difficulty": 0.68,
+            "discrimination": 1.33,
+            "bloomLevel": "Create",
+            "question": "Rank trustworthiness assessment factors by criticality:",
+            "items": [
+              "Calibration verification",
+              "Adversarial robustness",
+              "Benchmark validity",
+              "User satisfaction",
+              "Latency"
+            ],
+            "correctOrder": [
+              1,
+              0,
+              2,
+              4,
+              3
+            ],
+            "scoringMethod": "automatic",
+            "scoringLogic": "Kendall tau or position-based scoring",
+            "tags": [
+              "cec",
+              "auto-scorable",
+              "expert"
+            ]
+          },
+          {
+            "id": "CEC-E-046",
+            "level": 5,
+            "type": "multiple-choice",
+            "points": 14,
+            "difficulty": 0.77,
+            "discrimination": 1.46,
+            "bloomLevel": "Evaluate",
+            "question": "Calibration of AI predictions means:",
+            "options": [
+              "Output probabilities match actual frequency of events",
+              "Model certainty",
+              "Confidence scaling",
+              "Accuracy measurement"
+            ],
+            "correctAnswer": 0,
+            "scoringMethod": "automatic",
+            "tags": [
+              "cec",
+              "auto-scorable",
+              "expert"
+            ]
+          },
+          {
+            "id": "CEC-E-047",
+            "level": 5,
+            "type": "multiple-response",
+            "points": 16,
+            "difficulty": 0.61,
+            "discrimination": 1.35,
+            "bloomLevel": "Analyze",
+            "question": "Rigorous AI trustworthiness assessment includes (SELECT ALL):",
+            "options": [
+              "Calibration verification",
+              "Benchmark validity testing",
+              "Adversarial robustness",
+              "User surveys only",
+              "Statistical power analysis"
+            ],
+            "correctAnswers": [
+              0,
+              1,
+              2,
+              4
+            ],
+            "scoringMethod": "automatic",
+            "scoringLogic": "All correct must be selected, no incorrect",
+            "tags": [
+              "cec",
+              "auto-scorable",
+              "expert"
+            ]
+          },
+          {
+            "id": "CEC-E-048",
+            "level": 5,
+            "type": "scenario-ranking",
+            "points": 16,
+            "difficulty": 0.82,
+            "discrimination": 1.31,
+            "bloomLevel": "Evaluate",
+            "question": "Sequence for rigorous AI trustworthiness assessment:",
+            "options": [
+              "A. Define trustworthiness dimensions for use case",
+              "B. Conduct benchmark validity analysis",
+              "C. Test calibration and adversarial robustness",
+              "D. Assess real-world deployment performance",
+              "E. Monitor for degradation and distributional shift"
+            ],
+            "correctOrder": [
+              0,
+              1,
+              2,
+              3,
+              4
+            ],
+            "scoringMethod": "automatic",
+            "scoringLogic": "Exact sequence required",
+            "tags": [
+              "cec",
+              "auto-scorable",
+              "expert"
+            ]
+          },
+          {
+            "id": "CEC-E-049",
+            "level": 5,
+            "type": "matching",
+            "points": 15,
+            "difficulty": 0.78,
+            "discrimination": 1.47,
+            "bloomLevel": "Analyze",
+            "question": "Match trustworthiness dimension to assessment method:",
+            "leftColumn": [
+              "1. Calibration",
+              "2. Robustness",
+              "3. Generalization",
+              "4. Stability"
+            ],
+            "rightColumn": [
+              "A. Probability-reality alignment",
+              "B. Adversarial performance",
+              "C. New distribution handling",
+              "D. Temporal consistency"
+            ],
+            "correctPairs": [
+              [
+                0,
+                0
+              ],
+              [
+                1,
+                1
+              ],
+              [
+                2,
+                2
+              ],
+              [
+                3,
+                3
+              ]
+            ],
+            "scoringMethod": "automatic",
+            "scoringLogic": "Each correct pair scored proportionally",
+            "tags": [
+              "cec",
+              "auto-scorable",
+              "expert"
+            ]
+          },
+          {
+            "id": "CEC-E-050",
+            "level": 6,
+            "type": "rank-ordering",
+            "points": 18,
+            "difficulty": 0.77,
+            "discrimination": 1.28,
+            "bloomLevel": "Create",
+            "question": "Rank trustworthiness assessment factors by criticality:",
+            "items": [
+              "Calibration verification",
+              "Adversarial robustness",
+              "Benchmark validity",
+              "User satisfaction",
+              "Latency"
+            ],
+            "correctOrder": [
+              1,
+              0,
+              2,
+              4,
+              3
+            ],
+            "scoringMethod": "automatic",
+            "scoringLogic": "Kendall tau or position-based scoring",
+            "tags": [
+              "cec",
+              "auto-scorable",
+              "expert"
+            ]
+          },
+          {
+            "id": "CEC-E-051",
+            "level": 5,
+            "type": "multiple-choice",
+            "points": 14,
+            "difficulty": 0.67,
+            "discrimination": 1.36,
+            "bloomLevel": "Evaluate",
+            "question": "Calibration of AI predictions means:",
+            "options": [
+              "Output probabilities match actual frequency of events",
+              "Model certainty",
+              "Confidence scaling",
+              "Accuracy measurement"
+            ],
+            "correctAnswer": 0,
+            "scoringMethod": "automatic",
+            "tags": [
+              "cec",
+              "auto-scorable",
+              "expert"
+            ]
+          },
+          {
+            "id": "CEC-E-052",
+            "level": 5,
+            "type": "multiple-response",
+            "points": 15,
+            "difficulty": 0.72,
+            "discrimination": 1.5,
+            "bloomLevel": "Analyze",
+            "question": "Rigorous AI trustworthiness assessment includes (SELECT ALL):",
+            "options": [
+              "Calibration verification",
+              "Benchmark validity testing",
+              "Adversarial robustness",
+              "User surveys only",
+              "Statistical power analysis"
+            ],
+            "correctAnswers": [
+              0,
+              1,
+              2,
+              4
+            ],
+            "scoringMethod": "automatic",
+            "scoringLogic": "All correct must be selected, no incorrect",
+            "tags": [
+              "cec",
+              "auto-scorable",
+              "expert"
+            ]
+          },
+          {
+            "id": "CEC-E-053",
+            "level": 5,
+            "type": "scenario-ranking",
+            "points": 15,
+            "difficulty": 0.7,
+            "discrimination": 1.42,
+            "bloomLevel": "Evaluate",
+            "question": "Sequence for rigorous AI trustworthiness assessment:",
+            "options": [
+              "A. Define trustworthiness dimensions for use case",
+              "B. Conduct benchmark validity analysis",
+              "C. Test calibration and adversarial robustness",
+              "D. Assess real-world deployment performance",
+              "E. Monitor for degradation and distributional shift"
+            ],
+            "correctOrder": [
+              0,
+              1,
+              2,
+              3,
+              4
+            ],
+            "scoringMethod": "automatic",
+            "scoringLogic": "Exact sequence required",
+            "tags": [
+              "cec",
+              "auto-scorable",
+              "expert"
+            ]
+          },
+          {
+            "id": "CEC-E-054",
+            "level": 5,
+            "type": "matching",
+            "points": 16,
+            "difficulty": 0.7,
+            "discrimination": 1.32,
+            "bloomLevel": "Analyze",
+            "question": "Match trustworthiness dimension to assessment method:",
+            "leftColumn": [
+              "1. Calibration",
+              "2. Robustness",
+              "3. Generalization",
+              "4. Stability"
+            ],
+            "rightColumn": [
+              "A. Probability-reality alignment",
+              "B. Adversarial performance",
+              "C. New distribution handling",
+              "D. Temporal consistency"
+            ],
+            "correctPairs": [
+              [
+                0,
+                0
+              ],
+              [
+                1,
+                1
+              ],
+              [
+                2,
+                2
+              ],
+              [
+                3,
+                3
+              ]
+            ],
+            "scoringMethod": "automatic",
+            "scoringLogic": "Each correct pair scored proportionally",
+            "tags": [
+              "cec",
+              "auto-scorable",
+              "expert"
+            ]
+          },
+          {
+            "id": "CEC-E-055",
+            "level": 6,
+            "type": "rank-ordering",
+            "points": 17,
+            "difficulty": 0.69,
+            "discrimination": 1.44,
+            "bloomLevel": "Create",
+            "question": "Rank trustworthiness assessment factors by criticality:",
+            "items": [
+              "Calibration verification",
+              "Adversarial robustness",
+              "Benchmark validity",
+              "User satisfaction",
+              "Latency"
+            ],
+            "correctOrder": [
+              1,
+              0,
+              2,
+              4,
+              3
+            ],
+            "scoringMethod": "automatic",
+            "scoringLogic": "Kendall tau or position-based scoring",
+            "tags": [
+              "cec",
+              "auto-scorable",
+              "expert"
+            ]
+          },
+          {
+            "id": "CEC-E-056",
+            "level": 5,
+            "type": "multiple-choice",
+            "points": 13,
+            "difficulty": 0.75,
+            "discrimination": 1.25,
+            "bloomLevel": "Evaluate",
+            "question": "Calibration of AI predictions means:",
+            "options": [
+              "Output probabilities match actual frequency of events",
+              "Model certainty",
+              "Confidence scaling",
+              "Accuracy measurement"
+            ],
+            "correctAnswer": 0,
+            "scoringMethod": "automatic",
+            "tags": [
+              "cec",
+              "auto-scorable",
+              "expert"
+            ]
+          },
+          {
+            "id": "CEC-E-057",
+            "level": 5,
+            "type": "multiple-response",
+            "points": 16,
+            "difficulty": 0.78,
+            "discrimination": 1.46,
+            "bloomLevel": "Analyze",
+            "question": "Rigorous AI trustworthiness assessment includes (SELECT ALL):",
+            "options": [
+              "Calibration verification",
+              "Benchmark validity testing",
+              "Adversarial robustness",
+              "User surveys only",
+              "Statistical power analysis"
+            ],
+            "correctAnswers": [
+              0,
+              1,
+              2,
+              4
+            ],
+            "scoringMethod": "automatic",
+            "scoringLogic": "All correct must be selected, no incorrect",
+            "tags": [
+              "cec",
+              "auto-scorable",
+              "expert"
+            ]
+          },
+          {
+            "id": "CEC-E-058",
+            "level": 5,
+            "type": "scenario-ranking",
+            "points": 16,
+            "difficulty": 0.76,
+            "discrimination": 1.46,
+            "bloomLevel": "Evaluate",
+            "question": "Sequence for rigorous AI trustworthiness assessment:",
+            "options": [
+              "A. Define trustworthiness dimensions for use case",
+              "B. Conduct benchmark validity analysis",
+              "C. Test calibration and adversarial robustness",
+              "D. Assess real-world deployment performance",
+              "E. Monitor for degradation and distributional shift"
+            ],
+            "correctOrder": [
+              0,
+              1,
+              2,
+              3,
+              4
+            ],
+            "scoringMethod": "automatic",
+            "scoringLogic": "Exact sequence required",
+            "tags": [
+              "cec",
+              "auto-scorable",
+              "expert"
+            ]
+          },
+          {
+            "id": "CEC-E-059",
+            "level": 5,
+            "type": "matching",
+            "points": 15,
+            "difficulty": 0.71,
+            "discrimination": 1.38,
+            "bloomLevel": "Analyze",
+            "question": "Match trustworthiness dimension to assessment method:",
+            "leftColumn": [
+              "1. Calibration",
+              "2. Robustness",
+              "3. Generalization",
+              "4. Stability"
+            ],
+            "rightColumn": [
+              "A. Probability-reality alignment",
+              "B. Adversarial performance",
+              "C. New distribution handling",
+              "D. Temporal consistency"
+            ],
+            "correctPairs": [
+              [
+                0,
+                0
+              ],
+              [
+                1,
+                1
+              ],
+              [
+                2,
+                2
+              ],
+              [
+                3,
+                3
+              ]
+            ],
+            "scoringMethod": "automatic",
+            "scoringLogic": "Each correct pair scored proportionally",
+            "tags": [
+              "cec",
+              "auto-scorable",
+              "expert"
+            ]
+          },
+          {
+            "id": "CEC-E-060",
+            "level": 6,
+            "type": "rank-ordering",
+            "points": 17,
+            "difficulty": 0.74,
+            "discrimination": 1.35,
+            "bloomLevel": "Create",
+            "question": "Rank trustworthiness assessment factors by criticality:",
+            "items": [
+              "Calibration verification",
+              "Adversarial robustness",
+              "Benchmark validity",
+              "User satisfaction",
+              "Latency"
+            ],
+            "correctOrder": [
+              1,
+              0,
+              2,
+              4,
+              3
+            ],
+            "scoringMethod": "automatic",
+            "scoringLogic": "Kendall tau or position-based scoring",
+            "tags": [
+              "cec",
+              "auto-scorable",
+              "expert"
+            ]
+          }
+        ]
+      },
+      {
+        "dimensionCode": "II",
+        "dimensionName": "Integration Intelligence",
+        "weight": 0.125,
+        "totalPoints": 100,
+        "items": [
+          {
+            "id": "II-E-061",
+            "level": 5,
+            "type": "multiple-choice",
+            "points": 13,
+            "difficulty": 0.61,
+            "discrimination": 1.49,
+            "bloomLevel": "Evaluate",
+            "question": "The strategic challenge in human-AI team composition is:",
+            "options": [
+              "Automation level",
+              "Maintaining human expertise while leveraging AI speed advantages",
+              "Cost minimization",
+              "Skill homogeneity"
+            ],
+            "correctAnswer": 1,
+            "scoringMethod": "automatic",
+            "tags": [
+              "ii",
+              "auto-scorable",
+              "expert"
+            ]
+          },
+          {
+            "id": "II-E-062",
+            "level": 5,
+            "type": "multiple-response",
+            "points": 14,
+            "difficulty": 0.61,
+            "discrimination": 1.28,
+            "bloomLevel": "Analyze",
+            "question": "Challenges in AI organizational transformation include (SELECT ALL):",
+            "options": [
+              "Process redesign",
+              "Skill migration",
+              "Capability preservation",
+              "Faster hiring only",
+              "Role elimination strategy"
+            ],
+            "correctAnswers": [
+              0,
+              1,
+              2,
+              4
+            ],
+            "scoringMethod": "automatic",
+            "scoringLogic": "All correct must be selected, no incorrect",
+            "tags": [
+              "ii",
+              "auto-scorable",
+              "expert"
+            ]
+          },
+          {
+            "id": "II-E-063",
+            "level": 5,
+            "type": "scenario-ranking",
+            "points": 16,
+            "difficulty": 0.77,
+            "discrimination": 1.29,
+            "bloomLevel": "Evaluate",
+            "question": "Sequence for large-scale AI organizational redesign:",
+            "options": [
+              "A. Map current organizational structure and AI touchpoints",
+              "B. Design target architecture balancing centralization/federation",
+              "C. Plan skill migration and role evolution",
+              "D. Pilot governance and decision frameworks",
+              "E. Scale with continuous learning feedback"
+            ],
+            "correctOrder": [
+              0,
+              1,
+              2,
+              3,
+              4
+            ],
+            "scoringMethod": "automatic",
+            "scoringLogic": "Exact sequence required",
+            "tags": [
+              "ii",
+              "auto-scorable",
+              "expert"
+            ]
+          },
+          {
+            "id": "II-E-064",
+            "level": 5,
+            "type": "matching",
+            "points": 15,
+            "difficulty": 0.63,
+            "discrimination": 1.48,
+            "bloomLevel": "Analyze",
+            "question": "Match organizational design element to transformation goal:",
+            "leftColumn": [
+              "1. Governance structure",
+              "2. Role evolution",
+              "3. Learning systems",
+              "4. Process redesign"
+            ],
+            "rightColumn": [
+              "A. Enables capability growth",
+              "B. Manages decision authority",
+              "C. Supports human-AI collaboration",
+              "D. Operationalizes strategy"
+            ],
+            "correctPairs": [
+              [
+                0,
+                1
+              ],
+              [
+                1,
+                2
+              ],
+              [
+                2,
+                0
+              ],
+              [
+                3,
+                3
+              ]
+            ],
+            "scoringMethod": "automatic",
+            "scoringLogic": "Each correct pair scored proportionally",
+            "tags": [
+              "ii",
+              "auto-scorable",
+              "expert"
+            ]
+          },
+          {
+            "id": "II-E-065",
+            "level": 6,
+            "type": "rank-ordering",
+            "points": 17,
+            "difficulty": 0.64,
+            "discrimination": 1.43,
+            "bloomLevel": "Create",
+            "question": "Rank organizational transformation priorities:",
+            "items": [
+              "Technology capability",
+              "Process redesign",
+              "Organizational learning",
+              "Skill migration",
+              "Budget"
+            ],
+            "correctOrder": [
+              1,
+              2,
+              3,
+              0,
+              4
+            ],
+            "scoringMethod": "automatic",
+            "scoringLogic": "Kendall tau or position-based scoring",
+            "tags": [
+              "ii",
+              "auto-scorable",
+              "expert"
+            ]
+          },
+          {
+            "id": "II-E-066",
+            "level": 5,
+            "type": "multiple-choice",
+            "points": 13,
+            "difficulty": 0.76,
+            "discrimination": 1.43,
+            "bloomLevel": "Evaluate",
+            "question": "The strategic challenge in human-AI team composition is:",
+            "options": [
+              "Automation level",
+              "Maintaining human expertise while leveraging AI speed advantages",
+              "Cost minimization",
+              "Skill homogeneity"
+            ],
+            "correctAnswer": 1,
+            "scoringMethod": "automatic",
+            "tags": [
+              "ii",
+              "auto-scorable",
+              "expert"
+            ]
+          },
+          {
+            "id": "II-E-067",
+            "level": 5,
+            "type": "multiple-response",
+            "points": 16,
+            "difficulty": 0.6,
+            "discrimination": 1.3,
+            "bloomLevel": "Analyze",
+            "question": "Challenges in AI organizational transformation include (SELECT ALL):",
+            "options": [
+              "Process redesign",
+              "Skill migration",
+              "Capability preservation",
+              "Faster hiring only",
+              "Role elimination strategy"
+            ],
+            "correctAnswers": [
+              0,
+              1,
+              2,
+              4
+            ],
+            "scoringMethod": "automatic",
+            "scoringLogic": "All correct must be selected, no incorrect",
+            "tags": [
+              "ii",
+              "auto-scorable",
+              "expert"
+            ]
+          },
+          {
+            "id": "II-E-068",
+            "level": 5,
+            "type": "scenario-ranking",
+            "points": 16,
+            "difficulty": 0.7,
+            "discrimination": 1.45,
+            "bloomLevel": "Evaluate",
+            "question": "Sequence for large-scale AI organizational redesign:",
+            "options": [
+              "A. Map current organizational structure and AI touchpoints",
+              "B. Design target architecture balancing centralization/federation",
+              "C. Plan skill migration and role evolution",
+              "D. Pilot governance and decision frameworks",
+              "E. Scale with continuous learning feedback"
+            ],
+            "correctOrder": [
+              0,
+              1,
+              2,
+              3,
+              4
+            ],
+            "scoringMethod": "automatic",
+            "scoringLogic": "Exact sequence required",
+            "tags": [
+              "ii",
+              "auto-scorable",
+              "expert"
+            ]
+          },
+          {
+            "id": "II-E-069",
+            "level": 5,
+            "type": "matching",
+            "points": 15,
+            "difficulty": 0.79,
+            "discrimination": 1.43,
+            "bloomLevel": "Analyze",
+            "question": "Match organizational design element to transformation goal:",
+            "leftColumn": [
+              "1. Governance structure",
+              "2. Role evolution",
+              "3. Learning systems",
+              "4. Process redesign"
+            ],
+            "rightColumn": [
+              "A. Enables capability growth",
+              "B. Manages decision authority",
+              "C. Supports human-AI collaboration",
+              "D. Operationalizes strategy"
+            ],
+            "correctPairs": [
+              [
+                0,
+                1
+              ],
+              [
+                1,
+                2
+              ],
+              [
+                2,
+                0
+              ],
+              [
+                3,
+                3
+              ]
+            ],
+            "scoringMethod": "automatic",
+            "scoringLogic": "Each correct pair scored proportionally",
+            "tags": [
+              "ii",
+              "auto-scorable",
+              "expert"
+            ]
+          },
+          {
+            "id": "II-E-070",
+            "level": 6,
+            "type": "rank-ordering",
+            "points": 17,
+            "difficulty": 0.78,
+            "discrimination": 1.46,
+            "bloomLevel": "Create",
+            "question": "Rank organizational transformation priorities:",
+            "items": [
+              "Technology capability",
+              "Process redesign",
+              "Organizational learning",
+              "Skill migration",
+              "Budget"
+            ],
+            "correctOrder": [
+              1,
+              2,
+              3,
+              0,
+              4
+            ],
+            "scoringMethod": "automatic",
+            "scoringLogic": "Kendall tau or position-based scoring",
+            "tags": [
+              "ii",
+              "auto-scorable",
+              "expert"
+            ]
+          },
+          {
+            "id": "II-E-071",
+            "level": 5,
+            "type": "multiple-choice",
+            "points": 14,
+            "difficulty": 0.71,
+            "discrimination": 1.32,
+            "bloomLevel": "Evaluate",
+            "question": "The strategic challenge in human-AI team composition is:",
+            "options": [
+              "Automation level",
+              "Maintaining human expertise while leveraging AI speed advantages",
+              "Cost minimization",
+              "Skill homogeneity"
+            ],
+            "correctAnswer": 1,
+            "scoringMethod": "automatic",
+            "tags": [
+              "ii",
+              "auto-scorable",
+              "expert"
+            ]
+          },
+          {
+            "id": "II-E-072",
+            "level": 5,
+            "type": "multiple-response",
+            "points": 16,
+            "difficulty": 0.66,
+            "discrimination": 1.3,
+            "bloomLevel": "Analyze",
+            "question": "Challenges in AI organizational transformation include (SELECT ALL):",
+            "options": [
+              "Process redesign",
+              "Skill migration",
+              "Capability preservation",
+              "Faster hiring only",
+              "Role elimination strategy"
+            ],
+            "correctAnswers": [
+              0,
+              1,
+              2,
+              4
+            ],
+            "scoringMethod": "automatic",
+            "scoringLogic": "All correct must be selected, no incorrect",
+            "tags": [
+              "ii",
+              "auto-scorable",
+              "expert"
+            ]
+          },
+          {
+            "id": "II-E-073",
+            "level": 5,
+            "type": "scenario-ranking",
+            "points": 17,
+            "difficulty": 0.85,
+            "discrimination": 1.36,
+            "bloomLevel": "Evaluate",
+            "question": "Sequence for large-scale AI organizational redesign:",
+            "options": [
+              "A. Map current organizational structure and AI touchpoints",
+              "B. Design target architecture balancing centralization/federation",
+              "C. Plan skill migration and role evolution",
+              "D. Pilot governance and decision frameworks",
+              "E. Scale with continuous learning feedback"
+            ],
+            "correctOrder": [
+              0,
+              1,
+              2,
+              3,
+              4
+            ],
+            "scoringMethod": "automatic",
+            "scoringLogic": "Exact sequence required",
+            "tags": [
+              "ii",
+              "auto-scorable",
+              "expert"
+            ]
+          },
+          {
+            "id": "II-E-074",
+            "level": 5,
+            "type": "matching",
+            "points": 16,
+            "difficulty": 0.69,
+            "discrimination": 1.27,
+            "bloomLevel": "Analyze",
+            "question": "Match organizational design element to transformation goal:",
+            "leftColumn": [
+              "1. Governance structure",
+              "2. Role evolution",
+              "3. Learning systems",
+              "4. Process redesign"
+            ],
+            "rightColumn": [
+              "A. Enables capability growth",
+              "B. Manages decision authority",
+              "C. Supports human-AI collaboration",
+              "D. Operationalizes strategy"
+            ],
+            "correctPairs": [
+              [
+                0,
+                1
+              ],
+              [
+                1,
+                2
+              ],
+              [
+                2,
+                0
+              ],
+              [
+                3,
+                3
+              ]
+            ],
+            "scoringMethod": "automatic",
+            "scoringLogic": "Each correct pair scored proportionally",
+            "tags": [
+              "ii",
+              "auto-scorable",
+              "expert"
+            ]
+          },
+          {
+            "id": "II-E-075",
+            "level": 6,
+            "type": "rank-ordering",
+            "points": 16,
+            "difficulty": 0.67,
+            "discrimination": 1.44,
+            "bloomLevel": "Create",
+            "question": "Rank organizational transformation priorities:",
+            "items": [
+              "Technology capability",
+              "Process redesign",
+              "Organizational learning",
+              "Skill migration",
+              "Budget"
+            ],
+            "correctOrder": [
+              1,
+              2,
+              3,
+              0,
+              4
+            ],
+            "scoringMethod": "automatic",
+            "scoringLogic": "Kendall tau or position-based scoring",
+            "tags": [
+              "ii",
+              "auto-scorable",
+              "expert"
+            ]
+          },
+          {
+            "id": "II-E-076",
+            "level": 5,
+            "type": "multiple-choice",
+            "points": 15,
+            "difficulty": 0.75,
+            "discrimination": 1.4,
+            "bloomLevel": "Evaluate",
+            "question": "The strategic challenge in human-AI team composition is:",
+            "options": [
+              "Automation level",
+              "Maintaining human expertise while leveraging AI speed advantages",
+              "Cost minimization",
+              "Skill homogeneity"
+            ],
+            "correctAnswer": 1,
+            "scoringMethod": "automatic",
+            "tags": [
+              "ii",
+              "auto-scorable",
+              "expert"
+            ]
+          },
+          {
+            "id": "II-E-077",
+            "level": 5,
+            "type": "multiple-response",
+            "points": 15,
+            "difficulty": 0.76,
+            "discrimination": 1.44,
+            "bloomLevel": "Analyze",
+            "question": "Challenges in AI organizational transformation include (SELECT ALL):",
+            "options": [
+              "Process redesign",
+              "Skill migration",
+              "Capability preservation",
+              "Faster hiring only",
+              "Role elimination strategy"
+            ],
+            "correctAnswers": [
+              0,
+              1,
+              2,
+              4
+            ],
+            "scoringMethod": "automatic",
+            "scoringLogic": "All correct must be selected, no incorrect",
+            "tags": [
+              "ii",
+              "auto-scorable",
+              "expert"
+            ]
+          },
+          {
+            "id": "II-E-078",
+            "level": 5,
+            "type": "scenario-ranking",
+            "points": 17,
+            "difficulty": 0.8,
+            "discrimination": 1.31,
+            "bloomLevel": "Evaluate",
+            "question": "Sequence for large-scale AI organizational redesign:",
+            "options": [
+              "A. Map current organizational structure and AI touchpoints",
+              "B. Design target architecture balancing centralization/federation",
+              "C. Plan skill migration and role evolution",
+              "D. Pilot governance and decision frameworks",
+              "E. Scale with continuous learning feedback"
+            ],
+            "correctOrder": [
+              0,
+              1,
+              2,
+              3,
+              4
+            ],
+            "scoringMethod": "automatic",
+            "scoringLogic": "Exact sequence required",
+            "tags": [
+              "ii",
+              "auto-scorable",
+              "expert"
+            ]
+          },
+          {
+            "id": "II-E-079",
+            "level": 5,
+            "type": "matching",
+            "points": 15,
+            "difficulty": 0.8,
+            "discrimination": 1.28,
+            "bloomLevel": "Analyze",
+            "question": "Match organizational design element to transformation goal:",
+            "leftColumn": [
+              "1. Governance structure",
+              "2. Role evolution",
+              "3. Learning systems",
+              "4. Process redesign"
+            ],
+            "rightColumn": [
+              "A. Enables capability growth",
+              "B. Manages decision authority",
+              "C. Supports human-AI collaboration",
+              "D. Operationalizes strategy"
+            ],
+            "correctPairs": [
+              [
+                0,
+                1
+              ],
+              [
+                1,
+                2
+              ],
+              [
+                2,
+                0
+              ],
+              [
+                3,
+                3
+              ]
+            ],
+            "scoringMethod": "automatic",
+            "scoringLogic": "Each correct pair scored proportionally",
+            "tags": [
+              "ii",
+              "auto-scorable",
+              "expert"
+            ]
+          },
+          {
+            "id": "II-E-080",
+            "level": 6,
+            "type": "rank-ordering",
+            "points": 17,
+            "difficulty": 0.72,
+            "discrimination": 1.38,
+            "bloomLevel": "Create",
+            "question": "Rank organizational transformation priorities:",
+            "items": [
+              "Technology capability",
+              "Process redesign",
+              "Organizational learning",
+              "Skill migration",
+              "Budget"
+            ],
+            "correctOrder": [
+              1,
+              2,
+              3,
+              0,
+              4
+            ],
+            "scoringMethod": "automatic",
+            "scoringLogic": "Kendall tau or position-based scoring",
+            "tags": [
+              "ii",
+              "auto-scorable",
+              "expert"
+            ]
+          }
+        ]
+      },
+      {
+        "dimensionCode": "ALC",
+        "dimensionName": "Adaptive Learning Capability",
+        "weight": 0.125,
+        "totalPoints": 100,
+        "items": [
+          {
+            "id": "ALC-E-081",
+            "level": 5,
+            "type": "multiple-choice",
+            "points": 15,
+            "difficulty": 0.64,
+            "discrimination": 1.36,
+            "bloomLevel": "Evaluate",
+            "question": "The paradox of AI learning is that:",
+            "options": [
+              "Learning is irrelevant",
+              "Early successes may inhibit identification of failure modes and capability limits",
+              "Failure doesn't teach",
+              "All lessons transfer"
+            ],
+            "correctAnswer": 1,
+            "scoringMethod": "automatic",
+            "tags": [
+              "alc",
+              "auto-scorable",
+              "expert"
+            ]
+          },
+          {
+            "id": "ALC-E-082",
+            "level": 5,
+            "type": "multiple-response",
+            "points": 16,
+            "difficulty": 0.76,
+            "discrimination": 1.27,
+            "bloomLevel": "Analyze",
+            "question": "Accelerating organizational AI learning requires (SELECT ALL):",
+            "options": [
+              "Failure analysis systems",
+              "Cross-team knowledge transfer",
+              "Systematic experimentation",
+              "Waiting for maturity",
+              "Quick wins focus only"
+            ],
+            "correctAnswers": [
+              0,
+              1,
+              2
+            ],
+            "scoringMethod": "automatic",
+            "scoringLogic": "All correct must be selected, no incorrect",
+            "tags": [
+              "alc",
+              "auto-scorable",
+              "expert"
+            ]
+          },
+          {
+            "id": "ALC-E-083",
+            "level": 5,
+            "type": "scenario-ranking",
+            "points": 16,
+            "difficulty": 0.6,
+            "discrimination": 1.49,
+            "bloomLevel": "Evaluate",
+            "question": "Sequence for building organizational AI foresight capability:",
+            "options": [
+              "A. Establish learning system infrastructure",
+              "B. Systematize experimentation and failure analysis",
+              "C. Implement cross-team knowledge transfer",
+              "D. Develop capability maturity assessment",
+              "E. Build scenario planning for capability evolution"
+            ],
+            "correctOrder": [
+              0,
+              1,
+              2,
+              3,
+              4
+            ],
+            "scoringMethod": "automatic",
+            "scoringLogic": "Exact sequence required",
+            "tags": [
+              "alc",
+              "auto-scorable",
+              "expert"
+            ]
+          },
+          {
+            "id": "ALC-E-084",
+            "level": 5,
+            "type": "matching",
+            "points": 16,
+            "difficulty": 0.6,
+            "discrimination": 1.48,
+            "bloomLevel": "Analyze",
+            "question": "Match learning system component to capability outcome:",
+            "leftColumn": [
+              "1. Experimentation",
+              "2. Failure analysis",
+              "3. Knowledge transfer",
+              "4. Foresight"
+            ],
+            "rightColumn": [
+              "A. Discovers context-specific approaches",
+              "B. Prevents repeated errors",
+              "C. Distributes expertise",
+              "D. Anticipates evolution"
+            ],
+            "correctPairs": [
+              [
+                0,
+                0
+              ],
+              [
+                1,
+                1
+              ],
+              [
+                2,
+                2
+              ],
+              [
+                3,
+                3
+              ]
+            ],
+            "scoringMethod": "automatic",
+            "scoringLogic": "Each correct pair scored proportionally",
+            "tags": [
+              "alc",
+              "auto-scorable",
+              "expert"
+            ]
+          },
+          {
+            "id": "ALC-E-085",
+            "level": 6,
+            "type": "rank-ordering",
+            "points": 18,
+            "difficulty": 0.67,
+            "discrimination": 1.34,
+            "bloomLevel": "Create",
+            "question": "Rank organizational learning accelerators:",
+            "items": [
+              "Failure analysis systems",
+              "Cross-team transfer",
+              "Experimentation cycles",
+              "Isolated projects",
+              "Tool acquisition"
+            ],
+            "correctOrder": [
+              0,
+              1,
+              2,
+              4,
+              3
+            ],
+            "scoringMethod": "automatic",
+            "scoringLogic": "Kendall tau or position-based scoring",
+            "tags": [
+              "alc",
+              "auto-scorable",
+              "expert"
+            ]
+          },
+          {
+            "id": "ALC-E-086",
+            "level": 5,
+            "type": "multiple-choice",
+            "points": 15,
+            "difficulty": 0.75,
+            "discrimination": 1.35,
+            "bloomLevel": "Evaluate",
+            "question": "The paradox of AI learning is that:",
+            "options": [
+              "Learning is irrelevant",
+              "Early successes may inhibit identification of failure modes and capability limits",
+              "Failure doesn't teach",
+              "All lessons transfer"
+            ],
+            "correctAnswer": 1,
+            "scoringMethod": "automatic",
+            "tags": [
+              "alc",
+              "auto-scorable",
+              "expert"
+            ]
+          },
+          {
+            "id": "ALC-E-087",
+            "level": 5,
+            "type": "multiple-response",
+            "points": 15,
+            "difficulty": 0.61,
+            "discrimination": 1.48,
+            "bloomLevel": "Analyze",
+            "question": "Accelerating organizational AI learning requires (SELECT ALL):",
+            "options": [
+              "Failure analysis systems",
+              "Cross-team knowledge transfer",
+              "Systematic experimentation",
+              "Waiting for maturity",
+              "Quick wins focus only"
+            ],
+            "correctAnswers": [
+              0,
+              1,
+              2
+            ],
+            "scoringMethod": "automatic",
+            "scoringLogic": "All correct must be selected, no incorrect",
+            "tags": [
+              "alc",
+              "auto-scorable",
+              "expert"
+            ]
+          },
+          {
+            "id": "ALC-E-088",
+            "level": 5,
+            "type": "scenario-ranking",
+            "points": 16,
+            "difficulty": 0.78,
+            "discrimination": 1.38,
+            "bloomLevel": "Evaluate",
+            "question": "Sequence for building organizational AI foresight capability:",
+            "options": [
+              "A. Establish learning system infrastructure",
+              "B. Systematize experimentation and failure analysis",
+              "C. Implement cross-team knowledge transfer",
+              "D. Develop capability maturity assessment",
+              "E. Build scenario planning for capability evolution"
+            ],
+            "correctOrder": [
+              0,
+              1,
+              2,
+              3,
+              4
+            ],
+            "scoringMethod": "automatic",
+            "scoringLogic": "Exact sequence required",
+            "tags": [
+              "alc",
+              "auto-scorable",
+              "expert"
+            ]
+          },
+          {
+            "id": "ALC-E-089",
+            "level": 5,
+            "type": "matching",
+            "points": 15,
+            "difficulty": 0.76,
+            "discrimination": 1.28,
+            "bloomLevel": "Analyze",
+            "question": "Match learning system component to capability outcome:",
+            "leftColumn": [
+              "1. Experimentation",
+              "2. Failure analysis",
+              "3. Knowledge transfer",
+              "4. Foresight"
+            ],
+            "rightColumn": [
+              "A. Discovers context-specific approaches",
+              "B. Prevents repeated errors",
+              "C. Distributes expertise",
+              "D. Anticipates evolution"
+            ],
+            "correctPairs": [
+              [
+                0,
+                0
+              ],
+              [
+                1,
+                1
+              ],
+              [
+                2,
+                2
+              ],
+              [
+                3,
+                3
+              ]
+            ],
+            "scoringMethod": "automatic",
+            "scoringLogic": "Each correct pair scored proportionally",
+            "tags": [
+              "alc",
+              "auto-scorable",
+              "expert"
+            ]
+          },
+          {
+            "id": "ALC-E-090",
+            "level": 6,
+            "type": "rank-ordering",
+            "points": 16,
+            "difficulty": 0.8,
+            "discrimination": 1.37,
+            "bloomLevel": "Create",
+            "question": "Rank organizational learning accelerators:",
+            "items": [
+              "Failure analysis systems",
+              "Cross-team transfer",
+              "Experimentation cycles",
+              "Isolated projects",
+              "Tool acquisition"
+            ],
+            "correctOrder": [
+              0,
+              1,
+              2,
+              4,
+              3
+            ],
+            "scoringMethod": "automatic",
+            "scoringLogic": "Kendall tau or position-based scoring",
+            "tags": [
+              "alc",
+              "auto-scorable",
+              "expert"
+            ]
+          },
+          {
+            "id": "ALC-E-091",
+            "level": 5,
+            "type": "multiple-choice",
+            "points": 14,
+            "difficulty": 0.84,
+            "discrimination": 1.43,
+            "bloomLevel": "Evaluate",
+            "question": "The paradox of AI learning is that:",
+            "options": [
+              "Learning is irrelevant",
+              "Early successes may inhibit identification of failure modes and capability limits",
+              "Failure doesn't teach",
+              "All lessons transfer"
+            ],
+            "correctAnswer": 1,
+            "scoringMethod": "automatic",
+            "tags": [
+              "alc",
+              "auto-scorable",
+              "expert"
+            ]
+          },
+          {
+            "id": "ALC-E-092",
+            "level": 5,
+            "type": "multiple-response",
+            "points": 14,
+            "difficulty": 0.71,
+            "discrimination": 1.46,
+            "bloomLevel": "Analyze",
+            "question": "Accelerating organizational AI learning requires (SELECT ALL):",
+            "options": [
+              "Failure analysis systems",
+              "Cross-team knowledge transfer",
+              "Systematic experimentation",
+              "Waiting for maturity",
+              "Quick wins focus only"
+            ],
+            "correctAnswers": [
+              0,
+              1,
+              2
+            ],
+            "scoringMethod": "automatic",
+            "scoringLogic": "All correct must be selected, no incorrect",
+            "tags": [
+              "alc",
+              "auto-scorable",
+              "expert"
+            ]
+          },
+          {
+            "id": "ALC-E-093",
+            "level": 5,
+            "type": "scenario-ranking",
+            "points": 17,
+            "difficulty": 0.6,
+            "discrimination": 1.38,
+            "bloomLevel": "Evaluate",
+            "question": "Sequence for building organizational AI foresight capability:",
+            "options": [
+              "A. Establish learning system infrastructure",
+              "B. Systematize experimentation and failure analysis",
+              "C. Implement cross-team knowledge transfer",
+              "D. Develop capability maturity assessment",
+              "E. Build scenario planning for capability evolution"
+            ],
+            "correctOrder": [
+              0,
+              1,
+              2,
+              3,
+              4
+            ],
+            "scoringMethod": "automatic",
+            "scoringLogic": "Exact sequence required",
+            "tags": [
+              "alc",
+              "auto-scorable",
+              "expert"
+            ]
+          },
+          {
+            "id": "ALC-E-094",
+            "level": 5,
+            "type": "matching",
+            "points": 16,
+            "difficulty": 0.75,
+            "discrimination": 1.4,
+            "bloomLevel": "Analyze",
+            "question": "Match learning system component to capability outcome:",
+            "leftColumn": [
+              "1. Experimentation",
+              "2. Failure analysis",
+              "3. Knowledge transfer",
+              "4. Foresight"
+            ],
+            "rightColumn": [
+              "A. Discovers context-specific approaches",
+              "B. Prevents repeated errors",
+              "C. Distributes expertise",
+              "D. Anticipates evolution"
+            ],
+            "correctPairs": [
+              [
+                0,
+                0
+              ],
+              [
+                1,
+                1
+              ],
+              [
+                2,
+                2
+              ],
+              [
+                3,
+                3
+              ]
+            ],
+            "scoringMethod": "automatic",
+            "scoringLogic": "Each correct pair scored proportionally",
+            "tags": [
+              "alc",
+              "auto-scorable",
+              "expert"
+            ]
+          },
+          {
+            "id": "ALC-E-095",
+            "level": 6,
+            "type": "rank-ordering",
+            "points": 16,
+            "difficulty": 0.6,
+            "discrimination": 1.3,
+            "bloomLevel": "Create",
+            "question": "Rank organizational learning accelerators:",
+            "items": [
+              "Failure analysis systems",
+              "Cross-team transfer",
+              "Experimentation cycles",
+              "Isolated projects",
+              "Tool acquisition"
+            ],
+            "correctOrder": [
+              0,
+              1,
+              2,
+              4,
+              3
+            ],
+            "scoringMethod": "automatic",
+            "scoringLogic": "Kendall tau or position-based scoring",
+            "tags": [
+              "alc",
+              "auto-scorable",
+              "expert"
+            ]
+          },
+          {
+            "id": "ALC-E-096",
+            "level": 5,
+            "type": "multiple-choice",
+            "points": 15,
+            "difficulty": 0.81,
+            "discrimination": 1.35,
+            "bloomLevel": "Evaluate",
+            "question": "The paradox of AI learning is that:",
+            "options": [
+              "Learning is irrelevant",
+              "Early successes may inhibit identification of failure modes and capability limits",
+              "Failure doesn't teach",
+              "All lessons transfer"
+            ],
+            "correctAnswer": 1,
+            "scoringMethod": "automatic",
+            "tags": [
+              "alc",
+              "auto-scorable",
+              "expert"
+            ]
+          },
+          {
+            "id": "ALC-E-097",
+            "level": 5,
+            "type": "multiple-response",
+            "points": 16,
+            "difficulty": 0.85,
+            "discrimination": 1.34,
+            "bloomLevel": "Analyze",
+            "question": "Accelerating organizational AI learning requires (SELECT ALL):",
+            "options": [
+              "Failure analysis systems",
+              "Cross-team knowledge transfer",
+              "Systematic experimentation",
+              "Waiting for maturity",
+              "Quick wins focus only"
+            ],
+            "correctAnswers": [
+              0,
+              1,
+              2
+            ],
+            "scoringMethod": "automatic",
+            "scoringLogic": "All correct must be selected, no incorrect",
+            "tags": [
+              "alc",
+              "auto-scorable",
+              "expert"
+            ]
+          },
+          {
+            "id": "ALC-E-098",
+            "level": 5,
+            "type": "scenario-ranking",
+            "points": 16,
+            "difficulty": 0.65,
+            "discrimination": 1.49,
+            "bloomLevel": "Evaluate",
+            "question": "Sequence for building organizational AI foresight capability:",
+            "options": [
+              "A. Establish learning system infrastructure",
+              "B. Systematize experimentation and failure analysis",
+              "C. Implement cross-team knowledge transfer",
+              "D. Develop capability maturity assessment",
+              "E. Build scenario planning for capability evolution"
+            ],
+            "correctOrder": [
+              0,
+              1,
+              2,
+              3,
+              4
+            ],
+            "scoringMethod": "automatic",
+            "scoringLogic": "Exact sequence required",
+            "tags": [
+              "alc",
+              "auto-scorable",
+              "expert"
+            ]
+          },
+          {
+            "id": "ALC-E-099",
+            "level": 5,
+            "type": "matching",
+            "points": 16,
+            "difficulty": 0.69,
+            "discrimination": 1.28,
+            "bloomLevel": "Analyze",
+            "question": "Match learning system component to capability outcome:",
+            "leftColumn": [
+              "1. Experimentation",
+              "2. Failure analysis",
+              "3. Knowledge transfer",
+              "4. Foresight"
+            ],
+            "rightColumn": [
+              "A. Discovers context-specific approaches",
+              "B. Prevents repeated errors",
+              "C. Distributes expertise",
+              "D. Anticipates evolution"
+            ],
+            "correctPairs": [
+              [
+                0,
+                0
+              ],
+              [
+                1,
+                1
+              ],
+              [
+                2,
+                2
+              ],
+              [
+                3,
+                3
+              ]
+            ],
+            "scoringMethod": "automatic",
+            "scoringLogic": "Each correct pair scored proportionally",
+            "tags": [
+              "alc",
+              "auto-scorable",
+              "expert"
+            ]
+          },
+          {
+            "id": "ALC-E-100",
+            "level": 6,
+            "type": "rank-ordering",
+            "points": 16,
+            "difficulty": 0.61,
+            "discrimination": 1.31,
+            "bloomLevel": "Create",
+            "question": "Rank organizational learning accelerators:",
+            "items": [
+              "Failure analysis systems",
+              "Cross-team transfer",
+              "Experimentation cycles",
+              "Isolated projects",
+              "Tool acquisition"
+            ],
+            "correctOrder": [
+              0,
+              1,
+              2,
+              4,
+              3
+            ],
+            "scoringMethod": "automatic",
+            "scoringLogic": "Kendall tau or position-based scoring",
+            "tags": [
+              "alc",
+              "auto-scorable",
+              "expert"
+            ]
+          }
+        ]
+      },
+      {
+        "dimensionCode": "EJC",
+        "dimensionName": "Ethical Judgment Capability",
+        "weight": 0.125,
+        "totalPoints": 100,
+        "items": [
+          {
+            "id": "EJC-E-101",
+            "level": 5,
+            "type": "multiple-choice",
+            "points": 14,
+            "difficulty": 0.76,
+            "discrimination": 1.35,
+            "bloomLevel": "Evaluate",
+            "question": "Responsible AI governance at scale requires:",
+            "options": [
+              "No structure",
+              "Distributed decision-making frameworks with clear accountability chains",
+              "Centralized control",
+              "No oversight"
+            ],
+            "correctAnswer": 1,
+            "scoringMethod": "automatic",
+            "tags": [
+              "ejc",
+              "auto-scorable",
+              "expert"
+            ]
+          },
+          {
+            "id": "EJC-E-102",
+            "level": 5,
+            "type": "multiple-response",
+            "points": 15,
+            "difficulty": 0.8,
+            "discrimination": 1.3,
+            "bloomLevel": "Analyze",
+            "question": "Responsible AI governance at scale requires (SELECT ALL):",
+            "options": [
+              "Stakeholder mapping",
+              "Accountability frameworks",
+              "Fairness trade-off acknowledgment",
+              "No oversight needed",
+              "Transparency only"
+            ],
+            "correctAnswers": [
+              0,
+              1,
+              2
+            ],
+            "scoringMethod": "automatic",
+            "scoringLogic": "All correct must be selected, no incorrect",
+            "tags": [
+              "ejc",
+              "auto-scorable",
+              "expert"
+            ]
+          },
+          {
+            "id": "EJC-E-103",
+            "level": 5,
+            "type": "scenario-ranking",
+            "points": 15,
+            "difficulty": 0.82,
+            "discrimination": 1.41,
+            "bloomLevel": "Evaluate",
+            "question": "Sequence for responsible AI governance implementation:",
+            "options": [
+              "A. Conduct stakeholder impact mapping",
+              "B. Establish fairness and ethics frameworks",
+              "C. Design accountability and oversight mechanisms",
+              "D. Implement transparency and monitoring",
+              "E. Evolve governance as capabilities mature"
+            ],
+            "correctOrder": [
+              0,
+              1,
+              2,
+              3,
+              4
+            ],
+            "scoringMethod": "automatic",
+            "scoringLogic": "Exact sequence required",
+            "tags": [
+              "ejc",
+              "auto-scorable",
+              "expert"
+            ]
+          },
+          {
+            "id": "EJC-E-104",
+            "level": 5,
+            "type": "matching",
+            "points": 15,
+            "difficulty": 0.76,
+            "discrimination": 1.26,
+            "bloomLevel": "Analyze",
+            "question": "Match governance element to stakeholder protection:",
+            "leftColumn": [
+              "1. Fairness frameworks",
+              "2. Transparency",
+              "3. Accountability",
+              "4. Monitoring"
+            ],
+            "rightColumn": [
+              "A. Enables informed decisions",
+              "B. Ensures consequences for failures",
+              "C. Prevents systematic bias",
+              "D. Detects degradation"
+            ],
+            "correctPairs": [
+              [
+                0,
+                2
+              ],
+              [
+                1,
+                0
+              ],
+              [
+                2,
+                1
+              ],
+              [
+                3,
+                3
+              ]
+            ],
+            "scoringMethod": "automatic",
+            "scoringLogic": "Each correct pair scored proportionally",
+            "tags": [
+              "ejc",
+              "auto-scorable",
+              "expert"
+            ]
+          },
+          {
+            "id": "EJC-E-105",
+            "level": 6,
+            "type": "rank-ordering",
+            "points": 18,
+            "difficulty": 0.73,
+            "discrimination": 1.46,
+            "bloomLevel": "Create",
+            "question": "Rank governance imperatives for responsible AI:",
+            "items": [
+              "Stakeholder protection",
+              "Transparency",
+              "Accountability",
+              "Profitability",
+              "Speed"
+            ],
+            "correctOrder": [
+              0,
+              1,
+              2,
+              4,
+              3
+            ],
+            "scoringMethod": "automatic",
+            "scoringLogic": "Kendall tau or position-based scoring",
+            "tags": [
+              "ejc",
+              "auto-scorable",
+              "expert"
+            ]
+          },
+          {
+            "id": "EJC-E-106",
+            "level": 5,
+            "type": "multiple-choice",
+            "points": 14,
+            "difficulty": 0.67,
+            "discrimination": 1.31,
+            "bloomLevel": "Evaluate",
+            "question": "Responsible AI governance at scale requires:",
+            "options": [
+              "No structure",
+              "Distributed decision-making frameworks with clear accountability chains",
+              "Centralized control",
+              "No oversight"
+            ],
+            "correctAnswer": 1,
+            "scoringMethod": "automatic",
+            "tags": [
+              "ejc",
+              "auto-scorable",
+              "expert"
+            ]
+          },
+          {
+            "id": "EJC-E-107",
+            "level": 5,
+            "type": "multiple-response",
+            "points": 15,
+            "difficulty": 0.61,
+            "discrimination": 1.46,
+            "bloomLevel": "Analyze",
+            "question": "Responsible AI governance at scale requires (SELECT ALL):",
+            "options": [
+              "Stakeholder mapping",
+              "Accountability frameworks",
+              "Fairness trade-off acknowledgment",
+              "No oversight needed",
+              "Transparency only"
+            ],
+            "correctAnswers": [
+              0,
+              1,
+              2
+            ],
+            "scoringMethod": "automatic",
+            "scoringLogic": "All correct must be selected, no incorrect",
+            "tags": [
+              "ejc",
+              "auto-scorable",
+              "expert"
+            ]
+          },
+          {
+            "id": "EJC-E-108",
+            "level": 5,
+            "type": "scenario-ranking",
+            "points": 17,
+            "difficulty": 0.81,
+            "discrimination": 1.3,
+            "bloomLevel": "Evaluate",
+            "question": "Sequence for responsible AI governance implementation:",
+            "options": [
+              "A. Conduct stakeholder impact mapping",
+              "B. Establish fairness and ethics frameworks",
+              "C. Design accountability and oversight mechanisms",
+              "D. Implement transparency and monitoring",
+              "E. Evolve governance as capabilities mature"
+            ],
+            "correctOrder": [
+              0,
+              1,
+              2,
+              3,
+              4
+            ],
+            "scoringMethod": "automatic",
+            "scoringLogic": "Exact sequence required",
+            "tags": [
+              "ejc",
+              "auto-scorable",
+              "expert"
+            ]
+          },
+          {
+            "id": "EJC-E-109",
+            "level": 5,
+            "type": "matching",
+            "points": 16,
+            "difficulty": 0.78,
+            "discrimination": 1.39,
+            "bloomLevel": "Analyze",
+            "question": "Match governance element to stakeholder protection:",
+            "leftColumn": [
+              "1. Fairness frameworks",
+              "2. Transparency",
+              "3. Accountability",
+              "4. Monitoring"
+            ],
+            "rightColumn": [
+              "A. Enables informed decisions",
+              "B. Ensures consequences for failures",
+              "C. Prevents systematic bias",
+              "D. Detects degradation"
+            ],
+            "correctPairs": [
+              [
+                0,
+                2
+              ],
+              [
+                1,
+                0
+              ],
+              [
+                2,
+                1
+              ],
+              [
+                3,
+                3
+              ]
+            ],
+            "scoringMethod": "automatic",
+            "scoringLogic": "Each correct pair scored proportionally",
+            "tags": [
+              "ejc",
+              "auto-scorable",
+              "expert"
+            ]
+          },
+          {
+            "id": "EJC-E-110",
+            "level": 6,
+            "type": "rank-ordering",
+            "points": 18,
+            "difficulty": 0.65,
+            "discrimination": 1.36,
+            "bloomLevel": "Create",
+            "question": "Rank governance imperatives for responsible AI:",
+            "items": [
+              "Stakeholder protection",
+              "Transparency",
+              "Accountability",
+              "Profitability",
+              "Speed"
+            ],
+            "correctOrder": [
+              0,
+              1,
+              2,
+              4,
+              3
+            ],
+            "scoringMethod": "automatic",
+            "scoringLogic": "Kendall tau or position-based scoring",
+            "tags": [
+              "ejc",
+              "auto-scorable",
+              "expert"
+            ]
+          },
+          {
+            "id": "EJC-E-111",
+            "level": 5,
+            "type": "multiple-choice",
+            "points": 14,
+            "difficulty": 0.8,
+            "discrimination": 1.28,
+            "bloomLevel": "Evaluate",
+            "question": "Responsible AI governance at scale requires:",
+            "options": [
+              "No structure",
+              "Distributed decision-making frameworks with clear accountability chains",
+              "Centralized control",
+              "No oversight"
+            ],
+            "correctAnswer": 1,
+            "scoringMethod": "automatic",
+            "tags": [
+              "ejc",
+              "auto-scorable",
+              "expert"
+            ]
+          },
+          {
+            "id": "EJC-E-112",
+            "level": 5,
+            "type": "multiple-response",
+            "points": 16,
+            "difficulty": 0.61,
+            "discrimination": 1.4,
+            "bloomLevel": "Analyze",
+            "question": "Responsible AI governance at scale requires (SELECT ALL):",
+            "options": [
+              "Stakeholder mapping",
+              "Accountability frameworks",
+              "Fairness trade-off acknowledgment",
+              "No oversight needed",
+              "Transparency only"
+            ],
+            "correctAnswers": [
+              0,
+              1,
+              2
+            ],
+            "scoringMethod": "automatic",
+            "scoringLogic": "All correct must be selected, no incorrect",
+            "tags": [
+              "ejc",
+              "auto-scorable",
+              "expert"
+            ]
+          },
+          {
+            "id": "EJC-E-113",
+            "level": 5,
+            "type": "scenario-ranking",
+            "points": 16,
+            "difficulty": 0.83,
+            "discrimination": 1.48,
+            "bloomLevel": "Evaluate",
+            "question": "Sequence for responsible AI governance implementation:",
+            "options": [
+              "A. Conduct stakeholder impact mapping",
+              "B. Establish fairness and ethics frameworks",
+              "C. Design accountability and oversight mechanisms",
+              "D. Implement transparency and monitoring",
+              "E. Evolve governance as capabilities mature"
+            ],
+            "correctOrder": [
+              0,
+              1,
+              2,
+              3,
+              4
+            ],
+            "scoringMethod": "automatic",
+            "scoringLogic": "Exact sequence required",
+            "tags": [
+              "ejc",
+              "auto-scorable",
+              "expert"
+            ]
+          },
+          {
+            "id": "EJC-E-114",
+            "level": 5,
+            "type": "matching",
+            "points": 15,
+            "difficulty": 0.77,
+            "discrimination": 1.4,
+            "bloomLevel": "Analyze",
+            "question": "Match governance element to stakeholder protection:",
+            "leftColumn": [
+              "1. Fairness frameworks",
+              "2. Transparency",
+              "3. Accountability",
+              "4. Monitoring"
+            ],
+            "rightColumn": [
+              "A. Enables informed decisions",
+              "B. Ensures consequences for failures",
+              "C. Prevents systematic bias",
+              "D. Detects degradation"
+            ],
+            "correctPairs": [
+              [
+                0,
+                2
+              ],
+              [
+                1,
+                0
+              ],
+              [
+                2,
+                1
+              ],
+              [
+                3,
+                3
+              ]
+            ],
+            "scoringMethod": "automatic",
+            "scoringLogic": "Each correct pair scored proportionally",
+            "tags": [
+              "ejc",
+              "auto-scorable",
+              "expert"
+            ]
+          },
+          {
+            "id": "EJC-E-115",
+            "level": 6,
+            "type": "rank-ordering",
+            "points": 18,
+            "difficulty": 0.81,
+            "discrimination": 1.28,
+            "bloomLevel": "Create",
+            "question": "Rank governance imperatives for responsible AI:",
+            "items": [
+              "Stakeholder protection",
+              "Transparency",
+              "Accountability",
+              "Profitability",
+              "Speed"
+            ],
+            "correctOrder": [
+              0,
+              1,
+              2,
+              4,
+              3
+            ],
+            "scoringMethod": "automatic",
+            "scoringLogic": "Kendall tau or position-based scoring",
+            "tags": [
+              "ejc",
+              "auto-scorable",
+              "expert"
+            ]
+          },
+          {
+            "id": "EJC-E-116",
+            "level": 5,
+            "type": "multiple-choice",
+            "points": 14,
+            "difficulty": 0.76,
+            "discrimination": 1.32,
+            "bloomLevel": "Evaluate",
+            "question": "Responsible AI governance at scale requires:",
+            "options": [
+              "No structure",
+              "Distributed decision-making frameworks with clear accountability chains",
+              "Centralized control",
+              "No oversight"
+            ],
+            "correctAnswer": 1,
+            "scoringMethod": "automatic",
+            "tags": [
+              "ejc",
+              "auto-scorable",
+              "expert"
+            ]
+          },
+          {
+            "id": "EJC-E-117",
+            "level": 5,
+            "type": "multiple-response",
+            "points": 14,
+            "difficulty": 0.85,
+            "discrimination": 1.36,
+            "bloomLevel": "Analyze",
+            "question": "Responsible AI governance at scale requires (SELECT ALL):",
+            "options": [
+              "Stakeholder mapping",
+              "Accountability frameworks",
+              "Fairness trade-off acknowledgment",
+              "No oversight needed",
+              "Transparency only"
+            ],
+            "correctAnswers": [
+              0,
+              1,
+              2
+            ],
+            "scoringMethod": "automatic",
+            "scoringLogic": "All correct must be selected, no incorrect",
+            "tags": [
+              "ejc",
+              "auto-scorable",
+              "expert"
+            ]
+          },
+          {
+            "id": "EJC-E-118",
+            "level": 5,
+            "type": "scenario-ranking",
+            "points": 15,
+            "difficulty": 0.81,
+            "discrimination": 1.49,
+            "bloomLevel": "Evaluate",
+            "question": "Sequence for responsible AI governance implementation:",
+            "options": [
+              "A. Conduct stakeholder impact mapping",
+              "B. Establish fairness and ethics frameworks",
+              "C. Design accountability and oversight mechanisms",
+              "D. Implement transparency and monitoring",
+              "E. Evolve governance as capabilities mature"
+            ],
+            "correctOrder": [
+              0,
+              1,
+              2,
+              3,
+              4
+            ],
+            "scoringMethod": "automatic",
+            "scoringLogic": "Exact sequence required",
+            "tags": [
+              "ejc",
+              "auto-scorable",
+              "expert"
+            ]
+          },
+          {
+            "id": "EJC-E-119",
+            "level": 5,
+            "type": "matching",
+            "points": 15,
+            "difficulty": 0.82,
+            "discrimination": 1.38,
+            "bloomLevel": "Analyze",
+            "question": "Match governance element to stakeholder protection:",
+            "leftColumn": [
+              "1. Fairness frameworks",
+              "2. Transparency",
+              "3. Accountability",
+              "4. Monitoring"
+            ],
+            "rightColumn": [
+              "A. Enables informed decisions",
+              "B. Ensures consequences for failures",
+              "C. Prevents systematic bias",
+              "D. Detects degradation"
+            ],
+            "correctPairs": [
+              [
+                0,
+                2
+              ],
+              [
+                1,
+                0
+              ],
+              [
+                2,
+                1
+              ],
+              [
+                3,
+                3
+              ]
+            ],
+            "scoringMethod": "automatic",
+            "scoringLogic": "Each correct pair scored proportionally",
+            "tags": [
+              "ejc",
+              "auto-scorable",
+              "expert"
+            ]
+          },
+          {
+            "id": "EJC-E-120",
+            "level": 6,
+            "type": "rank-ordering",
+            "points": 17,
+            "difficulty": 0.81,
+            "discrimination": 1.39,
+            "bloomLevel": "Create",
+            "question": "Rank governance imperatives for responsible AI:",
+            "items": [
+              "Stakeholder protection",
+              "Transparency",
+              "Accountability",
+              "Profitability",
+              "Speed"
+            ],
+            "correctOrder": [
+              0,
+              1,
+              2,
+              4,
+              3
+            ],
+            "scoringMethod": "automatic",
+            "scoringLogic": "Kendall tau or position-based scoring",
+            "tags": [
+              "ejc",
+              "auto-scorable",
+              "expert"
+            ]
+          }
+        ]
+      },
+      {
+        "dimensionCode": "CS",
+        "dimensionName": "Context Sensitivity",
+        "weight": 0.125,
+        "totalPoints": 100,
+        "items": [
+          {
+            "id": "CS-E-121",
+            "level": 5,
+            "type": "multiple-choice",
+            "points": 14,
+            "difficulty": 0.84,
+            "discrimination": 1.39,
+            "bloomLevel": "Evaluate",
+            "question": "When adapting AI capabilities to new organizational contexts, the primary challenge is:",
+            "options": [
+              "Similar everywhere",
+              "Identifying which institutional factors are contextual vs. which reflect deeper capability gaps",
+              "Just translate",
+              "Impossible"
+            ],
+            "correctAnswer": 1,
+            "scoringMethod": "automatic",
+            "tags": [
+              "cs",
+              "auto-scorable",
+              "expert"
+            ]
+          },
+          {
+            "id": "CS-E-122",
+            "level": 5,
+            "type": "multiple-response",
+            "points": 14,
+            "difficulty": 0.67,
+            "discrimination": 1.46,
+            "bloomLevel": "Analyze",
+            "question": "Strategic AI context includes (SELECT ALL):",
+            "options": [
+              "Regulatory environment",
+              "Competitive dynamics",
+              "Organizational culture fit",
+              "Technology neutrality",
+              "Universal best practices"
+            ],
+            "correctAnswers": [
+              0,
+              1,
+              2
+            ],
+            "scoringMethod": "automatic",
+            "scoringLogic": "All correct must be selected, no incorrect",
+            "tags": [
+              "cs",
+              "auto-scorable",
+              "expert"
+            ]
+          },
+          {
+            "id": "CS-E-123",
+            "level": 5,
+            "type": "scenario-ranking",
+            "points": 16,
+            "difficulty": 0.72,
+            "discrimination": 1.28,
+            "bloomLevel": "Evaluate",
+            "question": "Sequence for global AI strategy deployment:",
+            "options": [
+              "A. Analyze regional regulatory and competitive contexts",
+              "B. Design locally adapted implementation approaches",
+              "C. Pilot in target markets with governance",
+              "D. Monitor context evolution and performance",
+              "E. Evolve strategy based on market feedback"
+            ],
+            "correctOrder": [
+              0,
+              1,
+              2,
+              3,
+              4
+            ],
+            "scoringMethod": "automatic",
+            "scoringLogic": "Exact sequence required",
+            "tags": [
+              "cs",
+              "auto-scorable",
+              "expert"
+            ]
+          },
+          {
+            "id": "CS-E-124",
+            "level": 5,
+            "type": "matching",
+            "points": 15,
+            "difficulty": 0.7,
+            "discrimination": 1.26,
+            "bloomLevel": "Analyze",
+            "question": "Match contextual factor to strategic implication:",
+            "leftColumn": [
+              "1. Regulatory divergence",
+              "2. Cultural norms",
+              "3. Competitive dynamics",
+              "4. Technology maturity"
+            ],
+            "rightColumn": [
+              "A. Shapes market window",
+              "B. Requires localization",
+              "C. Constrains approach",
+              "D. Affects capability assumptions"
+            ],
+            "correctPairs": [
+              [
+                0,
+                2
+              ],
+              [
+                1,
+                1
+              ],
+              [
+                2,
+                0
+              ],
+              [
+                3,
+                3
+              ]
+            ],
+            "scoringMethod": "automatic",
+            "scoringLogic": "Each correct pair scored proportionally",
+            "tags": [
+              "cs",
+              "auto-scorable",
+              "expert"
+            ]
+          },
+          {
+            "id": "CS-E-125",
+            "level": 6,
+            "type": "rank-ordering",
+            "points": 18,
+            "difficulty": 0.73,
+            "discrimination": 1.44,
+            "bloomLevel": "Create",
+            "question": "Rank contextual factors shaping AI strategy:",
+            "items": [
+              "Regulatory environment",
+              "Organizational readiness",
+              "Competitive landscape",
+              "Technology availability",
+              "Budget size"
+            ],
+            "correctOrder": [
+              0,
+              1,
+              2,
+              4,
+              3
+            ],
+            "scoringMethod": "automatic",
+            "scoringLogic": "Kendall tau or position-based scoring",
+            "tags": [
+              "cs",
+              "auto-scorable",
+              "expert"
+            ]
+          },
+          {
+            "id": "CS-E-126",
+            "level": 5,
+            "type": "multiple-choice",
+            "points": 15,
+            "difficulty": 0.79,
+            "discrimination": 1.28,
+            "bloomLevel": "Evaluate",
+            "question": "When adapting AI capabilities to new organizational contexts, the primary challenge is:",
+            "options": [
+              "Similar everywhere",
+              "Identifying which institutional factors are contextual vs. which reflect deeper capability gaps",
+              "Just translate",
+              "Impossible"
+            ],
+            "correctAnswer": 1,
+            "scoringMethod": "automatic",
+            "tags": [
+              "cs",
+              "auto-scorable",
+              "expert"
+            ]
+          },
+          {
+            "id": "CS-E-127",
+            "level": 5,
+            "type": "multiple-response",
+            "points": 14,
+            "difficulty": 0.69,
+            "discrimination": 1.27,
+            "bloomLevel": "Analyze",
+            "question": "Strategic AI context includes (SELECT ALL):",
+            "options": [
+              "Regulatory environment",
+              "Competitive dynamics",
+              "Organizational culture fit",
+              "Technology neutrality",
+              "Universal best practices"
+            ],
+            "correctAnswers": [
+              0,
+              1,
+              2
+            ],
+            "scoringMethod": "automatic",
+            "scoringLogic": "All correct must be selected, no incorrect",
+            "tags": [
+              "cs",
+              "auto-scorable",
+              "expert"
+            ]
+          },
+          {
+            "id": "CS-E-128",
+            "level": 5,
+            "type": "scenario-ranking",
+            "points": 16,
+            "difficulty": 0.74,
+            "discrimination": 1.35,
+            "bloomLevel": "Evaluate",
+            "question": "Sequence for global AI strategy deployment:",
+            "options": [
+              "A. Analyze regional regulatory and competitive contexts",
+              "B. Design locally adapted implementation approaches",
+              "C. Pilot in target markets with governance",
+              "D. Monitor context evolution and performance",
+              "E. Evolve strategy based on market feedback"
+            ],
+            "correctOrder": [
+              0,
+              1,
+              2,
+              3,
+              4
+            ],
+            "scoringMethod": "automatic",
+            "scoringLogic": "Exact sequence required",
+            "tags": [
+              "cs",
+              "auto-scorable",
+              "expert"
+            ]
+          },
+          {
+            "id": "CS-E-129",
+            "level": 5,
+            "type": "matching",
+            "points": 16,
+            "difficulty": 0.6,
+            "discrimination": 1.43,
+            "bloomLevel": "Analyze",
+            "question": "Match contextual factor to strategic implication:",
+            "leftColumn": [
+              "1. Regulatory divergence",
+              "2. Cultural norms",
+              "3. Competitive dynamics",
+              "4. Technology maturity"
+            ],
+            "rightColumn": [
+              "A. Shapes market window",
+              "B. Requires localization",
+              "C. Constrains approach",
+              "D. Affects capability assumptions"
+            ],
+            "correctPairs": [
+              [
+                0,
+                2
+              ],
+              [
+                1,
+                1
+              ],
+              [
+                2,
+                0
+              ],
+              [
+                3,
+                3
+              ]
+            ],
+            "scoringMethod": "automatic",
+            "scoringLogic": "Each correct pair scored proportionally",
+            "tags": [
+              "cs",
+              "auto-scorable",
+              "expert"
+            ]
+          },
+          {
+            "id": "CS-E-130",
+            "level": 6,
+            "type": "rank-ordering",
+            "points": 17,
+            "difficulty": 0.61,
+            "discrimination": 1.4,
+            "bloomLevel": "Create",
+            "question": "Rank contextual factors shaping AI strategy:",
+            "items": [
+              "Regulatory environment",
+              "Organizational readiness",
+              "Competitive landscape",
+              "Technology availability",
+              "Budget size"
+            ],
+            "correctOrder": [
+              0,
+              1,
+              2,
+              4,
+              3
+            ],
+            "scoringMethod": "automatic",
+            "scoringLogic": "Kendall tau or position-based scoring",
+            "tags": [
+              "cs",
+              "auto-scorable",
+              "expert"
+            ]
+          },
+          {
+            "id": "CS-E-131",
+            "level": 5,
+            "type": "multiple-choice",
+            "points": 15,
+            "difficulty": 0.67,
+            "discrimination": 1.42,
+            "bloomLevel": "Evaluate",
+            "question": "When adapting AI capabilities to new organizational contexts, the primary challenge is:",
+            "options": [
+              "Similar everywhere",
+              "Identifying which institutional factors are contextual vs. which reflect deeper capability gaps",
+              "Just translate",
+              "Impossible"
+            ],
+            "correctAnswer": 1,
+            "scoringMethod": "automatic",
+            "tags": [
+              "cs",
+              "auto-scorable",
+              "expert"
+            ]
+          },
+          {
+            "id": "CS-E-132",
+            "level": 5,
+            "type": "multiple-response",
+            "points": 16,
+            "difficulty": 0.73,
+            "discrimination": 1.29,
+            "bloomLevel": "Analyze",
+            "question": "Strategic AI context includes (SELECT ALL):",
+            "options": [
+              "Regulatory environment",
+              "Competitive dynamics",
+              "Organizational culture fit",
+              "Technology neutrality",
+              "Universal best practices"
+            ],
+            "correctAnswers": [
+              0,
+              1,
+              2
+            ],
+            "scoringMethod": "automatic",
+            "scoringLogic": "All correct must be selected, no incorrect",
+            "tags": [
+              "cs",
+              "auto-scorable",
+              "expert"
+            ]
+          },
+          {
+            "id": "CS-E-133",
+            "level": 5,
+            "type": "scenario-ranking",
+            "points": 16,
+            "difficulty": 0.71,
+            "discrimination": 1.48,
+            "bloomLevel": "Evaluate",
+            "question": "Sequence for global AI strategy deployment:",
+            "options": [
+              "A. Analyze regional regulatory and competitive contexts",
+              "B. Design locally adapted implementation approaches",
+              "C. Pilot in target markets with governance",
+              "D. Monitor context evolution and performance",
+              "E. Evolve strategy based on market feedback"
+            ],
+            "correctOrder": [
+              0,
+              1,
+              2,
+              3,
+              4
+            ],
+            "scoringMethod": "automatic",
+            "scoringLogic": "Exact sequence required",
+            "tags": [
+              "cs",
+              "auto-scorable",
+              "expert"
+            ]
+          },
+          {
+            "id": "CS-E-134",
+            "level": 5,
+            "type": "matching",
+            "points": 16,
+            "difficulty": 0.81,
+            "discrimination": 1.26,
+            "bloomLevel": "Analyze",
+            "question": "Match contextual factor to strategic implication:",
+            "leftColumn": [
+              "1. Regulatory divergence",
+              "2. Cultural norms",
+              "3. Competitive dynamics",
+              "4. Technology maturity"
+            ],
+            "rightColumn": [
+              "A. Shapes market window",
+              "B. Requires localization",
+              "C. Constrains approach",
+              "D. Affects capability assumptions"
+            ],
+            "correctPairs": [
+              [
+                0,
+                2
+              ],
+              [
+                1,
+                1
+              ],
+              [
+                2,
+                0
+              ],
+              [
+                3,
+                3
+              ]
+            ],
+            "scoringMethod": "automatic",
+            "scoringLogic": "Each correct pair scored proportionally",
+            "tags": [
+              "cs",
+              "auto-scorable",
+              "expert"
+            ]
+          },
+          {
+            "id": "CS-E-135",
+            "level": 6,
+            "type": "rank-ordering",
+            "points": 18,
+            "difficulty": 0.62,
+            "discrimination": 1.31,
+            "bloomLevel": "Create",
+            "question": "Rank contextual factors shaping AI strategy:",
+            "items": [
+              "Regulatory environment",
+              "Organizational readiness",
+              "Competitive landscape",
+              "Technology availability",
+              "Budget size"
+            ],
+            "correctOrder": [
+              0,
+              1,
+              2,
+              4,
+              3
+            ],
+            "scoringMethod": "automatic",
+            "scoringLogic": "Kendall tau or position-based scoring",
+            "tags": [
+              "cs",
+              "auto-scorable",
+              "expert"
+            ]
+          },
+          {
+            "id": "CS-E-136",
+            "level": 5,
+            "type": "multiple-choice",
+            "points": 14,
+            "difficulty": 0.84,
+            "discrimination": 1.47,
+            "bloomLevel": "Evaluate",
+            "question": "When adapting AI capabilities to new organizational contexts, the primary challenge is:",
+            "options": [
+              "Similar everywhere",
+              "Identifying which institutional factors are contextual vs. which reflect deeper capability gaps",
+              "Just translate",
+              "Impossible"
+            ],
+            "correctAnswer": 1,
+            "scoringMethod": "automatic",
+            "tags": [
+              "cs",
+              "auto-scorable",
+              "expert"
+            ]
+          },
+          {
+            "id": "CS-E-137",
+            "level": 5,
+            "type": "multiple-response",
+            "points": 16,
+            "difficulty": 0.79,
+            "discrimination": 1.35,
+            "bloomLevel": "Analyze",
+            "question": "Strategic AI context includes (SELECT ALL):",
+            "options": [
+              "Regulatory environment",
+              "Competitive dynamics",
+              "Organizational culture fit",
+              "Technology neutrality",
+              "Universal best practices"
+            ],
+            "correctAnswers": [
+              0,
+              1,
+              2
+            ],
+            "scoringMethod": "automatic",
+            "scoringLogic": "All correct must be selected, no incorrect",
+            "tags": [
+              "cs",
+              "auto-scorable",
+              "expert"
+            ]
+          },
+          {
+            "id": "CS-E-138",
+            "level": 5,
+            "type": "scenario-ranking",
+            "points": 15,
+            "difficulty": 0.78,
+            "discrimination": 1.31,
+            "bloomLevel": "Evaluate",
+            "question": "Sequence for global AI strategy deployment:",
+            "options": [
+              "A. Analyze regional regulatory and competitive contexts",
+              "B. Design locally adapted implementation approaches",
+              "C. Pilot in target markets with governance",
+              "D. Monitor context evolution and performance",
+              "E. Evolve strategy based on market feedback"
+            ],
+            "correctOrder": [
+              0,
+              1,
+              2,
+              3,
+              4
+            ],
+            "scoringMethod": "automatic",
+            "scoringLogic": "Exact sequence required",
+            "tags": [
+              "cs",
+              "auto-scorable",
+              "expert"
+            ]
+          },
+          {
+            "id": "CS-E-139",
+            "level": 5,
+            "type": "matching",
+            "points": 15,
+            "difficulty": 0.84,
+            "discrimination": 1.32,
+            "bloomLevel": "Analyze",
+            "question": "Match contextual factor to strategic implication:",
+            "leftColumn": [
+              "1. Regulatory divergence",
+              "2. Cultural norms",
+              "3. Competitive dynamics",
+              "4. Technology maturity"
+            ],
+            "rightColumn": [
+              "A. Shapes market window",
+              "B. Requires localization",
+              "C. Constrains approach",
+              "D. Affects capability assumptions"
+            ],
+            "correctPairs": [
+              [
+                0,
+                2
+              ],
+              [
+                1,
+                1
+              ],
+              [
+                2,
+                0
+              ],
+              [
+                3,
+                3
+              ]
+            ],
+            "scoringMethod": "automatic",
+            "scoringLogic": "Each correct pair scored proportionally",
+            "tags": [
+              "cs",
+              "auto-scorable",
+              "expert"
+            ]
+          },
+          {
+            "id": "CS-E-140",
+            "level": 6,
+            "type": "rank-ordering",
+            "points": 17,
+            "difficulty": 0.69,
+            "discrimination": 1.39,
+            "bloomLevel": "Create",
+            "question": "Rank contextual factors shaping AI strategy:",
+            "items": [
+              "Regulatory environment",
+              "Organizational readiness",
+              "Competitive landscape",
+              "Technology availability",
+              "Budget size"
+            ],
+            "correctOrder": [
+              0,
+              1,
+              2,
+              4,
+              3
+            ],
+            "scoringMethod": "automatic",
+            "scoringLogic": "Kendall tau or position-based scoring",
+            "tags": [
+              "cs",
+              "auto-scorable",
+              "expert"
+            ]
+          }
+        ]
+      },
+      {
+        "dimensionCode": "CRS",
+        "dimensionName": "Creative Reasoning Synthesis",
+        "weight": 0.125,
+        "totalPoints": 100,
+        "items": [
+          {
+            "id": "CRS-E-141",
+            "level": 5,
+            "type": "multiple-choice",
+            "points": 15,
+            "difficulty": 0.67,
+            "discrimination": 1.32,
+            "bloomLevel": "Evaluate",
+            "question": "When designing AI-enabled business model transformation, the critical insight is:",
+            "options": [
+              "Automate everything",
+              "Identify where AI changes value creation or capture, not just execution speed",
+              "Cost reduction",
+              "Same model faster"
+            ],
+            "correctAnswer": 1,
+            "scoringMethod": "automatic",
+            "tags": [
+              "crs",
+              "auto-scorable",
+              "expert"
+            ]
+          },
+          {
+            "id": "CRS-E-142",
+            "level": 5,
+            "type": "multiple-response",
+            "points": 16,
+            "difficulty": 0.79,
+            "discrimination": 1.33,
+            "bloomLevel": "Analyze",
+            "question": "AI-enabled business model innovation requires (SELECT ALL):",
+            "options": [
+              "Value creation rethinking",
+              "Capability-enabled novel approaches",
+              "Execution speed only",
+              "Existing model optimization",
+              "Cross-domain analogy"
+            ],
+            "correctAnswers": [
+              0,
+              1,
+              4
+            ],
+            "scoringMethod": "automatic",
+            "scoringLogic": "All correct must be selected, no incorrect",
+            "tags": [
+              "crs",
+              "auto-scorable",
+              "expert"
+            ]
+          },
+          {
+            "id": "CRS-E-143",
+            "level": 5,
+            "type": "scenario-ranking",
+            "points": 17,
+            "difficulty": 0.69,
+            "discrimination": 1.48,
+            "bloomLevel": "Evaluate",
+            "question": "Sequence for AI-enabled strategic innovation:",
+            "options": [
+              "A. Identify capability shifts enabling novel approaches",
+              "B. Map current value creation and capture",
+              "C. Design business model alternatives",
+              "D. Pilot and validate with market feedback",
+              "E. Scale with continuous capability monitoring"
+            ],
+            "correctOrder": [
+              0,
+              1,
+              2,
+              3,
+              4
+            ],
+            "scoringMethod": "automatic",
+            "scoringLogic": "Exact sequence required",
+            "tags": [
+              "crs",
+              "auto-scorable",
+              "expert"
+            ]
+          },
+          {
+            "id": "CRS-E-144",
+            "level": 5,
+            "type": "matching",
+            "points": 16,
+            "difficulty": 0.8,
+            "discrimination": 1.39,
+            "bloomLevel": "Analyze",
+            "question": "Match innovation dimension to transformation element:",
+            "leftColumn": [
+              "1. Value creation shift",
+              "2. Capability unlock",
+              "3. Business model",
+              "4. Execution speed"
+            ],
+            "rightColumn": [
+              "A. Changes revenue streams",
+              "B. Enables previously impossible",
+              "C. Improves efficiency",
+              "D. Structural change"
+            ],
+            "correctPairs": [
+              [
+                0,
+                0
+              ],
+              [
+                1,
+                1
+              ],
+              [
+                2,
+                3
+              ],
+              [
+                3,
+                2
+              ]
+            ],
+            "scoringMethod": "automatic",
+            "scoringLogic": "Each correct pair scored proportionally",
+            "tags": [
+              "crs",
+              "auto-scorable",
+              "expert"
+            ]
+          },
+          {
+            "id": "CRS-E-145",
+            "level": 6,
+            "type": "rank-ordering",
+            "points": 18,
+            "difficulty": 0.62,
+            "discrimination": 1.32,
+            "bloomLevel": "Create",
+            "question": "Rank innovation dimensions by strategic impact:",
+            "items": [
+              "Novel value creation",
+              "Capability unlock",
+              "Business model shift",
+              "Execution improvement",
+              "Cost reduction"
+            ],
+            "correctOrder": [
+              0,
+              1,
+              2,
+              3,
+              4
+            ],
+            "scoringMethod": "automatic",
+            "scoringLogic": "Kendall tau or position-based scoring",
+            "tags": [
+              "crs",
+              "auto-scorable",
+              "expert"
+            ]
+          },
+          {
+            "id": "CRS-E-146",
+            "level": 5,
+            "type": "multiple-choice",
+            "points": 14,
+            "difficulty": 0.62,
+            "discrimination": 1.49,
+            "bloomLevel": "Evaluate",
+            "question": "When designing AI-enabled business model transformation, the critical insight is:",
+            "options": [
+              "Automate everything",
+              "Identify where AI changes value creation or capture, not just execution speed",
+              "Cost reduction",
+              "Same model faster"
+            ],
+            "correctAnswer": 1,
+            "scoringMethod": "automatic",
+            "tags": [
+              "crs",
+              "auto-scorable",
+              "expert"
+            ]
+          },
+          {
+            "id": "CRS-E-147",
+            "level": 5,
+            "type": "multiple-response",
+            "points": 16,
+            "difficulty": 0.61,
+            "discrimination": 1.36,
+            "bloomLevel": "Analyze",
+            "question": "AI-enabled business model innovation requires (SELECT ALL):",
+            "options": [
+              "Value creation rethinking",
+              "Capability-enabled novel approaches",
+              "Execution speed only",
+              "Existing model optimization",
+              "Cross-domain analogy"
+            ],
+            "correctAnswers": [
+              0,
+              1,
+              4
+            ],
+            "scoringMethod": "automatic",
+            "scoringLogic": "All correct must be selected, no incorrect",
+            "tags": [
+              "crs",
+              "auto-scorable",
+              "expert"
+            ]
+          },
+          {
+            "id": "CRS-E-148",
+            "level": 5,
+            "type": "scenario-ranking",
+            "points": 17,
+            "difficulty": 0.64,
+            "discrimination": 1.49,
+            "bloomLevel": "Evaluate",
+            "question": "Sequence for AI-enabled strategic innovation:",
+            "options": [
+              "A. Identify capability shifts enabling novel approaches",
+              "B. Map current value creation and capture",
+              "C. Design business model alternatives",
+              "D. Pilot and validate with market feedback",
+              "E. Scale with continuous capability monitoring"
+            ],
+            "correctOrder": [
+              0,
+              1,
+              2,
+              3,
+              4
+            ],
+            "scoringMethod": "automatic",
+            "scoringLogic": "Exact sequence required",
+            "tags": [
+              "crs",
+              "auto-scorable",
+              "expert"
+            ]
+          },
+          {
+            "id": "CRS-E-149",
+            "level": 5,
+            "type": "matching",
+            "points": 15,
+            "difficulty": 0.83,
+            "discrimination": 1.43,
+            "bloomLevel": "Analyze",
+            "question": "Match innovation dimension to transformation element:",
+            "leftColumn": [
+              "1. Value creation shift",
+              "2. Capability unlock",
+              "3. Business model",
+              "4. Execution speed"
+            ],
+            "rightColumn": [
+              "A. Changes revenue streams",
+              "B. Enables previously impossible",
+              "C. Improves efficiency",
+              "D. Structural change"
+            ],
+            "correctPairs": [
+              [
+                0,
+                0
+              ],
+              [
+                1,
+                1
+              ],
+              [
+                2,
+                3
+              ],
+              [
+                3,
+                2
+              ]
+            ],
+            "scoringMethod": "automatic",
+            "scoringLogic": "Each correct pair scored proportionally",
+            "tags": [
+              "crs",
+              "auto-scorable",
+              "expert"
+            ]
+          },
+          {
+            "id": "CRS-E-150",
+            "level": 6,
+            "type": "rank-ordering",
+            "points": 17,
+            "difficulty": 0.83,
+            "discrimination": 1.43,
+            "bloomLevel": "Create",
+            "question": "Rank innovation dimensions by strategic impact:",
+            "items": [
+              "Novel value creation",
+              "Capability unlock",
+              "Business model shift",
+              "Execution improvement",
+              "Cost reduction"
+            ],
+            "correctOrder": [
+              0,
+              1,
+              2,
+              3,
+              4
+            ],
+            "scoringMethod": "automatic",
+            "scoringLogic": "Kendall tau or position-based scoring",
+            "tags": [
+              "crs",
+              "auto-scorable",
+              "expert"
+            ]
+          },
+          {
+            "id": "CRS-E-151",
+            "level": 5,
+            "type": "multiple-choice",
+            "points": 14,
+            "difficulty": 0.82,
+            "discrimination": 1.44,
+            "bloomLevel": "Evaluate",
+            "question": "When designing AI-enabled business model transformation, the critical insight is:",
+            "options": [
+              "Automate everything",
+              "Identify where AI changes value creation or capture, not just execution speed",
+              "Cost reduction",
+              "Same model faster"
+            ],
+            "correctAnswer": 1,
+            "scoringMethod": "automatic",
+            "tags": [
+              "crs",
+              "auto-scorable",
+              "expert"
+            ]
+          },
+          {
+            "id": "CRS-E-152",
+            "level": 5,
+            "type": "multiple-response",
+            "points": 16,
+            "difficulty": 0.73,
+            "discrimination": 1.28,
+            "bloomLevel": "Analyze",
+            "question": "AI-enabled business model innovation requires (SELECT ALL):",
+            "options": [
+              "Value creation rethinking",
+              "Capability-enabled novel approaches",
+              "Execution speed only",
+              "Existing model optimization",
+              "Cross-domain analogy"
+            ],
+            "correctAnswers": [
+              0,
+              1,
+              4
+            ],
+            "scoringMethod": "automatic",
+            "scoringLogic": "All correct must be selected, no incorrect",
+            "tags": [
+              "crs",
+              "auto-scorable",
+              "expert"
+            ]
+          },
+          {
+            "id": "CRS-E-153",
+            "level": 5,
+            "type": "scenario-ranking",
+            "points": 16,
+            "difficulty": 0.78,
+            "discrimination": 1.38,
+            "bloomLevel": "Evaluate",
+            "question": "Sequence for AI-enabled strategic innovation:",
+            "options": [
+              "A. Identify capability shifts enabling novel approaches",
+              "B. Map current value creation and capture",
+              "C. Design business model alternatives",
+              "D. Pilot and validate with market feedback",
+              "E. Scale with continuous capability monitoring"
+            ],
+            "correctOrder": [
+              0,
+              1,
+              2,
+              3,
+              4
+            ],
+            "scoringMethod": "automatic",
+            "scoringLogic": "Exact sequence required",
+            "tags": [
+              "crs",
+              "auto-scorable",
+              "expert"
+            ]
+          },
+          {
+            "id": "CRS-E-154",
+            "level": 5,
+            "type": "matching",
+            "points": 16,
+            "difficulty": 0.71,
+            "discrimination": 1.33,
+            "bloomLevel": "Analyze",
+            "question": "Match innovation dimension to transformation element:",
+            "leftColumn": [
+              "1. Value creation shift",
+              "2. Capability unlock",
+              "3. Business model",
+              "4. Execution speed"
+            ],
+            "rightColumn": [
+              "A. Changes revenue streams",
+              "B. Enables previously impossible",
+              "C. Improves efficiency",
+              "D. Structural change"
+            ],
+            "correctPairs": [
+              [
+                0,
+                0
+              ],
+              [
+                1,
+                1
+              ],
+              [
+                2,
+                3
+              ],
+              [
+                3,
+                2
+              ]
+            ],
+            "scoringMethod": "automatic",
+            "scoringLogic": "Each correct pair scored proportionally",
+            "tags": [
+              "crs",
+              "auto-scorable",
+              "expert"
+            ]
+          },
+          {
+            "id": "CRS-E-155",
+            "level": 6,
+            "type": "rank-ordering",
+            "points": 17,
+            "difficulty": 0.67,
+            "discrimination": 1.5,
+            "bloomLevel": "Create",
+            "question": "Rank innovation dimensions by strategic impact:",
+            "items": [
+              "Novel value creation",
+              "Capability unlock",
+              "Business model shift",
+              "Execution improvement",
+              "Cost reduction"
+            ],
+            "correctOrder": [
+              0,
+              1,
+              2,
+              3,
+              4
+            ],
+            "scoringMethod": "automatic",
+            "scoringLogic": "Kendall tau or position-based scoring",
+            "tags": [
+              "crs",
+              "auto-scorable",
+              "expert"
+            ]
+          },
+          {
+            "id": "CRS-E-156",
+            "level": 5,
+            "type": "multiple-choice",
+            "points": 13,
+            "difficulty": 0.77,
+            "discrimination": 1.43,
+            "bloomLevel": "Evaluate",
+            "question": "When designing AI-enabled business model transformation, the critical insight is:",
+            "options": [
+              "Automate everything",
+              "Identify where AI changes value creation or capture, not just execution speed",
+              "Cost reduction",
+              "Same model faster"
+            ],
+            "correctAnswer": 1,
+            "scoringMethod": "automatic",
+            "tags": [
+              "crs",
+              "auto-scorable",
+              "expert"
+            ]
+          },
+          {
+            "id": "CRS-E-157",
+            "level": 5,
+            "type": "multiple-response",
+            "points": 15,
+            "difficulty": 0.65,
+            "discrimination": 1.43,
+            "bloomLevel": "Analyze",
+            "question": "AI-enabled business model innovation requires (SELECT ALL):",
+            "options": [
+              "Value creation rethinking",
+              "Capability-enabled novel approaches",
+              "Execution speed only",
+              "Existing model optimization",
+              "Cross-domain analogy"
+            ],
+            "correctAnswers": [
+              0,
+              1,
+              4
+            ],
+            "scoringMethod": "automatic",
+            "scoringLogic": "All correct must be selected, no incorrect",
+            "tags": [
+              "crs",
+              "auto-scorable",
+              "expert"
+            ]
+          },
+          {
+            "id": "CRS-E-158",
+            "level": 5,
+            "type": "scenario-ranking",
+            "points": 16,
+            "difficulty": 0.84,
+            "discrimination": 1.27,
+            "bloomLevel": "Evaluate",
+            "question": "Sequence for AI-enabled strategic innovation:",
+            "options": [
+              "A. Identify capability shifts enabling novel approaches",
+              "B. Map current value creation and capture",
+              "C. Design business model alternatives",
+              "D. Pilot and validate with market feedback",
+              "E. Scale with continuous capability monitoring"
+            ],
+            "correctOrder": [
+              0,
+              1,
+              2,
+              3,
+              4
+            ],
+            "scoringMethod": "automatic",
+            "scoringLogic": "Exact sequence required",
+            "tags": [
+              "crs",
+              "auto-scorable",
+              "expert"
+            ]
+          },
+          {
+            "id": "CRS-E-159",
+            "level": 5,
+            "type": "matching",
+            "points": 16,
+            "difficulty": 0.83,
+            "discrimination": 1.25,
+            "bloomLevel": "Analyze",
+            "question": "Match innovation dimension to transformation element:",
+            "leftColumn": [
+              "1. Value creation shift",
+              "2. Capability unlock",
+              "3. Business model",
+              "4. Execution speed"
+            ],
+            "rightColumn": [
+              "A. Changes revenue streams",
+              "B. Enables previously impossible",
+              "C. Improves efficiency",
+              "D. Structural change"
+            ],
+            "correctPairs": [
+              [
+                0,
+                0
+              ],
+              [
+                1,
+                1
+              ],
+              [
+                2,
+                3
+              ],
+              [
+                3,
+                2
+              ]
+            ],
+            "scoringMethod": "automatic",
+            "scoringLogic": "Each correct pair scored proportionally",
+            "tags": [
+              "crs",
+              "auto-scorable",
+              "expert"
+            ]
+          },
+          {
+            "id": "CRS-E-160",
+            "level": 6,
+            "type": "rank-ordering",
+            "points": 18,
+            "difficulty": 0.68,
+            "discrimination": 1.37,
+            "bloomLevel": "Create",
+            "question": "Rank innovation dimensions by strategic impact:",
+            "items": [
+              "Novel value creation",
+              "Capability unlock",
+              "Business model shift",
+              "Execution improvement",
+              "Cost reduction"
+            ],
+            "correctOrder": [
+              0,
+              1,
+              2,
+              3,
+              4
+            ],
+            "scoringMethod": "automatic",
+            "scoringLogic": "Kendall tau or position-based scoring",
+            "tags": [
+              "crs",
+              "auto-scorable",
+              "expert"
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

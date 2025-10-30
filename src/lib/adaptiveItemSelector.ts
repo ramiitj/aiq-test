@@ -15,7 +15,7 @@ export interface TestItem {
   question: string;
   format?: string;
   
-  // For multiple-choice, true-false, scenario-based
+  // For multiple-choice, true-false, scenario-based, multiple-response
   options?: string[];
   correctAnswer?: number | boolean;
   
@@ -24,7 +24,11 @@ export interface TestItem {
   
   // For scenario-ranking and rank-ordering
   correctOrder?: number[];
-  items?: string[]; // For rank-ordering
+  
+  // IMPORTANT: 
+  // - rank-ordering uses `items` property
+  // - scenario-ranking uses `options` property
+  items?: string[]; // For rank-ordering only
   
   // For matching
   leftColumn?: string[];
@@ -110,26 +114,37 @@ function shuffleArray<T>(array: T[]): T[] {
 }
 
 /**
- * Select random items from a pool based on level distribution
+ * Select random items from a pool based on difficulty distribution
+ * Uses difficulty-based tiering instead of fixed level filtering
  */
 export function selectItemsForDimension(
   items: TestItem[],
   config: VersionConfig
 ): TestItem[] {
-  const level1Items = items.filter((item) => item.level === 1);
-  const level2Items = items.filter((item) => item.level === 2);
-  const level3Items = items.filter((item) => item.level === 3);
-
+  if (items.length === 0) return [];
+  
+  // Sort by difficulty to divide into tiers
+  const sortedItems = [...items].sort((a, b) => a.difficulty - b.difficulty);
+  
+  const totalItems = sortedItems.length;
+  const itemsToSelect = config.itemsPerDimension;
+  
+  // Divide into three difficulty tiers
+  const tierSize = Math.floor(totalItems / 3);
+  const easyTier = sortedItems.slice(0, tierSize);
+  const mediumTier = sortedItems.slice(tierSize, tierSize * 2);
+  const hardTier = sortedItems.slice(tierSize * 2);
+  
+  // Select proportionally from each tier based on config
   const selectedItems: TestItem[] = [];
-
-  // Randomly select items from each level
-  const selectedLevel1 = shuffleArray(level1Items).slice(0, config.level1Count);
-  const selectedLevel2 = shuffleArray(level2Items).slice(0, config.level2Count);
-  const selectedLevel3 = shuffleArray(level3Items).slice(0, config.level3Count);
-
-  selectedItems.push(...selectedLevel1, ...selectedLevel2, ...selectedLevel3);
-
-  // Sort by difficulty to create progressive difficulty within dimension
+  
+  const easyItems = shuffleArray(easyTier).slice(0, config.level1Count);
+  const mediumItems = shuffleArray(mediumTier).slice(0, config.level2Count);
+  const hardItems = shuffleArray(hardTier).slice(0, config.level3Count);
+  
+  selectedItems.push(...easyItems, ...mediumItems, ...hardItems);
+  
+  // Sort selected items by difficulty for progressive difficulty
   return selectedItems.sort((a, b) => a.difficulty - b.difficulty);
 }
 
