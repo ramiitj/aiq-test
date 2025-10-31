@@ -202,7 +202,7 @@ const Results = () => {
       const expiryDate = new Date(issueDate);
       expiryDate.setFullYear(expiryDate.getFullYear() + 1);
 
-      // Check if verification code exists, if not create one
+      // Check if verification code exists, if not create one with high entropy
       let code = verificationCode;
       if (!code) {
         const { data: existingShare } = await supabase
@@ -214,9 +214,16 @@ const Results = () => {
         if (existingShare) {
           code = existingShare.share_code;
         } else {
-          const year = new Date().getFullYear();
-          const randomPart = Math.random().toString(36).substring(2, 6).toUpperCase();
-          code = `AIQ-${year}-${randomPart}`;
+          // Generate high-entropy share code (12 chars alphanumeric = 62^12 combinations)
+          // Much more secure than previous 4-char base36 format
+          const generateSecureCode = () => {
+            const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+            const array = new Uint8Array(12);
+            crypto.getRandomValues(array);
+            return Array.from(array, byte => chars[byte % chars.length]).join('');
+          };
+          
+          code = `AIQ-${generateSecureCode()}`;
 
           const { error } = await supabase.from("public_results").insert({
             test_id: result.id,

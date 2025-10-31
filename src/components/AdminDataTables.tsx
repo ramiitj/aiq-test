@@ -21,7 +21,6 @@ interface TestDemographics {
   id: string;
   user_id: string;
   full_name: string;
-  email: string;
   job_role: string;
   industry_sector: string;
   organization_type: string;
@@ -131,7 +130,6 @@ export const AdminDataTables = () => {
   const exportDemographics = () => {
     const exportData = demographics.map(d => ({
       "Full Name": d.full_name,
-      Email: d.email,
       "Job Role": d.job_role,
       "Industry": d.industry_sector,
       "Organization Type": d.organization_type,
@@ -256,7 +254,6 @@ export const AdminDataTables = () => {
                     <TableHeader>
                       <TableRow>
                         <TableHead>Full Name</TableHead>
-                        <TableHead>Email</TableHead>
                         <TableHead>Job Role</TableHead>
                         <TableHead>Industry</TableHead>
                         <TableHead>AI Familiarity</TableHead>
@@ -267,7 +264,7 @@ export const AdminDataTables = () => {
                     <TableBody>
                       {demographics.length === 0 ? (
                         <TableRow>
-                          <TableCell colSpan={7} className="text-center text-muted-foreground">
+                          <TableCell colSpan={6} className="text-center text-muted-foreground">
                             No consented demographics data found
                           </TableCell>
                         </TableRow>
@@ -275,7 +272,6 @@ export const AdminDataTables = () => {
                         demographics.map((demo) => (
                           <TableRow key={demo.id}>
                             <TableCell className="font-medium">{demo.full_name}</TableCell>
-                            <TableCell>{demo.email}</TableCell>
                             <TableCell>{demo.job_role}</TableCell>
                             <TableCell>{demo.industry_sector}</TableCell>
                             <TableCell>{demo.ai_familiarity}</TableCell>

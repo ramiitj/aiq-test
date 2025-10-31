@@ -30,6 +30,51 @@ Deno.serve(async (req) => {
       Deno.env.get('SUPABASE_SERVICE_ROLE_KEY')!
     );
 
+    // Rate limiting: Check attempts from this IP
+    const clientIp = req.headers.get('x-forwarded-for')?.split(',')[0] || 
+                     req.headers.get('x-real-ip') || 
+                     'unknown';
+    const rateLimitKey = `verify:${clientIp}`;
+    const oneHourAgo = new Date(Date.now() - 3600000).toISOString();
+
+    // Clean up old rate limit entries
+    await supabase.rpc('cleanup_rate_limits');
+
+    // Check current rate limit
+    const { data: rateLimitData } = await supabase
+      .from('rate_limits')
+      .select('count')
+      .eq('key', rateLimitKey)
+      .gte('created_at', oneHourAgo)
+      .maybeSingle();
+
+    if (rateLimitData && rateLimitData.count >= 10) {
+      console.log(`Rate limit exceeded for IP: ${clientIp}`);
+      return new Response(
+        JSON.stringify({ 
+          valid: false, 
+          error: 'Too many verification attempts. Please try again later.' 
+        }),
+        { 
+          status: 429,
+          headers: { ...corsHeaders, 'Content-Type': 'application/json' }
+        }
+      );
+    }
+
+    // Increment or create rate limit counter
+    if (rateLimitData) {
+      await supabase
+        .from('rate_limits')
+        .update({ count: rateLimitData.count + 1 })
+        .eq('key', rateLimitKey)
+        .gte('created_at', oneHourAgo);
+    } else {
+      await supabase
+        .from('rate_limits')
+        .insert({ key: rateLimitKey, count: 1 });
+    }
+
     // Server-side validation with share code check
     const { data, error } = await supabase
       .from('public_results')

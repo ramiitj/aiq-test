@@ -115,6 +115,27 @@ export type Database = {
           },
         ]
       }
+      rate_limits: {
+        Row: {
+          count: number | null
+          created_at: string | null
+          id: string
+          key: string
+        }
+        Insert: {
+          count?: number | null
+          created_at?: string | null
+          id?: string
+          key: string
+        }
+        Update: {
+          count?: number | null
+          created_at?: string | null
+          id?: string
+          key?: string
+        }
+        Relationships: []
+      }
       test_demographics: {
         Row: {
           age_range: string | null
@@ -133,7 +154,6 @@ export type Database = {
           country: string | null
           created_at: string
           education_level: string | null
-          email: string
           full_name: string
           id: string
           industry_sector: string
@@ -165,7 +185,6 @@ export type Database = {
           country?: string | null
           created_at?: string
           education_level?: string | null
-          email: string
           full_name: string
           id?: string
           industry_sector: string
@@ -197,7 +216,6 @@ export type Database = {
           country?: string | null
           created_at?: string
           education_level?: string | null
-          email?: string
           full_name?: string
           id?: string
           industry_sector?: string
@@ -315,6 +333,11 @@ export type Database = {
     }
     Functions: {
       calculate_percentile: { Args: { user_score: number }; Returns: number }
+      check_admin_constant_time: {
+        Args: { _user_id: string }
+        Returns: boolean
+      }
+      cleanup_rate_limits: { Args: never; Returns: undefined }
       has_role: {
         Args: {
           _role: Database["public"]["Enums"]["app_role"]

@@ -31,7 +31,6 @@ export const ConsentForm = ({ open, onConsent, onDecline, testVersion }: Consent
   
   // Section 1: Basic Information
   const [fullName, setFullName] = useState("");
-  const [email, setEmail] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
   
   // Section 2: Professional Background
@@ -125,7 +124,7 @@ export const ConsentForm = ({ open, onConsent, onDecline, testVersion }: Consent
   const getSectionData = (tab: string) => {
     switch (tab) {
       case "basic":
-        return { full_name: fullName, email, phone_number: phoneNumber };
+        return { full_name: fullName, phone_number: phoneNumber };
       case "professional":
         return { job_role: jobRole, organization_type: organizationType, organization_size: organizationSize, industry_sector: industrySector, years_experience: yearsExperience };
       case "aiExperience":
@@ -145,7 +144,6 @@ export const ConsentForm = ({ open, onConsent, onDecline, testVersion }: Consent
     // Validate all required sections
     const allData: any = {
       full_name: fullName,
-      email,
       phone_number: phoneNumber,
       job_role: jobRole,
       organization_type: organizationType,
@@ -250,19 +248,6 @@ export const ConsentForm = ({ open, onConsent, onDecline, testVersion }: Consent
               </div>
 
               <div className="space-y-2">
-                <Label htmlFor="email">Email Address <span className="text-destructive">*</span></Label>
-                <Input
-                  id="email"
-                  type="email"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  placeholder="your.email@example.com"
-                  maxLength={255}
-                />
-                <p className="text-xs text-muted-foreground">For dashboard login and optional notifications</p>
-              </div>
-
-              <div className="space-y-2">
                 <Label htmlFor="phoneNumber">Phone Number (Optional)</Label>
                 <Input
                   id="phoneNumber"
@@ -271,6 +256,7 @@ export const ConsentForm = ({ open, onConsent, onDecline, testVersion }: Consent
                   onChange={(e) => setPhoneNumber(e.target.value)}
                   placeholder="+1 (555) 123-4567"
                 />
+                <p className="text-xs text-muted-foreground">Optional - for research follow-up only if you consent</p>
               </div>
 
               <div className="flex justify-end pt-4">

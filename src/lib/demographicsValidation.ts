@@ -7,7 +7,6 @@ import { z } from 'zod';
 // Section 1: Basic Information
 export const basicInfoSchema = z.object({
   full_name: z.string().min(1, "Full name is required").max(100, "Name must be less than 100 characters"),
-  email: z.string().email("Invalid email address").max(255, "Email must be less than 255 characters"),
   phone_number: z.string().optional(),
 });
 
