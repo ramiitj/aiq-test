@@ -229,7 +229,7 @@ const Results = () => {
             test_id: result.id,
             user_id: (await supabase.auth.getUser()).data.user!.id,
             share_code: code,
-            overall_score: scoringResult.percentageScore,
+            overall_score: scoringResult.overallScore, // Store actual points, not percentage
             dimension_scores: JSON.stringify(scoringResult.dimensionScores),
             user_name: userName,
             test_completion_date: result.created_at,
@@ -243,13 +243,15 @@ const Results = () => {
 
       // Generate PDF with new scoring data
       const pdfBlob = await generatePDFReport(
-        scoringResult.percentageScore,
+        scoringResult.overallScore, // Pass actual points earned
         dimensionsWithNames,
         code,
         issueDate,
         expiryDate,
         userName,
         result.test_duration_seconds || 0,
+        result.test_version || 'professional',
+        scoringResult // Pass full scoring result for validation
       );
 
       // Update report_generated_at
@@ -358,7 +360,7 @@ const Results = () => {
           test_id: result.id,
           user_id: (await supabase.auth.getUser()).data.user!.id,
           share_code: shareCode,
-          overall_score: scoringResult?.percentageScore || 0,
+          overall_score: scoringResult?.overallScore || 0, // Store actual points
           dimension_scores: JSON.stringify(scoringResult?.dimensionScores || {}),
           user_name: userName,
           test_completion_date: result.created_at,

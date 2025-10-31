@@ -150,7 +150,7 @@ const expertRecommendations: Record<string, string[]> = {
 };
 
 export async function generatePDFReport(
-  overallScore: number,
+  overallScore: number, // This is now actual points earned, not percentage
   dimensionScores: DimensionScore[],
   verificationCode: string,
   issueDate: Date,
@@ -158,7 +158,7 @@ export async function generatePDFReport(
   userEmail?: string,
   testDurationSeconds?: number,
   assessmentLevel: string = 'professional',
-  scoringResult?: any // Optional for backwards compatibility
+  scoringResult?: any // Required for accurate total and passing info
 ): Promise<Blob> {
   const doc = new jsPDF({
     orientation: "portrait",
@@ -170,6 +170,10 @@ export async function generatePDFReport(
   if (scoringResult && !scoringResult.passed) {
     throw new Error(`Certificate requires passing score of ${scoringResult.passingScore} points. Current score: ${scoringResult.overallScore} points.`);
   }
+
+  // Calculate percentage for display
+  const totalPossible = scoringResult?.totalPossiblePoints || 600;
+  const percentageScore = scoringResult?.percentageScore || ((overallScore / totalPossible) * 100);
 
   const pageWidth = doc.internal.pageSize.getWidth();
   const pageHeight = doc.internal.pageSize.getHeight();
@@ -206,17 +210,17 @@ export async function generatePDFReport(
     }
   };
 
-  const getProficiencyLevel = (score: number): string => {
-    if (score >= 80) return "Exceptional";
-    if (score >= 60) return "Proficient";
-    if (score >= 40) return "Developing";
+  const getProficiencyLevel = (percentage: number): string => {
+    if (percentage >= 80) return "Exceptional";
+    if (percentage >= 60) return "Proficient";
+    if (percentage >= 40) return "Developing";
     return "Emerging";
   };
 
-  const getLevelColor = (score: number): [number, number, number] => {
-    if (score >= 80) return colors.green;
-    if (score >= 60) return colors.accentBlue;
-    if (score >= 40) return colors.orange;
+  const getLevelColor = (percentage: number): [number, number, number] => {
+    if (percentage >= 80) return colors.green;
+    if (percentage >= 60) return colors.accentBlue;
+    if (percentage >= 40) return colors.orange;
     return colors.red;
   };
 
@@ -301,13 +305,15 @@ export async function generatePDFReport(
 
   doc.setFontSize(36);
   doc.setFont("helvetica", "bold");
-  const scoreColor = getLevelColor(overallScore);
+  const scoreColor = getLevelColor(percentageScore);
   doc.setTextColor(...scoreColor);
-  doc.text(overallScore.toFixed(1), centerX, currentY + 5, { align: "center" });
+  // Display actual points with total possible
+  doc.setFontSize(28);
+  doc.text(`${overallScore.toFixed(1)} / ${totalPossible.toFixed(0)}`, centerX, currentY + 5, { align: "center" });
 
   currentY += 15;
 
-  const level = getProficiencyLevel(overallScore);
+  const level = getProficiencyLevel(percentageScore);
   doc.setFillColor(...scoreColor);
   const badgeWidth = 75;
   const badgeHeight = 10;
@@ -336,7 +342,9 @@ export async function generatePDFReport(
 
   const perfData = dimensionScores.map((dim) => {
     const fullName = dimensionNames[dim.code] || dim.name;
-    return [fullName, dim.score.toFixed(1), getProficiencyLevel(dim.score)];
+    // Calculate percentage for dimension (assuming equal weighting)
+    const dimPercentage = (dim.score / (totalPossible / dimensionScores.length)) * 100;
+    return [fullName, dim.score.toFixed(1), getProficiencyLevel(dimPercentage)];
   });
 
   autoTable(doc, {
@@ -371,7 +379,9 @@ export async function generatePDFReport(
     didParseCell: function (data) {
       if (data.column.index === 1 && data.section === "body") {
         const score = parseFloat(data.cell.text[0]);
-        const cellColor = getLevelColor(score);
+        // Calculate percentage for color coding
+        const dimPercentage = (score / (totalPossible / dimensionScores.length)) * 100;
+        const cellColor = getLevelColor(dimPercentage);
         data.cell.styles.textColor = cellColor;
       }
     },
@@ -393,6 +403,9 @@ export async function generatePDFReport(
 
   dimensionScores.forEach((dim) => {
     const fullName = dimensionNames[dim.code] || dim.name;
+    
+    // Calculate percentage for visualization
+    const dimPercentage = (dim.score / (totalPossible / dimensionScores.length)) * 100;
 
     doc.setFontSize(9);
     doc.setFont("helvetica", "normal");
@@ -403,8 +416,8 @@ export async function generatePDFReport(
     doc.setFillColor(238, 238, 238);
     doc.roundedRect(margin + 55, currentY, barMaxWidth, barHeight, 1.5, 1.5, "F");
 
-    const scoreWidth = (dim.score / 100) * barMaxWidth;
-    const barColor = getLevelColor(dim.score);
+    const scoreWidth = (dimPercentage / 100) * barMaxWidth;
+    const barColor = getLevelColor(dimPercentage);
     doc.setFillColor(...barColor);
     if (scoreWidth > 0) {
       doc.roundedRect(margin + 55, currentY, scoreWidth, barHeight, 1.5, 1.5, "F");

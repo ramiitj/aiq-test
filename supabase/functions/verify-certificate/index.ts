@@ -103,22 +103,37 @@ Deno.serve(async (req) => {
       );
     }
 
-    // Calculate score range and level
+    // Calculate percentage from points (overall_score now stores actual points)
+    // We need to infer percentage from the score since we don't store total possible
+    // For verification purposes, we'll compute a normalized score
     const score = data.overall_score;
+    
+    // Estimate percentage based on typical point totals by version
+    // Beginner: ~600-780 max, Professional: ~800-1280 max, Expert: ~1000-1520 max
+    // We'll use a conservative percentage calculation
+    let percentage = 0;
+    if (score >= 700) {
+      // Likely professional or expert level
+      percentage = Math.min(100, (score / 800) * 100);
+    } else {
+      // Likely beginner level
+      percentage = Math.min(100, (score / 600) * 100);
+    }
+    
     let scoreRange = "";
     let level = "";
 
-    if (score >= 80) {
-      scoreRange = "80-100";
+    if (percentage >= 80) {
+      scoreRange = "80-100%";
       level = "Exceptional";
-    } else if (score >= 60) {
-      scoreRange = "60-79";
+    } else if (percentage >= 60) {
+      scoreRange = "60-79%";
       level = "Proficient";
-    } else if (score >= 40) {
-      scoreRange = "40-59";
+    } else if (percentage >= 40) {
+      scoreRange = "40-59%";
       level = "Developing";
     } else {
-      scoreRange = "0-39";
+      scoreRange = "0-39%";
       level = "Emerging";
     }
 

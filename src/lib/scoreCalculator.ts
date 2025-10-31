@@ -103,6 +103,7 @@ export function calculateTestScores(
   let totalCorrect = 0;
   let totalQuestions = 0;
   let totalPointsEarned = 0;
+  let totalPossiblePointsWithWeighting = 0;
 
   // Process each dimension
   dimensions.forEach((dimension, dimIndex) => {
@@ -112,6 +113,10 @@ export function calculateTestScores(
     dimension.items.forEach((item, itemIndex) => {
       const questionKey = `${dimIndex}-${itemIndex}`;
       const userAnswer = answers[questionKey];
+
+      // Calculate max possible points for this item (even if not answered)
+      const maxItemPoints = calculateItemPoints(item, true, assessmentLevel);
+      totalPossiblePointsWithWeighting += maxItemPoints;
 
       if (userAnswer !== undefined) {
         totalQuestions++;
@@ -133,13 +138,13 @@ export function calculateTestScores(
     dimensionScores[dimension.dimensionCode] = Math.round(dimensionPoints * 10) / 10; // Round to 1 decimal
   });
 
-  // Calculate percentage score
-  const percentageScore = scoringConfig.totalPoints > 0 
-    ? (totalPointsEarned / scoringConfig.totalPoints) * 100 
+  // Calculate percentage score based on actual possible points with weighting
+  const percentageScore = totalPossiblePointsWithWeighting > 0 
+    ? (totalPointsEarned / totalPossiblePointsWithWeighting) * 100 
     : 0;
 
-  // Determine if passed
-  const passed = totalPointsEarned >= scoringConfig.passingScore;
+  // Determine if passed based on percentage (since absolute points vary with weighting)
+  const passed = percentageScore >= scoringConfig.passingPercentage;
 
   // Determine performance level
   const performanceLevel = determinePerformanceLevel(percentageScore, scoringConfig.scoringGuidelines);
@@ -147,8 +152,8 @@ export function calculateTestScores(
   return {
     dimensionScores,
     overallScore: Math.round(totalPointsEarned * 10) / 10, // Round to 1 decimal
-    totalPossiblePoints: scoringConfig.totalPoints,
-    passingScore: scoringConfig.passingScore,
+    totalPossiblePoints: Math.round(totalPossiblePointsWithWeighting * 10) / 10, // Actual max with weighting
+    passingScore: Math.round((totalPossiblePointsWithWeighting * scoringConfig.passingPercentage / 100) * 10) / 10,
     passed,
     percentageScore: Math.round(percentageScore * 10) / 10, // Round to 1 decimal
     correctCount: totalCorrect,
