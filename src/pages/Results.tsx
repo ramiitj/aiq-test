@@ -6,7 +6,7 @@ import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Progress } from "@/components/ui/progress";
-import { Share2, Download, Trophy, Copy, ArrowRight, Calendar, Clock, Award, TrendingUp, AlertCircle, CheckCircle2 } from "lucide-react";
+import { Share2, Download, Trophy, Copy, ArrowRight, Calendar, Clock, Award, TrendingUp, AlertCircle, CheckCircle2, Lightbulb, ExternalLink } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import { ShareModal } from "@/components/ShareModal";
 import { generatePDFReport } from "@/lib/pdfGenerator";
@@ -68,6 +68,8 @@ const Results = () => {
   const [verificationCode, setVerificationCode] = useState<string>("");
   const [downloadingPDF, setDownloadingPDF] = useState(false);
   const [userName, setUserName] = useState<string>("");
+  const [recommendations, setRecommendations] = useState<{ [key: string]: string[] }>({});
+  const [loadingRecommendations, setLoadingRecommendations] = useState(false);
   const navigate = useNavigate();
   const { toast } = useToast();
 
@@ -128,6 +130,15 @@ const Results = () => {
       );
       
       setScoringResult(calculatedScores);
+
+      // Extract bottom 3 dimensions for recommendations
+      const sortedDimensions = Object.entries(calculatedScores.dimensionScores)
+        .map(([code, score]) => ({ code, score }))
+        .sort((a, b) => a.score - b.score)
+        .slice(0, 3);
+      
+      // Load recommendations
+      await extractRecommendations(testVersion, sortedDimensions);
 
       // Get user's name from profile (registered name)
       const { data: profile } = await supabase
@@ -246,6 +257,55 @@ const Results = () => {
       });
     } finally {
       setDownloadingPDF(false);
+    }
+  };
+
+  const extractRecommendations = async (
+    testVersion: string, 
+    weakDimensions: { code: string; score: number }[]
+  ) => {
+    setLoadingRecommendations(true);
+    try {
+      // Determine JSON file based on test version
+      const jsonFile = testVersion.includes('beginner') 
+        ? '/test-items/beginner-assessment.json'
+        : testVersion.includes('professional')
+        ? '/test-items/professional-assessment.json'
+        : '/test-items/expert-assessment.json';
+      
+      const response = await fetch(jsonFile);
+      if (!response.ok) throw new Error('Failed to load assessment data');
+      
+      const assessmentData = await response.json();
+      const recs: { [key: string]: string[] } = {};
+      
+      // For each weak dimension, extract 2-3 recommendations
+      weakDimensions.forEach(({ code }) => {
+        const dimension = assessmentData.itemBank.dimensions?.find(
+          (d: any) => d.dimensionCode === code
+        );
+        
+        if (dimension?.items) {
+          // Get items with rich rationale/explanation
+          const itemsWithContent = dimension.items
+            .filter((item: any) => item.rationale && item.explanation)
+            .slice(0, 3); // Take top 3 items
+          
+          // Extract actionable recommendations
+          recs[code] = itemsWithContent.map((item: any) => {
+            // Combine rationale and explanation for context
+            return `${item.rationale} ${item.explanation}`.trim();
+          });
+        }
+      });
+      
+      setRecommendations(recs);
+    } catch (error) {
+      console.error('Failed to load recommendations:', error);
+      // Set empty recommendations on error
+      setRecommendations({});
+    } finally {
+      setLoadingRecommendations(false);
     }
   };
 
@@ -460,27 +520,49 @@ const Results = () => {
           </CardContent>
         </Card>
 
-        {/* Quick Actions */}
-        <div className="grid md:grid-cols-2 gap-3 mb-6">
-          <Button
-            onClick={handleDownloadPDF}
-            disabled={downloadingPDF}
-            className="h-auto py-4 bg-blue-900 hover:bg-blue-800 font-semibold"
-          >
-            <Download className="mr-2 h-5 w-5" />
-            <div className="text-left">
-              <div className="text-sm font-bold">{downloadingPDF ? "Generating..." : "Download Certificate"}</div>
-              <div className="text-xs opacity-90">PDF with verification code</div>
-            </div>
-          </Button>
-          <Button onClick={handleGenerateShareablePost} variant="outline" className="h-auto py-4 font-semibold">
-            <Share2 className="mr-2 h-5 w-5" />
-            <div className="text-left">
-              <div className="text-sm font-bold">Share Results</div>
-              <div className="text-xs text-muted-foreground">Generate shareable post</div>
-            </div>
-          </Button>
-        </div>
+        {/* Quick Actions - Conditional Based on Pass/Fail */}
+        {scoringResult.passed ? (
+          <div className="grid md:grid-cols-2 gap-3 mb-6">
+            <Button
+              onClick={handleDownloadPDF}
+              disabled={downloadingPDF}
+              className="h-auto py-4 bg-blue-900 hover:bg-blue-800 font-semibold"
+            >
+              <Download className="mr-2 h-5 w-5" />
+              <div className="text-left">
+                <div className="text-sm font-bold">{downloadingPDF ? "Generating..." : "Download Certificate"}</div>
+                <div className="text-xs opacity-90">PDF with verification code</div>
+              </div>
+            </Button>
+            <Button onClick={handleGenerateShareablePost} variant="outline" className="h-auto py-4 font-semibold">
+              <Share2 className="mr-2 h-5 w-5" />
+              <div className="text-left">
+                <div className="text-sm font-bold">Share Results</div>
+                <div className="text-xs text-muted-foreground">Generate shareable post</div>
+              </div>
+            </Button>
+          </div>
+        ) : (
+          <div className="mb-6">
+            <Card className="border-amber-500 bg-amber-50 dark:bg-amber-950/20">
+              <CardContent className="pt-5 pb-5">
+                <div className="text-center">
+                  <Award className="h-8 w-8 text-amber-600 mx-auto mb-2" />
+                  <p className="text-sm font-semibold text-amber-900 dark:text-amber-100 mb-1">
+                    Certificate Not Yet Available
+                  </p>
+                  <p className="text-xs text-muted-foreground mb-3">
+                    Achieve {scoringResult.passingScore} points (currently {scoringResult.overallScore.toFixed(0)}) to unlock your certificate
+                  </p>
+                  <Button onClick={handleGenerateShareablePost} variant="outline" size="sm">
+                    <Share2 className="mr-2 h-4 w-4" />
+                    Share Your Progress
+                  </Button>
+                </div>
+              </CardContent>
+            </Card>
+          </div>
+        )}
 
         {/* Dimension Breakdown */}
         <Card className="mb-6 shadow-sm border">
@@ -537,35 +619,42 @@ const Results = () => {
                   <Award className="h-5 w-5 text-white" />
                 </div>
                 <div className="flex-1 min-w-0">
-                  <h3 className="text-base font-black mb-1">Certificate Verification Code</h3>
+                  <h3 className="text-base font-black mb-1">Certificate Verification</h3>
                   <p className="text-xs text-muted-foreground mb-3">
-                    Share this code with employers or add it to your resume
+                    Anyone can verify this certificate by clicking the link below
                   </p>
-                  <div className="flex items-center gap-2">
-                    <div className="flex-1 p-3 bg-white dark:bg-gray-900 rounded-lg border">
-                      <code className="text-sm font-bold text-blue-900 dark:text-blue-100">{verificationCode}</code>
+                  
+                  {/* Clickable Verification Link */}
+                  <a 
+                    href={`https://aiq.works/verify/${verificationCode}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="block p-3 bg-white dark:bg-gray-900 rounded-lg border-2 border-blue-500 hover:border-blue-600 transition-colors mb-2 group"
+                  >
+                    <div className="flex items-center justify-between">
+                      <code className="text-sm font-bold text-blue-600 dark:text-blue-400 group-hover:underline">
+                        aiq.works/verify/{verificationCode}
+                      </code>
+                      <ExternalLink className="h-4 w-4 text-blue-600 dark:text-blue-400 flex-shrink-0 ml-2" />
                     </div>
-                    <Button
-                      variant="outline"
-                      size="sm"
-                      className="flex-shrink-0"
-                      onClick={() => {
-                        navigator.clipboard.writeText(verificationCode);
-                        toast({
-                          title: "Copied!",
-                          description: "Verification code copied to clipboard",
-                        });
-                      }}
-                    >
-                      <Copy className="h-4 w-4" />
-                    </Button>
-                  </div>
-                  <p className="text-xs text-muted-foreground mt-2">
-            Verify at:{" "}
-            <span className="font-mono">
-              aiq.works/verify
-            </span>
-          </p>
+                  </a>
+                  
+                  {/* Copy Button */}
+                  <Button
+                    variant="outline"
+                    size="sm"
+                    className="w-full"
+                    onClick={() => {
+                      navigator.clipboard.writeText(`https://aiq.works/verify/${verificationCode}`);
+                      toast({
+                        title: "Copied!",
+                        description: "Verification link copied to clipboard",
+                      });
+                    }}
+                  >
+                    <Copy className="h-4 w-4 mr-2" />
+                    Copy Verification Link
+                  </Button>
                 </div>
               </div>
             </CardContent>
@@ -631,6 +720,86 @@ const Results = () => {
                 </div>
               </div>
             </div>
+          </CardContent>
+        </Card>
+
+        {/* Development Recommendations Section */}
+        <Card className="mb-6 shadow-sm border">
+          <CardHeader className="pb-4">
+            <div className="flex items-center gap-2">
+              <div className="p-2 bg-blue-600 rounded-lg">
+                <Lightbulb className="h-5 w-5 text-white" />
+              </div>
+              <div>
+                <CardTitle className="text-xl font-black">Development Recommendations</CardTitle>
+                <p className="text-xs text-muted-foreground mt-0.5">
+                  Personalized guidance based on your assessment results
+                </p>
+              </div>
+            </div>
+          </CardHeader>
+          <CardContent className="pt-0">
+            {loadingRecommendations ? (
+              <div className="text-center py-8">
+                <p className="text-sm text-muted-foreground">Loading personalized recommendations...</p>
+              </div>
+            ) : Object.keys(recommendations).length === 0 ? (
+              <div className="text-center py-8">
+                <p className="text-sm text-muted-foreground">
+                  Focus on building foundational skills across all dimensions through practice and continuous learning.
+                </p>
+              </div>
+            ) : (
+              <div className="space-y-4">
+                {Object.keys(dimensionCodeMap)
+                  .map((code, index) => ({ 
+                    score: scoringResult.dimensionScores[code] || 0, 
+                    name: dimensionNames[index], 
+                    code 
+                  }))
+                  .sort((a, b) => a.score - b.score)
+                  .slice(0, 3)
+                  .map((dim) => {
+                    const dimRecs = recommendations[dim.code] || [];
+                    
+                    return (
+                      <div key={dim.code} className="p-4 bg-blue-50 dark:bg-blue-950/20 rounded-lg border border-blue-200 dark:border-blue-800">
+                        <h4 className="text-sm font-bold text-blue-900 dark:text-blue-100 mb-3 flex items-center gap-2">
+                          {dim.name}
+                          <span className="text-xs font-normal text-muted-foreground">
+                            ({dim.score.toFixed(1)} points)
+                          </span>
+                        </h4>
+                        
+                        {dimRecs.length > 0 ? (
+                          <ul className="space-y-2">
+                            {dimRecs.map((rec, idx) => (
+                              <li key={idx} className="text-xs text-muted-foreground leading-relaxed flex gap-2">
+                                <span className="text-blue-600 dark:text-blue-400 flex-shrink-0">•</span>
+                                <span>{rec}</span>
+                              </li>
+                            ))}
+                          </ul>
+                        ) : (
+                          <p className="text-xs text-muted-foreground italic">
+                            Focus on understanding core concepts and building practical experience in this dimension.
+                          </p>
+                        )}
+                      </div>
+                    );
+                  })}
+                
+                {/* Encouraging message for non-passing users */}
+                {!scoringResult.passed && (
+                  <div className="mt-4 p-3 bg-amber-50 dark:bg-amber-950/20 rounded border border-amber-200 dark:border-amber-800">
+                    <p className="text-xs text-amber-900 dark:text-amber-100 font-medium flex items-center gap-2">
+                      <Lightbulb className="h-4 w-4" />
+                      Review these recommendations and retake the assessment when ready to achieve certification
+                    </p>
+                  </div>
+                )}
+              </div>
+            )}
           </CardContent>
         </Card>
 

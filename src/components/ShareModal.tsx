@@ -3,7 +3,7 @@ import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } f
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 import { Input } from "@/components/ui/input";
-import { Download, Copy, Linkedin, Twitter, Facebook, Loader2, Share2, CheckCircle } from "lucide-react";
+import { Download, Copy, Linkedin, Twitter, Facebook, Loader2, Share2, CheckCircle, ExternalLink } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import { generateSocialMediaImage, getLevelText } from "@/lib/socialMediaGenerator";
 import { generateCaption } from "@/lib/captionGenerator";
@@ -290,12 +290,37 @@ export function ShareModal({
           {/* Verification Link Section */}
           <div className="space-y-3">
             <h3 className="text-lg font-semibold">Verification Link</h3>
-            <div className="flex gap-3">
-              <Input value={verificationUrl} readOnly className="font-mono text-sm flex-1" />
-              <Button onClick={handleCopyLink} variant="outline" size="lg" className="px-6">
-                {copiedLink ? <CheckCircle className="h-5 w-5 text-green-600" /> : <Copy className="h-5 w-5" />}
-              </Button>
-            </div>
+            
+            {/* Clickable Hyperlink */}
+            <a 
+              href={verificationUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="block p-3 bg-secondary/30 rounded-lg border-2 border-blue-500 hover:border-blue-600 transition-colors group"
+            >
+              <div className="flex items-center justify-between">
+                <code className="text-sm font-bold text-blue-600 dark:text-blue-400 group-hover:underline break-all">
+                  {verificationUrl.replace('https://', '').replace('www.', '')}
+                </code>
+                <ExternalLink className="h-4 w-4 text-blue-600 dark:text-blue-400 flex-shrink-0 ml-2" />
+              </div>
+            </a>
+            
+            {/* Copy Button Below */}
+            <Button onClick={handleCopyLink} variant="outline" size="sm" className="w-full">
+              {copiedLink ? (
+                <>
+                  <CheckCircle className="h-4 w-4 mr-2 text-green-600" />
+                  Copied!
+                </>
+              ) : (
+                <>
+                  <Copy className="h-4 w-4 mr-2" />
+                  Copy Verification Link
+                </>
+              )}
+            </Button>
+            
             <p className="text-xs text-muted-foreground">
               Share this link to allow others to verify your certificate authenticity
             </p>
