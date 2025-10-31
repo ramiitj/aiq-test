@@ -348,20 +348,26 @@ const About = () => {
 
           <div className="grid md:grid-cols-2 gap-6">
             <Card className="shadow-sm border">
-              <CardContent className="pt-6 pb-6">
-                <h3 className="font-bold text-xl mb-1">Venkat Ram Reddy Ganuthula, Ph.D.</h3>
-                <p className="text-sm text-blue-900 font-semibold mb-3">https://www.linkedin.com/in/ganuthula/</p>
-                <p className="text-sm text-muted-foreground leading-relaxed mb-2">
-                  Specializes in behavioral science, judgment and decision-making, and the intersection of AI and human
-                  behavior.
-                </p>
-              </CardContent>
-            </Card>
+          <CardContent className="pt-6 pb-6">
+            <h3 className="font-bold text-xl mb-1">Venkat Ram Reddy Ganuthula, Ph.D.</h3>
+            <p className="text-sm text-blue-900 font-semibold mb-3">
+              <a href="https://www.linkedin.com/in/ganuthula/" target="_blank" rel="noopener noreferrer">
+                https://www.linkedin.com/in/ganuthula/
+              </a>
+            </p>
+            <p className="text-sm text-muted-foreground leading-relaxed mb-2">
+              Specializes in behavioral science, judgment and decision-making, and the intersection of AI and human
+              behavior.
+            </p>
+          </CardContent>
+        </Card>
 
             <Card className="shadow-sm border">
               <CardContent className="pt-6 pb-6">
                 <h3 className="font-bold text-xl mb-1">Krishna Kumar Balaraman, Ph.D.</h3>
-                <p className="text-sm text-blue-900 font-semibold mb-3">https://www.linkedin.com/in/balakk/</p>
+                <p className="text-sm text-blue-900 font-semibold mb-3"><a href=" https://www.linkedin.com/in/balakk/" target="_blank" rel="noopener noreferrer">
+                 https://www.linkedin.com/in/balakk/
+              </a>
                 <p className="text-sm text-muted-foreground leading-relaxed mb-2">
                   Brings 20+ years of technology leadership experience. Research focuses on strategic foresight and AI
                   governance.
