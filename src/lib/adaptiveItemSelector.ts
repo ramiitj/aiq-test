@@ -122,33 +122,83 @@ export function selectItemsForDimension(
   selectedItemIds: Set<string>
 ): TestItem[] {
   if (items.length === 0) return [];
-  
-  // Filter out already selected items to prevent duplicates across dimensions
-  const availableItems = items.filter(item => !selectedItemIds.has(item.id));
-  
+
+  // Helper: normalize a question text for duplicate detection
+  const normalize = (s: string | undefined) =>
+    (s || "").replace(/\s+/g, " ").trim().toLowerCase();
+
+  // Helper: build a unique list by question text first (content), then by ID
+  const uniqueBy = <T>(arr: T[], key: (t: T) => string) => {
+    const seen = new Set<string>();
+    const out: T[] = [];
+    for (const el of arr) {
+      const k = key(el);
+      if (!seen.has(k)) {
+        seen.add(k);
+        out.push(el);
+      }
+    }
+    return out;
+  };
+
+  // 1) Remove items already chosen anywhere in the test (across dimensions)
+  // 2) De-duplicate by question text to avoid visually repeated questions with different IDs
+  // 3) De-duplicate by ID just in case the source has literal duplicates
+  const availableItems = items
+    .filter((item) => !selectedItemIds.has(item.id))
+    .filter((item) => !!item.question && item.question.trim().length > 0);
+
+  const byQuestion = uniqueBy(availableItems, (i) => normalize(i.question));
+  const deduped = uniqueBy(byQuestion, (i) => (i.id || "").toString());
+
+  if (deduped.length === 0) return [];
+
   // Sort by difficulty to divide into tiers
-  const sortedItems = [...availableItems].sort((a, b) => a.difficulty - b.difficulty);
-  
+  const sortedItems = [...deduped].sort((a, b) => a.difficulty - b.difficulty);
+
   const totalItems = sortedItems.length;
-  
-  // Divide into three difficulty tiers
-  const tierSize = Math.floor(totalItems / 3);
-  const easyTier = sortedItems.slice(0, tierSize);
-  const mediumTier = sortedItems.slice(tierSize, tierSize * 2);
-  const hardTier = sortedItems.slice(tierSize * 2);
-  
-  // Select proportionally from each tier based on config
+
+  // Divide into three difficulty tiers using two breakpoints for better distribution
+  const break1 = Math.floor(totalItems / 3);
+  const break2 = Math.floor((totalItems * 2) / 3);
+  const easyTier = sortedItems.slice(0, break1);
+  const mediumTier = sortedItems.slice(break1, break2);
+  const hardTier = sortedItems.slice(break2);
+
+  // Local set to guarantee uniqueness within this dimension as we pick
+  const pickedKeys = new Set<string>(); // using question text key to avoid duplicates with different IDs
+  const getKey = (i: TestItem) => normalize(i.question) || i.id;
+
+  const pickUnique = (pool: TestItem[], count: number): TestItem[] => {
+    const out: TestItem[] = [];
+    for (const item of shuffleArray(pool)) {
+      const key = getKey(item);
+      if (!pickedKeys.has(key)) {
+        pickedKeys.add(key);
+        out.push(item);
+        if (out.length >= count) break;
+      }
+    }
+    return out;
+  };
+
   const selectedItems: TestItem[] = [];
-  
-  const easyItems = shuffleArray(easyTier).slice(0, config.easyCount);
-  const mediumItems = shuffleArray(mediumTier).slice(0, config.mediumCount);
-  const hardItems = shuffleArray(hardTier).slice(0, config.hardCount);
-  
-  selectedItems.push(...easyItems, ...mediumItems, ...hardItems);
-  
-  // Add selected item IDs to the tracking set
-  selectedItems.forEach(item => selectedItemIds.add(item.id));
-  
+  selectedItems.push(
+    ...pickUnique(easyTier, config.easyCount),
+    ...pickUnique(mediumTier, config.mediumCount),
+    ...pickUnique(hardTier, config.hardCount)
+  );
+
+  // If we couldn't fulfill counts due to limited tier items, top-up from the remaining pool
+  const needed = Math.max(0, config.itemsPerDimension - selectedItems.length);
+  if (needed > 0) {
+    const remainingPool = sortedItems.filter((i) => !pickedKeys.has(getKey(i)));
+    selectedItems.push(...pickUnique(remainingPool, needed));
+  }
+
+  // Track globally selected IDs to avoid cross-dimension duplicates
+  selectedItems.forEach((item) => selectedItemIds.add(item.id));
+
   // Sort selected items by difficulty for progressive difficulty
   return selectedItems.sort((a, b) => a.difficulty - b.difficulty);
 }
