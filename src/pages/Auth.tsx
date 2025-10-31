@@ -164,7 +164,7 @@ const Auth = () => {
                     <Input
                       id="name"
                       type="text"
-                      placeholder="John Doe"
+                      placeholder="Venkat Krishna"
                       className="pl-10"
                       value={name}
                       onChange={(e) => setName(e.target.value)}
