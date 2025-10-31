@@ -9,134 +9,146 @@ interface DimensionScore {
   description?: string;
 }
 
-// Level-specific, concise recommendations - Beginner (basic, actionable)
+// Dimension full names mapping
+const dimensionNames: Record<string, string> = {
+  SAU: "Strategic AI Understanding",
+  PEI: "Prompt Engineering & Interaction",
+  CEC: "Critical Evaluation & Calibration",
+  II: "Intelligent Task Integration",
+  ALC: "Adaptive Learning & Capability",
+  EJC: "Ethical Judgment & Usage",
+  CS: "Context Sensitivity",
+  CRS: "Creative Synthesis"
+};
+
+// Level-specific, concise recommendations - BEGINNER (basic, actionable)
 const beginnerRecommendations: Record<string, string[]> = {
   SAU: [
     "Study how companies use AI for business decisions",
     "Learn about AI strengths and limitations in your field",
-    "Explore AI impact on competitive positioning"
+    "Read case studies of AI implementation successes and failures"
   ],
   PEI: [
-    "Practice writing clear prompts for AI tools",
-    "Experiment with different question formats",
-    "Document what prompts work best for your tasks"
+    "Practice writing clear, specific prompts for AI tools",
+    "Experiment with different question formats to improve responses",
+    "Keep a notebook of prompts that work well for your tasks"
   ],
   CEC: [
-    "Verify AI outputs against reliable sources",
-    "Learn to spot common AI mistakes",
-    "Check if AI respects diverse viewpoints"
+    "Always verify AI outputs against reliable sources",
+    "Learn to spot common AI errors like hallucinations",
+    "Check if AI responses consider diverse perspectives"
   ],
   II: [
-    "Identify routine tasks suitable for AI",
-    "Design workflows with AI and humans working together",
-    "Create quality checks for AI-assisted work"
+    "Identify routine tasks in your work suitable for AI assistance",
+    "Practice breaking down complex tasks into AI-manageable steps",
+    "Create simple checklists to verify AI-assisted work"
   ],
   ALC: [
-    "Document lessons from using AI tools",
-    "Share AI learnings with your team",
-    "Build a personal AI playbook"
+    "Document what you learn from each AI interaction",
+    "Share your AI learnings with teammates regularly",
+    "Build a personal reference guide of AI tips and tricks"
   ],
   EJC: [
-    "Understand fairness in AI systems",
-    "Know when to disclose AI involvement",
-    "Learn ethical AI use principles"
+    "Learn the basics of fairness and bias in AI systems",
+    "Know when and how to disclose AI involvement in your work",
+    "Study ethical AI use guidelines in your organization"
   ],
   CS: [
-    "Understand AI works differently across contexts",
-    "Learn regulations affecting AI in your region",
-    "Adapt AI approaches to your organization"
+    "Understand that AI behaves differently across contexts",
+    "Learn basic AI regulations affecting your industry",
+    "Adapt your AI approach based on your work environment"
   ],
   CRS: [
-    "Explore AI for creative problem-solving",
-    "Discover new business applications of AI",
-    "Ideate with AI as brainstorming partner"
+    "Use AI as a brainstorming partner for new ideas",
+    "Explore how AI can help solve problems creatively",
+    "Experiment with AI for generating multiple solution options"
   ]
 };
 
-// Professional level - more strategic
+// PROFESSIONAL level - strategic and organizational
 const professionalRecommendations: Record<string, string[]> = {
   SAU: [
-    "Analyze industry AI adoption patterns and competitive gaps",
-    "Build 12-month AI capability roadmaps aligned with strategy",
-    "Assess organizational readiness using structured frameworks"
+    "Analyze industry AI adoption patterns and competitive positioning",
+    "Build 12-18 month AI capability roadmaps aligned with business strategy",
+    "Assess and document organizational readiness using maturity frameworks"
   ],
   PEI: [
-    "Master advanced prompting: meta-prompting, constraint engineering",
-    "Build domain-specific prompt libraries with 20+ variations",
-    "Develop systematic prompt testing and optimization processes"
+    "Master advanced techniques: meta-prompting, chain-of-thought, constraint engineering",
+    "Build domain-specific prompt libraries with 20+ tested variations",
+    "Establish systematic prompt optimization and A/B testing processes"
   ],
   CEC: [
-    "Conduct fairness audits across demographic groups",
-    "Implement systematic AI verification protocols",
-    "Study calibration and uncertainty quantification methods"
+    "Conduct fairness audits across demographic groups for AI outputs",
+    "Implement comprehensive verification protocols with clear criteria",
+    "Study and apply uncertainty quantification in decision-making"
   ],
   II: [
-    "Design human-AI workflows optimizing complementary strengths",
-    "Define role evolution strategies for AI-integrated teams",
-    "Establish governance frameworks for human-AI collaboration"
+    "Design workflows that optimize human-AI complementary strengths",
+    "Develop role evolution strategies for AI-integrated teams",
+    "Establish governance frameworks for human-AI collaboration quality"
   ],
   ALC: [
-    "Build organizational learning systems for AI capability scaling",
-    "Create cross-functional knowledge-sharing forums",
-    "Establish capability maturity tracking mechanisms"
+    "Build organizational learning systems to scale AI capabilities",
+    "Create cross-functional knowledge-sharing forums and practices",
+    "Implement capability maturity tracking with defined milestones"
   ],
   EJC: [
-    "Develop enterprise AI ethics governance frameworks",
-    "Create stakeholder impact assessment protocols",
-    "Design fairness-capability trade-off decision matrices"
+    "Develop enterprise-wide AI ethics governance frameworks",
+    "Create stakeholder impact assessment protocols and review cycles",
+    "Design fairness-capability trade-off matrices for decision support"
   ],
   CS: [
-    "Develop geopolitical AI strategies accounting for regulatory variance",
-    "Design context-specific implementation approaches by market",
-    "Build cultural intelligence for global AI deployment"
+    "Develop context-specific AI strategies for different markets/regions",
+    "Design implementation approaches accounting for regulatory variance",
+    "Build cultural intelligence frameworks for global AI deployment"
   ],
   CRS: [
     "Identify AI capability inflection points for business model innovation",
-    "Design cross-domain pattern transfer for competitive advantage",
-    "Build strategic foresight for AI-enabled market transformation"
+    "Design cross-domain pattern transfer strategies for competitive advantage",
+    "Build strategic foresight processes for AI-enabled market shifts"
   ]
 };
 
-// Expert level - thought leadership
+// EXPERT level - thought leadership and research
 const expertRecommendations: Record<string, string[]> = {
   SAU: [
-    "Publish research on AI strategic positioning and competitive advantage",
-    "Mentor peers on enterprise AI governance and transformation",
-    "Shape industry standards for responsible AI strategy"
+    "Publish research on AI strategic positioning and competitive dynamics",
+    "Mentor industry peers on enterprise AI governance and transformation",
+    "Contribute to standards development for responsible AI strategy"
   ],
   PEI: [
-    "Contribute novel prompting research advancing the field",
-    "Build organizational prompt engineering certification programs",
-    "Publish frameworks on AI reasoning architecture optimization"
+    "Conduct and publish novel prompting research advancing the field",
+    "Design organizational prompt engineering certification programs",
+    "Develop frameworks for AI reasoning architecture optimization"
   ],
   CEC: [
-    "Research and publish on AI trustworthiness assessment innovations",
-    "Contribute to industry standards for AI evaluation",
-    "Build enterprise evaluation infrastructure and governance"
+    "Research and publish AI trustworthiness assessment innovations",
+    "Lead contributions to industry standards for AI evaluation",
+    "Build enterprise evaluation infrastructure and governance models"
   ],
   II: [
-    "Publish on human-AI organizational design innovations",
-    "Lead industry discussions on responsible AI integration",
-    "Contribute to regulatory frameworks for AI governance"
+    "Publish research on human-AI organizational design innovations",
+    "Lead industry-wide discussions on responsible AI integration",
+    "Contribute to regulatory frameworks shaping AI governance policy"
   ],
   ALC: [
-    "Research organizational learning dynamics with AI systems",
+    "Research organizational learning dynamics in AI-augmented systems",
     "Publish thought leadership on AI-driven culture transformation",
-    "Build field-advancing learning infrastructure models"
+    "Develop field-advancing learning infrastructure and models"
   ],
   EJC: [
-    "Contribute to AI ethics standards and policy discussions",
-    "Publish research on effective ethical AI governance",
-    "Shape regulatory landscape for responsible AI"
+    "Contribute actively to AI ethics standards and policy discussions",
+    "Publish research on effective ethical AI governance mechanisms",
+    "Shape regulatory landscape through participation in policy forums"
   ],
   CS: [
-    "Research context effects on AI strategy and outcomes",
-    "Contribute to geopolitical AI policy discussions",
-    "Mentor ecosystem on context-sensitive AI deployment"
+    "Research and publish on context effects in AI strategy outcomes",
+    "Contribute to geopolitical AI policy and framework discussions",
+    "Mentor ecosystem leaders on context-sensitive AI deployment"
   ],
   CRS: [
-    "Research AI-enabled business model discontinuities",
-    "Publish on innovation frameworks leveraging emerging AI",
+    "Research AI-enabled business model discontinuities and patterns",
+    "Publish frameworks on innovation leveraging emerging AI capabilities",
     "Shape industry understanding of AI transformation possibilities"
   ]
 };
@@ -165,7 +177,7 @@ export async function generatePDFReport(
   // Brand colors
   const colors = {
     primaryBlue: [30, 58, 138] as [number, number, number],
-    accentBlue: [37, 99, 235] as [number, number, number],
+    accentBlue: [59, 130, 246] as [number, number, number],
     darkBlue: [15, 23, 42] as [number, number, number],
     lightGray: [243, 244, 246] as [number, number, number],
     mediumGray: [107, 114, 128] as [number, number, number],
@@ -206,311 +218,415 @@ export async function generatePDFReport(
     return colors.red;
   };
 
+  const addFooter = () => {
+    doc.setFontSize(6.5);
+    doc.setTextColor(...colors.mediumGray);
+    doc.text(
+      "Research by Venkat Ram Reddy Ganuthula & Krishna Kumar Balaraman | IIT Jodhpur",
+      pageWidth / 2,
+      pageHeight - 6,
+      { align: "center" }
+    );
+  };
+
   const addPageNumber = (pageNum: number, totalPages: number) => {
-    doc.setFontSize(7);
+    doc.setFontSize(8);
     doc.setTextColor(...colors.mediumGray);
     doc.text(
       `${pageNum}/${totalPages}`,
-      pageWidth - margin - 3,
+      pageWidth - margin - 5,
       pageHeight - 8,
       { align: "right" }
     );
   };
 
-  const addFooter = () => {
-    doc.setFontSize(6);
-    doc.setTextColor(...colors.mediumGray);
-    doc.text(
-      "Research by Venkat Ram Reddy Ganuthula & Krishna Kumar Balaraman | IIT Jodhpur",
-      pageWidth / 2,
-      pageHeight - 5,
-      { align: "center" }
-    );
-  };
-
-  // ========== PAGE 1: HEADER + SCORE + PERFORMANCE CHART ==========
+  // ========== PAGE 1: HEADER + SCORE + COMPACT TABLE + VISUAL CHART ==========
   let currentY = 0;
 
-  // Compact header
+  // Header with gradient effect (simulated)
   doc.setFillColor(...colors.primaryBlue);
-  doc.rect(0, 0, pageWidth, 40, "F");
+  doc.rect(0, 0, pageWidth, 35, "F");
 
   doc.setTextColor(255, 255, 255);
-  doc.setFontSize(22);
+  doc.setFontSize(24);
   doc.setFont("helvetica", "bold");
-  doc.text("AIQ Assessment", pageWidth / 2, 12, { align: "center" });
+  doc.text("AIQ Assessment Certificate", pageWidth / 2, 13, { align: "center" });
 
-  doc.setFontSize(9);
+  doc.setFontSize(10);
   doc.setFont("helvetica", "normal");
-  doc.text(`${assessmentLevel || "Professional"} Level | ${verificationCode}`, pageWidth / 2, 20, { align: "center" });
+  doc.text(`${assessmentLevel || "Professional"} Level`, pageWidth / 2, 21, { align: "center" });
 
-  doc.setFontSize(7);
-  doc.setTextColor(200, 200, 200);
-  const issueDateStr = issueDate.toLocaleDateString("en-US", { year: "numeric", month: "short", day: "numeric" });
-  doc.text(`Issued: ${issueDateStr}`, pageWidth / 2, 27, { align: "center" });
+  doc.setFontSize(7.5);
+  doc.setTextColor(220, 220, 220);
+  const issueDateStr = issueDate.toLocaleDateString("en-US", { 
+    year: "numeric", 
+    month: "short", 
+    day: "numeric" 
+  });
+  doc.text(`Issued: ${issueDateStr} | Code: ${verificationCode}`, pageWidth / 2, 28, { align: "center" });
 
-  currentY = 50;
+  currentY = 43;
 
-  // Score section - more compact
+  // Overall Score - centered and prominent
   const centerX = pageWidth / 2;
-  doc.setFillColor(...colors.accentBlue);
-  doc.circle(centerX, currentY + 15, 18, "F");
+  
+  // Score circle
+  doc.setLineWidth(3);
+  const scoreColor = getLevelColor(overallScore);
+  doc.setDrawColor(...scoreColor);
+  doc.circle(centerX, currentY, 18, "D");
 
-  doc.setTextColor(255, 255, 255);
-  doc.setFontSize(40);
+  doc.setFontSize(28);
   doc.setFont("helvetica", "bold");
-  doc.text(overallScore.toFixed(1), centerX, currentY + 16, { align: "center", baseline: "middle" });
+  doc.setTextColor(...scoreColor);
+  doc.text(overallScore.toFixed(1), centerX, currentY + 2, { 
+    align: "center", 
+    baseline: "middle" 
+  });
 
-  currentY += 38;
+  currentY += 23;
 
+  // Level badge
   const level = getProficiencyLevel(overallScore);
-  const levelColor = getLevelColor(overallScore);
-  doc.setFillColor(...levelColor);
-  const badgeWidth = 45;
-  doc.roundedRect(centerX - badgeWidth / 2, currentY - 3, badgeWidth, 8, 1, 1, "F");
+  doc.setFillColor(...scoreColor);
+  const badgeWidth = 60;
+  doc.roundedRect(centerX - badgeWidth / 2, currentY - 4, badgeWidth, 10, 2, 2, "F");
   doc.setTextColor(255, 255, 255);
-  doc.setFontSize(9);
+  doc.setFontSize(10);
   doc.setFont("helvetica", "bold");
-  doc.text(`${level} AI Collaborator`, centerX, currentY + 1, { align: "center", baseline: "middle" });
+  doc.text(level, centerX, currentY + 1, { align: "center", baseline: "middle" });
 
-  currentY += 12;
+  currentY += 15;
 
-  // Dimension performance - compact table
-  doc.setFontSize(11);
+  // Section: Performance Summary
+  doc.setFontSize(13);
   doc.setFont("helvetica", "bold");
   doc.setTextColor(...colors.primaryBlue);
-  doc.text("Performance Across Dimensions", margin, currentY);
+  doc.text("Performance Summary", margin, currentY);
 
-  currentY += 7;
+  currentY += 8;
 
-  // Create performance data
-  const perfData = dimensionScores.map((dim) => [
-    dim.name.substring(0, 20),
-    dim.score.toFixed(1),
-    getProficiencyLevel(dim.score),
-  ]);
+  // Compact performance table
+  const perfData = dimensionScores.map((dim) => {
+    const fullName = dimensionNames[dim.code] || dim.name;
+    return [
+      fullName,
+      dim.score.toFixed(1),
+      getProficiencyLevel(dim.score),
+    ];
+  });
 
   autoTable(doc, {
     startY: currentY,
     head: [["Dimension", "Score", "Level"]],
     body: perfData,
-    theme: "grid",
+    theme: "striped",
     headStyles: {
       fillColor: colors.primaryBlue,
       fontStyle: "bold",
       fontSize: 8,
       textColor: [255, 255, 255],
-      cellPadding: 2,
       halign: "center",
     },
     bodyStyles: {
       fontSize: 8,
-      cellPadding: 2,
       textColor: colors.darkText,
+      cellPadding: 1.5,
     },
     alternateRowStyles: {
-      fillColor: colors.lightGray,
+      fillColor: [248, 250, 252],
     },
     columnStyles: {
-      0: { cellWidth: 60, halign: "left" },
-      1: { cellWidth: 25, halign: "center" },
+      0: { cellWidth: 90, halign: "left" },
+      1: { cellWidth: 25, halign: "center", fontStyle: "bold" },
       2: { cellWidth: 35, halign: "center" },
     },
     margin: { left: margin, right: margin },
-    tableWidth: contentWidth,
-    didDrawPage: () => {
-      addFooter();
-    }
   });
 
-  addPageNumber(1, 3);
+  currentY = (doc as any).lastAutoTable.finalY + 10;
 
-  // ========== PAGE 2: VISUAL BARS CHART (SEPARATED FROM TEXT) ==========
-  doc.addPage();
-  currentY = 15;
-
-  // Full-width visualization section with clear separation
-  doc.setLineWidth(0.5);
-  doc.setDrawColor(...colors.primaryBlue);
-  doc.line(margin, currentY, pageWidth - margin, currentY);
-
-  currentY += 5;
-  doc.setFontSize(12);
+  // Section: Visual Performance Chart
+  doc.setFontSize(13);
   doc.setFont("helvetica", "bold");
   doc.setTextColor(...colors.primaryBlue);
   doc.text("Performance Visualization", margin, currentY);
 
-  currentY += 8;
+  currentY += 7;
 
-  // Performance bars - clean and clear
-  const barWidth = contentWidth - 50;
-  const barHeight = 5;
-  const barSpacing = 7;
+  // Clean horizontal bar chart
+  const barMaxWidth = contentWidth - 55;
+  const barHeight = 6;
+  const barSpacing = 9;
 
-  dimensionScores.forEach((dim, idx) => {
-    // Dimension label
+  dimensionScores.forEach((dim) => {
+    const fullName = dimensionNames[dim.code] || dim.name;
+    
+    // Dimension label (abbreviated if needed)
     doc.setFontSize(8);
     doc.setFont("helvetica", "normal");
     doc.setTextColor(...colors.darkText);
-    const label = dim.name.length > 22 ? dim.name.substring(0, 19) + "..." : dim.name;
-    doc.text(label, margin, currentY + 2);
+    const labelMaxWidth = 50;
+    const label = fullName.length > 25 ? fullName.substring(0, 22) + "..." : fullName;
+    doc.text(label, margin, currentY + 3.5);
 
     // Background bar
-    doc.setFillColor(240, 240, 240);
-    doc.rect(margin + 40, currentY, barWidth, barHeight, "F");
+    doc.setFillColor(235, 235, 235);
+    doc.roundedRect(margin + 52, currentY, barMaxWidth, barHeight, 1, 1, "F");
 
-    // Score bar
-    const scoreWidth = (dim.score / 100) * barWidth;
+    // Score bar with color
+    const scoreWidth = (dim.score / 100) * barMaxWidth;
     const barColor = getLevelColor(dim.score);
     doc.setFillColor(...barColor);
     if (scoreWidth > 0) {
-      doc.rect(margin + 40, currentY, scoreWidth, barHeight, "F");
+      doc.roundedRect(margin + 52, currentY, scoreWidth, barHeight, 1, 1, "F");
     }
 
-    // Score text
-    doc.setFontSize(8);
+    // Score text (right-aligned)
+    doc.setFontSize(9);
     doc.setFont("helvetica", "bold");
-    doc.setTextColor(...colors.primaryBlue);
-    doc.text(`${dim.score.toFixed(1)}`, pageWidth - margin - 8, currentY + 2);
+    doc.setTextColor(...barColor);
+    doc.text(
+      `${dim.score.toFixed(1)}`, 
+      pageWidth - margin - 3, 
+      currentY + 3.5
+    );
 
     currentY += barSpacing;
   });
 
-  currentY += 8;
-
-  // Clear divider
-  doc.setLineWidth(0.5);
-  doc.setDrawColor(...colors.lightGray);
-  doc.line(margin, currentY, pageWidth - margin, currentY);
-
-  currentY += 8;
-
-  // Verification QR Code section - compact
-  doc.setFontSize(11);
-  doc.setFont("helvetica", "bold");
-  doc.setTextColor(...colors.primaryBlue);
-  doc.text("Verification", margin, currentY);
-
-  currentY += 6;
-
-  const verificationUrl = `https://aiq.works/verify/${verificationCode}`;
-  const qrDataUrl = await QRCode.toDataURL(verificationUrl, {
-    width: 150,
-    margin: 1,
-    color: { dark: "#1e3a8a", light: "#ffffff" },
-  });
-
-  doc.addImage(qrDataUrl, "PNG", margin + 2, currentY, 22, 22);
-
-  doc.setFontSize(8);
-  doc.setFont("helvetica", "normal");
-  doc.setTextColor(...colors.mediumGray);
-  doc.text(`Code: ${verificationCode}`, margin + 26, currentY + 3);
-  doc.text("Visit: aiq.works/verify", margin + 26, currentY + 8);
-
   addFooter();
-  addPageNumber(2, 3);
+  addPageNumber(1, 2);
 
-  // ========== PAGE 3: GROWTH RECOMMENDATIONS (COMPACT TABULAR) ==========
+  // ========== PAGE 2: GROWTH RECOMMENDATIONS + VERIFICATION ==========
   doc.addPage();
   currentY = 15;
 
+  // Section header
   doc.setFontSize(14);
   doc.setFont("helvetica", "bold");
   doc.setTextColor(...colors.primaryBlue);
-  doc.text("Growth Recommendations", margin, currentY);
+  doc.text("Personalized Growth Recommendations", margin, currentY);
 
-  currentY += 8;
+  currentY += 7;
 
-  doc.setFontSize(8);
+  // Level-specific subtitle
+  doc.setFontSize(8.5);
   doc.setFont("helvetica", "normal");
   doc.setTextColor(...colors.mediumGray);
-
+  
   let levelDesc = "";
   if (levelType === "beginner") {
-    levelDesc = "Foundational learning paths for building AI collaboration skills";
+    levelDesc = "Foundational learning paths to build core AI collaboration skills";
   } else if (levelType === "expert") {
-    levelDesc = "Thought leadership and field-advancing opportunities";
+    levelDesc = "Advanced pathways for thought leadership and field-advancing contributions";
   } else {
-    levelDesc = "Strategic development priorities for advanced AI capabilities";
+    levelDesc = "Strategic development priorities for professional AI capability advancement";
   }
   doc.text(levelDesc, margin, currentY);
 
-  currentY += 6;
+  currentY += 8;
 
-  // Get development dimensions
-  const developmentDims = dimensionScores.filter((d) => d.score < 80).sort((a, b) => a.score - b.score);
+  // Get development dimensions (focus on scores < 80)
+  const developmentDims = dimensionScores
+    .filter((d) => d.score < 80)
+    .sort((a, b) => a.score - b.score);
 
   if (developmentDims.length === 0) {
-    doc.setFontSize(9);
+    // Exceptional performance message
+    doc.setFillColor(240, 253, 244);
+    doc.roundedRect(margin, currentY, contentWidth, 20, 2, 2, "F");
+    
+    doc.setFontSize(11);
     doc.setTextColor(...colors.green);
     doc.setFont("helvetica", "bold");
-    doc.text("Excellent Performance Across All Dimensions!", margin + 5, currentY + 10);
+    doc.text("🎉 Outstanding Performance!", margin + 5, currentY + 8);
+    
+    doc.setFontSize(9);
+    doc.setTextColor(...colors.darkText);
+    doc.setFont("helvetica", "normal");
+    doc.text(
+      "You've achieved exceptional proficiency across all dimensions. Continue to maintain and deepen your expertise.",
+      margin + 5,
+      currentY + 14,
+      { maxWidth: contentWidth - 10 }
+    );
+    
+    currentY += 25;
   } else {
-    // Compact recommendation table
+    // Detailed recommendations table
     const recData = developmentDims.map((dim) => {
+      const fullName = dimensionNames[dim.code] || dim.name;
       const recs = getRecommendations(dim.code);
-      const recText = recs.slice(0, 2).join(" • ");
+      
+      // Format recommendations with bullet points
+      const recText = recs.map((r, idx) => `${idx + 1}. ${r}`).join("\n");
+      
       return [
-        dim.name.substring(0, 18),
+        fullName,
         dim.score.toFixed(1),
         getProficiencyLevel(dim.score),
-        recText.substring(0, 60) + (recText.length > 60 ? "..." : "")
+        recText
       ];
     });
 
     autoTable(doc, {
       startY: currentY,
-      head: [["Dimension", "Score", "Level", "Growth Path"]],
+      head: [["Dimension", "Score", "Level", "Action Steps"]],
       body: recData,
       theme: "grid",
       headStyles: {
         fillColor: colors.primaryBlue,
         fontStyle: "bold",
-        fontSize: 7,
+        fontSize: 8,
         textColor: [255, 255, 255],
-        cellPadding: 2,
         halign: "center",
+        cellPadding: 2,
       },
       bodyStyles: {
-        fontSize: 7,
-        cellPadding: 2,
+        fontSize: 7.5,
         textColor: colors.darkText,
-        valign: "middle",
-      },
-      alternateRowStyles: {
-        fillColor: colors.lightGray,
+        cellPadding: 3,
+        lineColor: [220, 220, 220],
+        lineWidth: 0.1,
       },
       columnStyles: {
-        0: { cellWidth: 40, halign: "left" },
-        1: { cellWidth: 15, halign: "center" },
-        2: { cellWidth: 25, halign: "center" },
-        3: { cellWidth: contentWidth - 85, halign: "left" },
+        0: { 
+          cellWidth: 45, 
+          halign: "left",
+          fontStyle: "bold",
+          valign: "top"
+        },
+        1: { 
+          cellWidth: 18, 
+          halign: "center",
+          fontStyle: "bold",
+          valign: "top"
+        },
+        2: { 
+          cellWidth: 25, 
+          halign: "center",
+          valign: "top"
+        },
+        3: { 
+          cellWidth: contentWidth - 93, 
+          halign: "left",
+          valign: "top"
+        },
       },
       margin: { left: margin, right: margin },
-      tableWidth: contentWidth,
+      didParseCell: function(data) {
+        // Add color coding for score column
+        if (data.column.index === 1 && data.section === 'body') {
+          const score = parseFloat(data.cell.text[0]);
+          const scoreColor = getLevelColor(score);
+          data.cell.styles.textColor = scoreColor;
+        }
+      }
     });
 
-    currentY = (doc as any).lastAutoTable.finalY + 8;
+    currentY = (doc as any).lastAutoTable.finalY + 10;
   }
 
-  // Methodology note - compact
-  currentY = pageHeight - 35;
-  doc.setLineWidth(0.3);
+  // Divider line
   doc.setDrawColor(...colors.lightGray);
+  doc.setLineWidth(0.3);
+  doc.line(margin, currentY, pageWidth - margin, currentY);
+
+  currentY += 8;
+
+  // Verification Section
+  doc.setFontSize(12);
+  doc.setFont("helvetica", "bold");
+  doc.setTextColor(...colors.primaryBlue);
+  doc.text("Certificate Verification", margin, currentY);
+
+  currentY += 8;
+
+  // QR Code and verification info side by side
+  const verificationUrl = `https://aiq.works/verify/${verificationCode}`;
+  const qrDataUrl = await QRCode.toDataURL(verificationUrl, {
+    width: 200,
+    margin: 1,
+    color: { dark: "#1e3a8a", light: "#ffffff" },
+  });
+
+  const qrSize = 28;
+  doc.addImage(qrDataUrl, "PNG", margin, currentY, qrSize, qrSize);
+
+  // Verification text
+  doc.setFontSize(9);
+  doc.setFont("helvetica", "normal");
+  doc.setTextColor(...colors.darkText);
+  doc.text("Scan QR code or visit:", margin + qrSize + 5, currentY + 6);
+  
+  doc.setFont("helvetica", "bold");
+  doc.setTextColor(...colors.accentBlue);
+  doc.text("aiq.works/verify", margin + qrSize + 5, currentY + 12);
+  
+  doc.setFont("helvetica", "normal");
+  doc.setTextColor(...colors.mediumGray);
+  doc.setFontSize(8);
+  doc.text(`Verification Code: ${verificationCode}`, margin + qrSize + 5, currentY + 18);
+  doc.text(`Valid through: ${expiryDate.toLocaleDateString("en-US", { year: "numeric", month: "short", day: "numeric" })}`, margin + qrSize + 5, currentY + 23);
+
+  currentY += qrSize + 10;
+
+  // Assessment Information
+  doc.setDrawColor(...colors.lightGray);
+  doc.setLineWidth(0.3);
+  doc.line(margin, currentY, pageWidth - margin, currentY);
+
+  currentY += 6;
+
+  doc.setFontSize(9);
+  doc.setFont("helvetica", "bold");
+  doc.setTextColor(...colors.primaryBlue);
+  doc.text("About This Assessment", margin, currentY);
+
+  currentY += 6;
+
+  doc.setFontSize(8);
+  doc.setFont("helvetica", "normal");
+  doc.setTextColor(...colors.darkText);
+
+  const assessmentInfo = [
+    "• Uses adaptive Item Response Theory (IRT) with 380+ calibrated items",
+    "• Evaluates 8 core dimensions of AI collaboration capability",
+    "• Results valid for 12 months from issue date",
+    "• Based on research published in Discover Artificial Intelligence journal"
+  ];
+
+  assessmentInfo.forEach((info, idx) => {
+    doc.text(info, margin + 2, currentY + (idx * 5));
+  });
+
+  currentY += 25;
+
+  // Research citation at bottom
+  currentY = pageHeight - 25;
+  doc.setDrawColor(...colors.lightGray);
+  doc.setLineWidth(0.2);
   doc.line(margin, currentY, pageWidth - margin, currentY);
 
   currentY += 5;
-  doc.setFontSize(8);
-  doc.setFont("helvetica", "normal");
-  doc.setTextColor(...colors.mediumGray);
 
-  const methodText = "Assessment uses adaptive testing (IRT) with 380+ calibrated items across 8 AI collaboration dimensions. Results valid for 12 months. For details, visit aiq.works/verify with your code.";
-  const methodLines = doc.splitTextToSize(methodText, contentWidth);
-  doc.text(methodLines, margin, currentY);
+  doc.setFontSize(7.5);
+  doc.setTextColor(...colors.mediumGray);
+  doc.setFont("helvetica", "italic");
+  doc.text(
+    "Research Reference: Ganuthula, V.R.R., Balaraman, K.K. (2025). Development and validation of the AIQ",
+    margin,
+    currentY
+  );
+  doc.text(
+    "assessment framework. Discover Artificial Intelligence. https://doi.org/10.1007/s44163-025-00516-1",
+    margin,
+    currentY + 4
+  );
 
   addFooter();
-  addPageNumber(3, 3);
+  addPageNumber(2, 2);
 
   return doc.output("blob");
 }
