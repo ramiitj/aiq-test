@@ -531,12 +531,12 @@ export async function generatePDFReport(
       fontStyle: "bold",
       fontSize: 10,
       textColor: [255, 255, 255],
-      padding: 4,
+      cellPadding: 4,
       halign: "left",
     },
     bodyStyles: {
       fontSize: 9,
-      padding: 4,
+      cellPadding: 4,
       textColor: colors.darkText,
     },
     alternateRowStyles: {

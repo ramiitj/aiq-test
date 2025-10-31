@@ -137,6 +137,7 @@ const Results = () => {
     try {
       const overallScore = result.scores.reduce((a, b) => a + b, 0) / result.scores.length;
       const dimensionsWithNames = result.scores.map((score, index) => ({
+        code: Object.keys(dimensionCodeMap)[index] || '',
         name: dimensionNames[index],
         score: score,
       }));
