@@ -157,13 +157,19 @@ export async function generatePDFReport(
   expiryDate: Date,
   userEmail?: string,
   testDurationSeconds?: number,
-  assessmentLevel?: string,
+  assessmentLevel: string = 'professional',
+  scoringResult?: any // Optional for backwards compatibility
 ): Promise<Blob> {
   const doc = new jsPDF({
     orientation: "portrait",
     unit: "mm",
     format: "a4",
   });
+
+  // Validate passing score if scoringResult provided
+  if (scoringResult && !scoringResult.passed) {
+    throw new Error(`Certificate requires passing score of ${scoringResult.passingScore} points. Current score: ${scoringResult.overallScore} points.`);
+  }
 
   const pageWidth = doc.internal.pageSize.getWidth();
   const pageHeight = doc.internal.pageSize.getHeight();
@@ -215,14 +221,15 @@ export async function generatePDFReport(
   };
 
   const addFooter = () => {
-    doc.setFontSize(7.5);
+    doc.setFontSize(7);
     doc.setTextColor(...colors.mediumGray);
-    doc.text(
-      "Research by Venkat Ram Reddy Ganuthula & Krishna Kumar Balaraman | IIT Jodhpur",
-      pageWidth / 2,
-      pageHeight - 6,
-      { align: "center" },
-    );
+    const footerY = pageHeight - 8;
+
+    // AIQ™ Trademark notice (left aligned)
+    doc.text("AIQ™ is a trademark of AI Works Pvt Ltd. All Rights Reserved.", margin, footerY);
+    
+    // Verification URL (right aligned)
+    doc.text("Verify at: aiq.works/verify", pageWidth - margin, footerY, { align: "right" });
   };
 
   const addPageNumber = (pageNum: number, totalPages: number) => {
@@ -249,11 +256,18 @@ export async function generatePDFReport(
   doc.setTextColor(255, 255, 255);
   doc.setFontSize(28);
   doc.setFont("helvetica", "bold");
-  doc.text("AIQ ASSESSMENT", pageWidth / 2, 14, { align: "center" });
+  doc.text("AIQ", pageWidth / 2 - 8, 14, { align: "center" });
+  
+  // Add ™ symbol
+  doc.setFontSize(12);
+  doc.text("™", pageWidth / 2 + 12, 11);
+  
+  doc.setFontSize(14);
+  doc.text("ASSESSMENT", pageWidth / 2, 22, { align: "center" });
 
   doc.setFontSize(11);
   doc.setFont("helvetica", "normal");
-  doc.text("Official AI Collaboration Capability Certificate", pageWidth / 2, 22, { align: "center" });
+  doc.text("Official AI Collaboration Capability Certificate", pageWidth / 2, 28, { align: "center" });
 
   doc.setFontSize(9);
   doc.setTextColor(220, 220, 255);
@@ -406,6 +420,28 @@ export async function generatePDFReport(
 
   addFooter();
   addPageNumber(1, 3);
+
+  // Add prominent verification box on page 1
+  currentY += 5;
+  if (currentY + 30 < maxY) {
+    doc.setFillColor(240, 249, 255); // Light blue background
+    doc.roundedRect(margin, currentY, contentWidth, 28, 3, 3, "F");
+
+    doc.setFontSize(10);
+    doc.setTextColor(...colors.darkText);
+    doc.setFont("helvetica", "bold");
+    doc.text("Verify This Certificate Online", margin + 5, currentY + 7);
+
+    doc.setFontSize(11);
+    doc.setFont("helvetica", "bold");
+    doc.setTextColor(0, 102, 204); // Blue color for URL
+    doc.text("aiq.works/verify", margin + 5, currentY + 16);
+
+    doc.setFontSize(8);
+    doc.setTextColor(...colors.mediumGray);
+    doc.setFont("helvetica", "normal");
+    doc.text(`Code: ${verificationCode}`, margin + 5, currentY + 23);
+  }
 
   // PAGE 2: Recommendations Part 1
   doc.addPage();

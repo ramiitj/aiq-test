@@ -10,14 +10,31 @@ import { Share2, Download, Trophy, Copy, ArrowRight, Calendar, Clock, Award, Tre
 import { useToast } from "@/hooks/use-toast";
 import { ShareModal } from "@/components/ShareModal";
 import { generatePDFReport } from "@/lib/pdfGenerator";
+import { loadTestItems } from "@/lib/adaptiveItemSelector";
+import { calculateTestScores } from "@/lib/scoreCalculator";
 
 interface TestResult {
   id: string;
-  scores: number[];
+  scores: any; // Can be array or object
+  answers: any;
   created_at: string;
   completed: boolean;
   test_duration_seconds: number;
   test_version?: string;
+}
+
+interface ScoringResult {
+  dimensionScores: { [dimensionCode: string]: number };
+  overallScore: number;
+  totalPossiblePoints: number;
+  passingScore: number;
+  passed: boolean;
+  percentageScore: number;
+  correctCount: number;
+  totalCount: number;
+  assessmentLevel: string;
+  scoringGuidelines: { [key: string]: string };
+  performanceLevel: string;
 }
 
 const dimensionNames = [
@@ -45,6 +62,7 @@ const dimensionCodeMap: Record<string, string> = {
 const Results = () => {
   const { testId } = useParams();
   const [result, setResult] = useState<TestResult | null>(null);
+  const [scoringResult, setScoringResult] = useState<ScoringResult | null>(null);
   const [loading, setLoading] = useState(true);
   const [shareModalOpen, setShareModalOpen] = useState(false);
   const [verificationCode, setVerificationCode] = useState<string>("");
@@ -87,29 +105,29 @@ const Results = () => {
         return;
       }
 
-      // Parse scores - handle both object and array formats
-      let parsedScores = typeof data.scores === "string" ? JSON.parse(data.scores) : data.scores;
-
-      // Convert object to array if needed
-      let scoresArray: number[];
-      if (Array.isArray(parsedScores)) {
-        scoresArray = parsedScores;
-      } else if (typeof parsedScores === "object" && parsedScores !== null) {
-        // Convert object with dimension codes to array
-        scoresArray = Object.keys(dimensionCodeMap).map((code) => parsedScores[code] || 0);
-      } else {
-        // Default to zeros if no scores
-        scoresArray = new Array(8).fill(0);
-      }
-
+      // Store test data
       setResult({
         id: data.id,
-        scores: scoresArray,
+        scores: data.scores,
+        answers: data.answers,
         created_at: data.created_at,
         completed: data.completed,
         test_duration_seconds: Number(data.test_duration_seconds) || 0,
         test_version: data.test_version || "beginner",
       });
+
+      // Recalculate scores with new IRT system
+      const testVersion = (data.test_version || "beginner") as 'beginner' | 'professional' | 'expert';
+      const assessmentData = await loadTestItems(testVersion);
+      
+      const calculatedScores = calculateTestScores(
+        (data.answers || {}) as Record<string, string>,
+        assessmentData.dimensions,
+        assessmentData.scoringConfiguration,
+        testVersion
+      );
+      
+      setScoringResult(calculatedScores);
 
       // Get user's name from profile (registered name)
       const { data: profile } = await supabase
@@ -132,15 +150,25 @@ const Results = () => {
   };
 
   const handleDownloadPDF = async () => {
-    if (!result) return;
+    if (!result || !scoringResult) return;
+
+    // Check if user passed
+    if (!scoringResult.passed) {
+      toast({
+        title: "Certificate Not Available",
+        description: `You need a passing score of ${scoringResult.passingScore} points to download your certificate. You scored ${scoringResult.overallScore} points.`,
+        variant: "destructive",
+      });
+      return;
+    }
 
     setDownloadingPDF(true);
     try {
-      const overallScore = result.scores.reduce((a, b) => a + b, 0) / result.scores.length;
-      const dimensionsWithNames = result.scores.map((score, index) => ({
-        code: Object.keys(dimensionCodeMap)[index] || '',
+      // Convert dimension scores to array format for PDF
+      const dimensionsWithNames = Object.keys(dimensionCodeMap).map((code, index) => ({
+        code,
         name: dimensionNames[index],
-        score: score,
+        score: scoringResult.dimensionScores[code] || 0,
       }));
 
       const issueDate = new Date(result.created_at);
@@ -167,8 +195,8 @@ const Results = () => {
             test_id: result.id,
             user_id: (await supabase.auth.getUser()).data.user!.id,
             share_code: code,
-            overall_score: overallScore,
-            dimension_scores: JSON.stringify(result.scores),
+            overall_score: scoringResult.percentageScore,
+            dimension_scores: JSON.stringify(scoringResult.dimensionScores),
             user_name: userName,
             test_completion_date: result.created_at,
             test_duration_seconds: result.test_duration_seconds,
@@ -179,15 +207,15 @@ const Results = () => {
         setVerificationCode(code);
       }
 
-      // Generate PDF - ensure duration is a valid number
+      // Generate PDF with new scoring data
       const pdfBlob = await generatePDFReport(
-        overallScore,
+        scoringResult.percentageScore,
         dimensionsWithNames,
         code,
         issueDate,
         expiryDate,
         userName,
-        result.test_duration_seconds || 0,
+        result.test_duration_seconds || 0
       );
 
       // Update report_generated_at
@@ -208,7 +236,7 @@ const Results = () => {
 
       toast({
         title: "PDF Downloaded",
-        description: "Your AIQ certificate has been downloaded",
+        description: "Your AIQ™ certificate has been downloaded",
       });
     } catch (error: any) {
       toast({
@@ -242,14 +270,12 @@ const Results = () => {
         const randomPart = crypto.randomUUID().replace(/-/g, "").substring(0, 16).toUpperCase();
         shareCode = `AIQ-${year}-${randomPart}`;
 
-        const overallScore = result.scores.reduce((a, b) => a + b, 0) / result.scores.length;
-
         const { error } = await supabase.from("public_results").insert({
           test_id: result.id,
           user_id: (await supabase.auth.getUser()).data.user!.id,
           share_code: shareCode,
-          overall_score: overallScore,
-          dimension_scores: JSON.stringify(result.scores),
+          overall_score: scoringResult?.percentageScore || 0,
+          dimension_scores: JSON.stringify(scoringResult?.dimensionScores || {}),
           user_name: userName,
           test_completion_date: result.created_at,
           test_duration_seconds: result.test_duration_seconds,
@@ -280,59 +306,110 @@ const Results = () => {
     );
   }
 
-  if (!result) {
+  if (!result || !scoringResult) {
     return null;
   }
 
-  const overallScore = result.scores.reduce((a, b) => a + b, 0) / result.scores.length;
-
-  const dimensionsWithNames = result.scores.map((score, index) => ({
+  const dimensionsWithNames = Object.keys(dimensionCodeMap).map((code, index) => ({
     name: dimensionNames[index],
-    score: score,
+    score: scoringResult.dimensionScores[code] || 0,
   }));
 
   const verificationUrl = verificationCode ? `https://aiq.works/verify/${verificationCode}` : "";
 
-  const getScoreLevel = (score: number) => {
-    if (score >= 80)
+  const getScoreLevel = (points: number) => {
+    const percentage = (points / scoringResult.totalPossiblePoints) * 100;
+    if (percentage >= 80)
       return {
         label: "Exceptional",
         color: "text-green-600 dark:text-green-400",
         bg: "bg-green-50 dark:bg-green-950/20",
       };
-    if (score >= 60)
+    if (percentage >= 60)
       return { label: "Proficient", color: "text-blue-600 dark:text-blue-400", bg: "bg-blue-50 dark:bg-blue-950/20" };
-    if (score >= 40)
+    if (percentage >= 40)
       return {
         label: "Developing",
         color: "text-yellow-600 dark:text-yellow-400",
         bg: "bg-yellow-50 dark:bg-yellow-950/20",
       };
     return {
-      label: "Beginner",
+      label: "Emerging",
       color: "text-orange-600 dark:text-orange-400",
       bg: "bg-orange-50 dark:bg-orange-950/20",
     };
   };
-
-  const scoreLevel = getScoreLevel(overallScore);
 
   return (
     <div className="min-h-screen flex flex-col animate-fade-in">
       <Navigation isAuthenticated={true} />
 
       <main className="container py-8 max-w-5xl flex-grow">
+        {/* Pass/Fail Banner */}
+        {scoringResult.passed ? (
+          <div className="bg-gradient-to-r from-green-500 to-emerald-600 text-white p-6 rounded-xl mb-8 shadow-lg">
+            <div className="flex items-start gap-4">
+              <div className="p-3 bg-white/20 rounded-full flex-shrink-0">
+                <CheckCircle2 className="h-8 w-8" />
+              </div>
+              <div className="flex-1">
+                <h2 className="text-2xl font-black mb-2">
+                  🎉 Congratulations! You Passed the AIQ<sup className="text-[0.6em]">™</sup> Assessment
+                </h2>
+                <p className="text-white/90 text-lg mb-3">
+                  You achieved <span className="font-bold">{scoringResult.overallScore} points</span> out of {scoringResult.totalPossiblePoints} 
+                  (passing score: {scoringResult.passingScore})
+                </p>
+                <p className="text-sm text-white/80">
+                  Performance Level: <span className="font-semibold">{scoringResult.performanceLevel}</span> • 
+                  {scoringResult.correctCount} out of {scoringResult.totalCount} questions correct
+                </p>
+              </div>
+            </div>
+          </div>
+        ) : (
+          <div className="bg-gradient-to-r from-amber-500 to-orange-600 text-white p-6 rounded-xl mb-8 shadow-lg">
+            <div className="flex items-start gap-4">
+              <div className="p-3 bg-white/20 rounded-full flex-shrink-0">
+                <AlertCircle className="h-8 w-8" />
+              </div>
+              <div className="flex-1">
+                <h2 className="text-2xl font-black mb-2">
+                  Assessment Complete - Continue Learning
+                </h2>
+                <p className="text-white/90 text-lg mb-3">
+                  You achieved <span className="font-bold">{scoringResult.overallScore} points</span> out of {scoringResult.totalPossiblePoints}. 
+                  Passing score required: <span className="font-bold">{scoringResult.passingScore} points</span>.
+                </p>
+                <p className="text-sm text-white/80 mb-3">
+                  Performance Level: <span className="font-semibold">{scoringResult.performanceLevel}</span> • 
+                  {scoringResult.correctCount} out of {scoringResult.totalCount} questions correct
+                </p>
+                <div className="bg-white/10 rounded-lg p-4 mt-4">
+                  <p className="text-sm font-semibold mb-2">💡 Next Steps:</p>
+                  <ul className="text-sm space-y-1 text-white/90">
+                    <li>• Review your dimension breakdown below to identify growth areas</li>
+                    <li>• Focus on the recommendations provided for each dimension</li>
+                    <li>• Retake the assessment after additional preparation and practice</li>
+                    <li>• Certificate will be available once you achieve the passing score</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
+
         {/* Hero Section */}
         <div className="mb-8">
           <div className="flex items-center justify-center mb-4">
-            <div className="p-3 bg-gradient-to-br from-yellow-400 to-yellow-600 rounded-full">
+            <div className={`p-3 rounded-full ${scoringResult.passed ? 'bg-gradient-to-br from-green-400 to-emerald-600' : 'bg-gradient-to-br from-amber-400 to-orange-600'}`}>
               <Trophy className="h-10 w-10 text-white" />
             </div>
           </div>
           <h1 className="text-3xl lg:text-4xl font-black text-center mb-2 tracking-tight">
-            Congratulations, {userName}!
+            {scoringResult.passed ? `Congratulations, ${userName}!` : `Well Done, ${userName}!`}
           </h1>
-          <p className="text-xl text-muted-foreground mb-4">You've completed the AIQ<sup className="text-[0.6em]">™</sup> Assessment</p>
+          <p className="text-center text-muted-foreground font-medium mb-4">You've completed the AIQ<sup className="text-[0.6em]">™</sup> {result.test_version === 'beginner' ? 'Beginner' : result.test_version === 'professional' ? 'Professional' : 'Expert'} Assessment</p>
 
           {/* Test Meta Info */}
           <div className="flex items-center justify-center gap-4 text-sm text-muted-foreground">
@@ -361,24 +438,24 @@ const Results = () => {
         </div>
 
         {/* Overall Score Card */}
-        <Card className={`mb-6 shadow-sm border-2 ${scoreLevel.bg}`}>
+        <Card className={`mb-6 shadow-lg border-2 ${scoringResult.passed ? 'border-green-500 bg-green-50/50 dark:bg-green-950/20' : 'border-amber-500 bg-amber-50/50 dark:bg-amber-950/20'}`}>
           <CardContent className="pt-6 pb-6">
             <div className="text-center">
-              <p className="text-sm font-bold text-muted-foreground mb-2">Overall AIQ Score</p>
+              <p className="text-sm font-bold text-muted-foreground mb-2">Overall Score</p>
               <div className="flex items-center justify-center gap-3 mb-3">
-                <div className={`text-6xl font-black tabular-nums tracking-tight ${scoreLevel.color}`}>
-                  {overallScore.toFixed(1)}
+                <div className={`text-6xl font-black tabular-nums tracking-tight ${scoringResult.passed ? 'text-green-600' : 'text-amber-600'}`}>
+                  {scoringResult.overallScore.toFixed(1)}
                 </div>
                 <div className="text-left">
                   <div
-                    className={`inline-block px-3 py-1 rounded-full text-sm font-bold ${scoreLevel.bg} ${scoreLevel.color}`}
+                    className={`inline-block px-3 py-1 rounded-full text-sm font-bold ${scoringResult.passed ? 'bg-green-100 text-green-600' : 'bg-amber-100 text-amber-600'}`}
                   >
-                    {scoreLevel.label}
+                    {scoringResult.performanceLevel}
                   </div>
-                  <p className="text-xs text-muted-foreground mt-1">out of 100</p>
+                  <p className="text-xs text-muted-foreground mt-1">out of {scoringResult.totalPossiblePoints} points</p>
                 </div>
               </div>
-              <Progress value={overallScore} className="h-3 max-w-md mx-auto" />
+              <Progress value={scoringResult.percentageScore} className="h-3 max-w-md mx-auto" />
             </div>
           </CardContent>
         </Card>
@@ -420,10 +497,14 @@ const Results = () => {
           </CardHeader>
           <CardContent className="pt-0">
             <div className="space-y-4">
-              {result.scores.map((score, index) => {
+              {Object.keys(dimensionCodeMap).map((code, index) => {
+                const score = scoringResult.dimensionScores[code] || 0;
                 const dimLevel = getScoreLevel(score);
+                const maxPoints = scoringResult.totalPossiblePoints / 8; // Points per dimension
+                const percentage = (score / maxPoints) * 100;
+                
                 return (
-                  <div key={index} className="group">
+                  <div key={code} className="group">
                     <div className="flex justify-between items-center mb-2">
                       <div className="flex-1">
                         <h3 className="text-sm font-bold group-hover:text-primary transition-colors">
@@ -434,10 +515,12 @@ const Results = () => {
                         <span className={`text-xs font-semibold px-2 py-0.5 rounded ${dimLevel.bg} ${dimLevel.color}`}>
                           {dimLevel.label}
                         </span>
-                        <span className="text-lg font-black tabular-nums w-12 text-right">{score.toFixed(1)}</span>
+                        <span className="text-lg font-black tabular-nums w-16 text-right">
+                          {score.toFixed(1)} pts
+                        </span>
                       </div>
                     </div>
-                    <Progress value={score} className="h-2" />
+                    <Progress value={percentage} className="h-2" />
                   </div>
                 );
               })}
@@ -502,17 +585,21 @@ const Results = () => {
                   <span className="text-green-600">✓</span> Top Strengths
                 </h3>
                 <div className="space-y-1">
-                  {result.scores
-                    .map((score, index) => ({ score, name: dimensionNames[index], index }))
+                  {Object.keys(dimensionCodeMap)
+                    .map((code, index) => ({ 
+                      score: scoringResult.dimensionScores[code] || 0, 
+                      name: dimensionNames[index], 
+                      code 
+                    }))
                     .sort((a, b) => b.score - a.score)
                     .slice(0, 3)
                     .map((dim) => (
                       <div
-                        key={dim.index}
+                        key={dim.code}
                         className="flex items-center justify-between text-xs bg-green-50 dark:bg-green-950/20 p-2 rounded"
                       >
                         <span className="font-medium">{dim.name}</span>
-                        <span className="font-bold text-green-600 dark:text-green-400">{dim.score.toFixed(1)}</span>
+                        <span className="font-bold text-green-600 dark:text-green-400">{dim.score.toFixed(1)} pts</span>
                       </div>
                     ))}
                 </div>
@@ -524,17 +611,21 @@ const Results = () => {
                   <span className="text-blue-600">→</span> Areas for Growth
                 </h3>
                 <div className="space-y-1">
-                  {result.scores
-                    .map((score, index) => ({ score, name: dimensionNames[index], index }))
+                  {Object.keys(dimensionCodeMap)
+                    .map((code, index) => ({ 
+                      score: scoringResult.dimensionScores[code] || 0, 
+                      name: dimensionNames[index], 
+                      code 
+                    }))
                     .sort((a, b) => a.score - b.score)
                     .slice(0, 3)
                     .map((dim) => (
                       <div
-                        key={dim.index}
+                        key={dim.code}
                         className="flex items-center justify-between text-xs bg-blue-50 dark:bg-blue-950/20 p-2 rounded"
                       >
                         <span className="font-medium">{dim.name}</span>
-                        <span className="font-bold text-blue-600 dark:text-blue-400">{dim.score.toFixed(1)}</span>
+                        <span className="font-bold text-blue-600 dark:text-blue-400">{dim.score.toFixed(1)} pts</span>
                       </div>
                     ))}
                 </div>
@@ -558,7 +649,7 @@ const Results = () => {
         <ShareModal
           open={shareModalOpen}
           onOpenChange={setShareModalOpen}
-          score={overallScore}
+          score={scoringResult.percentageScore}
           dimensions={dimensionsWithNames}
           verificationCode={verificationCode}
           verificationUrl={verificationUrl}
