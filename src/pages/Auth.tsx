@@ -134,7 +134,7 @@ const Auth = () => {
               <span className="text-white font-black text-xl">A</span>
             </div>
             <span className="text-2xl font-black tracking-tight bg-gradient-to-r from-blue-900 to-blue-600 bg-clip-text text-transparent">
-              AIQ
+              AIQ <sup className="text-[0.6em] text-blue-600">™</sup>
             </span>
           </div>
           <p className="text-sm text-muted-foreground font-medium">Measure Your AI Intelligence</p>
