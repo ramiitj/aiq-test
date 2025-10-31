@@ -353,7 +353,7 @@ const About = () => {
               <CardContent className="pt-6 pb-6">
                 <h3 className="font-bold text-xl mb-1">Venkat Ram Reddy Ganuthula, Ph.D.</h3>
                 <p className="text-sm text-blue-900 font-semibold mb-3">
-                  Assistant Professor, School of Management and Entrepreneurship
+                  Assistant Professor, School of Management and Entrepreneurship, IIT Jodhpur
                 </p>
                 <p className="text-sm text-muted-foreground leading-relaxed mb-2">
                   Specializes in behavioral science, judgment and decision-making, and the intersection of AI and human
@@ -369,7 +369,7 @@ const About = () => {
               <CardContent className="pt-6 pb-6">
                 <h3 className="font-bold text-xl mb-1">Krishna Kumar Balaraman, Ph.D.</h3>
                 <p className="text-sm text-blue-900 font-semibold mb-3">
-                  Associate Professor, School of Management and Entrepreneurship
+                  Associate Professor, School of Management and Entrepreneurship, IIT Jodhpur
                 </p>
                 <p className="text-sm text-muted-foreground leading-relaxed mb-2">
                   Brings 20+ years of technology leadership experience. Research focuses on strategic foresight and AI
