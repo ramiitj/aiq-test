@@ -343,24 +343,17 @@ const About = () => {
         <div className="mb-16">
           <div className="text-center mb-8">
             <h2 className="text-4xl font-extrabold mb-3">The Research Team</h2>
-            <p className="text-muted-foreground max-w-2xl mx-auto">
-              Research by Experienced Academicians
-            </p>
+            <p className="text-muted-foreground max-w-2xl mx-auto">Research by Experienced Academicians</p>
           </div>
 
           <div className="grid md:grid-cols-2 gap-6">
             <Card className="shadow-sm border">
               <CardContent className="pt-6 pb-6">
                 <h3 className="font-bold text-xl mb-1">Venkat Ram Reddy Ganuthula, Ph.D.</h3>
-                <p className="text-sm text-blue-900 font-semibold mb-3">
-                  Assistant Professor, School of Management and Entrepreneurship, IIT Jodhpur
-                </p>
+                <p className="text-sm text-blue-900 font-semibold mb-3">https://www.linkedin.com/in/ganuthula/</p>
                 <p className="text-sm text-muted-foreground leading-relaxed mb-2">
                   Specializes in behavioral science, judgment and decision-making, and the intersection of AI and human
                   behavior.
-                </p>
-                <p className="text-xs text-muted-foreground">
-                  <span className="font-semibold">Contact:</span> ram@iitj.ac.in
                 </p>
               </CardContent>
             </Card>
@@ -368,15 +361,10 @@ const About = () => {
             <Card className="shadow-sm border">
               <CardContent className="pt-6 pb-6">
                 <h3 className="font-bold text-xl mb-1">Krishna Kumar Balaraman, Ph.D.</h3>
-                <p className="text-sm text-blue-900 font-semibold mb-3">
-                  Associate Professor, School of Management and Entrepreneurship, IIT Jodhpur
-                </p>
+                <p className="text-sm text-blue-900 font-semibold mb-3">https://www.linkedin.com/in/balakk/</p>
                 <p className="text-sm text-muted-foreground leading-relaxed mb-2">
                   Brings 20+ years of technology leadership experience. Research focuses on strategic foresight and AI
                   governance.
-                </p>
-                <p className="text-xs text-muted-foreground">
-                  <span className="font-semibold">Contact:</span> krishna@iitj.ac.in
                 </p>
               </CardContent>
             </Card>
