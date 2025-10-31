@@ -14,6 +14,7 @@ import Results from "./pages/Results";
 import Admin from "./pages/Admin";
 import Verify from "./pages/Verify";
 import Privacy from "./pages/Privacy";
+import Sitemap from "./pages/Sitemap";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -35,6 +36,7 @@ const App = () => (
           <Route path="/admin" element={<Admin />} />
           <Route path="/verify/:code" element={<Verify />} />
           <Route path="/privacy" element={<Privacy />} />
+          <Route path="/sitemap" element={<Sitemap />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>

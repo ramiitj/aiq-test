@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import {
   Brain,
   TrendingUp,
@@ -15,6 +16,7 @@ import {
 } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { Navigation } from "@/components/Navigation";
+import Footer from "@/components/Footer";
 
 const Index = () => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -344,6 +346,82 @@ const Index = () => {
           </Card>
         </section>
 
+        {/* FAQ Section */}
+        <section className="container py-16 max-w-4xl" aria-labelledby="faq-heading">
+          <h2 id="faq-heading" className="text-4xl font-extrabold text-center mb-4 tracking-tight">
+            Frequently Asked Questions
+          </h2>
+          <p className="text-center text-muted-foreground mb-10 max-w-2xl mx-auto">
+            Everything you need to know about the AIQ assessment
+          </p>
+          <Accordion type="single" collapsible className="w-full">
+            <AccordionItem value="item-1">
+              <AccordionTrigger className="text-left font-semibold">
+                What is AIQ?
+              </AccordionTrigger>
+              <AccordionContent className="text-muted-foreground leading-relaxed">
+                AIQ (Artificial Intelligence Quotient) is a scientifically validated measure of an individual's ability to effectively collaborate with AI systems. It assesses 8 key dimensions of AI collaboration intelligence through a comprehensive, research-based assessment including strategic understanding, prompt engineering, critical evaluation, and ethical judgment.
+              </AccordionContent>
+            </AccordionItem>
+            <AccordionItem value="item-2">
+              <AccordionTrigger className="text-left font-semibold">
+                How long does the AIQ assessment take?
+              </AccordionTrigger>
+              <AccordionContent className="text-muted-foreground leading-relaxed">
+                The assessment typically takes 20-30 minutes to complete, depending on the level you choose. The Beginner level has 60 questions (90 minutes), Professional and Expert levels have 80 questions each (120-150 minutes). The assessment uses adaptive testing technology to efficiently measure your AI collaboration abilities across all 8 dimensions.
+              </AccordionContent>
+            </AccordionItem>
+            <AccordionItem value="item-3">
+              <AccordionTrigger className="text-left font-semibold">
+                Is the AIQ assessment free?
+              </AccordionTrigger>
+              <AccordionContent className="text-muted-foreground leading-relaxed">
+                Yes, the AIQ assessment is completely free. You'll receive instant results with a detailed analysis of your AI collaboration abilities across 8 dimensions, personalized insights into your strengths and growth areas, and a shareable certificate that you can add to your professional profiles.
+              </AccordionContent>
+            </AccordionItem>
+            <AccordionItem value="item-4">
+              <AccordionTrigger className="text-left font-semibold">
+                How is AIQ different from IQ?
+              </AccordionTrigger>
+              <AccordionContent className="text-muted-foreground leading-relaxed">
+                While IQ measures general cognitive abilities like reasoning and problem-solving, AIQ specifically measures your ability to collaborate effectively with AI systems. It assesses specialized skills like AI prompt engineering, critical evaluation of AI outputs, ethical AI use, creative problem-solving with AI tools, and strategic understanding of AI capabilities and limitations.
+              </AccordionContent>
+            </AccordionItem>
+            <AccordionItem value="item-5">
+              <AccordionTrigger className="text-left font-semibold">
+                Which assessment level should I choose?
+              </AccordionTrigger>
+              <AccordionContent className="text-muted-foreground leading-relaxed">
+                Choose Beginner if you're new to AI or have less than 6 months of experience. Select Professional if you're a working professional who regularly uses AI tools in your work. Pick Expert if you're in a leadership, research, or strategic role with extensive AI experience. The assessment adapts to your skill level for more accurate results.
+              </AccordionContent>
+            </AccordionItem>
+            <AccordionItem value="item-6">
+              <AccordionTrigger className="text-left font-semibold">
+                Is the AIQ assessment scientifically validated?
+              </AccordionTrigger>
+              <AccordionContent className="text-muted-foreground leading-relaxed">
+                Yes! The AIQ assessment is backed by rigorous peer-reviewed academic research published in Discover Artificial Intelligence (Springer Nature, 2025). It uses Item Response Theory (IRT), the same psychometric methodology used in standardized tests like the GRE and SAT. The assessment was developed at IIT Jodhpur with 400+ calibrated items across 8 validated dimensions.
+              </AccordionContent>
+            </AccordionItem>
+            <AccordionItem value="item-7">
+              <AccordionTrigger className="text-left font-semibold">
+                Can I retake the assessment?
+              </AccordionTrigger>
+              <AccordionContent className="text-muted-foreground leading-relaxed">
+                Yes, you can retake the assessment at any time to track your improvement. We recommend waiting at least 2-3 weeks between attempts to allow time for learning and skill development. Your dashboard will show all your assessment history, allowing you to monitor your progress over time.
+              </AccordionContent>
+            </AccordionItem>
+            <AccordionItem value="item-8">
+              <AccordionTrigger className="text-left font-semibold">
+                What do I get after completing the assessment?
+              </AccordionTrigger>
+              <AccordionContent className="text-muted-foreground leading-relaxed">
+                After completing the assessment, you'll receive: (1) Your overall AIQ score and classification, (2) Detailed breakdown of your performance across all 8 dimensions, (3) Personalized insights highlighting your strengths and areas for growth, (4) A verifiable digital certificate with a unique QR code that you can share on LinkedIn, resume, or professional profiles, and (5) Access to your complete assessment history in your dashboard.
+              </AccordionContent>
+            </AccordionItem>
+          </Accordion>
+        </section>
+
         {/* CTA Section */}
         <section className="bg-gradient-to-br from-blue-900 to-blue-800 text-white py-16">
           <div className="container text-center max-w-3xl">
@@ -377,16 +455,7 @@ const Index = () => {
         </section>
       </main>
 
-      <footer className="border-t py-8 bg-secondary/20 mt-auto">
-        <div className="container text-center text-sm text-muted-foreground px-4">
-          <p className="font-medium leading-relaxed">
-            AIQ<sup className="text-[0.6em]">™</sup> is a trademark of AI Works Pvt Ltd. All Rights Reserved.
-          </p>
-          <p className="mt-2 leading-relaxed">
-            All other trademarks, logos, and brand names are the property of their respective owners.
-          </p>
-        </div>
-      </footer>
+      <Footer />
     </div>
   );
 };
