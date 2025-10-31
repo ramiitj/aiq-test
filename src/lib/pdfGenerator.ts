@@ -167,13 +167,13 @@ export async function generatePDFReport(
 
   const pageWidth = doc.internal.pageSize.getWidth();
   const pageHeight = doc.internal.pageSize.getHeight();
-  const margin = 15;
+  const margin = 20;
   const contentWidth = pageWidth - 2 * margin;
+  const maxY = pageHeight - 15; // Maximum Y position before footer
 
   const colors = {
     primaryBlue: [25, 46, 110] as [number, number, number],
     accentBlue: [41, 98, 255] as [number, number, number],
-    darkBlue: [15, 23, 42] as [number, number, number],
     lightGray: [243, 244, 246] as [number, number, number],
     mediumGray: [100, 116, 139] as [number, number, number],
     darkText: [15, 23, 42] as [number, number, number],
@@ -228,11 +228,21 @@ export async function generatePDFReport(
   const addPageNumber = (pageNum: number, totalPages: number) => {
     doc.setFontSize(10);
     doc.setTextColor(...colors.mediumGray);
-    doc.text(`${pageNum}/${totalPages}`, pageWidth - margin - 5, pageHeight - 8, { align: "right" });
+    doc.text(`${pageNum}/${totalPages}`, pageWidth - margin, pageHeight - 8, { align: "right" });
+  };
+
+  // Helper function to add wrapped text with proper margins
+  const addWrappedText = (text: string, x: number, y: number, maxWidth: number, lineHeight: number = 5): number => {
+    const lines = doc.splitTextToSize(text, maxWidth);
+    lines.forEach((line: string, index: number) => {
+      doc.text(line, x, y + index * lineHeight);
+    });
+    return y + lines.length * lineHeight;
   };
 
   let currentY = 0;
 
+  // PAGE 1: Header and Overview
   doc.setFillColor(...colors.primaryBlue);
   doc.rect(0, 0, pageWidth, 38, "F");
 
@@ -258,6 +268,7 @@ export async function generatePDFReport(
 
   currentY = 48;
 
+  // Overall Score Box
   const centerX = pageWidth / 2;
 
   doc.setDrawColor(...colors.primaryBlue);
@@ -301,6 +312,7 @@ export async function generatePDFReport(
 
   currentY += 11;
 
+  // Performance Summary Table
   doc.setFontSize(14);
   doc.setFont("helvetica", "bold");
   doc.setTextColor(...colors.primaryBlue);
@@ -337,9 +349,9 @@ export async function generatePDFReport(
       fillColor: [249, 250, 251],
     },
     columnStyles: {
-      0: { cellWidth: 95, halign: "left", fontStyle: "normal" },
-      1: { cellWidth: 22, halign: "center", fontStyle: "bold" },
-      2: { cellWidth: 33, halign: "center", fontStyle: "normal" },
+      0: { cellWidth: 90, halign: "left" },
+      1: { cellWidth: 20, halign: "center", fontStyle: "bold" },
+      2: { cellWidth: 35, halign: "center" },
     },
     margin: { left: margin, right: margin },
     didParseCell: function (data) {
@@ -353,6 +365,7 @@ export async function generatePDFReport(
 
   currentY = (doc as any).lastAutoTable.finalY + 11;
 
+  // Performance Visualization
   doc.setFontSize(14);
   doc.setFont("helvetica", "bold");
   doc.setTextColor(...colors.primaryBlue);
@@ -360,7 +373,7 @@ export async function generatePDFReport(
 
   currentY += 7;
 
-  const barMaxWidth = contentWidth - 58;
+  const barMaxWidth = contentWidth - 60;
   const barHeight = 7;
   const barSpacing = 10;
 
@@ -370,23 +383,23 @@ export async function generatePDFReport(
     doc.setFontSize(9);
     doc.setFont("helvetica", "normal");
     doc.setTextColor(...colors.darkText);
-    const label = fullName.length > 26 ? fullName.substring(0, 23) + "..." : fullName;
+    const label = fullName.length > 25 ? fullName.substring(0, 22) + "..." : fullName;
     doc.text(label, margin, currentY + 4);
 
     doc.setFillColor(238, 238, 238);
-    doc.roundedRect(margin + 54, currentY, barMaxWidth, barHeight, 1.5, 1.5, "F");
+    doc.roundedRect(margin + 55, currentY, barMaxWidth, barHeight, 1.5, 1.5, "F");
 
     const scoreWidth = (dim.score / 100) * barMaxWidth;
     const barColor = getLevelColor(dim.score);
     doc.setFillColor(...barColor);
     if (scoreWidth > 0) {
-      doc.roundedRect(margin + 54, currentY, scoreWidth, barHeight, 1.5, 1.5, "F");
+      doc.roundedRect(margin + 55, currentY, scoreWidth, barHeight, 1.5, 1.5, "F");
     }
 
     doc.setFontSize(10);
     doc.setFont("helvetica", "bold");
     doc.setTextColor(...barColor);
-    doc.text(`${dim.score.toFixed(1)}`, pageWidth - margin - 3, currentY + 4);
+    doc.text(`${dim.score.toFixed(1)}`, pageWidth - margin - 2, currentY + 4);
 
     currentY += barSpacing;
   });
@@ -394,8 +407,9 @@ export async function generatePDFReport(
   addFooter();
   addPageNumber(1, 3);
 
+  // PAGE 2: Recommendations Part 1
   doc.addPage();
-  currentY = 15;
+  currentY = 18;
 
   doc.setFontSize(15);
   doc.setFont("helvetica", "bold");
@@ -416,9 +430,10 @@ export async function generatePDFReport(
   } else {
     levelDesc = "Strategic development priorities for professional AI capability advancement";
   }
-  doc.text(levelDesc, margin, currentY);
 
-  currentY += 9;
+  // Use proper text wrapping for description
+  currentY = addWrappedText(levelDesc, margin, currentY, contentWidth, 5);
+  currentY += 5;
 
   const allDimsSorted = [...dimensionScores].sort((a, b) => a.score - b.score);
 
@@ -456,31 +471,32 @@ export async function generatePDFReport(
       cellPadding: 3.5,
     },
     bodyStyles: {
-      fontSize: 9,
+      fontSize: 8.5,
       textColor: colors.darkText,
       cellPadding: 4,
       lineColor: [215, 215, 215],
       lineWidth: 0.1,
       valign: "top",
+      halign: "left", // Changed from justify to left alignment
     },
     columnStyles: {
       0: {
-        cellWidth: 42,
+        cellWidth: 38,
         halign: "left",
         fontStyle: "bold",
       },
       1: {
-        cellWidth: 16,
+        cellWidth: 15,
         halign: "center",
         fontStyle: "bold",
       },
       2: {
-        cellWidth: 24,
+        cellWidth: 22,
         halign: "center",
       },
       3: {
-        cellWidth: contentWidth - 87,
-        halign: "justify",
+        cellWidth: contentWidth - 80,
+        halign: "left", // Left-aligned for better readability
       },
     },
     margin: { left: margin, right: margin },
@@ -496,75 +512,85 @@ export async function generatePDFReport(
   addFooter();
   addPageNumber(2, 3);
 
-  if (secondHalf.length > 0) {
-    doc.addPage();
-    currentY = 15;
+  // PAGE 3: Recommendations Part 2 and Verification
+  doc.addPage();
+  currentY = 18;
 
-    doc.setFontSize(15);
-    doc.setFont("helvetica", "bold");
-    doc.setTextColor(...colors.primaryBlue);
-    doc.text("Development Recommendations (continued)", margin, currentY);
+  doc.setFontSize(15);
+  doc.setFont("helvetica", "bold");
+  doc.setTextColor(...colors.primaryBlue);
+  doc.text("Development Recommendations (continued)", margin, currentY);
 
-    currentY += 9;
+  currentY += 10;
 
-    const recData2 = createRecData(secondHalf);
+  const recData2 = createRecData(secondHalf);
 
-    autoTable(doc, {
-      startY: currentY,
-      head: [["Dimension", "Score", "Level", "Recommended Actions"]],
-      body: recData2,
-      theme: "grid",
-      headStyles: {
-        fillColor: colors.primaryBlue,
+  autoTable(doc, {
+    startY: currentY,
+    head: [["Dimension", "Score", "Level", "Recommended Actions"]],
+    body: recData2,
+    theme: "grid",
+    headStyles: {
+      fillColor: colors.primaryBlue,
+      fontStyle: "bold",
+      fontSize: 10,
+      textColor: colors.white,
+      halign: "center",
+      cellPadding: 3.5,
+    },
+    bodyStyles: {
+      fontSize: 8.5,
+      textColor: colors.darkText,
+      cellPadding: 4,
+      lineColor: [215, 215, 215],
+      lineWidth: 0.1,
+      valign: "top",
+      halign: "left", // Changed from justify to left alignment
+    },
+    columnStyles: {
+      0: {
+        cellWidth: 38,
+        halign: "left",
         fontStyle: "bold",
-        fontSize: 10,
-        textColor: colors.white,
+      },
+      1: {
+        cellWidth: 15,
         halign: "center",
-        cellPadding: 3.5,
+        fontStyle: "bold",
       },
-      bodyStyles: {
-        fontSize: 9,
-        textColor: colors.darkText,
-        cellPadding: 4,
-        lineColor: [215, 215, 215],
-        lineWidth: 0.1,
-        valign: "top",
+      2: {
+        cellWidth: 22,
+        halign: "center",
       },
-      columnStyles: {
-        0: {
-          cellWidth: 42,
-          halign: "left",
-          fontStyle: "bold",
-        },
-        1: {
-          cellWidth: 16,
-          halign: "center",
-          fontStyle: "bold",
-        },
-        2: {
-          cellWidth: 24,
-          halign: "center",
-        },
-        3: {
-          cellWidth: contentWidth - 87,
-          halign: "justify",
-        },
+      3: {
+        cellWidth: contentWidth - 80,
+        halign: "left", // Left-aligned for better readability
       },
-      margin: { left: margin, right: margin },
-      didParseCell: function (data) {
-        if (data.column.index === 1 && data.section === "body") {
-          const score = parseFloat(data.cell.text[0]);
-          const cellColor = getLevelColor(score);
-          data.cell.styles.textColor = cellColor;
-        }
-      },
-    });
+    },
+    margin: { left: margin, right: margin },
+    didParseCell: function (data) {
+      if (data.column.index === 1 && data.section === "body") {
+        const score = parseFloat(data.cell.text[0]);
+        const cellColor = getLevelColor(score);
+        data.cell.styles.textColor = cellColor;
+      }
+    },
+  });
 
-    currentY = (doc as any).lastAutoTable.finalY + 12;
+  currentY = (doc as any).lastAutoTable.finalY + 15;
+
+  // Ensure we don't go past the maximum Y position
+  if (currentY > maxY - 50) {
+    doc.addPage();
+    currentY = 18;
   }
 
-  doc.addPage();
-  currentY = 15;
+  // Verification Section
+  doc.setDrawColor(...colors.primaryBlue);
+  doc.setLineWidth(0.4);
+  doc.line(margin, currentY, pageWidth - margin, currentY);
+
+  currentY += 10;
 
   doc.setFontSize(14);
   doc.setFont("helvetica", "bold");
@@ -580,34 +606,38 @@ export async function generatePDFReport(
     color: { dark: "#192e6e", light: "#ffffff" },
   });
 
-  const qrSize = 32;
+  const qrSize = 30;
   doc.addImage(qrDataUrl, "PNG", margin, currentY, qrSize, qrSize);
 
-  doc.setFontSize(10.5);
+  const textX = margin + qrSize + 8;
+  const textWidth = contentWidth - qrSize - 8;
+
+  doc.setFontSize(10);
   doc.setFont("helvetica", "normal");
   doc.setTextColor(...colors.darkText);
-  doc.text("Scan QR code or visit:", margin + qrSize + 7, currentY + 6);
+  doc.text("Scan QR code or visit:", textX, currentY + 5);
 
   doc.setFont("helvetica", "bold");
   doc.setTextColor(...colors.accentBlue);
   doc.setFontSize(11);
-  doc.text("aiq.works/verify", margin + qrSize + 7, currentY + 13);
+  doc.text("aiq.works/verify", textX, currentY + 11);
 
   doc.setFont("helvetica", "normal");
   doc.setTextColor(...colors.mediumGray);
-  doc.setFontSize(9.5);
-  doc.text(`Certificate ID: ${verificationCode}`, margin + qrSize + 7, currentY + 20);
+  doc.setFontSize(9);
+  doc.text(`Certificate ID: ${verificationCode}`, textX, currentY + 17);
 
   const expiryDateCalc = new Date(issueDate);
   expiryDateCalc.setDate(expiryDateCalc.getDate() + 180);
   doc.text(
     `Valid Through: ${expiryDateCalc.toLocaleDateString("en-US", { year: "numeric", month: "long", day: "numeric" })}`,
-    margin + qrSize + 7,
-    currentY + 26,
+    textX,
+    currentY + 23,
   );
 
-  currentY += qrSize + 15;
+  currentY += qrSize + 12;
 
+  // About Section
   doc.setDrawColor(...colors.primaryBlue);
   doc.setLineWidth(0.4);
   doc.line(margin, currentY, pageWidth - margin, currentY);
@@ -619,53 +649,53 @@ export async function generatePDFReport(
   doc.setTextColor(...colors.primaryBlue);
   doc.text("About This Assessment", margin, currentY);
 
-  currentY += 8;
+  currentY += 7;
 
-  doc.setFontSize(9.5);
+  doc.setFontSize(9);
   doc.setFont("helvetica", "normal");
   doc.setTextColor(...colors.darkText);
 
   const assessmentInfo = [
-    "• Assessment employs adaptive Item Response Theory (IRT) methodology with 380+ psychometrically calibrated items",
-    "• Evaluates competency across 8 core dimensions of AI collaboration capability",
-    "• Results remain valid for 180 days from date of issue",
-    "• Based on peer-reviewed research published in Discover Artificial Intelligence journal",
+    "Assessment employs adaptive Item Response Theory (IRT) methodology with 380+ psychometrically calibrated items",
+    "Evaluates competency across 8 core dimensions of AI collaboration capability",
+    "Results remain valid for 180 days from date of issue",
+    "Based on peer-reviewed research published in Discover Artificial Intelligence journal",
   ];
 
-  assessmentInfo.forEach((info, idx) => {
-    const lines = doc.splitTextToSize(info, contentWidth - 4);
-    doc.text(lines, margin + 2, currentY + idx * 7);
+  assessmentInfo.forEach((info) => {
+    currentY = addWrappedText(`• ${info}`, margin + 2, currentY, contentWidth - 4, 4.5);
+    currentY += 1;
   });
 
-  currentY += 34;
+  currentY += 5;
 
+  // Research Reference
   doc.setDrawColor(...colors.lightGray);
   doc.setLineWidth(0.3);
   doc.line(margin, currentY, pageWidth - margin, currentY);
 
   currentY += 7;
 
-  doc.setFontSize(11.5);
+  doc.setFontSize(11);
   doc.setFont("helvetica", "bold");
   doc.setTextColor(...colors.primaryBlue);
   doc.text("Research Reference", margin, currentY);
 
   currentY += 7;
 
-  doc.setFontSize(9);
+  doc.setFontSize(8.5);
   doc.setTextColor(...colors.darkText);
   doc.setFont("helvetica", "normal");
 
   const citation =
     "Ganuthula, V.R.R., Balaraman, K.K. (2025). Development and validation of the AIQ assessment framework: measuring AI collaboration capabilities across eight dimensions. Discover Artificial Intelligence, 5, Article 29.";
-  const citationLines = doc.splitTextToSize(citation, contentWidth);
-  doc.text(citationLines, margin, currentY, { align: "justify" });
+  currentY = addWrappedText(citation, margin, currentY, contentWidth, 4.5);
 
-  currentY += citationLines.length * 5 + 3;
+  currentY += 3;
 
   doc.setFont("helvetica", "bold");
   doc.setTextColor(...colors.accentBlue);
-  doc.setFontSize(9.5);
+  doc.setFontSize(9);
   doc.text("https://doi.org/10.1007/s44163-025-00516-1", margin, currentY);
 
   addFooter();
