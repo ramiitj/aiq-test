@@ -187,7 +187,7 @@ const About = () => {
                   <div>
                     <h3 className="font-bold text-lg mb-2">Peer-Reviewed Research</h3>
                     <p className="text-sm text-muted-foreground mb-3">
-                      Developed through rigorous academic research at IIT Jodhpur and published in leading journals.
+                      Developed through rigorous academic research and published in leading journals.
                     </p>
                     <ul className="space-y-2 text-sm text-muted-foreground">
                       <li className="flex items-start gap-2">
