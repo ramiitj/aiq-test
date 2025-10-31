@@ -88,6 +88,7 @@ const Test = () => {
   const [timeRemaining, setTimeRemaining] = useState(3600); // 60 minutes
   const [answers, setAnswers] = useState<Record<string, string>>({});
   const [dimensions, setDimensions] = useState<Dimension[]>([]);
+  const [scoringConfig, setScoringConfig] = useState<any>(null);
   const [showConsent, setShowConsent] = useState(true);
   const [showDemographics, setShowDemographics] = useState(false);
   const [consentData, setConsentData] = useState<ConsentData>({
@@ -149,8 +150,9 @@ const Test = () => {
     if (resumeId) return;
     
     try {
-      const loadedDimensions = await loadTestItems(version as TestVersion);
-      setDimensions(loadedDimensions);
+      const assessmentData = await loadTestItems(version as TestVersion);
+      setDimensions(assessmentData.dimensions);
+      setScoringConfig(assessmentData.scoringConfiguration);
       setLoading(false);
     } catch (error: any) {
       toast({
@@ -199,19 +201,20 @@ const Test = () => {
         setVersion((testData.test_version as TestVersion) || 'professional');
         
         // Load dimensions first, then validate indices
-        const loadedDimensions = await loadTestItems((testData.test_version as TestVersion) || 'professional');
-        setDimensions(loadedDimensions);
+        const assessmentData = await loadTestItems((testData.test_version as TestVersion) || 'professional');
+        setDimensions(assessmentData.dimensions);
+        setScoringConfig(assessmentData.scoringConfiguration);
         
         // Validate and set dimension/question indices with boundary checks
         let validDimension = testData.current_dimension || 0;
         let validQuestion = testData.current_item || 0;
         
-        if (validDimension >= loadedDimensions.length) {
-          validDimension = Math.max(0, loadedDimensions.length - 1);
+        if (validDimension >= assessmentData.dimensions.length) {
+          validDimension = Math.max(0, assessmentData.dimensions.length - 1);
         }
         
-        if (loadedDimensions[validDimension]?.items) {
-          const itemsInDimension = loadedDimensions[validDimension].items.length;
+        if (assessmentData.dimensions[validDimension]?.items) {
+          const itemsInDimension = assessmentData.dimensions[validDimension].items.length;
           if (validQuestion >= itemsInDimension) {
             validQuestion = Math.max(0, itemsInDimension - 1);
           }
@@ -230,7 +233,7 @@ const Test = () => {
         
         toast({
           title: "Test Resumed",
-          description: `Resuming from question ${validQuestion + 1} in ${loadedDimensions[validDimension]?.dimensionName || 'dimension ' + (validDimension + 1)}`,
+          description: `Resuming from question ${validQuestion + 1} in ${assessmentData.dimensions[validDimension]?.dimensionName || 'dimension ' + (validDimension + 1)}`,
         });
       } else {
         // New test - show consent
@@ -359,7 +362,12 @@ const Test = () => {
       const { calculateTestScores } = await import("@/lib/scoreCalculator");
       
       // Calculate scores before completing
-      const scoringResult = calculateTestScores(answers, dimensions);
+      const scoringResult = calculateTestScores(
+        answers, 
+        dimensions, 
+        scoringConfig, 
+        version
+      );
       
       // Calculate test duration
       const testStartTime = timeRemaining === testDuration ? Date.now() : Date.now() - ((testDuration - timeRemaining) * 1000);

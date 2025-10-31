@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import { supabase } from "@/integrations/supabase/client";
 import { Navigation } from "@/components/Navigation";
+import Footer from "@/components/Footer";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -85,7 +86,7 @@ const Verify = () => {
   };
 
   return (
-    <div className="min-h-screen animate-fade-in">
+    <div className="min-h-screen flex flex-col animate-fade-in">
       <Navigation isAuthenticated={false} />
 
       <main>
@@ -98,7 +99,7 @@ const Verify = () => {
             Certificate Verification
           </h1>
           <p className="text-xl lg:text-2xl text-muted-foreground mb-10 max-w-3xl mx-auto leading-relaxed">
-            Verify the authenticity of AIQ Assessment certificates issued to participants
+            Verify the authenticity of AIQ<sup className="text-[0.6em]">™</sup> Assessment certificates issued to participants
           </p>
         </section>
 
@@ -142,7 +143,7 @@ const Verify = () => {
                   <CheckCircle2 className="h-24 w-24 text-green-500 mx-auto mb-6" />
                   <h2 className="text-4xl font-bold mb-4 text-green-600 dark:text-green-400">✓ Valid Certificate</h2>
                   <p className="text-lg text-muted-foreground">
-                    This AIQ Assessment certificate has been verified as authentic
+                    This AIQ<sup className="text-[0.6em]">™</sup> Assessment certificate has been verified as authentic
                   </p>
                 </div>
 
@@ -193,7 +194,7 @@ const Verify = () => {
                     Certificate Authenticity Confirmed
                   </h4>
                   <p className="text-sm text-green-800 dark:text-green-200 leading-relaxed">
-                    This certificate has been verified as authentic and was issued by the AIQ Assessment system. The
+                    This certificate has been verified as authentic and was issued by the AIQ<sup className="text-[0.6em]">™</sup> Assessment system. The
                     certificate holder has successfully completed the assessment and demonstrated proficiency in AI
                     collaboration skills. Exact scores are confidential and available only to the certificate holder.
                   </p>
@@ -204,7 +205,7 @@ const Verify = () => {
                   <p className="text-lg text-muted-foreground mb-6">Want to assess your own AI collaboration skills?</p>
                   <Link to="/">
                     <Button size="lg" className="text-lg px-10 py-6 bg-blue-900 hover:bg-blue-800">
-                      Take the AIQ Assessment
+                      Take the AIQ<sup className="text-[0.6em]">™</sup> Assessment
                     </Button>
                   </Link>
                 </div>
@@ -250,7 +251,7 @@ const Verify = () => {
                 <div className="text-center pt-4">
                   <Link to="/">
                     <Button size="lg" variant="outline" className="text-lg px-10 py-6">
-                      Take the AIQ Assessment
+                      Take the AIQ<sup className="text-[0.6em]">™</sup> Assessment
                     </Button>
                   </Link>
                 </div>
@@ -265,7 +266,7 @@ const Verify = () => {
             <div className="container max-w-4xl">
               <h2 className="text-3xl font-bold text-center mb-6">About Certificate Verification</h2>
               <p className="text-lg text-muted-foreground text-center mb-12 leading-relaxed max-w-2xl mx-auto">
-                Each AIQ Assessment certificate includes a unique verification code that can be used to confirm its
+                Each AIQ<sup className="text-[0.6em]">™</sup> Assessment certificate includes a unique verification code that can be used to confirm its
                 authenticity and view key details about the achievement.
               </p>
               <div className="grid md:grid-cols-3 gap-8">
@@ -287,12 +288,7 @@ const Verify = () => {
         )}
       </main>
 
-      <footer className="border-t py-8 bg-secondary/20">
-        <div className="container text-center text-sm text-muted-foreground">
-          <p className="font-medium">Research by Venkat Ram Reddy Ganuthula & Krishna Kumar Balaraman</p>
-          <p className="mt-1">School of Management and Entrepreneurship, IIT Jodhpur</p>
-        </div>
-      </footer>
+      <Footer />
     </div>
   );
 };

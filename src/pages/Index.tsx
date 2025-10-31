@@ -150,7 +150,7 @@ const Index = () => {
         {/* Why It Matters */}
         <section className="bg-secondary/30 py-16">
           <div className="container max-w-6xl">
-            <h2 className="text-4xl font-extrabold mb-3 text-center tracking-tight">Why AIQ Matters</h2>
+            <h2 className="text-4xl font-extrabold mb-3 text-center tracking-tight">Why AIQ<sup className="text-[0.6em]">™</sup> Matters</h2>
             <p className="text-center text-muted-foreground mb-10 max-w-2xl mx-auto">
               As AI transforms every industry, the ability to collaborate effectively with AI systems is becoming a
               critical skill
@@ -330,7 +330,7 @@ const Index = () => {
         {/* CTA Section */}
         <section className="bg-gradient-to-br from-blue-900 to-blue-800 text-white py-16">
           <div className="container text-center max-w-3xl">
-            <h2 className="text-4xl lg:text-5xl font-extrabold mb-4 tracking-tight">Ready to Measure Your AIQ?</h2>
+            <h2 className="text-4xl lg:text-5xl font-extrabold mb-4 tracking-tight">Ready to Measure Your AIQ<sup className="text-[0.6em]">™</sup>?</h2>
             <p className="text-lg mb-8 opacity-90">
               Join professionals worldwide who are measuring and improving their AI collaboration skills
             </p>
@@ -358,10 +358,14 @@ const Index = () => {
         </section>
       </main>
 
-      <footer className="border-t py-8 bg-secondary/20">
-        <div className="container text-center text-sm text-muted-foreground">
-          <p className="font-semibold">Venkat Ram Reddy Ganuthula, Ph.D. & Krishna Kumar Balaraman, Ph.D.</p>
-          <p className="mt-1">School of Management and Entrepreneurship, IIT Jodhpur</p>
+      <footer className="border-t py-8 bg-secondary/20 mt-auto">
+        <div className="container text-center text-sm text-muted-foreground px-4">
+          <p className="font-medium leading-relaxed">
+            AIQ<sup className="text-[0.6em]">™</sup> is a trademark of AI Works Pvt Ltd. All Rights Reserved.
+          </p>
+          <p className="mt-2 leading-relaxed">
+            All other trademarks, logos, and brand names are the property of their respective owners.
+          </p>
         </div>
       </footer>
     </div>

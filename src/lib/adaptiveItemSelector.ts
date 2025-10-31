@@ -45,6 +45,27 @@ export interface Dimension {
   totalPoints?: number;
 }
 
+export interface ScoringConfiguration {
+  totalPoints: number;
+  pointsPerDimension: number;
+  passingScore: number;
+  passingPercentage: number;
+  scoringMethod: {
+    type: string;
+    description: string;
+    basePoints: number;
+    formula: string;
+  };
+  scoringGuidelines: {
+    [key: string]: string;
+  };
+}
+
+export interface AssessmentData {
+  dimensions: Dimension[];
+  scoringConfiguration: ScoringConfiguration;
+}
+
 export type TestVersion = 'beginner' | 'professional' | 'expert';
 
 export interface VersionConfig {
@@ -135,7 +156,7 @@ export function getVersionConfig(version: TestVersion): VersionConfig {
 /**
  * Load and prepare test items based on version
  */
-export async function loadTestItems(version: TestVersion = 'beginner'): Promise<Dimension[]> {
+export async function loadTestItems(version: TestVersion = 'beginner'): Promise<AssessmentData> {
   console.log(`[loadTestItems] Loading test items for version: ${version}`);
   
   try {
@@ -212,7 +233,39 @@ export async function loadTestItems(version: TestVersion = 'beginner'): Promise<
       totalItems: dimensions.reduce((sum, d) => sum + d.items.length, 0)
     });
     
-    return dimensions;
+    // Extract scoring configuration
+    const scoringConfiguration: ScoringConfiguration = data.scoringConfiguration || {
+      totalPoints: version === 'beginner' ? 600 : 1600,
+      pointsPerDimension: version === 'beginner' ? 75 : 200,
+      passingScore: version === 'beginner' ? 420 : (version === 'professional' ? 1120 : 1200),
+      passingPercentage: version === 'beginner' ? 70 : (version === 'professional' ? 70 : 75),
+      scoringMethod: {
+        type: version === 'beginner' ? 'simple-sum' : 'IRT-weighted',
+        description: 'Points-based scoring with difficulty weighting',
+        basePoints: 10,
+        formula: version === 'beginner' 
+          ? 'points = basePoints × (1 + difficulty × 0.3)'
+          : 'points = basePoints × (1 + difficulty × 0.4 + discrimination × 0.2)'
+      },
+      scoringGuidelines: version === 'beginner' ? {
+        '0-40%': 'Novice (0-240 points)',
+        '41-60%': 'Beginner (241-360 points)',
+        '61-80%': 'Developing (361-480 points)',
+        '81-90%': 'Proficient (481-540 points)',
+        '91-100%': 'Advanced (541-600 points)'
+      } : {
+        '0-40%': 'Emerging (0-640 points)',
+        '41-60%': 'Developing (641-960 points)',
+        '61-80%': 'Proficient (961-1280 points)',
+        '81-90%': 'Advanced (1281-1440 points)',
+        '91-100%': 'Expert (1441-1600 points)'
+      }
+    };
+    
+    return {
+      dimensions,
+      scoringConfiguration
+    };
   } catch (error) {
     console.error('[loadTestItems] Error loading test items:', error);
     throw error;

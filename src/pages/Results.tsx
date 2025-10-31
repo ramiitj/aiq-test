@@ -2,10 +2,11 @@ import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { supabase } from "@/integrations/supabase/client";
 import { Navigation } from "@/components/Navigation";
+import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Progress } from "@/components/ui/progress";
-import { Share2, Download, Trophy, Copy, ArrowRight, Calendar, Clock, Award, TrendingUp } from "lucide-react";
+import { Share2, Download, Trophy, Copy, ArrowRight, Calendar, Clock, Award, TrendingUp, AlertCircle, CheckCircle2 } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import { ShareModal } from "@/components/ShareModal";
 import { generatePDFReport } from "@/lib/pdfGenerator";
@@ -117,7 +118,7 @@ const Results = () => {
         .eq("user_id", session.user.id)
         .maybeSingle();
 
-      setUserName(profile?.name || session.user.email || "AIQ Participant");
+      setUserName(profile?.name || session.user.email || "AIQ™ Participant");
     } catch (error: any) {
       toast({
         title: "Error",
@@ -317,10 +318,10 @@ const Results = () => {
   const scoreLevel = getScoreLevel(overallScore);
 
   return (
-    <div className="min-h-screen animate-fade-in">
+    <div className="min-h-screen flex flex-col animate-fade-in">
       <Navigation isAuthenticated={true} />
 
-      <main className="container py-8 max-w-5xl">
+      <main className="container py-8 max-w-5xl flex-grow">
         {/* Hero Section */}
         <div className="mb-8">
           <div className="flex items-center justify-center mb-4">
@@ -331,7 +332,7 @@ const Results = () => {
           <h1 className="text-3xl lg:text-4xl font-black text-center mb-2 tracking-tight">
             Congratulations, {userName}!
           </h1>
-          <p className="text-center text-muted-foreground font-medium mb-4">You've completed the AIQ Assessment</p>
+          <p className="text-xl text-muted-foreground mb-4">You've completed the AIQ<sup className="text-[0.6em]">™</sup> Assessment</p>
 
           {/* Test Meta Info */}
           <div className="flex items-center justify-center gap-4 text-sm text-muted-foreground">
@@ -477,11 +478,11 @@ const Results = () => {
                     </Button>
                   </div>
                   <p className="text-xs text-muted-foreground mt-2">
-                    Verify at:{" "}
-                    <span className="font-mono">
-                      aiq.works/verify/{verificationCode}
-                    </span>
-                  </p>
+            Verify at:{" "}
+            <span className="font-mono">
+              aiq.works/verify
+            </span>
+          </p>
                 </div>
               </div>
             </CardContent>
@@ -548,7 +549,7 @@ const Results = () => {
             Back to Dashboard
           </Button>
           <Button onClick={() => navigate("/about")} variant="outline" className="flex-1 font-semibold">
-            Learn About AIQ
+            Learn About AIQ<sup className="text-[0.6em]">™</sup>
             <ArrowRight className="ml-2 h-4 w-4" />
           </Button>
         </div>
@@ -563,6 +564,8 @@ const Results = () => {
           verificationUrl={verificationUrl}
         />
       </main>
+
+      <Footer />
     </div>
   );
 };

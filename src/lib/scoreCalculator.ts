@@ -1,6 +1,6 @@
 /**
- * Score Calculator for AIQ Assessment
- * Calculates scores based on user answers and correct answers from test items
+ * Score Calculator for AIQ Assessment with IRT-Based Weighted Scoring
+ * Calculates point-based scores with difficulty and discrimination weighting
  */
 
 import type { Dimension, TestItem } from './adaptiveItemSelector';
@@ -9,28 +9,104 @@ interface Answer {
   [key: string]: string; // e.g., "0-0": "2" or "0-0": "1,3"
 }
 
+interface ScoringConfiguration {
+  totalPoints: number;
+  pointsPerDimension: number;
+  passingScore: number;
+  passingPercentage: number;
+  scoringMethod: {
+    type: string;
+    description: string;
+    basePoints: number;
+    formula: string;
+  };
+  scoringGuidelines: {
+    [key: string]: string; // e.g., "0-40%": "Novice (0-240 points)"
+  };
+}
+
 interface ScoringResult {
-  dimensionScores: { [dimensionCode: string]: number };
-  overallScore: number;
+  dimensionScores: { [dimensionCode: string]: number }; // Points earned per dimension
+  overallScore: number; // Total points earned
+  totalPossiblePoints: number;
+  passingScore: number;
+  passed: boolean;
+  percentageScore: number; // For display (overall score / total possible)
   correctCount: number;
   totalCount: number;
+  assessmentLevel: string;
+  scoringGuidelines: { [key: string]: string };
+  performanceLevel: string; // Determined from scoring guidelines
 }
 
 /**
- * Calculate test scores based on answers and dimensions
+ * Calculate item points based on correctness and assessment level
+ */
+function calculateItemPoints(
+  item: TestItem,
+  isCorrect: boolean,
+  assessmentLevel: string
+): number {
+  if (!isCorrect) return 0;
+
+  const basePoints = item.points || 10;
+  const difficulty = item.difficulty || 0.5;
+  const discrimination = item.discrimination || 1.0;
+  const c_param = (item as any).c_param || 0.2; // Guessing parameter for expert level
+
+  switch (assessmentLevel) {
+    case 'beginner':
+      // Simple difficulty weighting
+      return basePoints * (1 + difficulty * 0.3);
+    
+    case 'professional':
+      // IRT-weighted: difficulty + discrimination
+      return basePoints * (1 + difficulty * 0.4 + discrimination * 0.2);
+    
+    case 'expert':
+      // Advanced IRT: 3-parameter logistic model
+      return basePoints * (1 + difficulty * 0.5 + discrimination * 0.3 + c_param * 0.1);
+    
+    default:
+      return basePoints;
+  }
+}
+
+/**
+ * Determine performance level from percentage score and guidelines
+ */
+function determinePerformanceLevel(
+  percentageScore: number,
+  guidelines: { [key: string]: string }
+): string {
+  for (const [range, description] of Object.entries(guidelines)) {
+    const [min, max] = range.split('-').map(s => parseInt(s.replace('%', '')));
+    if (percentageScore >= min && percentageScore <= max) {
+      // Extract level name from description (e.g., "Novice (0-240 points)" -> "Novice")
+      const match = description.match(/^([^(]+)/);
+      return match ? match[1].trim() : description;
+    }
+  }
+  return 'Emerging';
+}
+
+/**
+ * Calculate test scores based on answers and dimensions with IRT weighting
  */
 export function calculateTestScores(
   answers: Answer,
-  dimensions: Dimension[]
+  dimensions: Dimension[],
+  scoringConfig: ScoringConfiguration,
+  assessmentLevel: string = 'professional'
 ): ScoringResult {
   const dimensionScores: { [dimensionCode: string]: number } = {};
   let totalCorrect = 0;
   let totalQuestions = 0;
+  let totalPointsEarned = 0;
 
   // Process each dimension
   dimensions.forEach((dimension, dimIndex) => {
-    let dimensionCorrect = 0;
-    let dimensionTotal = 0;
+    let dimensionPoints = 0;
 
     // Process each item in the dimension
     dimension.items.forEach((item, itemIndex) => {
@@ -38,37 +114,48 @@ export function calculateTestScores(
       const userAnswer = answers[questionKey];
 
       if (userAnswer !== undefined) {
-        dimensionTotal++;
         totalQuestions++;
 
         // Check if answer is correct based on question type
         const isCorrect = checkAnswer(item, userAnswer);
         
         if (isCorrect) {
-          dimensionCorrect++;
           totalCorrect++;
+          
+          // Calculate weighted points for this item
+          const itemPoints = calculateItemPoints(item, isCorrect, assessmentLevel);
+          dimensionPoints += itemPoints;
+          totalPointsEarned += itemPoints;
         }
       }
     });
 
-    // Calculate percentage for this dimension
-    const dimensionPercentage = dimensionTotal > 0 
-      ? (dimensionCorrect / dimensionTotal) * 100 
-      : 0;
-    
-    dimensionScores[dimension.dimensionCode] = Math.round(dimensionPercentage * 10) / 10; // Round to 1 decimal
+    dimensionScores[dimension.dimensionCode] = Math.round(dimensionPoints * 10) / 10; // Round to 1 decimal
   });
 
-  // Calculate overall score
-  const overallScore = totalQuestions > 0 
-    ? (totalCorrect / totalQuestions) * 100 
+  // Calculate percentage score
+  const percentageScore = scoringConfig.totalPoints > 0 
+    ? (totalPointsEarned / scoringConfig.totalPoints) * 100 
     : 0;
+
+  // Determine if passed
+  const passed = totalPointsEarned >= scoringConfig.passingScore;
+
+  // Determine performance level
+  const performanceLevel = determinePerformanceLevel(percentageScore, scoringConfig.scoringGuidelines);
 
   return {
     dimensionScores,
-    overallScore: Math.round(overallScore * 10) / 10, // Round to 1 decimal
+    overallScore: Math.round(totalPointsEarned * 10) / 10, // Round to 1 decimal
+    totalPossiblePoints: scoringConfig.totalPoints,
+    passingScore: scoringConfig.passingScore,
+    passed,
+    percentageScore: Math.round(percentageScore * 10) / 10, // Round to 1 decimal
     correctCount: totalCorrect,
     totalCount: totalQuestions,
+    assessmentLevel,
+    scoringGuidelines: scoringConfig.scoringGuidelines,
+    performanceLevel,
   };
 }
 
