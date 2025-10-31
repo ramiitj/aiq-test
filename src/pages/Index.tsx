@@ -368,7 +368,7 @@ const Index = () => {
                 How long does the AIQ assessment take?
               </AccordionTrigger>
               <AccordionContent className="text-muted-foreground leading-relaxed">
-                The assessment typically takes 20-30 minutes to complete, depending on the level you choose. The Beginner level has 60 questions (90 minutes), Professional and Expert levels have 80 questions each (120-150 minutes). The assessment uses adaptive testing technology to efficiently measure your AI collaboration abilities across all 8 dimensions.
+              The Beginner level has 60 questions (90 minutes), Professional and Expert levels have 80 questions each (120-150 minutes). The assessment uses adaptive testing technology to efficiently measure your AI collaboration abilities across all 8 dimensions.
               </AccordionContent>
             </AccordionItem>
             <AccordionItem value="item-3">
