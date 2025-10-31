@@ -60,7 +60,7 @@ const About = () => {
         {/* Hero Section */}
         <div className="text-center mb-16">
           <h1 className="text-5xl lg:text-6xl font-extrabold mb-4 tracking-tight bg-gradient-to-r from-blue-900 to-blue-600 bg-clip-text text-transparent">
-            About the AIQ<sup className="text-[0.6em]">™</sup> Framework
+            About the AIQ<sup className="text-[0.6em] text-blue-600">™</sup> Framework
           </h1>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
             A scientifically validated framework for measuring human-AI collaboration capabilities
@@ -70,7 +70,9 @@ const About = () => {
         {/* The Problem We're Solving */}
         <div className="mb-16">
           <div className="text-center mb-8">
-            <h2 className="text-4xl font-extrabold mb-3">Why AIQ<sup className="text-[0.6em]">™</sup> Assessment Is Essential</h2>
+            <h2 className="text-4xl font-extrabold mb-3">
+              Why AIQ<sup className="text-[0.6em]">™</sup> Assessment Is Essential
+            </h2>
             <p className="text-muted-foreground max-w-2xl mx-auto">
               The workforce is transforming rapidly—measurement and validation are critical to success
             </p>
@@ -260,7 +262,8 @@ const About = () => {
           <div className="text-center mb-8">
             <h2 className="text-4xl font-extrabold mb-3">Applications Across Sectors</h2>
             <p className="text-muted-foreground max-w-2xl mx-auto">
-              From hiring decisions to curriculum design, AIQ<sup className="text-[0.6em]">™</sup> provides actionable insights
+              From hiring decisions to curriculum design, AIQ<sup className="text-[0.6em]">™</sup> provides actionable
+              insights
             </p>
           </div>
 
@@ -415,7 +418,7 @@ const About = () => {
           </CardContent>
         </Card>
       </main>
-      
+
       <Footer />
     </div>
   );
