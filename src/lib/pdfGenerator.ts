@@ -21,7 +21,7 @@ const dimensionNames: Record<string, string> = {
   CRS: "Creative Synthesis"
 };
 
-// Level-specific, concise recommendations - BEGINNER (basic, actionable)
+// BEGINNER Level Recommendations
 const beginnerRecommendations: Record<string, string[]> = {
   SAU: [
     "Study how companies use AI for business decisions",
@@ -65,7 +65,7 @@ const beginnerRecommendations: Record<string, string[]> = {
   ]
 };
 
-// PROFESSIONAL level - strategic and organizational
+// PROFESSIONAL Level Recommendations
 const professionalRecommendations: Record<string, string[]> = {
   SAU: [
     "Analyze industry AI adoption patterns and competitive positioning",
@@ -109,7 +109,7 @@ const professionalRecommendations: Record<string, string[]> = {
   ]
 };
 
-// EXPERT level - thought leadership and research
+// EXPERT Level Recommendations
 const expertRecommendations: Record<string, string[]> = {
   SAU: [
     "Publish research on AI strategic positioning and competitive dynamics",
@@ -243,7 +243,7 @@ export async function generatePDFReport(
   // ========== PAGE 1: HEADER + SCORE + COMPACT TABLE + VISUAL CHART ==========
   let currentY = 0;
 
-  // Header with gradient effect (simulated)
+  // Header
   doc.setFillColor(...colors.primaryBlue);
   doc.rect(0, 0, pageWidth, 35, "F");
 
@@ -267,7 +267,7 @@ export async function generatePDFReport(
 
   currentY = 43;
 
-  // Overall Score - centered and prominent
+  // Overall Score - centered
   const centerX = pageWidth / 2;
   
   // Score circle
@@ -298,7 +298,7 @@ export async function generatePDFReport(
 
   currentY += 15;
 
-  // Section: Performance Summary
+  // Performance Summary
   doc.setFontSize(13);
   doc.setFont("helvetica", "bold");
   doc.setTextColor(...colors.primaryBlue);
@@ -346,7 +346,7 @@ export async function generatePDFReport(
 
   currentY = (doc as any).lastAutoTable.finalY + 10;
 
-  // Section: Visual Performance Chart
+  // Performance Visualization
   doc.setFontSize(13);
   doc.setFont("helvetica", "bold");
   doc.setTextColor(...colors.primaryBlue);
@@ -362,11 +362,10 @@ export async function generatePDFReport(
   dimensionScores.forEach((dim) => {
     const fullName = dimensionNames[dim.code] || dim.name;
     
-    // Dimension label (abbreviated if needed)
+    // Dimension label
     doc.setFontSize(8);
     doc.setFont("helvetica", "normal");
     doc.setTextColor(...colors.darkText);
-    const labelMaxWidth = 50;
     const label = fullName.length > 25 ? fullName.substring(0, 22) + "..." : fullName;
     doc.text(label, margin, currentY + 3.5);
 
@@ -382,7 +381,7 @@ export async function generatePDFReport(
       doc.roundedRect(margin + 52, currentY, scoreWidth, barHeight, 1, 1, "F");
     }
 
-    // Score text (right-aligned)
+    // Score text
     doc.setFontSize(9);
     doc.setFont("helvetica", "bold");
     doc.setTextColor(...barColor);
@@ -427,106 +426,82 @@ export async function generatePDFReport(
 
   currentY += 8;
 
-  // Get development dimensions (focus on scores < 80)
-  const developmentDims = dimensionScores
-    .filter((d) => d.score < 80)
-    .sort((a, b) => a.score - b.score);
+  // CRITICAL FIX: Show ALL dimensions, not just those with score < 80
+  // Sort by score (lowest first) to prioritize areas needing most improvement
+  const allDimsSorted = [...dimensionScores].sort((a, b) => a.score - b.score);
 
-  if (developmentDims.length === 0) {
-    // Exceptional performance message
-    doc.setFillColor(240, 253, 244);
-    doc.roundedRect(margin, currentY, contentWidth, 20, 2, 2, "F");
+  // Build recommendations table for ALL dimensions
+  const recData = allDimsSorted.map((dim) => {
+    const fullName = dimensionNames[dim.code] || dim.name;
+    const recs = getRecommendations(dim.code);
     
-    doc.setFontSize(11);
-    doc.setTextColor(...colors.green);
-    doc.setFont("helvetica", "bold");
-    doc.text("🎉 Outstanding Performance!", margin + 5, currentY + 8);
+    // Format recommendations with bullet points
+    const recText = recs.map((r, idx) => `${idx + 1}. ${r}`).join("\n");
     
-    doc.setFontSize(9);
-    doc.setTextColor(...colors.darkText);
-    doc.setFont("helvetica", "normal");
-    doc.text(
-      "You've achieved exceptional proficiency across all dimensions. Continue to maintain and deepen your expertise.",
-      margin + 5,
-      currentY + 14,
-      { maxWidth: contentWidth - 10 }
-    );
-    
-    currentY += 25;
-  } else {
-    // Detailed recommendations table
-    const recData = developmentDims.map((dim) => {
-      const fullName = dimensionNames[dim.code] || dim.name;
-      const recs = getRecommendations(dim.code);
-      
-      // Format recommendations with bullet points
-      const recText = recs.map((r, idx) => `${idx + 1}. ${r}`).join("\n");
-      
-      return [
-        fullName,
-        dim.score.toFixed(1),
-        getProficiencyLevel(dim.score),
-        recText
-      ];
-    });
+    return [
+      fullName,
+      dim.score.toFixed(1),
+      getProficiencyLevel(dim.score),
+      recText
+    ];
+  });
 
-    autoTable(doc, {
-      startY: currentY,
-      head: [["Dimension", "Score", "Level", "Action Steps"]],
-      body: recData,
-      theme: "grid",
-      headStyles: {
-        fillColor: colors.primaryBlue,
+  autoTable(doc, {
+    startY: currentY,
+    head: [["Dimension", "Score", "Level", "Action Steps"]],
+    body: recData,
+    theme: "grid",
+    headStyles: {
+      fillColor: colors.primaryBlue,
+      fontStyle: "bold",
+      fontSize: 8,
+      textColor: [255, 255, 255],
+      halign: "center",
+      cellPadding: 2,
+    },
+    bodyStyles: {
+      fontSize: 7.5,
+      textColor: colors.darkText,
+      cellPadding: 3,
+      lineColor: [220, 220, 220],
+      lineWidth: 0.1,
+    },
+    columnStyles: {
+      0: { 
+        cellWidth: 45, 
+        halign: "left",
         fontStyle: "bold",
-        fontSize: 8,
-        textColor: [255, 255, 255],
+        valign: "top"
+      },
+      1: { 
+        cellWidth: 18, 
         halign: "center",
-        cellPadding: 2,
+        fontStyle: "bold",
+        valign: "top"
       },
-      bodyStyles: {
-        fontSize: 7.5,
-        textColor: colors.darkText,
-        cellPadding: 3,
-        lineColor: [220, 220, 220],
-        lineWidth: 0.1,
+      2: { 
+        cellWidth: 25, 
+        halign: "center",
+        valign: "top"
       },
-      columnStyles: {
-        0: { 
-          cellWidth: 45, 
-          halign: "left",
-          fontStyle: "bold",
-          valign: "top"
-        },
-        1: { 
-          cellWidth: 18, 
-          halign: "center",
-          fontStyle: "bold",
-          valign: "top"
-        },
-        2: { 
-          cellWidth: 25, 
-          halign: "center",
-          valign: "top"
-        },
-        3: { 
-          cellWidth: contentWidth - 93, 
-          halign: "left",
-          valign: "top"
-        },
+      3: { 
+        cellWidth: contentWidth - 93, 
+        halign: "left",
+        valign: "top"
       },
-      margin: { left: margin, right: margin },
-      didParseCell: function(data) {
-        // Add color coding for score column
-        if (data.column.index === 1 && data.section === 'body') {
-          const score = parseFloat(data.cell.text[0]);
-          const scoreColor = getLevelColor(score);
-          data.cell.styles.textColor = scoreColor;
-        }
+    },
+    margin: { left: margin, right: margin },
+    didParseCell: function(data) {
+      // Color coding for score column
+      if (data.column.index === 1 && data.section === 'body') {
+        const score = parseFloat(data.cell.text[0]);
+        const scoreColor = getLevelColor(score);
+        data.cell.styles.textColor = scoreColor;
       }
-    });
+    }
+  });
 
-    currentY = (doc as any).lastAutoTable.finalY + 10;
-  }
+  currentY = (doc as any).lastAutoTable.finalY + 10;
 
   // Divider line
   doc.setDrawColor(...colors.lightGray);
@@ -543,7 +518,7 @@ export async function generatePDFReport(
 
   currentY += 8;
 
-  // QR Code and verification info side by side
+  // QR Code and verification info
   const verificationUrl = `https://aiq.works/verify/${verificationCode}`;
   const qrDataUrl = await QRCode.toDataURL(verificationUrl, {
     width: 200,
