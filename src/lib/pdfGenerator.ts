@@ -215,7 +215,7 @@ export async function generatePDFReport(
   };
 
   const addFooter = () => {
-    doc.setFontSize(6.5);
+    doc.setFontSize(7);
     doc.setTextColor(...colors.mediumGray);
     doc.text(
       "Research by Venkat Ram Reddy Ganuthula & Krishna Kumar Balaraman | IIT Jodhpur",
@@ -226,20 +226,18 @@ export async function generatePDFReport(
   };
 
   const addPageNumber = (pageNum: number, totalPages: number) => {
-    doc.setFontSize(8);
+    doc.setFontSize(9);
     doc.setTextColor(...colors.mediumGray);
     doc.text(`${pageNum}/${totalPages}`, pageWidth - margin - 5, pageHeight - 8, { align: "right" });
   };
 
-  // ========== PAGE 1 ==========
   let currentY = 0;
 
-  // Professional header
   doc.setFillColor(...colors.primaryBlue);
   doc.rect(0, 0, pageWidth, 38, "F");
 
   doc.setTextColor(255, 255, 255);
-  doc.setFontSize(26);
+  doc.setFontSize(28);
   doc.setFont("helvetica", "bold");
   doc.text("AIQ ASSESSMENT", pageWidth / 2, 14, { align: "center" });
 
@@ -247,7 +245,7 @@ export async function generatePDFReport(
   doc.setFont("helvetica", "normal");
   doc.text("Official AI Collaboration Capability Certificate", pageWidth / 2, 22, { align: "center" });
 
-  doc.setFontSize(8);
+  doc.setFontSize(8.5);
   doc.setTextColor(220, 220, 255);
   const issueDateStr = issueDate.toLocaleDateString("en-US", {
     year: "numeric",
@@ -260,61 +258,55 @@ export async function generatePDFReport(
 
   currentY = 48;
 
-  // Score display with proper spacing
   const centerX = pageWidth / 2;
 
-  // Professional bordered box
   doc.setDrawColor(...colors.primaryBlue);
   doc.setLineWidth(0.5);
   doc.setFillColor(250, 251, 255);
-  doc.roundedRect(margin, currentY, contentWidth, 32, 2, 2, "FD");
+  doc.roundedRect(margin, currentY, contentWidth, 34, 2, 2, "FD");
 
-  currentY += 5;
+  currentY += 6;
 
-  // Score label
-  doc.setFontSize(9);
+  doc.setFontSize(10);
   doc.setFont("helvetica", "normal");
   doc.setTextColor(...colors.mediumGray);
   doc.text("OVERALL SCORE", centerX, currentY + 3, { align: "center" });
 
-  currentY += 8;
+  currentY += 9;
 
-  // Score display - no overlapping
-  doc.setFontSize(32);
+  doc.setFontSize(36);
   doc.setFont("helvetica", "bold");
   const scoreColor = getLevelColor(overallScore);
   doc.setTextColor(...scoreColor);
   doc.text(overallScore.toFixed(1), centerX, currentY + 5, { align: "center" });
 
-  // Level badge - clear spacing
   currentY += 15;
+
   const level = getProficiencyLevel(overallScore);
   doc.setFillColor(...scoreColor);
-  const badgeWidth = 70;
-  const badgeHeight = 9;
+  const badgeWidth = 75;
+  const badgeHeight = 10;
   doc.roundedRect(centerX - badgeWidth / 2, currentY - 3, badgeWidth, badgeHeight, 2, 2, "F");
   doc.setTextColor(255, 255, 255);
-  doc.setFontSize(10);
+  doc.setFontSize(11);
   doc.setFont("helvetica", "bold");
   doc.text(level, centerX, currentY + 1.5, { align: "center", baseline: "middle" });
 
-  currentY += 10;
+  currentY += 11;
 
-  // Certificate ID
-  doc.setFontSize(7.5);
+  doc.setFontSize(8);
   doc.setTextColor(...colors.mediumGray);
   doc.setFont("helvetica", "normal");
   doc.text(`Certificate ID: ${verificationCode}`, centerX, currentY, { align: "center" });
 
-  currentY += 10;
+  currentY += 11;
 
-  // Performance Summary
-  doc.setFontSize(13);
+  doc.setFontSize(14);
   doc.setFont("helvetica", "bold");
   doc.setTextColor(...colors.primaryBlue);
   doc.text("Performance Summary", margin, currentY);
 
-  currentY += 7;
+  currentY += 8;
 
   const perfData = dimensionScores.map((dim) => {
     const fullName = dimensionNames[dim.code] || dim.name;
@@ -329,15 +321,15 @@ export async function generatePDFReport(
     headStyles: {
       fillColor: colors.primaryBlue,
       fontStyle: "bold",
-      fontSize: 8,
+      fontSize: 9,
       textColor: colors.white,
       halign: "center",
-      cellPadding: 2,
+      cellPadding: 2.5,
     },
     bodyStyles: {
-      fontSize: 8.5,
+      fontSize: 9,
       textColor: colors.darkText,
-      cellPadding: 2,
+      cellPadding: 2.5,
       lineWidth: 0.1,
       lineColor: [220, 220, 220],
     },
@@ -359,10 +351,9 @@ export async function generatePDFReport(
     },
   });
 
-  currentY = (doc as any).lastAutoTable.finalY + 10;
+  currentY = (doc as any).lastAutoTable.finalY + 11;
 
-  // Performance Visualization
-  doc.setFontSize(13);
+  doc.setFontSize(14);
   doc.setFont("helvetica", "bold");
   doc.setTextColor(...colors.primaryBlue);
   doc.text("Performance Visualization", margin, currentY);
@@ -370,17 +361,17 @@ export async function generatePDFReport(
   currentY += 7;
 
   const barMaxWidth = contentWidth - 58;
-  const barHeight = 6;
-  const barSpacing = 9;
+  const barHeight = 6.5;
+  const barSpacing = 9.5;
 
   dimensionScores.forEach((dim) => {
     const fullName = dimensionNames[dim.code] || dim.name;
 
-    doc.setFontSize(8);
+    doc.setFontSize(8.5);
     doc.setFont("helvetica", "normal");
     doc.setTextColor(...colors.darkText);
     const label = fullName.length > 26 ? fullName.substring(0, 23) + "..." : fullName;
-    doc.text(label, margin, currentY + 3.5);
+    doc.text(label, margin, currentY + 3.8);
 
     doc.setFillColor(238, 238, 238);
     doc.roundedRect(margin + 54, currentY, barMaxWidth, barHeight, 1.5, 1.5, "F");
@@ -392,29 +383,28 @@ export async function generatePDFReport(
       doc.roundedRect(margin + 54, currentY, scoreWidth, barHeight, 1.5, 1.5, "F");
     }
 
-    doc.setFontSize(9);
+    doc.setFontSize(10);
     doc.setFont("helvetica", "bold");
     doc.setTextColor(...barColor);
-    doc.text(`${dim.score.toFixed(1)}`, pageWidth - margin - 3, currentY + 3.5);
+    doc.text(`${dim.score.toFixed(1)}`, pageWidth - margin - 3, currentY + 3.8);
 
     currentY += barSpacing;
   });
 
   addFooter();
-  addPageNumber(1, 2);
+  addPageNumber(1, 3);
 
-  // ========== PAGE 2 ==========
   doc.addPage();
   currentY = 15;
 
-  doc.setFontSize(14);
+  doc.setFontSize(15);
   doc.setFont("helvetica", "bold");
   doc.setTextColor(...colors.primaryBlue);
   doc.text("Development Recommendations", margin, currentY);
 
   currentY += 7;
 
-  doc.setFontSize(8.5);
+  doc.setFontSize(9);
   doc.setFont("helvetica", "normal");
   doc.setTextColor(...colors.mediumGray);
 
@@ -428,7 +418,7 @@ export async function generatePDFReport(
   }
   doc.text(levelDesc, margin, currentY);
 
-  currentY += 8;
+  currentY += 9;
 
   const allDimsSorted = [...dimensionScores].sort((a, b) => a.score - b.score);
 
@@ -452,15 +442,15 @@ export async function generatePDFReport(
     headStyles: {
       fillColor: colors.primaryBlue,
       fontStyle: "bold",
-      fontSize: 8,
+      fontSize: 9,
       textColor: colors.white,
       halign: "center",
-      cellPadding: 2.5,
+      cellPadding: 3,
     },
     bodyStyles: {
-      fontSize: 7.5,
+      fontSize: 8,
       textColor: colors.darkText,
-      cellPadding: 3,
+      cellPadding: 3.5,
       lineColor: [215, 215, 215],
       lineWidth: 0.1,
       valign: "top",
@@ -495,21 +485,18 @@ export async function generatePDFReport(
     },
   });
 
-  currentY = (doc as any).lastAutoTable.finalY + 10;
+  addFooter();
+  addPageNumber(2, 3);
 
-  // Verification Section
-  doc.setDrawColor(...colors.primaryBlue);
-  doc.setLineWidth(0.3);
-  doc.line(margin, currentY, pageWidth - margin, currentY);
+  doc.addPage();
+  currentY = 15;
 
-  currentY += 7;
-
-  doc.setFontSize(12);
+  doc.setFontSize(14);
   doc.setFont("helvetica", "bold");
   doc.setTextColor(...colors.primaryBlue);
   doc.text("Certificate Verification", margin, currentY);
 
-  currentY += 7;
+  currentY += 8;
 
   const verificationUrl = `https://aiq.works/verify/${verificationCode}`;
   const qrDataUrl = await QRCode.toDataURL(verificationUrl, {
@@ -518,45 +505,45 @@ export async function generatePDFReport(
     color: { dark: "#192e6e", light: "#ffffff" },
   });
 
-  const qrSize = 28;
+  const qrSize = 32;
   doc.addImage(qrDataUrl, "PNG", margin, currentY, qrSize, qrSize);
 
-  doc.setFontSize(9);
+  doc.setFontSize(10);
   doc.setFont("helvetica", "normal");
   doc.setTextColor(...colors.darkText);
-  doc.text("Scan QR code or visit:", margin + qrSize + 6, currentY + 5);
+  doc.text("Scan QR code or visit:", margin + qrSize + 7, currentY + 6);
 
   doc.setFont("helvetica", "bold");
   doc.setTextColor(...colors.accentBlue);
-  doc.text("aiq.works/verify", margin + qrSize + 6, currentY + 11);
+  doc.setFontSize(11);
+  doc.text("aiq.works/verify", margin + qrSize + 7, currentY + 13);
 
   doc.setFont("helvetica", "normal");
   doc.setTextColor(...colors.mediumGray);
-  doc.setFontSize(8);
-  doc.text(`Certificate ID: ${verificationCode}`, margin + qrSize + 6, currentY + 17);
+  doc.setFontSize(9);
+  doc.text(`Certificate ID: ${verificationCode}`, margin + qrSize + 7, currentY + 20);
   doc.text(
     `Valid Through: ${expiryDate.toLocaleDateString("en-US", { year: "numeric", month: "long", day: "numeric" })}`,
-    margin + qrSize + 6,
-    currentY + 22,
+    margin + qrSize + 7,
+    currentY + 26,
   );
 
-  currentY += qrSize + 10;
+  currentY += qrSize + 15;
 
-  // Assessment Information
   doc.setDrawColor(...colors.primaryBlue);
-  doc.setLineWidth(0.3);
+  doc.setLineWidth(0.4);
   doc.line(margin, currentY, pageWidth - margin, currentY);
 
-  currentY += 6;
+  currentY += 8;
 
-  doc.setFontSize(10);
+  doc.setFontSize(13);
   doc.setFont("helvetica", "bold");
   doc.setTextColor(...colors.primaryBlue);
   doc.text("About This Assessment", margin, currentY);
 
-  currentY += 6;
+  currentY += 8;
 
-  doc.setFontSize(8);
+  doc.setFontSize(9);
   doc.setFont("helvetica", "normal");
   doc.setTextColor(...colors.darkText);
 
@@ -568,30 +555,42 @@ export async function generatePDFReport(
   ];
 
   assessmentInfo.forEach((info, idx) => {
-    doc.text(info, margin + 2, currentY + idx * 5);
+    doc.text(info, margin + 2, currentY + idx * 6);
   });
 
-  currentY += 25;
+  currentY += 32;
 
-  // Research citation
-  currentY = pageHeight - 22;
   doc.setDrawColor(...colors.lightGray);
-  doc.setLineWidth(0.2);
+  doc.setLineWidth(0.3);
   doc.line(margin, currentY, pageWidth - margin, currentY);
 
-  currentY += 4;
+  currentY += 7;
 
-  doc.setFontSize(7);
-  doc.setTextColor(...colors.mediumGray);
-  doc.setFont("helvetica", "italic");
-  const citation = doc.splitTextToSize(
-    "Research Reference: Ganuthula, V.R.R., Balaraman, K.K. (2025). Development and validation of the AIQ assessment framework: measuring AI collaboration capabilities across eight dimensions. Discover Artificial Intelligence, 5, Article 29. https://doi.org/10.1007/s44163-025-00516-1",
-    contentWidth,
-  );
-  doc.text(citation, margin, currentY);
+  doc.setFontSize(11);
+  doc.setFont("helvetica", "bold");
+  doc.setTextColor(...colors.primaryBlue);
+  doc.text("Research Reference", margin, currentY);
+
+  currentY += 7;
+
+  doc.setFontSize(8.5);
+  doc.setTextColor(...colors.darkText);
+  doc.setFont("helvetica", "normal");
+
+  const citation =
+    "Ganuthula, V.R.R., Balaraman, K.K. (2025). Development and validation of the AIQ assessment framework: measuring AI collaboration capabilities across eight dimensions. Discover Artificial Intelligence, 5, Article 29.";
+  const citationLines = doc.splitTextToSize(citation, contentWidth);
+  doc.text(citationLines, margin, currentY);
+
+  currentY += citationLines.length * 5 + 3;
+
+  doc.setFont("helvetica", "bold");
+  doc.setTextColor(...colors.accentBlue);
+  doc.setFontSize(9);
+  doc.text("https://doi.org/10.1007/s44163-025-00516-1", margin, currentY);
 
   addFooter();
-  addPageNumber(2, 2);
+  addPageNumber(3, 3);
 
   return doc.output("blob");
 }
