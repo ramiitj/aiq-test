@@ -2,7 +2,17 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { Brain, TrendingUp, Award, Lightbulb, CheckCircle, ArrowRight, GraduationCap, Briefcase, Rocket } from "lucide-react";
+import {
+  Brain,
+  TrendingUp,
+  Award,
+  Lightbulb,
+  CheckCircle,
+  ArrowRight,
+  GraduationCap,
+  Briefcase,
+  Rocket,
+} from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { Navigation } from "@/components/Navigation";
 
@@ -64,8 +74,8 @@ const Index = () => {
         "Understanding of AI basics and core concepts",
         "Ability to work with AI tools in simple scenarios",
         "Foundational awareness of AI ethics and limitations",
-        "Basic prompt engineering techniques"
-      ]
+        "Basic prompt engineering techniques",
+      ],
     },
     {
       id: "professional",
@@ -84,8 +94,8 @@ const Index = () => {
         "Advanced prompt engineering and iteration strategies",
         "Critical evaluation of AI outputs and quality assessment",
         "Integration of AI into complex workflows",
-        "Strategic understanding of AI capabilities and limitations"
-      ]
+        "Strategic understanding of AI capabilities and limitations",
+      ],
     },
     {
       id: "expert",
@@ -104,8 +114,8 @@ const Index = () => {
         "Deep strategic understanding of AI technologies",
         "Expert-level prompt engineering and optimization",
         "Ethical AI governance and responsible deployment",
-        "Innovation leadership and creative AI synthesis"
-      ]
+        "Innovation leadership and creative AI synthesis",
+      ],
     },
   ];
 
@@ -117,7 +127,7 @@ const Index = () => {
         {/* Hero Section */}
         <section className="container py-20 text-center max-w-5xl">
           <h1 className="text-5xl lg:text-6xl font-extrabold mb-4 tracking-tight leading-tight bg-gradient-to-r from-blue-900 to-blue-600 bg-clip-text text-transparent">
-  Measure Your AIQ<sup className="text-[0.6em]">™</sup>
+            Measure Your AIQ<sup className="text-[0.6em] text-blue-600">™</sup>
           </h1>
           <p className="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto leading-relaxed">
             The first scientifically validated assessment of how effectively humans work with AI
@@ -150,7 +160,9 @@ const Index = () => {
         {/* Why It Matters */}
         <section className="bg-secondary/30 py-16">
           <div className="container max-w-6xl">
-            <h2 className="text-4xl font-extrabold mb-3 text-center tracking-tight">Why AIQ<sup className="text-[0.6em]">™</sup> Matters</h2>
+            <h2 className="text-4xl font-extrabold mb-3 text-center tracking-tight">
+              Why AIQ<sup className="text-[0.6em]">™</sup> Matters
+            </h2>
             <p className="text-center text-muted-foreground mb-10 max-w-2xl mx-auto">
               As AI transforms every industry, the ability to collaborate effectively with AI systems is becoming a
               critical skill
@@ -225,19 +237,24 @@ const Index = () => {
               {assessmentLevels.map((level) => {
                 const Icon = level.icon;
                 return (
-                  <Card key={level.id} className="shadow-sm border relative overflow-hidden hover:shadow-lg transition-shadow">
+                  <Card
+                    key={level.id}
+                    className="shadow-sm border relative overflow-hidden hover:shadow-lg transition-shadow"
+                  >
                     {level.recommended && (
                       <div className="absolute top-4 right-4 bg-primary text-primary-foreground px-3 py-1 rounded-full text-xs font-bold z-10">
                         Recommended
                       </div>
                     )}
                     <CardContent className="pt-6 pb-6">
-                      <div className={`inline-flex items-center gap-2 mb-3 p-3 bg-gradient-to-br ${level.gradient} rounded-lg`}>
+                      <div
+                        className={`inline-flex items-center gap-2 mb-3 p-3 bg-gradient-to-br ${level.gradient} rounded-lg`}
+                      >
                         <Icon className="h-6 w-6 text-white" />
                       </div>
                       <h3 className="text-2xl font-extrabold mb-2">{level.title}</h3>
                       <p className="text-sm text-muted-foreground mb-4">{level.description}</p>
-                      
+
                       {/* Assessment Details */}
                       <div className="space-y-2 mb-4">
                         <div className="flex items-center gap-2 text-sm">
@@ -330,7 +347,9 @@ const Index = () => {
         {/* CTA Section */}
         <section className="bg-gradient-to-br from-blue-900 to-blue-800 text-white py-16">
           <div className="container text-center max-w-3xl">
-            <h2 className="text-4xl lg:text-5xl font-extrabold mb-4 tracking-tight">Ready to Measure Your AIQ<sup className="text-[0.6em]">™</sup>?</h2>
+            <h2 className="text-4xl lg:text-5xl font-extrabold mb-4 tracking-tight">
+              Ready to Measure Your AIQ<sup className="text-[0.6em]">™</sup>?
+            </h2>
             <p className="text-lg mb-8 opacity-90">
               Join professionals worldwide who are measuring and improving their AI collaboration skills
             </p>
