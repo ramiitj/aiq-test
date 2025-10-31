@@ -699,7 +699,10 @@ const Results = () => {
         {/* Performance Insights */}
         <Card className="mb-6 shadow-sm border">
           <CardHeader className="pb-4">
-            <CardTitle className="text-base font-black">Performance Insights</CardTitle>
+            <div className="flex items-center justify-between">
+              <CardTitle className="text-base font-black">Performance Insights</CardTitle>
+              <span className="text-xs font-semibold text-muted-foreground">Points</span>
+            </div>
           </CardHeader>
           <CardContent className="pt-0">
             <div className="space-y-3">
@@ -723,7 +726,7 @@ const Results = () => {
                         className="flex items-center justify-between text-xs bg-green-50 dark:bg-green-950/20 p-2 rounded"
                       >
                         <span className="font-medium">{dim.name}</span>
-                        <span className="font-bold text-green-600 dark:text-green-400">{dim.score.toFixed(1)} pts</span>
+                        <span className="font-bold text-green-600 dark:text-green-400">{dim.score.toFixed(1)}</span>
                       </div>
                     ))}
                 </div>
@@ -749,7 +752,7 @@ const Results = () => {
                         className="flex items-center justify-between text-xs bg-blue-50 dark:bg-blue-950/20 p-2 rounded"
                       >
                         <span className="font-medium">{dim.name}</span>
-                        <span className="font-bold text-blue-600 dark:text-blue-400">{dim.score.toFixed(1)} pts</span>
+                        <span className="font-bold text-blue-600 dark:text-blue-400">{dim.score.toFixed(1)}</span>
                       </div>
                     ))}
                 </div>
