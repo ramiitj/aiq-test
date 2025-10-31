@@ -365,9 +365,11 @@ const About = () => {
             <Card className="shadow-sm border">
               <CardContent className="pt-6 pb-6">
                 <h3 className="font-bold text-xl mb-1">Krishna Kumar Balaraman, Ph.D.</h3>
-                <p className="text-sm text-blue-900 font-semibold mb-3"><a href=" https://www.linkedin.com/in/balakk/" target="_blank" rel="noopener noreferrer">
-                 https://www.linkedin.com/in/balakk/
-              </a>
+                <p className="text-sm text-blue-900 font-semibold mb-3">
+                  <a href="https://www.linkedin.com/in/balakk/" target="_blank" rel="noopener noreferrer">
+                    https://www.linkedin.com/in/balakk/
+                  </a>
+                </p>
                 <p className="text-sm text-muted-foreground leading-relaxed mb-2">
                   Brings 20+ years of technology leadership experience. Research focuses on strategic foresight and AI
                   governance.
