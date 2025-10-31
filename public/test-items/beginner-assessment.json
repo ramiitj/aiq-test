@@ -93,12 +93,12 @@
             "bloomLevel": "Remember",
             "question": "What is a primary limitation of current AI language models?",
             "options": [
-              "They cannot understand context or nuance",
               "They have a knowledge cutoff date and cannot access real-time information",
-              "They can only process very short texts (under 500 words)",
-              "They require manual programming for every new task"
+              "They require manual programming for every new task",
+              "They cannot understand context or nuance",
+              "They can only process very short texts (under 500 words)"
             ],
-            "correctAnswer": 1,
+            "correctAnswer": 0,
             "rationale": "LLMs are trained on data up to a specific cutoff date and don't have automatic access to current events or real-time data unless connected to external tools. They can handle long texts, don't require reprogramming per task, and can understand context and nuance reasonably well.",
             "explanation": "This is a foundational concept about AI limitations. Understanding cutoff dates helps set realistic expectations for AI use.",
             "tags": [
@@ -135,12 +135,12 @@
             "bloomLevel": "Understand",
             "question": "Which of the following represents an appropriate use of AI?",
             "options": [
+              "Using AI output without verifying important facts",
               "Using AI to make final hiring decisions without human review",
-              "Using AI to analyze medical imaging, with a radiologist reviewing results",
               "Replacing all customer service representatives with AI immediately",
-              "Using AI output without verifying important facts"
+              "Using AI to analyze medical imaging, with a radiologist reviewing results"
             ],
-            "correctAnswer": 1,
+            "correctAnswer": 3,
             "rationale": "Option B shows human-in-the-loop design where AI augments human capability. AI provides analysis, human expert applies judgment, context, and accountability. Other options either remove humans entirely or skip verification.",
             "explanation": "Appropriate AI use keeps humans in the decision-making loop for important matters, uses AI for analysis/speed while humans retain judgment authority.",
             "tags": [
@@ -159,10 +159,10 @@
             "bloomLevel": "Understand",
             "question": "What is the main reason to understand AI limitations?",
             "options": [
-              "To avoid using AI at all",
+              "Because AI will soon replace all human workers",
               "To set realistic expectations and use AI appropriately for its strengths",
-              "To prove that humans are superior",
-              "Because AI will soon replace all human workers"
+              "To avoid using AI at all",
+              "To prove that humans are superior"
             ],
             "correctAnswer": 1,
             "rationale": "Understanding limitations helps you use AI for what it's good at (pattern recognition, speed, generating options) while not relying on it for things it struggles with (ethical judgment, novel situations, verification).",
@@ -226,9 +226,9 @@
             "bloomLevel": "Apply",
             "question": "You're considering using AI to generate customer service responses. Which risk should concern you MOST?",
             "options": [
-              "The responses might be too long",
-              "AI might give customers confidently incorrect information",
               "The responses might be formatted unusually",
+              "AI might give customers confidently incorrect information",
+              "The responses might be too long",
               "AI might be too efficient"
             ],
             "correctAnswer": 1,
@@ -251,12 +251,12 @@
             "bloomLevel": "Apply",
             "question": "Which scenario BEST demonstrates strategic AI understanding?",
             "options": [
+              "Avoiding AI completely to ensure quality",
               "Using AI for everything to maximize efficiency",
               "Identifying where AI adds value and where human expertise is essential",
-              "Avoiding AI completely to ensure quality",
               "Using AI only when no other options exist"
             ],
-            "correctAnswer": 1,
+            "correctAnswer": 2,
             "rationale": "Strategic use means deliberately choosing when AI is appropriate and when it's not. This requires understanding both capabilities and limitations, then making intentional decisions.",
             "explanation": "Strategic thinking balances AI use with context, stakes, and goals.",
             "tags": [
@@ -284,12 +284,12 @@
             "bloomLevel": "Remember",
             "question": "What is the most important characteristic of an effective prompt?",
             "options": [
-              "Length - longer prompts always work better",
-              "Technical jargon - using expert terminology",
+              "Vagueness - AI should figure out what you mean",
               "Clarity and specificity about what you want",
-              "Vagueness - AI should figure out what you mean"
+              "Technical jargon - using expert terminology",
+              "Length - longer prompts always work better"
             ],
-            "correctAnswer": 2,
+            "correctAnswer": 1,
             "rationale": "Clear, specific prompts produce better results. Clarity helps AI understand your actual need. Length doesn't matter if vague. Jargon can confuse. AI can't read minds - specificity is key.",
             "explanation": "This is foundational to prompt engineering. The clearer you are, the better AI can help you.",
             "tags": [
@@ -326,12 +326,12 @@
             "bloomLevel": "Understand",
             "question": "You want AI to write a product description. Which prompt would likely produce better results?",
             "options": [
-              "Write about this product",
               "Write a 2-paragraph product description emphasizing durability and ease of use, targeting busy professionals",
+              "Describe the product",
               "Make it good",
-              "Describe the product"
+              "Write about this product"
             ],
-            "correctAnswer": 1,
+            "correctAnswer": 0,
             "rationale": "Option B specifies length, tone, key benefits, and target audience. AI now understands exactly what you want. Other options lack essential guidance.",
             "explanation": "Specific prompts with parameters guide AI toward useful outputs.",
             "tags": [
@@ -350,9 +350,9 @@
             "bloomLevel": "Understand",
             "question": "What is the purpose of including examples in your prompt?",
             "options": [
-              "To make the prompt longer",
-              "To show AI exactly what style, format, or approach you want",
               "Because AI learns from examples given in single prompts",
+              "To show AI exactly what style, format, or approach you want",
+              "To make the prompt longer",
               "Examples don't help AI understand"
             ],
             "correctAnswer": 1,
@@ -416,12 +416,12 @@
             "bloomLevel": "Apply",
             "question": "When asking AI to help with writing, what should you include to get the best results?",
             "options": [
-              "Just the topic",
               "Topic, intended audience, tone, purpose, and length/scope",
-              "Multiple unrelated writing requests at once",
-              "Assume AI knows what you want without explanation"
+              "Just the topic",
+              "Assume AI knows what you want without explanation",
+              "Multiple unrelated writing requests at once"
             ],
-            "correctAnswer": 1,
+            "correctAnswer": 0,
             "rationale": "Complete context helps. Topic alone is vague. Audience matters (expert vs. general), tone shapes everything (formal vs. casual), purpose guides content, length/scope sets boundaries.",
             "explanation": "Strategic prompt engineering provides full context.",
             "tags": [
@@ -442,8 +442,8 @@
             "options": [
               "Using the same generic prompt for all tasks",
               "Adjusting your prompt based on results, adding specificity where needed",
-              "Assuming the first response is always perfect",
-              "Never trying new prompting approaches"
+              "Never trying new prompting approaches",
+              "Assuming the first response is always perfect"
             ],
             "correctAnswer": 1,
             "rationale": "Good prompt engineering is iterative. You refine based on results. You notice what works and what doesn't, then adjust. This is a learnable skill.",
@@ -473,12 +473,12 @@
             "bloomLevel": "Remember",
             "question": "What should you ALWAYS do before using important information from AI in professional work?",
             "options": [
-              "Assume it's correct because AI is advanced",
               "Use it immediately to save time",
-              "Verify the information against reliable sources",
-              "Only check if something seems obviously wrong"
+              "Assume it's correct because AI is advanced",
+              "Only check if something seems obviously wrong",
+              "Verify the information against reliable sources"
             ],
-            "correctAnswer": 2,
+            "correctAnswer": 3,
             "rationale": "Verification is essential. AI can sound authoritative while being completely wrong (hallucination). Always cross-check important facts against reliable sources before using them.",
             "explanation": "This is a critical safety practice. AI confidence \u2260 accuracy.",
             "tags": [
@@ -515,10 +515,10 @@
             "bloomLevel": "Understand",
             "question": "An AI summarizes a news article about a controversial topic. What might indicate bias in the summary?",
             "options": [
-              "The summary is well-written",
-              "It only presents one perspective on a multi-sided issue",
               "It uses clear language",
-              "It's organized logically"
+              "It only presents one perspective on a multi-sided issue",
+              "It's organized logically",
+              "The summary is well-written"
             ],
             "correctAnswer": 1,
             "rationale": "Presenting only one viewpoint on controversial topics suggests bias. Balanced coverage acknowledges multiple legitimate perspectives. Quality writing and organization don't mean unbiased.",
@@ -539,12 +539,12 @@
             "bloomLevel": "Understand",
             "question": "How should you evaluate AI-generated statistics or data claims?",
             "options": [
+              "Reject all statistics because AI makes them up",
               "Accept them because AI processes lots of data",
               "Cross-reference with authoritative sources and official databases",
-              "Only question them if they contradict your existing beliefs",
-              "Reject all statistics because AI makes them up"
+              "Only question them if they contradict your existing beliefs"
             ],
-            "correctAnswer": 1,
+            "correctAnswer": 2,
             "rationale": "Verify data claims against authoritative sources (government databases, peer-reviewed research, official reports). AI can hallucinate plausible-sounding statistics.",
             "explanation": "This is especially critical for health, economic, and scientific claims.",
             "tags": [
@@ -605,12 +605,12 @@
             "bloomLevel": "Apply",
             "question": "You notice AI gives different answers to the same question asked multiple times. What does this tell you?",
             "options": [
-              "AI is broken and should never be used",
               "AI has inherent variability, so single responses should be treated with healthy skepticism",
+              "AI is broken and should never be used",
               "The first answer is always right",
               "Asking multiple times is a waste of time"
             ],
-            "correctAnswer": 1,
+            "correctAnswer": 0,
             "rationale": "AI responses vary due to design (temperature settings). Multiple different answers to the same question suggests the answer isn't stable or certain. This warrants skepticism for important matters.",
             "explanation": "Understanding AI behavior helps you evaluate reliability.",
             "tags": [
@@ -629,12 +629,12 @@
             "bloomLevel": "Apply",
             "question": "Which demonstrates critical evaluation of AI output?",
             "options": [
-              "Accepting all AI output without question",
-              "Automatically rejecting all AI output as unreliable",
               "Evaluating appropriateness of AI output for your specific need and verifying important claims",
-              "Using AI output only when desperate"
+              "Using AI output only when desperate",
+              "Accepting all AI output without question",
+              "Automatically rejecting all AI output as unreliable"
             ],
-            "correctAnswer": 2,
+            "correctAnswer": 0,
             "rationale": "Critical evaluation is balanced: AI is useful for many things, unreliable for others. You match the use to the reliability level needed and verify when stakes are high.",
             "explanation": "Sophisticated evaluation requires judgment, not blind trust or blanket rejection.",
             "tags": [
@@ -662,12 +662,12 @@
             "bloomLevel": "Remember",
             "question": "What is the ideal model for human-AI collaboration?",
             "options": [
-              "Let AI do everything without human input",
-              "Humans do everything without AI assistance",
               "AI and humans working together, each contributing their strengths",
-              "Alternate between AI-only and human-only work"
+              "Alternate between AI-only and human-only work",
+              "Humans do everything without AI assistance",
+              "Let AI do everything without human input"
             ],
-            "correctAnswer": 2,
+            "correctAnswer": 0,
             "rationale": "Collaboration leverages both: AI provides speed, pattern recognition, volume processing; humans provide judgment, context, creativity, ethics. Together they're stronger than either alone.",
             "explanation": "Collaboration is the most effective approach.",
             "tags": [
@@ -704,12 +704,12 @@
             "bloomLevel": "Understand",
             "question": "For which type of task is AI typically MOST valuable?",
             "options": [
+              "Tasks requiring emotional intelligence",
               "Making final decisions about people's careers or futures",
               "Generating first drafts, analyzing patterns, exploring options",
-              "Forming ethical judgments about right and wrong",
-              "Tasks requiring emotional intelligence"
+              "Forming ethical judgments about right and wrong"
             ],
-            "correctAnswer": 1,
+            "correctAnswer": 2,
             "rationale": "AI excels at generating options, analyzing patterns, and processing volumes. It should rarely make final high-stakes decisions or handle ethical judgments alone.",
             "explanation": "Matching AI strengths to task types improves effectiveness.",
             "tags": [
@@ -728,12 +728,12 @@
             "bloomLevel": "Understand",
             "question": "You're using AI to draft customer service responses. Where does human expertise need to remain?",
             "options": [
-              "Humans should never be involved",
               "Human review to ensure accuracy, appropriateness, and maintaining customer relationships",
               "Only if AI responses seem bad",
-              "Humans should take over completely from the start"
+              "Humans should take over completely from the start",
+              "Humans should never be involved"
             ],
-            "correctAnswer": 1,
+            "correctAnswer": 0,
             "rationale": "Customer relationship and accuracy are too important. AI drafts efficiently, human reviews for appropriateness and correctness. This leverages both strengths.",
             "explanation": "High-stakes customer communication needs human oversight.",
             "tags": [
@@ -794,12 +794,12 @@
             "bloomLevel": "Apply",
             "question": "When should you NOT use AI, even though it could theoretically help?",
             "options": [
-              "Never - AI should always be used",
               "When human judgment, accountability, or ethical decisions are central to the task",
-              "Only if AI is too slow",
-              "When tasks are complex"
+              "When tasks are complex",
+              "Never - AI should always be used",
+              "Only if AI is too slow"
             ],
-            "correctAnswer": 1,
+            "correctAnswer": 0,
             "rationale": "Some tasks require human judgment and accountability. Even if AI could theoretically generate output, keeping decisions human-centered for ethical matters is appropriate.",
             "explanation": "Not every task should use AI. Strategic judgment includes knowing when to exclude it.",
             "tags": [
@@ -818,12 +818,12 @@
             "bloomLevel": "Apply",
             "question": "Which demonstrates excellent AI-human integration?",
             "options": [
+              "Randomly alternating between AI and human decisions",
               "Replacing all human workers with AI",
               "Never using AI and relying only on humans",
-              "Strategic use where AI and human strengths combine to produce better outcomes than either alone",
-              "Randomly alternating between AI and human decisions"
+              "Strategic use where AI and human strengths combine to produce better outcomes than either alone"
             ],
-            "correctAnswer": 2,
+            "correctAnswer": 3,
             "rationale": "Excellence is strategic: identify where each is strongest, design workflows that leverage both, maintain human judgment where it matters most.",
             "explanation": "Integration excellence requires strategic thinking about complementary strengths.",
             "tags": [
@@ -852,11 +852,11 @@
             "question": "What is the main benefit of learning from AI interactions over time?",
             "options": [
               "AI automatically improves without your involvement",
-              "You develop more effective approaches through practice and reflection",
+              "Learning wastes valuable time",
               "Your first attempt is always the best",
-              "Learning wastes valuable time"
+              "You develop more effective approaches through practice and reflection"
             ],
-            "correctAnswer": 1,
+            "correctAnswer": 3,
             "rationale": "Learning compounds. Each interaction teaches you what works and doesn't, building expertise. You improve faster than AI improves.",
             "explanation": "This is foundational to adaptive learning: experience builds capability.",
             "tags": [
@@ -893,12 +893,12 @@
             "bloomLevel": "Understand",
             "question": "You notice that adding examples to your prompts significantly improves AI responses. What should you do next?",
             "options": [
-              "Only use that one exact structure forever",
-              "Never use examples again",
               "Understand why examples help and experiment with applying it to different task types",
-              "Assume examples only work for one specific task"
+              "Assume examples only work for one specific task",
+              "Never use examples again",
+              "Only use that one exact structure forever"
             ],
-            "correctAnswer": 2,
+            "correctAnswer": 0,
             "rationale": "This is learning: recognizing a pattern that works (examples help), understanding why (they show the pattern), and generalizing it. This builds transferable knowledge.",
             "explanation": "Learning means extracting principles, not just memorizing specific prompts.",
             "tags": [
@@ -917,12 +917,12 @@
             "bloomLevel": "Understand",
             "question": "What role does reflection play in learning from AI interactions?",
             "options": [
-              "Reflection is a waste of time",
-              "Reflection helps you identify patterns and consolidate lessons",
               "Only experts need to reflect",
-              "Reflecting prevents future improvement"
+              "Reflecting prevents future improvement",
+              "Reflection helps you identify patterns and consolidate lessons",
+              "Reflection is a waste of time"
             ],
-            "correctAnswer": 1,
+            "correctAnswer": 2,
             "rationale": "Reflection transforms experience into learning. Without it, you just have experiences. With it, those experiences teach you principles.",
             "explanation": "Reflection is where learning actually happens.",
             "tags": [
@@ -1016,12 +1016,12 @@
             "bloomLevel": "Remember",
             "question": "What is a primary ethical concern when using AI in hiring decisions?",
             "options": [
-              "AI might hire too many people",
               "AI trained on historical data might perpetuate or amplify existing biases",
-              "AI requires too much electricity",
-              "AI might hire people too quickly"
+              "AI might hire too many people",
+              "AI might hire people too quickly",
+              "AI requires too much electricity"
             ],
-            "correctAnswer": 1,
+            "correctAnswer": 0,
             "rationale": "Bias amplification is critical. Historical hiring data often reflects past discrimination. AI can scale this bias, creating systematic unfairness. Testing for fairness is essential.",
             "explanation": "This is a foundational ethical concern with AI applications.",
             "tags": [
@@ -1060,10 +1060,10 @@
             "options": [
               "Use it anyway since AI generated it",
               "Change a few words to make it seem different",
-              "Revise substantially to ensure originality and respect IP rights",
-              "Ignore the similarity"
+              "Ignore the similarity",
+              "Revise substantially to ensure originality and respect IP rights"
             ],
-            "correctAnswer": 2,
+            "correctAnswer": 3,
             "rationale": "Intellectual property rights matter regardless of how content was generated. Substantial revision is required to create genuine originality and respect creator rights.",
             "explanation": "Responsibility applies even to AI-generated content.",
             "tags": [
@@ -1082,10 +1082,10 @@
             "bloomLevel": "Understand",
             "question": "When is transparency about AI use most important?",
             "options": [
-              "Only when AI works perfectly",
+              "Only if people ask",
               "In high-stakes decisions affecting people (hiring, credit, medical), so people understand they're interacting with AI",
               "Never - keep AI use secret",
-              "Only if people ask"
+              "Only when AI works perfectly"
             ],
             "correctAnswer": 1,
             "rationale": "Transparency is essential in high-stakes decisions. People deserve to know when AI is involved in decisions affecting them. This enables appropriate skepticism and appeals.",
@@ -1149,11 +1149,11 @@
             "question": "What's an appropriate ethical position on using AI for employee monitoring?",
             "options": [
               "Monitor everything because you own the company",
-              "Don't monitor because it's invasive",
               "Monitor transparently with clear policies, reasonable limitations, and employee knowledge/consent",
-              "Monitor secretly to catch policy violations"
+              "Monitor secretly to catch policy violations",
+              "Don't monitor because it's invasive"
             ],
-            "correctAnswer": 2,
+            "correctAnswer": 1,
             "rationale": "Ethical approaches balance legitimate business needs with employee respect: transparency about what's monitored, why, and how; reasonable limitations; employee awareness and input.",
             "explanation": "Ethical implementation requires balance and transparency.",
             "tags": [
@@ -1181,12 +1181,12 @@
             "bloomLevel": "Remember",
             "question": "Why is audience important when using AI-generated content?",
             "options": [
-              "Audience doesn't matter - all content is the same",
-              "Different audiences have different knowledge levels, expectations, and communication preferences",
               "Audience only matters for written content",
-              "Using technical language works for all audiences"
+              "Using technical language works for all audiences",
+              "Different audiences have different knowledge levels, expectations, and communication preferences",
+              "Audience doesn't matter - all content is the same"
             ],
-            "correctAnswer": 1,
+            "correctAnswer": 2,
             "rationale": "Context matters enormously. What works for experts fails with beginners. What's appropriate for formal settings isn't for casual ones. Audience awareness shapes effective communication.",
             "explanation": "This is foundational to context sensitivity: one size doesn't fit all.",
             "tags": [
@@ -1223,12 +1223,12 @@
             "bloomLevel": "Understand",
             "question": "You're using AI to draft an email to a long-term partner about a significant delay. What context should guide your approach?",
             "options": [
-              "Just send the AI draft as-is",
-              "Relationship history, stakes involved, communication style, and potential emotional impact",
               "Focus only on the factual information",
-              "Make it as brief as possible"
+              "Make it as brief as possible",
+              "Relationship history, stakes involved, communication style, and potential emotional impact",
+              "Just send the AI draft as-is"
             ],
-            "correctAnswer": 1,
+            "correctAnswer": 2,
             "rationale": "Relationship context matters. Your communication style with a long-term partner differs from a new client. Understanding stakes and relationship history helps you edit AI output appropriately.",
             "explanation": "High-stakes communications require considering relational context.",
             "tags": [
@@ -1248,11 +1248,11 @@
             "question": "You're adapting AI content for a professional publication. What's most important to consider?",
             "options": [
               "Just use the AI output as-is",
-              "Publication's standards, audience expertise, tone conventions, and length requirements",
               "Make it as long as possible",
-              "Ignore publication guidelines"
+              "Ignore publication guidelines",
+              "Publication's standards, audience expertise, tone conventions, and length requirements"
             ],
-            "correctAnswer": 1,
+            "correctAnswer": 3,
             "rationale": "Each publication has distinct standards: audience level, tone, format, length. Using AI as a first draft makes sense; adapting to publication context is essential.",
             "explanation": "Understanding organizational/publication context ensures appropriate output.",
             "tags": [
@@ -1313,10 +1313,10 @@
             "bloomLevel": "Apply",
             "question": "When sharing AI-generated research findings internally vs. publicly, what context should guide your approach?",
             "options": [
-              "Use the same presentation for both",
-              "Internal: can be more technical and preliminary; public: must be more polished, accessible, with caveats about limitations",
               "Always present findings identically",
-              "Oversimplify for the public, use full complexity internally"
+              "Internal: can be more technical and preliminary; public: must be more polished, accessible, with caveats about limitations",
+              "Oversimplify for the public, use full complexity internally",
+              "Use the same presentation for both"
             ],
             "correctAnswer": 1,
             "rationale": "Context changes meaning. Internal stakeholders understand caveats; public audiences might not. Technical details appropriate for peers might confuse general audiences. Adapt accordingly.",
@@ -1347,11 +1347,11 @@
             "question": "How can AI best support creative work?",
             "options": [
               "By replacing human creativity",
-              "By generating options, exploring ideas, and providing inspiration for human creative judgment",
               "Creative work should never use AI",
+              "By generating options, exploring ideas, and providing inspiration for human creative judgment",
               "By making final creative decisions"
             ],
-            "correctAnswer": 1,
+            "correctAnswer": 2,
             "rationale": "AI is best in a supporting role for creativity: generating possibilities, exploring angles, providing inspiration. Humans apply judgment about what's original, appropriate, and excellent.",
             "explanation": "This is the human-AI partnership model for creativity.",
             "tags": [
@@ -1388,10 +1388,10 @@
             "bloomLevel": "Understand",
             "question": "When using AI to generate creative options (like marketing slogans), what's your best next step?",
             "options": [
-              "Use the first option generated",
+              "Dismiss all AI suggestions as uncreative",
               "Evaluate options critically, select strong ones, and refine/combine them based on your judgment",
               "Regenerate until AI finds the \"perfect\" option",
-              "Dismiss all AI suggestions as uncreative"
+              "Use the first option generated"
             ],
             "correctAnswer": 1,
             "rationale": "The creative judgment is yours. Evaluate which options are genuinely creative, original, and appropriate. Refinement and combination often produce the best results.",
@@ -1412,12 +1412,12 @@
             "bloomLevel": "Understand",
             "question": "How can combining multiple AI suggestions lead to greater creativity?",
             "options": [
-              "You can't combine suggestions - pick one",
-              "By taking elements from different suggestions and synthesizing them into something new",
               "Combinations never work",
-              "The first suggestion is always best"
+              "You can't combine suggestions - pick one",
+              "The first suggestion is always best",
+              "By taking elements from different suggestions and synthesizing them into something new"
             ],
-            "correctAnswer": 1,
+            "correctAnswer": 3,
             "rationale": "Creative synthesis involves recognizing good elements across options and combining them in new ways. This is where human creativity transforms AI suggestions into genuinely novel solutions.",
             "explanation": "Synthesis is where the real creativity happens.",
             "tags": [
@@ -1479,11 +1479,11 @@
             "question": "When should you NOT use AI for creative work?",
             "options": [
               "Never - always use AI for creativity",
-              "When the creative vision requires something truly novel that's outside common patterns",
               "Only if you're lazy",
+              "When the creative vision requires something truly novel that's outside common patterns",
               "Creative work should never involve AI"
             ],
-            "correctAnswer": 1,
+            "correctAnswer": 2,
             "rationale": "AI works best when combining known elements. For truly novel concepts outside training data patterns, human creativity is essential. Use AI to explore and refine, keep human creativity central.",
             "explanation": "AI has creative limits. Understanding them helps you know when to rely on human creativity.",
             "tags": [
