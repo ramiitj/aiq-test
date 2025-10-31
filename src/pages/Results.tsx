@@ -601,14 +601,17 @@ const Results = () => {
         {/* Dimension Breakdown */}
         <Card className="mb-6 shadow-sm border">
           <CardHeader className="pb-4">
-            <div className="flex items-center gap-2">
-              <div className="p-2 bg-primary/10 rounded-lg">
-                <TrendingUp className="h-5 w-5 text-primary" />
+            <div className="flex items-center justify-between">
+              <div className="flex items-center gap-2">
+                <div className="p-2 bg-primary/10 rounded-lg">
+                  <TrendingUp className="h-5 w-5 text-primary" />
+                </div>
+                <div>
+                  <CardTitle className="text-xl font-black">Dimension Breakdown</CardTitle>
+                  <p className="text-xs text-muted-foreground mt-0.5">Your performance across 8 key areas</p>
+                </div>
               </div>
-              <div>
-                <CardTitle className="text-xl font-black">Dimension Breakdown</CardTitle>
-                <p className="text-xs text-muted-foreground mt-0.5">Your performance across 8 key areas</p>
-              </div>
+              <span className="text-xs font-semibold text-muted-foreground">Points</span>
             </div>
           </CardHeader>
           <CardContent className="pt-0">
@@ -631,7 +634,7 @@ const Results = () => {
                         <span className={`text-xs font-semibold px-2 py-0.5 rounded ${dimLevel.bg} ${dimLevel.color}`}>
                           {dimLevel.label}
                         </span>
-                        <span className="text-lg font-black tabular-nums w-16 text-right">{score.toFixed(1)} pts</span>
+                        <span className="text-lg font-black tabular-nums w-16 text-right">{score.toFixed(1)}</span>
                       </div>
                     </div>
                     <Progress value={percentage} className="h-2" />
