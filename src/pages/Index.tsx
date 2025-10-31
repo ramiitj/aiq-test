@@ -117,7 +117,7 @@ const Index = () => {
         {/* Hero Section */}
         <section className="container py-20 text-center max-w-5xl">
           <h1 className="text-5xl lg:text-6xl font-extrabold mb-4 tracking-tight leading-tight bg-gradient-to-r from-blue-900 to-blue-600 bg-clip-text text-transparent">
-            Measure Your AI Collaboration Skills
+            Measure Your AIQ<sup className="text-[0.6em]">™</sup>
           </h1>
           <p className="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto leading-relaxed">
             The first scientifically validated assessment of how effectively humans work with AI

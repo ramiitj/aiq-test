@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { supabase } from "@/integrations/supabase/client";
 import { Navigation } from "@/components/Navigation";
+import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
@@ -150,6 +151,20 @@ const Admin = () => {
         }
       }
 
+      // Validate scoringConfiguration
+      if (!jsonData.scoringConfiguration) {
+        throw new Error('Missing scoringConfiguration object');
+      }
+      
+      const scoringConfig = jsonData.scoringConfiguration;
+      if (!scoringConfig.totalPoints || !scoringConfig.passingScore || !scoringConfig.scoringMethod) {
+        throw new Error('Incomplete scoring configuration: must include totalPoints, passingScore, and scoringMethod');
+      }
+      
+      if (!scoringConfig.scoringGuidelines || typeof scoringConfig.scoringGuidelines !== 'object') {
+        throw new Error('Missing or invalid scoringGuidelines object');
+      }
+
       const fileName = `${version}-assessment.json`;
       
       // Delete old file if exists
@@ -174,9 +189,14 @@ const Admin = () => {
 
       if (uploadError) throw uploadError;
 
+      const config = jsonData.scoringConfiguration;
+      const totalItems = version === 'beginner' 
+        ? jsonData.itemBank.dimensions.reduce((sum: number, dim: any) => sum + (dim.items?.length || 0), 0)
+        : jsonData.itemBank.reduce((sum: number, dim: any) => sum + (dim.items?.length || 0), 0);
+
       toast({
         title: "Success",
-        description: `${version.charAt(0).toUpperCase() + version.slice(1)} test items uploaded successfully!`,
+        description: `${version.charAt(0).toUpperCase() + version.slice(1)} assessment uploaded successfully! Total items: ${totalItems}, Total points: ${config.totalPoints}, Passing score: ${config.passingScore}`,
       });
 
       // Clear the input
@@ -204,11 +224,11 @@ const Admin = () => {
   }
 
   return (
-    <div className="min-h-screen animate-fade-in">
+    <div className="min-h-screen flex flex-col animate-fade-in">
       <Navigation isAuthenticated={true} isAdmin={true} />
       
-      <main className="container py-8 max-w-6xl">
-        <h1 className="text-3xl font-bold mb-8">Admin Panel</h1>
+      <main className="container py-8 max-w-6xl flex-1">
+        <h1 className="text-3xl font-bold mb-8">AIQ<sup className="text-[0.6em]">™</sup> Admin Panel</h1>
 
         <div className="grid gap-6 md:grid-cols-2 mb-8">
           <Card className="shadow-elegant">
@@ -469,6 +489,8 @@ const Admin = () => {
           </CardContent>
         </Card>
       </main>
+
+      <Footer />
     </div>
   );
 };

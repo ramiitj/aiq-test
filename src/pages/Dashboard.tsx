@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { supabase } from "@/integrations/supabase/client";
 import { Navigation } from "@/components/Navigation";
+import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { PlayCircle, Trophy, User as UserIcon, Play, X, Download, Trash2, ArrowRight } from "lucide-react";
@@ -223,17 +224,17 @@ const Dashboard = () => {
   }
 
   return (
-    <div className="min-h-screen animate-fade-in">
+    <div className="min-h-screen flex flex-col animate-fade-in">
       <Navigation isAuthenticated={true} isAdmin={isAdmin} />
       
-      <main className="container py-8 max-w-6xl">
+      <main className="container py-8 max-w-6xl flex-1">
         {/* Welcome Header */}
         <div className="mb-8">
           <h1 className="text-3xl lg:text-4xl font-black mb-2 tracking-tight">
             Welcome Back{profile?.name ? `, ${profile.name}` : ''}
           </h1>
           <p className="text-sm text-muted-foreground font-medium">
-            Ready to measure your AI collaboration intelligence?
+            Ready to measure your AIQ<sup className="text-[0.6em]">™</sup>?
           </p>
         </div>
 
@@ -472,7 +473,7 @@ const Dashboard = () => {
                 </div>
                 <div>
                   <CardTitle className="text-lg font-black">Recent Results</CardTitle>
-                  <CardDescription className="text-xs">Your latest AIQ assessments</CardDescription>
+                  <CardDescription className="text-xs">Your latest AIQ<sup className="text-[0.6em]">™</sup> assessments</CardDescription>
                 </div>
               </div>
             </div>
@@ -482,7 +483,7 @@ const Dashboard = () => {
               <div className="text-center py-8 bg-secondary/20 rounded-lg">
                 <PlayCircle className="h-12 w-12 text-muted-foreground mx-auto mb-3 opacity-50" />
                 <p className="text-sm text-muted-foreground font-medium mb-2">No tests taken yet</p>
-                <p className="text-xs text-muted-foreground">Start your first AIQ assessment to see results here</p>
+                <p className="text-xs text-muted-foreground">Start your first AIQ<sup className="text-[0.6em]">™</sup> assessment to see results here</p>
               </div>
             ) : (
               <div className="space-y-2">
@@ -633,6 +634,8 @@ const Dashboard = () => {
           </CardContent>
         </Card>
       </main>
+
+      <Footer />
     </div>
   );
 };
