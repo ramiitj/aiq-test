@@ -6,7 +6,21 @@ import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Progress } from "@/components/ui/progress";
-import { Share2, Download, Trophy, Copy, ArrowRight, Calendar, Clock, Award, TrendingUp, AlertCircle, CheckCircle2, Lightbulb, ExternalLink } from "lucide-react";
+import {
+  Share2,
+  Download,
+  Trophy,
+  Copy,
+  ArrowRight,
+  Calendar,
+  Clock,
+  Award,
+  TrendingUp,
+  AlertCircle,
+  CheckCircle2,
+  Lightbulb,
+  ExternalLink,
+} from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import { ShareModal } from "@/components/ShareModal";
 import { generatePDFReport } from "@/lib/pdfGenerator";
@@ -120,16 +134,16 @@ const Results = () => {
       });
 
       // Recalculate scores with new IRT system
-      const testVersion = (data.test_version || "beginner") as 'beginner' | 'professional' | 'expert';
+      const testVersion = (data.test_version || "beginner") as "beginner" | "professional" | "expert";
       const assessmentData = await loadTestItems(testVersion);
-      
+
       const calculatedScores = calculateTestScores(
         (data.answers || {}) as Record<string, string>,
         assessmentData.dimensions,
         assessmentData.scoringConfiguration,
-        testVersion
+        testVersion,
       );
-      
+
       setScoringResult(calculatedScores);
       setIsPassed(calculatedScores.passed);
 
@@ -138,7 +152,7 @@ const Results = () => {
         .map(([code, score]) => ({ code, score }))
         .sort((a, b) => a.score - b.score)
         .slice(0, 3);
-      
+
       // Load recommendations with pass/fail context
       await extractRecommendations(testVersion, sortedDimensions, calculatedScores.passed);
 
@@ -228,7 +242,7 @@ const Results = () => {
         issueDate,
         expiryDate,
         userName,
-        result.test_duration_seconds || 0
+        result.test_duration_seconds || 0,
       );
 
       // Update report_generated_at
@@ -262,58 +276,55 @@ const Results = () => {
     }
   };
 
-const extractRecommendations = async (
-  testVersion: string, 
-  weakDimensions: { code: string; score: number }[],
-  isPassing: boolean
-) => {
-  setLoadingRecommendations(true);
-  try {
-    // Determine JSON file based on test version
-    const jsonFile = testVersion.includes('beginner') 
-      ? '/test-items/beginner-assessment.json'
-      : testVersion.includes('professional')
-      ? '/test-items/professional-assessment.json'
-      : '/test-items/expert-assessment.json';
-    
-    const response = await fetch(jsonFile);
-    if (!response.ok) throw new Error('Failed to load assessment data');
-    
-    const assessmentData = await response.json();
-    const recs: { [key: string]: string[] } = {};
-    
-    // For each weak dimension, extract recommendations
-    weakDimensions.forEach(({ code }) => {
-      const dimension = assessmentData.itemBank.dimensions?.find(
-        (d: any) => d.dimensionCode === code
-      );
-      
-      if (dimension?.items) {
-        // Get items with rich rationale/explanation
-        const itemsWithContent = dimension.items
-          .filter((item: any) => item.rationale && item.explanation);
-        
-        // For non-passing users, ensure minimum 3 recommendations per dimension
-        const recommendationCount = isPassing ? 3 : Math.max(3, itemsWithContent.length);
-        const selectedItems = itemsWithContent.slice(0, recommendationCount);
-        
-        // Extract actionable recommendations
-        recs[code] = selectedItems.map((item: any) => {
-          // Combine rationale and explanation for context
-          return `${item.rationale} ${item.explanation}`.trim();
-        });
-      }
-    });
-    
-    setRecommendations(recs);
-  } catch (error) {
-    console.error('Failed to load recommendations:', error);
-    // Set empty recommendations on error
-    setRecommendations({});
-  } finally {
-    setLoadingRecommendations(false);
-  }
-};
+  const extractRecommendations = async (
+    testVersion: string,
+    weakDimensions: { code: string; score: number }[],
+    isPassing: boolean,
+  ) => {
+    setLoadingRecommendations(true);
+    try {
+      // Determine JSON file based on test version
+      const jsonFile = testVersion.includes("beginner")
+        ? "/test-items/beginner-assessment.json"
+        : testVersion.includes("professional")
+          ? "/test-items/professional-assessment.json"
+          : "/test-items/expert-assessment.json";
+
+      const response = await fetch(jsonFile);
+      if (!response.ok) throw new Error("Failed to load assessment data");
+
+      const assessmentData = await response.json();
+      const recs: { [key: string]: string[] } = {};
+
+      // For each weak dimension, extract recommendations
+      weakDimensions.forEach(({ code }) => {
+        const dimension = assessmentData.itemBank.dimensions?.find((d: any) => d.dimensionCode === code);
+
+        if (dimension?.items) {
+          // Get items with rich rationale/explanation
+          const itemsWithContent = dimension.items.filter((item: any) => item.rationale && item.explanation);
+
+          // For non-passing users, ensure minimum 3 recommendations per dimension
+          const recommendationCount = isPassing ? 3 : Math.max(3, itemsWithContent.length);
+          const selectedItems = itemsWithContent.slice(0, recommendationCount);
+
+          // Extract actionable recommendations
+          recs[code] = selectedItems.map((item: any) => {
+            // Combine rationale and explanation for context
+            return `${item.rationale} ${item.explanation}`.trim();
+          });
+        }
+      });
+
+      setRecommendations(recs);
+    } catch (error) {
+      console.error("Failed to load recommendations:", error);
+      // Set empty recommendations on error
+      setRecommendations({});
+    } finally {
+      setLoadingRecommendations(false);
+    }
+  };
 
   const handleGenerateShareablePost = async () => {
     if (!result) return;
@@ -423,11 +434,12 @@ const extractRecommendations = async (
                   🎉 Congratulations! You Passed the AIQ<sup className="text-[0.6em]">™</sup> Assessment
                 </h2>
                 <p className="text-white/90 text-lg mb-3">
-                  You achieved <span className="font-bold">{scoringResult.overallScore} points</span> out of {scoringResult.totalPossiblePoints} 
+                  You achieved <span className="font-bold">{scoringResult.overallScore} points</span> out of{" "}
+                  {scoringResult.totalPossiblePoints}
                   (passing score: {scoringResult.passingScore})
                 </p>
                 <p className="text-sm text-white/80">
-                  Performance Level: <span className="font-semibold">{scoringResult.performanceLevel}</span> • 
+                  Performance Level: <span className="font-semibold">{scoringResult.performanceLevel}</span> •
                   {scoringResult.correctCount} out of {scoringResult.totalCount} questions correct
                 </p>
               </div>
@@ -440,22 +452,21 @@ const extractRecommendations = async (
                 <AlertCircle className="h-8 w-8" />
               </div>
               <div className="flex-1">
-                <h2 className="text-2xl font-black mb-2">
-                  Assessment Complete - Continue Learning
-                </h2>
+                <h2 className="text-2xl font-black mb-2">Assessment Complete - Continue Learning</h2>
                 <p className="text-white/90 text-lg mb-3">
-                  You achieved <span className="font-bold">{scoringResult.overallScore} points</span> out of {scoringResult.totalPossiblePoints}. 
-                  Passing score required: <span className="font-bold">{scoringResult.passingScore} points</span>.
+                  You achieved <span className="font-bold">{scoringResult.overallScore} points</span> out of{" "}
+                  {scoringResult.totalPossiblePoints}. Passing score required:{" "}
+                  <span className="font-bold">{scoringResult.passingScore} points</span>.
                 </p>
                 <p className="text-sm text-white/80 mb-3">
-                  Performance Level: <span className="font-semibold">{scoringResult.performanceLevel}</span> • 
+                  Performance Level: <span className="font-semibold">{scoringResult.performanceLevel}</span> •
                   {scoringResult.correctCount} out of {scoringResult.totalCount} questions correct
                 </p>
                 <div className="bg-white/10 rounded-lg p-4 mt-4">
                   <p className="text-sm font-semibold mb-2">💡 Next Steps:</p>
                   <ul className="text-sm space-y-1 text-white/90">
                     <li>• Review your dimension breakdown below to identify growth areas</li>
-                    <li>• Focus on the recommendations provided for each dimension</li>
+                    <li>• Focus on the on the recommendation(s) provided</li>
                     <li>• Retake the assessment after additional preparation and practice</li>
                     <li>• Certificate will be available once you achieve the passing score</li>
                   </ul>
@@ -468,14 +479,24 @@ const extractRecommendations = async (
         {/* Hero Section */}
         <div className="mb-8">
           <div className="flex items-center justify-center mb-4">
-            <div className={`p-3 rounded-full ${scoringResult.passed ? 'bg-gradient-to-br from-green-400 to-emerald-600' : 'bg-gradient-to-br from-amber-400 to-orange-600'}`}>
+            <div
+              className={`p-3 rounded-full ${scoringResult.passed ? "bg-gradient-to-br from-green-400 to-emerald-600" : "bg-gradient-to-br from-amber-400 to-orange-600"}`}
+            >
               <Trophy className="h-10 w-10 text-white" />
             </div>
           </div>
           <h1 className="text-3xl lg:text-4xl font-black text-center mb-2 tracking-tight">
             {scoringResult.passed ? `Congratulations, ${userName}!` : `Well Done, ${userName}!`}
           </h1>
-          <p className="text-center text-muted-foreground font-medium mb-4">You've completed the AIQ<sup className="text-[0.6em]">™</sup> {result.test_version === 'beginner' ? 'Beginner' : result.test_version === 'professional' ? 'Professional' : 'Expert'} Assessment</p>
+          <p className="text-center text-muted-foreground font-medium mb-4">
+            You've completed the AIQ<sup className="text-[0.6em]">™</sup>{" "}
+            {result.test_version === "beginner"
+              ? "Beginner"
+              : result.test_version === "professional"
+                ? "Professional"
+                : "Expert"}{" "}
+            Assessment
+          </p>
 
           {/* Test Meta Info */}
           <div className="flex items-center justify-center gap-4 text-sm text-muted-foreground">
@@ -504,21 +525,27 @@ const extractRecommendations = async (
         </div>
 
         {/* Overall Score Card */}
-        <Card className={`mb-6 shadow-lg border-2 ${scoringResult.passed ? 'border-green-500 bg-green-50/50 dark:bg-green-950/20' : 'border-amber-500 bg-amber-50/50 dark:bg-amber-950/20'}`}>
+        <Card
+          className={`mb-6 shadow-lg border-2 ${scoringResult.passed ? "border-green-500 bg-green-50/50 dark:bg-green-950/20" : "border-amber-500 bg-amber-50/50 dark:bg-amber-950/20"}`}
+        >
           <CardContent className="pt-6 pb-6">
             <div className="text-center">
               <p className="text-sm font-bold text-muted-foreground mb-2">Overall Score</p>
               <div className="flex items-center justify-center gap-3 mb-3">
-                <div className={`text-6xl font-black tabular-nums tracking-tight ${scoringResult.passed ? 'text-green-600' : 'text-amber-600'}`}>
+                <div
+                  className={`text-6xl font-black tabular-nums tracking-tight ${scoringResult.passed ? "text-green-600" : "text-amber-600"}`}
+                >
                   {scoringResult.overallScore.toFixed(1)}
                 </div>
                 <div className="text-left">
                   <div
-                    className={`inline-block px-3 py-1 rounded-full text-sm font-bold ${scoringResult.passed ? 'bg-green-100 text-green-600' : 'bg-amber-100 text-amber-600'}`}
+                    className={`inline-block px-3 py-1 rounded-full text-sm font-bold ${scoringResult.passed ? "bg-green-100 text-green-600" : "bg-amber-100 text-amber-600"}`}
                   >
                     {scoringResult.performanceLevel}
                   </div>
-                  <p className="text-xs text-muted-foreground mt-1">out of {scoringResult.totalPossiblePoints} points</p>
+                  <p className="text-xs text-muted-foreground mt-1">
+                    out of {scoringResult.totalPossiblePoints} points
+                  </p>
                 </div>
               </div>
               <Progress value={scoringResult.percentageScore} className="h-3 max-w-md mx-auto" />
@@ -558,7 +585,8 @@ const extractRecommendations = async (
                     Certificate Not Yet Available
                   </p>
                   <p className="text-xs text-muted-foreground mb-3">
-                    Achieve {scoringResult.passingScore} points (currently {scoringResult.overallScore.toFixed(0)}) to unlock your certificate
+                    Achieve {scoringResult.passingScore} points (currently {scoringResult.overallScore.toFixed(0)}) to
+                    unlock your certificate
                   </p>
                   <Button onClick={handleGenerateShareablePost} variant="outline" size="sm">
                     <Share2 className="mr-2 h-4 w-4" />
@@ -590,7 +618,7 @@ const extractRecommendations = async (
                 const dimLevel = getScoreLevel(score);
                 const maxPoints = scoringResult.totalPossiblePoints / 8; // Points per dimension
                 const percentage = (score / maxPoints) * 100;
-                
+
                 return (
                   <div key={code} className="group">
                     <div className="flex justify-between items-center mb-2">
@@ -603,9 +631,7 @@ const extractRecommendations = async (
                         <span className={`text-xs font-semibold px-2 py-0.5 rounded ${dimLevel.bg} ${dimLevel.color}`}>
                           {dimLevel.label}
                         </span>
-                        <span className="text-lg font-black tabular-nums w-16 text-right">
-                          {score.toFixed(1)} pts
-                        </span>
+                        <span className="text-lg font-black tabular-nums w-16 text-right">{score.toFixed(1)} pts</span>
                       </div>
                     </div>
                     <Progress value={percentage} className="h-2" />
@@ -629,9 +655,9 @@ const extractRecommendations = async (
                   <p className="text-xs text-muted-foreground mb-3">
                     Anyone can verify this certificate by clicking the link below
                   </p>
-                  
+
                   {/* Clickable Verification Link */}
-                  <a 
+                  <a
                     href={`https://aiq.works/verify/${verificationCode}`}
                     target="_blank"
                     rel="noopener noreferrer"
@@ -644,7 +670,7 @@ const extractRecommendations = async (
                       <ExternalLink className="h-4 w-4 text-blue-600 dark:text-blue-400 flex-shrink-0 ml-2" />
                     </div>
                   </a>
-                  
+
                   {/* Copy Button */}
                   <Button
                     variant="outline"
@@ -681,10 +707,10 @@ const extractRecommendations = async (
                 </h3>
                 <div className="space-y-1">
                   {Object.keys(dimensionCodeMap)
-                    .map((code, index) => ({ 
-                      score: scoringResult.dimensionScores[code] || 0, 
-                      name: dimensionNames[index], 
-                      code 
+                    .map((code, index) => ({
+                      score: scoringResult.dimensionScores[code] || 0,
+                      name: dimensionNames[index],
+                      code,
                     }))
                     .sort((a, b) => b.score - a.score)
                     .slice(0, 3)
@@ -707,10 +733,10 @@ const extractRecommendations = async (
                 </h3>
                 <div className="space-y-1">
                   {Object.keys(dimensionCodeMap)
-                    .map((code, index) => ({ 
-                      score: scoringResult.dimensionScores[code] || 0, 
-                      name: dimensionNames[index], 
-                      code 
+                    .map((code, index) => ({
+                      score: scoringResult.dimensionScores[code] || 0,
+                      name: dimensionNames[index],
+                      code,
                     }))
                     .sort((a, b) => a.score - b.score)
                     .slice(0, 3)
@@ -758,25 +784,28 @@ const extractRecommendations = async (
             ) : (
               <div className="space-y-4">
                 {Object.keys(dimensionCodeMap)
-                  .map((code, index) => ({ 
-                    score: scoringResult.dimensionScores[code] || 0, 
-                    name: dimensionNames[index], 
-                    code 
+                  .map((code, index) => ({
+                    score: scoringResult.dimensionScores[code] || 0,
+                    name: dimensionNames[index],
+                    code,
                   }))
                   .sort((a, b) => a.score - b.score)
                   .slice(0, 3)
                   .map((dim) => {
                     const dimRecs = recommendations[dim.code] || [];
-                    
+
                     return (
-                      <div key={dim.code} className="p-4 bg-blue-50 dark:bg-blue-950/20 rounded-lg border border-blue-200 dark:border-blue-800">
+                      <div
+                        key={dim.code}
+                        className="p-4 bg-blue-50 dark:bg-blue-950/20 rounded-lg border border-blue-200 dark:border-blue-800"
+                      >
                         <h4 className="text-sm font-bold text-blue-900 dark:text-blue-100 mb-3 flex items-center gap-2">
                           {dim.name}
                           <span className="text-xs font-normal text-muted-foreground">
                             ({dim.score.toFixed(1)} points)
                           </span>
                         </h4>
-                        
+
                         {dimRecs.length > 0 ? (
                           <ul className="space-y-2">
                             {dimRecs.map((rec, idx) => (
@@ -794,7 +823,7 @@ const extractRecommendations = async (
                       </div>
                     );
                   })}
-                
+
                 {/* Encouraging message for non-passing users */}
                 {!scoringResult.passed && (
                   <div className="mt-4 p-3 bg-amber-50 dark:bg-amber-950/20 rounded border border-amber-200 dark:border-amber-800">
