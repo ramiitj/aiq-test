@@ -466,7 +466,7 @@ const Results = () => {
                   <p className="text-sm font-semibold mb-2">💡 Next Steps:</p>
                   <ul className="text-sm space-y-1 text-white/90">
                     <li>• Review your dimension breakdown below to identify growth areas</li>
-                    <li>• Focus on the on the recommendation(s) provided</li>
+                    <li>• Focus on the recommendation(s) provided</li>
                     <li>• Retake the assessment after additional preparation and practice</li>
                     <li>• Certificate will be available once you achieve the passing score</li>
                   </ul>
