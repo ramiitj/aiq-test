@@ -18,7 +18,7 @@ const dimensionNames: Record<string, string> = {
   ALC: "Adaptive Learning & Capability",
   EJC: "Ethical Judgment & Usage",
   CS: "Context Sensitivity",
-  CRS: "Creative Synthesis"
+  CRS: "Creative Synthesis",
 };
 
 // BEGINNER Level Recommendations
@@ -26,43 +26,43 @@ const beginnerRecommendations: Record<string, string[]> = {
   SAU: [
     "Study how companies use AI for business decisions",
     "Learn about AI strengths and limitations in your field",
-    "Read case studies of AI implementation successes and failures"
+    "Read case studies of AI implementation successes and failures",
   ],
   PEI: [
     "Practice writing clear, specific prompts for AI tools",
     "Experiment with different question formats to improve responses",
-    "Keep a notebook of prompts that work well for your tasks"
+    "Keep a notebook of prompts that work well for your tasks",
   ],
   CEC: [
     "Always verify AI outputs against reliable sources",
     "Learn to spot common AI errors like hallucinations",
-    "Check if AI responses consider diverse perspectives"
+    "Check if AI responses consider diverse perspectives",
   ],
   II: [
     "Identify routine tasks in your work suitable for AI assistance",
     "Practice breaking down complex tasks into AI-manageable steps",
-    "Create simple checklists to verify AI-assisted work"
+    "Create simple checklists to verify AI-assisted work",
   ],
   ALC: [
     "Document what you learn from each AI interaction",
     "Share your AI learnings with teammates regularly",
-    "Build a personal reference guide of AI tips and tricks"
+    "Build a personal reference guide of AI tips and tricks",
   ],
   EJC: [
     "Learn the basics of fairness and bias in AI systems",
     "Know when and how to disclose AI involvement in your work",
-    "Study ethical AI use guidelines in your organization"
+    "Study ethical AI use guidelines in your organization",
   ],
   CS: [
     "Understand that AI behaves differently across contexts",
     "Learn basic AI regulations affecting your industry",
-    "Adapt your AI approach based on your work environment"
+    "Adapt your AI approach based on your work environment",
   ],
   CRS: [
     "Use AI as a brainstorming partner for new ideas",
     "Explore how AI can help solve problems creatively",
-    "Experiment with AI for generating multiple solution options"
-  ]
+    "Experiment with AI for generating multiple solution options",
+  ],
 };
 
 // PROFESSIONAL Level Recommendations
@@ -70,43 +70,43 @@ const professionalRecommendations: Record<string, string[]> = {
   SAU: [
     "Analyze industry AI adoption patterns and competitive positioning",
     "Build 12-18 month AI capability roadmaps aligned with business strategy",
-    "Assess and document organizational readiness using maturity frameworks"
+    "Assess and document organizational readiness using maturity frameworks",
   ],
   PEI: [
     "Master advanced techniques: meta-prompting, chain-of-thought, constraint engineering",
     "Build domain-specific prompt libraries with 20+ tested variations",
-    "Establish systematic prompt optimization and A/B testing processes"
+    "Establish systematic prompt optimization and A/B testing processes",
   ],
   CEC: [
     "Conduct fairness audits across demographic groups for AI outputs",
     "Implement comprehensive verification protocols with clear criteria",
-    "Study and apply uncertainty quantification in decision-making"
+    "Study and apply uncertainty quantification in decision-making",
   ],
   II: [
     "Design workflows that optimize human-AI complementary strengths",
     "Develop role evolution strategies for AI-integrated teams",
-    "Establish governance frameworks for human-AI collaboration quality"
+    "Establish governance frameworks for human-AI collaboration quality",
   ],
   ALC: [
     "Build organizational learning systems to scale AI capabilities",
     "Create cross-functional knowledge-sharing forums and practices",
-    "Implement capability maturity tracking with defined milestones"
+    "Implement capability maturity tracking with defined milestones",
   ],
   EJC: [
     "Develop enterprise-wide AI ethics governance frameworks",
     "Create stakeholder impact assessment protocols and review cycles",
-    "Design fairness-capability trade-off matrices for decision support"
+    "Design fairness-capability trade-off matrices for decision support",
   ],
   CS: [
     "Develop context-specific AI strategies for different markets/regions",
     "Design implementation approaches accounting for regulatory variance",
-    "Build cultural intelligence frameworks for global AI deployment"
+    "Build cultural intelligence frameworks for global AI deployment",
   ],
   CRS: [
     "Identify AI capability inflection points for business model innovation",
     "Design cross-domain pattern transfer strategies for competitive advantage",
-    "Build strategic foresight processes for AI-enabled market shifts"
-  ]
+    "Build strategic foresight processes for AI-enabled market shifts",
+  ],
 };
 
 // EXPERT Level Recommendations
@@ -114,43 +114,43 @@ const expertRecommendations: Record<string, string[]> = {
   SAU: [
     "Publish research on AI strategic positioning and competitive dynamics",
     "Mentor industry peers on enterprise AI governance and transformation",
-    "Contribute to standards development for responsible AI strategy"
+    "Contribute to standards development for responsible AI strategy",
   ],
   PEI: [
     "Conduct and publish novel prompting research advancing the field",
     "Design organizational prompt engineering certification programs",
-    "Develop frameworks for AI reasoning architecture optimization"
+    "Develop frameworks for AI reasoning architecture optimization",
   ],
   CEC: [
     "Research and publish AI trustworthiness assessment innovations",
     "Lead contributions to industry standards for AI evaluation",
-    "Build enterprise evaluation infrastructure and governance models"
+    "Build enterprise evaluation infrastructure and governance models",
   ],
   II: [
     "Publish research on human-AI organizational design innovations",
     "Lead industry-wide discussions on responsible AI integration",
-    "Contribute to regulatory frameworks shaping AI governance policy"
+    "Contribute to regulatory frameworks shaping AI governance policy",
   ],
   ALC: [
     "Research organizational learning dynamics in AI-augmented systems",
     "Publish thought leadership on AI-driven culture transformation",
-    "Develop field-advancing learning infrastructure and models"
+    "Develop field-advancing learning infrastructure and models",
   ],
   EJC: [
     "Contribute actively to AI ethics standards and policy discussions",
     "Publish research on effective ethical AI governance mechanisms",
-    "Shape regulatory landscape through participation in policy forums"
+    "Shape regulatory landscape through participation in policy forums",
   ],
   CS: [
     "Research and publish on context effects in AI strategy outcomes",
     "Contribute to geopolitical AI policy and framework discussions",
-    "Mentor ecosystem leaders on context-sensitive AI deployment"
+    "Mentor ecosystem leaders on context-sensitive AI deployment",
   ],
   CRS: [
     "Research AI-enabled business model discontinuities and patterns",
     "Publish frameworks on innovation leveraging emerging AI capabilities",
-    "Shape industry understanding of AI transformation possibilities"
-  ]
+    "Shape industry understanding of AI transformation possibilities",
+  ],
 };
 
 export async function generatePDFReport(
@@ -161,7 +161,7 @@ export async function generatePDFReport(
   expiryDate: Date,
   userEmail?: string,
   testDurationSeconds?: number,
-  assessmentLevel?: string
+  assessmentLevel?: string,
 ): Promise<Blob> {
   const doc = new jsPDF({
     orientation: "portrait",
@@ -188,11 +188,12 @@ export async function generatePDFReport(
   };
 
   // Determine level type for recommendations
-  const levelType = assessmentLevel?.toLowerCase() === "beginner" 
-    ? "beginner" 
-    : assessmentLevel?.toLowerCase() === "expert" 
-    ? "expert" 
-    : "professional";
+  const levelType =
+    assessmentLevel?.toLowerCase() === "beginner"
+      ? "beginner"
+      : assessmentLevel?.toLowerCase() === "expert"
+        ? "expert"
+        : "professional";
 
   const getRecommendations = (code: string): string[] => {
     if (levelType === "beginner") {
@@ -225,19 +226,14 @@ export async function generatePDFReport(
       "Research by Venkat Ram Reddy Ganuthula & Krishna Kumar Balaraman | IIT Jodhpur",
       pageWidth / 2,
       pageHeight - 6,
-      { align: "center" }
+      { align: "center" },
     );
   };
 
   const addPageNumber = (pageNum: number, totalPages: number) => {
     doc.setFontSize(8);
     doc.setTextColor(...colors.mediumGray);
-    doc.text(
-      `${pageNum}/${totalPages}`,
-      pageWidth - margin - 5,
-      pageHeight - 8,
-      { align: "right" }
-    );
+    doc.text(`${pageNum}/${totalPages}`, pageWidth - margin - 5, pageHeight - 8, { align: "right" });
   };
 
   // ========== PAGE 1: HEADER + SCORE + COMPACT TABLE + VISUAL CHART ==========
@@ -258,10 +254,10 @@ export async function generatePDFReport(
 
   doc.setFontSize(7.5);
   doc.setTextColor(220, 220, 220);
-  const issueDateStr = issueDate.toLocaleDateString("en-US", { 
-    year: "numeric", 
-    month: "short", 
-    day: "numeric" 
+  const issueDateStr = issueDate.toLocaleDateString("en-US", {
+    year: "numeric",
+    month: "short",
+    day: "numeric",
   });
   doc.text(`Issued: ${issueDateStr} | Code: ${verificationCode}`, pageWidth / 2, 28, { align: "center" });
 
@@ -269,7 +265,7 @@ export async function generatePDFReport(
 
   // Overall Score - centered
   const centerX = pageWidth / 2;
-  
+
   // Score circle
   doc.setLineWidth(3);
   const scoreColor = getLevelColor(overallScore);
@@ -279,9 +275,9 @@ export async function generatePDFReport(
   doc.setFontSize(28);
   doc.setFont("helvetica", "bold");
   doc.setTextColor(...scoreColor);
-  doc.text(overallScore.toFixed(1), centerX, currentY + 2, { 
-    align: "center", 
-    baseline: "middle" 
+  doc.text(overallScore.toFixed(1), centerX, currentY + 2, {
+    align: "center",
+    baseline: "middle",
   });
 
   currentY += 23;
@@ -309,11 +305,7 @@ export async function generatePDFReport(
   // Compact performance table
   const perfData = dimensionScores.map((dim) => {
     const fullName = dimensionNames[dim.code] || dim.name;
-    return [
-      fullName,
-      dim.score.toFixed(1),
-      getProficiencyLevel(dim.score),
-    ];
+    return [fullName, dim.score.toFixed(1), getProficiencyLevel(dim.score)];
   });
 
   autoTable(doc, {
@@ -361,7 +353,7 @@ export async function generatePDFReport(
 
   dimensionScores.forEach((dim) => {
     const fullName = dimensionNames[dim.code] || dim.name;
-    
+
     // Dimension label
     doc.setFontSize(8);
     doc.setFont("helvetica", "normal");
@@ -385,11 +377,7 @@ export async function generatePDFReport(
     doc.setFontSize(9);
     doc.setFont("helvetica", "bold");
     doc.setTextColor(...barColor);
-    doc.text(
-      `${dim.score.toFixed(1)}`, 
-      pageWidth - margin - 3, 
-      currentY + 3.5
-    );
+    doc.text(`${dim.score.toFixed(1)}`, pageWidth - margin - 3, currentY + 3.5);
 
     currentY += barSpacing;
   });
@@ -413,7 +401,7 @@ export async function generatePDFReport(
   doc.setFontSize(8.5);
   doc.setFont("helvetica", "normal");
   doc.setTextColor(...colors.mediumGray);
-  
+
   let levelDesc = "";
   if (levelType === "beginner") {
     levelDesc = "Foundational learning paths to build core AI collaboration skills";
@@ -434,16 +422,11 @@ export async function generatePDFReport(
   const recData = allDimsSorted.map((dim) => {
     const fullName = dimensionNames[dim.code] || dim.name;
     const recs = getRecommendations(dim.code);
-    
+
     // Format recommendations with bullet points
     const recText = recs.map((r, idx) => `${idx + 1}. ${r}`).join("\n");
-    
-    return [
-      fullName,
-      dim.score.toFixed(1),
-      getProficiencyLevel(dim.score),
-      recText
-    ];
+
+    return [fullName, dim.score.toFixed(1), getProficiencyLevel(dim.score), recText];
   });
 
   autoTable(doc, {
@@ -467,38 +450,38 @@ export async function generatePDFReport(
       lineWidth: 0.1,
     },
     columnStyles: {
-      0: { 
-        cellWidth: 45, 
+      0: {
+        cellWidth: 45,
         halign: "left",
         fontStyle: "bold",
-        valign: "top"
+        valign: "top",
       },
-      1: { 
-        cellWidth: 18, 
+      1: {
+        cellWidth: 18,
         halign: "center",
         fontStyle: "bold",
-        valign: "top"
+        valign: "top",
       },
-      2: { 
-        cellWidth: 25, 
+      2: {
+        cellWidth: 25,
         halign: "center",
-        valign: "top"
+        valign: "top",
       },
-      3: { 
-        cellWidth: contentWidth - 93, 
+      3: {
+        cellWidth: contentWidth - 93,
         halign: "left",
-        valign: "top"
+        valign: "top",
       },
     },
     margin: { left: margin, right: margin },
-    didParseCell: function(data) {
+    didParseCell: function (data) {
       // Color coding for score column
-      if (data.column.index === 1 && data.section === 'body') {
+      if (data.column.index === 1 && data.section === "body") {
         const score = parseFloat(data.cell.text[0]);
         const scoreColor = getLevelColor(score);
         data.cell.styles.textColor = scoreColor;
       }
-    }
+    },
   });
 
   currentY = (doc as any).lastAutoTable.finalY + 10;
@@ -534,16 +517,20 @@ export async function generatePDFReport(
   doc.setFont("helvetica", "normal");
   doc.setTextColor(...colors.darkText);
   doc.text("Scan QR code or visit:", margin + qrSize + 5, currentY + 6);
-  
+
   doc.setFont("helvetica", "bold");
   doc.setTextColor(...colors.accentBlue);
   doc.text("aiq.works/verify", margin + qrSize + 5, currentY + 12);
-  
+
   doc.setFont("helvetica", "normal");
   doc.setTextColor(...colors.mediumGray);
   doc.setFontSize(8);
   doc.text(`Verification Code: ${verificationCode}`, margin + qrSize + 5, currentY + 18);
-  doc.text(`Valid through: ${expiryDate.toLocaleDateString("en-US", { year: "numeric", month: "short", day: "numeric" })}`, margin + qrSize + 5, currentY + 23);
+  doc.text(
+    `Valid through: ${expiryDate.toLocaleDateString("en-US", { year: "numeric", month: "short", day: "numeric" })}`,
+    margin + qrSize + 5,
+    currentY + 23,
+  );
 
   currentY += qrSize + 10;
 
@@ -569,11 +556,11 @@ export async function generatePDFReport(
     "• Uses adaptive Item Response Theory (IRT) with 380+ calibrated items",
     "• Evaluates 8 core dimensions of AI collaboration capability",
     "• Results valid for 12 months from issue date",
-    "• Based on research published in Discover Artificial Intelligence journal"
+    "• Based on research published in Discover Artificial Intelligence journal",
   ];
 
   assessmentInfo.forEach((info, idx) => {
-    doc.text(info, margin + 2, currentY + (idx * 5));
+    doc.text(info, margin + 2, currentY + idx * 5);
   });
 
   currentY += 25;
@@ -592,12 +579,12 @@ export async function generatePDFReport(
   doc.text(
     "Research Reference: Ganuthula, V.R.R., Balaraman, K.K. (2025). Development and validation of the AIQ",
     margin,
-    currentY
+    currentY,
   );
   doc.text(
     "assessment framework. Discover Artificial Intelligence. https://doi.org/10.1007/s44163-025-00516-1",
     margin,
-    currentY + 4
+    currentY + 4,
   );
 
   addFooter();
