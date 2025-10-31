@@ -215,7 +215,7 @@ export async function generatePDFReport(
   };
 
   const addFooter = () => {
-    doc.setFontSize(7);
+    doc.setFontSize(7.5);
     doc.setTextColor(...colors.mediumGray);
     doc.text(
       "Research by Venkat Ram Reddy Ganuthula & Krishna Kumar Balaraman | IIT Jodhpur",
@@ -226,7 +226,7 @@ export async function generatePDFReport(
   };
 
   const addPageNumber = (pageNum: number, totalPages: number) => {
-    doc.setFontSize(9);
+    doc.setFontSize(10);
     doc.setTextColor(...colors.mediumGray);
     doc.text(`${pageNum}/${totalPages}`, pageWidth - margin - 5, pageHeight - 8, { align: "right" });
   };
@@ -245,7 +245,7 @@ export async function generatePDFReport(
   doc.setFont("helvetica", "normal");
   doc.text("Official AI Collaboration Capability Certificate", pageWidth / 2, 22, { align: "center" });
 
-  doc.setFontSize(8.5);
+  doc.setFontSize(9);
   doc.setTextColor(220, 220, 255);
   const issueDateStr = issueDate.toLocaleDateString("en-US", {
     year: "numeric",
@@ -294,7 +294,7 @@ export async function generatePDFReport(
 
   currentY += 11;
 
-  doc.setFontSize(8);
+  doc.setFontSize(8.5);
   doc.setTextColor(...colors.mediumGray);
   doc.setFont("helvetica", "normal");
   doc.text(`Certificate ID: ${verificationCode}`, centerX, currentY, { align: "center" });
@@ -321,15 +321,15 @@ export async function generatePDFReport(
     headStyles: {
       fillColor: colors.primaryBlue,
       fontStyle: "bold",
-      fontSize: 9,
+      fontSize: 10,
       textColor: colors.white,
       halign: "center",
-      cellPadding: 2.5,
+      cellPadding: 3,
     },
     bodyStyles: {
-      fontSize: 9,
+      fontSize: 10,
       textColor: colors.darkText,
-      cellPadding: 2.5,
+      cellPadding: 3,
       lineWidth: 0.1,
       lineColor: [220, 220, 220],
     },
@@ -361,17 +361,17 @@ export async function generatePDFReport(
   currentY += 7;
 
   const barMaxWidth = contentWidth - 58;
-  const barHeight = 6.5;
-  const barSpacing = 9.5;
+  const barHeight = 7;
+  const barSpacing = 10;
 
   dimensionScores.forEach((dim) => {
     const fullName = dimensionNames[dim.code] || dim.name;
 
-    doc.setFontSize(8.5);
+    doc.setFontSize(9);
     doc.setFont("helvetica", "normal");
     doc.setTextColor(...colors.darkText);
     const label = fullName.length > 26 ? fullName.substring(0, 23) + "..." : fullName;
-    doc.text(label, margin, currentY + 3.8);
+    doc.text(label, margin, currentY + 4);
 
     doc.setFillColor(238, 238, 238);
     doc.roundedRect(margin + 54, currentY, barMaxWidth, barHeight, 1.5, 1.5, "F");
@@ -386,7 +386,7 @@ export async function generatePDFReport(
     doc.setFontSize(10);
     doc.setFont("helvetica", "bold");
     doc.setTextColor(...barColor);
-    doc.text(`${dim.score.toFixed(1)}`, pageWidth - margin - 3, currentY + 3.8);
+    doc.text(`${dim.score.toFixed(1)}`, pageWidth - margin - 3, currentY + 4);
 
     currentY += barSpacing;
   });
@@ -404,7 +404,7 @@ export async function generatePDFReport(
 
   currentY += 7;
 
-  doc.setFontSize(9);
+  doc.setFontSize(9.5);
   doc.setFont("helvetica", "normal");
   doc.setTextColor(...colors.mediumGray);
 
@@ -422,35 +422,43 @@ export async function generatePDFReport(
 
   const allDimsSorted = [...dimensionScores].sort((a, b) => a.score - b.score);
 
-  const recData = allDimsSorted.map((dim) => {
-    const fullName = dimensionNames[dim.code] || dim.name;
-    const recs = getRecommendations(dim.code);
+  const halfPoint = Math.ceil(allDimsSorted.length / 2);
+  const firstHalf = allDimsSorted.slice(0, halfPoint);
+  const secondHalf = allDimsSorted.slice(halfPoint);
 
-    const recText =
-      recs.length > 0
-        ? recs.map((r, idx) => `${idx + 1}. ${r}`).join("\n\n")
-        : "1. Establish foundational knowledge through structured learning programs and mentorship.\n\n2. Engage with practical exercises and real-world case studies to build applied competency.\n\n3. Seek feedback from experienced practitioners to accelerate skill development.";
+  const createRecData = (dims: DimensionScore[]) => {
+    return dims.map((dim) => {
+      const fullName = dimensionNames[dim.code] || dim.name;
+      const recs = getRecommendations(dim.code);
 
-    return [fullName, dim.score.toFixed(1), getProficiencyLevel(dim.score), recText];
-  });
+      const recText =
+        recs.length > 0
+          ? recs.map((r, idx) => `${idx + 1}. ${r}`).join("\n\n")
+          : "1. Establish foundational knowledge through structured learning programs and mentorship.\n\n2. Engage with practical exercises and real-world case studies to build applied competency.\n\n3. Seek feedback from experienced practitioners to accelerate skill development.";
+
+      return [fullName, dim.score.toFixed(1), getProficiencyLevel(dim.score), recText];
+    });
+  };
+
+  const recData1 = createRecData(firstHalf);
 
   autoTable(doc, {
     startY: currentY,
     head: [["Dimension", "Score", "Level", "Recommended Actions"]],
-    body: recData,
+    body: recData1,
     theme: "grid",
     headStyles: {
       fillColor: colors.primaryBlue,
       fontStyle: "bold",
-      fontSize: 9,
+      fontSize: 10,
       textColor: colors.white,
       halign: "center",
-      cellPadding: 3,
+      cellPadding: 3.5,
     },
     bodyStyles: {
-      fontSize: 8,
+      fontSize: 9,
       textColor: colors.darkText,
-      cellPadding: 3.5,
+      cellPadding: 4,
       lineColor: [215, 215, 215],
       lineWidth: 0.1,
       valign: "top",
@@ -472,7 +480,7 @@ export async function generatePDFReport(
       },
       3: {
         cellWidth: contentWidth - 87,
-        halign: "left",
+        halign: "justify",
       },
     },
     margin: { left: margin, right: margin },
@@ -487,6 +495,73 @@ export async function generatePDFReport(
 
   addFooter();
   addPageNumber(2, 3);
+
+  if (secondHalf.length > 0) {
+    doc.addPage();
+    currentY = 15;
+
+    doc.setFontSize(15);
+    doc.setFont("helvetica", "bold");
+    doc.setTextColor(...colors.primaryBlue);
+    doc.text("Development Recommendations (continued)", margin, currentY);
+
+    currentY += 9;
+
+    const recData2 = createRecData(secondHalf);
+
+    autoTable(doc, {
+      startY: currentY,
+      head: [["Dimension", "Score", "Level", "Recommended Actions"]],
+      body: recData2,
+      theme: "grid",
+      headStyles: {
+        fillColor: colors.primaryBlue,
+        fontStyle: "bold",
+        fontSize: 10,
+        textColor: colors.white,
+        halign: "center",
+        cellPadding: 3.5,
+      },
+      bodyStyles: {
+        fontSize: 9,
+        textColor: colors.darkText,
+        cellPadding: 4,
+        lineColor: [215, 215, 215],
+        lineWidth: 0.1,
+        valign: "top",
+      },
+      columnStyles: {
+        0: {
+          cellWidth: 42,
+          halign: "left",
+          fontStyle: "bold",
+        },
+        1: {
+          cellWidth: 16,
+          halign: "center",
+          fontStyle: "bold",
+        },
+        2: {
+          cellWidth: 24,
+          halign: "center",
+        },
+        3: {
+          cellWidth: contentWidth - 87,
+          halign: "justify",
+        },
+      },
+      margin: { left: margin, right: margin },
+      didParseCell: function (data) {
+        if (data.column.index === 1 && data.section === "body") {
+          const score = parseFloat(data.cell.text[0]);
+          const cellColor = getLevelColor(score);
+          data.cell.styles.textColor = cellColor;
+        }
+      },
+    });
+
+    currentY = (doc as any).lastAutoTable.finalY + 12;
+  }
 
   doc.addPage();
   currentY = 15;
@@ -508,7 +583,7 @@ export async function generatePDFReport(
   const qrSize = 32;
   doc.addImage(qrDataUrl, "PNG", margin, currentY, qrSize, qrSize);
 
-  doc.setFontSize(10);
+  doc.setFontSize(10.5);
   doc.setFont("helvetica", "normal");
   doc.setTextColor(...colors.darkText);
   doc.text("Scan QR code or visit:", margin + qrSize + 7, currentY + 6);
@@ -520,10 +595,13 @@ export async function generatePDFReport(
 
   doc.setFont("helvetica", "normal");
   doc.setTextColor(...colors.mediumGray);
-  doc.setFontSize(9);
+  doc.setFontSize(9.5);
   doc.text(`Certificate ID: ${verificationCode}`, margin + qrSize + 7, currentY + 20);
+
+  const expiryDateCalc = new Date(issueDate);
+  expiryDateCalc.setDate(expiryDateCalc.getDate() + 180);
   doc.text(
-    `Valid Through: ${expiryDate.toLocaleDateString("en-US", { year: "numeric", month: "long", day: "numeric" })}`,
+    `Valid Through: ${expiryDateCalc.toLocaleDateString("en-US", { year: "numeric", month: "long", day: "numeric" })}`,
     margin + qrSize + 7,
     currentY + 26,
   );
@@ -543,22 +621,23 @@ export async function generatePDFReport(
 
   currentY += 8;
 
-  doc.setFontSize(9);
+  doc.setFontSize(9.5);
   doc.setFont("helvetica", "normal");
   doc.setTextColor(...colors.darkText);
 
   const assessmentInfo = [
     "• Assessment employs adaptive Item Response Theory (IRT) methodology with 380+ psychometrically calibrated items",
     "• Evaluates competency across 8 core dimensions of AI collaboration capability",
-    "• Results remain valid for 12 months from date of issue",
+    "• Results remain valid for 180 days from date of issue",
     "• Based on peer-reviewed research published in Discover Artificial Intelligence journal",
   ];
 
   assessmentInfo.forEach((info, idx) => {
-    doc.text(info, margin + 2, currentY + idx * 6);
+    const lines = doc.splitTextToSize(info, contentWidth - 4);
+    doc.text(lines, margin + 2, currentY + idx * 7);
   });
 
-  currentY += 32;
+  currentY += 34;
 
   doc.setDrawColor(...colors.lightGray);
   doc.setLineWidth(0.3);
@@ -566,27 +645,27 @@ export async function generatePDFReport(
 
   currentY += 7;
 
-  doc.setFontSize(11);
+  doc.setFontSize(11.5);
   doc.setFont("helvetica", "bold");
   doc.setTextColor(...colors.primaryBlue);
   doc.text("Research Reference", margin, currentY);
 
   currentY += 7;
 
-  doc.setFontSize(8.5);
+  doc.setFontSize(9);
   doc.setTextColor(...colors.darkText);
   doc.setFont("helvetica", "normal");
 
   const citation =
     "Ganuthula, V.R.R., Balaraman, K.K. (2025). Development and validation of the AIQ assessment framework: measuring AI collaboration capabilities across eight dimensions. Discover Artificial Intelligence, 5, Article 29.";
   const citationLines = doc.splitTextToSize(citation, contentWidth);
-  doc.text(citationLines, margin, currentY);
+  doc.text(citationLines, margin, currentY, { align: "justify" });
 
   currentY += citationLines.length * 5 + 3;
 
   doc.setFont("helvetica", "bold");
   doc.setTextColor(...colors.accentBlue);
-  doc.setFontSize(9);
+  doc.setFontSize(9.5);
   doc.text("https://doi.org/10.1007/s44163-025-00516-1", margin, currentY);
 
   addFooter();
