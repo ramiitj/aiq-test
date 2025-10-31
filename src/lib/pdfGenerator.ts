@@ -9,7 +9,6 @@ interface DimensionScore {
   description?: string;
 }
 
-// Dimension full names mapping
 const dimensionNames: Record<string, string> = {
   SAU: "Strategic AI Understanding",
   PEI: "Prompt Engineering & Interaction",
@@ -21,7 +20,6 @@ const dimensionNames: Record<string, string> = {
   CRS: "Creative Synthesis",
 };
 
-// BEGINNER Level Recommendations
 const beginnerRecommendations: Record<string, string[]> = {
   SAU: [
     "Study how companies use AI for business decisions",
@@ -65,7 +63,6 @@ const beginnerRecommendations: Record<string, string[]> = {
   ],
 };
 
-// PROFESSIONAL Level Recommendations
 const professionalRecommendations: Record<string, string[]> = {
   SAU: [
     "Analyze industry AI adoption patterns and competitive positioning",
@@ -109,7 +106,6 @@ const professionalRecommendations: Record<string, string[]> = {
   ],
 };
 
-// EXPERT Level Recommendations
 const expertRecommendations: Record<string, string[]> = {
   SAU: [
     "Publish research on AI strategic positioning and competitive dynamics",
@@ -174,7 +170,6 @@ export async function generatePDFReport(
   const margin = 15;
   const contentWidth = pageWidth - 2 * margin;
 
-  // Brand colors
   const colors = {
     primaryBlue: [30, 58, 138] as [number, number, number],
     accentBlue: [59, 130, 246] as [number, number, number],
@@ -187,7 +182,6 @@ export async function generatePDFReport(
     red: [239, 68, 68] as [number, number, number],
   };
 
-  // Determine level type for recommendations
   const levelType =
     assessmentLevel?.toLowerCase() === "beginner"
       ? "beginner"
@@ -236,73 +230,87 @@ export async function generatePDFReport(
     doc.text(`${pageNum}/${totalPages}`, pageWidth - margin - 5, pageHeight - 8, { align: "right" });
   };
 
-  // ========== PAGE 1: HEADER + SCORE + COMPACT TABLE + VISUAL CHART ==========
+  // ========== PAGE 1 ==========
   let currentY = 0;
 
-  // Header
+  // Header with clear boundary
   doc.setFillColor(...colors.primaryBlue);
-  doc.rect(0, 0, pageWidth, 35, "F");
+  doc.rect(0, 0, pageWidth, 32, "F");
 
   doc.setTextColor(255, 255, 255);
-  doc.setFontSize(24);
+  doc.setFontSize(22);
   doc.setFont("helvetica", "bold");
-  doc.text("AIQ Assessment Certificate", pageWidth / 2, 13, { align: "center" });
+  doc.text("AIQ Assessment Certificate", pageWidth / 2, 12, { align: "center" });
 
-  doc.setFontSize(10);
+  doc.setFontSize(9);
   doc.setFont("helvetica", "normal");
-  doc.text(`${assessmentLevel || "Professional"} Level`, pageWidth / 2, 21, { align: "center" });
+  doc.text(`${assessmentLevel || "Professional"} Level`, pageWidth / 2, 20, { align: "center" });
 
-  doc.setFontSize(7.5);
+  doc.setFontSize(7);
   doc.setTextColor(220, 220, 220);
   const issueDateStr = issueDate.toLocaleDateString("en-US", {
     year: "numeric",
     month: "short",
     day: "numeric",
   });
-  doc.text(`Issued: ${issueDateStr} | Code: ${verificationCode}`, pageWidth / 2, 28, { align: "center" });
+  doc.text(`Issued: ${issueDateStr}`, pageWidth / 2, 27, { align: "center" });
 
-  currentY = 43;
+  currentY = 40;
 
-  // Overall Score - centered
+  // Score section with clear boundary box
   const centerX = pageWidth / 2;
 
+  // Add boundary box around score
+  doc.setDrawColor(...colors.lightGray);
+  doc.setLineWidth(0.3);
+  doc.rect(margin, currentY, contentWidth, 28, "D");
+
+  currentY += 6;
+
   // Score circle
-  doc.setLineWidth(3);
+  doc.setLineWidth(2.5);
   const scoreColor = getLevelColor(overallScore);
   doc.setDrawColor(...scoreColor);
-  doc.circle(centerX, currentY, 18, "D");
+  doc.circle(centerX, currentY + 8, 16, "D");
 
-  doc.setFontSize(28);
+  doc.setFontSize(26);
   doc.setFont("helvetica", "bold");
   doc.setTextColor(...scoreColor);
-  doc.text(overallScore.toFixed(1), centerX, currentY + 2, {
+  doc.text(overallScore.toFixed(1), centerX, currentY + 10, {
     align: "center",
     baseline: "middle",
   });
 
-  currentY += 23;
+  currentY += 22;
 
   // Level badge
   const level = getProficiencyLevel(overallScore);
   doc.setFillColor(...scoreColor);
-  const badgeWidth = 60;
-  doc.roundedRect(centerX - badgeWidth / 2, currentY - 4, badgeWidth, 10, 2, 2, "F");
+  const badgeWidth = 55;
+  doc.roundedRect(centerX - badgeWidth / 2, currentY - 3, badgeWidth, 9, 2, 2, "F");
   doc.setTextColor(255, 255, 255);
-  doc.setFontSize(10);
+  doc.setFontSize(9);
   doc.setFont("helvetica", "bold");
-  doc.text(level, centerX, currentY + 1, { align: "center", baseline: "middle" });
+  doc.text(level, centerX, currentY + 1.5, { align: "center", baseline: "middle" });
 
-  currentY += 15;
+  currentY += 12;
+
+  // Verification code in header area with clear separation
+  doc.setFontSize(7);
+  doc.setTextColor(...colors.mediumGray);
+  doc.setFont("helvetica", "normal");
+  doc.text(`Certificate Code: ${verificationCode}`, centerX, currentY, { align: "center" });
+
+  currentY += 10;
 
   // Performance Summary
-  doc.setFontSize(13);
+  doc.setFontSize(12);
   doc.setFont("helvetica", "bold");
   doc.setTextColor(...colors.primaryBlue);
   doc.text("Performance Summary", margin, currentY);
 
-  currentY += 8;
+  currentY += 7;
 
-  // Compact performance table
   const perfData = dimensionScores.map((dim) => {
     const fullName = dimensionNames[dim.code] || dim.name;
     return [fullName, dim.score.toFixed(1), getProficiencyLevel(dim.score)];
@@ -316,14 +324,15 @@ export async function generatePDFReport(
     headStyles: {
       fillColor: colors.primaryBlue,
       fontStyle: "bold",
-      fontSize: 8,
+      fontSize: 7.5,
       textColor: [255, 255, 255],
       halign: "center",
+      cellPadding: 1.5,
     },
     bodyStyles: {
-      fontSize: 8,
+      fontSize: 7.5,
       textColor: colors.darkText,
-      cellPadding: 1.5,
+      cellPadding: 1.2,
     },
     alternateRowStyles: {
       fillColor: [248, 250, 252],
@@ -336,36 +345,32 @@ export async function generatePDFReport(
     margin: { left: margin, right: margin },
   });
 
-  currentY = (doc as any).lastAutoTable.finalY + 10;
+  currentY = (doc as any).lastAutoTable.finalY + 9;
 
   // Performance Visualization
-  doc.setFontSize(13);
+  doc.setFontSize(12);
   doc.setFont("helvetica", "bold");
   doc.setTextColor(...colors.primaryBlue);
   doc.text("Performance Visualization", margin, currentY);
 
-  currentY += 7;
+  currentY += 6;
 
-  // Clean horizontal bar chart
   const barMaxWidth = contentWidth - 55;
-  const barHeight = 6;
-  const barSpacing = 9;
+  const barHeight = 5.5;
+  const barSpacing = 8.5;
 
   dimensionScores.forEach((dim) => {
     const fullName = dimensionNames[dim.code] || dim.name;
 
-    // Dimension label
-    doc.setFontSize(8);
+    doc.setFontSize(7.5);
     doc.setFont("helvetica", "normal");
     doc.setTextColor(...colors.darkText);
     const label = fullName.length > 25 ? fullName.substring(0, 22) + "..." : fullName;
-    doc.text(label, margin, currentY + 3.5);
+    doc.text(label, margin, currentY + 3.2);
 
-    // Background bar
     doc.setFillColor(235, 235, 235);
     doc.roundedRect(margin + 52, currentY, barMaxWidth, barHeight, 1, 1, "F");
 
-    // Score bar with color
     const scoreWidth = (dim.score / 100) * barMaxWidth;
     const barColor = getLevelColor(dim.score);
     doc.setFillColor(...barColor);
@@ -373,11 +378,10 @@ export async function generatePDFReport(
       doc.roundedRect(margin + 52, currentY, scoreWidth, barHeight, 1, 1, "F");
     }
 
-    // Score text
-    doc.setFontSize(9);
+    doc.setFontSize(8.5);
     doc.setFont("helvetica", "bold");
     doc.setTextColor(...barColor);
-    doc.text(`${dim.score.toFixed(1)}`, pageWidth - margin - 3, currentY + 3.5);
+    doc.text(`${dim.score.toFixed(1)}`, pageWidth - margin - 3, currentY + 3.2);
 
     currentY += barSpacing;
   });
@@ -385,20 +389,18 @@ export async function generatePDFReport(
   addFooter();
   addPageNumber(1, 2);
 
-  // ========== PAGE 2: GROWTH RECOMMENDATIONS + VERIFICATION ==========
+  // ========== PAGE 2 ==========
   doc.addPage();
   currentY = 15;
 
-  // Section header
-  doc.setFontSize(14);
+  doc.setFontSize(13);
   doc.setFont("helvetica", "bold");
   doc.setTextColor(...colors.primaryBlue);
   doc.text("Personalized Growth Recommendations", margin, currentY);
 
-  currentY += 7;
+  currentY += 6;
 
-  // Level-specific subtitle
-  doc.setFontSize(8.5);
+  doc.setFontSize(8);
   doc.setFont("helvetica", "normal");
   doc.setTextColor(...colors.mediumGray);
 
@@ -412,19 +414,20 @@ export async function generatePDFReport(
   }
   doc.text(levelDesc, margin, currentY);
 
-  currentY += 8;
+  currentY += 7;
 
-  // CRITICAL FIX: Show ALL dimensions, not just those with score < 80
-  // Sort by score (lowest first) to prioritize areas needing most improvement
+  // Sort all dimensions by score (lowest first)
   const allDimsSorted = [...dimensionScores].sort((a, b) => a.score - b.score);
 
-  // Build recommendations table for ALL dimensions
   const recData = allDimsSorted.map((dim) => {
     const fullName = dimensionNames[dim.code] || dim.name;
     const recs = getRecommendations(dim.code);
 
-    // Format recommendations with bullet points
-    const recText = recs.map((r, idx) => `${idx + 1}. ${r}`).join("\n");
+    // CRITICAL: Always show recommendations, even if empty array
+    const recText =
+      recs.length > 0
+        ? recs.map((r, idx) => `${idx + 1}. ${r}`).join("\n")
+        : "1. Start building foundational knowledge in this area\n2. Seek mentorship from experienced practitioners\n3. Practice with guided exercises and real-world examples";
 
     return [fullName, dim.score.toFixed(1), getProficiencyLevel(dim.score), recText];
   });
@@ -437,45 +440,44 @@ export async function generatePDFReport(
     headStyles: {
       fillColor: colors.primaryBlue,
       fontStyle: "bold",
-      fontSize: 8,
+      fontSize: 7.5,
       textColor: [255, 255, 255],
       halign: "center",
       cellPadding: 2,
     },
     bodyStyles: {
-      fontSize: 7.5,
+      fontSize: 7,
       textColor: colors.darkText,
-      cellPadding: 3,
+      cellPadding: 2.5,
       lineColor: [220, 220, 220],
       lineWidth: 0.1,
     },
     columnStyles: {
       0: {
-        cellWidth: 45,
+        cellWidth: 42,
         halign: "left",
         fontStyle: "bold",
         valign: "top",
       },
       1: {
-        cellWidth: 18,
+        cellWidth: 16,
         halign: "center",
         fontStyle: "bold",
         valign: "top",
       },
       2: {
-        cellWidth: 25,
+        cellWidth: 23,
         halign: "center",
         valign: "top",
       },
       3: {
-        cellWidth: contentWidth - 93,
+        cellWidth: contentWidth - 86,
         halign: "left",
         valign: "top",
       },
     },
     margin: { left: margin, right: margin },
     didParseCell: function (data) {
-      // Color coding for score column
       if (data.column.index === 1 && data.section === "body") {
         const score = parseFloat(data.cell.text[0]);
         const scoreColor = getLevelColor(score);
@@ -484,24 +486,23 @@ export async function generatePDFReport(
     },
   });
 
-  currentY = (doc as any).lastAutoTable.finalY + 10;
+  currentY = (doc as any).lastAutoTable.finalY + 9;
 
-  // Divider line
+  // Clear divider
   doc.setDrawColor(...colors.lightGray);
   doc.setLineWidth(0.3);
   doc.line(margin, currentY, pageWidth - margin, currentY);
 
-  currentY += 8;
+  currentY += 7;
 
-  // Verification Section
-  doc.setFontSize(12);
+  // Verification Section with clear boundary
+  doc.setFontSize(11);
   doc.setFont("helvetica", "bold");
   doc.setTextColor(...colors.primaryBlue);
   doc.text("Certificate Verification", margin, currentY);
 
-  currentY += 8;
+  currentY += 6;
 
-  // QR Code and verification info
   const verificationUrl = `https://aiq.works/verify/${verificationCode}`;
   const qrDataUrl = await QRCode.toDataURL(verificationUrl, {
     width: 200,
@@ -509,46 +510,45 @@ export async function generatePDFReport(
     color: { dark: "#1e3a8a", light: "#ffffff" },
   });
 
-  const qrSize = 28;
+  const qrSize = 26;
   doc.addImage(qrDataUrl, "PNG", margin, currentY, qrSize, qrSize);
 
-  // Verification text
-  doc.setFontSize(9);
+  doc.setFontSize(8.5);
   doc.setFont("helvetica", "normal");
   doc.setTextColor(...colors.darkText);
-  doc.text("Scan QR code or visit:", margin + qrSize + 5, currentY + 6);
+  doc.text("Scan QR code or visit:", margin + qrSize + 5, currentY + 5);
 
   doc.setFont("helvetica", "bold");
   doc.setTextColor(...colors.accentBlue);
-  doc.text("aiq.works/verify", margin + qrSize + 5, currentY + 12);
+  doc.text("aiq.works/verify", margin + qrSize + 5, currentY + 11);
 
   doc.setFont("helvetica", "normal");
   doc.setTextColor(...colors.mediumGray);
-  doc.setFontSize(8);
-  doc.text(`Verification Code: ${verificationCode}`, margin + qrSize + 5, currentY + 18);
+  doc.setFontSize(7.5);
+  doc.text(`Verification Code: ${verificationCode}`, margin + qrSize + 5, currentY + 16);
   doc.text(
     `Valid through: ${expiryDate.toLocaleDateString("en-US", { year: "numeric", month: "short", day: "numeric" })}`,
     margin + qrSize + 5,
-    currentY + 23,
+    currentY + 21,
   );
 
-  currentY += qrSize + 10;
+  currentY += qrSize + 8;
 
   // Assessment Information
   doc.setDrawColor(...colors.lightGray);
   doc.setLineWidth(0.3);
   doc.line(margin, currentY, pageWidth - margin, currentY);
 
-  currentY += 6;
+  currentY += 5;
 
   doc.setFontSize(9);
   doc.setFont("helvetica", "bold");
   doc.setTextColor(...colors.primaryBlue);
   doc.text("About This Assessment", margin, currentY);
 
-  currentY += 6;
+  currentY += 5;
 
-  doc.setFontSize(8);
+  doc.setFontSize(7.5);
   doc.setFont("helvetica", "normal");
   doc.setTextColor(...colors.darkText);
 
@@ -560,20 +560,20 @@ export async function generatePDFReport(
   ];
 
   assessmentInfo.forEach((info, idx) => {
-    doc.text(info, margin + 2, currentY + idx * 5);
+    doc.text(info, margin + 2, currentY + idx * 4.5);
   });
 
-  currentY += 25;
+  currentY += 23;
 
-  // Research citation at bottom
-  currentY = pageHeight - 25;
+  // Research citation
+  currentY = pageHeight - 24;
   doc.setDrawColor(...colors.lightGray);
   doc.setLineWidth(0.2);
   doc.line(margin, currentY, pageWidth - margin, currentY);
 
-  currentY += 5;
+  currentY += 4;
 
-  doc.setFontSize(7.5);
+  doc.setFontSize(7);
   doc.setTextColor(...colors.mediumGray);
   doc.setFont("helvetica", "italic");
   doc.text(
@@ -584,7 +584,7 @@ export async function generatePDFReport(
   doc.text(
     "assessment framework. Discover Artificial Intelligence. https://doi.org/10.1007/s44163-025-00516-1",
     margin,
-    currentY + 4,
+    currentY + 3.5,
   );
 
   addFooter();
