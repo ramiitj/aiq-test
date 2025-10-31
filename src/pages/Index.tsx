@@ -48,7 +48,7 @@ const Index = () => {
     {
       icon: Award,
       title: "Verified Certification",
-      description: "Shareable certificate backed by peer-reviewed research to showcase your AI collaboration skills.",
+      description: "Shareable certificate (for thsoe who pass) backed by peer-reviewed research to showcase your AI collaboration skills.",
     },
     {
       icon: Lightbulb,
@@ -376,7 +376,7 @@ const Index = () => {
                 Is the AIQ assessment free?
               </AccordionTrigger>
               <AccordionContent className="text-muted-foreground leading-relaxed">
-                Yes, the AIQ assessment is completely free. You'll receive instant results with a detailed analysis of your AI collaboration abilities across 8 dimensions, personalized insights into your strengths and growth areas, and a shareable certificate that you can add to your professional profiles.
+                Yes, the AIQ assessment is completely free. You'll receive instant results with a detailed analysis of your AI collaboration abilities across 8 dimensions, personalized insights into your strengths and growth areas, and a shareable certificate (for those who pass) that you can add to your professional profiles.
               </AccordionContent>
             </AccordionItem>
             <AccordionItem value="item-4">
@@ -416,7 +416,7 @@ const Index = () => {
                 What do I get after completing the assessment?
               </AccordionTrigger>
               <AccordionContent className="text-muted-foreground leading-relaxed">
-                After completing the assessment, you'll receive: (1) Your overall AIQ score and classification, (2) Detailed breakdown of your performance across all 8 dimensions, (3) Personalized insights highlighting your strengths and areas for growth, (4) A verifiable digital certificate with a unique QR code that you can share on LinkedIn, resume, or professional profiles, and (5) Access to your complete assessment history in your dashboard.
+                After completing the assessment, you'll receive: (1) Your overall AIQ score and classification, (2) Detailed breakdown of your performance across all 8 dimensions, (3) Personalized insights highlighting your strengths and areas for growth, (4) A verifiable digital certificate (for those who pass) with a unique QR code that you can share on LinkedIn, resume, or professional profiles, and (5) Access to your complete assessment history in your dashboard.
               </AccordionContent>
             </AccordionItem>
           </Accordion>
