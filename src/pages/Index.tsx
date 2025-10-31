@@ -307,7 +307,7 @@ const Index = () => {
             <CardContent className="pt-8 pb-8">
               <h2 className="text-3xl font-extrabold mb-3 text-center tracking-tight">Built on Rigorous Research</h2>
               <p className="text-center text-muted-foreground mb-8 max-w-2xl mx-auto">
-                Developed at IIT Jodhpur and validated through peer-reviewed academic research
+                Validated through peer-reviewed academic research
               </p>
               <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-8">
                 <div className="text-center">
@@ -400,7 +400,7 @@ const Index = () => {
                 Is the AIQ assessment scientifically validated?
               </AccordionTrigger>
               <AccordionContent className="text-muted-foreground leading-relaxed">
-                Yes! The AIQ assessment is backed by rigorous peer-reviewed academic research published in Discover Artificial Intelligence (Springer Nature, 2025). It uses Item Response Theory (IRT), the same psychometric methodology used in standardized tests like the GRE and SAT. The assessment was developed at IIT Jodhpur with 400+ calibrated items across 8 validated dimensions.
+                Yes! The AIQ assessment is backed by rigorous peer-reviewed academic research published in Discover Artificial Intelligence (Springer Nature, 2025). It uses Item Response Theory (IRT), the same psychometric methodology used in standardized tests like the GRE and SAT. The assessment was developed with 200+ calibrated items across 8 validated dimensions.
               </AccordionContent>
             </AccordionItem>
             <AccordionItem value="item-7">
