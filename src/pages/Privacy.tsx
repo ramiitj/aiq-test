@@ -118,7 +118,7 @@ const Privacy = () => {
         <div className="mt-8 p-4 bg-muted rounded-lg">
           <p className="text-sm text-muted-foreground">
             <strong>Last Updated:</strong> {new Date().toLocaleDateString()}<br />
-            <strong>Contact:</strong> privacy@aiqassessment.com<br />
+            <strong>Contact:</strong> privacy@aiq.works<br />
             Questions about this policy? Contact us at the email above.
           </p>
         </div>
