@@ -30,7 +30,7 @@ const Privacy = () => {
             <ul className="list-disc pl-6 space-y-2">
               <li>To provide and improve the AIQ Assessment service</li>
               <li>To generate your personalized test results</li>
-              <li>To send you your test completion certificate</li>
+              <li>To send you your test completion certificate (if you have passsed!)</li>
               <li>To analyze aggregate usage patterns (anonymized)</li>
             </ul>
 
