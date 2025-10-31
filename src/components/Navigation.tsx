@@ -28,7 +28,7 @@ export const Navigation = ({ isAuthenticated, isAdmin }: NavigationProps) => {
                 <span className="text-white font-black text-lg">A</span>
               </div>
               <span className="text-xl font-black tracking-tight bg-gradient-to-r from-blue-900 to-blue-600 bg-clip-text text-transparent">
-                AIQ<sup className="text-xs">™</sup>
+                AIQ<sup className="text-[0.6em] text-blue-600">™</sup>
               </span>
             </div>
           </Link>
@@ -58,12 +58,7 @@ export const Navigation = ({ isAuthenticated, isAdmin }: NavigationProps) => {
                     </Button>
                   </Link>
                 )}
-                <Button 
-                  onClick={handleLogout} 
-                  variant="ghost" 
-                  size="sm"
-                  className="font-semibold text-sm"
-                >
+                <Button onClick={handleLogout} variant="ghost" size="sm" className="font-semibold text-sm">
                   <LogOut className="h-4 w-4 mr-2" />
                   Logout
                 </Button>
