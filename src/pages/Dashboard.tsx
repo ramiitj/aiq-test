@@ -191,6 +191,8 @@ const Dashboard = () => {
       const { data: { session } } = await supabase.auth.getSession();
       if (!session) return;
 
+      // Delete all user data in correct order (GDPR compliance)
+      await supabase.from("test_demographics").delete().eq("user_id", session.user.id);
       await supabase.from("public_results").delete().eq("user_id", session.user.id);
       await supabase.from("tests").delete().eq("user_id", session.user.id);
       await supabase.from("profiles").delete().eq("user_id", session.user.id);
