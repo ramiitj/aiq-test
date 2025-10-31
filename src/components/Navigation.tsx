@@ -28,7 +28,7 @@ export const Navigation = ({ isAuthenticated, isAdmin }: NavigationProps) => {
                 <span className="text-white font-black text-lg">A</span>
               </div>
               <span className="text-xl font-black tracking-tight bg-gradient-to-r from-blue-900 to-blue-600 bg-clip-text text-transparent">
-                AIQ
+                AIQ<sup className="text-xs">™</sup>
               </span>
             </div>
           </Link>

@@ -118,12 +118,16 @@ function shuffleArray<T>(array: T[]): T[] {
  */
 export function selectItemsForDimension(
   items: TestItem[],
-  config: VersionConfig
+  config: VersionConfig,
+  selectedItemIds: Set<string>
 ): TestItem[] {
   if (items.length === 0) return [];
   
+  // Filter out already selected items to prevent duplicates across dimensions
+  const availableItems = items.filter(item => !selectedItemIds.has(item.id));
+  
   // Sort by difficulty to divide into tiers
-  const sortedItems = [...items].sort((a, b) => a.difficulty - b.difficulty);
+  const sortedItems = [...availableItems].sort((a, b) => a.difficulty - b.difficulty);
   
   const totalItems = sortedItems.length;
   
@@ -141,6 +145,9 @@ export function selectItemsForDimension(
   const hardItems = shuffleArray(hardTier).slice(0, config.hardCount);
   
   selectedItems.push(...easyItems, ...mediumItems, ...hardItems);
+  
+  // Add selected item IDs to the tracking set
+  selectedItems.forEach(item => selectedItemIds.add(item.id));
   
   // Sort selected items by difficulty for progressive difficulty
   return selectedItems.sort((a, b) => a.difficulty - b.difficulty);
@@ -220,11 +227,22 @@ export async function loadTestItems(version: TestVersion = 'beginner'): Promise<
       dimensions = data.itemBank;
       console.log(`[loadTestItems] ${version}: Selecting ${config.itemsPerDimension} from ${dimensions[0]?.items?.length || 0} items per dimension (adaptive, 80 total)`);
       
+      // Track selected item IDs to prevent duplicates across dimensions
+      const selectedItemIds = new Set<string>();
+      
       // Apply adaptive selection for professional and expert
       dimensions = dimensions.map(dimension => ({
         ...dimension,
-        items: selectItemsForDimension(dimension.items, config)
+        items: selectItemsForDimension(dimension.items, config, selectedItemIds)
       }));
+      
+      // Validate no duplicate items in final assessment
+      const allItemIds = dimensions.flatMap(d => d.items.map(i => i.id));
+      const uniqueItemIds = new Set(allItemIds);
+      if (allItemIds.length !== uniqueItemIds.size) {
+        console.error('Duplicate items detected in assessment');
+        throw new Error('Assessment generation failed: duplicate items found');
+      }
     }
     
     console.log(`[loadTestItems] Final dimensions:`, {

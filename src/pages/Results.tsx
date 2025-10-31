@@ -70,6 +70,7 @@ const Results = () => {
   const [userName, setUserName] = useState<string>("");
   const [recommendations, setRecommendations] = useState<{ [key: string]: string[] }>({});
   const [loadingRecommendations, setLoadingRecommendations] = useState(false);
+  const [isPassed, setIsPassed] = useState(false);
   const navigate = useNavigate();
   const { toast } = useToast();
 
@@ -130,6 +131,7 @@ const Results = () => {
       );
       
       setScoringResult(calculatedScores);
+      setIsPassed(calculatedScores.passed);
 
       // Extract bottom 3 dimensions for recommendations
       const sortedDimensions = Object.entries(calculatedScores.dimensionScores)
@@ -137,8 +139,8 @@ const Results = () => {
         .sort((a, b) => a.score - b.score)
         .slice(0, 3);
       
-      // Load recommendations
-      await extractRecommendations(testVersion, sortedDimensions);
+      // Load recommendations with pass/fail context
+      await extractRecommendations(testVersion, sortedDimensions, calculatedScores.passed);
 
       // Get user's name from profile (registered name)
       const { data: profile } = await supabase
@@ -260,54 +262,58 @@ const Results = () => {
     }
   };
 
-  const extractRecommendations = async (
-    testVersion: string, 
-    weakDimensions: { code: string; score: number }[]
-  ) => {
-    setLoadingRecommendations(true);
-    try {
-      // Determine JSON file based on test version
-      const jsonFile = testVersion.includes('beginner') 
-        ? '/test-items/beginner-assessment.json'
-        : testVersion.includes('professional')
-        ? '/test-items/professional-assessment.json'
-        : '/test-items/expert-assessment.json';
+const extractRecommendations = async (
+  testVersion: string, 
+  weakDimensions: { code: string; score: number }[],
+  isPassing: boolean
+) => {
+  setLoadingRecommendations(true);
+  try {
+    // Determine JSON file based on test version
+    const jsonFile = testVersion.includes('beginner') 
+      ? '/test-items/beginner-assessment.json'
+      : testVersion.includes('professional')
+      ? '/test-items/professional-assessment.json'
+      : '/test-items/expert-assessment.json';
+    
+    const response = await fetch(jsonFile);
+    if (!response.ok) throw new Error('Failed to load assessment data');
+    
+    const assessmentData = await response.json();
+    const recs: { [key: string]: string[] } = {};
+    
+    // For each weak dimension, extract recommendations
+    weakDimensions.forEach(({ code }) => {
+      const dimension = assessmentData.itemBank.dimensions?.find(
+        (d: any) => d.dimensionCode === code
+      );
       
-      const response = await fetch(jsonFile);
-      if (!response.ok) throw new Error('Failed to load assessment data');
-      
-      const assessmentData = await response.json();
-      const recs: { [key: string]: string[] } = {};
-      
-      // For each weak dimension, extract 2-3 recommendations
-      weakDimensions.forEach(({ code }) => {
-        const dimension = assessmentData.itemBank.dimensions?.find(
-          (d: any) => d.dimensionCode === code
-        );
+      if (dimension?.items) {
+        // Get items with rich rationale/explanation
+        const itemsWithContent = dimension.items
+          .filter((item: any) => item.rationale && item.explanation);
         
-        if (dimension?.items) {
-          // Get items with rich rationale/explanation
-          const itemsWithContent = dimension.items
-            .filter((item: any) => item.rationale && item.explanation)
-            .slice(0, 3); // Take top 3 items
-          
-          // Extract actionable recommendations
-          recs[code] = itemsWithContent.map((item: any) => {
-            // Combine rationale and explanation for context
-            return `${item.rationale} ${item.explanation}`.trim();
-          });
-        }
-      });
-      
-      setRecommendations(recs);
-    } catch (error) {
-      console.error('Failed to load recommendations:', error);
-      // Set empty recommendations on error
-      setRecommendations({});
-    } finally {
-      setLoadingRecommendations(false);
-    }
-  };
+        // For non-passing users, ensure minimum 3 recommendations per dimension
+        const recommendationCount = isPassing ? 3 : Math.max(3, itemsWithContent.length);
+        const selectedItems = itemsWithContent.slice(0, recommendationCount);
+        
+        // Extract actionable recommendations
+        recs[code] = selectedItems.map((item: any) => {
+          // Combine rationale and explanation for context
+          return `${item.rationale} ${item.explanation}`.trim();
+        });
+      }
+    });
+    
+    setRecommendations(recs);
+  } catch (error) {
+    console.error('Failed to load recommendations:', error);
+    // Set empty recommendations on error
+    setRecommendations({});
+  } finally {
+    setLoadingRecommendations(false);
+  }
+};
 
   const handleGenerateShareablePost = async () => {
     if (!result) return;
@@ -822,6 +828,7 @@ const Results = () => {
           dimensions={dimensionsWithNames}
           verificationCode={verificationCode}
           verificationUrl={verificationUrl}
+          passed={isPassed}
         />
       </main>
 

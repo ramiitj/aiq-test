@@ -3,14 +3,31 @@ interface CaptionData {
   level: string;
   topDimensions: Array<{ name: string; score: number }>;
   verificationUrl: string;
+  passed?: boolean;
 }
 
 export function generateCaption(data: CaptionData): string {
-  const { score, topDimensions, verificationUrl } = data;
+  const { score, topDimensions, verificationUrl, passed = true } = data;
 
   const dimensionList = topDimensions
     .map((dim) => `✅ ${dim.name} (${dim.score.toFixed(1)})`)
     .join('\n');
+
+  // For non-passing users, focus on progress and learning journey
+  if (!passed) {
+    return `📊 Completed my AIQ Assessment™ and scored ${score.toFixed(1)}/100 (${data.level} level)!
+
+This comprehensive assessment measures AI collaboration skills across 8 research-validated dimensions using psychometric methodologies.
+
+Current strengths:
+${dimensionList}
+
+Working on continuous improvement in my AI collaboration journey! Every expert was once a beginner. 🚀
+
+Verify my results: ${verificationUrl}
+
+#AILearning #SkillDevelopment #ContinuousImprovement #AICollaboration #ProfessionalGrowth`;
+  }
 
   if (score >= 80) {
     return `🌟 Thrilled to share my AIQ Assessment™ results!

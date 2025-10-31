@@ -15,6 +15,7 @@ interface ShareModalProps {
   dimensions: Array<{ name: string; score: number }>;
   verificationCode: string;
   verificationUrl: string;
+  passed: boolean;
 }
 
 export function ShareModal({
@@ -24,6 +25,7 @@ export function ShareModal({
   dimensions,
   verificationCode,
   verificationUrl,
+  passed,
 }: ShareModalProps) {
   const [imageBlob, setImageBlob] = useState<Blob | null>(null);
   const [imageUrl, setImageUrl] = useState<string>("");
@@ -39,12 +41,13 @@ export function ShareModal({
   useEffect(() => {
     if (open && !imageBlob) {
       generateImage();
-      const generatedCaption = generateCaption({
-        score,
-        level,
-        topDimensions,
-        verificationUrl,
-      });
+    const generatedCaption = generateCaption({
+      score,
+      level,
+      topDimensions,
+      verificationUrl,
+      passed,
+    });
       setCaption(generatedCaption);
     }
   }, [open]);
