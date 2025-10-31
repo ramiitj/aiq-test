@@ -70,7 +70,7 @@ const Index = () => {
       gradient: "from-blue-500 to-indigo-600",
       recommended: false,
       idealFor: "Students, career changers, and those new to AI",
-      details: "8 questions per dimension (fixed)",
+      details: "7-8 questions per dimension (fixed)",
       prerequisites: "Basic computer skills and curiosity about AI",
       demonstrates: [
         "Understanding of AI basics and core concepts",
