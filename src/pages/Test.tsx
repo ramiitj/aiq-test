@@ -300,6 +300,9 @@ const Test = () => {
       setTestId(newTest.id);
       setShowDemographics(false);
       
+      // Scroll to top when test starts
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      
       toast({
         title: "Assessment Started",
         description: "Good luck! Remember to read each question carefully.",

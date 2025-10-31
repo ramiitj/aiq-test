@@ -203,7 +203,7 @@ const Verify = () => {
                 {/* CTA Section */}
                 <div className="text-center pt-8">
                   <p className="text-lg text-muted-foreground mb-6">Want to assess your own AI collaboration skills?</p>
-                  <Link to="/">
+                  <Link to="/" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
                     <Button size="lg" className="text-lg px-10 py-6 bg-blue-900 hover:bg-blue-800">
                       Take the AIQ<sup className="text-[0.6em]">™</sup> Assessment
                     </Button>
@@ -249,7 +249,7 @@ const Verify = () => {
 
                 {/* CTA Section */}
                 <div className="text-center pt-4">
-                  <Link to="/">
+                  <Link to="/" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
                     <Button size="lg" variant="outline" className="text-lg px-10 py-6">
                       Take the AIQ<sup className="text-[0.6em]">™</sup> Assessment
                     </Button>
