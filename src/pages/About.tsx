@@ -344,7 +344,7 @@ const About = () => {
           <div className="text-center mb-8">
             <h2 className="text-4xl font-extrabold mb-3">The Research Team</h2>
             <p className="text-muted-foreground max-w-2xl mx-auto">
-              Faculty researchers at the Indian Institute of Technology Jodhpur
+              Research by Experienced Academicians
             </p>
           </div>
 
