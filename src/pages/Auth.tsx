@@ -285,7 +285,7 @@ const Auth = () => {
             <div className="w-12 h-12 bg-purple-100 dark:bg-purple-900/30 rounded-lg flex items-center justify-center mx-auto mb-2">
               <span className="text-2xl">🏆</span>
             </div>
-            <p className="text-xs font-semibold">Certified</p>
+            <p className="text-xs font-semibold">Certified (On passing!)</p>
           </div>
         </div>
       </div>
