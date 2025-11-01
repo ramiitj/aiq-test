@@ -92,6 +92,7 @@ function determinePerformanceLevel(
 
 /**
  * Calculate test scores based on answers and dimensions with IRT weighting
+ * Normalizes final scores to match JSON-configured totalPoints
  */
 export function calculateTestScores(
   answers: Answer,
@@ -102,48 +103,59 @@ export function calculateTestScores(
   const dimensionScores: { [dimensionCode: string]: number } = {};
   let totalCorrect = 0;
   let totalQuestions = 0;
-  let totalPointsEarned = 0;
-  let totalPossiblePointsWithWeighting = 0;
+  let totalWeightedPoints = 0;
+  let totalWeightedPossible = 0;
 
   // Process each dimension
   dimensions.forEach((dimension, dimIndex) => {
-    let dimensionPoints = 0;
+    let dimensionWeightedPoints = 0;
+    let dimensionWeightedPossible = 0;
 
     // Process each item in the dimension
     dimension.items.forEach((item, itemIndex) => {
       const questionKey = `${dimIndex}-${itemIndex}`;
       const userAnswer = answers[questionKey];
 
-      // Calculate max possible points for this item (even if not answered)
-      const maxItemPoints = calculateItemPoints(item, true, assessmentLevel);
-      totalPossiblePointsWithWeighting += maxItemPoints;
+      // Calculate max weighted points for this item
+      const maxWeightedPoints = calculateItemPoints(item, true, assessmentLevel);
+      dimensionWeightedPossible += maxWeightedPoints;
+      totalWeightedPossible += maxWeightedPoints;
 
       if (userAnswer !== undefined) {
         totalQuestions++;
 
-        // Check if answer is correct based on question type
+        // Check if answer is correct
         const isCorrect = checkAnswer(item, userAnswer);
         
         if (isCorrect) {
           totalCorrect++;
           
-          // Calculate weighted points for this item
-          const itemPoints = calculateItemPoints(item, isCorrect, assessmentLevel);
-          dimensionPoints += itemPoints;
-          totalPointsEarned += itemPoints;
+          // Calculate weighted points for correct answer
+          const weightedPoints = calculateItemPoints(item, isCorrect, assessmentLevel);
+          dimensionWeightedPoints += weightedPoints;
+          totalWeightedPoints += weightedPoints;
         }
       }
     });
 
-    dimensionScores[dimension.dimensionCode] = Math.round(dimensionPoints * 10) / 10; // Round to 1 decimal
+    // Normalize dimension score to configured pointsPerDimension
+    const dimensionPercentage = dimensionWeightedPossible > 0 
+      ? dimensionWeightedPoints / dimensionWeightedPossible 
+      : 0;
+    const normalizedDimensionScore = dimensionPercentage * scoringConfig.pointsPerDimension;
+    
+    dimensionScores[dimension.dimensionCode] = Math.round(normalizedDimensionScore * 10) / 10;
   });
 
-  // Calculate percentage score based on actual possible points with weighting
-  const percentageScore = totalPossiblePointsWithWeighting > 0 
-    ? (totalPointsEarned / totalPossiblePointsWithWeighting) * 100 
+  // Calculate percentage score
+  const percentageScore = totalWeightedPossible > 0 
+    ? (totalWeightedPoints / totalWeightedPossible) * 100 
     : 0;
 
-  // Determine if passed based on percentage (since absolute points vary with weighting)
+  // Normalize overall score to configured totalPoints
+  const normalizedOverallScore = (percentageScore / 100) * scoringConfig.totalPoints;
+
+  // Determine if passed based on configured passing percentage
   const passed = percentageScore >= scoringConfig.passingPercentage;
 
   // Determine performance level
@@ -151,11 +163,11 @@ export function calculateTestScores(
 
   return {
     dimensionScores,
-    overallScore: Math.round(totalPointsEarned * 10) / 10, // Round to 1 decimal
-    totalPossiblePoints: Math.round(totalPossiblePointsWithWeighting * 10) / 10, // Actual max with weighting
-    passingScore: Math.round((totalPossiblePointsWithWeighting * scoringConfig.passingPercentage / 100) * 10) / 10,
+    overallScore: Math.round(normalizedOverallScore * 10) / 10, // Normalized to JSON config
+    totalPossiblePoints: scoringConfig.totalPoints, // Use JSON configured total
+    passingScore: Math.round((scoringConfig.totalPoints * scoringConfig.passingPercentage / 100) * 10) / 10,
     passed,
-    percentageScore: Math.round(percentageScore * 10) / 10, // Round to 1 decimal
+    percentageScore: Math.round(percentageScore * 10) / 10,
     correctCount: totalCorrect,
     totalCount: totalQuestions,
     assessmentLevel,

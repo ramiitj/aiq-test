@@ -234,6 +234,7 @@ const Results = () => {
             user_name: userName,
             test_completion_date: result.created_at,
             test_duration_seconds: result.test_duration_seconds,
+            test_version: result.test_version || 'professional',
           });
 
           if (error) throw error;
@@ -258,6 +259,12 @@ const Results = () => {
       await supabase
         .from("public_results")
         .update({ report_generated_at: new Date().toISOString() })
+        .eq("share_code", code);
+
+      // Also update test_version if not already stored
+      await supabase
+        .from("public_results")
+        .update({ test_version: result.test_version || 'professional' })
         .eq("share_code", code);
 
       // Download
@@ -356,16 +363,17 @@ const Results = () => {
         const randomPart = crypto.randomUUID().replace(/-/g, "").substring(0, 16).toUpperCase();
         shareCode = `AIQ-${year}-${randomPart}`;
 
-        const { error } = await supabase.from("public_results").insert({
-          test_id: result.id,
-          user_id: (await supabase.auth.getUser()).data.user!.id,
-          share_code: shareCode,
-          overall_score: scoringResult?.overallScore || 0, // Store actual points
-          dimension_scores: JSON.stringify(scoringResult?.dimensionScores || {}),
-          user_name: userName,
-          test_completion_date: result.created_at,
-          test_duration_seconds: result.test_duration_seconds,
-        });
+          const { error } = await supabase.from("public_results").insert({
+            test_id: result.id,
+            user_id: (await supabase.auth.getUser()).data.user!.id,
+            share_code: shareCode,
+            overall_score: scoringResult?.overallScore || 0, // Store actual points
+            dimension_scores: JSON.stringify(scoringResult?.dimensionScores || {}),
+            user_name: userName,
+            test_completion_date: result.created_at,
+            test_duration_seconds: result.test_duration_seconds,
+            test_version: result.test_version || 'professional',
+          });
 
         if (error) throw error;
       }

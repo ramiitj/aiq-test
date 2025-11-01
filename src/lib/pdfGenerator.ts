@@ -200,21 +200,49 @@ export async function generatePDFReport(
         ? "expert"
         : "professional";
 
-  const getRecommendations = (code: string): string[] => {
-    if (levelType === "beginner") {
-      return beginnerRecommendations[code] || [];
-    } else if (levelType === "expert") {
-      return expertRecommendations[code] || [];
+  // Get recommendations based on dimension performance percentage
+  const getRecommendations = (code: string, percentage: number): string[] => {
+    // Select recommendation set based on performance
+    let recs: { [key: string]: string[] };
+    
+    if (percentage >= 80) {
+      // High performers get expert/thought leadership recommendations
+      recs = levelType === 'expert' ? expertRecommendations : professionalRecommendations;
+    } else if (percentage < 40) {
+      // Low performers get beginner/foundational recommendations
+      recs = beginnerRecommendations;
     } else {
-      return professionalRecommendations[code] || [];
+      // Mid performers get level-appropriate recommendations
+      recs = levelType === 'beginner' ? beginnerRecommendations :
+             levelType === 'expert' ? expertRecommendations :
+             professionalRecommendations;
     }
+    
+    return recs[code] || [];
   };
 
+  // Get proficiency level based on percentage (not raw score)
   const getProficiencyLevel = (percentage: number): string => {
-    if (percentage >= 80) return "Exceptional";
-    if (percentage >= 60) return "Proficient";
-    if (percentage >= 40) return "Developing";
-    return "Emerging";
+    if (levelType === 'beginner') {
+      if (percentage >= 90) return 'Advanced';
+      if (percentage >= 80) return 'Proficient';
+      if (percentage >= 60) return 'Developing';
+      if (percentage >= 40) return 'Beginner';
+      return 'Novice';
+    } else if (levelType === 'expert') {
+      if (percentage >= 90) return 'Thought Leader';
+      if (percentage >= 80) return 'Senior Expert';
+      if (percentage >= 65) return 'Expert';
+      if (percentage >= 50) return 'Advanced Professional';
+      return 'Emerging Expert';
+    } else {
+      // Professional
+      if (percentage >= 90) return 'Expert';
+      if (percentage >= 80) return 'Advanced';
+      if (percentage >= 60) return 'Proficient';
+      if (percentage >= 40) return 'Developing';
+      return 'Emerging';
+    }
   };
 
   const getLevelColor = (percentage: number): [number, number, number] => {
@@ -493,14 +521,16 @@ export async function generatePDFReport(
   const createRecData = (dims: DimensionScore[]) => {
     return dims.map((dim) => {
       const fullName = dimensionNames[dim.code] || dim.name;
-      const recs = getRecommendations(dim.code);
+      // Calculate percentage for this dimension
+      const dimPercentage = (dim.score / (totalPossible / dimensionScores.length)) * 100;
+      const recs = getRecommendations(dim.code, dimPercentage);
 
       const recText =
         recs.length > 0
           ? recs.map((r, idx) => `${idx + 1}. ${r}`).join("\n\n")
           : "1. Establish foundational knowledge through structured learning programs and mentorship.\n\n2. Engage with practical exercises and real-world case studies to build applied competency.\n\n3. Seek feedback from experienced practitioners to accelerate skill development.";
 
-      return [fullName, dim.score.toFixed(1), getProficiencyLevel(dim.score), recText];
+      return [fullName, dim.score.toFixed(1), getProficiencyLevel(dimPercentage), recText];
     });
   };
 

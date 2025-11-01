@@ -78,7 +78,7 @@ Deno.serve(async (req) => {
     // Server-side validation with share code check
     const { data, error } = await supabase
       .from('public_results')
-      .select('id, overall_score, created_at, expires_at, dimension_scores, user_name, test_duration_seconds, percentile_rank')
+      .select('id, overall_score, created_at, expires_at, dimension_scores, user_name, test_duration_seconds, percentile_rank, test_version')
       .eq('share_code', shareCode)
       .gt('expires_at', new Date().toISOString())
       .maybeSingle();
@@ -104,37 +104,67 @@ Deno.serve(async (req) => {
     }
 
     // Calculate percentage from points (overall_score now stores actual points)
-    // We need to infer percentage from the score since we don't store total possible
-    // For verification purposes, we'll compute a normalized score
-    const score = data.overall_score;
-    
-    // Estimate percentage based on typical point totals by version
-    // Beginner: ~600-780 max, Professional: ~800-1280 max, Expert: ~1000-1520 max
-    // We'll use a conservative percentage calculation
-    let percentage = 0;
-    if (score >= 700) {
-      // Likely professional or expert level
-      percentage = Math.min(100, (score / 800) * 100);
-    } else {
-      // Likely beginner level
-      percentage = Math.min(100, (score / 600) * 100);
-    }
+    // Use test_version to determine total possible points
+    const testVersion = data.test_version || 'professional';
+    const totalPossible = testVersion === 'beginner' ? 600 : 1600;
+    const percentage = (data.overall_score / totalPossible) * 100;
     
     let scoreRange = "";
     let level = "";
 
-    if (percentage >= 80) {
-      scoreRange = "80-100%";
-      level = "Exceptional";
-    } else if (percentage >= 60) {
-      scoreRange = "60-79%";
-      level = "Proficient";
-    } else if (percentage >= 40) {
-      scoreRange = "40-59%";
-      level = "Developing";
+    // Determine level based on test version and percentage
+    if (testVersion === 'beginner') {
+      if (percentage >= 90) {
+        scoreRange = "90-100%";
+        level = "Advanced";
+      } else if (percentage >= 80) {
+        scoreRange = "80-89%";
+        level = "Proficient";
+      } else if (percentage >= 60) {
+        scoreRange = "60-79%";
+        level = "Developing";
+      } else if (percentage >= 40) {
+        scoreRange = "40-59%";
+        level = "Beginner";
+      } else {
+        scoreRange = "0-39%";
+        level = "Novice";
+      }
+    } else if (testVersion === 'expert') {
+      if (percentage >= 90) {
+        scoreRange = "90-100%";
+        level = "Thought Leader";
+      } else if (percentage >= 80) {
+        scoreRange = "80-89%";
+        level = "Senior Expert";
+      } else if (percentage >= 65) {
+        scoreRange = "65-79%";
+        level = "Expert";
+      } else if (percentage >= 50) {
+        scoreRange = "50-64%";
+        level = "Advanced Professional";
+      } else {
+        scoreRange = "0-49%";
+        level = "Emerging Expert";
+      }
     } else {
-      scoreRange = "0-39%";
-      level = "Emerging";
+      // Professional
+      if (percentage >= 90) {
+        scoreRange = "90-100%";
+        level = "Expert";
+      } else if (percentage >= 80) {
+        scoreRange = "80-89%";
+        level = "Advanced";
+      } else if (percentage >= 60) {
+        scoreRange = "60-79%";
+        level = "Proficient";
+      } else if (percentage >= 40) {
+        scoreRange = "40-59%";
+        level = "Developing";
+      } else {
+        scoreRange = "0-39%";
+        level = "Emerging";
+      }
     }
 
     // Return sanitized data without user_id
