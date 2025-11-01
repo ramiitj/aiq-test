@@ -1,6 +1,8 @@
 import jsPDF from "jspdf";
 import autoTable from "jspdf-autotable";
 import QRCode from "qrcode";
+import { getRecommendations, getProficiencyLevel } from "./recommendationsSelector";
+import { dimensionNames as sharedDimensionNames } from "./recommendationsData";
 
 interface DimensionScore {
   code: string;
@@ -9,145 +11,7 @@ interface DimensionScore {
   description?: string;
 }
 
-const dimensionNames: Record<string, string> = {
-  SAU: "Strategic AI Understanding",
-  PEI: "Prompt Engineering & Interaction",
-  CEC: "Critical Evaluation & Calibration",
-  II: "Intelligent Task Integration",
-  ALC: "Adaptive Learning & Capability",
-  EJC: "Ethical Judgment & Usage",
-  CS: "Context Sensitivity",
-  CRS: "Creative Synthesis",
-};
-
-const beginnerRecommendations: Record<string, string[]> = {
-  SAU: [
-    "Begin by studying how leading companies leverage AI to enhance business decision-making and competitive positioning.",
-    "Develop understanding of AI system capabilities and limitations through structured coursework or online learning platforms.",
-    "Review case studies documenting both successful AI implementations and notable failures to build practical judgment.",
-  ],
-  PEI: [
-    "Practice crafting clear, specific prompts by experimenting with various AI tools and documenting effective patterns.",
-    "Systematically test different question formats and observe how variations in phrasing affect response quality and relevance.",
-    "Maintain a personal prompt library that catalogs successful approaches for different task types and contexts.",
-  ],
-  CEC: [
-    "Establish a routine practice of verifying AI-generated outputs against authoritative sources before accepting conclusions.",
-    "Learn to identify common failure modes such as hallucinations, outdated information, and logical inconsistencies in AI responses.",
-    "Evaluate whether AI outputs adequately consider multiple perspectives and potential biases in their analysis.",
-  ],
-  II: [
-    "Identify routine tasks within your workflow that could benefit from AI assistance while maintaining quality standards.",
-    "Practice decomposing complex projects into discrete subtasks that can be effectively delegated to AI systems.",
-    "Develop verification checklists to systematically review and validate AI-assisted work products.",
-  ],
-  ALC: [
-    "Create a structured system for documenting insights gained from each AI interaction to accelerate learning.",
-    "Schedule regular knowledge-sharing sessions with colleagues to exchange AI usage strategies and lessons learned.",
-    "Build a comprehensive personal reference guide capturing effective prompts, common pitfalls, and best practices.",
-  ],
-  EJC: [
-    "Study fundamental concepts of fairness, bias, and transparency in AI systems through reputable educational resources.",
-    "Understand organizational and professional standards regarding disclosure of AI involvement in your work products.",
-    "Review and internalize ethical AI usage guidelines specific to your industry and professional context.",
-  ],
-  CS: [
-    "Recognize that AI system performance and appropriateness varies significantly across different cultural and organizational contexts.",
-    "Research AI-related regulations and compliance requirements that apply to your specific industry and geographic region.",
-    "Develop strategies for adapting AI usage approaches based on varying organizational cultures and stakeholder expectations.",
-  ],
-  CRS: [
-    "Experiment with using AI as a collaborative brainstorming partner to generate novel ideas and creative solutions.",
-    "Explore diverse applications of AI for creative problem-solving beyond conventional use cases in your field.",
-    "Practice generating multiple solution alternatives using AI assistance and synthesizing the most promising approaches.",
-  ],
-};
-
-const professionalRecommendations: Record<string, string[]> = {
-  SAU: [
-    "Conduct systematic analysis of AI adoption patterns across your industry to identify competitive opportunities and strategic gaps.",
-    "Develop comprehensive 12-18 month AI capability roadmaps that align with organizational strategy and resource constraints.",
-    "Assess organizational readiness for AI adoption using established maturity frameworks and create targeted improvement plans.",
-  ],
-  PEI: [
-    "Master advanced prompting techniques including meta-prompting, chain-of-thought reasoning, and systematic constraint engineering.",
-    "Build domain-specific prompt libraries containing 20+ tested variations for common tasks, documented with performance metrics.",
-    "Establish rigorous prompt optimization processes incorporating systematic A/B testing and continuous refinement cycles.",
-  ],
-  CEC: [
-    "Design and conduct fairness audits that evaluate AI system outputs across diverse demographic groups and use cases.",
-    "Implement comprehensive verification protocols with clearly defined criteria for output quality and reliability thresholds.",
-    "Study and apply advanced techniques for uncertainty quantification to improve decision-making under AI-assisted conditions.",
-  ],
-  II: [
-    "Design sophisticated workflows that strategically optimize the complementary strengths of human judgment and AI capabilities.",
-    "Develop role evolution strategies that prepare team members for effective collaboration in AI-integrated work environments.",
-    "Establish robust governance frameworks defining quality standards, review processes, and accountability for human-AI collaboration.",
-  ],
-  ALC: [
-    "Build organizational learning systems with documented processes for capturing, sharing, and scaling AI capabilities across teams.",
-    "Create cross-functional knowledge-sharing forums and communities of practice focused on AI capability development.",
-    "Implement systematic capability maturity tracking with defined metrics, milestones, and assessment mechanisms.",
-  ],
-  EJC: [
-    "Develop enterprise-wide AI ethics governance frameworks addressing fairness, transparency, accountability, and stakeholder impact.",
-    "Create comprehensive stakeholder impact assessment protocols with regular review cycles and clear escalation procedures.",
-    "Design decision support tools that help teams navigate trade-offs between AI capability optimization and ethical considerations.",
-  ],
-  CS: [
-    "Develop differentiated AI strategies tailored to specific markets, regions, and cultural contexts based on systematic analysis.",
-    "Design implementation approaches that account for regulatory variance, data governance requirements, and local compliance needs.",
-    "Build cultural intelligence frameworks that guide appropriate AI deployment across diverse organizational and geographic contexts.",
-  ],
-  CRS: [
-    "Identify and analyze AI capability inflection points that could enable significant business model innovation and competitive differentiation.",
-    "Design systematic approaches for transferring successful AI patterns across domains to unlock new sources of competitive advantage.",
-    "Build strategic foresight processes that anticipate AI-enabled market transformations and position organizations for emerging opportunities.",
-  ],
-};
-
-const expertRecommendations: Record<string, string[]> = {
-  SAU: [
-    "Publish peer-reviewed research on AI strategic positioning, competitive dynamics, and organizational transformation in leading journals.",
-    "Mentor industry peers and executives on enterprise AI governance frameworks, transformation roadmaps, and change management.",
-    "Actively contribute to development of industry standards and best practices for responsible AI strategy and deployment.",
-  ],
-  PEI: [
-    "Conduct and publish novel research advancing theoretical understanding and practical applications of prompt engineering techniques.",
-    "Design comprehensive organizational certification programs that develop and credential prompt engineering expertise at scale.",
-    "Develop influential frameworks for optimizing AI reasoning architectures and cognitive augmentation approaches.",
-  ],
-  CEC: [
-    "Research and publish innovations in AI trustworthiness assessment methodologies and evaluation framework design.",
-    "Lead development of industry standards for AI system evaluation, validation, and continuous monitoring approaches.",
-    "Build enterprise-scale evaluation infrastructure and governance models that others can adapt and implement.",
-  ],
-  II: [
-    "Publish groundbreaking research on human-AI organizational design principles and effective integration strategies.",
-    "Lead industry-wide discussions on responsible AI integration through conference presentations, panels, and thought leadership.",
-    "Contribute substantively to regulatory frameworks and policy discussions shaping AI governance at organizational and societal levels.",
-  ],
-  ALC: [
-    "Research and publish on organizational learning dynamics in AI-augmented systems and their implications for capability development.",
-    "Publish thought leadership on AI-driven culture transformation and change management in professional and academic forums.",
-    "Develop field-advancing learning infrastructure models and frameworks that influence organizational practice broadly.",
-  ],
-  EJC: [
-    "Contribute actively to AI ethics standards development through participation in professional bodies and policy advisory committees.",
-    "Publish research on effective ethical AI governance mechanisms and their impact on organizational and societal outcomes.",
-    "Shape the regulatory landscape by participating in policy forums, submitting comments on proposed regulations, and advising policymakers.",
-  ],
-  CS: [
-    "Research and publish on how contextual factors shape AI strategy effectiveness and implementation outcomes across settings.",
-    "Contribute substantively to geopolitical AI policy discussions and international framework development initiatives.",
-    "Mentor emerging leaders across the ecosystem on principles and practices of context-sensitive AI deployment.",
-  ],
-  CRS: [
-    "Research and publish on AI-enabled business model discontinuities and the patterns underlying successful innovation.",
-    "Publish influential frameworks on leveraging emerging AI capabilities for innovation that shape industry understanding.",
-    "Shape industry and academic understanding of AI transformation possibilities through high-impact research and thought leadership.",
-  ],
-};
+// Dimension names and recommendations now imported from shared data files
 
 export async function generatePDFReport(
   overallScore: number, // This is now actual points earned, not percentage
@@ -200,50 +64,7 @@ export async function generatePDFReport(
         ? "expert"
         : "professional";
 
-  // Get recommendations based on dimension performance percentage
-  const getRecommendations = (code: string, percentage: number): string[] => {
-    // Select recommendation set based on performance
-    let recs: { [key: string]: string[] };
-    
-    if (percentage >= 80) {
-      // High performers get expert/thought leadership recommendations
-      recs = levelType === 'expert' ? expertRecommendations : professionalRecommendations;
-    } else if (percentage < 40) {
-      // Low performers get beginner/foundational recommendations
-      recs = beginnerRecommendations;
-    } else {
-      // Mid performers get level-appropriate recommendations
-      recs = levelType === 'beginner' ? beginnerRecommendations :
-             levelType === 'expert' ? expertRecommendations :
-             professionalRecommendations;
-    }
-    
-    return recs[code] || [];
-  };
-
-  // Get proficiency level based on percentage (not raw score)
-  const getProficiencyLevel = (percentage: number): string => {
-    if (levelType === 'beginner') {
-      if (percentage >= 90) return 'Advanced';
-      if (percentage >= 80) return 'Proficient';
-      if (percentage >= 60) return 'Developing';
-      if (percentage >= 40) return 'Beginner';
-      return 'Novice';
-    } else if (levelType === 'expert') {
-      if (percentage >= 90) return 'Thought Leader';
-      if (percentage >= 80) return 'Senior Expert';
-      if (percentage >= 65) return 'Expert';
-      if (percentage >= 50) return 'Advanced Professional';
-      return 'Emerging Expert';
-    } else {
-      // Professional
-      if (percentage >= 90) return 'Expert';
-      if (percentage >= 80) return 'Advanced';
-      if (percentage >= 60) return 'Proficient';
-      if (percentage >= 40) return 'Developing';
-      return 'Emerging';
-    }
-  };
+  // Now using imported getRecommendations and getProficiencyLevel from recommendationsSelector
 
   const getLevelColor = (percentage: number): [number, number, number] => {
     if (percentage >= 80) return colors.green;
@@ -260,8 +81,8 @@ export async function generatePDFReport(
     // AIQ™ Trademark notice (left aligned)
     doc.text("AIQ™ is a trademark of AI Works Pvt Ltd. All Rights Reserved.", margin, footerY);
     
-    // Verification URL (right aligned)
-    doc.text("Verify at: aiq.works/verify", pageWidth - margin, footerY, { align: "right" });
+    // Verification URL with full path (right aligned)
+    doc.text(`Verify: aiq.works/verify/${verificationCode}`, pageWidth - margin, footerY, { align: "right" });
   };
 
   const addPageNumber = (pageNum: number, totalPages: number) => {
@@ -341,7 +162,7 @@ export async function generatePDFReport(
 
   currentY += 15;
 
-  const level = getProficiencyLevel(percentageScore);
+  const level = getProficiencyLevel(percentageScore, assessmentLevel || 'professional');
   doc.setFillColor(...scoreColor);
   const badgeWidth = 75;
   const badgeHeight = 10;
@@ -369,10 +190,10 @@ export async function generatePDFReport(
   currentY += 8;
 
   const perfData = dimensionScores.map((dim) => {
-    const fullName = dimensionNames[dim.code] || dim.name;
+    const fullName = sharedDimensionNames[dim.code] || dim.name;
     // Calculate percentage for dimension (assuming equal weighting)
     const dimPercentage = (dim.score / (totalPossible / dimensionScores.length)) * 100;
-    return [fullName, dim.score.toFixed(1), getProficiencyLevel(dimPercentage)];
+    return [fullName, dim.score.toFixed(1), getProficiencyLevel(dimPercentage, assessmentLevel || 'professional')];
   });
 
   autoTable(doc, {
@@ -430,7 +251,7 @@ export async function generatePDFReport(
   const barSpacing = 10;
 
   dimensionScores.forEach((dim) => {
-    const fullName = dimensionNames[dim.code] || dim.name;
+    const fullName = sharedDimensionNames[dim.code] || dim.name;
     
     // Calculate percentage for visualization
     const dimPercentage = (dim.score / (totalPossible / dimensionScores.length)) * 100;
@@ -473,15 +294,11 @@ export async function generatePDFReport(
     doc.setFont("helvetica", "bold");
     doc.text("Verify This Certificate Online", margin + 5, currentY + 7);
 
-    doc.setFontSize(11);
+    doc.setFontSize(10);
     doc.setFont("helvetica", "bold");
     doc.setTextColor(0, 102, 204); // Blue color for URL
-    doc.text("aiq.works/verify", margin + 5, currentY + 16);
-
-    doc.setFontSize(8);
-    doc.setTextColor(...colors.mediumGray);
-    doc.setFont("helvetica", "normal");
-    doc.text(`Code: ${verificationCode}`, margin + 5, currentY + 23);
+    const fullVerifyUrl = `aiq.works/verify/${verificationCode}`;
+    doc.text(fullVerifyUrl, margin + 5, currentY + 16);
   }
 
   // PAGE 2: Recommendations Part 1
@@ -520,17 +337,17 @@ export async function generatePDFReport(
 
   const createRecData = (dims: DimensionScore[]) => {
     return dims.map((dim) => {
-      const fullName = dimensionNames[dim.code] || dim.name;
+      const fullName = sharedDimensionNames[dim.code] || dim.name;
       // Calculate percentage for this dimension
       const dimPercentage = (dim.score / (totalPossible / dimensionScores.length)) * 100;
-      const recs = getRecommendations(dim.code, dimPercentage);
+      const recs = getRecommendations(dim.code, dimPercentage, assessmentLevel || 'professional');
 
       const recText =
         recs.length > 0
           ? recs.map((r, idx) => `${idx + 1}. ${r}`).join("\n\n")
           : "1. Establish foundational knowledge through structured learning programs and mentorship.\n\n2. Engage with practical exercises and real-world case studies to build applied competency.\n\n3. Seek feedback from experienced practitioners to accelerate skill development.";
 
-      return [fullName, dim.score.toFixed(1), getProficiencyLevel(dimPercentage), recText];
+      return [fullName, dim.score.toFixed(1), getProficiencyLevel(dimPercentage, assessmentLevel || 'professional'), recText];
     });
   };
 

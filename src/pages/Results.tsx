@@ -214,16 +214,11 @@ const Results = () => {
         if (existingShare) {
           code = existingShare.share_code;
         } else {
-          // Generate high-entropy share code (12 chars alphanumeric = 62^12 combinations)
-          // Much more secure than previous 4-char base36 format
-          const generateSecureCode = () => {
-            const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
-            const array = new Uint8Array(12);
-            crypto.getRandomValues(array);
-            return Array.from(array, byte => chars[byte % chars.length]).join('');
-          };
-          
-          code = `AIQ-${generateSecureCode()}`;
+          // Generate cryptographically secure verification code in format: AIQ-YYYY-XXXXXXXXXXXXXXXX
+          // Uses same format as social share for consistency
+          const year = new Date().getFullYear();
+          const randomPart = crypto.randomUUID().replace(/-/g, "").substring(0, 16).toUpperCase();
+          code = `AIQ-${year}-${randomPart}`;
 
           const { error } = await supabase.from("public_results").insert({
             test_id: result.id,
@@ -299,43 +294,21 @@ const Results = () => {
   ) => {
     setLoadingRecommendations(true);
     try {
-      // Determine JSON file based on test version
-      const jsonFile = testVersion.includes("beginner")
-        ? "/test-items/beginner-assessment.json"
-        : testVersion.includes("professional")
-          ? "/test-items/professional-assessment.json"
-          : "/test-items/expert-assessment.json";
-
-      const response = await fetch(jsonFile);
-      if (!response.ok) throw new Error("Failed to load assessment data");
-
-      const assessmentData = await response.json();
+      // Import recommendation selector
+      const { getRecommendations } = await import("@/lib/recommendationsSelector");
+      
       const recs: { [key: string]: string[] } = {};
+      const maxPoints = scoringResult.totalPossiblePoints / 8;
 
-      // For each weak dimension, extract recommendations
-      weakDimensions.forEach(({ code }) => {
-        const dimension = assessmentData.itemBank.dimensions?.find((d: any) => d.dimensionCode === code);
-
-        if (dimension?.items) {
-          // Get items with rich rationale/explanation
-          const itemsWithContent = dimension.items.filter((item: any) => item.rationale && item.explanation);
-
-          // For non-passing users, ensure minimum 3 recommendations per dimension
-          const recommendationCount = isPassing ? 3 : Math.max(3, itemsWithContent.length);
-          const selectedItems = itemsWithContent.slice(0, recommendationCount);
-
-          // Extract actionable recommendations
-          recs[code] = selectedItems.map((item: any) => {
-            // Combine rationale and explanation for context
-            return `${item.rationale} ${item.explanation}`.trim();
-          });
-        }
+      // For each weak dimension, get performance-aware recommendations
+      weakDimensions.forEach(({ code, score }) => {
+        const percentage = (score / maxPoints) * 100;
+        recs[code] = getRecommendations(code, percentage, testVersion);
       });
 
       setRecommendations(recs);
     } catch (error) {
       console.error("Failed to load recommendations:", error);
-      // Set empty recommendations on error
       setRecommendations({});
     } finally {
       setLoadingRecommendations(false);
@@ -794,70 +767,111 @@ const Results = () => {
             </div>
           </CardHeader>
           <CardContent className="pt-0">
-            {loadingRecommendations ? (
-              <div className="text-center py-8">
-                <p className="text-sm text-muted-foreground">Loading personalized recommendations...</p>
-              </div>
-            ) : Object.keys(recommendations).length === 0 ? (
-              <div className="text-center py-8">
-                <p className="text-sm text-muted-foreground">
-                  Focus on building foundational skills across all dimensions through practice and continuous learning.
-                </p>
-              </div>
-            ) : (
-              <div className="space-y-4">
-                {Object.keys(dimensionCodeMap)
-                  .map((code, index) => ({
-                    score: scoringResult.dimensionScores[code] || 0,
-                    name: dimensionNames[index],
-                    code,
-                  }))
-                  .sort((a, b) => a.score - b.score)
-                  .slice(0, 3)
-                  .map((dim) => {
-                    const dimRecs = recommendations[dim.code] || [];
+          {loadingRecommendations ? (
+            <div className="text-center py-8">
+              <p className="text-sm text-muted-foreground">Loading personalized recommendations...</p>
+            </div>
+          ) : Object.keys(recommendations).length === 0 ? (
+            <div className="text-center py-8">
+              <p className="text-sm text-muted-foreground">
+                Focus on building foundational skills across all dimensions through practice and continuous learning.
+              </p>
+            </div>
+          ) : (
+            <div className="overflow-x-auto">
+              <table className="w-full border-collapse">
+                <thead>
+                  <tr className="bg-primary text-primary-foreground">
+                    <th className="text-left p-3 font-bold text-sm border">Dimension</th>
+                    <th className="text-center p-3 font-bold text-sm border w-24">Score</th>
+                    <th className="text-center p-3 font-bold text-sm border w-32">Level</th>
+                    <th className="text-left p-3 font-bold text-sm border">Recommended Actions</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {Object.keys(dimensionCodeMap)
+                    .map((code, index) => ({
+                      score: scoringResult.dimensionScores[code] || 0,
+                      name: dimensionNames[index],
+                      code,
+                    }))
+                    .sort((a, b) => a.score - b.score)
+                    .slice(0, 3)
+                    .map((dim, idx) => {
+                      const dimRecs = recommendations[dim.code] || [];
+                      const maxPoints = scoringResult.totalPossiblePoints / 8;
+                      const percentage = (dim.score / maxPoints) * 100;
+                      
+                      // Dynamically import getProficiencyLevel
+                      const getProficiencyLevelSync = (perc: number): string => {
+                        const testVersion = result?.test_version || 'professional';
+                        if (testVersion.includes("beginner")) {
+                          if (perc >= 90) return "Exceptional";
+                          if (perc >= 80) return "Advanced";
+                          if (perc >= 70) return "Proficient";
+                          if (perc >= 60) return "Developing";
+                          return "Emerging";
+                        } else if (testVersion.includes("professional")) {
+                          if (perc >= 90) return "Expert";
+                          if (perc >= 80) return "Advanced";
+                          if (perc >= 70) return "Proficient";
+                          if (perc >= 60) return "Competent";
+                          return "Developing";
+                        } else {
+                          if (perc >= 90) return "Thought Leader";
+                          if (perc >= 80) return "Expert";
+                          if (perc >= 70) return "Advanced";
+                          if (perc >= 60) return "Proficient";
+                          return "Developing";
+                        }
+                      };
 
-                    return (
-                      <div
-                        key={dim.code}
-                        className="p-4 bg-blue-50 dark:bg-blue-950/20 rounded-lg border border-blue-200 dark:border-blue-800"
-                      >
-                        <h4 className="text-sm font-bold text-blue-900 dark:text-blue-100 mb-3 flex items-center gap-2">
-                          {dim.name}
-                          <span className="text-xs font-normal text-muted-foreground">
-                            ({dim.score.toFixed(1)} points)
-                          </span>
-                        </h4>
+                      return (
+                        <tr
+                          key={dim.code}
+                          className={idx % 2 === 0 ? "bg-muted/30" : "bg-background"}
+                        >
+                          <td className="p-3 border font-medium text-sm">
+                            {dim.name}
+                          </td>
+                          <td className="p-3 border text-center font-bold text-sm">
+                            {dim.score.toFixed(1)}
+                          </td>
+                          <td className="p-3 border text-center text-sm font-semibold">
+                            {getProficiencyLevelSync(percentage)}
+                          </td>
+                          <td className="p-3 border text-sm">
+                            {dimRecs.length > 0 ? (
+                              <ol className="space-y-2 list-decimal list-inside">
+                                {dimRecs.map((rec, recIdx) => (
+                                  <li key={recIdx} className="text-muted-foreground leading-relaxed">
+                                    {rec}
+                                  </li>
+                                ))}
+                              </ol>
+                            ) : (
+                              <p className="text-muted-foreground italic text-xs">
+                                Focus on understanding core concepts and building practical experience.
+                              </p>
+                            )}
+                          </td>
+                        </tr>
+                      );
+                    })}
+                </tbody>
+              </table>
 
-                        {dimRecs.length > 0 ? (
-                          <ul className="space-y-2">
-                            {dimRecs.map((rec, idx) => (
-                              <li key={idx} className="text-xs text-muted-foreground leading-relaxed flex gap-2">
-                                <span className="text-blue-600 dark:text-blue-400 flex-shrink-0">•</span>
-                                <span>{rec}</span>
-                              </li>
-                            ))}
-                          </ul>
-                        ) : (
-                          <p className="text-xs text-muted-foreground italic">
-                            Focus on understanding core concepts and building practical experience in this dimension.
-                          </p>
-                        )}
-                      </div>
-                    );
-                  })}
-
-                {/* Encouraging message for non-passing users */}
-                {!scoringResult.passed && (
-                  <div className="mt-4 p-3 bg-amber-50 dark:bg-amber-950/20 rounded border border-amber-200 dark:border-amber-800">
-                    <p className="text-xs text-amber-900 dark:text-amber-100 font-medium flex items-center gap-2">
-                      <Lightbulb className="h-4 w-4" />
-                      Review these recommendations and retake the assessment when ready to achieve certification
-                    </p>
-                  </div>
-                )}
-              </div>
-            )}
+              {/* Encouraging message for non-passing users */}
+              {!scoringResult.passed && (
+                <div className="mt-4 p-3 bg-amber-50 dark:bg-amber-950/20 rounded border border-amber-200 dark:border-amber-800">
+                  <p className="text-xs text-amber-900 dark:text-amber-100 font-medium flex items-center gap-2">
+                    <Lightbulb className="h-4 w-4" />
+                    Review these recommendations and retake the assessment when ready to achieve certification
+                  </p>
+                </div>
+              )}
+            </div>
+          )}
           </CardContent>
         </Card>
 
