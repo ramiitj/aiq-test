@@ -81,8 +81,8 @@ export async function generatePDFReport(
     // AIQ™ Trademark notice (left aligned)
     doc.text("AIQ™ is a trademark of AI Works Pvt Ltd. All Rights Reserved.", margin, footerY);
     
-    // Verification URL with full path (right aligned)
-    doc.text(`Verify: aiq.works/verify/${verificationCode}`, pageWidth - margin, footerY, { align: "right" });
+    // Verification URL with full HTTPS path (right aligned)
+    doc.text(`Verify: https://aiq.works/verify/${verificationCode}`, pageWidth - margin, footerY, { align: "right" });
   };
 
   const addPageNumber = (pageNum: number, totalPages: number) => {
@@ -297,7 +297,7 @@ export async function generatePDFReport(
     doc.setFontSize(10);
     doc.setFont("helvetica", "bold");
     doc.setTextColor(0, 102, 204); // Blue color for URL
-    const fullVerifyUrl = `aiq.works/verify/${verificationCode}`;
+    const fullVerifyUrl = `https://aiq.works/verify/${verificationCode}`;
     doc.text(fullVerifyUrl, margin + 5, currentY + 16);
   }
 

@@ -224,7 +224,7 @@ const Results = () => {
             test_id: result.id,
             user_id: (await supabase.auth.getUser()).data.user!.id,
             share_code: code,
-            overall_score: scoringResult.overallScore, // Store actual points, not percentage
+            overall_score: Number(scoringResult.overallScore.toFixed(1)), // Store actual points with 1 decimal
             dimension_scores: JSON.stringify(scoringResult.dimensionScores),
             user_name: userName,
             test_completion_date: result.created_at,
@@ -340,7 +340,7 @@ const Results = () => {
             test_id: result.id,
             user_id: (await supabase.auth.getUser()).data.user!.id,
             share_code: shareCode,
-            overall_score: scoringResult?.overallScore || 0, // Store actual points
+            overall_score: Number((scoringResult?.overallScore || 0).toFixed(1)), // Store actual points with 1 decimal
             dimension_scores: JSON.stringify(scoringResult?.dimensionScores || {}),
             user_name: userName,
             test_completion_date: result.created_at,
