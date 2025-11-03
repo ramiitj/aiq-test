@@ -3,13 +3,23 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import Footer from "@/components/Footer";
 import {
+  Brain,
+  Target,
+  Lightbulb,
+  Shield,
+  Users,
+  Zap,
+  BookOpen,
+  Award,
   ExternalLink,
+  TrendingUp,
+  Sparkles,
   CheckCircle,
-} from "lucide-react"; // Kept only the essential icons
+  AlertCircle,
+} from "lucide-react";
 import { useEffect, useState } from "react";
 import { supabase } from "@/integrations/supabase/client";
 import { checkUserRole } from "@/lib/roleUtils";
-import Image from "next/image"; // Import the Next.js Image component
 
 const About = () => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -32,46 +42,14 @@ const About = () => {
   };
 
   const dimensions = [
-    { 
-      illustration: "/images/dimensions/strategic.svg", 
-      name: "Strategic AI Understanding", 
-      description: "Align AI capabilities with business objectives" 
-    },
-    { 
-      illustration: "/images/dimensions/prompting.svg", 
-      name: "Prompt Engineering", 
-      description: "Design effective prompts for optimal AI responses" 
-    },
-    { 
-      illustration: "/images/dimensions/evaluation.svg", 
-      name: "Critical Evaluation", 
-      description: "Assess AI output quality and identify limitations" 
-    },
-    { 
-      illustration: "/images/dimensions/ethics.svg", 
-      name: "Ethical Judgment", 
-      description: "Navigate AI ethics and responsible use" 
-    },
-    { 
-      illustration: "/images/dimensions/integration.svg", 
-      name: "Integration Intelligence", 
-      description: "Blend AI capabilities with human expertise" 
-    },
-    { 
-      illustration: "/images/dimensions/learning.svg", 
-      name: "Adaptive Learning", 
-      description: "Refine collaboration strategies over time" 
-    },
-    { 
-      illustration: "/images/dimensions/context.svg", 
-      name: "Context Sensitivity", 
-      description: "Adapt AI use to different situations" 
-    },
-    { 
-      illustration: "/images/dimensions/creativity.svg", 
-      name: "Creative Synthesis", 
-      description: "Leverage AI for innovation and problem-solving" 
-    },
+    { icon: Target, name: "Strategic AI Understanding", description: "Align AI capabilities with business objectives" },
+    { icon: Lightbulb, name: "Prompt Engineering", description: "Design effective prompts for optimal AI responses" },
+    { icon: Brain, name: "Critical Evaluation", description: "Assess AI output quality and identify limitations" },
+    { icon: Shield, name: "Ethical Judgment", description: "Navigate AI ethics and responsible use" },
+    { icon: Zap, name: "Integration Intelligence", description: "Blend AI capabilities with human expertise" },
+    { icon: Users, name: "Adaptive Learning", description: "Refine collaboration strategies over time" },
+    { icon: TrendingUp, name: "Context Sensitivity", description: "Adapt AI use to different situations" },
+    { icon: Sparkles, name: "Creative Synthesis", description: "Leverage AI for innovation and problem-solving" },
   ];
 
   return (
@@ -89,38 +67,8 @@ const About = () => {
           </p>
         </div>
 
-        {/* NEW: The Shift to Collaboration Section (from your screenshot) */}
-        <div className="grid md:grid-cols-2 gap-8 mb-20">
-          <Card className="shadow-lg border-gray-200">
-            <CardContent className="pt-6 pb-6 text-center">
-              <Image 
-                src="/images/hero-iq.svg" 
-                alt="Traditional IQ" 
-                width={150} 
-                height={150} 
-                className="mx-auto mb-4"
-              />
-              <h3 className="text-2xl font-bold mb-2">Traditional IQ</h3>
-              <p className="text-lg text-muted-foreground">Measures what an individual can achieve **alone**.</p>
-            </CardContent>
-          </Card>
-          <Card className="shadow-lg border-2 border-blue-600 bg-blue-50 dark:bg-blue-950/20">
-            <CardContent className="pt-6 pb-6 text-center">
-              <Image 
-                src="/images/hero-aiq.svg" 
-                alt="AI Quotient (AIQ)" 
-                width={150} 
-                height={150} 
-                className="mx-auto mb-4"
-              />
-              <h3 className="text-2xl font-bold mb-2">AI Quotient (AIQ)™</h3>
-              <p className="text-lg text-muted-foreground">Measures how you **collaborate** effectively with AI.</p>
-            </CardContent>
-          </Card>
-        </div>
-
         {/* The Problem We're Solving */}
-        <div className="mb-20">
+        <div className="mb-16">
           <div className="text-center mb-8">
             <h2 className="text-4xl font-extrabold mb-3">
               Why AIQ<sup className="text-[0.6em]">™</sup> Assessment Is Essential
@@ -131,30 +79,18 @@ const About = () => {
           </div>
 
           <div className="grid md:grid-cols-3 gap-6">
-            <Card className="shadow-sm border">
+            <Card className="shadow-sm border bg-red-50 dark:bg-red-950/20">
               <CardContent className="pt-8 pb-8 text-center">
-                <Image 
-                  src="/images/problem-skills.svg" 
-                  alt="Job skills transforming" 
-                  width={64} 
-                  height={64} 
-                  className="mx-auto mb-4"
-                />
+                <AlertCircle className="h-12 w-12 text-red-600 mx-auto mb-4" />
                 <div className="text-4xl font-extrabold text-red-600 mb-2">70%</div>
                 <p className="text-sm text-muted-foreground mb-2">of job skills will transform by 2030 due to AI</p>
                 <p className="text-xs text-muted-foreground/70">LinkedIn Work Change Report</p>
               </CardContent>
             </Card>
 
-            <Card className="shadow-sm border">
+            <Card className="shadow-sm border bg-yellow-50 dark:bg-yellow-950/20">
               <CardContent className="pt-8 pb-8 text-center">
-                <Image 
-                  src="/images/problem-struggle.svg" 
-                  alt="Companies struggling with AI" 
-                  width={64} 
-                  height={64} 
-                  className="mx-auto mb-4"
-                />
+                <TrendingUp className="h-12 w-12 text-yellow-600 mx-auto mb-4" />
                 <div className="text-4xl font-extrabold text-yellow-600 mb-2">74%</div>
                 <p className="text-sm text-muted-foreground mb-2">
                   of companies struggle to realize full benefits from AI
@@ -163,15 +99,9 @@ const About = () => {
               </CardContent>
             </Card>
 
-            <Card className="shadow-sm border">
+            <Card className="shadow-sm border bg-green-50 dark:bg-green-950/20">
               <CardContent className="pt-8 pb-8 text-center">
-                <Image 
-                  src="/images/problem-earnings.svg" 
-                  alt="Higher earnings" 
-                  width={64} 
-                  height={64} 
-                  className="mx-auto mb-4"
-                />
+                <Award className="h-12 w-12 text-green-600 mx-auto mb-4" />
                 <div className="text-4xl font-extrabold text-green-600 mb-2">56%</div>
                 <p className="text-sm text-muted-foreground mb-2">higher earnings for those with validated AI skills</p>
                 <p className="text-xs text-muted-foreground/70">PwC Global AI Jobs Barometer 2025</p>
@@ -181,7 +111,7 @@ const About = () => {
         </div>
 
         {/* What We Measure: 8 Dimensions */}
-        <div className="mb-20">
+        <div className="mb-16">
           <div className="text-center mb-8">
             <h2 className="text-4xl font-extrabold mb-3">The 8 Dimensions of AI Collaboration</h2>
             <p className="text-muted-foreground max-w-2xl mx-auto">
@@ -190,26 +120,25 @@ const About = () => {
           </div>
 
           <div className="grid md:grid-cols-4 gap-4">
-            {dimensions.map((dimension, index) => (
-              <Card key={index} className="shadow-sm border text-center hover:shadow-md transition-shadow">
-                <CardContent className="pt-6 pb-6">
-                  <Image
-                    src={dimension.illustration}
-                    alt={`${dimension.name} illustration`}
-                    width={80}
-                    height={80}
-                    className="mx-auto mb-4"
-                  />
-                  <h3 className="text-sm font-bold mb-2">{dimension.name}</h3>
-                  <p className="text-xs text-muted-foreground">{dimension.description}</p>
-                </CardContent>
-              </Card>
-            ))}
+            {dimensions.map((dimension, index) => {
+              const Icon = dimension.icon;
+              return (
+                <Card key={index} className="shadow-sm border text-center hover:shadow-md transition-shadow">
+                  <CardContent className="pt-6 pb-6">
+                    <div className="p-3 bg-blue-900/10 rounded-full w-fit mx-auto mb-3">
+                      <Icon className="h-6 w-6 text-blue-900" />
+                    </div>
+                    <h3 className="text-sm font-bold mb-2">{dimension.name}</h3>
+                    <p className="text-xs text-muted-foreground">{dimension.description}</p>
+                  </CardContent>
+                </Card>
+              );
+            })}
           </div>
         </div>
 
         {/* Our Methodology */}
-        <div className="mb-20">
+        <div className="mb-16">
           <div className="text-center mb-8">
             <h2 className="text-4xl font-extrabold mb-3">Rigorous Scientific Methodology</h2>
             <p className="text-muted-foreground max-w-2xl mx-auto">
@@ -221,13 +150,9 @@ const About = () => {
             <Card className="shadow-sm border">
               <CardContent className="pt-6 pb-6">
                 <div className="flex items-start gap-4">
-                  <Image 
-                    src="/images/method-irt.svg"
-                    alt="Item Response Theory"
-                    width={60}
-                    height={60}
-                    className="flex-shrink-0"
-                  />
+                  <div className="p-3 bg-blue-100 dark:bg-blue-900/30 rounded-lg flex-shrink-0">
+                    <BookOpen className="h-6 w-6 text-blue-600" />
+                  </div>
                   <div>
                     <h3 className="font-bold text-lg mb-2">Item Response Theory (IRT)</h3>
                     <p className="text-sm text-muted-foreground mb-3">
@@ -256,13 +181,9 @@ const About = () => {
             <Card className="shadow-sm border">
               <CardContent className="pt-6 pb-6">
                 <div className="flex items-start gap-4">
-                  <Image 
-                    src="/images/method-research.svg"
-                    alt="Peer-Reviewed Research"
-                    width={60}
-                    height={60}
-                    className="flex-shrink-0"
-                  />
+                  <div className="p-3 bg-green-100 dark:bg-green-900/30 rounded-lg flex-shrink-0">
+                    <Award className="h-6 w-6 text-green-600" />
+                  </div>
                   <div>
                     <h3 className="font-bold text-lg mb-2">Peer-Reviewed Research</h3>
                     <p className="text-sm text-muted-foreground mb-3">
@@ -290,7 +211,7 @@ const About = () => {
         </div>
 
         {/* Performance-Based Assessment */}
-        <div className="mb-20">
+        <div className="mb-16">
           <Card className="shadow-xl border-2 border-blue-900 bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-blue-950/40 dark:to-indigo-950/40">
             <CardContent className="pt-10 pb-10">
               <div className="text-center mb-8">
@@ -303,13 +224,9 @@ const About = () => {
 
               <div className="grid md:grid-cols-3 gap-6">
                 <div className="text-center">
-                  <Image 
-                    src="/images/performance-task.svg"
-                    alt="Task-Based"
-                    width={80}
-                    height={80}
-                    className="mx-auto mb-4"
-                  />
+                  <div className="p-4 bg-blue-900 rounded-full w-fit mx-auto mb-3">
+                    <Target className="h-10 w-10 text-white" />
+                  </div>
                   <h3 className="font-bold text-lg mb-2">Task-Based</h3>
                   <p className="text-sm text-muted-foreground">
                     Demonstrate real skills through authentic scenarios, not self-reported opinions
@@ -317,13 +234,9 @@ const About = () => {
                 </div>
 
                 <div className="text-center">
-                  <Image 
-                    src="/images/performance-adaptive.svg"
-                    alt="Adaptive"
-                    width={80}
-                    height={80}
-                    className="mx-auto mb-4"
-                  />
+                  <div className="p-4 bg-green-600 rounded-full w-fit mx-auto mb-3">
+                    <Brain className="h-10 w-10 text-white" />
+                  </div>
                   <h3 className="font-bold text-lg mb-2">Adaptive</h3>
                   <p className="text-sm text-muted-foreground">
                     Questions adjust in real-time to provide precise measurement at any skill level
@@ -331,13 +244,9 @@ const About = () => {
                 </div>
 
                 <div className="text-center">
-                  <Image 
-                    src="/images/performance-validated.svg"
-                    alt="Validated"
-                    width={80}
-                    height={80}
-                    className="mx-auto mb-4"
-                  />
+                  <div className="p-4 bg-purple-600 rounded-full w-fit mx-auto mb-3">
+                    <Award className="h-10 w-10 text-white" />
+                  </div>
                   <h3 className="font-bold text-lg mb-2">Validated</h3>
                   <p className="text-sm text-muted-foreground">
                     Backed by rigorous psychometric analysis and peer-reviewed research
@@ -349,7 +258,7 @@ const About = () => {
         </div>
 
         {/* Who Benefits */}
-        <div className="mb-20">
+        <div className="mb-16">
           <div className="text-center mb-8">
             <h2 className="text-4xl font-extrabold mb-3">Applications Across Sectors</h2>
             <p className="text-muted-foreground max-w-2xl mx-auto">
@@ -361,13 +270,9 @@ const About = () => {
           <div className="grid md:grid-cols-3 gap-6">
             <Card className="shadow-sm border">
               <CardContent className="pt-8 pb-8">
-                <Image 
-                  src="/images/app-orgs.svg"
-                  alt="Organizations"
-                  width={80}
-                  height={80}
-                  className="mx-auto mb-4"
-                />
+                <div className="p-4 bg-blue-100 dark:bg-blue-900/30 rounded-full w-fit mx-auto mb-4">
+                  <Users className="h-10 w-10 text-blue-600" />
+                </div>
                 <h3 className="font-bold text-xl mb-3 text-center">Organizations</h3>
                 <ul className="space-y-2 text-sm text-muted-foreground">
                   <li className="flex items-start gap-2">
@@ -388,13 +293,9 @@ const About = () => {
 
             <Card className="shadow-sm border">
               <CardContent className="pt-8 pb-8">
-                <Image 
-                  src="/images/app-educators.svg"
-                  alt="Educators"
-                  width={80}
-                  height={80}
-                  className="mx-auto mb-4"
-                />
+                <div className="p-4 bg-green-100 dark:bg-green-900/30 rounded-full w-fit mx-auto mb-4">
+                  <BookOpen className="h-10 w-10 text-green-600" />
+                </div>
                 <h3 className="font-bold text-xl mb-3 text-center">Educators</h3>
                 <ul className="space-y-2 text-sm text-muted-foreground">
                   <li className="flex items-start gap-2">
@@ -415,13 +316,9 @@ const About = () => {
 
             <Card className="shadow-sm border">
               <CardContent className="pt-8 pb-8">
-                <Image 
-                  src="/images/app-pros.svg"
-                  alt="Professionals"
-                  width={80}
-                  height={80}
-                  className="mx-auto mb-4"
-                />
+                <div className="p-4 bg-purple-100 dark:bg-purple-900/30 rounded-full w-fit mx-auto mb-4">
+                  <Award className="h-10 w-10 text-purple-600" />
+                </div>
                 <h3 className="font-bold text-xl mb-3 text-center">Professionals</h3>
                 <ul className="space-y-2 text-sm text-muted-foreground">
                   <li className="flex items-start gap-2">
@@ -443,7 +340,7 @@ const About = () => {
         </div>
 
         {/* Research Team */}
-        <div className="mb-20">
+        <div className="mb-16">
           <div className="text-center mb-8">
             <h2 className="text-4xl font-extrabold mb-3">The Research Team</h2>
             <p className="text-muted-foreground max-w-2xl mx-auto">Research by Experienced Academicians</p>
@@ -451,19 +348,19 @@ const About = () => {
 
           <div className="grid md:grid-cols-2 gap-6">
             <Card className="shadow-sm border">
-              <CardContent className="pt-6 pb-6">
-                <h3 className="font-bold text-xl mb-1">Venkat Ram Reddy Ganuthula, Ph.D.</h3>
-                <p className="text-sm text-blue-900 font-semibold mb-3">
-                  <a href="https://www.linkedin.com/in/ganuthula/" target="_blank" rel="noopener noreferrer">
-                    https://www.linkedin.com/in/ganuthula/
-                  </a>
-                </p>
-                <p className="text-sm text-muted-foreground leading-relaxed mb-2">
-                  Specializes in behavioral science, judgment and decision-making, and the intersection of AI and human
-                  behavior.
-                </p>
-              </CardContent>
-            </Card>
+          <CardContent className="pt-6 pb-6">
+            <h3 className="font-bold text-xl mb-1">Venkat Ram Reddy Ganuthula, Ph.D.</h3>
+            <p className="text-sm text-blue-900 font-semibold mb-3">
+              <a href="https://www.linkedin.com/in/ganuthula/" target="_blank" rel="noopener noreferrer">
+                https://www.linkedin.com/in/ganuthula/
+              </a>
+            </p>
+            <p className="text-sm text-muted-foreground leading-relaxed mb-2">
+              Specializes in behavioral science, judgment and decision-making, and the intersection of AI and human
+              behavior.
+            </p>
+          </CardContent>
+        </Card>
 
             <Card className="shadow-sm border">
               <CardContent className="pt-6 pb-6">
@@ -476,7 +373,7 @@ const About = () => {
                 <p className="text-sm text-muted-foreground leading-relaxed mb-2">
                   Brings 20+ years of technology leadership experience. Research focuses on strategic foresight and AI
                   governance.
-                </body
+                </p>
               </CardContent>
             </Card>
           </div>
