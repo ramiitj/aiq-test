@@ -143,6 +143,63 @@ const Test = () => {
     }
   }, [showConsent, timeRemaining]);
 
+  // Auto-pause test when user closes tab or navigates away
+  useEffect(() => {
+    if (!testId || showConsent || showDemographics) return;
+
+    const autoPauseTest = async () => {
+      try {
+        // Use sendBeacon for reliable last-moment data sending
+        const payload = JSON.stringify({
+          paused: true,
+          time_remaining: timeRemaining,
+          current_dimension: currentDimension,
+          current_item: currentQuestion,
+          answers: answers
+        });
+
+        const { data: { session } } = await supabase.auth.getSession();
+        if (!session) return;
+
+        // Use fetch with keepalive for better reliability during page unload
+        fetch(`${import.meta.env.VITE_SUPABASE_URL}/rest/v1/tests?id=eq.${testId}`, {
+          method: 'PATCH',
+          headers: {
+            'Content-Type': 'application/json',
+            'apikey': import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY,
+            'Authorization': `Bearer ${session.access_token}`,
+            'Prefer': 'return=minimal'
+          },
+          body: payload,
+          keepalive: true // Critical for page unload scenarios
+        });
+      } catch (error) {
+        console.error("Failed to auto-pause test:", error);
+      }
+    };
+
+    const handleBeforeUnload = (e: BeforeUnloadEvent) => {
+      autoPauseTest();
+      // Show confirmation dialog
+      e.preventDefault();
+      e.returnValue = '';
+    };
+
+    const handleVisibilityChange = () => {
+      if (document.hidden) {
+        autoPauseTest();
+      }
+    };
+
+    window.addEventListener('beforeunload', handleBeforeUnload);
+    document.addEventListener('visibilitychange', handleVisibilityChange);
+
+    return () => {
+      window.removeEventListener('beforeunload', handleBeforeUnload);
+      document.removeEventListener('visibilitychange', handleVisibilityChange);
+    };
+  }, [testId, showConsent, showDemographics, timeRemaining, currentDimension, currentQuestion, answers]);
+
   // Questions are ready to display (no initialization needed for current types)
 
   const loadTestData = async () => {
