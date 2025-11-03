@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Download, Users, FileText, BarChart } from "lucide-react";
+import { Download, Users, FileText, BarChart, PauseCircle } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import * as XLSX from "xlsx";
 
@@ -20,14 +20,47 @@ interface UserProfile {
 interface TestDemographics {
   id: string;
   user_id: string;
+  test_id: string;
   full_name: string;
+  phone_number: string | null;
+  country: string | null;
   job_role: string;
-  industry_sector: string;
   organization_type: string;
+  organization_size: string | null;
+  industry_sector: string;
+  years_experience: string;
   ai_familiarity: string;
   ai_usage_frequency: string;
+  ai_training: string;
+  ai_tools_used: any;
+  ai_use_cases: any;
+  assessment_tier: string;
+  assessment_reasons: any;
+  results_usage: any;
+  age_range: string | null;
+  education_level: string | null;
+  primary_language: string | null;
+  technical_background: string | null;
+  consent_assessment: boolean;
   consent_data_usage: boolean;
-  consent_research: boolean;
+  consent_results_access: boolean;
+  consent_research: boolean | null;
+  consent_communications: boolean | null;
+  created_at: string;
+}
+
+interface PausedTest {
+  id: string;
+  user_id: string;
+  test_version: string;
+  current_dimension: number;
+  current_item: number;
+  paused: boolean;
+  start_time: string;
+  pause_timestamp: string | null;
+  time_remaining: number | null;
+  answers: any;
+  dimension_states: any;
   created_at: string;
 }
 
@@ -39,6 +72,7 @@ interface TestResult {
   overall_score: number;
   dimension_scores: any;
   test_completion_date: string | null;
+  test_duration_seconds: number | null;
   percentile_rank: number | null;
 }
 
@@ -46,6 +80,7 @@ export const AdminDataTables = () => {
   const [profiles, setProfiles] = useState<UserProfile[]>([]);
   const [demographics, setDemographics] = useState<TestDemographics[]>([]);
   const [results, setResults] = useState<TestResult[]>([]);
+  const [pausedTests, setPausedTests] = useState<PausedTest[]>([]);
   const [loading, setLoading] = useState(true);
   const { toast } = useToast();
 
@@ -65,11 +100,10 @@ export const AdminDataTables = () => {
 
       if (profilesError) throw profilesError;
 
-      // Fetch demographics data (only where users consented to data usage)
+      // Fetch ALL demographics data (compulsory and optional)
       const { data: demographicsData, error: demographicsError } = await supabase
         .from("test_demographics")
         .select("*")
-        .eq("consent_data_usage", true)
         .order("created_at", { ascending: false });
 
       if (demographicsError) throw demographicsError;
@@ -82,9 +116,19 @@ export const AdminDataTables = () => {
 
       if (resultsError) throw resultsError;
 
+      // Fetch paused/incomplete tests
+      const { data: pausedTestsData, error: pausedError } = await supabase
+        .from("tests")
+        .select("*")
+        .or("paused.eq.true,completed.eq.false")
+        .order("created_at", { ascending: false });
+
+      if (pausedError) throw pausedError;
+
       setProfiles(profilesData || []);
       setDemographics(demographicsData || []);
       setResults(resultsData || []);
+      setPausedTests(pausedTestsData || []);
     } catch (error: any) {
       toast({
         title: "Error fetching data",
@@ -130,15 +174,33 @@ export const AdminDataTables = () => {
   const exportDemographics = () => {
     const exportData = demographics.map(d => ({
       "Full Name": d.full_name,
+      "Phone": d.phone_number || "N/A",
+      "Country": d.country || "N/A",
       "Job Role": d.job_role,
-      "Industry": d.industry_sector,
       "Organization Type": d.organization_type,
+      "Organization Size": d.organization_size || "N/A",
+      "Industry": d.industry_sector,
+      "Years Experience": d.years_experience,
       "AI Familiarity": d.ai_familiarity,
       "AI Usage Frequency": d.ai_usage_frequency,
-      "Consented to Research": d.consent_research ? "Yes" : "No",
+      "AI Training": d.ai_training,
+      "AI Tools Used": JSON.stringify(d.ai_tools_used),
+      "AI Use Cases": JSON.stringify(d.ai_use_cases),
+      "Assessment Tier": d.assessment_tier,
+      "Assessment Reasons": JSON.stringify(d.assessment_reasons),
+      "Results Usage": JSON.stringify(d.results_usage),
+      "Age Range": d.age_range || "N/A",
+      "Education Level": d.education_level || "N/A",
+      "Primary Language": d.primary_language || "N/A",
+      "Technical Background": d.technical_background || "N/A",
+      "Consent Assessment": d.consent_assessment ? "Yes" : "No",
+      "Consent Data Usage": d.consent_data_usage ? "Yes" : "No",
+      "Consent Results Access": d.consent_results_access ? "Yes" : "No",
+      "Consent Research": d.consent_research ? "Yes" : "No",
+      "Consent Communications": d.consent_communications ? "Yes" : "No",
       "Date": new Date(d.created_at).toLocaleDateString(),
     }));
-    exportToExcel(exportData, "user_demographics_consented");
+    exportToExcel(exportData, "user_demographics_all");
   };
 
   const exportResults = () => {
@@ -146,6 +208,9 @@ export const AdminDataTables = () => {
       "User Name": r.user_name || "N/A",
       "Test Version": r.test_version,
       "Overall Score": r.overall_score,
+      "Duration (minutes)": r.test_duration_seconds 
+        ? (r.test_duration_seconds / 60).toFixed(1) 
+        : "N/A",
       "Percentile Rank": r.percentile_rank || "N/A",
       "Completion Date": r.test_completion_date 
         ? new Date(r.test_completion_date).toLocaleDateString() 
@@ -153,6 +218,25 @@ export const AdminDataTables = () => {
       "Dimensions": JSON.stringify(r.dimension_scores),
     }));
     exportToExcel(exportData, "test_results");
+  };
+
+  const exportPausedTests = () => {
+    const exportData = pausedTests.map(t => ({
+      "Test ID": t.id,
+      "User ID": t.user_id,
+      "Test Version": t.test_version,
+      "Status": t.paused ? "Paused" : "In Progress",
+      "Current Dimension": t.current_dimension,
+      "Current Item": t.current_item,
+      "Start Time": new Date(t.start_time).toLocaleString(),
+      "Pause Time": t.pause_timestamp 
+        ? new Date(t.pause_timestamp).toLocaleString() 
+        : "N/A",
+      "Time Remaining (seconds)": t.time_remaining || "N/A",
+      "Answers Count": Array.isArray(t.answers) ? t.answers.length : 0,
+      "Created At": new Date(t.created_at).toLocaleDateString(),
+    }));
+    exportToExcel(exportData, "paused_tests");
   };
 
   if (loading) {
@@ -171,12 +255,12 @@ export const AdminDataTables = () => {
         <CardHeader>
           <CardTitle>User Data Management</CardTitle>
           <CardDescription>
-            View and export user data. Demographics data is filtered to show only users who consented to data usage.
+            View and export all user data including profiles, demographics (compulsory & optional), test results, and paused tests.
           </CardDescription>
         </CardHeader>
         <CardContent>
           <Tabs defaultValue="profiles" className="w-full">
-            <TabsList className="grid w-full grid-cols-3">
+            <TabsList className="grid w-full grid-cols-4">
               <TabsTrigger value="profiles">
                 <Users className="h-4 w-4 mr-2" />
                 Profiles ({profiles.length})
@@ -188,6 +272,10 @@ export const AdminDataTables = () => {
               <TabsTrigger value="results">
                 <BarChart className="h-4 w-4 mr-2" />
                 Results ({results.length})
+              </TabsTrigger>
+              <TabsTrigger value="paused">
+                <PauseCircle className="h-4 w-4 mr-2" />
+                Paused ({pausedTests.length})
               </TabsTrigger>
             </TabsList>
 
@@ -241,7 +329,7 @@ export const AdminDataTables = () => {
             <TabsContent value="demographics" className="space-y-4">
               <div className="flex justify-between items-center">
                 <p className="text-sm text-muted-foreground">
-                  Showing only users who consented to data usage
+                  Showing all demographics data (compulsory & optional fields)
                 </p>
                 <Button onClick={exportDemographics} variant="outline" size="sm">
                   <Download className="h-4 w-4 mr-2" />
@@ -254,31 +342,45 @@ export const AdminDataTables = () => {
                     <TableHeader>
                       <TableRow>
                         <TableHead>Full Name</TableHead>
+                        <TableHead>Phone</TableHead>
+                        <TableHead>Country</TableHead>
                         <TableHead>Job Role</TableHead>
                         <TableHead>Industry</TableHead>
+                        <TableHead>Org Size</TableHead>
+                        <TableHead>Experience</TableHead>
                         <TableHead>AI Familiarity</TableHead>
                         <TableHead>AI Usage</TableHead>
-                        <TableHead>Research Consent</TableHead>
+                        <TableHead>Assessment Tier</TableHead>
+                        <TableHead>Age</TableHead>
+                        <TableHead>Education</TableHead>
+                        <TableHead>Data Consent</TableHead>
                       </TableRow>
                     </TableHeader>
                     <TableBody>
                       {demographics.length === 0 ? (
                         <TableRow>
-                          <TableCell colSpan={6} className="text-center text-muted-foreground">
-                            No consented demographics data found
+                          <TableCell colSpan={13} className="text-center text-muted-foreground">
+                            No demographics data found
                           </TableCell>
                         </TableRow>
                       ) : (
                         demographics.map((demo) => (
                           <TableRow key={demo.id}>
                             <TableCell className="font-medium">{demo.full_name}</TableCell>
+                            <TableCell>{demo.phone_number || "N/A"}</TableCell>
+                            <TableCell>{demo.country || "N/A"}</TableCell>
                             <TableCell>{demo.job_role}</TableCell>
                             <TableCell>{demo.industry_sector}</TableCell>
+                            <TableCell>{demo.organization_size || "N/A"}</TableCell>
+                            <TableCell>{demo.years_experience}</TableCell>
                             <TableCell>{demo.ai_familiarity}</TableCell>
                             <TableCell>{demo.ai_usage_frequency}</TableCell>
+                            <TableCell className="capitalize">{demo.assessment_tier}</TableCell>
+                            <TableCell>{demo.age_range || "N/A"}</TableCell>
+                            <TableCell>{demo.education_level || "N/A"}</TableCell>
                             <TableCell>
-                              <span className={demo.consent_research ? "text-green-600" : "text-gray-500"}>
-                                {demo.consent_research ? "Yes" : "No"}
+                              <span className={demo.consent_data_usage ? "text-green-600" : "text-gray-500"}>
+                                {demo.consent_data_usage ? "Yes" : "No"}
                               </span>
                             </TableCell>
                           </TableRow>
@@ -306,6 +408,7 @@ export const AdminDataTables = () => {
                         <TableHead>User Name</TableHead>
                         <TableHead>Version</TableHead>
                         <TableHead>Overall Score</TableHead>
+                        <TableHead>Duration</TableHead>
                         <TableHead>Percentile</TableHead>
                         <TableHead>Completion Date</TableHead>
                       </TableRow>
@@ -313,7 +416,7 @@ export const AdminDataTables = () => {
                     <TableBody>
                       {results.length === 0 ? (
                         <TableRow>
-                          <TableCell colSpan={5} className="text-center text-muted-foreground">
+                          <TableCell colSpan={6} className="text-center text-muted-foreground">
                             No test results found
                           </TableCell>
                         </TableRow>
@@ -326,6 +429,11 @@ export const AdminDataTables = () => {
                             <TableCell className="capitalize">{result.test_version}</TableCell>
                             <TableCell>{result.overall_score.toFixed(2)}</TableCell>
                             <TableCell>
+                              {result.test_duration_seconds 
+                                ? `${(result.test_duration_seconds / 60).toFixed(1)} min` 
+                                : "N/A"}
+                            </TableCell>
+                            <TableCell>
                               {result.percentile_rank 
                                 ? `${result.percentile_rank.toFixed(1)}%` 
                                 : "N/A"}
@@ -334,6 +442,79 @@ export const AdminDataTables = () => {
                               {result.test_completion_date
                                 ? new Date(result.test_completion_date).toLocaleDateString()
                                 : "N/A"}
+                            </TableCell>
+                          </TableRow>
+                        ))
+                      )}
+                    </TableBody>
+                  </Table>
+                </div>
+              </div>
+            </TabsContent>
+
+            {/* Paused Tests Tab */}
+            <TabsContent value="paused" className="space-y-4">
+              <div className="flex justify-between items-center">
+                <p className="text-sm text-muted-foreground">
+                  Tests that are paused or in progress
+                </p>
+                <Button onClick={exportPausedTests} variant="outline" size="sm">
+                  <Download className="h-4 w-4 mr-2" />
+                  Export to Excel
+                </Button>
+              </div>
+              <div className="border rounded-lg overflow-hidden">
+                <div className="max-h-[500px] overflow-auto">
+                  <Table>
+                    <TableHeader>
+                      <TableRow>
+                        <TableHead>Test ID</TableHead>
+                        <TableHead>Version</TableHead>
+                        <TableHead>Status</TableHead>
+                        <TableHead>Progress</TableHead>
+                        <TableHead>Start Time</TableHead>
+                        <TableHead>Pause Time</TableHead>
+                        <TableHead>Time Remaining</TableHead>
+                        <TableHead>Answers</TableHead>
+                      </TableRow>
+                    </TableHeader>
+                    <TableBody>
+                      {pausedTests.length === 0 ? (
+                        <TableRow>
+                          <TableCell colSpan={8} className="text-center text-muted-foreground">
+                            No paused or in-progress tests found
+                          </TableCell>
+                        </TableRow>
+                      ) : (
+                        pausedTests.map((test) => (
+                          <TableRow key={test.id}>
+                            <TableCell className="font-mono text-xs">
+                              {test.id.substring(0, 8)}...
+                            </TableCell>
+                            <TableCell className="capitalize">{test.test_version}</TableCell>
+                            <TableCell>
+                              <span className={test.paused ? "text-yellow-600" : "text-blue-600"}>
+                                {test.paused ? "Paused" : "In Progress"}
+                              </span>
+                            </TableCell>
+                            <TableCell>
+                              Dim {test.current_dimension}, Item {test.current_item}
+                            </TableCell>
+                            <TableCell className="text-xs">
+                              {new Date(test.start_time).toLocaleString()}
+                            </TableCell>
+                            <TableCell className="text-xs">
+                              {test.pause_timestamp 
+                                ? new Date(test.pause_timestamp).toLocaleString() 
+                                : "N/A"}
+                            </TableCell>
+                            <TableCell>
+                              {test.time_remaining 
+                                ? `${Math.floor(test.time_remaining / 60)}m ${test.time_remaining % 60}s` 
+                                : "N/A"}
+                            </TableCell>
+                            <TableCell>
+                              {Array.isArray(test.answers) ? test.answers.length : 0}
                             </TableCell>
                           </TableRow>
                         ))
