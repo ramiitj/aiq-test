@@ -94,7 +94,34 @@ const Dashboard = () => {
         .limit(5);
 
       if (testsError) throw testsError;
-      setTests(testsData || []);
+      
+      // Auto-pause abandoned tests (incomplete, not paused, older than 5 minutes)
+      const fiveMinutesAgo = new Date(Date.now() - 5 * 60 * 1000).toISOString();
+      const abandonedTests = (testsData || []).filter(
+        t => !t.completed && !t.paused && new Date(t.created_at) < new Date(fiveMinutesAgo)
+      );
+      
+      if (abandonedTests.length > 0) {
+        const updates = abandonedTests.map(t => 
+          supabase
+            .from("tests")
+            .update({ paused: true })
+            .eq("id", t.id)
+        );
+        await Promise.all(updates);
+        
+        // Refetch to get updated data
+        const { data: updatedData } = await supabase
+          .from("tests")
+          .select("id, created_at, completed, scores, paused, time_remaining, current_dimension")
+          .eq("user_id", session.user.id)
+          .order("created_at", { ascending: false })
+          .limit(5);
+        
+        setTests(updatedData || []);
+      } else {
+        setTests(testsData || []);
+      }
     } catch (error: any) {
       toast({
         title: "Error",
