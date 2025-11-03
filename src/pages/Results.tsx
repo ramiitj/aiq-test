@@ -98,7 +98,7 @@ const Results = () => {
     } = await supabase.auth.getSession();
 
     if (!session) {
-      navigate("/auth");
+      navigate("/sign-in");
       return;
     }
 
@@ -382,7 +382,7 @@ const Results = () => {
     score: scoringResult.dimensionScores[code] || 0,
   }));
 
-  const verificationUrl = verificationCode ? `https://aiq.works/verify/${verificationCode}` : "";
+  const verificationUrl = verificationCode ? `https://aiq.works/verify-certificate/${verificationCode}` : "";
 
   const getScoreLevel = (points: number) => {
     const percentage = (points / scoringResult.totalPossiblePoints) * 100;
@@ -651,14 +651,14 @@ const Results = () => {
 
                   {/* Clickable Verification Link */}
                   <a
-                    href={`https://aiq.works/verify/${verificationCode}`}
+                    href={`https://aiq.works/verify-certificate/${verificationCode}`}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="block p-3 bg-white dark:bg-gray-900 rounded-lg border-2 border-blue-500 hover:border-blue-600 transition-colors mb-2 group"
                   >
                     <div className="flex items-center justify-between">
                       <code className="text-sm font-bold text-blue-600 dark:text-blue-400 group-hover:underline">
-                        aiq.works/verify/{verificationCode}
+                        aiq.works/verify-certificate/{verificationCode}
                       </code>
                       <ExternalLink className="h-4 w-4 text-blue-600 dark:text-blue-400 flex-shrink-0 ml-2" />
                     </div>
@@ -670,7 +670,7 @@ const Results = () => {
                     size="sm"
                     className="w-full"
                     onClick={() => {
-                      navigator.clipboard.writeText(`https://aiq.works/verify/${verificationCode}`);
+                      navigator.clipboard.writeText(`https://aiq.works/verify-certificate/${verificationCode}`);
                       toast({
                         title: "Copied!",
                         description: "Verification link copied to clipboard",

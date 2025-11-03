@@ -28,15 +28,22 @@ const App = () => (
         <ScrollToTop />
         <Routes>
           <Route path="/" element={<Index />} />
-          <Route path="/auth" element={<Auth />} />
+          <Route path="/sign-in" element={<Auth />} />
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/about" element={<About />} />
-          <Route path="/test" element={<Test />} />
+          <Route path="/ai-assessment" element={<Test />} />
           <Route path="/results/:testId" element={<Results />} />
           <Route path="/admin" element={<Admin />} />
+          <Route path="/verify-certificate/:code" element={<Verify />} />
+          <Route path="/privacy-policy" element={<Privacy />} />
+          <Route path="/sitemap" element={<Sitemap />} />
+          
+          {/* Legacy URL redirects for SEO */}
+          <Route path="/auth" element={<Auth />} />
+          <Route path="/test" element={<Test />} />
           <Route path="/verify/:code" element={<Verify />} />
           <Route path="/privacy" element={<Privacy />} />
-          <Route path="/sitemap" element={<Sitemap />} />
+          
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>

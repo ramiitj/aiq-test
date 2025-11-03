@@ -52,7 +52,7 @@ const Dashboard = () => {
     const { data: { session } } = await supabase.auth.getSession();
     
     if (!session) {
-      navigate("/auth");
+      navigate("/sign-in");
       return;
     }
 
@@ -107,11 +107,11 @@ const Dashboard = () => {
   };
 
   const handleStartTest = (version: 'beginner' | 'professional' | 'expert') => {
-    navigate(`/test?version=${version}`);
+    navigate(`/ai-assessment?version=${version}`);
   };
 
   const handleResumeTest = (testId: string) => {
-    navigate(`/test?resume=${testId}`);
+    navigate(`/ai-assessment?resume=${testId}`);
   };
 
   const handleAbandonTest = async (testId: string) => {

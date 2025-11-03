@@ -8,9 +8,9 @@ const Sitemap = () => {
   const pages = [
     { path: "/", name: "Home", icon: Home, description: "Start your AIQ assessment journey" },
     { path: "/about", name: "About AIQ Framework", icon: Info, description: "Learn about the research and methodology" },
-    { path: "/auth", name: "Sign In / Sign Up", icon: FileText, description: "Access your account and results" },
+    { path: "/sign-in", name: "Sign In / Sign Up", icon: FileText, description: "Access your account and results" },
     { path: "/dashboard", name: "Dashboard", icon: LayoutDashboard, description: "View your assessment history and certificates" },
-    { path: "/privacy", name: "Privacy Policy", icon: Lock, description: "Our commitment to your data privacy" },
+    { path: "/privacy-policy", name: "Privacy Policy", icon: Lock, description: "Our commitment to your data privacy" },
   ];
 
   return (

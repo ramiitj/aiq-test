@@ -82,7 +82,7 @@ export async function generatePDFReport(
     doc.text("AIQ™ is a trademark of AI Works Pvt Ltd. All Rights Reserved.", margin, footerY);
     
     // Verification URL with full HTTPS path (right aligned)
-    doc.text(`Verify: https://aiq.works/verify/${verificationCode}`, pageWidth - margin, footerY, { align: "right" });
+    doc.text(`Verify: https://aiq.works/verify-certificate/${verificationCode}`, pageWidth - margin, footerY, { align: "right" });
   };
 
   const addPageNumber = (pageNum: number, totalPages: number) => {
@@ -297,7 +297,7 @@ export async function generatePDFReport(
     doc.setFontSize(10);
     doc.setFont("helvetica", "bold");
     doc.setTextColor(0, 102, 204); // Blue color for URL
-    const fullVerifyUrl = `https://aiq.works/verify/${verificationCode}`;
+    const fullVerifyUrl = `https://aiq.works/verify-certificate/${verificationCode}`;
     doc.text(fullVerifyUrl, margin + 5, currentY + 16);
   }
 
@@ -495,7 +495,7 @@ export async function generatePDFReport(
 
   currentY += 8;
 
-  const verificationUrl = `https://aiq.works/verify/${verificationCode}`;
+  const verificationUrl = `https://aiq.works/verify-certificate/${verificationCode}`;
   const qrDataUrl = await QRCode.toDataURL(verificationUrl, {
     width: 200,
     margin: 1,
@@ -516,7 +516,7 @@ export async function generatePDFReport(
   doc.setFont("helvetica", "bold");
   doc.setTextColor(...colors.accentBlue);
   doc.setFontSize(11);
-  doc.text("aiq.works/verify", textX, currentY + 11);
+  doc.text("aiq.works/verify-certificate", textX, currentY + 11);
 
   doc.setFont("helvetica", "normal");
   doc.setTextColor(...colors.mediumGray);

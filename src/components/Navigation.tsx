@@ -64,7 +64,7 @@ export const Navigation = ({ isAuthenticated, isAdmin }: NavigationProps) => {
                 </Button>
               </>
             ) : (
-              <Link to="/auth">
+              <Link to="/sign-in">
                 <Button size="sm" className="bg-blue-900 hover:bg-blue-800 font-semibold">
                   Get Started
                 </Button>
@@ -86,7 +86,7 @@ export const Navigation = ({ isAuthenticated, isAdmin }: NavigationProps) => {
                 </Button>
               </>
             ) : (
-              <Link to="/auth">
+              <Link to="/sign-in">
                 <Button size="sm" className="bg-blue-900 hover:bg-blue-800 font-semibold">
                   Start
                 </Button>

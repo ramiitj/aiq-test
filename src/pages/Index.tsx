@@ -142,7 +142,7 @@ const Index = () => {
                 </Button>
               </Link>
             ) : (
-              <Link to="/auth">
+              <Link to="/sign-in">
                 <Button size="lg" className="text-base px-8 py-6 bg-blue-900 hover:bg-blue-800 font-semibold shadow-lg">
                   Start Assessment <ArrowRight className="ml-2 h-5 w-5" />
                 </Button>
@@ -441,7 +441,7 @@ const Index = () => {
                 </Button>
               </Link>
             ) : (
-              <Link to="/auth">
+              <Link to="/sign-in">
                 <Button
                   size="lg"
                   className="text-base px-10 py-6 bg-white text-blue-900 hover:bg-gray-100 font-semibold shadow-xl"
