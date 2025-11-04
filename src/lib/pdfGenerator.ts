@@ -92,7 +92,7 @@ export async function generatePDFReport(
   };
 
   // Helper function to add wrapped text with proper margins
-  const addWrappedText = (text: string, x: number, y: number, maxWidth: number, lineHeight: number = 5): number => {
+  const addWrappedText = (text: string, x: number, y: number, maxWidth: number, lineHeight: number = 5.5): number => {
     const lines = doc.splitTextToSize(text, maxWidth);
     lines.forEach((line: string, index: number) => {
       doc.text(line, x, y + index * lineHeight);
@@ -210,19 +210,21 @@ export async function generatePDFReport(
       cellPadding: 3,
     },
     bodyStyles: {
-      fontSize: 10,
+      fontSize: 9.5,
       textColor: colors.darkText,
-      cellPadding: 3,
+      cellPadding: 4,
       lineWidth: 0.1,
       lineColor: [220, 220, 220],
+      minCellHeight: 10,
+      cellWidth: 'wrap',
     },
     alternateRowStyles: {
       fillColor: [249, 250, 251],
     },
     columnStyles: {
-      0: { cellWidth: 90, halign: "left" },
-      1: { cellWidth: 20, halign: "center", fontStyle: "bold" },
-      2: { cellWidth: 35, halign: "center" },
+      0: { cellWidth: 95, halign: "left" },
+      1: { cellWidth: 25, halign: "center", fontStyle: "bold" },
+      2: { cellWidth: 45, halign: "center" },
     },
     margin: { left: margin, right: margin },
     didParseCell: function (data) {
@@ -256,26 +258,34 @@ export async function generatePDFReport(
     // Calculate percentage for visualization
     const dimPercentage = (dim.score / (totalPossible / dimensionScores.length)) * 100;
 
-    doc.setFontSize(9);
+    doc.setFontSize(8.5);
     doc.setFont("helvetica", "normal");
     doc.setTextColor(...colors.darkText);
-    const label = fullName.length > 25 ? fullName.substring(0, 22) + "..." : fullName;
+    
+    // Smarter label handling with proper width calculation
+    const maxLabelWidth = 50;
+    const label = fullName.length > 30 ? fullName.substring(0, 27) + "..." : fullName;
     doc.text(label, margin, currentY + 4);
 
-    doc.setFillColor(238, 238, 238);
-    doc.roundedRect(margin + 55, currentY, barMaxWidth, barHeight, 1.5, 1.5, "F");
+    // Adjusted bar positioning
+    const barStartX = margin + 52;
+    const adjustedBarMaxWidth = contentWidth - 65;
 
-    const scoreWidth = (dimPercentage / 100) * barMaxWidth;
+    doc.setFillColor(238, 238, 238);
+    doc.roundedRect(barStartX, currentY, adjustedBarMaxWidth, barHeight, 1.5, 1.5, "F");
+
+    const scoreWidth = (dimPercentage / 100) * adjustedBarMaxWidth;
     const barColor = getLevelColor(dimPercentage);
     doc.setFillColor(...barColor);
     if (scoreWidth > 0) {
-      doc.roundedRect(margin + 55, currentY, scoreWidth, barHeight, 1.5, 1.5, "F");
+      doc.roundedRect(barStartX, currentY, scoreWidth, barHeight, 1.5, 1.5, "F");
     }
 
-    doc.setFontSize(10);
+    // Score display with better positioning
+    doc.setFontSize(9);
     doc.setFont("helvetica", "bold");
     doc.setTextColor(...barColor);
-    doc.text(`${dim.score.toFixed(1)}`, pageWidth - margin - 2, currentY + 4);
+    doc.text(`${dim.score.toFixed(1)}`, pageWidth - margin, currentY + 4, { align: "right" });
 
     currentY += barSpacing;
   });
@@ -294,11 +304,15 @@ export async function generatePDFReport(
     doc.setFont("helvetica", "bold");
     doc.text("Verify This Certificate Online", margin + 5, currentY + 7);
 
-    doc.setFontSize(10);
+    doc.setFontSize(9);
     doc.setFont("helvetica", "bold");
-    doc.setTextColor(0, 102, 204); // Blue color for URL
+    doc.setTextColor(0, 102, 204);
     const fullVerifyUrl = `https://aiq.works/verify-certificate/${verificationCode}`;
-    doc.text(fullVerifyUrl, margin + 5, currentY + 16);
+    // Split URL if too long
+    const urlLines = doc.splitTextToSize(fullVerifyUrl, contentWidth - 10);
+    urlLines.forEach((line: string, idx: number) => {
+      doc.text(line, margin + 5, currentY + 16 + (idx * 5));
+    });
   }
 
   // PAGE 2: Recommendations Part 1
@@ -367,33 +381,41 @@ export async function generatePDFReport(
       cellPadding: 3.5,
     },
     bodyStyles: {
-      fontSize: 8.5,
+      fontSize: 9,
       textColor: colors.darkText,
-      cellPadding: 4,
+      cellPadding: 5,
       lineColor: [215, 215, 215],
       lineWidth: 0.1,
       valign: "top",
-      halign: "left", // Changed from justify to left alignment
+      halign: "left",
+      minCellHeight: 12,
+      cellWidth: 'wrap',
+      overflow: 'linebreak',
     },
     columnStyles: {
       0: {
-        cellWidth: 38,
+        cellWidth: 42,
         halign: "left",
         fontStyle: "bold",
       },
       1: {
-        cellWidth: 15,
+        cellWidth: 18,
         halign: "center",
         fontStyle: "bold",
       },
       2: {
-        cellWidth: 22,
+        cellWidth: 28,
         halign: "center",
       },
       3: {
-        cellWidth: contentWidth - 80,
-        halign: "left", // Left-aligned for better readability
+        cellWidth: 82,
+        halign: "left",
       },
+    },
+    tableWidth: 'auto',
+    styles: {
+      overflow: 'linebreak',
+      cellWidth: 'wrap',
     },
     margin: { left: margin, right: margin },
     didParseCell: function (data) {
@@ -435,33 +457,41 @@ export async function generatePDFReport(
       cellPadding: 3.5,
     },
     bodyStyles: {
-      fontSize: 8.5,
+      fontSize: 9,
       textColor: colors.darkText,
-      cellPadding: 4,
+      cellPadding: 5,
       lineColor: [215, 215, 215],
       lineWidth: 0.1,
       valign: "top",
-      halign: "left", // Changed from justify to left alignment
+      halign: "left",
+      minCellHeight: 12,
+      cellWidth: 'wrap',
+      overflow: 'linebreak',
     },
     columnStyles: {
       0: {
-        cellWidth: 38,
+        cellWidth: 42,
         halign: "left",
         fontStyle: "bold",
       },
       1: {
-        cellWidth: 15,
+        cellWidth: 18,
         halign: "center",
         fontStyle: "bold",
       },
       2: {
-        cellWidth: 22,
+        cellWidth: 28,
         halign: "center",
       },
       3: {
-        cellWidth: contentWidth - 80,
-        halign: "left", // Left-aligned for better readability
+        cellWidth: 82,
+        halign: "left",
       },
+    },
+    tableWidth: 'auto',
+    styles: {
+      overflow: 'linebreak',
+      cellWidth: 'wrap',
     },
     margin: { left: margin, right: margin },
     didParseCell: function (data) {
