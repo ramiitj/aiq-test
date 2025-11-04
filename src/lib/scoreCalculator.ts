@@ -14,6 +14,7 @@ interface ScoringConfiguration {
   pointsPerDimension: number;
   passingScore: number;
   passingPercentage: number;
+  minimumDimensionPercentage?: number; // Minimum percentage required per dimension (default: 40%)
   scoringMethod: {
     type: string;
     description: string;
@@ -37,6 +38,8 @@ interface ScoringResult {
   assessmentLevel: string;
   scoringGuidelines: { [key: string]: string };
   performanceLevel: string; // Determined from scoring guidelines
+  failedDimensions?: string[]; // Dimensions that didn't meet minimum percentage
+  dimensionMinimumRequired?: number; // The minimum percentage required per dimension
 }
 
 /**
@@ -158,6 +161,23 @@ export function calculateTestScores(
   // Determine if passed based on configured passing percentage
   const passed = percentageScore >= scoringConfig.passingPercentage;
 
+  // Check minimum dimension requirements
+  const minimumDimensionPercentage = scoringConfig.minimumDimensionPercentage || 40;
+  const failedDimensions: string[] = [];
+  
+  dimensions.forEach((dimension) => {
+    const dimScore = dimensionScores[dimension.dimensionCode];
+    const dimPercentage = (dimScore / scoringConfig.pointsPerDimension) * 100;
+    
+    if (dimPercentage < minimumDimensionPercentage) {
+      failedDimensions.push(dimension.dimensionCode);
+    }
+  });
+  
+  // Override pass status if any dimension fails minimum
+  const passedDimensionMinimums = failedDimensions.length === 0;
+  const finalPassed = passed && passedDimensionMinimums;
+
   // Determine performance level
   const performanceLevel = determinePerformanceLevel(percentageScore, scoringConfig.scoringGuidelines);
 
@@ -166,13 +186,15 @@ export function calculateTestScores(
     overallScore: Math.round(normalizedOverallScore * 10) / 10, // Normalized to JSON config
     totalPossiblePoints: scoringConfig.totalPoints, // Use JSON configured total
     passingScore: Math.round((scoringConfig.totalPoints * scoringConfig.passingPercentage / 100) * 10) / 10,
-    passed,
+    passed: finalPassed,
     percentageScore: Math.round(percentageScore * 10) / 10,
     correctCount: totalCorrect,
     totalCount: totalQuestions,
     assessmentLevel,
     scoringGuidelines: scoringConfig.scoringGuidelines,
     performanceLevel,
+    failedDimensions: failedDimensions.length > 0 ? failedDimensions : undefined,
+    dimensionMinimumRequired: minimumDimensionPercentage,
   };
 }
 

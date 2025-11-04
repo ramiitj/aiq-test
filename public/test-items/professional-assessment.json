@@ -1,18 +1,3561 @@
 {
-  "assessmentName": "AIQ Professional Assessment - 160 Standardized Test Items",
-  "version": "4.0_STANDARDIZED",
-  "description": "Professional-level assessment with 160 properly formatted standardized test items. Complete sentences, professional language, clear options, and hard-coded auto-scoring.",
-  "assessmentMetadata": {
-    "totalItems": 160,
-    "itemsPerDimension": 20,
-    "itemTypes": [
-      "Multiple-Choice",
-      "Multiple-Response"
-    ],
-    "scoringMethod": "Automatic",
-    "estimatedDuration": "120 minutes"
+  "assessmentName": "AIQ Professional Assessment - 160 Item Bank",
+  "version": "3.0",
+  "assessmentType": "adaptive",
+  "description": "An advanced AI literacy assessment with 160 items (20 per dimension) covering all 8 core AIQ dimensions with emphasis on professional application and strategic thinking.",
+  "assessmentConfiguration": {
+    "totalQuestions": 160,
+    "questionsPerDimension": 20,
+    "estimatedTime": "120 minutes",
+    "targetAudience": "Professionals actively using AI in their work, business leaders, AI implementation specialists, strategy professionals",
+    "timePerQuestion": "45 seconds average",
+    "presentationMode": {
+      "type": "adaptive-sequential",
+      "description": "Questions adapt to candidate ability level with Item Response Theory (IRT)",
+      "sequencing": "By dimension, adaptive difficulty within each dimension"
+    },
+    "questionDistribution": {
+      "totalItems": 160,
+      "itemsPerDimension": 20,
+      "selectionRatio": "100% (all items presented)"
+    },
+    "dimensionSequencing": {
+      "type": "fixed-order",
+      "sequence": [
+        "SAU",
+        "PEI",
+        "CEC",
+        "II",
+        "ALC",
+        "EJC",
+        "CS",
+        "CRS"
+      ],
+      "description": "Candidates complete 20 questions per dimension in sequence with adaptive difficulty"
+    }
+  },
+  "scoringConfiguration": {
+    "totalPoints": 1600,
+    "pointsPerDimension": 200,
+    "passingScore": 1120,
+    "passingPercentage": 70,
+    "minimumDimensionPercentage": 40,
+    "scoringMethod": {
+      "type": "IRT-weighted",
+      "description": "Item Response Theory scoring with adaptive weighting by item difficulty and discrimination",
+      "basePoints": 10,
+      "formula": "points = basePoints \u00d7 (1 + difficulty \u00d7 0.4 + discrimination \u00d7 0.2) for each correct answer"
+    },
+    "scoringGuidelines": {
+      "0-40%": "Emerging (0-640 points) - Significant professional development needed",
+      "41-60%": "Developing (641-960 points) - Intermediate professional capability",
+      "61-80%": "Proficient (961-1280 points) - Strong professional mastery",
+      "81-90%": "Advanced (1281-1440 points) - Exceptional professional expertise",
+      "91-100%": "Expert (1441-1600 points) - World-class professional mastery"
+    }
+  },
+  "instructions": "This AIQ Professional assessment evaluates your advanced AI literacy across 8 key dimensions of strategic human-AI collaboration. You will answer 160 questions total (20 per dimension) in approximately 120 minutes. Questions progress from application to analysis to strategic synthesis. Answer all questions to the best of your ability. This assessment is designed for professionals actively working with AI systems and seeking to advance their organizational AI strategy.",
+  "assessmentGuidelines": {
+    "targetLevel": "Professional application and strategic AI implementation",
+    "cognitiveEmphasis": "20% Apply (Bloom's level 3), 50% Analyze (Bloom's level 4), 30% Evaluate/Create (Bloom's levels 5-6)",
+    "questionTypes": "Multiple-choice (95%), multiple-response (5%)",
+    "difficultyProfile": "Balanced distribution across difficulty levels (avg difficulty 0.48-0.62) with adaptive progression",
+    "timeAllocation": "Moderate time for application items, extended time for strategic analysis",
+    "reliabilityTarget": "Cronbach's alpha \u2265 0.88"
   },
   "itemBank": [
+    {
+      "dimensionCode": "SAU",
+      "dimensionName": "Strategic AI Understanding",
+      "items": [
+        {
+          "id": "SAU-P-001",
+          "type": "multiple-choice",
+          "points": 12,
+          "difficulty": 0.56,
+          "discrimination": 1.16,
+          "bloomLevel": "Apply",
+          "question": "An organization is evaluating whether to implement an artificial intelligence system to automate a business process. Which of the following factors should be the MOST important consideration in this decision?",
+          "options": [
+            "The implementation can be completed within the current budget constraints.",
+            "The technology represents the latest innovation available in the market.",
+            "The organization has assessed data quality, organizational readiness, and strategic alignment with business objectives.",
+            "Primary competitors in the industry have already implemented similar AI systems."
+          ],
+          "correctAnswer": 2,
+          "explanation": "Based on professional best practices and evidence.",
+          "scoringMethod": "automatic",
+          "tags": [
+            "sau",
+            "professional"
+          ]
+        },
+        {
+          "id": "SAU-P-002",
+          "type": "multiple-choice",
+          "points": 10,
+          "difficulty": 0.46,
+          "discrimination": 1.33,
+          "bloomLevel": "Evaluate",
+          "question": "When deploying artificial intelligence systems without a comprehensive understanding of their technical limitations and failure modes, what represents the PRIMARY risk to an organization?",
+          "options": [
+            "The technology will be unable to achieve processing speeds faster than human workers.",
+            "The organization may rely on AI recommendations in situations where human judgment and oversight are critical.",
+            "The total cost of technology acquisition will exceed the financial budget allocated for the project.",
+            "Employees throughout the organization will resist the implementation and refuse to use the new systems."
+          ],
+          "correctAnswer": 1,
+          "explanation": "Based on professional best practices and evidence.",
+          "scoringMethod": "automatic",
+          "tags": [
+            "sau",
+            "professional"
+          ]
+        },
+        {
+          "id": "SAU-P-003",
+          "type": "multiple-choice",
+          "points": 11,
+          "difficulty": 0.41,
+          "discrimination": 1.17,
+          "bloomLevel": "Understand",
+          "question": "In professional business contexts, which scenario BEST describes an appropriate situation for humans to retain decision-making authority over artificial intelligence systems?",
+          "options": [
+            "Humans should intervene only when AI performance falls below predetermined quality thresholds.",
+            "All operational decisions should be delegated to AI systems without human involvement.",
+            "Human involvement in decision-making should be eliminated entirely to achieve maximum efficiency.",
+            "Decisions involving high stakes for affected individuals and requiring ethical judgment should retain human authority."
+          ],
+          "correctAnswer": 3,
+          "explanation": "Based on professional best practices and evidence.",
+          "scoringMethod": "automatic",
+          "tags": [
+            "sau",
+            "professional"
+          ]
+        },
+        {
+          "id": "SAU-P-004",
+          "type": "multiple-choice",
+          "points": 13,
+          "difficulty": 0.54,
+          "discrimination": 1.33,
+          "bloomLevel": "Apply",
+          "question": "An organization is attempting to determine whether artificial intelligence is suitable for addressing a specific business problem. What represents the MOST appropriate analytical approach for assessing this alignment?",
+          "options": [
+            "Evaluate whether the technology vendor is currently marketing the newest AI solution to businesses.",
+            "Examine which competitors have already selected specific AI solutions and attempt to replicate their selections.",
+            "Analyze the specific requirements of the business problem and compare them comprehensively with the documented capabilities and constraints of the AI system.",
+            "Allow the information technology department to make the determination independently without input from business stakeholders."
+          ],
+          "correctAnswer": 1,
+          "explanation": "Based on professional best practices and evidence.",
+          "scoringMethod": "automatic",
+          "tags": [
+            "sau",
+            "professional"
+          ]
+        },
+        {
+          "id": "SAU-P-005",
+          "type": "multiple-choice",
+          "points": 10,
+          "difficulty": 0.51,
+          "discrimination": 1.22,
+          "bloomLevel": "Apply",
+          "question": "Organizations implementing artificial intelligence systems frequently have expectations about performance levels. Which statement most accurately reflects a REALISTIC expectation for AI performance in typical business applications?",
+          "options": [
+            "AI systems will process information faster than humans while requiring continuous human oversight for critical business decisions.",
+            "AI systems will completely replace all human workers, eliminating the need for any human involvement in business processes.",
+            "AI systems will consistently achieve perfect accuracy with zero errors across all operational scenarios.",
+            "AI systems will function effectively across all industry sectors without requiring any customization or adaptation to specific business contexts."
+          ],
+          "correctAnswer": 0,
+          "explanation": "Based on professional best practices and evidence.",
+          "scoringMethod": "automatic",
+          "tags": [
+            "sau",
+            "professional"
+          ]
+        },
+        {
+          "id": "SAU-P-006",
+          "type": "multiple-choice",
+          "points": 11,
+          "difficulty": 0.57,
+          "discrimination": 1.24,
+          "bloomLevel": "Apply",
+          "question": "A manufacturing company is developing its strategic approach to artificial intelligence adoption. Which factor is MOST critical for ensuring the long-term sustainability of competitive advantage through AI implementation?",
+          "options": [
+            "The company should closely monitor competitor activities and replicate identical strategies and technologies.",
+            "The company should prioritize rapid technology adoption to establish first-mover advantage in the market.",
+            "The company should identify and build organizational capabilities that create defensible competitive positions and support continuous learning.",
+            "The company should minimize all implementation costs to maintain favorable financial performance."
+          ],
+          "correctAnswer": 2,
+          "explanation": "Based on professional best practices and evidence.",
+          "scoringMethod": "automatic",
+          "tags": [
+            "sau",
+            "professional"
+          ]
+        },
+        {
+          "id": "SAU-P-007",
+          "type": "multiple-choice",
+          "points": 10,
+          "difficulty": 0.64,
+          "discrimination": 1.23,
+          "bloomLevel": "Evaluate",
+          "question": "When assessing the return on investment for artificial intelligence initiatives, which elements should receive the MOST comprehensive consideration?",
+          "options": [
+            "Only the immediate cost reduction achieved through process automation in the first operational year.",
+            "Long-term value creation including productivity gains, risk mitigation, organizational capability development, and strategic positioning benefits.",
+            "The expense associated with technology acquisition from software vendors.",
+            "The speed at which the implementation project can be completed and deployed."
+          ],
+          "correctAnswer": 1,
+          "explanation": "Based on professional best practices and evidence.",
+          "scoringMethod": "automatic",
+          "tags": [
+            "sau",
+            "professional"
+          ]
+        },
+        {
+          "id": "SAU-P-008",
+          "type": "multiple-choice",
+          "points": 12,
+          "difficulty": 0.42,
+          "discrimination": 1.36,
+          "bloomLevel": "Understand",
+          "question": "An organization must evaluate specific limitations of an artificial intelligence system before deployment. What represents the MOST critical focus for this assessment?",
+          "options": [
+            "Examining the percentage of other organizations within your industry that have already adopted similar AI systems.",
+            "Assessing the level of confidence expressed by the technology vendor regarding their product capabilities.",
+            "Determining whether the AI technology is popular among consumers and widely adopted in the market.",
+            "Understanding the particular constraints and failure modes of the AI system within the specific context of your business operations."
+          ],
+          "correctAnswer": 3,
+          "explanation": "Based on professional best practices and evidence.",
+          "scoringMethod": "automatic",
+          "tags": [
+            "sau",
+            "professional"
+          ]
+        },
+        {
+          "id": "SAU-P-009",
+          "type": "multiple-choice",
+          "points": 13,
+          "difficulty": 0.58,
+          "discrimination": 1.28,
+          "bloomLevel": "Understand",
+          "question": "Which organizational factor represents the MOST essential requirement for achieving sustainable and successful artificial intelligence adoption over an extended time period?",
+          "options": [
+            "Allocating the largest possible financial budget to purchase the most advanced AI technology available.",
+            "Developing organizational capacity to learn, adapt, and continuously evolve artificial intelligence practices based on operational experience.",
+            "Maintaining strict adherence to industry trends and following the strategic decisions made by market leaders.",
+            "Establishing a dedicated internal AI team separated from other business operations."
+          ],
+          "correctAnswer": 1,
+          "explanation": "Based on professional best practices and evidence.",
+          "scoringMethod": "automatic",
+          "tags": [
+            "sau",
+            "professional"
+          ]
+        },
+        {
+          "id": "SAU-P-010",
+          "type": "multiple-choice",
+          "points": 12,
+          "difficulty": 0.54,
+          "discrimination": 1.36,
+          "bloomLevel": "Apply",
+          "question": "A financial services organization faces competitive pressure from competitors who have successfully implemented artificial intelligence systems. What represents the MOST strategically sound approach to this competitive situation?",
+          "options": [
+            "Indefinitely defer any artificial intelligence implementation until the technology matures completely.",
+            "Comprehensively evaluate your organization's strategic position and implement artificial intelligence solutions that are specifically aligned with your business objectives.",
+            "Immediately implement identical AI systems to match competitors' capabilities as quickly as possible.",
+            "Decide to avoid artificial intelligence implementation entirely to minimize competitive risk."
+          ],
+          "correctAnswer": 1,
+          "explanation": "Based on professional best practices and evidence.",
+          "scoringMethod": "automatic",
+          "tags": [
+            "sau",
+            "professional"
+          ]
+        },
+        {
+          "id": "SAU-P-011",
+          "type": "multiple-response",
+          "points": 13,
+          "difficulty": 0.58,
+          "discrimination": 1.16,
+          "bloomLevel": "Analyze",
+          "question": "When an organization is preparing to implement artificial intelligence systems, which of the following represent APPROPRIATE considerations for decision-making? (Select ALL that apply)",
+          "options": [
+            "The current quality and availability of data within the organization.",
+            "The organization's existing capability and readiness to manage technological change.",
+            "The potential to complete the implementation project as quickly as possible regardless of preparation requirements.",
+            "The alignment between the proposed AI system and the organization's overall business strategy and objectives."
+          ],
+          "correctAnswers": [
+            0,
+            1,
+            3
+          ],
+          "explanation": "All correct options represent valid considerations.",
+          "scoringMethod": "automatic",
+          "tags": [
+            "sau",
+            "professional"
+          ]
+        },
+        {
+          "id": "SAU-P-012",
+          "type": "multiple-response",
+          "points": 13,
+          "difficulty": 0.59,
+          "discrimination": 1.4,
+          "bloomLevel": "Analyze",
+          "question": "Which of the following factors should appropriately guide the allocation of tasks between artificial intelligence systems and human workers? (Select ALL that apply)",
+          "options": [
+            "Whether artificial intelligence has demonstrated capability in performing the specific task type.",
+            "Whether human judgment and contextual understanding are critical for making appropriate decisions.",
+            "Whether the implementation will reduce operating expenses for the organization.",
+            "Whether the decision resulting from task completion has significant consequences for the affected individuals."
+          ],
+          "correctAnswers": [
+            0,
+            1,
+            3
+          ],
+          "explanation": "All correct options represent valid considerations.",
+          "scoringMethod": "automatic",
+          "tags": [
+            "sau",
+            "professional"
+          ]
+        },
+        {
+          "id": "SAU-P-013",
+          "type": "multiple-choice",
+          "points": 12,
+          "difficulty": 0.62,
+          "discrimination": 1.25,
+          "bloomLevel": "Understand",
+          "question": "An organization must evaluate specific limitations of an artificial intelligence system before deployment. What represents the MOST critical focus for this assessment?",
+          "options": [
+            "Examining the percentage of other organizations within your industry that have already adopted similar AI systems.",
+            "Determining whether the AI technology is popular among consumers and widely adopted in the market.",
+            "Assessing the level of confidence expressed by the technology vendor regarding their product capabilities.",
+            "Understanding the particular constraints and failure modes of the AI system within the specific context of your business operations."
+          ],
+          "correctAnswer": 3,
+          "explanation": "Reflects established organizational best practices.",
+          "scoringMethod": "automatic",
+          "tags": [
+            "sau"
+          ]
+        },
+        {
+          "id": "SAU-P-014",
+          "type": "multiple-choice",
+          "points": 10,
+          "difficulty": 0.49,
+          "discrimination": 1.2,
+          "bloomLevel": "Analyze",
+          "question": "Organizations implementing artificial intelligence systems frequently have expectations about performance levels. Which statement most accurately reflects a REALISTIC expectation for AI performance in typical business applications?",
+          "options": [
+            "AI systems will function effectively across all industry sectors without requiring any customization or adaptation to specific business contexts.",
+            "AI systems will process information faster than humans while requiring continuous human oversight for critical business decisions.",
+            "AI systems will consistently achieve perfect accuracy with zero errors across all operational scenarios.",
+            "AI systems will completely replace all human workers, eliminating the need for any human involvement in business processes."
+          ],
+          "correctAnswer": 1,
+          "explanation": "Reflects established organizational best practices.",
+          "scoringMethod": "automatic",
+          "tags": [
+            "sau"
+          ]
+        },
+        {
+          "id": "SAU-P-015",
+          "type": "multiple-choice",
+          "points": 11,
+          "difficulty": 0.56,
+          "discrimination": 1.28,
+          "bloomLevel": "Apply",
+          "question": "An organization is attempting to determine whether artificial intelligence is suitable for addressing a specific business problem. What represents the MOST appropriate analytical approach for assessing this alignment?",
+          "options": [
+            "Analyze the specific requirements of the business problem and compare them comprehensively with the documented capabilities and constraints of the AI system.",
+            "Evaluate whether the technology vendor is currently marketing the newest AI solution to businesses.",
+            "Allow the information technology department to make the determination independently without input from business stakeholders.",
+            "Examine which competitors have already selected specific AI solutions and attempt to replicate their selections."
+          ],
+          "correctAnswer": 3,
+          "explanation": "Reflects established organizational best practices.",
+          "scoringMethod": "automatic",
+          "tags": [
+            "sau"
+          ]
+        },
+        {
+          "id": "SAU-P-016",
+          "type": "multiple-choice",
+          "points": 11,
+          "difficulty": 0.49,
+          "discrimination": 1.4,
+          "bloomLevel": "Analyze",
+          "question": "Which organizational factor represents the MOST essential requirement for achieving sustainable and successful artificial intelligence adoption over an extended time period?",
+          "options": [
+            "Allocating the largest possible financial budget to purchase the most advanced AI technology available.",
+            "Establishing a dedicated internal AI team separated from other business operations.",
+            "Maintaining strict adherence to industry trends and following the strategic decisions made by market leaders.",
+            "Developing organizational capacity to learn, adapt, and continuously evolve artificial intelligence practices based on operational experience."
+          ],
+          "correctAnswer": 3,
+          "explanation": "Reflects established organizational best practices.",
+          "scoringMethod": "automatic",
+          "tags": [
+            "sau"
+          ]
+        },
+        {
+          "id": "SAU-P-017",
+          "type": "multiple-choice",
+          "points": 11,
+          "difficulty": 0.48,
+          "discrimination": 1.34,
+          "bloomLevel": "Understand",
+          "question": "An organization is evaluating whether to implement an artificial intelligence system to automate a business process. Which of the following factors should be the MOST important consideration in this decision?",
+          "options": [
+            "Primary competitors in the industry have already implemented similar AI systems.",
+            "The technology represents the latest innovation available in the market.",
+            "The organization has assessed data quality, organizational readiness, and strategic alignment with business objectives.",
+            "The implementation can be completed within the current budget constraints."
+          ],
+          "correctAnswer": 2,
+          "explanation": "Reflects established organizational best practices.",
+          "scoringMethod": "automatic",
+          "tags": [
+            "sau"
+          ]
+        },
+        {
+          "id": "SAU-P-018",
+          "type": "multiple-choice",
+          "points": 11,
+          "difficulty": 0.6,
+          "discrimination": 1.25,
+          "bloomLevel": "Analyze",
+          "question": "When deploying artificial intelligence systems without a comprehensive understanding of their technical limitations and failure modes, what represents the PRIMARY risk to an organization?",
+          "options": [
+            "The total cost of technology acquisition will exceed the financial budget allocated for the project.",
+            "Employees throughout the organization will resist the implementation and refuse to use the new systems.",
+            "The technology will be unable to achieve processing speeds faster than human workers.",
+            "The organization may rely on AI recommendations in situations where human judgment and oversight are critical."
+          ],
+          "correctAnswer": 3,
+          "explanation": "Reflects established organizational best practices.",
+          "scoringMethod": "automatic",
+          "tags": [
+            "sau"
+          ]
+        },
+        {
+          "id": "SAU-P-019",
+          "type": "multiple-choice",
+          "points": 13,
+          "difficulty": 0.62,
+          "discrimination": 1.23,
+          "bloomLevel": "Analyze",
+          "question": "An organization must evaluate specific limitations of an artificial intelligence system before deployment. What represents the MOST critical focus for this assessment?",
+          "options": [
+            "Determining whether the AI technology is popular among consumers and widely adopted in the market.",
+            "Understanding the particular constraints and failure modes of the AI system within the specific context of your business operations.",
+            "Assessing the level of confidence expressed by the technology vendor regarding their product capabilities.",
+            "Examining the percentage of other organizations within your industry that have already adopted similar AI systems."
+          ],
+          "correctAnswer": 1,
+          "explanation": "Reflects established organizational best practices.",
+          "scoringMethod": "automatic",
+          "tags": [
+            "sau"
+          ]
+        },
+        {
+          "id": "SAU-P-020",
+          "type": "multiple-choice",
+          "points": 12,
+          "difficulty": 0.51,
+          "discrimination": 1.22,
+          "bloomLevel": "Analyze",
+          "question": "An organization is attempting to determine whether artificial intelligence is suitable for addressing a specific business problem. What represents the MOST appropriate analytical approach for assessing this alignment?",
+          "options": [
+            "Allow the information technology department to make the determination independently without input from business stakeholders.",
+            "Examine which competitors have already selected specific AI solutions and attempt to replicate their selections.",
+            "Analyze the specific requirements of the business problem and compare them comprehensively with the documented capabilities and constraints of the AI system.",
+            "Evaluate whether the technology vendor is currently marketing the newest AI solution to businesses."
+          ],
+          "correctAnswer": 1,
+          "explanation": "Reflects established organizational best practices.",
+          "scoringMethod": "automatic",
+          "tags": [
+            "sau"
+          ]
+        }
+      ]
+    },
+    {
+      "dimensionCode": "PEI",
+      "dimensionName": "Prompt Engineering Intelligence",
+      "items": [
+        {
+          "id": "PEI-P-021",
+          "type": "multiple-choice",
+          "points": 13,
+          "difficulty": 0.55,
+          "discrimination": 1.37,
+          "bloomLevel": "Analyze",
+          "question": "When designing prompts to direct artificial intelligence systems in professional business contexts, which characteristic MOST significantly improves the quality and relevance of the responses received?",
+          "options": [
+            "Relying on implicit assumptions about what the AI system should understand without explicitly stating requirements.",
+            "Maximizing the total length of the prompt so the AI system receives more text to process.",
+            "Incorporating technical jargon and specialized vocabulary throughout the prompt text.",
+            "Providing specific, clear parameters that explicitly define the scope, constraints, and desired format of the response."
+          ],
+          "correctAnswer": 3,
+          "explanation": "Based on professional best practices and evidence.",
+          "scoringMethod": "automatic",
+          "tags": [
+            "pei",
+            "professional"
+          ]
+        },
+        {
+          "id": "PEI-P-022",
+          "type": "multiple-choice",
+          "points": 13,
+          "difficulty": 0.45,
+          "discrimination": 1.4,
+          "bloomLevel": "Understand",
+          "question": "In what circumstances should an AI prompt include concrete examples demonstrating the desired output format and response style?",
+          "options": [
+            "Examples should be included in every prompt regardless of task complexity or requirements.",
+            "Examples should be included when you want to demonstrate a specific pattern, format, or response style for the AI system to emulate.",
+            "Examples should only be included when the task is relatively simple or straightforward.",
+            "Examples should never be included in AI prompts because they typically confuse the underlying models."
+          ],
+          "correctAnswer": 1,
+          "explanation": "Based on professional best practices and evidence.",
+          "scoringMethod": "automatic",
+          "tags": [
+            "pei",
+            "professional"
+          ]
+        },
+        {
+          "id": "PEI-P-023",
+          "type": "multiple-choice",
+          "points": 11,
+          "difficulty": 0.59,
+          "discrimination": 1.37,
+          "bloomLevel": "Apply",
+          "question": "When an artificial intelligence system provides a response that does not adequately meet your professional requirements, what represents the MOST effective strategy for improvement?",
+          "options": [
+            "Immediately switch to a different AI system or service provider.",
+            "Accept the initial response and proceed with the task despite its inadequacies.",
+            "Carefully analyze what elements were missing or incorrect, and then refine the prompt with specific, targeted feedback.",
+            "Cease using artificial intelligence systems for this category of tasks entirely."
+          ],
+          "correctAnswer": 2,
+          "explanation": "Based on professional best practices and evidence.",
+          "scoringMethod": "automatic",
+          "tags": [
+            "pei",
+            "professional"
+          ]
+        },
+        {
+          "id": "PEI-P-024",
+          "type": "multiple-choice",
+          "points": 10,
+          "difficulty": 0.6,
+          "discrimination": 1.26,
+          "bloomLevel": "Evaluate",
+          "question": "How should the complexity and detail level of artificial intelligence prompts appropriately scale in relation to the importance and stakes of the business task?",
+          "options": [
+            "Prompts should be kept uniformly simple across all tasks regardless of the task's importance or consequences.",
+            "The importance of a task has no bearing on the appropriate complexity level of the prompt.",
+            "Higher-stakes decisions should receive more detailed, carefully structured prompts with explicit specification of requirements.",
+            "All prompts should use maximum complexity and length to provide the AI system with comprehensive information."
+          ],
+          "correctAnswer": 2,
+          "explanation": "Based on professional best practices and evidence.",
+          "scoringMethod": "automatic",
+          "tags": [
+            "pei",
+            "professional"
+          ]
+        },
+        {
+          "id": "PEI-P-025",
+          "type": "multiple-choice",
+          "points": 12,
+          "difficulty": 0.5,
+          "discrimination": 1.4,
+          "bloomLevel": "Understand",
+          "question": "What is the PRIMARY purpose of including role-assignment statements in artificial intelligence prompts, such as \"You are a financial analyst with twenty years of experience\"?",
+          "options": [
+            "Role-assignment statements are only useful for creative writing tasks and have no application in business contexts.",
+            "Role-assignment statements primarily serve to make prompts longer and more impressive in appearance.",
+            "Role-assignment statements help the AI system understand and adopt the desired perspective, expertise level, and communication tone for the response.",
+            "Role-assignment statements have minimal or no measurable effect on the quality of AI-generated responses."
+          ],
+          "correctAnswer": 2,
+          "explanation": "Based on professional best practices and evidence.",
+          "scoringMethod": "automatic",
+          "tags": [
+            "pei",
+            "professional"
+          ]
+        },
+        {
+          "id": "PEI-P-026",
+          "type": "multiple-response",
+          "points": 14,
+          "difficulty": 0.57,
+          "discrimination": 1.18,
+          "bloomLevel": "Analyze",
+          "question": "Which of the following elements are EFFECTIVE for improving the quality of responses generated by artificial intelligence systems? (Select ALL that apply)",
+          "options": [
+            "Clear specification of the desired format and structure for the response.",
+            "Provision of relevant context and explicit constraints for the AI system to follow.",
+            "Inclusion of concrete examples demonstrating the desired response pattern and style.",
+            "Deliberately vague wording designed to give the AI system maximum interpretive freedom."
+          ],
+          "correctAnswers": [
+            0,
+            1,
+            2
+          ],
+          "explanation": "All correct options represent valid considerations.",
+          "scoringMethod": "automatic",
+          "tags": [
+            "pei",
+            "professional"
+          ]
+        },
+        {
+          "id": "PEI-P-027",
+          "type": "multiple-choice",
+          "points": 13,
+          "difficulty": 0.59,
+          "discrimination": 1.24,
+          "bloomLevel": "Understand",
+          "question": "When an artificial intelligence system provides a response that does not adequately meet your professional requirements, what represents the MOST effective strategy for improvement?",
+          "options": [
+            "Accept the initial response and proceed with the task despite its inadequacies.",
+            "Cease using artificial intelligence systems for this category of tasks entirely.",
+            "Carefully analyze what elements were missing or incorrect, and then refine the prompt with specific, targeted feedback.",
+            "Immediately switch to a different AI system or service provider."
+          ],
+          "correctAnswer": 2,
+          "explanation": "Reflects established organizational best practices.",
+          "scoringMethod": "automatic",
+          "tags": [
+            "pei"
+          ]
+        },
+        {
+          "id": "PEI-P-028",
+          "type": "multiple-choice",
+          "points": 11,
+          "difficulty": 0.51,
+          "discrimination": 1.39,
+          "bloomLevel": "Analyze",
+          "question": "When an artificial intelligence system provides a response that does not adequately meet your professional requirements, what represents the MOST effective strategy for improvement?",
+          "options": [
+            "Immediately switch to a different AI system or service provider.",
+            "Cease using artificial intelligence systems for this category of tasks entirely.",
+            "Accept the initial response and proceed with the task despite its inadequacies.",
+            "Carefully analyze what elements were missing or incorrect, and then refine the prompt with specific, targeted feedback."
+          ],
+          "correctAnswer": 3,
+          "explanation": "Reflects established organizational best practices.",
+          "scoringMethod": "automatic",
+          "tags": [
+            "pei"
+          ]
+        },
+        {
+          "id": "PEI-P-029",
+          "type": "multiple-choice",
+          "points": 11,
+          "difficulty": 0.63,
+          "discrimination": 1.37,
+          "bloomLevel": "Understand",
+          "question": "When an artificial intelligence system provides a response that does not adequately meet your professional requirements, what represents the MOST effective strategy for improvement?",
+          "options": [
+            "Accept the initial response and proceed with the task despite its inadequacies.",
+            "Carefully analyze what elements were missing or incorrect, and then refine the prompt with specific, targeted feedback.",
+            "Cease using artificial intelligence systems for this category of tasks entirely.",
+            "Immediately switch to a different AI system or service provider."
+          ],
+          "correctAnswer": 1,
+          "explanation": "Reflects established organizational best practices.",
+          "scoringMethod": "automatic",
+          "tags": [
+            "pei"
+          ]
+        },
+        {
+          "id": "PEI-P-030",
+          "type": "multiple-choice",
+          "points": 10,
+          "difficulty": 0.49,
+          "discrimination": 1.19,
+          "bloomLevel": "Analyze",
+          "question": "What is the PRIMARY purpose of including role-assignment statements in artificial intelligence prompts, such as \"You are a financial analyst with twenty years of experience\"?",
+          "options": [
+            "Role-assignment statements are only useful for creative writing tasks and have no application in business contexts.",
+            "Role-assignment statements primarily serve to make prompts longer and more impressive in appearance.",
+            "Role-assignment statements have minimal or no measurable effect on the quality of AI-generated responses.",
+            "Role-assignment statements help the AI system understand and adopt the desired perspective, expertise level, and communication tone for the response."
+          ],
+          "correctAnswer": 3,
+          "explanation": "Reflects established organizational best practices.",
+          "scoringMethod": "automatic",
+          "tags": [
+            "pei"
+          ]
+        },
+        {
+          "id": "PEI-P-031",
+          "type": "multiple-choice",
+          "points": 12,
+          "difficulty": 0.48,
+          "discrimination": 1.15,
+          "bloomLevel": "Understand",
+          "question": "When an artificial intelligence system provides a response that does not adequately meet your professional requirements, what represents the MOST effective strategy for improvement?",
+          "options": [
+            "Cease using artificial intelligence systems for this category of tasks entirely.",
+            "Accept the initial response and proceed with the task despite its inadequacies.",
+            "Immediately switch to a different AI system or service provider.",
+            "Carefully analyze what elements were missing or incorrect, and then refine the prompt with specific, targeted feedback."
+          ],
+          "correctAnswer": 3,
+          "explanation": "Reflects established organizational best practices.",
+          "scoringMethod": "automatic",
+          "tags": [
+            "pei"
+          ]
+        },
+        {
+          "id": "PEI-P-032",
+          "type": "multiple-choice",
+          "points": 10,
+          "difficulty": 0.41,
+          "discrimination": 1.37,
+          "bloomLevel": "Analyze",
+          "question": "When designing prompts to direct artificial intelligence systems in professional business contexts, which characteristic MOST significantly improves the quality and relevance of the responses received?",
+          "options": [
+            "Incorporating technical jargon and specialized vocabulary throughout the prompt text.",
+            "Relying on implicit assumptions about what the AI system should understand without explicitly stating requirements.",
+            "Maximizing the total length of the prompt so the AI system receives more text to process.",
+            "Providing specific, clear parameters that explicitly define the scope, constraints, and desired format of the response."
+          ],
+          "correctAnswer": 3,
+          "explanation": "Reflects established organizational best practices.",
+          "scoringMethod": "automatic",
+          "tags": [
+            "pei"
+          ]
+        },
+        {
+          "id": "PEI-P-033",
+          "type": "multiple-choice",
+          "points": 11,
+          "difficulty": 0.52,
+          "discrimination": 1.17,
+          "bloomLevel": "Understand",
+          "question": "What is the PRIMARY purpose of including role-assignment statements in artificial intelligence prompts, such as \"You are a financial analyst with twenty years of experience\"?",
+          "options": [
+            "Role-assignment statements primarily serve to make prompts longer and more impressive in appearance.",
+            "Role-assignment statements are only useful for creative writing tasks and have no application in business contexts.",
+            "Role-assignment statements help the AI system understand and adopt the desired perspective, expertise level, and communication tone for the response.",
+            "Role-assignment statements have minimal or no measurable effect on the quality of AI-generated responses."
+          ],
+          "correctAnswer": 2,
+          "explanation": "Reflects established organizational best practices.",
+          "scoringMethod": "automatic",
+          "tags": [
+            "pei"
+          ]
+        },
+        {
+          "id": "PEI-P-034",
+          "type": "multiple-choice",
+          "points": 12,
+          "difficulty": 0.56,
+          "discrimination": 1.39,
+          "bloomLevel": "Analyze",
+          "question": "In what circumstances should an AI prompt include concrete examples demonstrating the desired output format and response style?",
+          "options": [
+            "Examples should only be included when the task is relatively simple or straightforward.",
+            "Examples should be included when you want to demonstrate a specific pattern, format, or response style for the AI system to emulate.",
+            "Examples should be included in every prompt regardless of task complexity or requirements.",
+            "Examples should never be included in AI prompts because they typically confuse the underlying models."
+          ],
+          "correctAnswer": 1,
+          "explanation": "Reflects established organizational best practices.",
+          "scoringMethod": "automatic",
+          "tags": [
+            "pei"
+          ]
+        },
+        {
+          "id": "PEI-P-035",
+          "type": "multiple-choice",
+          "points": 11,
+          "difficulty": 0.62,
+          "discrimination": 1.26,
+          "bloomLevel": "Analyze",
+          "question": "In what circumstances should an AI prompt include concrete examples demonstrating the desired output format and response style?",
+          "options": [
+            "Examples should be included in every prompt regardless of task complexity or requirements.",
+            "Examples should only be included when the task is relatively simple or straightforward.",
+            "Examples should be included when you want to demonstrate a specific pattern, format, or response style for the AI system to emulate.",
+            "Examples should never be included in AI prompts because they typically confuse the underlying models."
+          ],
+          "correctAnswer": 2,
+          "explanation": "Reflects established organizational best practices.",
+          "scoringMethod": "automatic",
+          "tags": [
+            "pei"
+          ]
+        },
+        {
+          "id": "PEI-P-036",
+          "type": "multiple-choice",
+          "points": 13,
+          "difficulty": 0.48,
+          "discrimination": 1.4,
+          "bloomLevel": "Analyze",
+          "question": "When an artificial intelligence system provides a response that does not adequately meet your professional requirements, what represents the MOST effective strategy for improvement?",
+          "options": [
+            "Carefully analyze what elements were missing or incorrect, and then refine the prompt with specific, targeted feedback.",
+            "Immediately switch to a different AI system or service provider.",
+            "Accept the initial response and proceed with the task despite its inadequacies.",
+            "Cease using artificial intelligence systems for this category of tasks entirely."
+          ],
+          "correctAnswer": 0,
+          "explanation": "Reflects established organizational best practices.",
+          "scoringMethod": "automatic",
+          "tags": [
+            "pei"
+          ]
+        },
+        {
+          "id": "PEI-P-037",
+          "type": "multiple-choice",
+          "points": 12,
+          "difficulty": 0.51,
+          "discrimination": 1.21,
+          "bloomLevel": "Understand",
+          "question": "When designing prompts to direct artificial intelligence systems in professional business contexts, which characteristic MOST significantly improves the quality and relevance of the responses received?",
+          "options": [
+            "Relying on implicit assumptions about what the AI system should understand without explicitly stating requirements.",
+            "Incorporating technical jargon and specialized vocabulary throughout the prompt text.",
+            "Maximizing the total length of the prompt so the AI system receives more text to process.",
+            "Providing specific, clear parameters that explicitly define the scope, constraints, and desired format of the response."
+          ],
+          "correctAnswer": 3,
+          "explanation": "Reflects established organizational best practices.",
+          "scoringMethod": "automatic",
+          "tags": [
+            "pei"
+          ]
+        },
+        {
+          "id": "PEI-P-038",
+          "type": "multiple-choice",
+          "points": 10,
+          "difficulty": 0.55,
+          "discrimination": 1.21,
+          "bloomLevel": "Understand",
+          "question": "In what circumstances should an AI prompt include concrete examples demonstrating the desired output format and response style?",
+          "options": [
+            "Examples should be included in every prompt regardless of task complexity or requirements.",
+            "Examples should only be included when the task is relatively simple or straightforward.",
+            "Examples should be included when you want to demonstrate a specific pattern, format, or response style for the AI system to emulate.",
+            "Examples should never be included in AI prompts because they typically confuse the underlying models."
+          ],
+          "correctAnswer": 2,
+          "explanation": "Reflects established organizational best practices.",
+          "scoringMethod": "automatic",
+          "tags": [
+            "pei"
+          ]
+        },
+        {
+          "id": "PEI-P-039",
+          "type": "multiple-choice",
+          "points": 10,
+          "difficulty": 0.58,
+          "discrimination": 1.16,
+          "bloomLevel": "Apply",
+          "question": "When designing prompts to direct artificial intelligence systems in professional business contexts, which characteristic MOST significantly improves the quality and relevance of the responses received?",
+          "options": [
+            "Maximizing the total length of the prompt so the AI system receives more text to process.",
+            "Incorporating technical jargon and specialized vocabulary throughout the prompt text.",
+            "Providing specific, clear parameters that explicitly define the scope, constraints, and desired format of the response.",
+            "Relying on implicit assumptions about what the AI system should understand without explicitly stating requirements."
+          ],
+          "correctAnswer": 2,
+          "explanation": "Reflects established organizational best practices.",
+          "scoringMethod": "automatic",
+          "tags": [
+            "pei"
+          ]
+        },
+        {
+          "id": "PEI-P-040",
+          "type": "multiple-choice",
+          "points": 11,
+          "difficulty": 0.42,
+          "discrimination": 1.21,
+          "bloomLevel": "Analyze",
+          "question": "How should the complexity and detail level of artificial intelligence prompts appropriately scale in relation to the importance and stakes of the business task?",
+          "options": [
+            "The importance of a task has no bearing on the appropriate complexity level of the prompt.",
+            "Prompts should be kept uniformly simple across all tasks regardless of the task's importance or consequences.",
+            "Higher-stakes decisions should receive more detailed, carefully structured prompts with explicit specification of requirements.",
+            "All prompts should use maximum complexity and length to provide the AI system with comprehensive information."
+          ],
+          "correctAnswer": 2,
+          "explanation": "Reflects established organizational best practices.",
+          "scoringMethod": "automatic",
+          "tags": [
+            "pei"
+          ]
+        }
+      ]
+    },
+    {
+      "dimensionCode": "CEC",
+      "dimensionName": "Critical Evaluation Capability",
+      "items": [
+        {
+          "id": "CEC-P-041",
+          "type": "multiple-choice",
+          "points": 13,
+          "difficulty": 0.43,
+          "discrimination": 1.38,
+          "bloomLevel": "Apply",
+          "question": "When artificial intelligence systems provide analysis that will inform an important business decision, what represents the FIRST and MOST important action an organization should take?",
+          "options": [
+            "Assume that the analysis is accurate because it was generated by sophisticated AI technology.",
+            "Only verify the AI analysis if something in the results appears obviously questionable or suspicious.",
+            "Utilize the AI analysis immediately to expedite decision-making and save time.",
+            "Verify that key claims and conclusions from the AI analysis are supported by reliable and authoritative sources."
+          ],
+          "correctAnswer": 3,
+          "explanation": "Based on professional best practices and evidence.",
+          "scoringMethod": "automatic",
+          "tags": [
+            "cec",
+            "professional"
+          ]
+        },
+        {
+          "id": "CEC-P-042",
+          "type": "multiple-choice",
+          "points": 11,
+          "difficulty": 0.6,
+          "discrimination": 1.35,
+          "bloomLevel": "Understand",
+          "question": "Which indicator MOST reliably suggests that an artificial intelligence system may have generated hallucinated or fabricated information in its output?",
+          "options": [
+            "The overall response is relatively brief or limited in length.",
+            "The output is written in detailed, comprehensive language with a high level of apparent sophistication.",
+            "The AI system expresses high levels of confidence in its conclusions and recommendations.",
+            "Specific factual claims appear plausible and well-reasoned but cannot be verified against reliable, authoritative sources."
+          ],
+          "correctAnswer": 3,
+          "explanation": "Based on professional best practices and evidence.",
+          "scoringMethod": "automatic",
+          "tags": [
+            "cec",
+            "professional"
+          ]
+        },
+        {
+          "id": "CEC-P-043",
+          "type": "multiple-choice",
+          "points": 13,
+          "difficulty": 0.42,
+          "discrimination": 1.26,
+          "bloomLevel": "Evaluate",
+          "question": "An organization needs to evaluate whether potential bias exists in analysis generated by an artificial intelligence system. What represents the MOST appropriate analytical approach for this assessment?",
+          "options": [
+            "Systematically analyze whether the response fairly represents multiple relevant perspectives and viewpoints.",
+            "Assume that AI-generated analysis is inherently unbiased because it does not have human cognitive preferences.",
+            "Only investigate potential bias if it is immediately obvious and apparent upon initial review.",
+            "Examine how confident the AI system appears to be in its conclusions."
+          ],
+          "correctAnswer": 0,
+          "explanation": "Based on professional best practices and evidence.",
+          "scoringMethod": "automatic",
+          "tags": [
+            "cec",
+            "professional"
+          ]
+        },
+        {
+          "id": "CEC-P-044",
+          "type": "multiple-choice",
+          "points": 10,
+          "difficulty": 0.52,
+          "discrimination": 1.33,
+          "bloomLevel": "Understand",
+          "question": "What represents a CRITICAL limitation that organizations must recognize when evaluating the credibility and reliability of artificial intelligence-generated information?",
+          "options": [
+            "The confidence level and certainty expressed by an AI system do not necessarily correlate with the actual accuracy of its conclusions.",
+            "Statistical certainty always guarantees the accuracy and validity of AI-generated analysis.",
+            "It is impossible to assess the credibility of any AI-generated content.",
+            "Only individuals with advanced technical expertise can evaluate artificial intelligence outputs."
+          ],
+          "correctAnswer": 0,
+          "explanation": "Based on professional best practices and evidence.",
+          "scoringMethod": "automatic",
+          "tags": [
+            "cec",
+            "professional"
+          ]
+        },
+        {
+          "id": "CEC-P-045",
+          "type": "multiple-response",
+          "points": 12,
+          "difficulty": 0.5,
+          "discrimination": 1.23,
+          "bloomLevel": "Analyze",
+          "question": "Which of the following represent CRITICAL verification steps that should be performed when artificial intelligence generates analysis for important business decisions? (Select ALL that apply)",
+          "options": [
+            "Assess whether all relevant perspectives are fairly and equitably represented in the analysis.",
+            "Cross-reference key factual claims against multiple authoritative and reliable sources.",
+            "Assume the analysis is unbiased based solely on its AI origin.",
+            "Test major conclusions against known counterexamples and contradictory evidence."
+          ],
+          "correctAnswers": [
+            0,
+            1,
+            3
+          ],
+          "explanation": "All correct options represent valid considerations.",
+          "scoringMethod": "automatic",
+          "tags": [
+            "cec",
+            "professional"
+          ]
+        },
+        {
+          "id": "CEC-P-046",
+          "type": "multiple-choice",
+          "points": 11,
+          "difficulty": 0.46,
+          "discrimination": 1.2,
+          "bloomLevel": "Apply",
+          "question": "What represents a CRITICAL limitation that organizations must recognize when evaluating the credibility and reliability of artificial intelligence-generated information?",
+          "options": [
+            "Only individuals with advanced technical expertise can evaluate artificial intelligence outputs.",
+            "It is impossible to assess the credibility of any AI-generated content.",
+            "Statistical certainty always guarantees the accuracy and validity of AI-generated analysis.",
+            "The confidence level and certainty expressed by an AI system do not necessarily correlate with the actual accuracy of its conclusions."
+          ],
+          "correctAnswer": 3,
+          "explanation": "Reflects established organizational best practices.",
+          "scoringMethod": "automatic",
+          "tags": [
+            "cec"
+          ]
+        },
+        {
+          "id": "CEC-P-047",
+          "type": "multiple-choice",
+          "points": 13,
+          "difficulty": 0.45,
+          "discrimination": 1.27,
+          "bloomLevel": "Analyze",
+          "question": "When artificial intelligence systems provide analysis that will inform an important business decision, what represents the FIRST and MOST important action an organization should take?",
+          "options": [
+            "Utilize the AI analysis immediately to expedite decision-making and save time.",
+            "Only verify the AI analysis if something in the results appears obviously questionable or suspicious.",
+            "Assume that the analysis is accurate because it was generated by sophisticated AI technology.",
+            "Verify that key claims and conclusions from the AI analysis are supported by reliable and authoritative sources."
+          ],
+          "correctAnswer": 3,
+          "explanation": "Reflects established organizational best practices.",
+          "scoringMethod": "automatic",
+          "tags": [
+            "cec"
+          ]
+        },
+        {
+          "id": "CEC-P-048",
+          "type": "multiple-choice",
+          "points": 10,
+          "difficulty": 0.42,
+          "discrimination": 1.31,
+          "bloomLevel": "Understand",
+          "question": "When artificial intelligence systems provide analysis that will inform an important business decision, what represents the FIRST and MOST important action an organization should take?",
+          "options": [
+            "Utilize the AI analysis immediately to expedite decision-making and save time.",
+            "Only verify the AI analysis if something in the results appears obviously questionable or suspicious.",
+            "Verify that key claims and conclusions from the AI analysis are supported by reliable and authoritative sources.",
+            "Assume that the analysis is accurate because it was generated by sophisticated AI technology."
+          ],
+          "correctAnswer": 2,
+          "explanation": "Reflects established organizational best practices.",
+          "scoringMethod": "automatic",
+          "tags": [
+            "cec"
+          ]
+        },
+        {
+          "id": "CEC-P-049",
+          "type": "multiple-choice",
+          "points": 13,
+          "difficulty": 0.44,
+          "discrimination": 1.27,
+          "bloomLevel": "Understand",
+          "question": "Which indicator MOST reliably suggests that an artificial intelligence system may have generated hallucinated or fabricated information in its output?",
+          "options": [
+            "The overall response is relatively brief or limited in length.",
+            "The AI system expresses high levels of confidence in its conclusions and recommendations.",
+            "Specific factual claims appear plausible and well-reasoned but cannot be verified against reliable, authoritative sources.",
+            "The output is written in detailed, comprehensive language with a high level of apparent sophistication."
+          ],
+          "correctAnswer": 2,
+          "explanation": "Reflects established organizational best practices.",
+          "scoringMethod": "automatic",
+          "tags": [
+            "cec"
+          ]
+        },
+        {
+          "id": "CEC-P-050",
+          "type": "multiple-choice",
+          "points": 12,
+          "difficulty": 0.44,
+          "discrimination": 1.15,
+          "bloomLevel": "Apply",
+          "question": "What represents a CRITICAL limitation that organizations must recognize when evaluating the credibility and reliability of artificial intelligence-generated information?",
+          "options": [
+            "It is impossible to assess the credibility of any AI-generated content.",
+            "The confidence level and certainty expressed by an AI system do not necessarily correlate with the actual accuracy of its conclusions.",
+            "Statistical certainty always guarantees the accuracy and validity of AI-generated analysis.",
+            "Only individuals with advanced technical expertise can evaluate artificial intelligence outputs."
+          ],
+          "correctAnswer": 1,
+          "explanation": "Reflects established organizational best practices.",
+          "scoringMethod": "automatic",
+          "tags": [
+            "cec"
+          ]
+        },
+        {
+          "id": "CEC-P-051",
+          "type": "multiple-choice",
+          "points": 11,
+          "difficulty": 0.47,
+          "discrimination": 1.32,
+          "bloomLevel": "Understand",
+          "question": "What represents a CRITICAL limitation that organizations must recognize when evaluating the credibility and reliability of artificial intelligence-generated information?",
+          "options": [
+            "Only individuals with advanced technical expertise can evaluate artificial intelligence outputs.",
+            "Statistical certainty always guarantees the accuracy and validity of AI-generated analysis.",
+            "The confidence level and certainty expressed by an AI system do not necessarily correlate with the actual accuracy of its conclusions.",
+            "It is impossible to assess the credibility of any AI-generated content."
+          ],
+          "correctAnswer": 2,
+          "explanation": "Reflects established organizational best practices.",
+          "scoringMethod": "automatic",
+          "tags": [
+            "cec"
+          ]
+        },
+        {
+          "id": "CEC-P-052",
+          "type": "multiple-choice",
+          "points": 12,
+          "difficulty": 0.47,
+          "discrimination": 1.39,
+          "bloomLevel": "Understand",
+          "question": "When artificial intelligence systems provide analysis that will inform an important business decision, what represents the FIRST and MOST important action an organization should take?",
+          "options": [
+            "Assume that the analysis is accurate because it was generated by sophisticated AI technology.",
+            "Only verify the AI analysis if something in the results appears obviously questionable or suspicious.",
+            "Utilize the AI analysis immediately to expedite decision-making and save time.",
+            "Verify that key claims and conclusions from the AI analysis are supported by reliable and authoritative sources."
+          ],
+          "correctAnswer": 3,
+          "explanation": "Reflects established organizational best practices.",
+          "scoringMethod": "automatic",
+          "tags": [
+            "cec"
+          ]
+        },
+        {
+          "id": "CEC-P-053",
+          "type": "multiple-choice",
+          "points": 10,
+          "difficulty": 0.41,
+          "discrimination": 1.27,
+          "bloomLevel": "Analyze",
+          "question": "Which indicator MOST reliably suggests that an artificial intelligence system may have generated hallucinated or fabricated information in its output?",
+          "options": [
+            "Specific factual claims appear plausible and well-reasoned but cannot be verified against reliable, authoritative sources.",
+            "The output is written in detailed, comprehensive language with a high level of apparent sophistication.",
+            "The overall response is relatively brief or limited in length.",
+            "The AI system expresses high levels of confidence in its conclusions and recommendations."
+          ],
+          "correctAnswer": 0,
+          "explanation": "Reflects established organizational best practices.",
+          "scoringMethod": "automatic",
+          "tags": [
+            "cec"
+          ]
+        },
+        {
+          "id": "CEC-P-054",
+          "type": "multiple-choice",
+          "points": 11,
+          "difficulty": 0.42,
+          "discrimination": 1.2,
+          "bloomLevel": "Apply",
+          "question": "When artificial intelligence systems provide analysis that will inform an important business decision, what represents the FIRST and MOST important action an organization should take?",
+          "options": [
+            "Utilize the AI analysis immediately to expedite decision-making and save time.",
+            "Only verify the AI analysis if something in the results appears obviously questionable or suspicious.",
+            "Verify that key claims and conclusions from the AI analysis are supported by reliable and authoritative sources.",
+            "Assume that the analysis is accurate because it was generated by sophisticated AI technology."
+          ],
+          "correctAnswer": 2,
+          "explanation": "Reflects established organizational best practices.",
+          "scoringMethod": "automatic",
+          "tags": [
+            "cec"
+          ]
+        },
+        {
+          "id": "CEC-P-055",
+          "type": "multiple-choice",
+          "points": 10,
+          "difficulty": 0.43,
+          "discrimination": 1.37,
+          "bloomLevel": "Analyze",
+          "question": "Which indicator MOST reliably suggests that an artificial intelligence system may have generated hallucinated or fabricated information in its output?",
+          "options": [
+            "The output is written in detailed, comprehensive language with a high level of apparent sophistication.",
+            "The overall response is relatively brief or limited in length.",
+            "The AI system expresses high levels of confidence in its conclusions and recommendations.",
+            "Specific factual claims appear plausible and well-reasoned but cannot be verified against reliable, authoritative sources."
+          ],
+          "correctAnswer": 3,
+          "explanation": "Reflects established organizational best practices.",
+          "scoringMethod": "automatic",
+          "tags": [
+            "cec"
+          ]
+        },
+        {
+          "id": "CEC-P-056",
+          "type": "multiple-choice",
+          "points": 12,
+          "difficulty": 0.42,
+          "discrimination": 1.31,
+          "bloomLevel": "Understand",
+          "question": "An organization needs to evaluate whether potential bias exists in analysis generated by an artificial intelligence system. What represents the MOST appropriate analytical approach for this assessment?",
+          "options": [
+            "Only investigate potential bias if it is immediately obvious and apparent upon initial review.",
+            "Assume that AI-generated analysis is inherently unbiased because it does not have human cognitive preferences.",
+            "Examine how confident the AI system appears to be in its conclusions.",
+            "Systematically analyze whether the response fairly represents multiple relevant perspectives and viewpoints."
+          ],
+          "correctAnswer": 3,
+          "explanation": "Reflects established organizational best practices.",
+          "scoringMethod": "automatic",
+          "tags": [
+            "cec"
+          ]
+        },
+        {
+          "id": "CEC-P-057",
+          "type": "multiple-choice",
+          "points": 13,
+          "difficulty": 0.57,
+          "discrimination": 1.23,
+          "bloomLevel": "Understand",
+          "question": "An organization needs to evaluate whether potential bias exists in analysis generated by an artificial intelligence system. What represents the MOST appropriate analytical approach for this assessment?",
+          "options": [
+            "Systematically analyze whether the response fairly represents multiple relevant perspectives and viewpoints.",
+            "Only investigate potential bias if it is immediately obvious and apparent upon initial review.",
+            "Assume that AI-generated analysis is inherently unbiased because it does not have human cognitive preferences.",
+            "Examine how confident the AI system appears to be in its conclusions."
+          ],
+          "correctAnswer": 0,
+          "explanation": "Reflects established organizational best practices.",
+          "scoringMethod": "automatic",
+          "tags": [
+            "cec"
+          ]
+        },
+        {
+          "id": "CEC-P-058",
+          "type": "multiple-choice",
+          "points": 10,
+          "difficulty": 0.57,
+          "discrimination": 1.22,
+          "bloomLevel": "Understand",
+          "question": "An organization needs to evaluate whether potential bias exists in analysis generated by an artificial intelligence system. What represents the MOST appropriate analytical approach for this assessment?",
+          "options": [
+            "Only investigate potential bias if it is immediately obvious and apparent upon initial review.",
+            "Assume that AI-generated analysis is inherently unbiased because it does not have human cognitive preferences.",
+            "Systematically analyze whether the response fairly represents multiple relevant perspectives and viewpoints.",
+            "Examine how confident the AI system appears to be in its conclusions."
+          ],
+          "correctAnswer": 2,
+          "explanation": "Reflects established organizational best practices.",
+          "scoringMethod": "automatic",
+          "tags": [
+            "cec"
+          ]
+        },
+        {
+          "id": "CEC-P-059",
+          "type": "multiple-choice",
+          "points": 10,
+          "difficulty": 0.51,
+          "discrimination": 1.4,
+          "bloomLevel": "Analyze",
+          "question": "When artificial intelligence systems provide analysis that will inform an important business decision, what represents the FIRST and MOST important action an organization should take?",
+          "options": [
+            "Utilize the AI analysis immediately to expedite decision-making and save time.",
+            "Assume that the analysis is accurate because it was generated by sophisticated AI technology.",
+            "Only verify the AI analysis if something in the results appears obviously questionable or suspicious.",
+            "Verify that key claims and conclusions from the AI analysis are supported by reliable and authoritative sources."
+          ],
+          "correctAnswer": 3,
+          "explanation": "Reflects established organizational best practices.",
+          "scoringMethod": "automatic",
+          "tags": [
+            "cec"
+          ]
+        },
+        {
+          "id": "CEC-P-060",
+          "type": "multiple-choice",
+          "points": 10,
+          "difficulty": 0.45,
+          "discrimination": 1.22,
+          "bloomLevel": "Understand",
+          "question": "An organization needs to evaluate whether potential bias exists in analysis generated by an artificial intelligence system. What represents the MOST appropriate analytical approach for this assessment?",
+          "options": [
+            "Assume that AI-generated analysis is inherently unbiased because it does not have human cognitive preferences.",
+            "Examine how confident the AI system appears to be in its conclusions.",
+            "Only investigate potential bias if it is immediately obvious and apparent upon initial review.",
+            "Systematically analyze whether the response fairly represents multiple relevant perspectives and viewpoints."
+          ],
+          "correctAnswer": 3,
+          "explanation": "Reflects established organizational best practices.",
+          "scoringMethod": "automatic",
+          "tags": [
+            "cec"
+          ]
+        }
+      ]
+    },
+    {
+      "dimensionCode": "II",
+      "dimensionName": "Integration Intelligence",
+      "items": [
+        {
+          "id": "II-P-061",
+          "type": "multiple-choice",
+          "points": 12,
+          "difficulty": 0.49,
+          "discrimination": 1.19,
+          "bloomLevel": "Understand",
+          "question": "When an organization is considering artificial intelligence implementation to automate specific business processes, which task type MOST appropriately serves as a candidate for AI automation?",
+          "options": [
+            "Tasks that require nuanced emotional intelligence and complex interpersonal judgment.",
+            "Ethical decisions that involve significant moral considerations and conflicting values.",
+            "High-volume, standardized tasks that have clear, consistent rules and produce measurable outputs.",
+            "High-stakes personnel decisions that significantly affect individual employees' careers and employment."
+          ],
+          "correctAnswer": 2,
+          "explanation": "Based on professional best practices and evidence.",
+          "scoringMethod": "automatic",
+          "tags": [
+            "ii",
+            "professional"
+          ]
+        },
+        {
+          "id": "II-P-062",
+          "type": "multiple-choice",
+          "points": 10,
+          "difficulty": 0.57,
+          "discrimination": 1.29,
+          "bloomLevel": "Apply",
+          "question": "In the context of human-artificial intelligence collaboration, during which situations should organizational decision-making authority APPROPRIATELY remain with human employees?",
+          "options": [
+            "For decisions involving significant stakes for affected individuals and situations requiring ethical judgment and contextual understanding.",
+            "Human decision authority should be eliminated entirely to maximize operational efficiency and consistency.",
+            "Never - all organizational decisions should be delegated entirely to AI systems.",
+            "Only when AI system performance falls below predetermined quality or accuracy benchmarks."
+          ],
+          "correctAnswer": 0,
+          "explanation": "Based on professional best practices and evidence.",
+          "scoringMethod": "automatic",
+          "tags": [
+            "ii",
+            "professional"
+          ]
+        },
+        {
+          "id": "II-P-063",
+          "type": "multiple-choice",
+          "points": 11,
+          "difficulty": 0.47,
+          "discrimination": 1.37,
+          "bloomLevel": "Analyze",
+          "question": "What represents a SIGNIFICANT risk associated with organizations that over-automate business processes through excessive artificial intelligence implementation?",
+          "options": [
+            "The organization may lose critical expertise and judgment capability when AI systems fail or encounter unprecedented situations.",
+            "Employees throughout the organization will have excessive responsibility and autonomy.",
+            "The organization will be unable to process information as quickly as before.",
+            "The organization will expend excessive financial resources on technology implementation."
+          ],
+          "correctAnswer": 0,
+          "explanation": "Based on professional best practices and evidence.",
+          "scoringMethod": "automatic",
+          "tags": [
+            "ii",
+            "professional"
+          ]
+        },
+        {
+          "id": "II-P-064",
+          "type": "multiple-choice",
+          "points": 12,
+          "difficulty": 0.47,
+          "discrimination": 1.2,
+          "bloomLevel": "Apply",
+          "question": "As artificial intelligence capability increases within an organization, how should the organizational structure and employee roles MOST appropriately evolve?",
+          "options": [
+            "Completely separate AI teams from all business operations and decision-making processes.",
+            "Maintain the existing organizational hierarchy and role definitions without substantial modification.",
+            "Eliminate all human employee roles and replace them entirely with AI-driven processes.",
+            "Integrate AI capabilities with domain expertise, and intentionally evolve employee roles to leverage complementary strengths."
+          ],
+          "correctAnswer": 3,
+          "explanation": "Based on professional best practices and evidence.",
+          "scoringMethod": "automatic",
+          "tags": [
+            "ii",
+            "professional"
+          ]
+        },
+        {
+          "id": "II-P-065",
+          "type": "multiple-response",
+          "points": 15,
+          "difficulty": 0.57,
+          "discrimination": 1.36,
+          "bloomLevel": "Analyze",
+          "question": "Which of the following factors should APPROPRIATELY influence the design and implementation of human-artificial intelligence workflows? (Select ALL that apply)",
+          "options": [
+            "Determining the specific tasks and capabilities where AI systems demonstrate superior performance.",
+            "Identifying tasks and decisions where human judgment provides significant additional value.",
+            "Minimizing human involvement in all processes regardless of task characteristics or strategic importance.",
+            "Establishing explicit quality control checkpoints and defining how decisions will escalate to human review when necessary."
+          ],
+          "correctAnswers": [
+            0,
+            1,
+            3
+          ],
+          "explanation": "All correct options represent valid considerations.",
+          "scoringMethod": "automatic",
+          "tags": [
+            "ii",
+            "professional"
+          ]
+        },
+        {
+          "id": "II-P-066",
+          "type": "multiple-choice",
+          "points": 10,
+          "difficulty": 0.46,
+          "discrimination": 1.38,
+          "bloomLevel": "Analyze",
+          "question": "When an organization is considering artificial intelligence implementation to automate specific business processes, which task type MOST appropriately serves as a candidate for AI automation?",
+          "options": [
+            "Ethical decisions that involve significant moral considerations and conflicting values.",
+            "Tasks that require nuanced emotional intelligence and complex interpersonal judgment.",
+            "High-volume, standardized tasks that have clear, consistent rules and produce measurable outputs.",
+            "High-stakes personnel decisions that significantly affect individual employees' careers and employment."
+          ],
+          "correctAnswer": 2,
+          "explanation": "Reflects established organizational best practices.",
+          "scoringMethod": "automatic",
+          "tags": [
+            "ii"
+          ]
+        },
+        {
+          "id": "II-P-067",
+          "type": "multiple-choice",
+          "points": 12,
+          "difficulty": 0.51,
+          "discrimination": 1.22,
+          "bloomLevel": "Understand",
+          "question": "When an organization is considering artificial intelligence implementation to automate specific business processes, which task type MOST appropriately serves as a candidate for AI automation?",
+          "options": [
+            "High-volume, standardized tasks that have clear, consistent rules and produce measurable outputs.",
+            "High-stakes personnel decisions that significantly affect individual employees' careers and employment.",
+            "Ethical decisions that involve significant moral considerations and conflicting values.",
+            "Tasks that require nuanced emotional intelligence and complex interpersonal judgment."
+          ],
+          "correctAnswer": 0,
+          "explanation": "Reflects established organizational best practices.",
+          "scoringMethod": "automatic",
+          "tags": [
+            "ii"
+          ]
+        },
+        {
+          "id": "II-P-068",
+          "type": "multiple-choice",
+          "points": 13,
+          "difficulty": 0.56,
+          "discrimination": 1.22,
+          "bloomLevel": "Analyze",
+          "question": "As artificial intelligence capability increases within an organization, how should the organizational structure and employee roles MOST appropriately evolve?",
+          "options": [
+            "Maintain the existing organizational hierarchy and role definitions without substantial modification.",
+            "Eliminate all human employee roles and replace them entirely with AI-driven processes.",
+            "Integrate AI capabilities with domain expertise, and intentionally evolve employee roles to leverage complementary strengths.",
+            "Completely separate AI teams from all business operations and decision-making processes."
+          ],
+          "correctAnswer": 2,
+          "explanation": "Reflects established organizational best practices.",
+          "scoringMethod": "automatic",
+          "tags": [
+            "ii"
+          ]
+        },
+        {
+          "id": "II-P-069",
+          "type": "multiple-choice",
+          "points": 10,
+          "difficulty": 0.4,
+          "discrimination": 1.17,
+          "bloomLevel": "Apply",
+          "question": "In the context of human-artificial intelligence collaboration, during which situations should organizational decision-making authority APPROPRIATELY remain with human employees?",
+          "options": [
+            "Human decision authority should be eliminated entirely to maximize operational efficiency and consistency.",
+            "For decisions involving significant stakes for affected individuals and situations requiring ethical judgment and contextual understanding.",
+            "Only when AI system performance falls below predetermined quality or accuracy benchmarks.",
+            "Never - all organizational decisions should be delegated entirely to AI systems."
+          ],
+          "correctAnswer": 1,
+          "explanation": "Reflects established organizational best practices.",
+          "scoringMethod": "automatic",
+          "tags": [
+            "ii"
+          ]
+        },
+        {
+          "id": "II-P-070",
+          "type": "multiple-choice",
+          "points": 10,
+          "difficulty": 0.55,
+          "discrimination": 1.19,
+          "bloomLevel": "Apply",
+          "question": "In the context of human-artificial intelligence collaboration, during which situations should organizational decision-making authority APPROPRIATELY remain with human employees?",
+          "options": [
+            "Only when AI system performance falls below predetermined quality or accuracy benchmarks.",
+            "For decisions involving significant stakes for affected individuals and situations requiring ethical judgment and contextual understanding.",
+            "Never - all organizational decisions should be delegated entirely to AI systems.",
+            "Human decision authority should be eliminated entirely to maximize operational efficiency and consistency."
+          ],
+          "correctAnswer": 1,
+          "explanation": "Reflects established organizational best practices.",
+          "scoringMethod": "automatic",
+          "tags": [
+            "ii"
+          ]
+        },
+        {
+          "id": "II-P-071",
+          "type": "multiple-choice",
+          "points": 12,
+          "difficulty": 0.49,
+          "discrimination": 1.38,
+          "bloomLevel": "Understand",
+          "question": "When an organization is considering artificial intelligence implementation to automate specific business processes, which task type MOST appropriately serves as a candidate for AI automation?",
+          "options": [
+            "Tasks that require nuanced emotional intelligence and complex interpersonal judgment.",
+            "Ethical decisions that involve significant moral considerations and conflicting values.",
+            "High-stakes personnel decisions that significantly affect individual employees' careers and employment.",
+            "High-volume, standardized tasks that have clear, consistent rules and produce measurable outputs."
+          ],
+          "correctAnswer": 3,
+          "explanation": "Reflects established organizational best practices.",
+          "scoringMethod": "automatic",
+          "tags": [
+            "ii"
+          ]
+        },
+        {
+          "id": "II-P-072",
+          "type": "multiple-choice",
+          "points": 13,
+          "difficulty": 0.57,
+          "discrimination": 1.32,
+          "bloomLevel": "Analyze",
+          "question": "What represents a SIGNIFICANT risk associated with organizations that over-automate business processes through excessive artificial intelligence implementation?",
+          "options": [
+            "The organization may lose critical expertise and judgment capability when AI systems fail or encounter unprecedented situations.",
+            "The organization will be unable to process information as quickly as before.",
+            "Employees throughout the organization will have excessive responsibility and autonomy.",
+            "The organization will expend excessive financial resources on technology implementation."
+          ],
+          "correctAnswer": 0,
+          "explanation": "Reflects established organizational best practices.",
+          "scoringMethod": "automatic",
+          "tags": [
+            "ii"
+          ]
+        },
+        {
+          "id": "II-P-073",
+          "type": "multiple-choice",
+          "points": 11,
+          "difficulty": 0.59,
+          "discrimination": 1.38,
+          "bloomLevel": "Understand",
+          "question": "In the context of human-artificial intelligence collaboration, during which situations should organizational decision-making authority APPROPRIATELY remain with human employees?",
+          "options": [
+            "Human decision authority should be eliminated entirely to maximize operational efficiency and consistency.",
+            "Never - all organizational decisions should be delegated entirely to AI systems.",
+            "For decisions involving significant stakes for affected individuals and situations requiring ethical judgment and contextual understanding.",
+            "Only when AI system performance falls below predetermined quality or accuracy benchmarks."
+          ],
+          "correctAnswer": 2,
+          "explanation": "Reflects established organizational best practices.",
+          "scoringMethod": "automatic",
+          "tags": [
+            "ii"
+          ]
+        },
+        {
+          "id": "II-P-074",
+          "type": "multiple-choice",
+          "points": 13,
+          "difficulty": 0.62,
+          "discrimination": 1.16,
+          "bloomLevel": "Analyze",
+          "question": "What represents a SIGNIFICANT risk associated with organizations that over-automate business processes through excessive artificial intelligence implementation?",
+          "options": [
+            "The organization may lose critical expertise and judgment capability when AI systems fail or encounter unprecedented situations.",
+            "Employees throughout the organization will have excessive responsibility and autonomy.",
+            "The organization will be unable to process information as quickly as before.",
+            "The organization will expend excessive financial resources on technology implementation."
+          ],
+          "correctAnswer": 0,
+          "explanation": "Reflects established organizational best practices.",
+          "scoringMethod": "automatic",
+          "tags": [
+            "ii"
+          ]
+        },
+        {
+          "id": "II-P-075",
+          "type": "multiple-choice",
+          "points": 11,
+          "difficulty": 0.62,
+          "discrimination": 1.35,
+          "bloomLevel": "Analyze",
+          "question": "What represents a SIGNIFICANT risk associated with organizations that over-automate business processes through excessive artificial intelligence implementation?",
+          "options": [
+            "Employees throughout the organization will have excessive responsibility and autonomy.",
+            "The organization may lose critical expertise and judgment capability when AI systems fail or encounter unprecedented situations.",
+            "The organization will expend excessive financial resources on technology implementation.",
+            "The organization will be unable to process information as quickly as before."
+          ],
+          "correctAnswer": 1,
+          "explanation": "Reflects established organizational best practices.",
+          "scoringMethod": "automatic",
+          "tags": [
+            "ii"
+          ]
+        },
+        {
+          "id": "II-P-076",
+          "type": "multiple-choice",
+          "points": 11,
+          "difficulty": 0.43,
+          "discrimination": 1.37,
+          "bloomLevel": "Understand",
+          "question": "As artificial intelligence capability increases within an organization, how should the organizational structure and employee roles MOST appropriately evolve?",
+          "options": [
+            "Maintain the existing organizational hierarchy and role definitions without substantial modification.",
+            "Completely separate AI teams from all business operations and decision-making processes.",
+            "Eliminate all human employee roles and replace them entirely with AI-driven processes.",
+            "Integrate AI capabilities with domain expertise, and intentionally evolve employee roles to leverage complementary strengths."
+          ],
+          "correctAnswer": 3,
+          "explanation": "Reflects established organizational best practices.",
+          "scoringMethod": "automatic",
+          "tags": [
+            "ii"
+          ]
+        },
+        {
+          "id": "II-P-077",
+          "type": "multiple-choice",
+          "points": 11,
+          "difficulty": 0.6,
+          "discrimination": 1.27,
+          "bloomLevel": "Understand",
+          "question": "What represents a SIGNIFICANT risk associated with organizations that over-automate business processes through excessive artificial intelligence implementation?",
+          "options": [
+            "Employees throughout the organization will have excessive responsibility and autonomy.",
+            "The organization will be unable to process information as quickly as before.",
+            "The organization will expend excessive financial resources on technology implementation.",
+            "The organization may lose critical expertise and judgment capability when AI systems fail or encounter unprecedented situations."
+          ],
+          "correctAnswer": 3,
+          "explanation": "Reflects established organizational best practices.",
+          "scoringMethod": "automatic",
+          "tags": [
+            "ii"
+          ]
+        },
+        {
+          "id": "II-P-078",
+          "type": "multiple-choice",
+          "points": 12,
+          "difficulty": 0.41,
+          "discrimination": 1.2,
+          "bloomLevel": "Understand",
+          "question": "What represents a SIGNIFICANT risk associated with organizations that over-automate business processes through excessive artificial intelligence implementation?",
+          "options": [
+            "The organization will expend excessive financial resources on technology implementation.",
+            "Employees throughout the organization will have excessive responsibility and autonomy.",
+            "The organization will be unable to process information as quickly as before.",
+            "The organization may lose critical expertise and judgment capability when AI systems fail or encounter unprecedented situations."
+          ],
+          "correctAnswer": 3,
+          "explanation": "Reflects established organizational best practices.",
+          "scoringMethod": "automatic",
+          "tags": [
+            "ii"
+          ]
+        },
+        {
+          "id": "II-P-079",
+          "type": "multiple-choice",
+          "points": 12,
+          "difficulty": 0.64,
+          "discrimination": 1.22,
+          "bloomLevel": "Understand",
+          "question": "As artificial intelligence capability increases within an organization, how should the organizational structure and employee roles MOST appropriately evolve?",
+          "options": [
+            "Eliminate all human employee roles and replace them entirely with AI-driven processes.",
+            "Maintain the existing organizational hierarchy and role definitions without substantial modification.",
+            "Completely separate AI teams from all business operations and decision-making processes.",
+            "Integrate AI capabilities with domain expertise, and intentionally evolve employee roles to leverage complementary strengths."
+          ],
+          "correctAnswer": 3,
+          "explanation": "Reflects established organizational best practices.",
+          "scoringMethod": "automatic",
+          "tags": [
+            "ii"
+          ]
+        },
+        {
+          "id": "II-P-080",
+          "type": "multiple-choice",
+          "points": 12,
+          "difficulty": 0.43,
+          "discrimination": 1.39,
+          "bloomLevel": "Understand",
+          "question": "In the context of human-artificial intelligence collaboration, during which situations should organizational decision-making authority APPROPRIATELY remain with human employees?",
+          "options": [
+            "For decisions involving significant stakes for affected individuals and situations requiring ethical judgment and contextual understanding.",
+            "Never - all organizational decisions should be delegated entirely to AI systems.",
+            "Human decision authority should be eliminated entirely to maximize operational efficiency and consistency.",
+            "Only when AI system performance falls below predetermined quality or accuracy benchmarks."
+          ],
+          "correctAnswer": 0,
+          "explanation": "Reflects established organizational best practices.",
+          "scoringMethod": "automatic",
+          "tags": [
+            "ii"
+          ]
+        }
+      ]
+    },
+    {
+      "dimensionCode": "ALC",
+      "dimensionName": "Adaptive Learning Capability",
+      "items": [
+        {
+          "id": "ALC-P-081",
+          "type": "multiple-choice",
+          "points": 12,
+          "difficulty": 0.43,
+          "discrimination": 1.26,
+          "bloomLevel": "Evaluate",
+          "question": "An organization has been using artificial intelligence systems for several months with varied results. What MOST accurately demonstrates that the organization has developed genuine learning and expertise from these AI interactions?",
+          "options": [
+            "The organization continues using identical prompts and approaches in every situation without any modification.",
+            "The organization completely avoids iterating on or refining its artificial intelligence processes.",
+            "The organization never attempts new approaches or modifies its AI utilization strategies.",
+            "The organization independently solves novel problems using AI and successfully applies lessons learned to different contexts and situations."
+          ],
+          "correctAnswer": 3,
+          "explanation": "Based on professional best practices and evidence.",
+          "scoringMethod": "automatic",
+          "tags": [
+            "alc",
+            "professional"
+          ]
+        },
+        {
+          "id": "ALC-P-082",
+          "type": "multiple-choice",
+          "points": 13,
+          "difficulty": 0.55,
+          "discrimination": 1.28,
+          "bloomLevel": "Apply",
+          "question": "How can organizations MOST effectively capture and preserve learning that results from artificial intelligence implementation experiences?",
+          "options": [
+            "Keep knowledge and insights confined within individual employees' minds without documentation.",
+            "Never discuss or acknowledge failures and unsuccessful implementation attempts.",
+            "Treat learning and knowledge development as too time-consuming to be worth systematic effort.",
+            "Comprehensively document successful approaches, failure patterns, and lessons learned for organizational knowledge sharing."
+          ],
+          "correctAnswer": 3,
+          "explanation": "Based on professional best practices and evidence.",
+          "scoringMethod": "automatic",
+          "tags": [
+            "alc",
+            "professional"
+          ]
+        },
+        {
+          "id": "ALC-P-083",
+          "type": "multiple-choice",
+          "points": 10,
+          "difficulty": 0.46,
+          "discrimination": 1.33,
+          "bloomLevel": "Apply",
+          "question": "What represents the relationship between an organization's artificial intelligence learning capability and its competitive position within the market?",
+          "options": [
+            "Organizations that develop and execute faster learning cycles adapt more effectively and maintain stronger competitive positions.",
+            "Systematic learning and continuous improvement actually slow competitive response and market positioning.",
+            "Learning capability and competitive advantage are completely unrelated.",
+            "Competitive advantage derives exclusively from technology acquisition, independent of organizational learning capability."
+          ],
+          "correctAnswer": 0,
+          "explanation": "Based on professional best practices and evidence.",
+          "scoringMethod": "automatic",
+          "tags": [
+            "alc",
+            "professional"
+          ]
+        },
+        {
+          "id": "ALC-P-084",
+          "type": "multiple-response",
+          "points": 14,
+          "difficulty": 0.49,
+          "discrimination": 1.17,
+          "bloomLevel": "Analyze",
+          "question": "Which of the following elements support and accelerate organizational learning from artificial intelligence implementation experiences? (Select ALL that apply)",
+          "options": [
+            "Conducting experiments without any reflection or analysis of results and outcomes.",
+            "Systematic tracking and assessment of organizational capability progression over time.",
+            "Formal forums and processes enabling knowledge sharing across different organizational teams.",
+            "Documented case studies capturing both successful and unsuccessful implementation attempts."
+          ],
+          "correctAnswers": [
+            1,
+            2,
+            3
+          ],
+          "explanation": "All correct options represent valid considerations.",
+          "scoringMethod": "automatic",
+          "tags": [
+            "alc",
+            "professional"
+          ]
+        },
+        {
+          "id": "ALC-P-085",
+          "type": "multiple-choice",
+          "points": 12,
+          "difficulty": 0.56,
+          "discrimination": 1.32,
+          "bloomLevel": "Analyze",
+          "question": "An organization has been using artificial intelligence systems for several months with varied results. What MOST accurately demonstrates that the organization has developed genuine learning and expertise from these AI interactions?",
+          "options": [
+            "The organization completely avoids iterating on or refining its artificial intelligence processes.",
+            "The organization independently solves novel problems using AI and successfully applies lessons learned to different contexts and situations.",
+            "The organization continues using identical prompts and approaches in every situation without any modification.",
+            "The organization never attempts new approaches or modifies its AI utilization strategies."
+          ],
+          "correctAnswer": 1,
+          "explanation": "Reflects established organizational best practices.",
+          "scoringMethod": "automatic",
+          "tags": [
+            "alc"
+          ]
+        },
+        {
+          "id": "ALC-P-086",
+          "type": "multiple-choice",
+          "points": 12,
+          "difficulty": 0.48,
+          "discrimination": 1.25,
+          "bloomLevel": "Analyze",
+          "question": "How can organizations MOST effectively capture and preserve learning that results from artificial intelligence implementation experiences?",
+          "options": [
+            "Comprehensively document successful approaches, failure patterns, and lessons learned for organizational knowledge sharing.",
+            "Keep knowledge and insights confined within individual employees' minds without documentation.",
+            "Treat learning and knowledge development as too time-consuming to be worth systematic effort.",
+            "Never discuss or acknowledge failures and unsuccessful implementation attempts."
+          ],
+          "correctAnswer": 0,
+          "explanation": "Reflects established organizational best practices.",
+          "scoringMethod": "automatic",
+          "tags": [
+            "alc"
+          ]
+        },
+        {
+          "id": "ALC-P-087",
+          "type": "multiple-choice",
+          "points": 11,
+          "difficulty": 0.43,
+          "discrimination": 1.26,
+          "bloomLevel": "Analyze",
+          "question": "How can organizations MOST effectively capture and preserve learning that results from artificial intelligence implementation experiences?",
+          "options": [
+            "Comprehensively document successful approaches, failure patterns, and lessons learned for organizational knowledge sharing.",
+            "Keep knowledge and insights confined within individual employees' minds without documentation.",
+            "Never discuss or acknowledge failures and unsuccessful implementation attempts.",
+            "Treat learning and knowledge development as too time-consuming to be worth systematic effort."
+          ],
+          "correctAnswer": 0,
+          "explanation": "Reflects established organizational best practices.",
+          "scoringMethod": "automatic",
+          "tags": [
+            "alc"
+          ]
+        },
+        {
+          "id": "ALC-P-088",
+          "type": "multiple-choice",
+          "points": 12,
+          "difficulty": 0.54,
+          "discrimination": 1.25,
+          "bloomLevel": "Apply",
+          "question": "An organization has been using artificial intelligence systems for several months with varied results. What MOST accurately demonstrates that the organization has developed genuine learning and expertise from these AI interactions?",
+          "options": [
+            "The organization independently solves novel problems using AI and successfully applies lessons learned to different contexts and situations.",
+            "The organization continues using identical prompts and approaches in every situation without any modification.",
+            "The organization completely avoids iterating on or refining its artificial intelligence processes.",
+            "The organization never attempts new approaches or modifies its AI utilization strategies."
+          ],
+          "correctAnswer": 0,
+          "explanation": "Reflects established organizational best practices.",
+          "scoringMethod": "automatic",
+          "tags": [
+            "alc"
+          ]
+        },
+        {
+          "id": "ALC-P-089",
+          "type": "multiple-choice",
+          "points": 12,
+          "difficulty": 0.45,
+          "discrimination": 1.35,
+          "bloomLevel": "Apply",
+          "question": "What represents the relationship between an organization's artificial intelligence learning capability and its competitive position within the market?",
+          "options": [
+            "Systematic learning and continuous improvement actually slow competitive response and market positioning.",
+            "Organizations that develop and execute faster learning cycles adapt more effectively and maintain stronger competitive positions.",
+            "Competitive advantage derives exclusively from technology acquisition, independent of organizational learning capability.",
+            "Learning capability and competitive advantage are completely unrelated."
+          ],
+          "correctAnswer": 1,
+          "explanation": "Reflects established organizational best practices.",
+          "scoringMethod": "automatic",
+          "tags": [
+            "alc"
+          ]
+        },
+        {
+          "id": "ALC-P-090",
+          "type": "multiple-choice",
+          "points": 13,
+          "difficulty": 0.51,
+          "discrimination": 1.32,
+          "bloomLevel": "Analyze",
+          "question": "What represents the relationship between an organization's artificial intelligence learning capability and its competitive position within the market?",
+          "options": [
+            "Learning capability and competitive advantage are completely unrelated.",
+            "Organizations that develop and execute faster learning cycles adapt more effectively and maintain stronger competitive positions.",
+            "Systematic learning and continuous improvement actually slow competitive response and market positioning.",
+            "Competitive advantage derives exclusively from technology acquisition, independent of organizational learning capability."
+          ],
+          "correctAnswer": 1,
+          "explanation": "Reflects established organizational best practices.",
+          "scoringMethod": "automatic",
+          "tags": [
+            "alc"
+          ]
+        },
+        {
+          "id": "ALC-P-091",
+          "type": "multiple-choice",
+          "points": 12,
+          "difficulty": 0.44,
+          "discrimination": 1.17,
+          "bloomLevel": "Understand",
+          "question": "What represents the relationship between an organization's artificial intelligence learning capability and its competitive position within the market?",
+          "options": [
+            "Organizations that develop and execute faster learning cycles adapt more effectively and maintain stronger competitive positions.",
+            "Learning capability and competitive advantage are completely unrelated.",
+            "Competitive advantage derives exclusively from technology acquisition, independent of organizational learning capability.",
+            "Systematic learning and continuous improvement actually slow competitive response and market positioning."
+          ],
+          "correctAnswer": 0,
+          "explanation": "Reflects established organizational best practices.",
+          "scoringMethod": "automatic",
+          "tags": [
+            "alc"
+          ]
+        },
+        {
+          "id": "ALC-P-092",
+          "type": "multiple-choice",
+          "points": 12,
+          "difficulty": 0.6,
+          "discrimination": 1.34,
+          "bloomLevel": "Understand",
+          "question": "What represents the relationship between an organization's artificial intelligence learning capability and its competitive position within the market?",
+          "options": [
+            "Competitive advantage derives exclusively from technology acquisition, independent of organizational learning capability.",
+            "Systematic learning and continuous improvement actually slow competitive response and market positioning.",
+            "Learning capability and competitive advantage are completely unrelated.",
+            "Organizations that develop and execute faster learning cycles adapt more effectively and maintain stronger competitive positions."
+          ],
+          "correctAnswer": 3,
+          "explanation": "Reflects established organizational best practices.",
+          "scoringMethod": "automatic",
+          "tags": [
+            "alc"
+          ]
+        },
+        {
+          "id": "ALC-P-093",
+          "type": "multiple-choice",
+          "points": 11,
+          "difficulty": 0.6,
+          "discrimination": 1.19,
+          "bloomLevel": "Apply",
+          "question": "An organization has been using artificial intelligence systems for several months with varied results. What MOST accurately demonstrates that the organization has developed genuine learning and expertise from these AI interactions?",
+          "options": [
+            "The organization independently solves novel problems using AI and successfully applies lessons learned to different contexts and situations.",
+            "The organization continues using identical prompts and approaches in every situation without any modification.",
+            "The organization completely avoids iterating on or refining its artificial intelligence processes.",
+            "The organization never attempts new approaches or modifies its AI utilization strategies."
+          ],
+          "correctAnswer": 0,
+          "explanation": "Reflects established organizational best practices.",
+          "scoringMethod": "automatic",
+          "tags": [
+            "alc"
+          ]
+        },
+        {
+          "id": "ALC-P-094",
+          "type": "multiple-choice",
+          "points": 13,
+          "difficulty": 0.55,
+          "discrimination": 1.34,
+          "bloomLevel": "Analyze",
+          "question": "How can organizations MOST effectively capture and preserve learning that results from artificial intelligence implementation experiences?",
+          "options": [
+            "Never discuss or acknowledge failures and unsuccessful implementation attempts.",
+            "Keep knowledge and insights confined within individual employees' minds without documentation.",
+            "Treat learning and knowledge development as too time-consuming to be worth systematic effort.",
+            "Comprehensively document successful approaches, failure patterns, and lessons learned for organizational knowledge sharing."
+          ],
+          "correctAnswer": 3,
+          "explanation": "Reflects established organizational best practices.",
+          "scoringMethod": "automatic",
+          "tags": [
+            "alc"
+          ]
+        },
+        {
+          "id": "ALC-P-095",
+          "type": "multiple-choice",
+          "points": 13,
+          "difficulty": 0.54,
+          "discrimination": 1.33,
+          "bloomLevel": "Apply",
+          "question": "How can organizations MOST effectively capture and preserve learning that results from artificial intelligence implementation experiences?",
+          "options": [
+            "Keep knowledge and insights confined within individual employees' minds without documentation.",
+            "Never discuss or acknowledge failures and unsuccessful implementation attempts.",
+            "Treat learning and knowledge development as too time-consuming to be worth systematic effort.",
+            "Comprehensively document successful approaches, failure patterns, and lessons learned for organizational knowledge sharing."
+          ],
+          "correctAnswer": 3,
+          "explanation": "Reflects established organizational best practices.",
+          "scoringMethod": "automatic",
+          "tags": [
+            "alc"
+          ]
+        },
+        {
+          "id": "ALC-P-096",
+          "type": "multiple-choice",
+          "points": 10,
+          "difficulty": 0.46,
+          "discrimination": 1.31,
+          "bloomLevel": "Apply",
+          "question": "An organization has been using artificial intelligence systems for several months with varied results. What MOST accurately demonstrates that the organization has developed genuine learning and expertise from these AI interactions?",
+          "options": [
+            "The organization independently solves novel problems using AI and successfully applies lessons learned to different contexts and situations.",
+            "The organization completely avoids iterating on or refining its artificial intelligence processes.",
+            "The organization never attempts new approaches or modifies its AI utilization strategies.",
+            "The organization continues using identical prompts and approaches in every situation without any modification."
+          ],
+          "correctAnswer": 0,
+          "explanation": "Reflects established organizational best practices.",
+          "scoringMethod": "automatic",
+          "tags": [
+            "alc"
+          ]
+        },
+        {
+          "id": "ALC-P-097",
+          "type": "multiple-choice",
+          "points": 13,
+          "difficulty": 0.45,
+          "discrimination": 1.35,
+          "bloomLevel": "Understand",
+          "question": "What represents the relationship between an organization's artificial intelligence learning capability and its competitive position within the market?",
+          "options": [
+            "Systematic learning and continuous improvement actually slow competitive response and market positioning.",
+            "Competitive advantage derives exclusively from technology acquisition, independent of organizational learning capability.",
+            "Learning capability and competitive advantage are completely unrelated.",
+            "Organizations that develop and execute faster learning cycles adapt more effectively and maintain stronger competitive positions."
+          ],
+          "correctAnswer": 3,
+          "explanation": "Reflects established organizational best practices.",
+          "scoringMethod": "automatic",
+          "tags": [
+            "alc"
+          ]
+        },
+        {
+          "id": "ALC-P-098",
+          "type": "multiple-choice",
+          "points": 13,
+          "difficulty": 0.54,
+          "discrimination": 1.38,
+          "bloomLevel": "Understand",
+          "question": "An organization has been using artificial intelligence systems for several months with varied results. What MOST accurately demonstrates that the organization has developed genuine learning and expertise from these AI interactions?",
+          "options": [
+            "The organization continues using identical prompts and approaches in every situation without any modification.",
+            "The organization completely avoids iterating on or refining its artificial intelligence processes.",
+            "The organization independently solves novel problems using AI and successfully applies lessons learned to different contexts and situations.",
+            "The organization never attempts new approaches or modifies its AI utilization strategies."
+          ],
+          "correctAnswer": 2,
+          "explanation": "Reflects established organizational best practices.",
+          "scoringMethod": "automatic",
+          "tags": [
+            "alc"
+          ]
+        },
+        {
+          "id": "ALC-P-099",
+          "type": "multiple-choice",
+          "points": 12,
+          "difficulty": 0.6,
+          "discrimination": 1.32,
+          "bloomLevel": "Apply",
+          "question": "What represents the relationship between an organization's artificial intelligence learning capability and its competitive position within the market?",
+          "options": [
+            "Organizations that develop and execute faster learning cycles adapt more effectively and maintain stronger competitive positions.",
+            "Systematic learning and continuous improvement actually slow competitive response and market positioning.",
+            "Learning capability and competitive advantage are completely unrelated.",
+            "Competitive advantage derives exclusively from technology acquisition, independent of organizational learning capability."
+          ],
+          "correctAnswer": 0,
+          "explanation": "Reflects established organizational best practices.",
+          "scoringMethod": "automatic",
+          "tags": [
+            "alc"
+          ]
+        },
+        {
+          "id": "ALC-P-100",
+          "type": "multiple-choice",
+          "points": 13,
+          "difficulty": 0.55,
+          "discrimination": 1.33,
+          "bloomLevel": "Analyze",
+          "question": "What represents the relationship between an organization's artificial intelligence learning capability and its competitive position within the market?",
+          "options": [
+            "Learning capability and competitive advantage are completely unrelated.",
+            "Organizations that develop and execute faster learning cycles adapt more effectively and maintain stronger competitive positions.",
+            "Competitive advantage derives exclusively from technology acquisition, independent of organizational learning capability.",
+            "Systematic learning and continuous improvement actually slow competitive response and market positioning."
+          ],
+          "correctAnswer": 1,
+          "explanation": "Reflects established organizational best practices.",
+          "scoringMethod": "automatic",
+          "tags": [
+            "alc"
+          ]
+        }
+      ]
+    },
+    {
+      "dimensionCode": "EJC",
+      "dimensionName": "Ethical Judgment Capability",
+      "items": [
+        {
+          "id": "EJC-P-101",
+          "type": "multiple-choice",
+          "points": 13,
+          "difficulty": 0.51,
+          "discrimination": 1.19,
+          "bloomLevel": "Evaluate",
+          "question": "What represents the PRIMARY ethical obligation of an organization when artificial intelligence systems generate content that will affect business decisions or organizational outcomes?",
+          "options": [
+            "Ethical considerations apply only to specific industry sectors and are irrelevant in other business contexts.",
+            "The organization should use AI-generated content only if it provides immediate financial benefits.",
+            "The organization assumes no ethical obligation for AI-generated content simply because it was produced by technology.",
+            "The organization must verify accuracy and fairness of the AI-generated content regardless of its technological origin."
+          ],
+          "correctAnswer": 3,
+          "explanation": "Based on professional best practices and evidence.",
+          "scoringMethod": "automatic",
+          "tags": [
+            "ejc",
+            "professional"
+          ]
+        },
+        {
+          "id": "EJC-P-102",
+          "type": "multiple-choice",
+          "points": 12,
+          "difficulty": 0.46,
+          "discrimination": 1.21,
+          "bloomLevel": "Evaluate",
+          "question": "What represents a PRIMARY ethical concern when organizations deploy artificial intelligence systems to make hiring decisions?",
+          "options": [
+            "AI hiring tools typically process decisions too rapidly compared to human recruiters.",
+            "There are no significant ethical concerns related to AI deployment in hiring contexts.",
+            "AI systems may perpetuate, amplify, or systematize historical biases present in training data.",
+            "Artificial intelligence requires excessive data to function in hiring applications."
+          ],
+          "correctAnswer": 2,
+          "explanation": "Based on professional best practices and evidence.",
+          "scoringMethod": "automatic",
+          "tags": [
+            "ejc",
+            "professional"
+          ]
+        },
+        {
+          "id": "EJC-P-103",
+          "type": "multiple-choice",
+          "points": 10,
+          "difficulty": 0.56,
+          "discrimination": 1.22,
+          "bloomLevel": "Analyze",
+          "question": "When artificial intelligence systems participate in significant business decisions, when should organizations APPROPRIATELY disclose this AI involvement to affected stakeholders?",
+          "options": [
+            "AI involvement should only be disclosed if stakeholders specifically request this information.",
+            "AI involvement should be disclosed consistently, particularly for significant decisions that affect stakeholder interests.",
+            "AI involvement should never be disclosed to maintain operational confidentiality.",
+            "AI involvement should only be disclosed if the resulting decision produces negative or unfavorable outcomes."
+          ],
+          "correctAnswer": 1,
+          "explanation": "Based on professional best practices and evidence.",
+          "scoringMethod": "automatic",
+          "tags": [
+            "ejc",
+            "professional"
+          ]
+        },
+        {
+          "id": "EJC-P-104",
+          "type": "multiple-choice",
+          "points": 10,
+          "difficulty": 0.46,
+          "discrimination": 1.23,
+          "bloomLevel": "Apply",
+          "question": "What governance and oversight structures are MOST important for ensuring that artificial intelligence systems are deployed responsibly within organizations?",
+          "options": [
+            "Governance and oversight structures only slow down implementation processes and should be minimized.",
+            "Organizations should establish clear policies, oversight mechanisms, and explicit accountability frameworks for AI systems.",
+            "Formal governance is only necessary for very large organizations; small organizations do not require structured oversight.",
+            "Artificial intelligence deployments do not require formal governance or oversight structures."
+          ],
+          "correctAnswer": 1,
+          "explanation": "Based on professional best practices and evidence.",
+          "scoringMethod": "automatic",
+          "tags": [
+            "ejc",
+            "professional"
+          ]
+        },
+        {
+          "id": "EJC-P-105",
+          "type": "multiple-response",
+          "points": 13,
+          "difficulty": 0.44,
+          "discrimination": 1.25,
+          "bloomLevel": "Analyze",
+          "question": "Which of the following represent APPROPRIATE ethical considerations when deploying artificial intelligence systems in business contexts? (Select ALL that apply)",
+          "options": [
+            "Profit maximization and financial benefit to the organization regardless of other consequences.",
+            "The potential impact of AI decisions on affected stakeholders and communities.",
+            "Fairness and potential bias in how the AI system treats different demographic or population groups.",
+            "Transparency regarding the involvement and influence of AI systems in business decisions."
+          ],
+          "correctAnswers": [
+            1,
+            2,
+            3
+          ],
+          "explanation": "All correct options represent valid considerations.",
+          "scoringMethod": "automatic",
+          "tags": [
+            "ejc",
+            "professional"
+          ]
+        },
+        {
+          "id": "EJC-P-106",
+          "type": "multiple-choice",
+          "points": 12,
+          "difficulty": 0.58,
+          "discrimination": 1.17,
+          "bloomLevel": "Analyze",
+          "question": "What governance and oversight structures are MOST important for ensuring that artificial intelligence systems are deployed responsibly within organizations?",
+          "options": [
+            "Governance and oversight structures only slow down implementation processes and should be minimized.",
+            "Formal governance is only necessary for very large organizations; small organizations do not require structured oversight.",
+            "Artificial intelligence deployments do not require formal governance or oversight structures.",
+            "Organizations should establish clear policies, oversight mechanisms, and explicit accountability frameworks for AI systems."
+          ],
+          "correctAnswer": 3,
+          "explanation": "Reflects established organizational best practices.",
+          "scoringMethod": "automatic",
+          "tags": [
+            "ejc"
+          ]
+        },
+        {
+          "id": "EJC-P-107",
+          "type": "multiple-choice",
+          "points": 13,
+          "difficulty": 0.52,
+          "discrimination": 1.17,
+          "bloomLevel": "Analyze",
+          "question": "What governance and oversight structures are MOST important for ensuring that artificial intelligence systems are deployed responsibly within organizations?",
+          "options": [
+            "Artificial intelligence deployments do not require formal governance or oversight structures.",
+            "Organizations should establish clear policies, oversight mechanisms, and explicit accountability frameworks for AI systems.",
+            "Governance and oversight structures only slow down implementation processes and should be minimized.",
+            "Formal governance is only necessary for very large organizations; small organizations do not require structured oversight."
+          ],
+          "correctAnswer": 1,
+          "explanation": "Reflects established organizational best practices.",
+          "scoringMethod": "automatic",
+          "tags": [
+            "ejc"
+          ]
+        },
+        {
+          "id": "EJC-P-108",
+          "type": "multiple-choice",
+          "points": 13,
+          "difficulty": 0.64,
+          "discrimination": 1.15,
+          "bloomLevel": "Understand",
+          "question": "What governance and oversight structures are MOST important for ensuring that artificial intelligence systems are deployed responsibly within organizations?",
+          "options": [
+            "Organizations should establish clear policies, oversight mechanisms, and explicit accountability frameworks for AI systems.",
+            "Artificial intelligence deployments do not require formal governance or oversight structures.",
+            "Governance and oversight structures only slow down implementation processes and should be minimized.",
+            "Formal governance is only necessary for very large organizations; small organizations do not require structured oversight."
+          ],
+          "correctAnswer": 0,
+          "explanation": "Reflects established organizational best practices.",
+          "scoringMethod": "automatic",
+          "tags": [
+            "ejc"
+          ]
+        },
+        {
+          "id": "EJC-P-109",
+          "type": "multiple-choice",
+          "points": 13,
+          "difficulty": 0.64,
+          "discrimination": 1.22,
+          "bloomLevel": "Analyze",
+          "question": "What governance and oversight structures are MOST important for ensuring that artificial intelligence systems are deployed responsibly within organizations?",
+          "options": [
+            "Organizations should establish clear policies, oversight mechanisms, and explicit accountability frameworks for AI systems.",
+            "Formal governance is only necessary for very large organizations; small organizations do not require structured oversight.",
+            "Artificial intelligence deployments do not require formal governance or oversight structures.",
+            "Governance and oversight structures only slow down implementation processes and should be minimized."
+          ],
+          "correctAnswer": 0,
+          "explanation": "Reflects established organizational best practices.",
+          "scoringMethod": "automatic",
+          "tags": [
+            "ejc"
+          ]
+        },
+        {
+          "id": "EJC-P-110",
+          "type": "multiple-choice",
+          "points": 13,
+          "difficulty": 0.59,
+          "discrimination": 1.29,
+          "bloomLevel": "Understand",
+          "question": "What represents a PRIMARY ethical concern when organizations deploy artificial intelligence systems to make hiring decisions?",
+          "options": [
+            "There are no significant ethical concerns related to AI deployment in hiring contexts.",
+            "Artificial intelligence requires excessive data to function in hiring applications.",
+            "AI hiring tools typically process decisions too rapidly compared to human recruiters.",
+            "AI systems may perpetuate, amplify, or systematize historical biases present in training data."
+          ],
+          "correctAnswer": 3,
+          "explanation": "Reflects established organizational best practices.",
+          "scoringMethod": "automatic",
+          "tags": [
+            "ejc"
+          ]
+        },
+        {
+          "id": "EJC-P-111",
+          "type": "multiple-choice",
+          "points": 12,
+          "difficulty": 0.47,
+          "discrimination": 1.27,
+          "bloomLevel": "Analyze",
+          "question": "What governance and oversight structures are MOST important for ensuring that artificial intelligence systems are deployed responsibly within organizations?",
+          "options": [
+            "Formal governance is only necessary for very large organizations; small organizations do not require structured oversight.",
+            "Organizations should establish clear policies, oversight mechanisms, and explicit accountability frameworks for AI systems.",
+            "Artificial intelligence deployments do not require formal governance or oversight structures.",
+            "Governance and oversight structures only slow down implementation processes and should be minimized."
+          ],
+          "correctAnswer": 1,
+          "explanation": "Reflects established organizational best practices.",
+          "scoringMethod": "automatic",
+          "tags": [
+            "ejc"
+          ]
+        },
+        {
+          "id": "EJC-P-112",
+          "type": "multiple-choice",
+          "points": 13,
+          "difficulty": 0.57,
+          "discrimination": 1.25,
+          "bloomLevel": "Understand",
+          "question": "What represents a PRIMARY ethical concern when organizations deploy artificial intelligence systems to make hiring decisions?",
+          "options": [
+            "Artificial intelligence requires excessive data to function in hiring applications.",
+            "There are no significant ethical concerns related to AI deployment in hiring contexts.",
+            "AI hiring tools typically process decisions too rapidly compared to human recruiters.",
+            "AI systems may perpetuate, amplify, or systematize historical biases present in training data."
+          ],
+          "correctAnswer": 3,
+          "explanation": "Reflects established organizational best practices.",
+          "scoringMethod": "automatic",
+          "tags": [
+            "ejc"
+          ]
+        },
+        {
+          "id": "EJC-P-113",
+          "type": "multiple-choice",
+          "points": 10,
+          "difficulty": 0.65,
+          "discrimination": 1.28,
+          "bloomLevel": "Understand",
+          "question": "What governance and oversight structures are MOST important for ensuring that artificial intelligence systems are deployed responsibly within organizations?",
+          "options": [
+            "Governance and oversight structures only slow down implementation processes and should be minimized.",
+            "Formal governance is only necessary for very large organizations; small organizations do not require structured oversight.",
+            "Artificial intelligence deployments do not require formal governance or oversight structures.",
+            "Organizations should establish clear policies, oversight mechanisms, and explicit accountability frameworks for AI systems."
+          ],
+          "correctAnswer": 3,
+          "explanation": "Reflects established organizational best practices.",
+          "scoringMethod": "automatic",
+          "tags": [
+            "ejc"
+          ]
+        },
+        {
+          "id": "EJC-P-114",
+          "type": "multiple-choice",
+          "points": 11,
+          "difficulty": 0.56,
+          "discrimination": 1.18,
+          "bloomLevel": "Understand",
+          "question": "What governance and oversight structures are MOST important for ensuring that artificial intelligence systems are deployed responsibly within organizations?",
+          "options": [
+            "Organizations should establish clear policies, oversight mechanisms, and explicit accountability frameworks for AI systems.",
+            "Formal governance is only necessary for very large organizations; small organizations do not require structured oversight.",
+            "Artificial intelligence deployments do not require formal governance or oversight structures.",
+            "Governance and oversight structures only slow down implementation processes and should be minimized."
+          ],
+          "correctAnswer": 0,
+          "explanation": "Reflects established organizational best practices.",
+          "scoringMethod": "automatic",
+          "tags": [
+            "ejc"
+          ]
+        },
+        {
+          "id": "EJC-P-115",
+          "type": "multiple-choice",
+          "points": 12,
+          "difficulty": 0.47,
+          "discrimination": 1.23,
+          "bloomLevel": "Apply",
+          "question": "What governance and oversight structures are MOST important for ensuring that artificial intelligence systems are deployed responsibly within organizations?",
+          "options": [
+            "Organizations should establish clear policies, oversight mechanisms, and explicit accountability frameworks for AI systems.",
+            "Governance and oversight structures only slow down implementation processes and should be minimized.",
+            "Artificial intelligence deployments do not require formal governance or oversight structures.",
+            "Formal governance is only necessary for very large organizations; small organizations do not require structured oversight."
+          ],
+          "correctAnswer": 0,
+          "explanation": "Reflects established organizational best practices.",
+          "scoringMethod": "automatic",
+          "tags": [
+            "ejc"
+          ]
+        },
+        {
+          "id": "EJC-P-116",
+          "type": "multiple-choice",
+          "points": 12,
+          "difficulty": 0.59,
+          "discrimination": 1.24,
+          "bloomLevel": "Understand",
+          "question": "What governance and oversight structures are MOST important for ensuring that artificial intelligence systems are deployed responsibly within organizations?",
+          "options": [
+            "Governance and oversight structures only slow down implementation processes and should be minimized.",
+            "Artificial intelligence deployments do not require formal governance or oversight structures.",
+            "Formal governance is only necessary for very large organizations; small organizations do not require structured oversight.",
+            "Organizations should establish clear policies, oversight mechanisms, and explicit accountability frameworks for AI systems."
+          ],
+          "correctAnswer": 3,
+          "explanation": "Reflects established organizational best practices.",
+          "scoringMethod": "automatic",
+          "tags": [
+            "ejc"
+          ]
+        },
+        {
+          "id": "EJC-P-117",
+          "type": "multiple-choice",
+          "points": 12,
+          "difficulty": 0.52,
+          "discrimination": 1.34,
+          "bloomLevel": "Understand",
+          "question": "What represents the PRIMARY ethical obligation of an organization when artificial intelligence systems generate content that will affect business decisions or organizational outcomes?",
+          "options": [
+            "The organization assumes no ethical obligation for AI-generated content simply because it was produced by technology.",
+            "The organization should use AI-generated content only if it provides immediate financial benefits.",
+            "Ethical considerations apply only to specific industry sectors and are irrelevant in other business contexts.",
+            "The organization must verify accuracy and fairness of the AI-generated content regardless of its technological origin."
+          ],
+          "correctAnswer": 3,
+          "explanation": "Reflects established organizational best practices.",
+          "scoringMethod": "automatic",
+          "tags": [
+            "ejc"
+          ]
+        },
+        {
+          "id": "EJC-P-118",
+          "type": "multiple-choice",
+          "points": 10,
+          "difficulty": 0.56,
+          "discrimination": 1.35,
+          "bloomLevel": "Understand",
+          "question": "What represents the PRIMARY ethical obligation of an organization when artificial intelligence systems generate content that will affect business decisions or organizational outcomes?",
+          "options": [
+            "The organization should use AI-generated content only if it provides immediate financial benefits.",
+            "The organization assumes no ethical obligation for AI-generated content simply because it was produced by technology.",
+            "The organization must verify accuracy and fairness of the AI-generated content regardless of its technological origin.",
+            "Ethical considerations apply only to specific industry sectors and are irrelevant in other business contexts."
+          ],
+          "correctAnswer": 2,
+          "explanation": "Reflects established organizational best practices.",
+          "scoringMethod": "automatic",
+          "tags": [
+            "ejc"
+          ]
+        },
+        {
+          "id": "EJC-P-119",
+          "type": "multiple-choice",
+          "points": 11,
+          "difficulty": 0.45,
+          "discrimination": 1.16,
+          "bloomLevel": "Understand",
+          "question": "What represents a PRIMARY ethical concern when organizations deploy artificial intelligence systems to make hiring decisions?",
+          "options": [
+            "AI hiring tools typically process decisions too rapidly compared to human recruiters.",
+            "AI systems may perpetuate, amplify, or systematize historical biases present in training data.",
+            "Artificial intelligence requires excessive data to function in hiring applications.",
+            "There are no significant ethical concerns related to AI deployment in hiring contexts."
+          ],
+          "correctAnswer": 1,
+          "explanation": "Reflects established organizational best practices.",
+          "scoringMethod": "automatic",
+          "tags": [
+            "ejc"
+          ]
+        },
+        {
+          "id": "EJC-P-120",
+          "type": "multiple-choice",
+          "points": 13,
+          "difficulty": 0.52,
+          "discrimination": 1.18,
+          "bloomLevel": "Analyze",
+          "question": "What represents a PRIMARY ethical concern when organizations deploy artificial intelligence systems to make hiring decisions?",
+          "options": [
+            "There are no significant ethical concerns related to AI deployment in hiring contexts.",
+            "Artificial intelligence requires excessive data to function in hiring applications.",
+            "AI hiring tools typically process decisions too rapidly compared to human recruiters.",
+            "AI systems may perpetuate, amplify, or systematize historical biases present in training data."
+          ],
+          "correctAnswer": 3,
+          "explanation": "Reflects established organizational best practices.",
+          "scoringMethod": "automatic",
+          "tags": [
+            "ejc"
+          ]
+        }
+      ]
+    },
+    {
+      "dimensionCode": "CS",
+      "dimensionName": "Context Sensitivity",
+      "items": [
+        {
+          "id": "CS-P-121",
+          "type": "multiple-choice",
+          "points": 10,
+          "difficulty": 0.46,
+          "discrimination": 1.24,
+          "bloomLevel": "Apply",
+          "question": "An artificial intelligence solution has been successful in one geographic market. What represents the PRIMARY reason why this same solution might fail when deployed in a different market?",
+          "options": [
+            "Geographic differences in markets do not meaningfully affect technology implementation success.",
+            "Cultural norms, regulatory requirements, and local business practices differ significantly across markets.",
+            "Artificial intelligence solutions function universally without requiring customization or adaptation.",
+            "Market conditions are essentially identical across all geographic regions."
+          ],
+          "correctAnswer": 1,
+          "explanation": "Based on professional best practices and evidence.",
+          "scoringMethod": "automatic",
+          "tags": [
+            "cs",
+            "professional"
+          ]
+        },
+        {
+          "id": "CS-P-122",
+          "type": "multiple-choice",
+          "points": 10,
+          "difficulty": 0.64,
+          "discrimination": 1.18,
+          "bloomLevel": "Analyze",
+          "question": "How should an organization appropriately incorporate understanding of its existing organizational culture into artificial intelligence strategy development and implementation planning?",
+          "options": [
+            "Organizational culture should not be considered in artificial intelligence strategic planning.",
+            "Organizational culture fundamentally shapes readiness and adoption patterns, and should inform strategy and implementation approach.",
+            "Artificial intelligence strategy should prioritize overriding and changing organizational culture.",
+            "Organizational culture considerations are only relevant for human resources hiring processes."
+          ],
+          "correctAnswer": 1,
+          "explanation": "Based on professional best practices and evidence.",
+          "scoringMethod": "automatic",
+          "tags": [
+            "cs",
+            "professional"
+          ]
+        },
+        {
+          "id": "CS-P-123",
+          "type": "multiple-choice",
+          "points": 13,
+          "difficulty": 0.54,
+          "discrimination": 1.38,
+          "bloomLevel": "Evaluate",
+          "question": "What represents the MOST common factor that derails ambitious artificial intelligence implementation initiatives in traditionally structured organizations?",
+          "options": [
+            "Technology quality and availability alone determine implementation success or failure.",
+            "Employees in the organization are always enthusiastically prepared for technological change.",
+            "Insufficient technology or inadequate AI system capabilities.",
+            "Inadequate change management and resistance from stakeholders with existing investments in current processes."
+          ],
+          "correctAnswer": 3,
+          "explanation": "Based on professional best practices and evidence.",
+          "scoringMethod": "automatic",
+          "tags": [
+            "cs",
+            "professional"
+          ]
+        },
+        {
+          "id": "CS-P-124",
+          "type": "multiple-choice",
+          "points": 11,
+          "difficulty": 0.64,
+          "discrimination": 1.2,
+          "bloomLevel": "Understand",
+          "question": "How should artificial intelligence solutions be appropriately adapted when being deployed across different industry sectors?",
+          "options": [
+            "Deploy identical solutions across all industries without modification or customization.",
+            "Develop deep understanding of industry-specific challenges, regulations, and business models before adaptation.",
+            "Each industry is so fundamentally different that AI solutions cannot be adapted across sectors.",
+            "Industry differences are too costly and complex to justify solution adaptation efforts."
+          ],
+          "correctAnswer": 1,
+          "explanation": "Based on professional best practices and evidence.",
+          "scoringMethod": "automatic",
+          "tags": [
+            "cs",
+            "professional"
+          ]
+        },
+        {
+          "id": "CS-P-125",
+          "type": "multiple-response",
+          "points": 12,
+          "difficulty": 0.57,
+          "discrimination": 1.23,
+          "bloomLevel": "Analyze",
+          "question": "Which of the following represent IMPORTANT contextual factors that should inform organizational artificial intelligence strategy development? (Select ALL that apply)",
+          "options": [
+            "The organization's current technological maturity and readiness for significant change.",
+            "Industry-specific business models, competitive dynamics, and operational constraints.",
+            "The regulatory environment and compliance requirements in the operating jurisdiction.",
+            "Exact replication of competitor strategies and technology selections."
+          ],
+          "correctAnswers": [
+            0,
+            1,
+            2
+          ],
+          "explanation": "All correct options represent valid considerations.",
+          "scoringMethod": "automatic",
+          "tags": [
+            "cs",
+            "professional"
+          ]
+        },
+        {
+          "id": "CS-P-126",
+          "type": "multiple-choice",
+          "points": 12,
+          "difficulty": 0.6,
+          "discrimination": 1.29,
+          "bloomLevel": "Analyze",
+          "question": "An artificial intelligence solution has been successful in one geographic market. What represents the PRIMARY reason why this same solution might fail when deployed in a different market?",
+          "options": [
+            "Market conditions are essentially identical across all geographic regions.",
+            "Geographic differences in markets do not meaningfully affect technology implementation success.",
+            "Cultural norms, regulatory requirements, and local business practices differ significantly across markets.",
+            "Artificial intelligence solutions function universally without requiring customization or adaptation."
+          ],
+          "correctAnswer": 2,
+          "explanation": "Reflects established organizational best practices.",
+          "scoringMethod": "automatic",
+          "tags": [
+            "cs"
+          ]
+        },
+        {
+          "id": "CS-P-127",
+          "type": "multiple-choice",
+          "points": 10,
+          "difficulty": 0.51,
+          "discrimination": 1.24,
+          "bloomLevel": "Apply",
+          "question": "What represents the MOST common factor that derails ambitious artificial intelligence implementation initiatives in traditionally structured organizations?",
+          "options": [
+            "Employees in the organization are always enthusiastically prepared for technological change.",
+            "Technology quality and availability alone determine implementation success or failure.",
+            "Insufficient technology or inadequate AI system capabilities.",
+            "Inadequate change management and resistance from stakeholders with existing investments in current processes."
+          ],
+          "correctAnswer": 3,
+          "explanation": "Reflects established organizational best practices.",
+          "scoringMethod": "automatic",
+          "tags": [
+            "cs"
+          ]
+        },
+        {
+          "id": "CS-P-128",
+          "type": "multiple-choice",
+          "points": 13,
+          "difficulty": 0.61,
+          "discrimination": 1.18,
+          "bloomLevel": "Analyze",
+          "question": "What represents the MOST common factor that derails ambitious artificial intelligence implementation initiatives in traditionally structured organizations?",
+          "options": [
+            "Inadequate change management and resistance from stakeholders with existing investments in current processes.",
+            "Insufficient technology or inadequate AI system capabilities.",
+            "Employees in the organization are always enthusiastically prepared for technological change.",
+            "Technology quality and availability alone determine implementation success or failure."
+          ],
+          "correctAnswer": 0,
+          "explanation": "Reflects established organizational best practices.",
+          "scoringMethod": "automatic",
+          "tags": [
+            "cs"
+          ]
+        },
+        {
+          "id": "CS-P-129",
+          "type": "multiple-choice",
+          "points": 13,
+          "difficulty": 0.44,
+          "discrimination": 1.19,
+          "bloomLevel": "Apply",
+          "question": "What represents the MOST common factor that derails ambitious artificial intelligence implementation initiatives in traditionally structured organizations?",
+          "options": [
+            "Employees in the organization are always enthusiastically prepared for technological change.",
+            "Inadequate change management and resistance from stakeholders with existing investments in current processes.",
+            "Insufficient technology or inadequate AI system capabilities.",
+            "Technology quality and availability alone determine implementation success or failure."
+          ],
+          "correctAnswer": 1,
+          "explanation": "Reflects established organizational best practices.",
+          "scoringMethod": "automatic",
+          "tags": [
+            "cs"
+          ]
+        },
+        {
+          "id": "CS-P-130",
+          "type": "multiple-choice",
+          "points": 12,
+          "difficulty": 0.51,
+          "discrimination": 1.33,
+          "bloomLevel": "Understand",
+          "question": "What represents the MOST common factor that derails ambitious artificial intelligence implementation initiatives in traditionally structured organizations?",
+          "options": [
+            "Inadequate change management and resistance from stakeholders with existing investments in current processes.",
+            "Insufficient technology or inadequate AI system capabilities.",
+            "Technology quality and availability alone determine implementation success or failure.",
+            "Employees in the organization are always enthusiastically prepared for technological change."
+          ],
+          "correctAnswer": 0,
+          "explanation": "Reflects established organizational best practices.",
+          "scoringMethod": "automatic",
+          "tags": [
+            "cs"
+          ]
+        },
+        {
+          "id": "CS-P-131",
+          "type": "multiple-choice",
+          "points": 11,
+          "difficulty": 0.61,
+          "discrimination": 1.17,
+          "bloomLevel": "Apply",
+          "question": "How should artificial intelligence solutions be appropriately adapted when being deployed across different industry sectors?",
+          "options": [
+            "Develop deep understanding of industry-specific challenges, regulations, and business models before adaptation.",
+            "Industry differences are too costly and complex to justify solution adaptation efforts.",
+            "Deploy identical solutions across all industries without modification or customization.",
+            "Each industry is so fundamentally different that AI solutions cannot be adapted across sectors."
+          ],
+          "correctAnswer": 0,
+          "explanation": "Reflects established organizational best practices.",
+          "scoringMethod": "automatic",
+          "tags": [
+            "cs"
+          ]
+        },
+        {
+          "id": "CS-P-132",
+          "type": "multiple-choice",
+          "points": 10,
+          "difficulty": 0.54,
+          "discrimination": 1.32,
+          "bloomLevel": "Apply",
+          "question": "What represents the MOST common factor that derails ambitious artificial intelligence implementation initiatives in traditionally structured organizations?",
+          "options": [
+            "Inadequate change management and resistance from stakeholders with existing investments in current processes.",
+            "Technology quality and availability alone determine implementation success or failure.",
+            "Insufficient technology or inadequate AI system capabilities.",
+            "Employees in the organization are always enthusiastically prepared for technological change."
+          ],
+          "correctAnswer": 0,
+          "explanation": "Reflects established organizational best practices.",
+          "scoringMethod": "automatic",
+          "tags": [
+            "cs"
+          ]
+        },
+        {
+          "id": "CS-P-133",
+          "type": "multiple-choice",
+          "points": 12,
+          "difficulty": 0.61,
+          "discrimination": 1.2,
+          "bloomLevel": "Apply",
+          "question": "How should an organization appropriately incorporate understanding of its existing organizational culture into artificial intelligence strategy development and implementation planning?",
+          "options": [
+            "Organizational culture should not be considered in artificial intelligence strategic planning.",
+            "Organizational culture fundamentally shapes readiness and adoption patterns, and should inform strategy and implementation approach.",
+            "Artificial intelligence strategy should prioritize overriding and changing organizational culture.",
+            "Organizational culture considerations are only relevant for human resources hiring processes."
+          ],
+          "correctAnswer": 1,
+          "explanation": "Reflects established organizational best practices.",
+          "scoringMethod": "automatic",
+          "tags": [
+            "cs"
+          ]
+        },
+        {
+          "id": "CS-P-134",
+          "type": "multiple-choice",
+          "points": 10,
+          "difficulty": 0.49,
+          "discrimination": 1.37,
+          "bloomLevel": "Analyze",
+          "question": "What represents the MOST common factor that derails ambitious artificial intelligence implementation initiatives in traditionally structured organizations?",
+          "options": [
+            "Employees in the organization are always enthusiastically prepared for technological change.",
+            "Insufficient technology or inadequate AI system capabilities.",
+            "Technology quality and availability alone determine implementation success or failure.",
+            "Inadequate change management and resistance from stakeholders with existing investments in current processes."
+          ],
+          "correctAnswer": 3,
+          "explanation": "Reflects established organizational best practices.",
+          "scoringMethod": "automatic",
+          "tags": [
+            "cs"
+          ]
+        },
+        {
+          "id": "CS-P-135",
+          "type": "multiple-choice",
+          "points": 13,
+          "difficulty": 0.64,
+          "discrimination": 1.17,
+          "bloomLevel": "Analyze",
+          "question": "How should artificial intelligence solutions be appropriately adapted when being deployed across different industry sectors?",
+          "options": [
+            "Deploy identical solutions across all industries without modification or customization.",
+            "Develop deep understanding of industry-specific challenges, regulations, and business models before adaptation.",
+            "Industry differences are too costly and complex to justify solution adaptation efforts.",
+            "Each industry is so fundamentally different that AI solutions cannot be adapted across sectors."
+          ],
+          "correctAnswer": 1,
+          "explanation": "Reflects established organizational best practices.",
+          "scoringMethod": "automatic",
+          "tags": [
+            "cs"
+          ]
+        },
+        {
+          "id": "CS-P-136",
+          "type": "multiple-choice",
+          "points": 13,
+          "difficulty": 0.59,
+          "discrimination": 1.32,
+          "bloomLevel": "Understand",
+          "question": "How should artificial intelligence solutions be appropriately adapted when being deployed across different industry sectors?",
+          "options": [
+            "Develop deep understanding of industry-specific challenges, regulations, and business models before adaptation.",
+            "Industry differences are too costly and complex to justify solution adaptation efforts.",
+            "Each industry is so fundamentally different that AI solutions cannot be adapted across sectors.",
+            "Deploy identical solutions across all industries without modification or customization."
+          ],
+          "correctAnswer": 0,
+          "explanation": "Reflects established organizational best practices.",
+          "scoringMethod": "automatic",
+          "tags": [
+            "cs"
+          ]
+        },
+        {
+          "id": "CS-P-137",
+          "type": "multiple-choice",
+          "points": 12,
+          "difficulty": 0.42,
+          "discrimination": 1.21,
+          "bloomLevel": "Analyze",
+          "question": "How should an organization appropriately incorporate understanding of its existing organizational culture into artificial intelligence strategy development and implementation planning?",
+          "options": [
+            "Organizational culture fundamentally shapes readiness and adoption patterns, and should inform strategy and implementation approach.",
+            "Artificial intelligence strategy should prioritize overriding and changing organizational culture.",
+            "Organizational culture should not be considered in artificial intelligence strategic planning.",
+            "Organizational culture considerations are only relevant for human resources hiring processes."
+          ],
+          "correctAnswer": 0,
+          "explanation": "Reflects established organizational best practices.",
+          "scoringMethod": "automatic",
+          "tags": [
+            "cs"
+          ]
+        },
+        {
+          "id": "CS-P-138",
+          "type": "multiple-choice",
+          "points": 13,
+          "difficulty": 0.55,
+          "discrimination": 1.27,
+          "bloomLevel": "Analyze",
+          "question": "What represents the MOST common factor that derails ambitious artificial intelligence implementation initiatives in traditionally structured organizations?",
+          "options": [
+            "Insufficient technology or inadequate AI system capabilities.",
+            "Technology quality and availability alone determine implementation success or failure.",
+            "Inadequate change management and resistance from stakeholders with existing investments in current processes.",
+            "Employees in the organization are always enthusiastically prepared for technological change."
+          ],
+          "correctAnswer": 2,
+          "explanation": "Reflects established organizational best practices.",
+          "scoringMethod": "automatic",
+          "tags": [
+            "cs"
+          ]
+        },
+        {
+          "id": "CS-P-139",
+          "type": "multiple-choice",
+          "points": 12,
+          "difficulty": 0.54,
+          "discrimination": 1.24,
+          "bloomLevel": "Apply",
+          "question": "How should artificial intelligence solutions be appropriately adapted when being deployed across different industry sectors?",
+          "options": [
+            "Industry differences are too costly and complex to justify solution adaptation efforts.",
+            "Deploy identical solutions across all industries without modification or customization.",
+            "Each industry is so fundamentally different that AI solutions cannot be adapted across sectors.",
+            "Develop deep understanding of industry-specific challenges, regulations, and business models before adaptation."
+          ],
+          "correctAnswer": 3,
+          "explanation": "Reflects established organizational best practices.",
+          "scoringMethod": "automatic",
+          "tags": [
+            "cs"
+          ]
+        },
+        {
+          "id": "CS-P-140",
+          "type": "multiple-choice",
+          "points": 12,
+          "difficulty": 0.46,
+          "discrimination": 1.18,
+          "bloomLevel": "Understand",
+          "question": "How should an organization appropriately incorporate understanding of its existing organizational culture into artificial intelligence strategy development and implementation planning?",
+          "options": [
+            "Organizational culture should not be considered in artificial intelligence strategic planning.",
+            "Organizational culture considerations are only relevant for human resources hiring processes.",
+            "Artificial intelligence strategy should prioritize overriding and changing organizational culture.",
+            "Organizational culture fundamentally shapes readiness and adoption patterns, and should inform strategy and implementation approach."
+          ],
+          "correctAnswer": 3,
+          "explanation": "Reflects established organizational best practices.",
+          "scoringMethod": "automatic",
+          "tags": [
+            "cs"
+          ]
+        }
+      ]
+    },
+    {
+      "dimensionCode": "CRS",
+      "dimensionName": "Creative Reasoning Synthesis",
+      "items": [
+        {
+          "id": "CRS-P-141",
+          "type": "multiple-choice",
+          "points": 11,
+          "difficulty": 0.59,
+          "discrimination": 1.39,
+          "bloomLevel": "Apply",
+          "question": "How can artificial intelligence most effectively support genuine innovation and strategic advancement beyond incremental optimization and efficiency improvements?",
+          "options": [
+            "Genuine innovation requires avoiding artificial intelligence entirely.",
+            "Artificial intelligence enables exploration of novel possibilities when appropriately combined with human creative thinking.",
+            "Artificial intelligence automatically produces innovation in all applications.",
+            "Artificial intelligence is capable only of optimization and cannot support genuine innovation."
+          ],
+          "correctAnswer": 1,
+          "explanation": "Based on professional best practices and evidence.",
+          "scoringMethod": "automatic",
+          "tags": [
+            "crs",
+            "professional"
+          ]
+        },
+        {
+          "id": "CRS-P-142",
+          "type": "multiple-choice",
+          "points": 12,
+          "difficulty": 0.45,
+          "discrimination": 1.27,
+          "bloomLevel": "Understand",
+          "question": "In what circumstances should organizations APPROPRIATELY refrain from using artificial intelligence in strategic problem-solving and decision-making contexts?",
+          "options": [
+            "AI should be excluded when problems are entirely novel or require fundamental values-based judgments outside the AI training data.",
+            "Artificial intelligence should never be excluded from any strategic problem-solving effort.",
+            "AI should always be deployed first regardless of problem characteristics.",
+            "AI systems address all categories of strategic problems effectively."
+          ],
+          "correctAnswer": 0,
+          "explanation": "Based on professional best practices and evidence.",
+          "scoringMethod": "automatic",
+          "tags": [
+            "crs",
+            "professional"
+          ]
+        },
+        {
+          "id": "CRS-P-143",
+          "type": "multiple-choice",
+          "points": 12,
+          "difficulty": 0.61,
+          "discrimination": 1.22,
+          "bloomLevel": "Apply",
+          "question": "What role do artificial intelligence-generated insights appropriately play in the development of organizational strategy?",
+          "options": [
+            "AI insights are irrelevant to strategy development.",
+            "Only human judgment without AI-generated data produces valuable strategic insights.",
+            "AI reveals data patterns that humans synthesize and transform into strategic decisions and novel approaches.",
+            "Data analysis and AI insights prevent genuine strategic innovation."
+          ],
+          "correctAnswer": 2,
+          "explanation": "Based on professional best practices and evidence.",
+          "scoringMethod": "automatic",
+          "tags": [
+            "crs",
+            "professional"
+          ]
+        },
+        {
+          "id": "CRS-P-144",
+          "type": "multiple-response",
+          "points": 13,
+          "difficulty": 0.48,
+          "discrimination": 1.33,
+          "bloomLevel": "Analyze",
+          "question": "Which of the following elements support artificial intelligence-enabled innovation within organizations? (Select ALL that apply)",
+          "options": [
+            "Cross-domain thinking and recognition of analogous patterns from different business contexts.",
+            "Strict adherence to and implementation of the first option generated by AI.",
+            "AI systems generate diverse solution options and perspectives for consideration.",
+            "Human judgment evaluates which options represent genuinely innovative approaches."
+          ],
+          "correctAnswers": [
+            0,
+            2,
+            3
+          ],
+          "explanation": "All correct options represent valid considerations.",
+          "scoringMethod": "automatic",
+          "tags": [
+            "crs",
+            "professional"
+          ]
+        },
+        {
+          "id": "CRS-P-145",
+          "type": "multiple-choice",
+          "points": 12,
+          "difficulty": 0.47,
+          "discrimination": 1.39,
+          "bloomLevel": "Analyze",
+          "question": "What role do artificial intelligence-generated insights appropriately play in the development of organizational strategy?",
+          "options": [
+            "Data analysis and AI insights prevent genuine strategic innovation.",
+            "AI insights are irrelevant to strategy development.",
+            "Only human judgment without AI-generated data produces valuable strategic insights.",
+            "AI reveals data patterns that humans synthesize and transform into strategic decisions and novel approaches."
+          ],
+          "correctAnswer": 3,
+          "explanation": "Reflects established organizational best practices.",
+          "scoringMethod": "automatic",
+          "tags": [
+            "crs"
+          ]
+        },
+        {
+          "id": "CRS-P-146",
+          "type": "multiple-choice",
+          "points": 10,
+          "difficulty": 0.64,
+          "discrimination": 1.31,
+          "bloomLevel": "Understand",
+          "question": "In what circumstances should organizations APPROPRIATELY refrain from using artificial intelligence in strategic problem-solving and decision-making contexts?",
+          "options": [
+            "AI systems address all categories of strategic problems effectively.",
+            "Artificial intelligence should never be excluded from any strategic problem-solving effort.",
+            "AI should be excluded when problems are entirely novel or require fundamental values-based judgments outside the AI training data.",
+            "AI should always be deployed first regardless of problem characteristics."
+          ],
+          "correctAnswer": 2,
+          "explanation": "Reflects established organizational best practices.",
+          "scoringMethod": "automatic",
+          "tags": [
+            "crs"
+          ]
+        },
+        {
+          "id": "CRS-P-147",
+          "type": "multiple-choice",
+          "points": 12,
+          "difficulty": 0.54,
+          "discrimination": 1.27,
+          "bloomLevel": "Understand",
+          "question": "In what circumstances should organizations APPROPRIATELY refrain from using artificial intelligence in strategic problem-solving and decision-making contexts?",
+          "options": [
+            "AI systems address all categories of strategic problems effectively.",
+            "AI should always be deployed first regardless of problem characteristics.",
+            "Artificial intelligence should never be excluded from any strategic problem-solving effort.",
+            "AI should be excluded when problems are entirely novel or require fundamental values-based judgments outside the AI training data."
+          ],
+          "correctAnswer": 3,
+          "explanation": "Reflects established organizational best practices.",
+          "scoringMethod": "automatic",
+          "tags": [
+            "crs"
+          ]
+        },
+        {
+          "id": "CRS-P-148",
+          "type": "multiple-choice",
+          "points": 10,
+          "difficulty": 0.64,
+          "discrimination": 1.21,
+          "bloomLevel": "Understand",
+          "question": "In what circumstances should organizations APPROPRIATELY refrain from using artificial intelligence in strategic problem-solving and decision-making contexts?",
+          "options": [
+            "Artificial intelligence should never be excluded from any strategic problem-solving effort.",
+            "AI should be excluded when problems are entirely novel or require fundamental values-based judgments outside the AI training data.",
+            "AI systems address all categories of strategic problems effectively.",
+            "AI should always be deployed first regardless of problem characteristics."
+          ],
+          "correctAnswer": 1,
+          "explanation": "Reflects established organizational best practices.",
+          "scoringMethod": "automatic",
+          "tags": [
+            "crs"
+          ]
+        },
+        {
+          "id": "CRS-P-149",
+          "type": "multiple-choice",
+          "points": 10,
+          "difficulty": 0.5,
+          "discrimination": 1.17,
+          "bloomLevel": "Understand",
+          "question": "What role do artificial intelligence-generated insights appropriately play in the development of organizational strategy?",
+          "options": [
+            "AI reveals data patterns that humans synthesize and transform into strategic decisions and novel approaches.",
+            "Only human judgment without AI-generated data produces valuable strategic insights.",
+            "Data analysis and AI insights prevent genuine strategic innovation.",
+            "AI insights are irrelevant to strategy development."
+          ],
+          "correctAnswer": 0,
+          "explanation": "Reflects established organizational best practices.",
+          "scoringMethod": "automatic",
+          "tags": [
+            "crs"
+          ]
+        },
+        {
+          "id": "CRS-P-150",
+          "type": "multiple-choice",
+          "points": 10,
+          "difficulty": 0.44,
+          "discrimination": 1.29,
+          "bloomLevel": "Understand",
+          "question": "In what circumstances should organizations APPROPRIATELY refrain from using artificial intelligence in strategic problem-solving and decision-making contexts?",
+          "options": [
+            "AI systems address all categories of strategic problems effectively.",
+            "AI should be excluded when problems are entirely novel or require fundamental values-based judgments outside the AI training data.",
+            "AI should always be deployed first regardless of problem characteristics.",
+            "Artificial intelligence should never be excluded from any strategic problem-solving effort."
+          ],
+          "correctAnswer": 1,
+          "explanation": "Reflects established organizational best practices.",
+          "scoringMethod": "automatic",
+          "tags": [
+            "crs"
+          ]
+        },
+        {
+          "id": "CRS-P-151",
+          "type": "multiple-choice",
+          "points": 11,
+          "difficulty": 0.43,
+          "discrimination": 1.34,
+          "bloomLevel": "Analyze",
+          "question": "What role do artificial intelligence-generated insights appropriately play in the development of organizational strategy?",
+          "options": [
+            "AI reveals data patterns that humans synthesize and transform into strategic decisions and novel approaches.",
+            "AI insights are irrelevant to strategy development.",
+            "Data analysis and AI insights prevent genuine strategic innovation.",
+            "Only human judgment without AI-generated data produces valuable strategic insights."
+          ],
+          "correctAnswer": 0,
+          "explanation": "Reflects established organizational best practices.",
+          "scoringMethod": "automatic",
+          "tags": [
+            "crs"
+          ]
+        },
+        {
+          "id": "CRS-P-152",
+          "type": "multiple-choice",
+          "points": 13,
+          "difficulty": 0.5,
+          "discrimination": 1.38,
+          "bloomLevel": "Apply",
+          "question": "In what circumstances should organizations APPROPRIATELY refrain from using artificial intelligence in strategic problem-solving and decision-making contexts?",
+          "options": [
+            "Artificial intelligence should never be excluded from any strategic problem-solving effort.",
+            "AI should be excluded when problems are entirely novel or require fundamental values-based judgments outside the AI training data.",
+            "AI systems address all categories of strategic problems effectively.",
+            "AI should always be deployed first regardless of problem characteristics."
+          ],
+          "correctAnswer": 1,
+          "explanation": "Reflects established organizational best practices.",
+          "scoringMethod": "automatic",
+          "tags": [
+            "crs"
+          ]
+        },
+        {
+          "id": "CRS-P-153",
+          "type": "multiple-choice",
+          "points": 10,
+          "difficulty": 0.54,
+          "discrimination": 1.17,
+          "bloomLevel": "Understand",
+          "question": "What role do artificial intelligence-generated insights appropriately play in the development of organizational strategy?",
+          "options": [
+            "AI reveals data patterns that humans synthesize and transform into strategic decisions and novel approaches.",
+            "Only human judgment without AI-generated data produces valuable strategic insights.",
+            "AI insights are irrelevant to strategy development.",
+            "Data analysis and AI insights prevent genuine strategic innovation."
+          ],
+          "correctAnswer": 0,
+          "explanation": "Reflects established organizational best practices.",
+          "scoringMethod": "automatic",
+          "tags": [
+            "crs"
+          ]
+        },
+        {
+          "id": "CRS-P-154",
+          "type": "multiple-choice",
+          "points": 11,
+          "difficulty": 0.56,
+          "discrimination": 1.22,
+          "bloomLevel": "Understand",
+          "question": "How can artificial intelligence most effectively support genuine innovation and strategic advancement beyond incremental optimization and efficiency improvements?",
+          "options": [
+            "Genuine innovation requires avoiding artificial intelligence entirely.",
+            "Artificial intelligence is capable only of optimization and cannot support genuine innovation.",
+            "Artificial intelligence enables exploration of novel possibilities when appropriately combined with human creative thinking.",
+            "Artificial intelligence automatically produces innovation in all applications."
+          ],
+          "correctAnswer": 2,
+          "explanation": "Reflects established organizational best practices.",
+          "scoringMethod": "automatic",
+          "tags": [
+            "crs"
+          ]
+        },
+        {
+          "id": "CRS-P-155",
+          "type": "multiple-choice",
+          "points": 13,
+          "difficulty": 0.44,
+          "discrimination": 1.17,
+          "bloomLevel": "Apply",
+          "question": "How can artificial intelligence most effectively support genuine innovation and strategic advancement beyond incremental optimization and efficiency improvements?",
+          "options": [
+            "Artificial intelligence automatically produces innovation in all applications.",
+            "Artificial intelligence is capable only of optimization and cannot support genuine innovation.",
+            "Artificial intelligence enables exploration of novel possibilities when appropriately combined with human creative thinking.",
+            "Genuine innovation requires avoiding artificial intelligence entirely."
+          ],
+          "correctAnswer": 2,
+          "explanation": "Reflects established organizational best practices.",
+          "scoringMethod": "automatic",
+          "tags": [
+            "crs"
+          ]
+        },
+        {
+          "id": "CRS-P-156",
+          "type": "multiple-choice",
+          "points": 11,
+          "difficulty": 0.57,
+          "discrimination": 1.27,
+          "bloomLevel": "Apply",
+          "question": "How can artificial intelligence most effectively support genuine innovation and strategic advancement beyond incremental optimization and efficiency improvements?",
+          "options": [
+            "Artificial intelligence is capable only of optimization and cannot support genuine innovation.",
+            "Artificial intelligence automatically produces innovation in all applications.",
+            "Genuine innovation requires avoiding artificial intelligence entirely.",
+            "Artificial intelligence enables exploration of novel possibilities when appropriately combined with human creative thinking."
+          ],
+          "correctAnswer": 3,
+          "explanation": "Reflects established organizational best practices.",
+          "scoringMethod": "automatic",
+          "tags": [
+            "crs"
+          ]
+        },
+        {
+          "id": "CRS-P-157",
+          "type": "multiple-choice",
+          "points": 10,
+          "difficulty": 0.58,
+          "discrimination": 1.33,
+          "bloomLevel": "Analyze",
+          "question": "In what circumstances should organizations APPROPRIATELY refrain from using artificial intelligence in strategic problem-solving and decision-making contexts?",
+          "options": [
+            "AI should be excluded when problems are entirely novel or require fundamental values-based judgments outside the AI training data.",
+            "AI should always be deployed first regardless of problem characteristics.",
+            "AI systems address all categories of strategic problems effectively.",
+            "Artificial intelligence should never be excluded from any strategic problem-solving effort."
+          ],
+          "correctAnswer": 0,
+          "explanation": "Reflects established organizational best practices.",
+          "scoringMethod": "automatic",
+          "tags": [
+            "crs"
+          ]
+        },
+        {
+          "id": "CRS-P-158",
+          "type": "multiple-choice",
+          "points": 11,
+          "difficulty": 0.46,
+          "discrimination": 1.22,
+          "bloomLevel": "Apply",
+          "question": "What role do artificial intelligence-generated insights appropriately play in the development of organizational strategy?",
+          "options": [
+            "AI reveals data patterns that humans synthesize and transform into strategic decisions and novel approaches.",
+            "Only human judgment without AI-generated data produces valuable strategic insights.",
+            "AI insights are irrelevant to strategy development.",
+            "Data analysis and AI insights prevent genuine strategic innovation."
+          ],
+          "correctAnswer": 0,
+          "explanation": "Reflects established organizational best practices.",
+          "scoringMethod": "automatic",
+          "tags": [
+            "crs"
+          ]
+        },
+        {
+          "id": "CRS-P-159",
+          "type": "multiple-choice",
+          "points": 12,
+          "difficulty": 0.43,
+          "discrimination": 1.21,
+          "bloomLevel": "Understand",
+          "question": "How can artificial intelligence most effectively support genuine innovation and strategic advancement beyond incremental optimization and efficiency improvements?",
+          "options": [
+            "Artificial intelligence is capable only of optimization and cannot support genuine innovation.",
+            "Artificial intelligence automatically produces innovation in all applications.",
+            "Genuine innovation requires avoiding artificial intelligence entirely.",
+            "Artificial intelligence enables exploration of novel possibilities when appropriately combined with human creative thinking."
+          ],
+          "correctAnswer": 3,
+          "explanation": "Reflects established organizational best practices.",
+          "scoringMethod": "automatic",
+          "tags": [
+            "crs"
+          ]
+        },
+        {
+          "id": "CRS-P-160",
+          "type": "multiple-choice",
+          "points": 12,
+          "difficulty": 0.42,
+          "discrimination": 1.19,
+          "bloomLevel": "Apply",
+          "question": "In what circumstances should organizations APPROPRIATELY refrain from using artificial intelligence in strategic problem-solving and decision-making contexts?",
+          "options": [
+            "Artificial intelligence should never be excluded from any strategic problem-solving effort.",
+            "AI systems address all categories of strategic problems effectively.",
+            "AI should always be deployed first regardless of problem characteristics.",
+            "AI should be excluded when problems are entirely novel or require fundamental values-based judgments outside the AI training data."
+          ],
+          "correctAnswer": 3,
+          "explanation": "Reflects established organizational best practices.",
+          "scoringMethod": "automatic",
+          "tags": [
+            "crs"
+          ]
+        }
+      ]
+    }
+  ],
+  "dimensions": [
     {
       "dimensionCode": "SAU",
       "dimensionName": "Strategic AI Understanding",

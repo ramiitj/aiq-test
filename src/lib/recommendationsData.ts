@@ -8,13 +8,13 @@
 // Dimension Names - Aligned with Research Paper
 export const dimensionNames: { [key: string]: string } = {
   SAU: "Strategic AI Understanding",
-  QFP: "Prompt Engineering Intelligence",
-  IPT: "Critical Evaluation Capability",
-  CTR: "Integration Intelligence",
-  TAS: "Adaptive Learning Capability",
-  ETH: "Ethical Judgment in AI Utilization",
-  ADA: "Context Sensitivity",
-  COL: "Creative Synthesis",
+  PEI: "Prompt Engineering Intelligence",
+  CEC: "Critical Evaluation Capability",
+  II: "Integration Intelligence",
+  ALC: "Adaptive Learning Capability",
+  EJC: "Ethical Judgment in AI Utilization",
+  CS: "Context Sensitivity",
+  CRS: "Creative Reasoning Synthesis",
 };
 
 // Performance-Tiered Recommendations Structure
@@ -84,7 +84,7 @@ export const tieredRecommendations: TieredRecommendations = {
       ]
     }
   },
-  QFP: {
+  PEI: {
     beginner: {
       low: [
         "Learn basic prompt structure: clear instructions, specific context, and desired output format",
@@ -137,7 +137,7 @@ export const tieredRecommendations: TieredRecommendations = {
       ]
     }
   },
-  IPT: {
+  CEC: {
     beginner: {
       low: [
         "Learn basic fact-checking methods to verify AI-generated information against reliable sources",
@@ -190,7 +190,7 @@ export const tieredRecommendations: TieredRecommendations = {
       ]
     }
   },
-  CTR: {
+  II: {
     beginner: {
       low: [
         "Start with simple task delegation: identify routine tasks that AI can handle independently",
@@ -243,7 +243,7 @@ export const tieredRecommendations: TieredRecommendations = {
       ]
     }
   },
-  TAS: {
+  ALC: {
     beginner: {
       low: [
         "Start tracking what works and doesn't work in your AI interactions to build learning patterns",
@@ -296,7 +296,7 @@ export const tieredRecommendations: TieredRecommendations = {
       ]
     }
   },
-  ETH: {
+  EJC: {
     beginner: {
       low: [
         "Learn basic ethical principles relevant to AI use: privacy, fairness, and transparency",
@@ -349,7 +349,7 @@ export const tieredRecommendations: TieredRecommendations = {
       ]
     }
   },
-  ADA: {
+  CS: {
     beginner: {
       low: [
         "Learn to recognize how different contexts require different approaches to AI use",
@@ -402,7 +402,7 @@ export const tieredRecommendations: TieredRecommendations = {
       ]
     }
   },
-  COL: {
+  CRS: {
     beginner: {
       low: [
         "Start experimenting with using AI for basic creative tasks and problem-solving",

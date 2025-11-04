@@ -26,6 +26,7 @@ import { ShareModal } from "@/components/ShareModal";
 import { generatePDFReport } from "@/lib/pdfGenerator";
 import { loadTestItems } from "@/lib/adaptiveItemSelector";
 import { calculateTestScores } from "@/lib/scoreCalculator";
+import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 
 interface TestResult {
   id: string;
@@ -49,6 +50,8 @@ interface ScoringResult {
   assessmentLevel: string;
   scoringGuidelines: { [key: string]: string };
   performanceLevel: string;
+  failedDimensions?: string[];
+  dimensionMinimumRequired?: number;
 }
 
 const dimensionNames = [
@@ -64,13 +67,13 @@ const dimensionNames = [
 
 const dimensionCodeMap: Record<string, string> = {
   SAU: "Strategic AI Understanding",
-  PEI: "Prompt Engineering & Iteration",
-  CEC: "Critical Evaluation & Calibration",
-  ITI: "Intelligent Task Integration",
-  ALC: "Adaptive Learning & Continuous Improvement",
-  EJU: "Ethical Judgment & Use",
-  CXS: "Context Sensitivity",
-  CRS: "Creative Synthesis",
+  PEI: "Prompt Engineering Intelligence",
+  CEC: "Critical Evaluation Capability",
+  II: "Integration Intelligence",
+  ALC: "Adaptive Learning Capability",
+  EJC: "Ethical Judgment in AI Utilization",
+  CS: "Context Sensitivity",
+  CRS: "Creative Reasoning Synthesis",
 };
 
 const Results = () => {
@@ -464,6 +467,31 @@ const Results = () => {
               </div>
             </div>
           </div>
+        )}
+
+        {/* Failed Dimensions Alert */}
+        {scoringResult.failedDimensions && scoringResult.failedDimensions.length > 0 && (
+          <Alert variant="destructive" className="mb-6">
+            <AlertCircle className="h-4 w-4" />
+            <AlertTitle>Dimension Minimum Not Met</AlertTitle>
+            <AlertDescription>
+              While your overall score was {scoringResult.percentageScore}%, you did not meet 
+              the minimum requirement of {scoringResult.dimensionMinimumRequired}% in the 
+              following {scoringResult.failedDimensions.length} dimension(s):
+              <ul className="mt-2 ml-4 list-disc">
+                {scoringResult.failedDimensions.map(code => (
+                  <li key={code}>
+                    <strong>{dimensionCodeMap[code] || code}</strong>
+                  </li>
+                ))}
+              </ul>
+              <p className="mt-2 text-sm">
+                To pass, you must score at least {scoringResult.dimensionMinimumRequired}% 
+                in every dimension AND achieve the overall passing score of{' '}
+                {Math.round((scoringResult.passingScore / scoringResult.totalPossiblePoints) * 100)}%.
+              </p>
+            </AlertDescription>
+          </Alert>
         )}
 
         {/* Hero Section */}
