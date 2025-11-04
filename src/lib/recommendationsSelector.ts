@@ -1,11 +1,7 @@
-import {
-  beginnerRecommendations,
-  professionalRecommendations,
-  expertRecommendations,
-} from "./recommendationsData";
+import { tieredRecommendations } from "./recommendationsData";
 
 /**
- * Get performance-aware recommendations for a specific dimension
+ * Get performance-aware, research-aligned recommendations for a specific dimension
  * @param dimensionCode - The dimension code (e.g., "SAU", "QFP")
  * @param percentage - The performance percentage (0-100)
  * @param assessmentLevel - The assessment level (beginner, professional, expert)
@@ -16,45 +12,33 @@ export function getRecommendations(
   percentage: number,
   assessmentLevel: string
 ): string[] {
-  // Determine base recommendations by assessment level
-  let baseRecs: string[] = [];
-  
+  // Determine assessment level
+  let level: "beginner" | "professional" | "expert" = "professional";
   if (assessmentLevel.includes("beginner")) {
-    baseRecs = beginnerRecommendations[dimensionCode] || [];
-  } else if (assessmentLevel.includes("professional")) {
-    baseRecs = professionalRecommendations[dimensionCode] || [];
-  } else {
-    baseRecs = expertRecommendations[dimensionCode] || [];
+    level = "beginner";
+  } else if (assessmentLevel.includes("expert")) {
+    level = "expert";
   }
 
-  // Adjust recommendations based on actual performance
-  // High performers (80%+) get expert-level recommendations
-  if (percentage >= 80) {
-    const expertRecs = expertRecommendations[dimensionCode];
-    if (expertRecs && expertRecs.length > 0) {
-      return expertRecs;
-    }
-  }
-  // Low performers (<40%) get foundational recommendations
-  else if (percentage < 40) {
-    const beginnerRecs = beginnerRecommendations[dimensionCode];
-    if (beginnerRecs && beginnerRecs.length > 0) {
-      return beginnerRecs;
-    }
-  }
-  // Medium performers (40-60%) on expert assessment might benefit from professional-level guidance
-  else if (percentage < 60 && assessmentLevel.includes("expert")) {
-    const professionalRecs = professionalRecommendations[dimensionCode];
-    if (professionalRecs && professionalRecs.length > 0) {
-      return professionalRecs;
-    }
+  // Determine performance tier based on percentage
+  let tier: "low" | "medium" | "high" = "medium";
+  if (percentage < 40) {
+    tier = "low";
+  } else if (percentage >= 70) {
+    tier = "high";
   }
 
-  // Default to base recommendations
-  return baseRecs.length > 0 ? baseRecs : [
-    "Continue practicing AI collaboration skills in this dimension",
-    "Seek feedback from peers and mentors on your AI use",
-    "Explore advanced resources and training in this area"
+  // Get tiered recommendations
+  const dimensionRecs = tieredRecommendations[dimensionCode];
+  if (dimensionRecs && dimensionRecs[level] && dimensionRecs[level][tier]) {
+    return dimensionRecs[level][tier];
+  }
+
+  // Fallback recommendations if dimension not found
+  return [
+    "Continue developing your AI collaboration skills in this dimension",
+    "Seek feedback from peers and mentors on your AI use patterns",
+    "Explore specialized resources and training in this area of AI collaboration"
   ];
 }
 
