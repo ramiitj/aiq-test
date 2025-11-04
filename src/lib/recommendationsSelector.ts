@@ -52,24 +52,31 @@ export function getProficiencyLevel(
   percentage: number,
   assessmentLevel: string
 ): string {
-  if (assessmentLevel.includes("beginner")) {
-    if (percentage >= 90) return "Exceptional";
-    if (percentage >= 80) return "Advanced";
-    if (percentage >= 70) return "Proficient";
-    if (percentage >= 60) return "Developing";
+  const level = assessmentLevel.toLowerCase();
+
+  if (level === "beginner") {
+    if (percentage >= 91) return "Advanced";
+    if (percentage >= 81) return "Proficient";
+    if (percentage >= 61) return "Developing";
+    if (percentage >= 41) return "Beginner";
+    return "Novice";
+  }
+
+  if (level === "professional") {
+    if (percentage >= 91) return "Expert";
+    if (percentage >= 81) return "Advanced";
+    if (percentage >= 61) return "Proficient";
+    if (percentage >= 41) return "Developing";
     return "Emerging";
-  } else if (assessmentLevel.includes("professional")) {
-    if (percentage >= 90) return "Expert";
-    if (percentage >= 80) return "Advanced";
-    if (percentage >= 70) return "Proficient";
-    if (percentage >= 60) return "Competent";
-    return "Developing";
-  } else {
-    // Expert level
-    if (percentage >= 90) return "Thought Leader";
-    if (percentage >= 80) return "Expert";
-    if (percentage >= 70) return "Advanced";
-    if (percentage >= 60) return "Proficient";
+  }
+
+  if (level === "expert") {
+    if (percentage >= 96) return "Master";
+    if (percentage >= 86) return "Expert";
+    if (percentage >= 71) return "Advanced";
+    if (percentage >= 51) return "Proficient";
     return "Developing";
   }
+
+  return "Emerging";
 }

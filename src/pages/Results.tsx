@@ -474,6 +474,18 @@ const Results = () => {
           </div>
         )}
 
+        {/* Expert Level Achievement Alert */}
+        {result.test_version === 'expert' && scoringResult.passed && (
+          <Alert className="mb-6 border-green-500 bg-green-50 dark:bg-green-950/20">
+            <Trophy className="h-4 w-4 text-green-600" />
+            <AlertTitle className="text-green-800 dark:text-green-400">Expert Certification Achieved!</AlertTitle>
+            <AlertDescription className="text-green-700 dark:text-green-300">
+              You've achieved the rigorous 80% passing threshold required for Expert-level certification, 
+              demonstrating world-class AI literacy and strategic mastery.
+            </AlertDescription>
+          </Alert>
+        )}
+
         {/* Failed Dimensions Alert */}
         {scoringResult.failedDimensions && scoringResult.failedDimensions.length > 0 && (
           <Alert variant="destructive" className="mb-6">

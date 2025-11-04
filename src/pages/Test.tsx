@@ -117,7 +117,7 @@ const Test = () => {
 
   const questionsPerDimension = version === 'beginner' ? 8 : 10;
   const totalQuestions = version === 'beginner' ? 60 : 80;
-  const testDuration = version === 'beginner' ? 5400 : (version === 'professional' ? 7200 : 9000); // 90, 120, or 150 minutes
+  const testDuration = version === 'beginner' ? 3600 : (version === 'professional' ? 7200 : 9000); // 60, 120, or 150 minutes
 
   useEffect(() => {
     initializeTest();
@@ -281,7 +281,7 @@ const Test = () => {
         setCurrentQuestion(validQuestion);
         
         // Fallback to duration based on saved test version if time_remaining is missing
-        const fallbackDuration = (testData.test_version === 'beginner') ? 5400 : (testData.test_version === 'professional' ? 7200 : 9000);
+        const fallbackDuration = (testData.test_version === 'beginner') ? 3600 : (testData.test_version === 'professional' ? 7200 : 9000);
         setTimeRemaining(typeof testData.time_remaining === 'number' ? testData.time_remaining : fallbackDuration);
         setAnswers((testData.answers as Record<string, string>) || {});
         

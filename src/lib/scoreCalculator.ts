@@ -67,8 +67,8 @@ function calculateItemPoints(
       return basePoints * (1 + difficulty * 0.4 + discrimination * 0.2);
     
     case 'expert':
-      // Advanced IRT: 3-parameter logistic model
-      return basePoints * (1 + difficulty * 0.5 + discrimination * 0.3 + c_param * 0.1);
+      // Advanced IRT: Updated formula from v5.0
+      return basePoints * (1 + difficulty * 0.5 + discrimination * 0.25);
     
     default:
       return basePoints;

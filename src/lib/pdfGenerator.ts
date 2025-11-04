@@ -177,6 +177,17 @@ export async function generatePDFReport(
   doc.setFontSize(8.5);
   doc.setTextColor(...colors.mediumGray);
   doc.setFont("helvetica", "normal");
+  
+  // Show certification level with proper thresholds
+  const certificationLevel = assessmentLevel === 'expert' 
+    ? `Expert Level (${percentageScore.toFixed(1)}% - Requires 80% minimum)`
+    : assessmentLevel === 'professional'
+      ? `Professional Level (${percentageScore.toFixed(1)}% - Requires 70% minimum)`
+      : `Beginner Level (${percentageScore.toFixed(1)}% - Requires 70% minimum)`;
+  
+  doc.text(certificationLevel, centerX, currentY, { align: "center" });
+
+  currentY += 4;
   doc.text(`Certificate ID: ${verificationCode}`, centerX, currentY, { align: "center" });
 
   currentY += 11;
