@@ -157,7 +157,7 @@ const Results = () => {
         .slice(0, 3);
 
       // Load recommendations with pass/fail context
-      await extractRecommendations(testVersion, sortedDimensions, calculatedScores.passed);
+      await extractRecommendations(testVersion, sortedDimensions, calculatedScores.passed, assessmentData);
 
       // Get user's name from profile (registered name)
       const { data: profile } = await supabase
@@ -294,6 +294,7 @@ const Results = () => {
     testVersion: string,
     weakDimensions: { code: string; score: number }[],
     isPassing: boolean,
+    assessmentData: any
   ) => {
     setLoadingRecommendations(true);
     try {
@@ -301,17 +302,21 @@ const Results = () => {
       const { getRecommendations } = await import("@/lib/recommendationsSelector");
       
       const recs: { [key: string]: string[] } = {};
-      const maxPoints = scoringResult.totalPossiblePoints / 8;
+      const maxPoints = assessmentData.scoringConfiguration.pointsPerDimension;
+      
+      console.log("📊 Extracting recommendations with maxPoints:", maxPoints);
 
       // For each weak dimension, get performance-aware recommendations
       weakDimensions.forEach(({ code, score }) => {
         const percentage = (score / maxPoints) * 100;
+        console.log(`📌 Dimension ${code}: ${score}/${maxPoints} = ${percentage.toFixed(1)}%`);
         recs[code] = getRecommendations(code, percentage, testVersion);
       });
 
+      console.log("✅ Loaded recommendations:", recs);
       setRecommendations(recs);
     } catch (error) {
-      console.error("Failed to load recommendations:", error);
+      console.error("❌ Failed to load recommendations:", error);
       setRecommendations({});
     } finally {
       setLoadingRecommendations(false);
