@@ -88,6 +88,12 @@ export async function generatePDFReport(
     doc.text(`Verify at: aiq.works/verify-certificate/${verificationCode}`, pageWidth / 2, footerY + 4, { align: "center" });
   };
 
+  const addPageWithFooter = () => {
+    doc.addPage();
+    currentPageNumber++;
+    currentY = 18;
+  };
+
   // Helper function to add wrapped text with proper margins
   const addWrappedText = (text: string, x: number, y: number, maxWidth: number, lineHeight: number = 5.5): number => {
     const lines = doc.splitTextToSize(text, maxWidth);
@@ -98,10 +104,11 @@ export async function generatePDFReport(
   };
 
   let currentY = 0;
+  let currentPageNumber = 1;
 
   // PAGE 1: Header and Overview
   doc.setFillColor(...colors.primaryBlue);
-  doc.rect(0, 0, pageWidth, 38, "F");
+  doc.rect(0, 0, pageWidth, 40, "F");
 
   doc.setTextColor(255, 255, 255);
   doc.setFontSize(28);
@@ -127,11 +134,11 @@ export async function generatePDFReport(
     day: "numeric",
   });
   const capitalizedLevel = assessmentLevel ? assessmentLevel.charAt(0).toUpperCase() + assessmentLevel.slice(1) : "Professional";
-  doc.text(`${capitalizedLevel} Level • Issued ${issueDateStr}`, pageWidth / 2, 30, {
+  doc.text(`${capitalizedLevel} Level • Issued ${issueDateStr}`, pageWidth / 2, 33, {
     align: "center",
   });
 
-  currentY = 48;
+  currentY = 50;
 
   // Overall Score Box
   const centerX = pageWidth / 2;
@@ -266,9 +273,7 @@ export async function generatePDFReport(
   dimensionScores.forEach((dim, index) => {
     // Check if we need a new page (leave 50mm for footer and safety)
     if (currentY + barSpacing > maxY - 10) {
-      addFooter(1, 3);
-      doc.addPage();
-      currentY = 18;
+      addPageWithFooter();
       
       // Add section title on new page
       doc.setFontSize(14);
@@ -310,8 +315,6 @@ export async function generatePDFReport(
     currentY += barSpacing;
   });
 
-  addFooter(1, 3);
-
   // Add prominent verification box on page 1
   currentY += 5;
   if (currentY + 30 < maxY) {
@@ -335,8 +338,7 @@ export async function generatePDFReport(
   }
 
   // PAGE 2: Recommendations Part 1
-  doc.addPage();
-  currentY = 18;
+  addPageWithFooter();
 
   doc.setFontSize(15);
   doc.setFont("helvetica", "bold");
@@ -446,11 +448,8 @@ export async function generatePDFReport(
     },
   });
 
-  addFooter(2, 3);
-
   // PAGE 3: Recommendations Part 2 and Verification
-  doc.addPage();
-  currentY = 18;
+  addPageWithFooter();
 
   doc.setFontSize(15);
   doc.setFont("helvetica", "bold");
@@ -525,8 +524,7 @@ export async function generatePDFReport(
 
   // Ensure we don't go past the maximum Y position
   if (currentY > maxY - 50) {
-    doc.addPage();
-    currentY = 18;
+    addPageWithFooter();
   }
 
   // Verification Section
@@ -588,9 +586,7 @@ export async function generatePDFReport(
 
   // Check if there's enough space for "About This Assessment" section
   if (currentY > maxY - 50) {
-    addFooter(3, 3);
-    doc.addPage();
-    currentY = 18;
+    addPageWithFooter();
   }
 
   currentY += 8;
@@ -649,7 +645,12 @@ export async function generatePDFReport(
   doc.setFontSize(9);
   doc.text("https://doi.org/10.1007/s44163-025-00516-1", margin, currentY);
 
-  addFooter(3, 3);
+  // Add footers to all pages with correct page numbers
+  const totalPages = doc.getNumberOfPages();
+  for (let i = 1; i <= totalPages; i++) {
+    doc.setPage(i);
+    addFooter(i, totalPages);
+  }
 
   return doc.output("blob");
 }
