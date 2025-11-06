@@ -74,19 +74,18 @@ export async function generatePDFReport(
   };
 
   const addFooter = (pageNum: number, totalPages: number) => {
-    doc.setFontSize(7);
+    doc.setFontSize(6.5);
     doc.setTextColor(...colors.mediumGray);
-    const footerY = pageHeight - 8;
+    const footerY = pageHeight - 10;
 
-    // AIQ™ Trademark notice (left aligned)
-    doc.text("AIQ™ is a trademark of AI Works Pvt Ltd. All Rights Reserved.", margin, footerY);
-    
-    // Verification URL (centered)
-    doc.text(`Verify: https://aiq.works/verify-certificate/${verificationCode}`, pageWidth / 2, footerY, { align: "center" });
-    
-    // Page number (right aligned)
+    // Line 1: Trademark (left) and Page number (right)
+    doc.text("AIQ™ is a trademark of AI Works Pvt Ltd", margin, footerY);
     doc.setFontSize(8);
     doc.text(`${pageNum}/${totalPages}`, pageWidth - margin, footerY, { align: "right" });
+    
+    // Line 2: Verification URL (centered)
+    doc.setFontSize(7);
+    doc.text(`Verify at: aiq.works/verify-certificate/${verificationCode}`, pageWidth / 2, footerY + 4, { align: "center" });
   };
 
   // Helper function to add wrapped text with proper margins

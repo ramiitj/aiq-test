@@ -393,26 +393,88 @@ const Results = () => {
   const verificationUrl = verificationCode ? `https://aiq.works/verify-certificate/${verificationCode}` : "";
 
   const getScoreLevel = (points: number) => {
-    const percentage = (points / scoringResult.totalPossiblePoints) * 100;
-    if (percentage >= 80)
-      return {
-        label: "Exceptional",
-        color: "text-green-600 dark:text-green-400",
-        bg: "bg-green-50 dark:bg-green-950/20",
-      };
-    if (percentage >= 60)
-      return { label: "Proficient", color: "text-blue-600 dark:text-blue-400", bg: "bg-blue-50 dark:bg-blue-950/20" };
-    if (percentage >= 40)
-      return {
-        label: "Developing",
-        color: "text-yellow-600 dark:text-yellow-400",
-        bg: "bg-yellow-50 dark:bg-yellow-950/20",
-      };
-    return {
-      label: "Emerging",
-      color: "text-orange-600 dark:text-orange-400",
-      bg: "bg-orange-50 dark:bg-orange-950/20",
-    };
+    // Calculate percentage based on points per dimension, not total
+    const maxPointsPerDimension = scoringResult.totalPossiblePoints / 8;
+    const percentage = (points / maxPointsPerDimension) * 100;
+    
+    // Get test version to use correct thresholds
+    const testVersion = result?.test_version || 'professional';
+    let label = "Emerging";
+    let color = "text-orange-600 dark:text-orange-400";
+    let bg = "bg-orange-50 dark:bg-orange-950/20";
+    
+    if (testVersion.includes("beginner")) {
+      // Beginner thresholds
+      if (percentage >= 91) {
+        label = "Advanced";
+        color = "text-green-600 dark:text-green-400";
+        bg = "bg-green-50 dark:bg-green-950/20";
+      } else if (percentage >= 81) {
+        label = "Proficient";
+        color = "text-blue-600 dark:text-blue-400";
+        bg = "bg-blue-50 dark:bg-blue-950/20";
+      } else if (percentage >= 61) {
+        label = "Developing";
+        color = "text-yellow-600 dark:text-yellow-400";
+        bg = "bg-yellow-50 dark:bg-yellow-950/20";
+      } else if (percentage >= 41) {
+        label = "Beginner";
+        color = "text-orange-600 dark:text-orange-400";
+        bg = "bg-orange-50 dark:bg-orange-950/20";
+      } else {
+        label = "Novice";
+        color = "text-red-600 dark:text-red-400";
+        bg = "bg-red-50 dark:bg-red-950/20";
+      }
+    } else if (testVersion.includes("professional")) {
+      // Professional thresholds
+      if (percentage >= 91) {
+        label = "Expert";
+        color = "text-green-600 dark:text-green-400";
+        bg = "bg-green-50 dark:bg-green-950/20";
+      } else if (percentage >= 81) {
+        label = "Advanced";
+        color = "text-blue-600 dark:text-blue-400";
+        bg = "bg-blue-50 dark:bg-blue-950/20";
+      } else if (percentage >= 61) {
+        label = "Proficient";
+        color = "text-blue-600 dark:text-blue-400";
+        bg = "bg-blue-50 dark:bg-blue-950/20";
+      } else if (percentage >= 41) {
+        label = "Developing";
+        color = "text-yellow-600 dark:text-yellow-400";
+        bg = "bg-yellow-50 dark:bg-yellow-950/20";
+      } else {
+        label = "Emerging";
+        color = "text-orange-600 dark:text-orange-400";
+        bg = "bg-orange-50 dark:bg-orange-950/20";
+      }
+    } else {
+      // Expert thresholds
+      if (percentage >= 96) {
+        label = "Master";
+        color = "text-purple-600 dark:text-purple-400";
+        bg = "bg-purple-50 dark:bg-purple-950/20";
+      } else if (percentage >= 86) {
+        label = "Expert";
+        color = "text-green-600 dark:text-green-400";
+        bg = "bg-green-50 dark:bg-green-950/20";
+      } else if (percentage >= 71) {
+        label = "Advanced";
+        color = "text-blue-600 dark:text-blue-400";
+        bg = "bg-blue-50 dark:bg-blue-950/20";
+      } else if (percentage >= 51) {
+        label = "Proficient";
+        color = "text-blue-600 dark:text-blue-400";
+        bg = "bg-blue-50 dark:bg-blue-950/20";
+      } else {
+        label = "Developing";
+        color = "text-yellow-600 dark:text-yellow-400";
+        bg = "bg-yellow-50 dark:bg-yellow-950/20";
+      }
+    }
+    
+    return { label, color, bg };
   };
 
   return (
