@@ -1,5 +1,6 @@
 interface CaptionData {
   score: number;
+  totalPossible: number;
   level: string;
   topDimensions: Array<{ name: string; score: number }>;
   verificationUrl: string;
@@ -7,7 +8,7 @@ interface CaptionData {
 }
 
 export function generateCaption(data: CaptionData): string {
-  const { score, topDimensions, verificationUrl, passed = true } = data;
+  const { score, totalPossible, topDimensions, verificationUrl, passed = true } = data;
 
   const dimensionList = topDimensions
     .map((dim) => `✅ ${dim.name} (${dim.score.toFixed(1)})`)
@@ -15,7 +16,7 @@ export function generateCaption(data: CaptionData): string {
 
   // For non-passing users, focus on progress and learning journey
   if (!passed) {
-    return `📊 Completed my AIQ Assessment™ and scored ${score.toFixed(1)}/100 (${data.level} level)!
+    return `📊 Completed my AIQ Assessment™ and scored ${score.toFixed(1)}/${totalPossible} (${data.level} level)!
 
 This comprehensive assessment measures AI collaboration skills across 8 research-validated dimensions using psychometric methodologies.
 
@@ -29,10 +30,12 @@ Verify my results: ${verificationUrl}
 #AILearning #SkillDevelopment #ContinuousImprovement #AICollaboration #ProfessionalGrowth`;
   }
 
-  if (score >= 80) {
+  const percentage = (score / totalPossible) * 100;
+  
+  if (percentage >= 80) {
     return `🌟 Thrilled to share my AIQ Assessment™ results!
 
-Scored ${score.toFixed(1)}/100 as an Exceptional AI Collaborator across 8 research-validated dimensions.
+Scored ${score.toFixed(1)}/${totalPossible} as an Exceptional AI Collaborator across 8 research-validated dimensions.
 
 This assessment measures real-world AI collaboration skills using 400 psychometrically calibrated items and adaptive Item Response Theory (IRT) methodology.
 
@@ -46,10 +49,10 @@ Verify my results: ${verificationUrl}
 #AIQ #AIExcellence #ProfessionalDevelopment #ArtificialIntelligence #FutureOfWork`;
   }
 
-  if (score >= 60) {
+  if (percentage >= 60) {
     return `🎯 Just completed the AIQ Assessment™!
 
-Scored ${score.toFixed(1)}/100 as a Proficient AI Collaborator. This comprehensive test evaluates 8 key dimensions of AI collaboration competency using research-backed psychometric methods.
+Scored ${score.toFixed(1)}/${totalPossible} as a Proficient AI Collaborator. This comprehensive test evaluates 8 key dimensions of AI collaboration competency using research-backed psychometric methods.
 
 Excited to continue developing these critical skills as AI becomes integral to every profession.
 
@@ -61,10 +64,10 @@ Verify my results: ${verificationUrl}
 #AICollaboration #ContinuousLearning #ProfessionalGrowth #AISkills`;
   }
 
-  if (score >= 40) {
+  if (percentage >= 40) {
     return `📈 Completed the AIQ Assessment™ to benchmark my AI collaboration skills!
 
-Scored ${score.toFixed(1)}/100 as a Developing AI Collaborator across 8 dimensions. Ready to enhance these capabilities as AI transforms the workplace.
+Scored ${score.toFixed(1)}/${totalPossible} as a Developing AI Collaborator across 8 dimensions. Ready to enhance these capabilities as AI transforms the workplace.
 
 Key focus areas:
 ${dimensionList}
@@ -78,7 +81,7 @@ Verify my results: ${verificationUrl}
 
   return `🌱 Started my AI collaboration journey with the AIQ Assessment™!
 
-Scored ${score.toFixed(1)}/100 as an Emerging AI Collaborator. Excited to develop these essential skills for the AI-powered future of work.
+Scored ${score.toFixed(1)}/${totalPossible} as an Emerging AI Collaborator. Excited to develop these essential skills for the AI-powered future of work.
 
 Current strengths:
 ${dimensionList}

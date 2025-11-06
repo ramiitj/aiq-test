@@ -587,6 +587,13 @@ export async function generatePDFReport(
   doc.setLineWidth(0.4);
   doc.line(margin, currentY, pageWidth - margin, currentY);
 
+  // Check if there's enough space for "About This Assessment" section
+  if (currentY > maxY - 50) {
+    addFooter(3, 3);
+    doc.addPage();
+    currentY = 18;
+  }
+
   currentY += 8;
 
   doc.setFontSize(13);
@@ -596,7 +603,7 @@ export async function generatePDFReport(
 
   currentY += 7;
 
-  doc.setFontSize(9);
+  doc.setFontSize(8.5);
   doc.setFont("helvetica", "normal");
   doc.setTextColor(...colors.darkText);
 
@@ -608,8 +615,8 @@ export async function generatePDFReport(
   ];
 
   assessmentInfo.forEach((info) => {
-    currentY = addWrappedText(`• ${info}`, margin + 2, currentY, contentWidth - 4, 4.5);
-    currentY += 1;
+    currentY = addWrappedText(`• ${info}`, margin + 2, currentY, contentWidth - 4, 4);
+    currentY += 0.5;
   });
 
   currentY += 5;

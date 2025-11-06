@@ -1,5 +1,6 @@
 interface SocialMediaImageData {
   score: number;
+  totalPossible: number;
   level: string;
   verificationCode: string;
   dimensions: Array<{ name: string; score: number }>;
@@ -83,14 +84,18 @@ export async function generateSocialMediaImage(data: SocialMediaImageData): Prom
 
   // Draw score in badge
   ctx.fillStyle = '#3B82F6';
-  ctx.font = 'bold 64px Inter, system-ui, sans-serif';
+  ctx.font = 'bold 48px Inter, system-ui, sans-serif';
   ctx.textAlign = 'center';
-  ctx.fillText(data.score.toFixed(1), badgeX, badgeY + 10);
+  ctx.fillText(`${data.score.toFixed(1)}`, badgeX, badgeY - 5);
+  
+  ctx.font = '600 18px Inter, system-ui, sans-serif';
+  ctx.fillStyle = '#6B7280';
+  ctx.fillText(`out of ${data.totalPossible}`, badgeX, badgeY + 20);
 
   // Draw "AIQ" text in badge
-  ctx.font = '600 20px Inter, system-ui, sans-serif';
+  ctx.font = '600 16px Inter, system-ui, sans-serif';
   ctx.fillStyle = '#6B7280';
-  ctx.fillText('AIQ', badgeX, badgeY + 40);
+  ctx.fillText('AIQ Score', badgeX, badgeY + 42);
 
   // Draw proficiency level
   ctx.fillStyle = 'white';
@@ -150,9 +155,10 @@ export async function generateSocialMediaImage(data: SocialMediaImageData): Prom
   });
 }
 
-export function getLevelText(score: number): string {
-  if (score >= 80) return '🌟 Exceptional AI Collaborator';
-  if (score >= 60) return '🎯 Proficient AI Collaborator';
-  if (score >= 40) return '📈 Developing AI Collaborator';
+export function getLevelText(score: number, totalPossible: number): string {
+  const percentage = (score / totalPossible) * 100;
+  if (percentage >= 80) return '🌟 Exceptional AI Collaborator';
+  if (percentage >= 60) return '🎯 Proficient AI Collaborator';
+  if (percentage >= 40) return '📈 Developing AI Collaborator';
   return '🌱 Emerging AI Collaborator';
 }

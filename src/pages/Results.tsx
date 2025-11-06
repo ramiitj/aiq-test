@@ -850,25 +850,31 @@ const Results = () => {
                       // Dynamically import getProficiencyLevel
                       const getProficiencyLevelSync = (perc: number): string => {
                         const testVersion = result?.test_version || 'professional';
+                        
                         if (testVersion.includes("beginner")) {
-                          if (perc >= 90) return "Exceptional";
-                          if (perc >= 80) return "Advanced";
-                          if (perc >= 70) return "Proficient";
-                          if (perc >= 60) return "Developing";
+                          // Beginner thresholds (v3.0 Revised)
+                          if (perc >= 91) return "Advanced";
+                          if (perc >= 81) return "Proficient";
+                          if (perc >= 61) return "Developing";
+                          if (perc >= 41) return "Beginner";
+                          return "Novice";
+                        } 
+                        
+                        if (testVersion.includes("professional")) {
+                          // Professional thresholds (v4.0 Revised)
+                          if (perc >= 91) return "Expert";
+                          if (perc >= 81) return "Advanced";
+                          if (perc >= 61) return "Proficient";
+                          if (perc >= 41) return "Developing";
                           return "Emerging";
-                        } else if (testVersion.includes("professional")) {
-                          if (perc >= 90) return "Expert";
-                          if (perc >= 80) return "Advanced";
-                          if (perc >= 70) return "Proficient";
-                          if (perc >= 60) return "Competent";
-                          return "Developing";
-                        } else {
-                          if (perc >= 90) return "Thought Leader";
-                          if (perc >= 80) return "Expert";
-                          if (perc >= 70) return "Advanced";
-                          if (perc >= 60) return "Proficient";
-                          return "Developing";
-                        }
+                        } 
+                        
+                        // Expert (v5.0)
+                        if (perc >= 96) return "Master";
+                        if (perc >= 86) return "Expert";
+                        if (perc >= 71) return "Advanced";
+                        if (perc >= 51) return "Proficient";
+                        return "Developing";
                       };
 
                       return (
@@ -935,7 +941,8 @@ const Results = () => {
         <ShareModal
           open={shareModalOpen}
           onOpenChange={setShareModalOpen}
-          score={scoringResult.percentageScore}
+          score={scoringResult.overallScore}
+          totalPossible={scoringResult.totalPossiblePoints}
           dimensions={dimensionsWithNames}
           verificationCode={verificationCode}
           verificationUrl={verificationUrl}

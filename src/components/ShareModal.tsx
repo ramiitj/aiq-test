@@ -12,6 +12,7 @@ interface ShareModalProps {
   open: boolean;
   onOpenChange: (open: boolean) => void;
   score: number;
+  totalPossible: number;
   dimensions: Array<{ name: string; score: number }>;
   verificationCode: string;
   verificationUrl: string;
@@ -22,6 +23,7 @@ export function ShareModal({
   open,
   onOpenChange,
   score,
+  totalPossible,
   dimensions,
   verificationCode,
   verificationUrl,
@@ -35,7 +37,7 @@ export function ShareModal({
   const [copiedLink, setCopiedLink] = useState(false);
   const { toast } = useToast();
 
-  const level = getLevelText(score);
+  const level = getLevelText(score, totalPossible);
   const topDimensions = [...dimensions].sort((a, b) => b.score - a.score).slice(0, 3);
 
   useEffect(() => {
@@ -43,6 +45,7 @@ export function ShareModal({
       generateImage();
     const generatedCaption = generateCaption({
       score,
+      totalPossible,
       level,
       topDimensions,
       verificationUrl,
@@ -57,6 +60,7 @@ export function ShareModal({
     try {
       const blob = await generateSocialMediaImage({
         score,
+        totalPossible,
         level,
         verificationCode,
         dimensions: topDimensions,
