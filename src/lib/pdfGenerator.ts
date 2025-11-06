@@ -21,8 +21,8 @@ export async function generatePDFReport(
   expiryDate: Date,
   userEmail?: string,
   testDurationSeconds?: number,
-  assessmentLevel: string = 'professional',
-  scoringResult?: any // Required for accurate total and passing info
+  assessmentLevel: string = "professional",
+  scoringResult?: any, // Required for accurate total and passing info
 ): Promise<Blob> {
   const doc = new jsPDF({
     orientation: "portrait",
@@ -32,12 +32,14 @@ export async function generatePDFReport(
 
   // Validate passing score if scoringResult provided
   if (scoringResult && !scoringResult.passed) {
-    throw new Error(`Certificate requires passing score of ${scoringResult.passingScore} points. Current score: ${scoringResult.overallScore} points.`);
+    throw new Error(
+      `Certificate requires passing score of ${scoringResult.passingScore} points. Current score: ${scoringResult.overallScore} points.`,
+    );
   }
 
   // Calculate percentage for display
   const totalPossible = scoringResult?.totalPossiblePoints || 600;
-  const percentageScore = scoringResult?.percentageScore || ((overallScore / totalPossible) * 100);
+  const percentageScore = scoringResult?.percentageScore || (overallScore / totalPossible) * 100;
 
   const pageWidth = doc.internal.pageSize.getWidth();
   const pageHeight = doc.internal.pageSize.getHeight();
@@ -82,10 +84,12 @@ export async function generatePDFReport(
     doc.text("AIQ™ is a trademark of AI Works Pvt Ltd", margin, footerY);
     doc.setFontSize(8);
     doc.text(`${pageNum}/${totalPages}`, pageWidth - margin, footerY, { align: "right" });
-    
+
     // Line 2: Verification URL (centered)
     doc.setFontSize(7);
-    doc.text(`Verify at: aiq.works/verify-certificate/${verificationCode}`, pageWidth / 2, footerY + 4, { align: "center" });
+    doc.text(`Verify at: aiq.works/verify-certificate/${verificationCode}`, pageWidth / 2, footerY + 4, {
+      align: "center",
+    });
   };
 
   const addPageWithFooter = () => {
@@ -114,11 +118,11 @@ export async function generatePDFReport(
   doc.setFontSize(28);
   doc.setFont("helvetica", "bold");
   doc.text("AIQ", pageWidth / 2 - 8, 14, { align: "center" });
-  
+
   // Add ™ symbol
   doc.setFontSize(12);
   doc.text("™", pageWidth / 2 + 12, 11);
-  
+
   doc.setFontSize(14);
   doc.text("ASSESSMENT", pageWidth / 2, 22, { align: "center" });
 
@@ -133,7 +137,9 @@ export async function generatePDFReport(
     month: "long",
     day: "numeric",
   });
-  const capitalizedLevel = assessmentLevel ? assessmentLevel.charAt(0).toUpperCase() + assessmentLevel.slice(1) : "Professional";
+  const capitalizedLevel = assessmentLevel
+    ? assessmentLevel.charAt(0).toUpperCase() + assessmentLevel.slice(1)
+    : "Professional";
   doc.text(`${capitalizedLevel} Level • Issued ${issueDateStr}`, pageWidth / 2, 33, {
     align: "center",
   });
@@ -167,7 +173,7 @@ export async function generatePDFReport(
 
   currentY += 15;
 
-  const level = getProficiencyLevel(percentageScore, assessmentLevel || 'professional');
+  const level = getProficiencyLevel(percentageScore, assessmentLevel || "professional");
   doc.setFillColor(...scoreColor);
   const badgeWidth = 75;
   const badgeHeight = 10;
@@ -182,15 +188,18 @@ export async function generatePDFReport(
   doc.setFontSize(8.5);
   doc.setTextColor(...colors.mediumGray);
   doc.setFont("helvetica", "normal");
-  
+
   // Show certification level with proper thresholds
-  const capitalizedAssessmentLevel = assessmentLevel ? assessmentLevel.charAt(0).toUpperCase() + assessmentLevel.slice(1) : 'Professional';
-  const certificationLevel = assessmentLevel === 'expert' 
-    ? `${capitalizedAssessmentLevel} Level (${percentageScore.toFixed(1)}% - Requires 80% minimum)`
-    : assessmentLevel === 'professional'
-      ? `${capitalizedAssessmentLevel} Level (${percentageScore.toFixed(1)}% - Requires 70% minimum)`
-      : `${capitalizedAssessmentLevel} Level (${percentageScore.toFixed(1)}% - Requires 70% minimum)`;
-  
+  const capitalizedAssessmentLevel = assessmentLevel
+    ? assessmentLevel.charAt(0).toUpperCase() + assessmentLevel.slice(1)
+    : "Professional";
+  const certificationLevel =
+    assessmentLevel === "expert"
+      ? `${capitalizedAssessmentLevel} Level (${percentageScore.toFixed(1)}% - Requires 80% minimum)`
+      : assessmentLevel === "professional"
+        ? `${capitalizedAssessmentLevel} Level (${percentageScore.toFixed(1)}% - Requires 70% minimum)`
+        : `${capitalizedAssessmentLevel} Level (${percentageScore.toFixed(1)}% - Requires 70% minimum)`;
+
   doc.text(certificationLevel, centerX, currentY, { align: "center" });
 
   currentY += 4;
@@ -210,7 +219,7 @@ export async function generatePDFReport(
     const fullName = sharedDimensionNames[dim.code] || dim.name;
     // Calculate percentage for dimension (assuming equal weighting)
     const dimPercentage = (dim.score / (totalPossible / dimensionScores.length)) * 100;
-    return [fullName, dim.score.toFixed(1), getProficiencyLevel(dimPercentage, assessmentLevel || 'professional')];
+    return [fullName, dim.score.toFixed(1), getProficiencyLevel(dimPercentage, assessmentLevel || "professional")];
   });
 
   autoTable(doc, {
@@ -233,7 +242,7 @@ export async function generatePDFReport(
       lineWidth: 0.1,
       lineColor: [220, 220, 220],
       minCellHeight: 10,
-      cellWidth: 'wrap',
+      cellWidth: "wrap",
     },
     alternateRowStyles: {
       fillColor: [249, 250, 251],
@@ -274,7 +283,7 @@ export async function generatePDFReport(
     // Check if we need a new page (leave 50mm for footer and safety)
     if (currentY + barSpacing > maxY - 10) {
       addPageWithFooter();
-      
+
       // Add section title on new page
       doc.setFontSize(14);
       doc.setFont("helvetica", "bold");
@@ -284,14 +293,14 @@ export async function generatePDFReport(
     }
 
     const fullName = sharedDimensionNames[dim.code] || dim.name;
-    
+
     // Calculate percentage for visualization
     const dimPercentage = (dim.score / (totalPossible / dimensionScores.length)) * 100;
 
     doc.setFontSize(8.5);
     doc.setFont("helvetica", "normal");
     doc.setTextColor(...colors.darkText);
-    
+
     // Smarter label handling with proper width calculation
     const label = fullName.length > 30 ? fullName.substring(0, 27) + "..." : fullName;
     doc.text(label, margin, currentY + 4.5);
@@ -333,7 +342,7 @@ export async function generatePDFReport(
     // Split URL if too long
     const urlLines = doc.splitTextToSize(fullVerifyUrl, contentWidth - 10);
     urlLines.forEach((line: string, idx: number) => {
-      doc.text(line, margin + 5, currentY + 16 + (idx * 5));
+      doc.text(line, margin + 5, currentY + 16 + idx * 5);
     });
   }
 
@@ -375,14 +384,19 @@ export async function generatePDFReport(
       const fullName = sharedDimensionNames[dim.code] || dim.name;
       // Calculate percentage for this dimension
       const dimPercentage = (dim.score / (totalPossible / dimensionScores.length)) * 100;
-      const recs = getRecommendations(dim.code, dimPercentage, assessmentLevel || 'professional');
+      const recs = getRecommendations(dim.code, dimPercentage, assessmentLevel || "professional");
 
       const recText =
         recs.length > 0
           ? recs.map((r, idx) => `${idx + 1}. ${r}`).join("\n\n")
           : "1. Establish foundational knowledge through structured learning programs and mentorship.\n\n2. Engage with practical exercises and real-world case studies to build applied competency.\n\n3. Seek feedback from experienced practitioners to accelerate skill development.";
 
-      return [fullName, dim.score.toFixed(1), getProficiencyLevel(dimPercentage, assessmentLevel || 'professional'), recText];
+      return [
+        fullName,
+        dim.score.toFixed(1),
+        getProficiencyLevel(dimPercentage, assessmentLevel || "professional"),
+        recText,
+      ];
     });
   };
 
@@ -410,8 +424,8 @@ export async function generatePDFReport(
       valign: "top",
       halign: "left",
       minCellHeight: 12,
-      cellWidth: 'wrap',
-      overflow: 'linebreak',
+      cellWidth: "wrap",
+      overflow: "linebreak",
     },
     columnStyles: {
       0: {
@@ -433,10 +447,10 @@ export async function generatePDFReport(
         halign: "left",
       },
     },
-    tableWidth: 'auto',
+    tableWidth: "auto",
     styles: {
-      overflow: 'linebreak',
-      cellWidth: 'wrap',
+      overflow: "linebreak",
+      cellWidth: "wrap",
     },
     margin: { left: margin, right: margin },
     didParseCell: function (data) {
@@ -482,8 +496,8 @@ export async function generatePDFReport(
       valign: "top",
       halign: "left",
       minCellHeight: 12,
-      cellWidth: 'wrap',
-      overflow: 'linebreak',
+      cellWidth: "wrap",
+      overflow: "linebreak",
     },
     columnStyles: {
       0: {
@@ -505,10 +519,10 @@ export async function generatePDFReport(
         halign: "left",
       },
     },
-    tableWidth: 'auto',
+    tableWidth: "auto",
     styles: {
-      overflow: 'linebreak',
-      cellWidth: 'wrap',
+      overflow: "linebreak",
+      cellWidth: "wrap",
     },
     margin: { left: margin, right: margin },
     didParseCell: function (data) {
@@ -603,7 +617,7 @@ export async function generatePDFReport(
   doc.setTextColor(...colors.darkText);
 
   const assessmentInfo = [
-    "Assessment employs adaptive Item Response Theory (IRT) methodology with 380+ psychometrically calibrated items",
+    "Assessment employs adaptive Item Response Theory (IRT) methodology with 400+ psychometrically calibrated items",
     "Evaluates competency across 8 core dimensions of AI collaboration capability",
     "Results remain valid for 180 days from date of issue",
     "Based on peer-reviewed research published in Discover Artificial Intelligence journal",
