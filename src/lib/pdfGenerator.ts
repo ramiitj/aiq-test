@@ -73,7 +73,7 @@ export async function generatePDFReport(
     return colors.red;
   };
 
-  const addFooter = () => {
+  const addFooter = (pageNum: number, totalPages: number) => {
     doc.setFontSize(7);
     doc.setTextColor(...colors.mediumGray);
     const footerY = pageHeight - 8;
@@ -81,14 +81,12 @@ export async function generatePDFReport(
     // AIQ™ Trademark notice (left aligned)
     doc.text("AIQ™ is a trademark of AI Works Pvt Ltd. All Rights Reserved.", margin, footerY);
     
-    // Verification URL with full HTTPS path (right aligned)
-    doc.text(`Verify: https://aiq.works/verify-certificate/${verificationCode}`, pageWidth - margin, footerY, { align: "right" });
-  };
-
-  const addPageNumber = (pageNum: number, totalPages: number) => {
-    doc.setFontSize(10);
-    doc.setTextColor(...colors.mediumGray);
-    doc.text(`${pageNum}/${totalPages}`, pageWidth - margin, pageHeight - 8, { align: "right" });
+    // Verification URL (centered)
+    doc.text(`Verify: https://aiq.works/verify-certificate/${verificationCode}`, pageWidth / 2, footerY, { align: "center" });
+    
+    // Page number (right aligned)
+    doc.setFontSize(8);
+    doc.text(`${pageNum}/${totalPages}`, pageWidth - margin, footerY, { align: "right" });
   };
 
   // Helper function to add wrapped text with proper margins
@@ -129,7 +127,8 @@ export async function generatePDFReport(
     month: "long",
     day: "numeric",
   });
-  doc.text(`${assessmentLevel || "Professional"} Level • Issued ${issueDateStr}`, pageWidth / 2, 30, {
+  const capitalizedLevel = assessmentLevel ? assessmentLevel.charAt(0).toUpperCase() + assessmentLevel.slice(1) : "Professional";
+  doc.text(`${capitalizedLevel} Level • Issued ${issueDateStr}`, pageWidth / 2, 30, {
     align: "center",
   });
 
@@ -179,11 +178,12 @@ export async function generatePDFReport(
   doc.setFont("helvetica", "normal");
   
   // Show certification level with proper thresholds
+  const capitalizedAssessmentLevel = assessmentLevel ? assessmentLevel.charAt(0).toUpperCase() + assessmentLevel.slice(1) : 'Professional';
   const certificationLevel = assessmentLevel === 'expert' 
-    ? `Expert Level (${percentageScore.toFixed(1)}% - Requires 80% minimum)`
+    ? `${capitalizedAssessmentLevel} Level (${percentageScore.toFixed(1)}% - Requires 80% minimum)`
     : assessmentLevel === 'professional'
-      ? `Professional Level (${percentageScore.toFixed(1)}% - Requires 70% minimum)`
-      : `Beginner Level (${percentageScore.toFixed(1)}% - Requires 70% minimum)`;
+      ? `${capitalizedAssessmentLevel} Level (${percentageScore.toFixed(1)}% - Requires 70% minimum)`
+      : `${capitalizedAssessmentLevel} Level (${percentageScore.toFixed(1)}% - Requires 70% minimum)`;
   
   doc.text(certificationLevel, centerX, currentY, { align: "center" });
 
@@ -259,11 +259,26 @@ export async function generatePDFReport(
 
   currentY += 7;
 
-  const barMaxWidth = contentWidth - 60;
-  const barHeight = 7;
-  const barSpacing = 10;
+  const barHeight = 8;
+  const barSpacing = 11;
+  const barStartX = margin + 52;
+  const adjustedBarMaxWidth = contentWidth - 65;
 
-  dimensionScores.forEach((dim) => {
+  dimensionScores.forEach((dim, index) => {
+    // Check if we need a new page (leave 50mm for footer and safety)
+    if (currentY + barSpacing > maxY - 10) {
+      addFooter(1, 3);
+      doc.addPage();
+      currentY = 18;
+      
+      // Add section title on new page
+      doc.setFontSize(14);
+      doc.setFont("helvetica", "bold");
+      doc.setTextColor(...colors.primaryBlue);
+      doc.text("Performance Visualization (continued)", margin, currentY);
+      currentY += 10;
+    }
+
     const fullName = sharedDimensionNames[dim.code] || dim.name;
     
     // Calculate percentage for visualization
@@ -274,13 +289,8 @@ export async function generatePDFReport(
     doc.setTextColor(...colors.darkText);
     
     // Smarter label handling with proper width calculation
-    const maxLabelWidth = 50;
     const label = fullName.length > 30 ? fullName.substring(0, 27) + "..." : fullName;
-    doc.text(label, margin, currentY + 4);
-
-    // Adjusted bar positioning
-    const barStartX = margin + 52;
-    const adjustedBarMaxWidth = contentWidth - 65;
+    doc.text(label, margin, currentY + 4.5);
 
     doc.setFillColor(238, 238, 238);
     doc.roundedRect(barStartX, currentY, adjustedBarMaxWidth, barHeight, 1.5, 1.5, "F");
@@ -296,13 +306,12 @@ export async function generatePDFReport(
     doc.setFontSize(9);
     doc.setFont("helvetica", "bold");
     doc.setTextColor(...barColor);
-    doc.text(`${dim.score.toFixed(1)}`, pageWidth - margin, currentY + 4, { align: "right" });
+    doc.text(`${dim.score.toFixed(1)}`, pageWidth - margin, currentY + 4.5, { align: "right" });
 
     currentY += barSpacing;
   });
 
-  addFooter();
-  addPageNumber(1, 3);
+  addFooter(1, 3);
 
   // Add prominent verification box on page 1
   currentY += 5;
@@ -438,8 +447,7 @@ export async function generatePDFReport(
     },
   });
 
-  addFooter();
-  addPageNumber(2, 3);
+  addFooter(2, 3);
 
   // PAGE 3: Recommendations Part 2 and Verification
   doc.addPage();
@@ -635,8 +643,7 @@ export async function generatePDFReport(
   doc.setFontSize(9);
   doc.text("https://doi.org/10.1007/s44163-025-00516-1", margin, currentY);
 
-  addFooter();
-  addPageNumber(3, 3);
+  addFooter(3, 3);
 
   return doc.output("blob");
 }
