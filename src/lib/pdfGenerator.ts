@@ -324,28 +324,6 @@ export async function generatePDFReport(
     currentY += barSpacing;
   });
 
-  // Add prominent verification box on page 1
-  currentY += 5;
-  if (currentY + 30 < maxY) {
-    doc.setFillColor(240, 249, 255); // Light blue background
-    doc.roundedRect(margin, currentY, contentWidth, 28, 3, 3, "F");
-
-    doc.setFontSize(10);
-    doc.setTextColor(...colors.darkText);
-    doc.setFont("helvetica", "bold");
-    doc.text("Verify This Certificate Online", margin + 5, currentY + 7);
-
-    doc.setFontSize(9);
-    doc.setFont("helvetica", "bold");
-    doc.setTextColor(0, 102, 204);
-    const fullVerifyUrl = `https://aiq.works/verify-certificate/${verificationCode}`;
-    // Split URL if too long
-    const urlLines = doc.splitTextToSize(fullVerifyUrl, contentWidth - 10);
-    urlLines.forEach((line: string, idx: number) => {
-      doc.text(line, margin + 5, currentY + 16 + idx * 5);
-    });
-  }
-
   // PAGE 2: Recommendations Part 1
   addPageWithFooter();
 
