@@ -25,7 +25,6 @@ import {
 import { useToast } from "@/hooks/use-toast";
 import { ShareModal } from "@/components/ShareModal";
 import { generatePDFReport } from "@/lib/pdfGenerator";
-import { loadTestItems } from "@/lib/adaptiveItemSelector";
 import { calculateTestScores } from "@/lib/scoreCalculator";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 
