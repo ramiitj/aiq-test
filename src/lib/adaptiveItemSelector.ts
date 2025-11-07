@@ -212,11 +212,15 @@ export async function loadTestItems(version: TestVersion = 'beginner'): Promise<
   try {
     let data;
     
+    // Map version to correct file names (use 'advanced' for all non-beginner versions)
+    const fileName = version === 'beginner' ? 'beginner-assessment.json' : 'advanced-assessment.json';
+    console.log(`[loadTestItems] Using file: ${fileName}`);
+    
     // Try to download from Supabase Storage first
     try {
       const { data: fileData, error: downloadError } = await supabase.storage
         .from('aiq-items')
-        .download(`${version}-assessment.json`);
+        .download(fileName);
       
       if (downloadError) {
         console.log(`[loadTestItems] Could not download from storage, falling back to public folder:`, downloadError.message);
@@ -233,7 +237,7 @@ export async function loadTestItems(version: TestVersion = 'beginner'): Promise<
     } catch (storageError) {
       // Fallback to public folder
       console.log(`[loadTestItems] Loading from public folder`);
-      const response = await fetch(`/test-items/${version}-assessment.json`);
+      const response = await fetch(`/test-items/${fileName}`);
       if (!response.ok) {
         throw new Error(`Failed to fetch test items: ${response.statusText}`);
       }
@@ -252,28 +256,42 @@ export async function loadTestItems(version: TestVersion = 'beginner'): Promise<
     const config = VERSION_CONFIGS[version];
     console.log(`[loadTestItems] Using config:`, config);
     
-    // Handle different data structures
+    // Handle different data structures - detect beginner (nested) vs advanced (flat)
     let dimensions: Dimension[];
     
-    if (version === 'beginner') {
-      // Beginner: wrapped structure with itemBank.dimensions
-      if (!data.itemBank?.dimensions) {
-        throw new Error('Invalid beginner assessment structure: missing itemBank.dimensions');
-      }
+    if (data.itemBank?.dimensions) {
+      // Beginner format: nested structure with itemBank.dimensions
       dimensions = data.itemBank.dimensions;
       console.log(`[loadTestItems] Beginner: Using all ${dimensions[0]?.items?.length || 0} items per dimension (fixed, 60 total)`);
-    } else {
-      // Professional/Expert: direct itemBank array
-      if (!Array.isArray(data.itemBank)) {
-        throw new Error(`Invalid ${version} assessment structure: itemBank must be an array`);
-      }
-      dimensions = data.itemBank;
-      console.log(`[loadTestItems] ${version}: Selecting ${config.itemsPerDimension} from ${dimensions[0]?.items?.length || 0} items per dimension (adaptive, 80 total)`);
+    } else if (Array.isArray(data.itemBank)) {
+      // Advanced format: flat array structure - group by dimension
+      console.log(`[loadTestItems] Advanced: Processing flat array structure`);
+      const dimensionMap = new Map<string, any>();
+      
+      (data.itemBank as any[]).forEach((dim: any) => {
+        if (!dimensionMap.has(dim.dimensionCode)) {
+          dimensionMap.set(dim.dimensionCode, {
+            dimensionCode: dim.dimensionCode,
+            dimensionName: dim.dimensionName,
+            description: dim.description,
+            weight: dim.weight || 0.125,
+            totalPoints: dim.totalPoints || 200,
+            items: []
+          });
+        }
+        const dimension = dimensionMap.get(dim.dimensionCode);
+        if (dim.items && Array.isArray(dim.items)) {
+          dimension.items.push(...dim.items);
+        }
+      });
+      
+      dimensions = Array.from(dimensionMap.values());
+      console.log(`[loadTestItems] Advanced: Selecting ${config.itemsPerDimension} from ${dimensions[0]?.items?.length || 0} items per dimension (adaptive, 80 total)`);
       
       // Track selected item IDs to prevent duplicates across dimensions
       const selectedItemIds = new Set<string>();
       
-      // Apply adaptive selection for professional and expert
+      // Apply adaptive selection for advanced
       dimensions = dimensions.map(dimension => ({
         ...dimension,
         items: selectItemsForDimension(dimension.items, config, selectedItemIds)
@@ -286,6 +304,8 @@ export async function loadTestItems(version: TestVersion = 'beginner'): Promise<
         console.error('Duplicate items detected in assessment');
         throw new Error('Assessment generation failed: duplicate items found');
       }
+    } else {
+      throw new Error('Unrecognized assessment structure');
     }
     
     console.log(`[loadTestItems] Final dimensions:`, {
@@ -294,19 +314,19 @@ export async function loadTestItems(version: TestVersion = 'beginner'): Promise<
       totalItems: dimensions.reduce((sum, d) => sum + d.items.length, 0)
     });
     
-    // Extract scoring configuration
+    // Use scoring configuration from JSON, with fallback defaults
     const scoringConfiguration: ScoringConfiguration = data.scoringConfiguration || {
       totalPoints: version === 'beginner' ? 600 : 1600,
       pointsPerDimension: version === 'beginner' ? 75 : 200,
-      passingScore: version === 'beginner' ? 420 : 1200,
-      passingPercentage: version === 'beginner' ? 70 : 75,
+      passingScore: version === 'beginner' ? 420 : 1280,
+      passingPercentage: version === 'beginner' ? 70 : 80,
       scoringMethod: {
-        type: version === 'beginner' ? 'simple-sum' : 'IRT-weighted',
+        type: version === 'beginner' ? 'simple-sum' : 'IRT-weighted-expert',
         description: 'Points-based scoring with difficulty weighting',
         basePoints: 10,
         formula: version === 'beginner' 
           ? 'points = basePoints × (1 + difficulty × 0.3)'
-          : 'points = basePoints × (1 + difficulty × 0.4 + discrimination × 0.2)'
+          : 'points = basePoints × (1 + difficulty × 0.5 + discrimination × 0.25)'
       },
       scoringGuidelines: version === 'beginner' ? {
         '0-40%': 'Novice (0-240 points)',
@@ -315,11 +335,11 @@ export async function loadTestItems(version: TestVersion = 'beginner'): Promise<
         '81-90%': 'Proficient (481-540 points)',
         '91-100%': 'Advanced (541-600 points)'
       } : {
-        '0-40%': 'Emerging (0-640 points)',
-        '41-60%': 'Developing (641-960 points)',
-        '61-80%': 'Proficient (961-1280 points)',
-        '81-90%': 'Advanced (1281-1440 points)',
-        '91-100%': 'Expert (1441-1600 points)'
+        '0-50%': 'Developing (0-800 points)',
+        '51-70%': 'Proficient (801-1120 points)',
+        '71-85%': 'Advanced (1121-1360 points)',
+        '86-95%': 'Expert (1361-1520 points)',
+        '96-100%': 'Master (1521-1600 points)'
       }
     };
     

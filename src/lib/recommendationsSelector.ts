@@ -12,19 +12,25 @@ export function getRecommendations(
   percentage: number,
   assessmentLevel: string
 ): string[] {
-  // Determine assessment level
+  // Normalize legacy levels to beginner/advanced
+  const normalizedLevel = assessmentLevel.toLowerCase() === 'professional' || 
+                          assessmentLevel.toLowerCase() === 'expert' 
+                          ? 'advanced' 
+                          : assessmentLevel.toLowerCase();
+  
+  // Map normalized level to tier (for recommendations data compatibility)
   let level: "beginner" | "professional" | "expert" = "professional";
-  if (assessmentLevel.includes("beginner")) {
+  if (normalizedLevel === "beginner") {
     level = "beginner";
-  } else if (assessmentLevel.includes("expert")) {
-    level = "expert";
+  } else if (normalizedLevel === "advanced") {
+    level = "expert"; // Map advanced to expert tier for recommendations
   }
 
   // Determine performance tier based on percentage
   let tier: "low" | "medium" | "high" = "medium";
-  if (percentage < 40) {
+  if (percentage < 60) {
     tier = "low";
-  } else if (percentage >= 70) {
+  } else if (percentage >= 80) {
     tier = "high";
   }
 
@@ -52,9 +58,14 @@ export function getProficiencyLevel(
   percentage: number,
   assessmentLevel: string
 ): string {
-  const level = assessmentLevel.toLowerCase();
+  // Normalize legacy levels
+  const normalizedLevel = assessmentLevel.toLowerCase() === 'professional' || 
+                          assessmentLevel.toLowerCase() === 'expert' 
+                          ? 'advanced' 
+                          : assessmentLevel.toLowerCase();
 
-  if (level === "beginner") {
+  // Beginner assessment thresholds (600 points, 60 items)
+  if (normalizedLevel === "beginner") {
     if (percentage >= 91) return "Advanced";
     if (percentage >= 81) return "Proficient";
     if (percentage >= 61) return "Developing";
@@ -62,15 +73,8 @@ export function getProficiencyLevel(
     return "Novice";
   }
 
-  if (level === "professional") {
-    if (percentage >= 91) return "Expert";
-    if (percentage >= 81) return "Advanced";
-    if (percentage >= 61) return "Proficient";
-    if (percentage >= 41) return "Developing";
-    return "Emerging";
-  }
-
-  if (level === "expert") {
+  // Advanced assessment thresholds (1600 points, 80 items)
+  if (normalizedLevel === "advanced") {
     if (percentage >= 96) return "Master";
     if (percentage >= 86) return "Expert";
     if (percentage >= 71) return "Advanced";
@@ -78,5 +82,10 @@ export function getProficiencyLevel(
     return "Developing";
   }
 
-  return "Emerging";
+  // Default fallback (beginner scale)
+  if (percentage >= 91) return "Advanced";
+  if (percentage >= 81) return "Proficient";
+  if (percentage >= 61) return "Developing";
+  if (percentage >= 41) return "Beginner";
+  return "Novice";
 }

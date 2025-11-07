@@ -55,23 +55,27 @@ function calculateItemPoints(
   const basePoints = item.points || 10;
   const difficulty = item.difficulty || 0.5;
   const discrimination = item.discrimination || 1.0;
-  const c_param = (item as any).c_param || 0.2; // Guessing parameter for expert level
 
-  switch (assessmentLevel) {
+  // Normalize legacy assessment levels
+  const normalizedLevel = assessmentLevel.toLowerCase() === 'professional' || 
+                          assessmentLevel.toLowerCase() === 'expert' 
+                          ? 'advanced' 
+                          : assessmentLevel.toLowerCase();
+
+  switch (normalizedLevel) {
     case 'beginner':
-      // Simple difficulty weighting
+      // Beginner: Simple difficulty weighting
+      // Formula: basePoints × (1 + difficulty × 0.3)
       return basePoints * (1 + difficulty * 0.3);
     
-    case 'professional':
-      // IRT-weighted: difficulty + discrimination
-      return basePoints * (1 + difficulty * 0.4 + discrimination * 0.2);
-    
-    case 'expert':
-      // Advanced IRT: Updated formula from v5.0
+    case 'advanced':
+      // Advanced: Full IRT weighting with discrimination
+      // Formula: basePoints × (1 + difficulty × 0.5 + discrimination × 0.25)
       return basePoints * (1 + difficulty * 0.5 + discrimination * 0.25);
     
     default:
-      return basePoints;
+      // Default to beginner level
+      return basePoints * (1 + difficulty * 0.3);
   }
 }
 
@@ -101,7 +105,7 @@ export function calculateTestScores(
   answers: Answer,
   dimensions: Dimension[],
   scoringConfig: ScoringConfiguration,
-  assessmentLevel: string = 'professional'
+  assessmentLevel: string = 'beginner'
 ): ScoringResult {
   const dimensionScores: { [dimensionCode: string]: number } = {};
   let totalCorrect = 0;

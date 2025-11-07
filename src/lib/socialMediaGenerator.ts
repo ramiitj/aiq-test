@@ -1,10 +1,13 @@
+import { getProficiencyLevel } from './recommendationsSelector';
+
 interface SocialMediaImageData {
   score: number;
   totalPossible: number;
-  level: string;
+  level?: string;
   verificationCode: string;
   dimensions: Array<{ name: string; score: number }>;
   verificationUrl: string;
+  assessmentLevel?: string;
 }
 
 export async function generateSocialMediaImage(data: SocialMediaImageData): Promise<Blob> {
@@ -97,10 +100,24 @@ export async function generateSocialMediaImage(data: SocialMediaImageData): Prom
   ctx.fillStyle = '#6B7280';
   ctx.fillText('AIQ Score', badgeX, badgeY + 42);
 
-  // Draw proficiency level
+  // Draw proficiency level with emoji
+  const percentage = (data.score / data.totalPossible) * 100;
+  const normalizedLevel = data.assessmentLevel?.toLowerCase() === 'professional' || 
+                          data.assessmentLevel?.toLowerCase() === 'expert' 
+                          ? 'advanced' 
+                          : data.assessmentLevel?.toLowerCase() || 'beginner';
+  const levelText = data.level || getProficiencyLevel(percentage, normalizedLevel);
+  
+  const levelEmoji = levelText === 'Master' ? '👑' :
+                    levelText === 'Expert' ? '🏆' : 
+                    levelText === 'Advanced' ? '⭐' :
+                    levelText === 'Proficient' ? '✨' :
+                    levelText === 'Developing' ? '📈' :
+                    levelText === 'Beginner' ? '🌱' : '📚';
+  
   ctx.fillStyle = 'white';
   ctx.font = 'bold 32px Inter, system-ui, sans-serif';
-  ctx.fillText(data.level, 600, 350);
+  ctx.fillText(`${levelEmoji} ${levelText}`, 600, 350);
 
   // Draw top 3 dimensions
   const topDimensions = data.dimensions.slice(0, 3);
@@ -155,10 +172,15 @@ export async function generateSocialMediaImage(data: SocialMediaImageData): Prom
   });
 }
 
-export function getLevelText(score: number, totalPossible: number): string {
+export function getLevelText(score: number, totalPossible: number, assessmentLevel: string = 'beginner'): string {
   const percentage = (score / totalPossible) * 100;
-  if (percentage >= 80) return '🌟 Exceptional AI Collaborator';
-  if (percentage >= 60) return '🎯 Proficient AI Collaborator';
-  if (percentage >= 40) return '📈 Developing AI Collaborator';
-  return '🌱 Emerging AI Collaborator';
+  
+  // Normalize legacy levels
+  const normalizedLevel = assessmentLevel.toLowerCase() === 'professional' || 
+                          assessmentLevel.toLowerCase() === 'expert' 
+                          ? 'advanced' 
+                          : assessmentLevel.toLowerCase();
+  
+  // Use the same proficiency level calculation as other parts of the system
+  return getProficiencyLevel(percentage, normalizedLevel);
 }
