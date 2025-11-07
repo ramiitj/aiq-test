@@ -264,50 +264,44 @@ export async function generatePDFReport(
     },
   });
 
-  currentY = (doc as any).lastAutoTable.finalY + 11;
+  // FORCE PAGE BREAK: Move to Page 2 for Visualization
+  addPageWithFooter();
+  // Reset Y to a clean starting position for Page 2 (e.g., 30mm from top)
+  currentY = 30;
 
-  // Performance Visualization
+  // Performance Visualization (Now on Page 2)
   doc.setFontSize(14);
   doc.setFont("helvetica", "bold");
   doc.setTextColor(...colors.primaryBlue);
   doc.text("Performance Visualization", margin, currentY);
 
-  currentY += 7;
+  currentY += 10; // Increased slightly for better spacing after new page title
 
   const barHeight = 8;
-  const barSpacing = 11;
+  const barSpacing = 12; // Increased slightly for neater look on dedicated page
   const barStartX = margin + 52;
   const adjustedBarMaxWidth = contentWidth - 65;
 
   dimensionScores.forEach((dim, index) => {
-    // Check if we need a new page (leave 50mm for footer and safety)
-    if (currentY + barSpacing > maxY - 10) {
-      addPageWithFooter();
-
-      // Add section title on new page
-      doc.setFontSize(14);
-      doc.setFont("helvetica", "bold");
-      doc.setTextColor(...colors.primaryBlue);
-      doc.text("Performance Visualization (continued)", margin, currentY);
-      currentY += 10;
-    }
+    // Note: Removed the 'if (currentY > maxY)' check here as 8 dimensions
+    // will easily fit on this dedicated new page.
 
     const fullName = sharedDimensionNames[dim.code] || dim.name;
-
-    // Calculate percentage for visualization
     const dimPercentage = (dim.score / (totalPossible / dimensionScores.length)) * 100;
 
-    doc.setFontSize(8.5);
+    doc.setFontSize(9); // Slightly larger font for dedicated page
     doc.setFont("helvetica", "normal");
     doc.setTextColor(...colors.darkText);
 
-    // Smarter label handling with proper width calculation
+    // Label
     const label = fullName.length > 30 ? fullName.substring(0, 27) + "..." : fullName;
-    doc.text(label, margin, currentY + 4.5);
+    doc.text(label, margin, currentY + 5);
 
+    // Background bar
     doc.setFillColor(238, 238, 238);
     doc.roundedRect(barStartX, currentY, adjustedBarMaxWidth, barHeight, 1.5, 1.5, "F");
 
+    // Score bar
     const scoreWidth = (dimPercentage / 100) * adjustedBarMaxWidth;
     const barColor = getLevelColor(dimPercentage);
     doc.setFillColor(...barColor);
@@ -315,16 +309,16 @@ export async function generatePDFReport(
       doc.roundedRect(barStartX, currentY, scoreWidth, barHeight, 1.5, 1.5, "F");
     }
 
-    // Score display with better positioning
+    // Score text
     doc.setFontSize(9);
     doc.setFont("helvetica", "bold");
     doc.setTextColor(...barColor);
-    doc.text(`${dim.score.toFixed(1)}`, pageWidth - margin, currentY + 4.5, { align: "right" });
+    doc.text(`${dim.score.toFixed(1)}`, pageWidth - margin, currentY + 5, { align: "right" });
 
     currentY += barSpacing;
   });
 
-  // PAGE 2: Recommendations Part 1
+  // PAGE 3: Recommendations Part 1
   addPageWithFooter();
 
   doc.setFontSize(15);
