@@ -124,7 +124,7 @@ export async function generatePDFReport(
   doc.text("™", pageWidth / 2 + 0, 11);
 
   doc.setFontSize(14);
-  doc.text("ASSESSMENT", pageWidth / 2, 20, { align: "center" });
+  doc.text("ASSESSMENT", pageWidth / 2 - 8, 22, { align: "center" });
 
   doc.setFontSize(11);
   doc.setFont("helvetica", "normal");
