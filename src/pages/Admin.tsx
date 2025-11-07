@@ -12,7 +12,6 @@ import { Upload, BarChart3, Users } from "lucide-react";
 import { checkUserRole } from "@/lib/roleUtils";
 import { sanitizeJsonString } from "@/lib/jsonSanitizer";
 import { AdminDataTables } from "@/components/AdminDataTables";
-import JSON5 from "json5";
 
 const Admin = () => {
   const [isAdmin, setIsAdmin] = useState(false);
@@ -110,8 +109,13 @@ const Admin = () => {
       try {
         jsonData = JSON.parse(sanitized);
       } catch (err) {
-        // Fallback to tolerant JSON5 parser
-        jsonData = JSON5.parse(fileContent);
+        toast({
+          title: "Invalid JSON file",
+          description: "The file must be valid JSON format. Please check for syntax errors.",
+          variant: "destructive",
+        });
+        setUploading(prev => ({ ...prev, [version]: false }));
+        return;
       }
 
       // Validate AIQ assessment structure based on version
