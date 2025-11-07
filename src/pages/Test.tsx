@@ -1194,6 +1194,15 @@ const Test = () => {
     <div className="min-h-screen">
       <Navigation isAuthenticated={true} />
       
+      {/* AI Blocker Component */}
+      {testId && (
+        <AIBlocker
+          isActive={true}
+          testId={testId}
+          onViolation={handleSecurityViolation}
+        />
+      )}
+      
       {/* Test Header */}
       <div className="border-b bg-white/80 dark:bg-gray-950/80 backdrop-blur-sm sticky top-16 z-40">
         <div className="container py-3">

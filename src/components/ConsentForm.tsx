@@ -62,6 +62,7 @@ export const ConsentForm = ({ open, onConsent, onDecline, testVersion }: Consent
   const [consentAssessment, setConsentAssessment] = useState(false);
   const [consentDataUsage, setConsentDataUsage] = useState(false);
   const [consentResultsAccess, setConsentResultsAccess] = useState(false);
+  const [consentSecurityMonitoring, setConsentSecurityMonitoring] = useState(false);
   const [consentResearch, setConsentResearch] = useState(false);
   const [consentCommunications, setConsentCommunications] = useState(false);
   
@@ -134,7 +135,7 @@ export const ConsentForm = ({ open, onConsent, onDecline, testVersion }: Consent
       case "demographics":
         return { age_range: ageRange, education_level: educationLevel, country, primary_language: primaryLanguage, technical_background: technicalBackground };
       case "consent":
-        return { consent_assessment: consentAssessment, consent_data_usage: consentDataUsage, consent_results_access: consentResultsAccess, consent_research: consentResearch, consent_communications: consentCommunications };
+        return { consent_assessment: consentAssessment, consent_data_usage: consentDataUsage, consent_results_access: consentResultsAccess, consent_security_monitoring: consentSecurityMonitoring, consent_research: consentResearch, consent_communications: consentCommunications };
       default:
         return {};
     }
@@ -166,15 +167,16 @@ export const ConsentForm = ({ open, onConsent, onDecline, testVersion }: Consent
       consent_assessment: consentAssessment,
       consent_data_usage: consentDataUsage,
       consent_results_access: consentResultsAccess,
+      consent_security_monitoring: consentSecurityMonitoring,
       consent_research: consentResearch,
       consent_communications: consentCommunications,
     };
 
     // Check all required consents
-    if (!consentAssessment || !consentDataUsage || !consentResultsAccess) {
+    if (!consentAssessment || !consentDataUsage || !consentResultsAccess || !consentSecurityMonitoring) {
       toast({
         title: "Consent Required",
-        description: "Please check all three required consent boxes to proceed.",
+        description: "Please check all four required consent boxes to proceed.",
         variant: "destructive",
       });
       return;
@@ -657,6 +659,17 @@ export const ConsentForm = ({ open, onConsent, onDecline, testVersion }: Consent
                     <span className="text-destructive">*</span> I understand that my assessment results and certificate will be available for download as a PDF from my dashboard.
                   </Label>
                 </div>
+                
+                <div className="flex items-start space-x-3 p-3 bg-amber-50 dark:bg-amber-950/20 rounded-lg border border-amber-200 dark:border-amber-800">
+                  <Checkbox
+                    id="consentSecurity"
+                    checked={consentSecurityMonitoring}
+                    onCheckedChange={(checked) => setConsentSecurityMonitoring(checked as boolean)}
+                  />
+                  <Label htmlFor="consentSecurity" className="text-sm cursor-pointer leading-relaxed">
+                    <span className="text-destructive">*</span> I consent to security monitoring during the assessment, including AI assistant detection, copy/paste blocking, tab switching monitoring, and violation logging. I understand that 3 violations will result in test termination.
+                  </Label>
+                </div>
               </div>
 
               <div className="space-y-4 border-t pt-4">
@@ -685,7 +698,7 @@ export const ConsentForm = ({ open, onConsent, onDecline, testVersion }: Consent
                 </div>
               </div>
 
-              {(!consentAssessment || !consentDataUsage || !consentResultsAccess) && (
+              {(!consentAssessment || !consentDataUsage || !consentResultsAccess || !consentSecurityMonitoring) && (
                 <div className="flex items-start gap-2 p-3 bg-muted rounded-lg">
                   <AlertCircle className="h-5 w-5 text-muted-foreground flex-shrink-0 mt-0.5" />
                   <p className="text-sm text-muted-foreground">
