@@ -2,6 +2,8 @@ import { Navigation } from "@/components/Navigation";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import Footer from "@/components/Footer";
+import { Helmet } from "react-helmet-async";
+import { Link } from "react-router-dom";
 import {
   Brain,
   Target,
@@ -16,6 +18,7 @@ import {
   Sparkles,
   CheckCircle,
   AlertCircle,
+  ArrowRight,
 } from "lucide-react";
 import { useEffect, useState } from "react";
 import { supabase } from "@/integrations/supabase/client";
@@ -54,17 +57,73 @@ const About = () => {
 
   return (
     <div className="min-h-screen flex flex-col animate-fade-in">
+      <Helmet>
+        <title>About AIQ Assessment - AI Quotient Testing Platform | aiq.works</title>
+        <meta
+          name="description"
+          content="Learn about the AIQ Framework - a scientifically validated assessment measuring AI collaboration capabilities across 8 dimensions. Built on peer-reviewed research from IIT Jodhpur."
+        />
+        <link rel="canonical" href="https://aiq.works/about" />
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Organization",
+            name: "AIQ Works",
+            url: "https://aiq.works",
+            logo: "https://aiq.works/favicon.png",
+            description:
+              "Research-based AI Quotient assessment platform measuring human-AI collaboration capabilities",
+            foundingDate: "2025",
+            contactPoint: {
+              "@type": "ContactPoint",
+              contactType: "Research Inquiries",
+              url: "https://aiq.works/about",
+            },
+            parentOrganization: {
+              "@type": "Organization",
+              name: "IIT Jodhpur",
+            },
+          })}
+        </script>
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            itemListElement: [
+              {
+                "@type": "ListItem",
+                position: 1,
+                name: "Home",
+                item: "https://aiq.works/",
+              },
+              {
+                "@type": "ListItem",
+                position: 2,
+                name: "About",
+                item: "https://aiq.works/about",
+              },
+            ],
+          })}
+        </script>
+      </Helmet>
       <Navigation isAuthenticated={isAuthenticated} isAdmin={isAdmin} />
 
       <main className="container py-12 max-w-6xl flex-grow">
         {/* Hero Section */}
         <div className="text-center mb-16">
           <h1 className="text-5xl lg:text-6xl font-extrabold mb-4 tracking-tight bg-gradient-to-r from-blue-900 to-blue-600 bg-clip-text text-transparent">
-            About the AIQ<sup className="text-[0.6em] text-blue-600">™</sup> Framework
+            About AIQ Assessment - Measuring AI Collaboration Intelligence
           </h1>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
             A scientifically validated framework for measuring human-AI collaboration capabilities
           </p>
+          <div className="mt-6">
+            <Link to={isAuthenticated ? "/dashboard" : "/sign-in"}>
+              <Button size="lg" className="bg-blue-900 hover:bg-blue-800 font-semibold">
+                {isAuthenticated ? "Go to Dashboard" : "Start Assessment"} <ArrowRight className="ml-2 h-5 w-5" />
+              </Button>
+            </Link>
+          </div>
         </div>
 
         {/* The Problem We're Solving */}
@@ -348,34 +407,84 @@ const About = () => {
 
           <div className="grid md:grid-cols-2 gap-6">
             <Card className="shadow-sm border">
-          <CardContent className="pt-6 pb-6">
-            <h3 className="font-bold text-xl mb-1">Venkat Ram Reddy Ganuthula, Ph.D.</h3>
-            <p className="text-sm text-blue-900 font-semibold mb-3">
-              <a href="https://www.linkedin.com/in/ganuthula/" target="_blank" rel="noopener noreferrer">
-                https://www.linkedin.com/in/ganuthula/
-              </a>
-            </p>
-            <p className="text-sm text-muted-foreground leading-relaxed mb-2">
-              Specializes in behavioral science, judgment and decision-making, and the intersection of AI and human
-              behavior.
-            </p>
-          </CardContent>
-        </Card>
-
-            <Card className="shadow-sm border">
               <CardContent className="pt-6 pb-6">
-                <h3 className="font-bold text-xl mb-1">Krishna Kumar Balaraman, Ph.D.</h3>
+                <script type="application/ld+json">
+                  {JSON.stringify({
+                    "@context": "https://schema.org",
+                    "@type": "Person",
+                    name: "Venkat Ram Reddy Ganuthula",
+                    jobTitle: "Lead Researcher, Ph.D.",
+                    description:
+                      "Specializes in behavioral science, judgment and decision-making, and the intersection of AI and human behavior",
+                    affiliation: {
+                      "@type": "Organization",
+                      name: "IIT Jodhpur",
+                    },
+                    sameAs: "https://www.linkedin.com/in/ganuthula/",
+                    url: "https://aiq.works/about",
+                  })}
+                </script>
+                <h3 className="font-bold text-xl mb-1">Venkat Ram Reddy Ganuthula, Ph.D.</h3>
                 <p className="text-sm text-blue-900 font-semibold mb-3">
-                  <a href="https://www.linkedin.com/in/balakk/" target="_blank" rel="noopener noreferrer">
-                    https://www.linkedin.com/in/balakk/
+                  <a
+                    href="https://www.linkedin.com/in/ganuthula/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="LinkedIn profile of Venkat Ram Reddy Ganuthula"
+                  >
+                    View LinkedIn Profile
                   </a>
                 </p>
                 <p className="text-sm text-muted-foreground leading-relaxed mb-2">
-                  Brings 20+ years of technology leadership experience. Research focuses on strategic foresight and AI
-                  governance.
+                  Lead Researcher specializing in behavioral science, judgment and decision-making, and the intersection
+                  of AI and human behavior.
                 </p>
               </CardContent>
             </Card>
+
+            <Card className="shadow-sm border">
+              <CardContent className="pt-6 pb-6">
+                <script type="application/ld+json">
+                  {JSON.stringify({
+                    "@context": "https://schema.org",
+                    "@type": "Person",
+                    name: "Krishna Kumar Balaraman",
+                    jobTitle: "Co-Researcher, Ph.D.",
+                    description:
+                      "Brings 20+ years of technology leadership experience. Research focuses on strategic foresight and AI governance",
+                    affiliation: {
+                      "@type": "Organization",
+                      name: "IIT Jodhpur",
+                    },
+                    sameAs: "https://www.linkedin.com/in/balakk/",
+                    url: "https://aiq.works/about",
+                  })}
+                </script>
+                <h3 className="font-bold text-xl mb-1">Krishna Kumar Balaraman, Ph.D.</h3>
+                <p className="text-sm text-blue-900 font-semibold mb-3">
+                  <a
+                    href="https://www.linkedin.com/in/balakk/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="LinkedIn profile of Krishna Kumar Balaraman"
+                  >
+                    View LinkedIn Profile
+                  </a>
+                </p>
+                <p className="text-sm text-muted-foreground leading-relaxed mb-2">
+                  Co-Researcher bringing 20+ years of technology leadership experience. Research focuses on strategic
+                  foresight and AI governance.
+                </p>
+              </CardContent>
+            </Card>
+          </div>
+          
+          <div className="text-center mt-8">
+            <Link to={isAuthenticated ? "/dashboard" : "/sign-in"}>
+              <Button size="lg" variant="outline" className="font-semibold">
+                Take the AIQ Assessment <ArrowRight className="ml-2 h-5 w-5" />
+              </Button>
+            </Link>
           </div>
         </div>
 

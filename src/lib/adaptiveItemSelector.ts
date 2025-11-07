@@ -66,7 +66,7 @@ export interface AssessmentData {
   scoringConfiguration: ScoringConfiguration;
 }
 
-export type TestVersion = 'beginner' | 'professional' | 'expert';
+export type TestVersion = 'beginner' | 'advanced';
 
 export interface VersionConfig {
   itemsPerDimension: number;
@@ -79,21 +79,14 @@ export interface VersionConfig {
 const VERSION_CONFIGS: Record<TestVersion, VersionConfig> = {
   beginner: {
     itemsPerDimension: 8, // 8 fixed items per dimension (60 total questions)
-    totalTime: 90, // 90 minutes
+    totalTime: 60, // 60 minutes
     easyCount: 4, // 50% of items (easier distribution)
     mediumCount: 3, // 37.5% of items
     hardCount: 1, // 12.5% of items
   },
-  professional: {
+  advanced: {
     itemsPerDimension: 10, // Select 10 from 20 (80 total questions)
-    totalTime: 120, // 120 minutes
-    easyCount: 3, // 30% of items
-    mediumCount: 4, // 40% of items
-    hardCount: 3, // 30% of items
-  },
-  expert: {
-    itemsPerDimension: 10, // Select 10 from 20 (80 total questions)
-    totalTime: 150, // 150 minutes
+    totalTime: 80, // 80 minutes
     easyCount: 2, // 20% of items (harder distribution)
     mediumCount: 3, // 30% of items
     hardCount: 5, // 50% of items
@@ -305,8 +298,8 @@ export async function loadTestItems(version: TestVersion = 'beginner'): Promise<
     const scoringConfiguration: ScoringConfiguration = data.scoringConfiguration || {
       totalPoints: version === 'beginner' ? 600 : 1600,
       pointsPerDimension: version === 'beginner' ? 75 : 200,
-      passingScore: version === 'beginner' ? 420 : (version === 'professional' ? 1120 : 1200),
-      passingPercentage: version === 'beginner' ? 70 : (version === 'professional' ? 70 : 75),
+      passingScore: version === 'beginner' ? 420 : 1200,
+      passingPercentage: version === 'beginner' ? 70 : 75,
       scoringMethod: {
         type: version === 'beginner' ? 'simple-sum' : 'IRT-weighted',
         description: 'Points-based scoring with difficulty weighting',
@@ -358,14 +351,9 @@ export function getVersionInfo(version: TestVersion) {
       audience = 'Students and beginners to AI';
       adaptive = 'All 60 questions presented (fixed)';
       break;
-    case 'professional':
-      description = 'Professional-level AI collaboration assessment';
-      audience = 'Working professionals';
-      adaptive = '10 questions per dimension (adaptive selection from 20)';
-      break;
-    case 'expert':
-      description = 'Expert-level strategic AI assessment';
-      audience = 'AI leaders and researchers';
+    case 'advanced':
+      description = 'Advanced-level strategic AI assessment';
+      audience = 'AI professionals, leaders and researchers';
       adaptive = '10 questions per dimension (adaptive selection from 20)';
       break;
   }

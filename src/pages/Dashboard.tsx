@@ -133,7 +133,7 @@ const Dashboard = () => {
     }
   };
 
-  const handleStartTest = (version: 'beginner' | 'professional' | 'expert') => {
+  const handleStartTest = (version: 'beginner' | 'advanced') => {
     navigate(`/ai-assessment?version=${version}`);
   };
 
@@ -388,7 +388,7 @@ const Dashboard = () => {
                 </div>
               </div>
               
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 {/* Beginner */}
                 <div className="bg-white dark:bg-gray-900 rounded-lg p-5 hover:shadow-xl transition-all hover:scale-105 cursor-pointer border-2 border-transparent hover:border-blue-400"
                      onClick={() => handleStartTest('beginner')}>
@@ -399,8 +399,8 @@ const Dashboard = () => {
                     <h3 className="text-base font-black">Beginner</h3>
                   </div>
                   <div className="space-y-2 mb-4">
-                    <p className="text-xs text-muted-foreground font-semibold">60 questions • 90 minutes</p>
-                    <p className="text-xs text-muted-foreground">All questions fixed per dimension</p>
+                    <p className="text-xs text-muted-foreground font-semibold">60 questions • 60 minutes</p>
+                    <p className="text-xs text-muted-foreground">Fixed items per dimension</p>
                   </div>
                   <div className="space-y-1.5">
                     <p className="text-xs font-bold text-blue-900 dark:text-blue-100">BEST FOR:</p>
@@ -422,42 +422,9 @@ const Dashboard = () => {
                   </Button>
                 </div>
 
-                {/* Professional */}
-                <div className="bg-white dark:bg-gray-900 rounded-lg p-5 hover:shadow-xl transition-all hover:scale-105 cursor-pointer border-2 border-transparent hover:border-violet-400"
-                     onClick={() => handleStartTest('professional')}>
-                  <div className="flex items-center gap-2 mb-3">
-                    <div className="p-2 bg-violet-100 dark:bg-violet-900/50 rounded">
-                      <PlayCircle className="h-5 w-5 text-violet-600" />
-                    </div>
-                    <h3 className="text-base font-black">Professional</h3>
-                  </div>
-                  <div className="space-y-2 mb-4">
-                    <p className="text-xs text-muted-foreground font-semibold">80 questions • 120 minutes</p>
-                    <p className="text-xs text-muted-foreground">Adaptive item selection</p>
-                  </div>
-                  <div className="space-y-1.5">
-                    <p className="text-xs font-bold text-violet-900 dark:text-violet-100">BEST FOR:</p>
-                    <ul className="text-xs text-muted-foreground space-y-1">
-                      <li>• Working professionals</li>
-                      <li>• AI practitioners</li>
-                      <li>• Managers & leaders</li>
-                    </ul>
-                  </div>
-                  <Button 
-                    className="w-full mt-4 bg-violet-600 hover:bg-violet-700"
-                    size="sm"
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      handleStartTest('professional');
-                    }}
-                  >
-                    Start Professional
-                  </Button>
-                </div>
-
-                {/* Expert/Advanced */}
+                {/* Advanced */}
                 <div className="bg-white dark:bg-gray-900 rounded-lg p-5 hover:shadow-xl transition-all hover:scale-105 cursor-pointer border-2 border-transparent hover:border-amber-400"
-                     onClick={() => handleStartTest('expert')}>
+                     onClick={() => handleStartTest('advanced')}>
                   <div className="flex items-center gap-2 mb-3">
                     <div className="p-2 bg-amber-100 dark:bg-amber-900/30 rounded">
                       <PlayCircle className="h-5 w-5 text-amber-600" />
@@ -465,15 +432,15 @@ const Dashboard = () => {
                     <h3 className="text-base font-black">Advanced</h3>
                   </div>
                   <div className="space-y-2 mb-4">
-                    <p className="text-xs text-muted-foreground font-semibold">80 questions • 150 minutes</p>
+                    <p className="text-xs text-muted-foreground font-semibold">80 questions • 80 minutes</p>
                     <p className="text-xs text-muted-foreground">Adaptive item selection</p>
                   </div>
                   <div className="space-y-1.5">
                     <p className="text-xs font-bold text-amber-900 dark:text-amber-100">BEST FOR:</p>
                     <ul className="text-xs text-muted-foreground space-y-1">
-                      <li>• AI researchers</li>
-                      <li>• Senior leaders</li>
-                      <li>• Strategic roles</li>
+                      <li>• AI professionals & leaders</li>
+                      <li>• Research professionals</li>
+                      <li>• Senior practitioners</li>
                     </ul>
                   </div>
                   <Button 
@@ -481,7 +448,7 @@ const Dashboard = () => {
                     size="sm"
                     onClick={(e) => {
                       e.stopPropagation();
-                      handleStartTest('expert');
+                      handleStartTest('advanced');
                     }}
                   >
                     Start Advanced

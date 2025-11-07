@@ -112,12 +112,19 @@ const Test = () => {
   // State for matching questions
   const [matchingPairs, setMatchingPairs] = useState<Record<number, number>>({});
 
-  const [version, setVersion] = useState<TestVersion>((searchParams.get('version') as TestVersion) || 'professional');
+  const [version, setVersion] = useState<TestVersion>(() => {
+    const versionParam = searchParams.get('version') as string;
+    // Map old values to new structure for backward compatibility
+    if (versionParam === 'professional' || versionParam === 'expert') {
+      return 'advanced';
+    }
+    return (versionParam as TestVersion) || 'beginner';
+  });
   const resumeId = searchParams.get('resume');
 
   const questionsPerDimension = version === 'beginner' ? 8 : 10;
   const totalQuestions = version === 'beginner' ? 60 : 80;
-  const testDuration = version === 'beginner' ? 3600 : (version === 'professional' ? 7200 : 9000); // 60, 120, or 150 minutes
+  const testDuration = version === 'beginner' ? 3600 : 4800; // 60 or 80 minutes
 
   useEffect(() => {
     initializeTest();
@@ -254,11 +261,11 @@ const Test = () => {
         }
 
         setTestId(testData.id);
-        // Ensure we use the original test version when resuming
-        setVersion((testData.test_version as TestVersion) || 'professional');
+        const resumedVersion = (testData.test_version === 'professional' || testData.test_version === 'expert') ? 'advanced' : ((testData.test_version as TestVersion) || 'beginner');
+        setVersion(resumedVersion);
         
         // Load dimensions first, then validate indices
-        const assessmentData = await loadTestItems((testData.test_version as TestVersion) || 'professional');
+        const assessmentData = await loadTestItems(resumedVersion);
         setDimensions(assessmentData.dimensions);
         setScoringConfig(assessmentData.scoringConfiguration);
         
@@ -659,10 +666,10 @@ const Test = () => {
               <div className="flex items-center justify-between">
                 <div>
                 <h2 className="text-lg font-black mb-1">
-                  {version === 'beginner' ? 'Beginner' : version === 'professional' ? 'Professional' : 'Advanced'} Assessment
+                  {version === 'beginner' ? 'Beginner' : 'Advanced'} Assessment
                 </h2>
                   <p className="text-sm text-muted-foreground">
-                    {totalQuestions} questions • {version === 'beginner' ? '90' : version === 'professional' ? '120' : '150'} minutes • 8 dimensions
+                    {totalQuestions} questions • {Math.floor(testDuration / 60)} minutes • 8 dimensions
                   </p>
                 </div>
                 <div className="text-right">

@@ -65,12 +65,12 @@ const Index = () => {
       subtitle: "For beginners and students",
       description: "Foundational AI literacy assessment for newcomers to AI collaboration",
       questions: "60 questions",
-      time: "90 minutes",
+      time: "60 minutes",
       icon: GraduationCap,
       gradient: "from-blue-500 to-indigo-600",
       recommended: false,
       idealFor: "Students, career changers, and those new to AI",
-      details: "7-8 questions per dimension (fixed)",
+      details: "8 questions per dimension (fixed)",
       prerequisites: "Basic computer skills and curiosity about AI",
       demonstrates: [
         "Understanding of AI basics and core concepts",
@@ -80,38 +80,18 @@ const Index = () => {
       ],
     },
     {
-      id: "professional",
-      title: "Professional",
-      subtitle: "For working professionals",
-      description: "Comprehensive assessment for professionals actively using AI in their work",
-      questions: "80 questions",
-      time: "120 minutes",
-      icon: Briefcase,
-      gradient: "from-violet-500 to-purple-600",
-      recommended: false,
-      idealFor: "Working professionals, managers, and AI practitioners",
-      details: "10 questions per dimension (adaptive selection)",
-      prerequisites: "Regular AI tool usage and 6+ months of practical experience",
-      demonstrates: [
-        "Advanced prompt engineering and iteration strategies",
-        "Critical evaluation of AI outputs and quality assessment",
-        "Integration of AI into complex workflows",
-        "Strategic understanding of AI capabilities and limitations",
-      ],
-    },
-    {
-      id: "expert",
-      title: "Expert",
-      subtitle: "For AI leaders and researchers",
+      id: "advanced",
+      title: "Advanced",
+      subtitle: "For AI professionals and leaders",
       description: "Advanced assessment for AI strategists, leaders, and research professionals",
       questions: "80 questions",
-      time: "150 minutes",
+      time: "80 minutes",
       icon: Rocket,
       gradient: "from-amber-500 to-orange-600",
       recommended: false,
-      idealFor: "Senior professionals, AI researchers, and organizational leaders",
+      idealFor: "AI professionals, researchers, and organizational leaders",
       details: "10 questions per dimension (adaptive selection)",
-      prerequisites: "Extensive AI experience, strategic decision-making role, or research background",
+      prerequisites: "Extensive AI experience, strategic role, or research background",
       demonstrates: [
         "Deep strategic understanding of AI technologies",
         "Expert-level prompt engineering and optimization",
@@ -129,12 +109,15 @@ const Index = () => {
         {/* Hero Section */}
         <section className="container py-20 text-center max-w-5xl">
           <h1 className="text-5xl lg:text-6xl font-extrabold mb-4 tracking-tight leading-tight bg-gradient-to-r from-blue-900 to-blue-600 bg-clip-text text-transparent">
-            Measure Your AIQ<sup className="text-[0.6em] text-blue-600">™</sup>
+            Measure Your AI Intelligence with the AIQ Assessment
           </h1>
-          <p className="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto leading-relaxed">
-            The first scientifically validated assessment of how effectively humans work with AI
+          <p className="text-lg text-muted-foreground mb-6 max-w-3xl mx-auto leading-relaxed">
+            The AIQ assessment is a <strong>research-validated evaluation</strong> of your ability to collaborate 
+            effectively with artificial intelligence. Measure your <strong>AI readiness</strong>, discover your 
+            strengths across 8 key dimensions, and receive personalized insights to improve your{" "}
+            <strong>AI collaboration skills</strong>.
           </p>
-          <div className="flex gap-3 justify-center flex-wrap mb-4">
+          <div className="flex gap-3 justify-center flex-wrap mb-6">
             {isAuthenticated ? (
               <Link to="/dashboard">
                 <Button size="lg" className="text-base px-8 py-6 bg-blue-900 hover:bg-blue-800 font-semibold shadow-lg">
@@ -235,7 +218,7 @@ const Index = () => {
             <p className="text-center text-muted-foreground mb-10 max-w-2xl mx-auto">
               Select the assessment that matches your current experience with AI
             </p>
-            <div className="grid md:grid-cols-3 gap-6">
+            <div className="grid md:grid-cols-2 gap-6">
               {assessmentLevels.map((level) => {
                 const Icon = level.icon;
                 return (
@@ -368,7 +351,7 @@ const Index = () => {
                 How long does the AIQ assessment take?
               </AccordionTrigger>
               <AccordionContent className="text-muted-foreground leading-relaxed">
-              The Beginner level has 60 questions (90 minutes), Professional and Expert levels have 80 questions each (120-150 minutes). The assessment uses adaptive testing technology to efficiently measure your AI collaboration abilities across all 8 dimensions.
+                The Beginner level has 60 questions (60 minutes), and the Advanced level has 80 questions (80 minutes). The assessment uses adaptive testing technology to efficiently measure your AI collaboration abilities across all 8 dimensions.
               </AccordionContent>
             </AccordionItem>
             <AccordionItem value="item-3">
@@ -392,7 +375,7 @@ const Index = () => {
                 Which assessment level should I choose?
               </AccordionTrigger>
               <AccordionContent className="text-muted-foreground leading-relaxed">
-                Choose Beginner if you're new to AI or have less than 6 months of experience. Select Professional if you're a working professional who regularly uses AI tools in your work. Pick Expert if you're in a leadership, research, or strategic role with extensive AI experience. The assessment adapts to your skill level for more accurate results.
+                Choose Beginner if you're new to AI or have less than 1 year of experience with AI tools. Select Advanced if you're an AI professional, leader, researcher, or have extensive strategic experience with AI systems. The Advanced assessment uses adaptive testing to provide precise measurement across all skill levels.
               </AccordionContent>
             </AccordionItem>
             <AccordionItem value="item-6">

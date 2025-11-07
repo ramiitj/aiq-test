@@ -3,6 +3,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import { supabase } from "@/integrations/supabase/client";
 import { Navigation } from "@/components/Navigation";
 import Footer from "@/components/Footer";
+import { loadTestItems, type TestVersion } from "@/lib/adaptiveItemSelector";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Progress } from "@/components/ui/progress";
@@ -137,7 +138,14 @@ const Results = () => {
       });
 
       // Recalculate scores with new IRT system
-      const testVersion = (data.test_version || "beginner") as "beginner" | "professional" | "expert";
+      const testVersion = (() => {
+        const rawVersion = data.test_version || "beginner";
+        // Map old values to new structure for backward compatibility
+        if (rawVersion === 'professional' || rawVersion === 'expert') {
+          return 'advanced';
+        }
+        return rawVersion as TestVersion;
+      })();
       const assessmentData = await loadTestItems(testVersion);
 
       const calculatedScores = calculateTestScores(
