@@ -136,6 +136,44 @@ export type Database = {
         }
         Relationships: []
       }
+      security_violations: {
+        Row: {
+          additional_data: Json | null
+          id: string
+          test_id: string
+          timestamp: string
+          user_agent: string | null
+          user_id: string
+          violation_type: string
+        }
+        Insert: {
+          additional_data?: Json | null
+          id?: string
+          test_id: string
+          timestamp?: string
+          user_agent?: string | null
+          user_id: string
+          violation_type: string
+        }
+        Update: {
+          additional_data?: Json | null
+          id?: string
+          test_id?: string
+          timestamp?: string
+          user_agent?: string | null
+          user_id?: string
+          violation_type?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "security_violations_test_id_fkey"
+            columns: ["test_id"]
+            isOneToOne: false
+            referencedRelation: "tests"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       test_demographics: {
         Row: {
           age_range: string | null
@@ -151,6 +189,7 @@ export type Database = {
           consent_data_usage: boolean
           consent_research: boolean | null
           consent_results_access: boolean
+          consent_security_monitoring: boolean | null
           country: string | null
           created_at: string
           education_level: string | null
@@ -182,6 +221,7 @@ export type Database = {
           consent_data_usage?: boolean
           consent_research?: boolean | null
           consent_results_access?: boolean
+          consent_security_monitoring?: boolean | null
           country?: string | null
           created_at?: string
           education_level?: string | null
@@ -213,6 +253,7 @@ export type Database = {
           consent_data_usage?: boolean
           consent_research?: boolean | null
           consent_results_access?: boolean
+          consent_security_monitoring?: boolean | null
           country?: string | null
           created_at?: string
           education_level?: string | null
@@ -256,6 +297,9 @@ export type Database = {
           pause_timestamp: string | null
           paused: boolean | null
           scores: Json
+          security_consent_given: boolean | null
+          security_terminated: boolean | null
+          security_violations_count: number | null
           start_time: string
           test_duration_seconds: number | null
           test_version: string
@@ -277,6 +321,9 @@ export type Database = {
           pause_timestamp?: string | null
           paused?: boolean | null
           scores?: Json
+          security_consent_given?: boolean | null
+          security_terminated?: boolean | null
+          security_violations_count?: number | null
           start_time?: string
           test_duration_seconds?: number | null
           test_version?: string
@@ -298,6 +345,9 @@ export type Database = {
           pause_timestamp?: string | null
           paused?: boolean | null
           scores?: Json
+          security_consent_given?: boolean | null
+          security_terminated?: boolean | null
+          security_violations_count?: number | null
           start_time?: string
           test_duration_seconds?: number | null
           test_version?: string

@@ -32,8 +32,10 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-
 import { TrueFalseQuestion } from "@/components/TrueFalseQuestion";
+import { SecurityConsentDialog } from "@/components/SecurityConsentDialog";
+import { AIBlocker } from "@/components/AIBlocker";
+import { toast as sonnerToast } from "sonner";
 
 interface ConsentData {
   dataCollection: boolean;
@@ -89,7 +91,14 @@ const Test = () => {
   const [answers, setAnswers] = useState<Record<string, string>>({});
   const [dimensions, setDimensions] = useState<Dimension[]>([]);
   const [scoringConfig, setScoringConfig] = useState<any>(null);
-  const [showConsent, setShowConsent] = useState(true);
+  
+  // Security consent states
+  const [showSecurityConsent, setShowSecurityConsent] = useState(true);
+  const [securityConsentGiven, setSecurityConsentGiven] = useState(false);
+  const [violationCount, setViolationCount] = useState(0);
+  const [testTerminated, setTestTerminated] = useState(false);
+  
+  const [showConsent, setShowConsent] = useState(false);
   const [showDemographics, setShowDemographics] = useState(false);
   const [consentData, setConsentData] = useState<ConsentData>({
     dataCollection: false,
@@ -242,12 +251,15 @@ const Test = () => {
         setShowConsent(false);
         setShowDemographics(false);
         
-        // Resume existing test
-        const { data: testData, error } = await supabase
-          .from("tests")
-          .select("*")
-          .eq("id", resumeId)
-          .maybeSingle();
+      // Resume existing test - skip security consent for resume
+      setShowSecurityConsent(false);
+      setSecurityConsentGiven(true);
+      
+      const { data: testData, error } = await supabase
+        .from("tests")
+        .select("*")
+        .eq("id", resumeId)
+        .maybeSingle();
 
         if (error) throw error;
         if (!testData) {
@@ -327,6 +339,48 @@ const Test = () => {
     setShowConsent(false);
     setShowDemographics(true);
   };
+  
+  const handleSecurityConsentAccept = () => {
+    setSecurityConsentGiven(true);
+    setShowSecurityConsent(false);
+    setShowConsent(true);
+  };
+  
+  const handleSecurityConsentDecline = () => {
+    sonnerToast.error("Security consent is required to take the assessment");
+    navigate("/");
+  };
+  
+  const handleSecurityViolation = async (violationType: string) => {
+    const newCount = violationCount + 1;
+    setViolationCount(newCount);
+    
+    sonnerToast.error(`Security Violation ${newCount}/3`, {
+      description: violationType,
+      duration: 5000,
+    });
+    
+    // Terminate after 3 violations
+    if (newCount >= 3) {
+      setTestTerminated(true);
+      
+      if (testId) {
+        await supabase
+          .from('tests')
+          .update({ security_terminated: true })
+          .eq('id', testId);
+      }
+      
+      sonnerToast.error("Assessment Terminated", {
+        description: "Too many security violations detected. Your test has been terminated.",
+        duration: 10000,
+      });
+      
+      setTimeout(() => {
+        navigate("/dashboard");
+      }, 3000);
+    }
+  };
 
   const handleDemographicsSubmit = async () => {
     // Validate required fields
@@ -351,6 +405,7 @@ const Test = () => {
           test_version: version,
           json_version: version,
           consent_given: true,
+          security_consent_given: true,
           time_remaining: testDuration,
           current_dimension: 0,
           current_item: 0,
@@ -389,6 +444,7 @@ const Test = () => {
           technical_background: null,
           consent_assessment: true,
           consent_data_usage: true,
+          consent_security_monitoring: true,
           consent_results_access: true,
           consent_research: consentData.researchParticipation || false,
           consent_communications: false,
@@ -610,6 +666,20 @@ const Test = () => {
   const progress = actualTotalQuestions > 0 ? (globalQuestionNumber / actualTotalQuestions) * 100 : 0;
   const isLastQuestion = currentDimension === dimensions.length - 1 && currentQuestion === (dimensions[currentDimension]?.items?.length ?? 0) - 1;
 
+  if (testTerminated) {
+    return (
+      <div className="min-h-screen bg-red-50 dark:bg-red-950">
+        <Navigation isAuthenticated={true} />
+        <div className="container py-12 text-center space-y-4 max-w-2xl">
+          <AlertCircle className="h-16 w-16 mx-auto text-red-600" />
+          <h1 className="text-3xl font-bold text-red-600">Assessment Terminated</h1>
+          <p className="text-lg">Multiple security violations were detected. Your assessment has been terminated and reported.</p>
+          <Button onClick={() => navigate("/dashboard")}>Return to Dashboard</Button>
+        </div>
+      </div>
+    );
+  }
+
   if (loading) {
     return (
       <div className="min-h-screen">
@@ -621,6 +691,21 @@ const Test = () => {
           <p className="text-muted-foreground">Loading assessment...</p>
         </div>
       </div>
+    );
+  }
+  
+  // Security consent dialog
+  if (showSecurityConsent) {
+    return (
+      <>
+        <Navigation isAuthenticated={true} />
+        <SecurityConsentDialog
+          open={showSecurityConsent}
+          onAccept={handleSecurityConsentAccept}
+          onDecline={handleSecurityConsentDecline}
+          testVersion={version}
+        />
+      </>
     );
   }
 
