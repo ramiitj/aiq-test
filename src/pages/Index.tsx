@@ -48,7 +48,8 @@ const Index = () => {
     {
       icon: Award,
       title: "Verified Certification",
-      description: "Shareable certificate (for thsoe who pass) backed by peer-reviewed research to showcase your AI collaboration skills.",
+      description:
+        "Shareable certificate (for thsoe who pass) backed by peer-reviewed research to showcase your AI collaboration skills.",
     },
     {
       icon: Lightbulb,
@@ -70,7 +71,7 @@ const Index = () => {
       gradient: "from-blue-500 to-indigo-600",
       recommended: false,
       idealFor: "Students, career changers, and those new to AI",
-      details: "8 questions per dimension (fixed)",
+      details: "7-8 questions per dimension (fixed)",
       prerequisites: "Basic computer skills and curiosity about AI",
       demonstrates: [
         "Understanding of AI basics and core concepts",
@@ -112,8 +113,8 @@ const Index = () => {
             Measure Your AI Intelligence with the AIQ Assessment
           </h1>
           <p className="text-lg text-muted-foreground mb-6 max-w-3xl mx-auto leading-relaxed">
-            The AIQ assessment is a <strong>research-validated evaluation</strong> of your ability to collaborate 
-            effectively with artificial intelligence. Measure your <strong>AI readiness</strong>, discover your 
+            The AIQ assessment is a <strong>research-validated evaluation</strong> of your ability to collaborate
+            effectively with artificial intelligence. Measure your <strong>AI readiness</strong>, discover your
             strengths across 8 key dimensions, and receive personalized insights to improve your{" "}
             <strong>AI collaboration skills</strong>.
           </p>
@@ -339,11 +340,12 @@ const Index = () => {
           </p>
           <Accordion type="single" collapsible className="w-full">
             <AccordionItem value="item-1">
-              <AccordionTrigger className="text-left font-semibold">
-                What is AIQ?
-              </AccordionTrigger>
+              <AccordionTrigger className="text-left font-semibold">What is AIQ?</AccordionTrigger>
               <AccordionContent className="text-muted-foreground leading-relaxed">
-                AIQ (Artificial Intelligence Quotient) is a scientifically validated measure of an individual's ability to effectively collaborate with AI systems. It assesses 8 key dimensions of AI collaboration intelligence through a comprehensive, research-based assessment including strategic understanding, prompt engineering, critical evaluation, and ethical judgment.
+                AIQ (Artificial Intelligence Quotient) is a scientifically validated measure of an individual's ability
+                to effectively collaborate with AI systems. It assesses 8 key dimensions of AI collaboration
+                intelligence through a comprehensive, research-based assessment including strategic understanding,
+                prompt engineering, critical evaluation, and ethical judgment.
               </AccordionContent>
             </AccordionItem>
             <AccordionItem value="item-2">
@@ -351,23 +353,27 @@ const Index = () => {
                 How long does the AIQ assessment take?
               </AccordionTrigger>
               <AccordionContent className="text-muted-foreground leading-relaxed">
-                The Beginner level has 60 questions (60 minutes), and the Advanced level has 80 questions (80 minutes). The assessment uses adaptive testing technology to efficiently measure your AI collaboration abilities across all 8 dimensions.
+                The Beginner level has 60 questions (60 minutes), and the Advanced level has 80 questions (80 minutes).
+                The assessment uses adaptive testing technology to efficiently measure your AI collaboration abilities
+                across all 8 dimensions.
               </AccordionContent>
             </AccordionItem>
             <AccordionItem value="item-3">
-              <AccordionTrigger className="text-left font-semibold">
-                Is the AIQ assessment free?
-              </AccordionTrigger>
+              <AccordionTrigger className="text-left font-semibold">Is the AIQ assessment free?</AccordionTrigger>
               <AccordionContent className="text-muted-foreground leading-relaxed">
-                Yes, the AIQ assessment is completely free. You'll receive instant results with a detailed analysis of your AI collaboration abilities across 8 dimensions, personalized insights into your strengths and growth areas, and a shareable certificate (for those who pass) that you can add to your professional profiles.
+                Yes, the AIQ assessment is completely free. You'll receive instant results with a detailed analysis of
+                your AI collaboration abilities across 8 dimensions, personalized insights into your strengths and
+                growth areas, and a shareable certificate (for those who pass) that you can add to your professional
+                profiles.
               </AccordionContent>
             </AccordionItem>
             <AccordionItem value="item-4">
-              <AccordionTrigger className="text-left font-semibold">
-                How is AIQ different from IQ?
-              </AccordionTrigger>
+              <AccordionTrigger className="text-left font-semibold">How is AIQ different from IQ?</AccordionTrigger>
               <AccordionContent className="text-muted-foreground leading-relaxed">
-                While IQ measures general cognitive abilities like reasoning and problem-solving, AIQ specifically measures your ability to collaborate effectively with AI systems. It assesses specialized skills like AI prompt engineering, critical evaluation of AI outputs, ethical AI use, creative problem-solving with AI tools, and strategic understanding of AI capabilities and limitations.
+                While IQ measures general cognitive abilities like reasoning and problem-solving, AIQ specifically
+                measures your ability to collaborate effectively with AI systems. It assesses specialized skills like AI
+                prompt engineering, critical evaluation of AI outputs, ethical AI use, creative problem-solving with AI
+                tools, and strategic understanding of AI capabilities and limitations.
               </AccordionContent>
             </AccordionItem>
             <AccordionItem value="item-5">
@@ -375,7 +381,10 @@ const Index = () => {
                 Which assessment level should I choose?
               </AccordionTrigger>
               <AccordionContent className="text-muted-foreground leading-relaxed">
-                Choose Beginner if you're new to AI or have less than 1 year of experience with AI tools. Select Advanced if you're an AI professional, leader, researcher, or have extensive strategic experience with AI systems. The Advanced assessment uses adaptive testing to provide precise measurement across all skill levels.
+                Choose Beginner if you're new to AI or have less than 1 year of experience with AI tools. Select
+                Advanced if you're an AI professional, leader, researcher, or have extensive strategic experience with
+                AI systems. The Advanced assessment uses adaptive testing to provide precise measurement across all
+                skill levels.
               </AccordionContent>
             </AccordionItem>
             <AccordionItem value="item-6">
@@ -383,15 +392,18 @@ const Index = () => {
                 Is the AIQ assessment scientifically validated?
               </AccordionTrigger>
               <AccordionContent className="text-muted-foreground leading-relaxed">
-                Yes! The AIQ assessment is backed by rigorous peer-reviewed academic research published in Discover Artificial Intelligence (Springer Nature, 2025). It uses Item Response Theory (IRT), the same psychometric methodology used in standardized tests like the GRE and SAT. The assessment was developed with 200+ calibrated items across 8 validated dimensions.
+                Yes! The AIQ assessment is backed by rigorous peer-reviewed academic research published in Discover
+                Artificial Intelligence (Springer Nature, 2025). It uses Item Response Theory (IRT), the same
+                psychometric methodology used in standardized tests like the GRE and SAT. The assessment was developed
+                with 200+ calibrated items across 8 validated dimensions.
               </AccordionContent>
             </AccordionItem>
             <AccordionItem value="item-7">
-              <AccordionTrigger className="text-left font-semibold">
-                Can I retake the assessment?
-              </AccordionTrigger>
+              <AccordionTrigger className="text-left font-semibold">Can I retake the assessment?</AccordionTrigger>
               <AccordionContent className="text-muted-foreground leading-relaxed">
-                Yes, you can retake the assessment at any time to track your improvement. We recommend waiting at least 2-3 weeks between attempts to allow time for learning and skill development. Your dashboard will show all your assessment history, allowing you to monitor your progress over time.
+                Yes, you can retake the assessment at any time to track your improvement. We recommend waiting at least
+                2-3 weeks between attempts to allow time for learning and skill development. Your dashboard will show
+                all your assessment history, allowing you to monitor your progress over time.
               </AccordionContent>
             </AccordionItem>
             <AccordionItem value="item-8">
@@ -399,7 +411,11 @@ const Index = () => {
                 What do I get after completing the assessment?
               </AccordionTrigger>
               <AccordionContent className="text-muted-foreground leading-relaxed">
-                After completing the assessment, you'll receive: (1) Your overall AIQ score and classification, (2) Detailed breakdown of your performance across all 8 dimensions, (3) Personalized insights highlighting your strengths and areas for growth, (4) A verifiable digital certificate (for those who pass) with a unique QR code that you can share on LinkedIn, resume, or professional profiles, and (5) Access to your complete assessment history in your dashboard.
+                After completing the assessment, you'll receive: (1) Your overall AIQ score and classification, (2)
+                Detailed breakdown of your performance across all 8 dimensions, (3) Personalized insights highlighting
+                your strengths and areas for growth, (4) A verifiable digital certificate (for those who pass) with a
+                unique QR code that you can share on LinkedIn, resume, or professional profiles, and (5) Access to your
+                complete assessment history in your dashboard.
               </AccordionContent>
             </AccordionItem>
           </Accordion>
