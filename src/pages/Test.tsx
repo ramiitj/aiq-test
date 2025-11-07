@@ -354,6 +354,41 @@ const Test = () => {
 
       if (error) throw error;
 
+      // Insert demographics data
+      const { error: demographicsError } = await supabase
+        .from("test_demographics")
+        .insert([{
+          user_id: session.user.id,
+          test_id: newTest.id,
+          full_name: "Not collected",
+          phone_number: null,
+          job_role: demographicsData.occupation || "Not specified",
+          organization_type: "Not specified",
+          organization_size: null,
+          industry_sector: demographicsData.industry || "Not specified",
+          years_experience: "Not specified",
+          ai_familiarity: demographicsData.aiExperience,
+          ai_tools_used: [],
+          ai_usage_frequency: "Not specified",
+          ai_use_cases: [],
+          ai_training: "Not specified",
+          assessment_reasons: [],
+          assessment_tier: version,
+          results_usage: [],
+          age_range: demographicsData.age,
+          education_level: demographicsData.education,
+          country: demographicsData.country || null,
+          primary_language: null,
+          technical_background: null,
+          consent_assessment: true,
+          consent_data_usage: true,
+          consent_results_access: true,
+          consent_research: consentData.researchParticipation || false,
+          consent_communications: false,
+        }]);
+
+      if (demographicsError) throw demographicsError;
+
       setTestId(newTest.id);
       setShowDemographics(false);
       
