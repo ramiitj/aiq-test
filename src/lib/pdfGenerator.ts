@@ -121,7 +121,7 @@ export async function generatePDFReport(
 
   // Add ™ symbol
   doc.setFontSize(12);
-  doc.text("™", pageWidth / 2 + 12, 11);
+  doc.text("™", pageWidth / 2 + 6, 11);
 
   doc.setFontSize(14);
   doc.text("ASSESSMENT", pageWidth / 2, 22, { align: "center" });
