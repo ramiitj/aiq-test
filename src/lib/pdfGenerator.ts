@@ -128,7 +128,7 @@ export async function generatePDFReport(
 
   doc.setFontSize(11);
   doc.setFont("helvetica", "normal");
-  doc.text("Official AI Collaboration Capability Certificate", pageWidth / 2, 28, { align: "center" });
+  doc.text("Official AI Collaboration Capability Certificate", pageWidth / 2 - 8, 28, { align: "center" });
 
   doc.setFontSize(9);
   doc.setTextColor(220, 220, 255);
@@ -140,7 +140,7 @@ export async function generatePDFReport(
   const capitalizedLevel = assessmentLevel
     ? assessmentLevel.charAt(0).toUpperCase() + assessmentLevel.slice(1)
     : "Professional";
-  doc.text(`${capitalizedLevel} Level • Issued ${issueDateStr}`, pageWidth / 2, 33, {
+  doc.text(`${capitalizedLevel} Level • Issued ${issueDateStr}`, pageWidth / 2 - 8, 33, {
     align: "center",
   });
 
