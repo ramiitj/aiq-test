@@ -356,10 +356,18 @@ const Test = () => {
     const newCount = violationCount + 1;
     setViolationCount(newCount);
     
-    sonnerToast.error(`Security Violation ${newCount}/3`, {
-      description: violationType,
-      duration: 5000,
-    });
+    // Special warning at 2 violations
+    if (newCount === 2) {
+      sonnerToast.warning(`Final Warning: ${newCount}/3 Violations`, {
+        description: "⚠️ 1 more violation will terminate and delete your test permanently!",
+        duration: 8000,
+      });
+    } else if (newCount < 2) {
+      sonnerToast.error(`Security Violation ${newCount}/3`, {
+        description: violationType,
+        duration: 5000,
+      });
+    }
     
     // Terminate and delete test after 3 violations
     if (newCount >= 3) {
