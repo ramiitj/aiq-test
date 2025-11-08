@@ -241,11 +241,13 @@ export const AIBlocker = ({ isActive, testId, onViolation }: AIBlockerProps) => 
       detectAIAssistantUI();
     }, 3000);
 
-    // Request fullscreen on desktop
+    // Request fullscreen on desktop (delayed to ensure valid user interaction context)
     if (window.innerWidth > 768) {
-      document.documentElement.requestFullscreen?.().catch(() => {
-        handleViolation('Fullscreen Request Denied');
-      });
+      setTimeout(() => {
+        document.documentElement.requestFullscreen?.().catch(() => {
+          handleViolation('Fullscreen Request Denied');
+        });
+      }, 500);
     }
 
     // Cleanup

@@ -97,6 +97,7 @@ const Test = () => {
   const [securityConsentGiven, setSecurityConsentGiven] = useState(false);
   const [violationCount, setViolationCount] = useState(0);
   const [testTerminated, setTestTerminated] = useState(false);
+  const [testStarted, setTestStarted] = useState(false);
   
   const [showConsent, setShowConsent] = useState(false);
   const [showDemographics, setShowDemographics] = useState(false);
@@ -454,6 +455,7 @@ const Test = () => {
 
       setTestId(newTest.id);
       setShowDemographics(false);
+      setTestStarted(true); // Activate AIBlocker now that test is starting
       
       // Scroll to top when test starts
       window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -1197,7 +1199,7 @@ const Test = () => {
       {/* AI Blocker Component */}
       {testId && (
         <AIBlocker
-          isActive={true}
+          isActive={testStarted && !showConsent && !showDemographics}
           testId={testId}
           onViolation={handleSecurityViolation}
         />
