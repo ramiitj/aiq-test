@@ -49,14 +49,27 @@ const Dashboard = () => {
   }, []);
 
   const checkAuth = async () => {
-    const { data: { session } } = await supabase.auth.getSession();
-    
-    if (!session) {
-      navigate("/sign-in");
-      return;
-    }
-
     try {
+      const { data: { session }, error: sessionError } = await supabase.auth.getSession();
+      
+      // Only redirect if we're certain there's no session (not just a network error)
+      if (!session) {
+        // Check if it's a network error vs actual no-auth
+        if (sessionError) {
+          console.error("Session check error:", sessionError);
+          toast({
+            title: "Connection Issue",
+            description: "Having trouble verifying your session. Please check your connection.",
+            variant: "destructive",
+          });
+          setLoading(false);
+          return;
+        }
+        // Only redirect if truly not authenticated
+        navigate("/sign-in");
+        return;
+      }
+
       const { data: profileData, error: profileError } = await supabase
         .from("profiles")
         .select("name, region")
