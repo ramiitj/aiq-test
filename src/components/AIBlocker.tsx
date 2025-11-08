@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Shield, AlertTriangle } from 'lucide-react';
-import { Alert, AlertDescription } from '@/components/ui/alert';
+import { Shield } from 'lucide-react';
 import { supabase } from '@/integrations/supabase/client';
 import { toast } from 'sonner';
 
@@ -226,10 +225,10 @@ export const AIBlocker = ({ isActive, testId, onViolation, enableFullscreen = fa
       // Log to backend
       logViolation(message);
       
-      // Show toast warning
-      toast.error('Security Violation Detected', {
+      // Show toast warning (auto-dismisses after 3 seconds)
+      toast.error('Security Violation', {
         description: message,
-        duration: 5000,
+        duration: 3000,
       });
     };
 
@@ -340,25 +339,13 @@ export const AIBlocker = ({ isActive, testId, onViolation, enableFullscreen = fa
   if (!isBlocking) return null;
 
   return (
-    <div className="fixed top-4 right-4 z-50 max-w-md space-y-2">
-      <Alert className="bg-green-50 border-green-200 dark:bg-green-950 dark:border-green-800">
-        <Shield className="h-4 w-4 text-green-600 dark:text-green-400" />
-        <AlertDescription className="text-green-800 dark:text-green-200 text-sm">
-          🔒 AI Blocking Active - Assessment Protected
-        </AlertDescription>
-      </Alert>
-      
-      {violations.length > 0 && (
-        <Alert variant="destructive">
-          <AlertTriangle className="h-4 w-4" />
-          <AlertDescription className="text-sm">
-            <strong>Violations: {violations.length}</strong>
-            <div className="text-xs mt-1 opacity-90">
-              Latest: {violations[violations.length - 1]}
-            </div>
-          </AlertDescription>
-        </Alert>
-      )}
+    <div className="fixed bottom-4 left-4 z-50">
+      <div className="flex items-center gap-2 bg-green-50 dark:bg-green-950/80 border border-green-200 dark:border-green-800 rounded-lg px-3 py-1.5 shadow-sm">
+        <Shield className="h-3.5 w-3.5 text-green-600 dark:text-green-400" />
+        <span className="text-xs font-medium text-green-800 dark:text-green-200">
+          AI Blocking Active
+        </span>
+      </div>
     </div>
   );
 };
