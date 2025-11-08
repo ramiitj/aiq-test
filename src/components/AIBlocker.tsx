@@ -19,6 +19,7 @@ export const AIBlocker = ({ isActive, testId, onViolation, enableFullscreen = fa
     if (!isActive) return;
 
     setIsBlocking(true);
+    const activatedAt = Date.now();
     
     // 1. Detect AI Assistant Browser Extensions
     const detectExtensions = () => {
@@ -67,9 +68,10 @@ export const AIBlocker = ({ isActive, testId, onViolation, enableFullscreen = fa
 
     // 4. Detect Tab Switching / Window Blur
     const detectTabSwitch = () => {
+      // ignore first 3s after activation to avoid false positives from extensions
+      if (Date.now() - activatedAt < 3000) return;
       handleViolation('Tab/Window Switch Detected');
     };
-
     // 5. Detect DevTools Opening
     const detectDevTools = () => {
       const threshold = 160;
@@ -114,6 +116,17 @@ export const AIBlocker = ({ isActive, testId, onViolation, enableFullscreen = fa
         e.preventDefault();
         handleViolation('Function Key Blocked: ' + e.key);
         return false;
+      }
+    };
+
+    // 6b. Block untrusted/automated interactions
+    const blockUntrusted = (e: Event) => {
+      if ((e as any).isTrusted === false) {
+        e.preventDefault();
+        // prevent bubbling to React handlers
+        // @ts-ignore
+        if (typeof e.stopImmediatePropagation === 'function') e.stopImmediatePropagation();
+        handleViolation('Automated Interaction Blocked');
       }
     };
 
@@ -262,6 +275,9 @@ export const AIBlocker = ({ isActive, testId, onViolation, enableFullscreen = fa
     document.addEventListener('paste', blockCopyPaste);
     document.addEventListener('contextmenu', blockContextMenu);
     document.addEventListener('keydown', blockKeyboardShortcuts);
+    document.addEventListener('click', blockUntrusted, true);
+    document.addEventListener('input', blockUntrusted, true);
+    document.addEventListener('change', blockUntrusted, true);
     window.addEventListener('blur', detectTabSwitch);
     document.addEventListener('visibilitychange', detectVisibilityChange);
     window.addEventListener('message', messageListener);
@@ -302,6 +318,9 @@ export const AIBlocker = ({ isActive, testId, onViolation, enableFullscreen = fa
       document.removeEventListener('paste', blockCopyPaste);
       document.removeEventListener('contextmenu', blockContextMenu);
       document.removeEventListener('keydown', blockKeyboardShortcuts);
+      document.removeEventListener('click', blockUntrusted, true);
+      document.removeEventListener('input', blockUntrusted, true);
+      document.removeEventListener('change', blockUntrusted, true);
       window.removeEventListener('blur', detectTabSwitch);
       document.removeEventListener('visibilitychange', detectVisibilityChange);
       window.removeEventListener('message', messageListener);
