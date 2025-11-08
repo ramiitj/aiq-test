@@ -84,6 +84,7 @@ const Test = () => {
   const { toast } = useToast();
   
   const [loading, setLoading] = useState(true);
+  const [loadError, setLoadError] = useState<string | null>(null);
   const [testId, setTestId] = useState<string | null>(null);
   const [currentDimension, setCurrentDimension] = useState(0);
   const [currentQuestion, setCurrentQuestion] = useState(0);
@@ -221,17 +222,29 @@ const Test = () => {
 
   const loadTestData = async () => {
     // Skip if we're resuming (dimensions loaded in initializeTest)
-    if (resumeId) return;
+    if (resumeId) {
+      console.log('[Test] Skipping loadTestData - resuming test');
+      return;
+    }
     
     try {
+      console.log('[Test] Loading test data for version:', version);
+      setLoadError(null);
       const assessmentData = await loadTestItems(version as TestVersion);
+      console.log('[Test] Assessment data loaded successfully:', {
+        dimensionsCount: assessmentData.dimensions.length,
+        totalItems: assessmentData.dimensions.reduce((sum, d) => sum + d.items.length, 0)
+      });
       setDimensions(assessmentData.dimensions);
       setScoringConfig(assessmentData.scoringConfiguration);
       setLoading(false);
     } catch (error: any) {
+      const errorMsg = error.message || "Failed to load test items";
+      console.error('[Test] Error loading test data:', errorMsg, error);
+      setLoadError(errorMsg);
       toast({
         title: "Error Loading Test",
-        description: "Failed to load test items. Please try again.",
+        description: errorMsg,
         variant: "destructive",
       });
       setLoading(false);
@@ -721,15 +734,25 @@ const Test = () => {
   }
 
   // Only show error if we've finished loading and still have no dimensions
-  if (dimensions.length === 0 && !loading && !showConsent && !showDemographics) {
+  if (dimensions.length === 0 && !loading && !showConsent && !showDemographics && !showSecurityConsent) {
     return (
       <div className="min-h-screen">
         <Navigation isAuthenticated={true} />
         <div className="container py-12 text-center space-y-4">
           <AlertCircle className="h-12 w-12 mx-auto text-destructive" />
           <h2 className="text-xl font-bold">Failed to Load Assessment</h2>
-          <p className="text-muted-foreground">Could not load test questions. Please try again.</p>
-          <Button onClick={() => navigate("/dashboard")}>Return to Dashboard</Button>
+          <p className="text-muted-foreground">
+            {loadError || "Could not load test questions. Please try again."}
+          </p>
+          <div className="flex gap-3 justify-center">
+            <Button variant="outline" onClick={() => {
+              setLoading(true);
+              loadTestData();
+            }}>
+              Try Again
+            </Button>
+            <Button onClick={() => navigate("/dashboard")}>Return to Dashboard</Button>
+          </div>
         </div>
       </div>
     );
