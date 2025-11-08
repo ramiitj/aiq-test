@@ -1,5 +1,5 @@
-import { useState } from 'react';
-import { AlertTriangle, Shield, Lock, Eye, Wifi, MonitorOff, Ban, Search, Maximize, FileWarning } from 'lucide-react';
+import { useState } from "react";
+import { AlertTriangle, Shield, Lock, Eye, Wifi, MonitorOff, Ban, Search, Maximize, FileWarning } from "lucide-react";
 import {
   Dialog,
   DialogContent,
@@ -7,10 +7,10 @@ import {
   DialogFooter,
   DialogHeader,
   DialogTitle,
-} from '@/components/ui/dialog';
-import { Button } from '@/components/ui/button';
-import { Checkbox } from '@/components/ui/checkbox';
-import { Alert, AlertDescription } from '@/components/ui/alert';
+} from "@/components/ui/dialog";
+import { Button } from "@/components/ui/button";
+import { Checkbox } from "@/components/ui/checkbox";
+import { Alert, AlertDescription } from "@/components/ui/alert";
 
 interface SecurityConsentDialogProps {
   open: boolean;
@@ -23,16 +23,15 @@ export const SecurityConsentDialog = ({ open, onAccept, onDecline }: SecurityCon
   const [agreed, setAgreed] = useState(false);
 
   const securityMeasures = [
-    { icon: Shield, text: 'AI assistants and chatbots will be blocked', color: 'text-amber-600' },
-    { icon: Ban, text: 'Copy and paste operations will be disabled', color: 'text-amber-600' },
-    { icon: Lock, text: 'Right-click context menu will be blocked', color: 'text-amber-600' },
-    { icon: Eye, text: 'Tab switching and window changes will be monitored', color: 'text-amber-600' },
-    { icon: Search, text: 'Developer tools detection is active', color: 'text-amber-600' },
-    { icon: Wifi, text: 'Network requests to AI APIs will be blocked', color: 'text-amber-600' },
-    { icon: MonitorOff, text: 'Browser extensions will be monitored', color: 'text-amber-600' },
-    { icon: Maximize, text: 'Fullscreen mode will be enforced (desktop)', color: 'text-amber-600' },
-    { icon: FileWarning, text: 'All violations will be logged and recorded', color: 'text-red-600' },
-    { icon: AlertTriangle, text: '3 violations will result in test termination', color: 'text-red-600' },
+    { icon: Shield, text: "AI assistants and chatbots will be blocked", color: "text-amber-600" },
+    { icon: Ban, text: "Copy and paste operations will be disabled", color: "text-amber-600" },
+    { icon: Lock, text: "Right-click context menu will be blocked", color: "text-amber-600" },
+    { icon: Eye, text: "Tab switching and window changes will be monitored", color: "text-amber-600" },
+    { icon: Search, text: "Developer tools detection is active", color: "text-amber-600" },
+    { icon: Wifi, text: "Network requests to AI APIs will be blocked", color: "text-amber-600" },
+    { icon: MonitorOff, text: "Browser extensions will be monitored", color: "text-amber-600" },
+    { icon: FileWarning, text: "All violations will be logged and recorded", color: "text-red-600" },
+    { icon: AlertTriangle, text: "3 violations will result in test termination", color: "text-red-600" },
   ];
 
   const handleAccept = () => {
@@ -57,13 +56,14 @@ export const SecurityConsentDialog = ({ open, onAccept, onDecline }: SecurityCon
         <Alert className="bg-amber-50 border-amber-200 dark:bg-amber-950 dark:border-amber-800">
           <AlertTriangle className="h-5 w-5 text-amber-600" />
           <AlertDescription className="text-amber-900 dark:text-amber-100">
-            <strong>Important:</strong> This assessment uses comprehensive security monitoring to ensure integrity and prevent AI assistance. By proceeding, you consent to these measures.
+            <strong>Important:</strong> This assessment uses comprehensive security monitoring to ensure integrity and
+            prevent AI assistance. By proceeding, you consent to these measures.
           </AlertDescription>
         </Alert>
 
         <div className="space-y-3 py-4">
           <h3 className="font-semibold text-lg mb-3">The following security measures will be active:</h3>
-          
+
           {securityMeasures.map((measure, index) => {
             const Icon = measure.icon;
             return (
@@ -94,28 +94,18 @@ export const SecurityConsentDialog = ({ open, onAccept, onDecline }: SecurityCon
             checked={agreed}
             onCheckedChange={(checked) => setAgreed(checked === true)}
           />
-          <label
-            htmlFor="security-agreement"
-            className="text-sm font-medium leading-relaxed cursor-pointer"
-          >
-            I understand and accept all security measures listed above. I confirm that I will not use any AI assistants, external tools, or attempt to circumvent these security measures during the assessment. I understand that violations will be logged and may result in test termination.
+          <label htmlFor="security-agreement" className="text-sm font-medium leading-relaxed cursor-pointer">
+            I understand and accept all security measures listed above. I confirm that I will not use any AI assistants,
+            external tools, or attempt to circumvent these security measures during the assessment. I understand that
+            violations will be logged and may result in test termination.
           </label>
         </div>
 
         <DialogFooter className="flex gap-2 sm:justify-between">
-          <Button
-            type="button"
-            variant="outline"
-            onClick={onDecline}
-          >
+          <Button type="button" variant="outline" onClick={onDecline}>
             Decline & Exit
           </Button>
-          <Button
-            type="button"
-            onClick={handleAccept}
-            disabled={!agreed}
-            className="bg-amber-600 hover:bg-amber-700"
-          >
+          <Button type="button" onClick={handleAccept} disabled={!agreed} className="bg-amber-600 hover:bg-amber-700">
             I Understand and Agree
           </Button>
         </DialogFooter>
