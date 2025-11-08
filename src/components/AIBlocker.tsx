@@ -153,18 +153,47 @@ export const AIBlocker = ({ isActive, testId, onViolation, enableFullscreen = fa
 
     // 8. Detect AI Assistant Popups/Sidebars
     const detectAIAssistantUI = () => {
+      const keywords = ['chatgpt','claude','comet','copilot','perplexity','assistant','ai-chat','grok','gemini','bard'];
       const iframes = document.getElementsByTagName('iframe');
       for (let iframe of iframes) {
-        const src = iframe.src.toLowerCase();
-        const suspiciousTerms = ['chatgpt', 'claude', 'comet', 'copilot', 'assistant', 'ai-chat'];
-        if (suspiciousTerms.some(term => src.includes(term))) {
+        const src = (iframe.src || '').toLowerCase();
+        if (keywords.some(term => src.includes(term))) {
           handleViolation('AI Assistant UI Detected in iframe');
-          iframe.remove();
+          try { iframe.remove(); } catch {}
         }
+      }
+
+      // Detect injected sidebars/overlays
+      const selector = keywords.map(k => `[class*="${k}"],[id*="${k}"],[aria-label*="${k}"],[data-testid*="${k}"]`).join(',');
+      const candidates = document.querySelectorAll(selector);
+      candidates.forEach((el) => {
+        const style = window.getComputedStyle(el as Element);
+        const isOverlay = ['fixed','sticky'].includes(style.position) || Number.parseInt(style.zIndex || '0') > 1000;
+        if (isOverlay) {
+          handleViolation('AI Assistant Overlay Detected');
+          try { (el as Element).remove(); } catch {}
+        }
+      });
+    };
+
+    // 8b. Visibility change detection
+    const detectVisibilityChange = () => {
+      if (document.hidden) {
+        handleViolation('Page Hidden / Backgrounded');
       }
     };
 
-// 9. Fullscreen Enforcement (optional on mobile)
+    // 8c. Message activity from potential assistants
+    const messageListener = (event: MessageEvent) => {
+      const origin = (event.origin || '').toLowerCase();
+      const dataStr = (typeof event.data === 'string' ? event.data : JSON.stringify(event.data || '')).toLowerCase();
+      const suspect = ['chatgpt','claude','comet','copilot','perplexity','assistant','ai-chat','grok','gemini','bard'];
+      if (suspect.some(k => origin.includes(k) || dataStr.includes(k))) {
+        handleViolation('AI Assistant Message Activity');
+      }
+    };
+
+    // 9. Fullscreen Enforcement (optional on mobile)
     const enforceFullscreen = () => {
       if (!enableFullscreen) return;
       if (!document.fullscreenElement && window.innerWidth > 768) {
@@ -172,7 +201,11 @@ export const AIBlocker = ({ isActive, testId, onViolation, enableFullscreen = fa
       }
     };
 
+    const reported = new Set<string>();
+
     const handleViolation = (message: string) => {
+      if (reported.has(message)) return; // de-duplicate noisy events
+      reported.add(message);
       console.warn('🚨 Security Violation:', message);
       setViolations(prev => [...prev, message]);
       onViolation(message);
@@ -230,11 +263,21 @@ export const AIBlocker = ({ isActive, testId, onViolation, enableFullscreen = fa
     document.addEventListener('contextmenu', blockContextMenu);
     document.addEventListener('keydown', blockKeyboardShortcuts);
     window.addEventListener('blur', detectTabSwitch);
+    document.addEventListener('visibilitychange', detectVisibilityChange);
+    window.addEventListener('message', messageListener);
     if (enableFullscreen) document.addEventListener('fullscreenchange', enforceFullscreen);
 
     // Run detections
     detectExtensions();
     monitorNetworkRequests();
+    detectAIAssistantUI();
+    
+    // Observe DOM for injected assistant UI
+    const uiObserver = new MutationObserver(() => {
+      detectExtensions();
+      detectAIAssistantUI();
+    });
+    try { uiObserver.observe(document.body, { childList: true, subtree: true }); } catch {}
     
     // Periodic checks
     const detectionInterval = setInterval(() => {
@@ -260,8 +303,11 @@ export const AIBlocker = ({ isActive, testId, onViolation, enableFullscreen = fa
       document.removeEventListener('contextmenu', blockContextMenu);
       document.removeEventListener('keydown', blockKeyboardShortcuts);
       window.removeEventListener('blur', detectTabSwitch);
+      document.removeEventListener('visibilitychange', detectVisibilityChange);
+      window.removeEventListener('message', messageListener);
       if (enableFullscreen) document.removeEventListener('fullscreenchange', enforceFullscreen);
       clearInterval(detectionInterval);
+      try { uiObserver.disconnect(); } catch {}
       
       // Exit fullscreen
       if (enableFullscreen && document.fullscreenElement) {
