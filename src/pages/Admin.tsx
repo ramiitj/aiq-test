@@ -18,9 +18,8 @@ const Admin = () => {
   const [loading, setLoading] = useState(true);
   const [uploading, setUploading] = useState<{
     beginner: boolean;
-    professional: boolean;
-    expert: boolean;
-  }>({ beginner: false, professional: false, expert: false });
+    advanced: boolean;
+  }>({ beginner: false, advanced: false });
   const [stats, setStats] = useState({ totalUsers: 0, totalTests: 0 });
   const navigate = useNavigate();
   const { toast } = useToast();
@@ -85,7 +84,7 @@ const Admin = () => {
 
   const handleFileUpload = async (
     e: React.ChangeEvent<HTMLInputElement>,
-    version: 'beginner' | 'professional' | 'expert'
+    version: 'beginner' | 'advanced'
   ) => {
     const file = e.target.files?.[0];
     if (!file) return;
@@ -140,18 +139,30 @@ const Admin = () => {
         if (jsonData.assessmentType && jsonData.assessmentType !== 'fixed') {
           throw new Error('Beginner assessment must have assessmentType: "fixed"');
         }
+        
+        // Validate total items for beginner (should be 60)
+        const totalItems = jsonData.itemBank.dimensions.reduce((sum: number, dim: any) => sum + (dim.items?.length || 0), 0);
+        if (totalItems !== 60) {
+          throw new Error(`Beginner assessment must have exactly 60 items (found ${totalItems})`);
+        }
       }
       
-      if (version === 'professional' || version === 'expert') {
-        // Professional/Expert: direct itemBank array
+      if (version === 'advanced') {
+        // Advanced: direct itemBank array
         const hasItemBank = jsonData.itemBank && Array.isArray(jsonData.itemBank);
         
         if (!hasItemBank) {
-          throw new Error(`${version.charAt(0).toUpperCase() + version.slice(1)} assessment must have itemBank as direct array`);
+          throw new Error('Advanced assessment must have itemBank as direct array');
         }
         
         if (jsonData.assessmentType && jsonData.assessmentType !== 'adaptive') {
-          throw new Error(`${version.charAt(0).toUpperCase() + version.slice(1)} assessment must have assessmentType: "adaptive"`);
+          throw new Error('Advanced assessment must have assessmentType: "adaptive"');
+        }
+        
+        // Validate total items for advanced (should be 160 items across all dimensions)
+        const totalItems = jsonData.itemBank.reduce((sum: number, dim: any) => sum + (dim.items?.length || 0), 0);
+        if (totalItems !== 160) {
+          throw new Error(`Advanced assessment must have exactly 160 items (found ${totalItems}). System will adaptively select 80 items during test.`);
         }
       }
 
@@ -198,9 +209,11 @@ const Admin = () => {
         ? jsonData.itemBank.dimensions.reduce((sum: number, dim: any) => sum + (dim.items?.length || 0), 0)
         : jsonData.itemBank.reduce((sum: number, dim: any) => sum + (dim.items?.length || 0), 0);
 
+      const itemsUsed = version === 'beginner' ? totalItems : '80 (adaptively selected from 160)';
+
       toast({
         title: "Success",
-        description: `${version.charAt(0).toUpperCase() + version.slice(1)} assessment uploaded successfully! Total items: ${totalItems}, Total points: ${config.totalPoints}, Passing score: ${config.passingScore}`,
+        description: `${version.charAt(0).toUpperCase() + version.slice(1)} assessment uploaded successfully! Items: ${itemsUsed}, Total points: ${config.totalPoints}, Passing: ${config.passingScore}`,
       });
 
       // Clear the input
@@ -266,21 +279,27 @@ const Admin = () => {
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
               <Upload className="h-5 w-5 text-primary" />
-              Upload Test Items by Version
+              Upload Test Items by Type
             </CardTitle>
             <CardDescription>
-              Upload JSON files for each test version separately (Beginner, Professional, Expert)
+              Upload JSON files for each test type: Beginner (60 fixed items) and Advanced (160 items, 80 selected adaptively)
             </CardDescription>
           </CardHeader>
           <CardContent className="space-y-6">
             {/* Beginner Version */}
-            <div className="p-4 border rounded-lg">
-              <div className="flex items-center gap-2 mb-3">
-                <div className="px-2 py-1 bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-300 rounded text-sm font-semibold">
-                  Beginner
+            <div className="p-4 border-2 rounded-lg border-green-200 dark:border-green-800 bg-green-50/50 dark:bg-green-950/20">
+              <div className="flex items-center justify-between mb-3">
+                <div className="flex items-center gap-2">
+                  <div className="px-3 py-1 bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-300 rounded text-sm font-bold">
+                    Beginner
+                  </div>
+                  <span className="text-xs text-muted-foreground">Fixed • 60 Items • 60 min</span>
                 </div>
               </div>
-              <Label htmlFor="beginner-upload">Beginner Assessment JSON</Label>
+              <Label htmlFor="beginner-upload" className="font-semibold">Beginner Assessment JSON</Label>
+              <p className="text-xs text-muted-foreground mb-2">
+                Foundation level assessment with 60 fixed items (8 per dimension)
+              </p>
               <Input
                 id="beginner-upload"
                 type="file"
@@ -290,60 +309,45 @@ const Admin = () => {
                 className="mt-2"
               />
               {uploading.beginner && (
-                <p className="text-sm text-muted-foreground mt-2">Uploading beginner assessment...</p>
+                <p className="text-sm text-green-600 dark:text-green-400 mt-2 font-medium">Uploading beginner assessment...</p>
               )}
             </div>
 
-            {/* Professional Version */}
-            <div className="p-4 border rounded-lg border-primary">
-              <div className="flex items-center gap-2 mb-3">
-                <div className="px-2 py-1 bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 rounded text-sm font-semibold">
-                  Professional
+            {/* Advanced Version */}
+            <div className="p-4 border-2 rounded-lg border-blue-200 dark:border-blue-800 bg-blue-50/50 dark:bg-blue-950/20">
+              <div className="flex items-center justify-between mb-3">
+                <div className="flex items-center gap-2">
+                  <div className="px-3 py-1 bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 rounded text-sm font-bold">
+                    Advanced
+                  </div>
+                  <span className="text-xs text-muted-foreground">Adaptive • 160→80 Items • 80 min</span>
                 </div>
               </div>
-              <Label htmlFor="professional-upload">Professional Assessment JSON</Label>
+              <Label htmlFor="advanced-upload" className="font-semibold">Advanced Assessment JSON</Label>
+              <p className="text-xs text-muted-foreground mb-2">
+                Professional level with 160 items in bank, 80 adaptively selected during test (10 per dimension)
+              </p>
               <Input
-                id="professional-upload"
+                id="advanced-upload"
                 type="file"
                 accept=".json"
-                onChange={(e) => handleFileUpload(e, 'professional')}
-                disabled={uploading.professional}
+                onChange={(e) => handleFileUpload(e, 'advanced')}
+                disabled={uploading.advanced}
                 className="mt-2"
               />
-              {uploading.professional && (
-                <p className="text-sm text-muted-foreground mt-2">Uploading professional assessment...</p>
-              )}
-            </div>
-
-            {/* Expert Version */}
-            <div className="p-4 border rounded-lg">
-              <div className="flex items-center gap-2 mb-3">
-                <div className="px-2 py-1 bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-300 rounded text-sm font-semibold">
-                  Expert
-                </div>
-              </div>
-              <Label htmlFor="expert-upload">Expert Assessment JSON</Label>
-              <Input
-                id="expert-upload"
-                type="file"
-                accept=".json"
-                onChange={(e) => handleFileUpload(e, 'expert')}
-                disabled={uploading.expert}
-                className="mt-2"
-              />
-              {uploading.expert && (
-                <p className="text-sm text-muted-foreground mt-2">Uploading expert assessment...</p>
+              {uploading.advanced && (
+                <p className="text-sm text-blue-600 dark:text-blue-400 mt-2 font-medium">Uploading advanced assessment...</p>
               )}
             </div>
 
             <div className="p-4 bg-accent/30 rounded-lg space-y-4">
               <div>
-                <p className="text-sm font-semibold mb-2">Required Structure by Version:</p>
+                <p className="text-sm font-semibold mb-2">Required JSON Structure by Test Type:</p>
                 
                 {/* Beginner Structure */}
                 <div className="mb-4">
-                  <div className="px-2 py-1 bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-300 rounded text-xs font-semibold inline-block mb-2">
-                    Beginner (Fixed)
+                  <div className="px-3 py-1 bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-300 rounded text-xs font-bold inline-block mb-2">
+                    Beginner Assessment (Fixed)
                   </div>
                   <pre className="text-xs bg-background p-3 rounded border overflow-x-auto">
 {`{
@@ -352,10 +356,14 @@ const Admin = () => {
   "assessmentType": "fixed",
   "assessmentConfiguration": {
     "totalQuestions": 60,
-    "questionsPerDimension": "7-8",
-    "estimatedTime": "90 minutes"
+    "questionsPerDimension": 8,
+    "estimatedTime": "60 minutes"
   },
-  "scoringConfiguration": { ... },
+  "scoringConfiguration": {
+    "totalPoints": 600,
+    "passingScore": 420,
+    "scoringMethod": { "type": "simple-sum" }
+  },
   "itemBank": {
     "dimensions": [
       {
@@ -368,10 +376,11 @@ const Admin = () => {
             "type": "multiple-choice",
             "question": "...",
             "options": ["...", "..."],
-            "correctAnswer": 1,
+            "correctAnswer": 0,
             "points": 10,
             "difficulty": 0.18
           }
+          // ... 8 items per dimension × 8 dimensions = 60 total
         ]
       }
     ]
@@ -380,21 +389,25 @@ const Admin = () => {
                   </pre>
                 </div>
 
-                {/* Professional Structure */}
+                {/* Advanced Structure */}
                 <div className="mb-4">
-                  <div className="px-2 py-1 bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 rounded text-xs font-semibold inline-block mb-2">
-                    Professional (Adaptive)
+                  <div className="px-3 py-1 bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 rounded text-xs font-bold inline-block mb-2">
+                    Advanced Assessment (Adaptive)
                   </div>
                   <pre className="text-xs bg-background p-3 rounded border overflow-x-auto">
 {`{
-  "assessmentName": "AIQ Professional Assessment",
-  "version": "4.0_STANDARDIZED",
-  "description": "...",
-  "assessmentMetadata": {
-    "totalItems": 160,
-    "itemsPerDimension": 20,
-    "itemTypes": ["Multiple-Choice", "Multiple-Response"],
-    "estimatedDuration": "120 minutes"
+  "assessmentName": "AIQ Advanced Assessment",
+  "version": "7.0",
+  "assessmentType": "adaptive",
+  "assessmentConfiguration": {
+    "totalQuestions": 160,
+    "questionsPerDimension": 20,
+    "estimatedTime": "80 minutes"
+  },
+  "scoringConfiguration": {
+    "totalPoints": 1600,
+    "passingScore": 1280,
+    "scoringMethod": { "type": "IRT-weighted-expert" }
   },
   "itemBank": [
     {
@@ -402,70 +415,17 @@ const Admin = () => {
       "dimensionName": "Strategic AI Understanding",
       "items": [
         {
-          "id": "SAU-P-001",
+          "id": "SAU-A-001",
           "type": "multiple-choice",
           "question": "...",
           "options": ["...", "..."],
-          "correctAnswer": 1,
-          "points": 12,
-          "difficulty": 0.56
-        },
-        {
-          "id": "SAU-P-002",
-          "type": "multiple-response",
-          "question": "...",
-          "options": ["...", "..."],
-          "correctAnswers": [0, 2],
+          "correctAnswer": 0,
           "points": 13,
-          "difficulty": 0.58
+          "difficulty": 0.68,
+          "discrimination": 1.42
         }
-      ]
-    }
-  ]
-}`}
-                  </pre>
-                </div>
-
-                {/* Expert Structure */}
-                <div>
-                  <div className="px-2 py-1 bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-300 rounded text-xs font-semibold inline-block mb-2">
-                    Expert (Adaptive)
-                  </div>
-                  <pre className="text-xs bg-background p-3 rounded border overflow-x-auto">
-{`{
-  "assessmentName": "AIQ Expert Assessment",
-  "version": "4.0_STANDARDIZED",
-  "description": "...",
-  "assessmentMetadata": {
-    "totalItems": 160,
-    "itemsPerDimension": 20,
-    "itemTypes": ["Multiple-Choice", "Multiple-Response"],
-    "estimatedDuration": "150 minutes",
-    "targetAudience": "Senior professionals, researchers"
-  },
-  "itemBank": [
-    {
-      "dimensionCode": "SAU",
-      "dimensionName": "Strategic AI Understanding",
-      "items": [
-        {
-          "id": "SAU-E-001",
-          "type": "multiple-choice",
-          "question": "...",
-          "options": ["...", "..."],
-          "correctAnswer": 1,
-          "points": 15,
-          "difficulty": 0.69
-        },
-        {
-          "id": "SAU-E-002",
-          "type": "multiple-response",
-          "question": "...",
-          "options": ["...", "..."],
-          "correctAnswers": [0, 2],
-          "points": 16,
-          "difficulty": 0.79
-        }
+        // ... 20 items per dimension × 8 dimensions = 160 total
+        // System adaptively selects 10 items per dimension (80 total)
       ]
     }
   ]
@@ -477,17 +437,16 @@ const Admin = () => {
               <div className="p-3 bg-blue-50 dark:bg-blue-950 rounded border border-blue-200 dark:border-blue-800">
                 <p className="text-xs font-semibold text-blue-900 dark:text-blue-100 mb-2">Key Differences:</p>
                 <ul className="text-xs text-blue-800 dark:text-blue-200 space-y-1">
-                  <li>• <strong>Beginner:</strong> itemBank has "dimensions" wrapper, 60 items (8 per dimension), includes "level" field</li>
-                  <li>• <strong>Professional:</strong> itemBank is direct array, 160 items (20 per dimension), 10 selected adaptively</li>
-                  <li>• <strong>Expert:</strong> itemBank is direct array, 160 items (20 per dimension), 10 selected adaptively</li>
-                  <li>• <strong>Types:</strong> Beginner uses true-false/scenario-based; Pro/Expert use multiple-response</li>
+                  <li>• <strong>Beginner:</strong> itemBank wrapped in "dimensions" object, 60 fixed items (8 per dimension), includes "level" field</li>
+                  <li>• <strong>Advanced:</strong> itemBank is direct array, 160 items in bank (20 per dimension), adaptively selects 80 items (10 per dimension) during test</li>
+                  <li>• <strong>Scoring:</strong> Beginner uses simple sum (600 points), Advanced uses IRT-weighted scoring (1600 points)</li>
+                  <li>• <strong>Difficulty:</strong> Advanced includes discrimination values for IRT-based item selection</li>
                 </ul>
               </div>
               
               <p className="text-xs text-muted-foreground">
-                Files are saved as: <code className="bg-background px-1 rounded">beginner-assessment.json</code>,{" "}
-                <code className="bg-background px-1 rounded">professional-assessment.json</code>, and{" "}
-                <code className="bg-background px-1 rounded">expert-assessment.json</code>
+                Files are saved as: <code className="bg-background px-1 rounded">beginner-assessment.json</code> and{" "}
+                <code className="bg-background px-1 rounded">advanced-assessment.json</code>
               </p>
             </div>
           </CardContent>
