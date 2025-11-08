@@ -53,7 +53,11 @@ Deno.serve(async (req) => {
       );
     }
 
-    console.log('Logging security violation:', { testId, violationType, userId: user.id });
+    // Sanitized logging - avoid exposing user IDs
+    console.log('Security violation logged:', { 
+      testId: testId.substring(0, 8) + '...', 
+      violationType: violationType.substring(0, 50)
+    });
 
     // Insert violation record
     const { error: insertError } = await supabaseClient
@@ -67,7 +71,7 @@ Deno.serve(async (req) => {
       });
 
     if (insertError) {
-      console.error('Error inserting violation:', insertError);
+      console.error('Error inserting violation:', insertError.message);
       return new Response(
         JSON.stringify({ error: 'Failed to log violation' }),
         { status: 500, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
@@ -82,7 +86,7 @@ Deno.serve(async (req) => {
       .single();
 
     if (testError) {
-      console.error('Error fetching test:', testError);
+      console.error('Error fetching test:', testError.message);
       return new Response(
         JSON.stringify({ error: 'Failed to fetch test' }),
         { status: 500, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
@@ -102,14 +106,14 @@ Deno.serve(async (req) => {
       .eq('id', testId);
 
     if (updateError) {
-      console.error('Error updating test:', updateError);
+      console.error('Error updating test:', updateError.message);
       return new Response(
         JSON.stringify({ error: 'Failed to update test' }),
         { status: 500, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
       );
     }
 
-    console.log('Violation logged successfully. Count:', newCount, 'Terminated:', shouldTerminate);
+    console.log('Violation recorded. Count:', newCount, 'Terminated:', shouldTerminate);
 
     return new Response(
       JSON.stringify({

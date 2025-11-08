@@ -49,7 +49,7 @@ Deno.serve(async (req) => {
       .maybeSingle();
 
     if (rateLimitData && rateLimitData.count >= 10) {
-      console.log(`Rate limit exceeded for IP: ${clientIp}`);
+      console.log('Rate limit exceeded for certificate verification');
       return new Response(
         JSON.stringify({ 
           valid: false, 
@@ -84,7 +84,7 @@ Deno.serve(async (req) => {
       .maybeSingle();
 
     if (error) {
-      console.error('Database error:', error);
+      console.error('Database error:', error.message);
       return new Response(
         JSON.stringify({ valid: false }),
         { 
