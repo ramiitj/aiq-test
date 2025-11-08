@@ -361,19 +361,20 @@ const Test = () => {
       duration: 5000,
     });
     
-    // Terminate after 3 violations
+    // Terminate and delete test after 3 violations
     if (newCount >= 3) {
       setTestTerminated(true);
       
       if (testId) {
+        // Delete the test - cascade will remove all related records
         await supabase
           .from('tests')
-          .update({ security_terminated: true })
+          .delete()
           .eq('id', testId);
       }
       
-      sonnerToast.error("Assessment Terminated", {
-        description: "Too many security violations detected. Your test has been terminated.",
+      sonnerToast.error("Assessment Terminated & Deleted", {
+        description: "Too many security violations detected. Your test has been terminated and removed.",
         duration: 10000,
       });
       
