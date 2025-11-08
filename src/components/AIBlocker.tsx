@@ -8,9 +8,10 @@ interface AIBlockerProps {
   isActive: boolean;
   testId: string;
   onViolation: (violationType: string) => void;
+  enableFullscreen?: boolean;
 }
 
-export const AIBlocker = ({ isActive, testId, onViolation }: AIBlockerProps) => {
+export const AIBlocker = ({ isActive, testId, onViolation, enableFullscreen = false }: AIBlockerProps) => {
   const [violations, setViolations] = useState<string[]>([]);
   const [isBlocking, setIsBlocking] = useState(false);
 
@@ -163,8 +164,9 @@ export const AIBlocker = ({ isActive, testId, onViolation }: AIBlockerProps) => 
       }
     };
 
-    // 9. Fullscreen Enforcement (optional on mobile)
+// 9. Fullscreen Enforcement (optional on mobile)
     const enforceFullscreen = () => {
+      if (!enableFullscreen) return;
       if (!document.fullscreenElement && window.innerWidth > 768) {
         handleViolation('Exited Fullscreen Mode');
       }
@@ -228,7 +230,7 @@ export const AIBlocker = ({ isActive, testId, onViolation }: AIBlockerProps) => 
     document.addEventListener('contextmenu', blockContextMenu);
     document.addEventListener('keydown', blockKeyboardShortcuts);
     window.addEventListener('blur', detectTabSwitch);
-    document.addEventListener('fullscreenchange', enforceFullscreen);
+    if (enableFullscreen) document.addEventListener('fullscreenchange', enforceFullscreen);
 
     // Run detections
     detectExtensions();
@@ -241,8 +243,8 @@ export const AIBlocker = ({ isActive, testId, onViolation }: AIBlockerProps) => 
       detectAIAssistantUI();
     }, 3000);
 
-    // Request fullscreen on desktop (delayed to ensure valid user interaction context)
-    if (window.innerWidth > 768) {
+    // Request fullscreen on desktop only when enabled
+    if (enableFullscreen && window.innerWidth > 768) {
       setTimeout(() => {
         document.documentElement.requestFullscreen?.().catch(() => {
           handleViolation('Fullscreen Request Denied');
@@ -258,11 +260,11 @@ export const AIBlocker = ({ isActive, testId, onViolation }: AIBlockerProps) => 
       document.removeEventListener('contextmenu', blockContextMenu);
       document.removeEventListener('keydown', blockKeyboardShortcuts);
       window.removeEventListener('blur', detectTabSwitch);
-      document.removeEventListener('fullscreenchange', enforceFullscreen);
+      if (enableFullscreen) document.removeEventListener('fullscreenchange', enforceFullscreen);
       clearInterval(detectionInterval);
       
       // Exit fullscreen
-      if (document.fullscreenElement) {
+      if (enableFullscreen && document.fullscreenElement) {
         document.exitFullscreen?.();
       }
       
