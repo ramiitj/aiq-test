@@ -18,15 +18,8 @@ export const AIBlocker = ({ isActive, testId, onViolation }: AIBlockerProps) => 
     if (!isActive) return;
 
     setIsBlocking(true);
-
-    // Environment guards
-    const isIframe = window.self !== window.top; // running inside Lovable preview iframe
-    const isDev = import.meta.env.DEV;
-
-    // Grace period to avoid instant termination while user settles (30s)
-    const graceStart = Date.now();
-    const graceMs = 30000;
-    const reported = new Set<string>();
+    
+    // 1. Detect AI Assistant Browser Extensions
     const detectExtensions = () => {
       const suspiciousExtensions = [
         'comet', 'chatgpt', 'claude', 'grok', 'perplexity', 
@@ -76,9 +69,8 @@ export const AIBlocker = ({ isActive, testId, onViolation }: AIBlockerProps) => 
       handleViolation('Tab/Window Switch Detected');
     };
 
-    // 5. Detect DevTools Opening (skip in iframe/dev)
+    // 5. Detect DevTools Opening
     const detectDevTools = () => {
-      if (isDev || isIframe) return;
       const threshold = 160;
       const widthThreshold = window.outerWidth - window.innerWidth > threshold;
       const heightThreshold = window.outerHeight - window.innerHeight > threshold;
@@ -173,7 +165,6 @@ export const AIBlocker = ({ isActive, testId, onViolation }: AIBlockerProps) => 
 
     // 9. Fullscreen Enforcement (optional on mobile)
     const enforceFullscreen = () => {
-      if (isIframe) return; // don't enforce in preview iframe
       if (!document.fullscreenElement && window.innerWidth > 768) {
         handleViolation('Exited Fullscreen Mode');
       }
@@ -181,18 +172,6 @@ export const AIBlocker = ({ isActive, testId, onViolation }: AIBlockerProps) => 
 
     const handleViolation = (message: string) => {
       console.warn('🚨 Security Violation:', message);
-      if (reported.has(message)) return; // de-duplicate
-      reported.add(message);
-
-      const withinGrace = Date.now() - graceStart < graceMs;
-      if (withinGrace) {
-        toast.warning('Security Check Active', {
-          description: message,
-          duration: 3000,
-        });
-        return; // don't count or log during grace period
-      }
-
       setViolations(prev => [...prev, message]);
       onViolation(message);
       
@@ -249,7 +228,7 @@ export const AIBlocker = ({ isActive, testId, onViolation }: AIBlockerProps) => 
     document.addEventListener('contextmenu', blockContextMenu);
     document.addEventListener('keydown', blockKeyboardShortcuts);
     window.addEventListener('blur', detectTabSwitch);
-    if (!isIframe) document.addEventListener('fullscreenchange', enforceFullscreen);
+    document.addEventListener('fullscreenchange', enforceFullscreen);
 
     // Run detections
     detectExtensions();
@@ -263,7 +242,7 @@ export const AIBlocker = ({ isActive, testId, onViolation }: AIBlockerProps) => 
     }, 3000);
 
     // Request fullscreen on desktop (delayed to ensure valid user interaction context)
-    if (!isIframe && window.innerWidth > 768) {
+    if (window.innerWidth > 768) {
       setTimeout(() => {
         document.documentElement.requestFullscreen?.().catch(() => {
           handleViolation('Fullscreen Request Denied');
@@ -279,11 +258,11 @@ export const AIBlocker = ({ isActive, testId, onViolation }: AIBlockerProps) => 
       document.removeEventListener('contextmenu', blockContextMenu);
       document.removeEventListener('keydown', blockKeyboardShortcuts);
       window.removeEventListener('blur', detectTabSwitch);
-      if (!isIframe) document.removeEventListener('fullscreenchange', enforceFullscreen);
+      document.removeEventListener('fullscreenchange', enforceFullscreen);
       clearInterval(detectionInterval);
       
       // Exit fullscreen
-      if (!isIframe && document.fullscreenElement) {
+      if (document.fullscreenElement) {
         document.exitFullscreen?.();
       }
       
