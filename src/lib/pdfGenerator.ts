@@ -226,8 +226,8 @@ export async function generatePDFReport(
     const dimPercentage = (dim.score / (totalPossible / dimensionScores.length)) * 100;
     const profLevel = getProficiencyLevel(dimPercentage, assessmentLevel || "professional");
 
-    doc.setFontSize(9);
-    doc.setFont("helvetica", "normal");
+    doc.setFontSize(10);
+    doc.setFont("helvetica", "bold");
     doc.setTextColor(...colors.darkText);
 
     // Label
@@ -253,9 +253,9 @@ export async function generatePDFReport(
     doc.text(`${dim.score.toFixed(1)}`, scoreXPos, currentY + 5.5);
 
     // Proficiency level text
-    doc.setFontSize(8.5);
-    doc.setFont("helvetica", "normal");
-    doc.setTextColor(...colors.mediumGray);
+    doc.setFontSize(9.5);
+    doc.setFont("helvetica", "bold");
+    doc.setTextColor(...colors.darkText);
     doc.text(profLevel, pageWidth - margin, currentY + 5.5, { align: "right" });
 
     currentY += barSpacing;
