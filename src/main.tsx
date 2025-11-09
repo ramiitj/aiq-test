@@ -7,8 +7,9 @@ declare const __BUILD_ID__: string;
 
 const storedBuildId = localStorage.getItem('BUILD_ID');
 const currentBuildId = __BUILD_ID__;
+const hasReloaded = sessionStorage.getItem('hasReloaded');
 
-if (storedBuildId !== currentBuildId) {
+if (storedBuildId !== currentBuildId && !hasReloaded) {
   console.log('New version detected, clearing cache...');
   
   // Unregister service workers
@@ -28,8 +29,14 @@ if (storedBuildId !== currentBuildId) {
   // Update stored build ID
   localStorage.setItem('BUILD_ID', currentBuildId);
   
+  // Set flag to prevent infinite reload
+  sessionStorage.setItem('hasReloaded', 'true');
+  
   // Force hard reload without changing the URL
   window.location.reload();
+} else if (storedBuildId === currentBuildId) {
+  // Clear reload flag when versions match
+  sessionStorage.removeItem('hasReloaded');
 }
 
 createRoot(document.getElementById("root")!).render(<App />);
