@@ -10,7 +10,7 @@ import { Label } from "@/components/ui/label";
 import { useToast } from "@/hooks/use-toast";
 import { Upload, BarChart3, Users } from "lucide-react";
 import { checkUserRole } from "@/lib/roleUtils";
-import { sanitizeJsonString } from "@/lib/jsonSanitizer";
+import { sanitizeJsonString, sanitizeKeys } from "@/lib/jsonSanitizer";
 import { AdminDataTables } from "@/components/AdminDataTables";
 
 const Admin = () => {
@@ -89,6 +89,17 @@ const Admin = () => {
     const file = e.target.files?.[0];
     if (!file) return;
 
+    // Security: Check file size (5MB limit)
+    const maxSize = 5 * 1024 * 1024; // 5MB
+    if (file.size > maxSize) {
+      toast({
+        title: "File Too Large",
+        description: "File size must be less than 5MB.",
+        variant: "destructive",
+      });
+      return;
+    }
+
     if (!file.name.endsWith(".json")) {
       toast({
         title: "Invalid File",
@@ -107,6 +118,8 @@ const Admin = () => {
       let jsonData: any;
       try {
         jsonData = JSON.parse(sanitized);
+        // Security: Sanitize keys to prevent prototype pollution
+        jsonData = sanitizeKeys(jsonData);
       } catch (err) {
         toast({
           title: "Invalid JSON file",

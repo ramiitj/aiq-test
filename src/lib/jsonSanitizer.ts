@@ -20,3 +20,23 @@ export function sanitizeJsonString(input: string): string {
   // Trim extraneous whitespace
   return s.trim();
 }
+
+/**
+ * Sanitize object keys to prevent prototype pollution attacks
+ * Recursively removes dangerous keys like __proto__, constructor, prototype
+ */
+export function sanitizeKeys(obj: any): any {
+  if (typeof obj !== 'object' || obj === null) return obj;
+  
+  const clean: any = Array.isArray(obj) ? [] : {};
+  
+  for (const key of Object.keys(obj)) {
+    // Block dangerous keys that could lead to prototype pollution
+    if (['__proto__', 'constructor', 'prototype'].includes(key)) {
+      continue;
+    }
+    clean[key] = sanitizeKeys(obj[key]);
+  }
+  
+  return clean;
+}

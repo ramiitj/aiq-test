@@ -53,6 +53,31 @@ Deno.serve(async (req) => {
       );
     }
 
+    // Security: Validate violationType length
+    if (typeof violationType !== 'string' || violationType.length > 200) {
+      return new Response(
+        JSON.stringify({ error: 'Invalid violation type - must be string under 200 characters' }),
+        { status: 400, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
+      );
+    }
+
+    // Security: Rate limiting - max 10 violations per minute per user
+    const oneMinuteAgo = new Date(Date.now() - 60000).toISOString();
+    const { count, error: countError } = await supabaseClient
+      .from('security_violations')
+      .select('*', { count: 'exact', head: true })
+      .eq('user_id', user.id)
+      .gte('created_at', oneMinuteAgo);
+
+    if (countError) {
+      console.error('Error checking rate limit:', countError.message);
+    } else if (count !== null && count >= 10) {
+      return new Response(
+        JSON.stringify({ error: 'Rate limit exceeded - maximum 10 violations per minute' }),
+        { status: 429, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
+      );
+    }
+
     // Sanitized logging - avoid exposing user IDs
     console.log('Security violation logged:', { 
       testId: testId.substring(0, 8) + '...', 
