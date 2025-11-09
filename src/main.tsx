@@ -28,10 +28,8 @@ if (storedBuildId !== currentBuildId) {
   // Update stored build ID
   localStorage.setItem('BUILD_ID', currentBuildId);
   
-  // Force reload with cache bust if not already reloading
-  if (!window.location.search.includes('v=')) {
-    window.location.href = `${window.location.pathname}?v=${currentBuildId}`;
-  }
+  // Force hard reload without changing the URL
+  window.location.reload();
 }
 
 createRoot(document.getElementById("root")!).render(<App />);
