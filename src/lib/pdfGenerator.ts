@@ -207,95 +207,30 @@ export async function generatePDFReport(
 
   currentY += 11;
 
-  // Performance Summary Table
+  // Performance Visualization on Page 1
   doc.setFontSize(14);
   doc.setFont("helvetica", "bold");
   doc.setTextColor(...colors.primaryBlue);
   doc.text("Performance Summary", margin, currentY);
 
-  currentY += 8;
+  currentY += 10;
 
-  const perfData = dimensionScores.map((dim) => {
-    const fullName = sharedDimensionNames[dim.code] || dim.name;
-    // Calculate percentage for dimension (assuming equal weighting)
-    const dimPercentage = (dim.score / (totalPossible / dimensionScores.length)) * 100;
-    return [fullName, dim.score.toFixed(1), getProficiencyLevel(dimPercentage, assessmentLevel || "professional")];
-  });
+  const barHeight = 9;
+  const barSpacing = 13;
+  const barStartX = margin + 55;
+  const adjustedBarMaxWidth = contentWidth - 68;
 
-  autoTable(doc, {
-    startY: currentY,
-    head: [["Dimension", "Score", "Proficiency Level"]],
-    body: perfData,
-    theme: "plain",
-    headStyles: {
-      fillColor: colors.primaryBlue,
-      fontStyle: "bold",
-      fontSize: 10,
-      textColor: colors.white,
-      halign: "center",
-      cellPadding: 3,
-    },
-    bodyStyles: {
-      fontSize: 9.5,
-      textColor: colors.darkText,
-      cellPadding: 4,
-      lineWidth: 0.1,
-      lineColor: [220, 220, 220],
-      minCellHeight: 10,
-      cellWidth: "wrap",
-    },
-    alternateRowStyles: {
-      fillColor: [249, 250, 251],
-    },
-    columnStyles: {
-      0: { cellWidth: 95, halign: "left" },
-      1: { cellWidth: 25, halign: "center", fontStyle: "bold" },
-      2: { cellWidth: 45, halign: "center" },
-    },
-    margin: { left: margin, right: margin },
-    didParseCell: function (data) {
-      if (data.column.index === 1 && data.section === "body") {
-        const score = parseFloat(data.cell.text[0]);
-        // Calculate percentage for color coding
-        const dimPercentage = (score / (totalPossible / dimensionScores.length)) * 100;
-        const cellColor = getLevelColor(dimPercentage);
-        data.cell.styles.textColor = cellColor;
-      }
-    },
-  });
-
-  // FORCE PAGE BREAK: Move to Page 2 for Visualization
-  addPageWithFooter();
-  // Reset Y to a clean starting position for Page 2 (e.g., 30mm from top)
-  currentY = 30;
-
-  // Performance Visualization (Now on Page 2)
-  doc.setFontSize(14);
-  doc.setFont("helvetica", "bold");
-  doc.setTextColor(...colors.primaryBlue);
-  doc.text("Performance Visualization", margin, currentY);
-
-  currentY += 10; // Increased slightly for better spacing after new page title
-
-  const barHeight = 8;
-  const barSpacing = 12; // Increased slightly for neater look on dedicated page
-  const barStartX = margin + 52;
-  const adjustedBarMaxWidth = contentWidth - 65;
-
-  dimensionScores.forEach((dim, index) => {
-    // Note: Removed the 'if (currentY > maxY)' check here as 8 dimensions
-    // will easily fit on this dedicated new page.
-
+  dimensionScores.forEach((dim) => {
     const fullName = sharedDimensionNames[dim.code] || dim.name;
     const dimPercentage = (dim.score / (totalPossible / dimensionScores.length)) * 100;
 
-    doc.setFontSize(9); // Slightly larger font for dedicated page
+    doc.setFontSize(9);
     doc.setFont("helvetica", "normal");
     doc.setTextColor(...colors.darkText);
 
     // Label
-    const label = fullName.length > 30 ? fullName.substring(0, 27) + "..." : fullName;
-    doc.text(label, margin, currentY + 5);
+    const label = fullName.length > 32 ? fullName.substring(0, 29) + "..." : fullName;
+    doc.text(label, margin, currentY + 5.5);
 
     // Background bar
     doc.setFillColor(238, 238, 238);
@@ -313,12 +248,12 @@ export async function generatePDFReport(
     doc.setFontSize(9);
     doc.setFont("helvetica", "bold");
     doc.setTextColor(...barColor);
-    doc.text(`${dim.score.toFixed(1)}`, pageWidth - margin, currentY + 5, { align: "right" });
+    doc.text(`${dim.score.toFixed(1)}`, pageWidth - margin, currentY + 5.5, { align: "right" });
 
     currentY += barSpacing;
   });
 
-  // PAGE 3: Recommendations Part 1
+  // PAGE 2: Recommendations Part 1
   addPageWithFooter();
 
   doc.setFontSize(15);
@@ -434,7 +369,7 @@ export async function generatePDFReport(
     },
   });
 
-  // PAGE 3: Recommendations Part 2 and Verification
+  // PAGE 3: Recommendations Part 2
   addPageWithFooter();
 
   doc.setFontSize(15);
@@ -506,12 +441,8 @@ export async function generatePDFReport(
     },
   });
 
-  currentY = (doc as any).lastAutoTable.finalY + 15;
-
-  // Ensure we don't go past the maximum Y position
-  if (currentY > maxY - 50) {
-    addPageWithFooter();
-  }
+  // PAGE 4: Verification and About Section
+  addPageWithFooter();
 
   // Verification Section
   doc.setDrawColor(...colors.primaryBlue);
