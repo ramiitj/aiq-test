@@ -218,11 +218,13 @@ export async function generatePDFReport(
   const barHeight = 9;
   const barSpacing = 13;
   const barStartX = margin + 55;
-  const adjustedBarMaxWidth = contentWidth - 68;
+  const barWidth = 80;
+  const scoreXPos = barStartX + barWidth + 8;
 
   dimensionScores.forEach((dim) => {
     const fullName = sharedDimensionNames[dim.code] || dim.name;
     const dimPercentage = (dim.score / (totalPossible / dimensionScores.length)) * 100;
+    const profLevel = getProficiencyLevel(dimPercentage, assessmentLevel || "professional");
 
     doc.setFontSize(9);
     doc.setFont("helvetica", "normal");
@@ -234,10 +236,10 @@ export async function generatePDFReport(
 
     // Background bar
     doc.setFillColor(238, 238, 238);
-    doc.roundedRect(barStartX, currentY, adjustedBarMaxWidth, barHeight, 1.5, 1.5, "F");
+    doc.roundedRect(barStartX, currentY, barWidth, barHeight, 1.5, 1.5, "F");
 
     // Score bar
-    const scoreWidth = (dimPercentage / 100) * adjustedBarMaxWidth;
+    const scoreWidth = (dimPercentage / 100) * barWidth;
     const barColor = getLevelColor(dimPercentage);
     doc.setFillColor(...barColor);
     if (scoreWidth > 0) {
@@ -248,7 +250,13 @@ export async function generatePDFReport(
     doc.setFontSize(9);
     doc.setFont("helvetica", "bold");
     doc.setTextColor(...barColor);
-    doc.text(`${dim.score.toFixed(1)}`, pageWidth - margin, currentY + 5.5, { align: "right" });
+    doc.text(`${dim.score.toFixed(1)}`, scoreXPos, currentY + 5.5);
+
+    // Proficiency level text
+    doc.setFontSize(8.5);
+    doc.setFont("helvetica", "normal");
+    doc.setTextColor(...colors.mediumGray);
+    doc.text(profLevel, pageWidth - margin, currentY + 5.5, { align: "right" });
 
     currentY += barSpacing;
   });
