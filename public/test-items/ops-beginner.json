@@ -1,0 +1,1594 @@
+{
+  "assessmentName": "AIQ Operations/Process Manager Beginner Assessment",
+  "version": "1.0",
+  "assessmentType": "fixed",
+  "description": "A foundational AI literacy assessment for operations and process management professionals with 60 items featuring balanced, sentence-structured options that eliminate length-based cues and reduce pattern recognition strategies.",
+  "assessmentConfiguration": {
+    "totalQuestions": 60,
+    "questionsPerDimension": "7-8",
+    "estimatedTime": "60 minutes",
+    "targetAudience": "Operations managers, process improvement specialists, workflow analysts, supply chain coordinators, production managers, and all operations professionals",
+    "timePerQuestion": "60 seconds average",
+    "presentationMode": {
+      "type": "fixed-sequential",
+      "description": "All questions presented in fixed order",
+      "sequencing": "By dimension, 7-8 questions per dimension"
+    },
+    "questionDistribution": {
+      "totalItems": 60,
+      "itemsPerDimension": "7-8 per dimension",
+      "selectionRatio": "100% (all items presented)"
+    },
+    "dimensionSequencing": {
+      "type": "fixed-order",
+      "sequence": [
+        "OAI",
+        "PAW",
+        "PFO",
+        "QDM",
+        "SCL",
+        "RCO",
+        "CIO",
+        "TCI"
+      ],
+      "description": "Candidates complete 7-8 questions per dimension in sequence"
+    }
+  },
+  "scoringConfiguration": {
+    "totalPoints": 600,
+    "pointsPerDimension": 75,
+    "passingScore": 420,
+    "passingPercentage": 70,
+    "scoringMethod": {
+      "type": "simple-sum",
+      "description": "Direct sum of points from correct answers with differential weighting by item difficulty",
+      "basePoints": 10,
+      "formula": "points = basePoints \u00d7 (1 + difficulty \u00d7 0.3) for each correct answer"
+    },
+    "scoringGuidelines": {
+      "0-40%": "Novice (0-240 points) - Significant foundational learning needed",
+      "41-60%": "Beginner (241-360 points) - Basic awareness established",
+      "61-80%": "Developing (361-480 points) - Good foundational understanding",
+      "81-90%": "Proficient (481-540 points) - Strong grasp of fundamentals",
+      "91-100%": "Advanced (541-600 points) - Excellent foundational mastery"
+    }
+  },
+  "instructions": "This AIQ Operations/Process Manager Beginner assessment evaluates your foundational AI literacy across 8 key dimensions of AI in operations management. You will answer 60 questions total (7-8 per dimension) in approximately 60 minutes. Questions feature balanced options designed to test genuine understanding. Answer all questions to the best of your ability.",
+  "assessmentGuidelines": {
+    "targetLevel": "Foundational awareness and basic understanding of AI in operations",
+    "cognitiveEmphasis": "65% Remember/Understand (Bloom's levels 1-2), 35% Apply (Bloom's level 3)",
+    "questionTypes": "Multiple-choice with scenario-based applications",
+    "difficultyProfile": "Realistic distractors that require genuine understanding to differentiate",
+    "timeAllocation": "Moderate time for careful consideration of nuanced options",
+    "reliabilityTarget": "Cronbach's alpha \u2265 0.80",
+    "optionDesign": "All options structured as complete sentences with balanced length (\u00b110% word count) to eliminate superficial cues"
+  },
+  "itemBank": {
+    "totalItems": 60,
+    "itemsPerDimension": "7-8",
+    "description": "Complete item set with 60 questions featuring sentence-structured options with balanced lengths and randomized placement",
+    "bankStatistics": {
+      "averageDifficulty": 0.383,
+      "difficultySD": 0.08,
+      "averageDiscrimination": 1.15,
+      "discriminationSD": 0.05,
+      "contentCoverageIndex": 0.92,
+      "estimatedReliability": 0.85,
+      "totalItems": 60
+    },
+    "dimensions": [
+      {
+        "dimensionCode": "OAI",
+        "dimensionName": "Operations AI Understanding",
+        "description": "Understanding AI capabilities, limitations, and strategic deployment in operations contexts",
+        "weight": 0.125,
+        "totalPoints": 75,
+        "items": [
+          {
+            "id": "OAI-OPS-B-001",
+            "level": 1,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.25,
+            "discrimination": 1.05,
+            "bloomLevel": "Remember",
+            "question": "What is the primary strategic advantage of using AI in operations management?",
+            "options": [
+              "AI enables operations to handle complexity, optimize resource allocation, and predict issues at scale beyond human capability.",
+              "AI completely replaces human decision-making in operations by making all choices automatically without requiring any oversight or intervention.",
+              "AI eliminates the need for data collection and analysis by generating accurate insights from minimal information about operations.",
+              "AI simplifies all operational processes to basic rule-based systems that anyone can manage without specialized knowledge or training."
+            ],
+            "correctAnswer": 0,
+            "rationale": "AI's core strategic value in operations is its ability to process vast amounts of data, identify complex patterns, optimize across multiple variables, and predict outcomes at a scale impossible for humans. It augments rather than replaces human judgment.",
+            "explanation": "This tests fundamental understanding of AI's value proposition in operations management.",
+            "tags": [
+              "strategic-value",
+              "operations-optimization",
+              "ai-capabilities"
+            ]
+          },
+          {
+            "id": "OAI-OPS-B-002",
+            "level": 1,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.3,
+            "discrimination": 1.08,
+            "bloomLevel": "Remember",
+            "question": "How does AI-powered process optimization differ from traditional process improvement methods?",
+            "options": [
+              "AI methods completely replace the need for human expertise while traditional methods require extensive involvement from experienced professionals.",
+              "AI approaches focus exclusively on cost reduction while traditional improvement methods balance multiple operational objectives and constraints.",
+              "AI can continuously analyze real-time data and adapt recommendations dynamically while traditional methods typically rely on periodic manual analysis.",
+              "AI optimization works only with historical data patterns while traditional methods can incorporate both past performance and future projections."
+            ],
+            "correctAnswer": 2,
+            "rationale": "AI excels at continuous, real-time analysis and dynamic adaptation to changing conditions. Traditional methods involve periodic reviews by humans. Both benefit from human expertise, but AI enables ongoing optimization at scale.",
+            "explanation": "Understanding the distinction between AI-powered and traditional optimization approaches is fundamental.",
+            "tags": [
+              "process-optimization",
+              "continuous-improvement",
+              "ai-vs-traditional"
+            ]
+          },
+          {
+            "id": "OAI-OPS-B-003",
+            "level": 2,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.35,
+            "discrimination": 1.1,
+            "bloomLevel": "Understand",
+            "question": "When is AI most reliable for making operational decisions without human review?",
+            "options": [
+              "AI is most reliable for high-frequency, routine decisions with clear parameters where outcomes can be quickly validated and corrected.",
+              "AI is equally reliable for all types of operational decisions once it has been properly trained on sufficient historical data.",
+              "AI is most reliable during crisis situations where rapid decisions are needed and there is insufficient time for analysis.",
+              "AI is most reliable when making strategic decisions that require long-term thinking and consideration of multiple stakeholder perspectives."
+            ],
+            "correctAnswer": 0,
+            "rationale": "AI works best for routine, high-frequency decisions with clear rules and rapid feedback loops. Strategic decisions, crisis management, and novel situations require human judgment, context, and ethical consideration.",
+            "explanation": "This tests understanding of appropriate AI autonomy levels in operations.",
+            "tags": [
+              "decision-making",
+              "ai-reliability",
+              "human-oversight"
+            ]
+          },
+          {
+            "id": "OAI-OPS-B-004",
+            "level": 2,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.38,
+            "discrimination": 1.12,
+            "bloomLevel": "Understand",
+            "question": "What limitation of AI is most critical for operations managers to understand?",
+            "options": [
+              "AI makes decisions much more slowly than humans and therefore creates bottlenecks in time-sensitive operational environments.",
+              "AI cannot fully account for unprecedented situations or changes in underlying conditions that weren't present in its training data.",
+              "AI can only process structured data in spreadsheets and databases and cannot work with any unstructured information sources.",
+              "AI systems require perfect data quality to function and will completely fail if given any information with errors or inconsistencies."
+            ],
+            "correctAnswer": 1,
+            "rationale": "AI learns from historical patterns and may struggle with novel situations, regime changes, or black swan events. While data quality matters, AI can handle imperfect data. It can process unstructured data and is often faster than humans.",
+            "explanation": "Understanding AI's limitation with unprecedented situations is crucial for operations.",
+            "tags": [
+              "ai-limitations",
+              "novel-situations",
+              "operational-risk"
+            ]
+          },
+          {
+            "id": "OAI-OPS-B-005",
+            "level": 2,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.4,
+            "discrimination": 1.14,
+            "bloomLevel": "Understand",
+            "question": "What distinguishes predictive AI from prescriptive AI in operations contexts?",
+            "options": [
+              "Predictive AI requires human approval for all outputs while prescriptive AI can implement changes automatically without oversight.",
+              "Predictive AI analyzes past performance while prescriptive AI exclusively focuses on real-time monitoring of current operations.",
+              "Predictive AI forecasts what is likely to happen while prescriptive AI recommends specific actions to achieve desired outcomes.",
+              "Predictive AI works only with numerical data while prescriptive AI can process text, images, and other types of information."
+            ],
+            "correctAnswer": 2,
+            "rationale": "Predictive AI forecasts outcomes (what will happen), while prescriptive AI recommends actions (what to do). Both can work with various data types. Neither automatically implements without oversight. Both use historical and real-time data.",
+            "explanation": "Understanding the distinction between prediction and prescription is fundamental to operations AI.",
+            "tags": [
+              "predictive-ai",
+              "prescriptive-ai",
+              "ai-types"
+            ]
+          },
+          {
+            "id": "OAI-OPS-B-006",
+            "level": 3,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.42,
+            "discrimination": 1.15,
+            "bloomLevel": "Apply",
+            "question": "Your manufacturing line produces 10,000 units daily. An AI system detects a quality issue affecting 2% of production. How should you respond?",
+            "options": [
+              "Ignore the AI alert since 2% is within normal variation and continue production at the current pace without investigation.",
+              "Immediately shut down the entire production line and wait for the AI system to provide a complete root cause analysis.",
+              "Investigate the AI alert immediately while the system continues monitoring, then verify the issue through inspection before taking action.",
+              "Override the AI system's detection and increase production speed to compensate for any potentially defective units identified."
+            ],
+            "correctAnswer": 2,
+            "rationale": "AI alerts should be investigated promptly but verified through human inspection before major actions. Shutting down immediately may be premature. Ignoring a persistent 2% defect rate is risky. Increasing speed could worsen the problem.",
+            "explanation": "This tests practical application of human-AI collaboration in operations.",
+            "tags": [
+              "quality-control",
+              "alert-response",
+              "human-ai-collaboration"
+            ]
+          },
+          {
+            "id": "OAI-OPS-B-007",
+            "level": 2,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.45,
+            "discrimination": 1.18,
+            "bloomLevel": "Understand",
+            "question": "How should operations managers communicate AI capabilities to their teams effectively?",
+            "options": [
+              "Provide only the final recommendations from AI systems without explaining the underlying logic to avoid confusion among team members.",
+              "Explain what tasks AI will handle, how it makes decisions, where it needs human input, and what to do when outputs seem wrong.",
+              "Describe AI as an advanced automation tool that will eventually handle all operational decisions without requiring team involvement.",
+              "Focus exclusively on the technical architecture and algorithms so team members understand exactly how the AI system operates."
+            ],
+            "correctAnswer": 1,
+            "rationale": "Effective communication explains AI's role, decision logic, collaboration points, and error handling. Hiding logic reduces trust. AI won't replace all decisions. Technical details matter less than practical understanding of working with AI.",
+            "explanation": "This assesses understanding of effective AI communication strategies for operations teams.",
+            "tags": [
+              "communication",
+              "change-management",
+              "team-training"
+            ]
+          }
+        ]
+      },
+      {
+        "dimensionCode": "PAW",
+        "dimensionName": "Process Automation & Workflows",
+        "description": "Implementing AI-powered automation in operational processes",
+        "weight": 0.125,
+        "totalPoints": 75,
+        "items": [
+          {
+            "id": "PAW-OPS-B-001",
+            "level": 1,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.26,
+            "discrimination": 1.06,
+            "bloomLevel": "Remember",
+            "question": "What's the first consideration when deciding which process to automate with AI?",
+            "options": [
+              "You should immediately automate the most complex processes first to demonstrate the maximum value of AI to stakeholders.",
+              "You should select processes with the highest costs even if they occur infrequently or lack clear standardization.",
+              "You should evaluate whether the process is standardized, high-volume, and rule-based enough to benefit from automation.",
+              "You should choose processes that involve the most employees regardless of their complexity or frequency of execution."
+            ],
+            "correctAnswer": 2,
+            "rationale": "Best automation candidates are high-volume, standardized, rule-based processes. Complex processes are often poor initial choices. Number of employees matters less than process characteristics. High-cost, low-frequency processes may not justify automation investment.",
+            "explanation": "This tests understanding of automation opportunity assessment.",
+            "tags": [
+              "process-automation",
+              "opportunity-assessment",
+              "roi"
+            ]
+          },
+          {
+            "id": "PAW-OPS-B-002",
+            "level": 1,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.28,
+            "discrimination": 1.07,
+            "bloomLevel": "Remember",
+            "question": "What is Robotic Process Automation (RPA) most suitable for in operations?",
+            "options": [
+              "RPA works best for creative problem-solving tasks that require generating novel solutions to unprecedented operational challenges.",
+              "RPA is designed primarily for physical manufacturing tasks that require robots to manipulate objects in production environments.",
+              "RPA excels at automating repetitive digital tasks that follow clear rules across multiple software applications and systems.",
+              "RPA is most effective for strategic decision-making that involves weighing multiple competing priorities and stakeholder interests."
+            ],
+            "correctAnswer": 2,
+            "rationale": "RPA automates repetitive digital tasks following rules across software systems. It's not for physical robotics, creative tasks, or strategic decisions requiring judgment and stakeholder balancing.",
+            "explanation": "Understanding RPA's appropriate use cases is fundamental to process automation.",
+            "tags": [
+              "rpa",
+              "digital-automation",
+              "use-cases"
+            ]
+          },
+          {
+            "id": "PAW-OPS-B-003",
+            "level": 2,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.33,
+            "discrimination": 1.09,
+            "bloomLevel": "Understand",
+            "question": "How should exception handling be designed in automated workflows?",
+            "options": [
+              "Automated workflows should stop completely whenever any exception occurs and wait for full human review before restarting.",
+              "Automated workflows should force all exceptions into standard categories so they can be processed automatically without delays.",
+              "Automated workflows should ignore exceptions and continue processing to maintain efficiency and throughput targets.",
+              "Automated workflows should route exceptions to human reviewers who can apply judgment while the system handles standard cases."
+            ],
+            "correctAnswer": 3,
+            "rationale": "Good exception handling routes unusual cases to humans while automation continues for standard cases. Stopping entirely is inefficient. Forcing exceptions into standard categories loses information. Ignoring exceptions risks errors.",
+            "explanation": "This tests understanding of robust automation design with appropriate human oversight.",
+            "tags": [
+              "exception-handling",
+              "workflow-design",
+              "human-in-loop"
+            ]
+          },
+          {
+            "id": "PAW-OPS-B-004",
+            "level": 2,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.37,
+            "discrimination": 1.11,
+            "bloomLevel": "Understand",
+            "question": "What is the primary challenge when integrating AI automation with existing legacy systems?",
+            "options": [
+              "Legacy systems cannot share any data with AI systems due to fundamental incompatibilities in their underlying technology.",
+              "Legacy systems automatically reject AI integration attempts because they were designed before automation technology existed.",
+              "Legacy systems often lack standardized APIs and data formats, requiring custom integration work or intermediate translation layers.",
+              "Legacy systems are always faster than modern AI systems, creating bottlenecks that slow down the entire automated workflow."
+            ],
+            "correctAnswer": 2,
+            "rationale": "Legacy systems typically lack modern APIs and standards, requiring custom integration. They're not necessarily faster. Data sharing is possible with integration work. Systems don't automatically reject integration\u2014it just requires more effort.",
+            "explanation": "Understanding integration challenges is critical for realistic automation planning.",
+            "tags": [
+              "system-integration",
+              "legacy-systems",
+              "technical-challenges"
+            ]
+          },
+          {
+            "id": "PAW-OPS-B-005",
+            "level": 3,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.4,
+            "discrimination": 1.13,
+            "bloomLevel": "Apply",
+            "question": "Your team automated a workflow that now processes 95% of cases correctly. What should be your next priority?",
+            "options": [
+              "Analyze the 5% of cases that fail to understand if they represent important edge cases or systematic issues to address.",
+              "Reduce human oversight of the automated workflow since the high success rate proves the system is reliable enough.",
+              "Immediately expand automation to other workflows since 95% accuracy demonstrates the technology is ready for broader use.",
+              "Accept the 95% rate as sufficient and move on since perfect automation is impossible and further improvements aren't worth it."
+            ],
+            "correctAnswer": 0,
+            "rationale": "Understanding failure patterns is crucial\u2014the 5% may reveal important issues or improvement opportunities. 95% may or may not be good enough depending on context. Maintaining oversight is important. Expanding before understanding failures is premature.",
+            "explanation": "This tests practical judgment about iterative automation improvement.",
+            "tags": [
+              "continuous-improvement",
+              "error-analysis",
+              "quality-management"
+            ]
+          },
+          {
+            "id": "PAW-OPS-B-006",
+            "level": 2,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.42,
+            "discrimination": 1.14,
+            "bloomLevel": "Understand",
+            "question": "How should you measure ROI for process automation initiatives?",
+            "options": [
+              "Calculate time savings, error reduction, and capacity gains while also considering implementation costs, maintenance, and training investments.",
+              "Focus exclusively on the reduction in headcount achieved through automation as this is the primary financial benefit.",
+              "Measure only the initial implementation costs since ongoing maintenance and support expenses are typically negligible for automation.",
+              "Count the total number of processes automated regardless of their business impact or the quality of outcomes."
+            ],
+            "correctAnswer": 0,
+            "rationale": "ROI should include time savings, quality improvements, and capacity benefits against total costs including implementation, maintenance, and training. Headcount reduction is one factor but not the only one. Maintenance costs matter. Volume of automation without impact measurement is meaningless.",
+            "explanation": "Understanding comprehensive ROI calculation is essential for automation decisions.",
+            "tags": [
+              "roi-calculation",
+              "business-value",
+              "cost-benefit"
+            ]
+          },
+          {
+            "id": "PAW-OPS-B-007",
+            "level": 3,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.45,
+            "discrimination": 1.16,
+            "bloomLevel": "Apply",
+            "question": "When should you prioritize workflow flexibility over automation efficiency?",
+            "options": [
+              "Prioritize flexibility when the process is still evolving, requirements change frequently, or exceptions are common and varied.",
+              "Always prioritize efficiency over flexibility since the main goal of automation is to maximize speed and reduce costs.",
+              "Never prioritize flexibility because it contradicts the fundamental purpose of automation which is standardization.",
+              "Prioritize flexibility only in the first month after automation and then shift entirely to efficiency optimization."
+            ],
+            "correctAnswer": 0,
+            "rationale": "Flexibility matters when processes evolve, requirements shift, or exceptions are frequent. Over-optimizing for efficiency in unstable processes creates brittleness. The choice depends on process maturity and variability, not a universal rule.",
+            "explanation": "This tests understanding of the flexibility-efficiency tradeoff in automation.",
+            "tags": [
+              "flexibility",
+              "process-maturity",
+              "design-tradeoffs"
+            ]
+          },
+          {
+            "id": "PAW-OPS-B-008",
+            "level": 2,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.49,
+            "discrimination": 1.19,
+            "bloomLevel": "Understand",
+            "question": "What change management approach works best when introducing workflow automation?",
+            "options": [
+              "Replace all manual workers with automated systems immediately to demonstrate management commitment and avoid partial adoption.",
+              "Keep automation plans confidential until launch to prevent employees from creating workarounds or sabotaging the initiative.",
+              "Involve affected employees early, explain how automation changes their roles, provide training, and maintain feedback channels throughout.",
+              "Implement automation quickly without advance notice to avoid resistance and then train employees once the system is live."
+            ],
+            "correctAnswer": 2,
+            "rationale": "Effective change management involves early involvement, clear communication about role changes, proper training, and ongoing feedback. Surprise implementations create resistance. Wholesale replacement ignores valuable human contributions. Secrecy breeds distrust and resistance.",
+            "explanation": "Understanding change management is crucial for successful automation adoption.",
+            "tags": [
+              "change-management",
+              "employee-engagement",
+              "implementation-strategy"
+            ]
+          }
+        ]
+      },
+      {
+        "dimensionCode": "PFO",
+        "dimensionName": "Predictive & Forecasting Operations",
+        "description": "Using AI for predictive analytics and operational forecasting",
+        "weight": 0.125,
+        "totalPoints": 75,
+        "items": [
+          {
+            "id": "PFO-OPS-B-001",
+            "level": 1,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.27,
+            "discrimination": 1.06,
+            "bloomLevel": "Remember",
+            "question": "What is the primary purpose of AI-powered demand forecasting in operations?",
+            "options": [
+              "Demand forecasting helps operations anticipate future needs to optimize inventory levels, staffing, and production capacity planning.",
+              "Demand forecasting replaces the need for safety stock by guaranteeing that predictions will match actual demand precisely.",
+              "Demand forecasting eliminates all uncertainty in operations by predicting exact customer demand with perfect accuracy every time.",
+              "Demand forecasting works only for products with completely stable demand patterns and cannot handle any seasonal variations."
+            ],
+            "correctAnswer": 0,
+            "rationale": "AI forecasting helps anticipate demand for better planning, but doesn't eliminate uncertainty or guarantee perfect accuracy. Safety stock is still needed. AI can handle seasonality and complex patterns.",
+            "explanation": "Understanding the practical purpose and limitations of demand forecasting is fundamental.",
+            "tags": [
+              "demand-forecasting",
+              "planning",
+              "inventory-optimization"
+            ]
+          },
+          {
+            "id": "PFO-OPS-B-002",
+            "level": 1,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.29,
+            "discrimination": 1.07,
+            "bloomLevel": "Remember",
+            "question": "What does predictive maintenance aim to achieve in operations?",
+            "options": [
+              "Predictive maintenance works only for brand new equipment and cannot be applied to older machinery or legacy systems.",
+              "Predictive maintenance eliminates the need for regular inspections by relying entirely on automated sensors to detect all issues.",
+              "Predictive maintenance guarantees that equipment will never fail by replacing all components before they reach their theoretical lifespan.",
+              "Predictive maintenance uses data patterns to identify when equipment is likely to fail so repairs can be scheduled before breakdowns occur."
+            ],
+            "correctAnswer": 3,
+            "rationale": "Predictive maintenance identifies failure patterns to enable proactive repairs, reducing unplanned downtime. It doesn't guarantee zero failures or eliminate inspections. It can work with older equipment if data is available.",
+            "explanation": "Understanding predictive maintenance fundamentals is essential for modern operations.",
+            "tags": [
+              "predictive-maintenance",
+              "equipment-reliability",
+              "downtime-reduction"
+            ]
+          },
+          {
+            "id": "PFO-OPS-B-003",
+            "level": 2,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.34,
+            "discrimination": 1.09,
+            "bloomLevel": "Understand",
+            "question": "How should operations managers use AI-generated demand forecasts?",
+            "options": [
+              "AI forecasts should be ignored in favor of traditional forecasting methods since AI cannot understand the nuances of the business.",
+              "AI forecasts should be followed exactly without any human adjustment since the algorithms are more accurate than expert judgment.",
+              "AI forecasts should only be used during stable periods and abandoned completely whenever any market conditions start to change.",
+              "AI forecasts should inform planning decisions but should be validated against market intelligence, domain expertise, and known business changes."
+            ],
+            "correctAnswer": 3,
+            "rationale": "AI forecasts are valuable inputs but should be combined with human judgment, market knowledge, and awareness of business changes. Neither blind adherence nor complete rejection is appropriate. AI can adapt to changing conditions.",
+            "explanation": "This tests understanding of appropriate human-AI collaboration in forecasting.",
+            "tags": [
+              "forecast-usage",
+              "human-judgment",
+              "decision-making"
+            ]
+          },
+          {
+            "id": "PFO-OPS-B-004",
+            "level": 2,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.38,
+            "discrimination": 1.11,
+            "bloomLevel": "Understand",
+            "question": "What does a confidence interval in an AI forecast tell operations managers?",
+            "options": [
+              "A confidence interval measures how confident the operations manager should feel about following the AI's recommendation exactly.",
+              "A confidence interval shows the percentage chance that the AI forecast is completely correct without any margin of error.",
+              "A confidence interval indicates the range within which actual outcomes are likely to fall and helps managers plan for uncertainty.",
+              "A confidence interval represents the number of data points used to train the forecasting model and indicates overall quality."
+            ],
+            "correctAnswer": 2,
+            "rationale": "Confidence intervals quantify forecast uncertainty, showing likely ranges for outcomes. They don't indicate probability of exact accuracy, manager confidence, or training data volume. They help with risk planning.",
+            "explanation": "Understanding forecast uncertainty quantification is crucial for planning.",
+            "tags": [
+              "confidence-intervals",
+              "uncertainty",
+              "risk-planning"
+            ]
+          },
+          {
+            "id": "PFO-OPS-B-005",
+            "level": 3,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.41,
+            "discrimination": 1.13,
+            "bloomLevel": "Apply",
+            "question": "Your AI forecasting system predicts a 30% increase in demand next quarter, but your sales team expects flat growth. What should you do?",
+            "options": [
+              "Ignore the AI forecast completely and follow the sales team's judgment since they have direct customer relationships.",
+              "Follow the AI forecast exactly since it uses more data points and sophisticated algorithms than the sales team's intuition.",
+              "Investigate the discrepancy by examining the data and assumptions driving both predictions before making capacity decisions.",
+              "Split the difference and plan for 15% growth since averaging the two predictions hedges risk from both sources."
+            ],
+            "correctAnswer": 2,
+            "rationale": "Significant discrepancies warrant investigation to understand different assumptions and data. Neither automatic preference for AI nor sales judgment is appropriate. Mechanical averaging without understanding the difference adds no value.",
+            "explanation": "This tests practical judgment when AI and human forecasts diverge significantly.",
+            "tags": [
+              "forecast-reconciliation",
+              "collaborative-planning",
+              "judgment"
+            ]
+          },
+          {
+            "id": "PFO-OPS-B-006",
+            "level": 2,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.44,
+            "discrimination": 1.15,
+            "bloomLevel": "Understand",
+            "question": "What indicates that a predictive model for operations may need retraining or adjustment?",
+            "options": [
+              "The model's predictions consistently miss actual outcomes in one direction or errors increase over time as conditions change.",
+              "The model produces different predictions when run multiple times with the same input data and historical information.",
+              "The model makes any prediction errors at all since accurate predictive models should never deviate from actual outcomes.",
+              "The model runs slower than expected even though prediction accuracy remains high and errors are within acceptable ranges."
+            ],
+            "correctAnswer": 0,
+            "rationale": "Systematic bias (consistent directional errors) or increasing errors over time signal model degradation. Some errors are normal. Processing speed doesn't indicate accuracy problems. Consistent predictions for same inputs are expected (different outputs would indicate a problem).",
+            "explanation": "Recognizing when models need updating is essential for maintaining forecast quality.",
+            "tags": [
+              "model-maintenance",
+              "accuracy-monitoring",
+              "model-drift"
+            ]
+          },
+          {
+            "id": "PFO-OPS-B-007",
+            "level": 2,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.47,
+            "discrimination": 1.17,
+            "bloomLevel": "Understand",
+            "question": "How should capacity planning incorporate AI predictions about future operational needs?",
+            "options": [
+              "Build capacity buffers so large that AI forecasts become irrelevant and operations can handle any possible scenario.",
+              "Use AI predictions as a starting point and then stress-test plans against multiple scenarios including forecast errors.",
+              "Avoid using AI forecasts for capacity planning since these decisions are too strategic and important for automation.",
+              "Set capacity exactly to match AI predictions since over-capacity is wasteful and forecasts are designed to be accurate."
+            ],
+            "correctAnswer": 1,
+            "rationale": "Good capacity planning uses AI forecasts as inputs but stress-tests against scenarios including forecast errors. Exact matching ignores uncertainty. Excessive buffers waste resources. Strategic decisions benefit from AI insights combined with judgment.",
+            "explanation": "This assesses understanding of robust capacity planning with AI support.",
+            "tags": [
+              "capacity-planning",
+              "scenario-analysis",
+              "risk-management"
+            ]
+          }
+        ]
+      },
+      {
+        "dimensionCode": "QDM",
+        "dimensionName": "Quality & Data-Driven Monitoring",
+        "description": "Leveraging AI for quality control and operational monitoring",
+        "weight": 0.125,
+        "totalPoints": 75,
+        "items": [
+          {
+            "id": "QDM-OPS-B-001",
+            "level": 1,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.26,
+            "discrimination": 1.06,
+            "bloomLevel": "Remember",
+            "question": "What is the primary advantage of AI-powered quality inspection compared to traditional methods?",
+            "options": [
+              "AI inspection works only for visible surface defects and cannot detect any internal quality issues or functional problems.",
+              "AI completely eliminates the possibility of defects by preventing quality issues from occurring in the first place.",
+              "AI replaces the need for quality standards by automatically determining what constitutes acceptable quality levels.",
+              "AI can inspect 100% of products consistently at high speed, detecting subtle defects that human inspectors might miss due to fatigue."
+            ],
+            "correctAnswer": 3,
+            "rationale": "AI enables high-speed, consistent inspection of all items, catching subtle patterns humans miss. It detects existing defects but doesn't prevent them. AI can work with various inspection types (visual, thermal, X-ray). Quality standards must still be defined.",
+            "explanation": "Understanding AI inspection capabilities and limitations is fundamental to quality management.",
+            "tags": [
+              "quality-inspection",
+              "defect-detection",
+              "automation"
+            ]
+          },
+          {
+            "id": "QDM-OPS-B-002",
+            "level": 1,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.28,
+            "discrimination": 1.07,
+            "bloomLevel": "Remember",
+            "question": "What is anomaly detection in operational monitoring?",
+            "options": [
+              "Anomaly detection identifies unusual patterns or outliers in operational data that may indicate problems requiring investigation.",
+              "Anomaly detection requires manual specification of all possible anomalies before the system can identify any issues.",
+              "Anomaly detection eliminates all process variation by forcing operations to stay within narrow predetermined acceptable ranges.",
+              "Anomaly detection works only with numerical data and cannot identify unusual patterns in text logs or image data."
+            ],
+            "correctAnswer": 0,
+            "rationale": "Anomaly detection finds unusual patterns that warrant investigation. It doesn't eliminate variation or force narrow ranges. It works with various data types. AI learns anomaly patterns rather than requiring manual specification of every possibility.",
+            "explanation": "Understanding anomaly detection fundamentals is essential for operational monitoring.",
+            "tags": [
+              "anomaly-detection",
+              "monitoring",
+              "outlier-identification"
+            ]
+          },
+          {
+            "id": "QDM-OPS-B-003",
+            "level": 2,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.33,
+            "discrimination": 1.09,
+            "bloomLevel": "Understand",
+            "question": "What's the most important factor when implementing AI-powered quality inspection?",
+            "options": [
+              "The inspection cameras must have the highest resolution available even if current defects are easily visible at lower quality.",
+              "The AI system must identify every possible defect type on the first day without any adjustment or fine-tuning period.",
+              "The inspection system must run at the absolute maximum speed possible regardless of the accuracy of defect detection.",
+              "The training data must represent the full range of quality conditions, defect types, and variations that occur in production."
+            ],
+            "correctAnswer": 3,
+            "rationale": "Representative training data is critical\u2014AI can only learn to detect defects it has seen examples of. Speed matters but accuracy is paramount. Systems improve with tuning. Camera resolution should match detection needs, not maximum possible.",
+            "explanation": "This tests understanding of critical success factors for AI quality systems.",
+            "tags": [
+              "training-data",
+              "data-quality",
+              "implementation"
+            ]
+          },
+          {
+            "id": "QDM-OPS-B-004",
+            "level": 3,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.37,
+            "discrimination": 1.11,
+            "bloomLevel": "Apply",
+            "question": "Your AI quality system has a 98% accuracy rate. How should you handle the 2% error rate?",
+            "options": [
+              "Reduce inspection standards to lower the error rate since the AI defines what level of quality is realistically achievable.",
+              "Analyze error patterns to understand if false positives or false negatives dominate and implement appropriate checks or alerts.",
+              "Accept the 2% error rate as excellent performance and eliminate human verification to maximize inspection efficiency.",
+              "Shut down the AI system immediately since anything less than 100% accuracy is unacceptable for quality management."
+            ],
+            "correctAnswer": 1,
+            "rationale": "Understanding error types (false positives vs. negatives) guides appropriate responses. 98% may be excellent but errors should be managed, not ignored. Perfect accuracy is unrealistic. Standards shouldn't change based on AI limitations.",
+            "explanation": "This tests practical judgment about managing AI system errors in quality control.",
+            "tags": [
+              "error-analysis",
+              "false-positives",
+              "quality-standards"
+            ]
+          },
+          {
+            "id": "QDM-OPS-B-005",
+            "level": 2,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.39,
+            "discrimination": 1.12,
+            "bloomLevel": "Understand",
+            "question": "How should operations use AI for root cause analysis of quality issues?",
+            "options": [
+              "AI definitively determines root causes without expert validation since it analyzes more data than humans can process.",
+              "AI root cause analysis works only for problems that have occurred before and cannot help with new quality issues.",
+              "AI cannot help with root cause analysis since this requires human creativity and reasoning about cause-and-effect relationships.",
+              "AI can identify correlations and patterns in data that point to potential root causes, which experts then validate and verify."
+            ],
+            "correctAnswer": 3,
+            "rationale": "AI identifies correlations and patterns suggesting causes, but experts validate causation vs. correlation. AI doesn't replace expert judgment. It augments human reasoning. AI can help with novel problems by identifying unexpected patterns.",
+            "explanation": "Understanding AI's role in root cause analysis is important for quality improvement.",
+            "tags": [
+              "root-cause-analysis",
+              "problem-solving",
+              "human-ai-collaboration"
+            ]
+          },
+          {
+            "id": "QDM-OPS-B-006",
+            "level": 2,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.42,
+            "discrimination": 1.14,
+            "bloomLevel": "Understand",
+            "question": "What KPIs are most important for monitoring AI-powered quality systems?",
+            "options": [
+              "Monitor only the overall accuracy percentage since this single metric captures all important aspects of system performance.",
+              "Measure only false positive rates since false negatives are impossible to detect without inspecting every product manually.",
+              "Focus exclusively on system uptime and processing speed since quality detection capability is assumed to be constant.",
+              "Track both false positive and false negative rates along with detection speed and the economic impact of quality catches."
+            ],
+            "correctAnswer": 3,
+            "rationale": "Comprehensive monitoring tracks both error types (false positives and negatives), speed, and business impact. Overall accuracy alone misses important nuances. Speed without quality is meaningless. False negatives matter even if harder to measure.",
+            "explanation": "This assesses understanding of comprehensive quality system monitoring.",
+            "tags": [
+              "kpi-monitoring",
+              "performance-metrics",
+              "quality-metrics"
+            ]
+          },
+          {
+            "id": "QDM-OPS-B-007",
+            "level": 3,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.46,
+            "discrimination": 1.16,
+            "bloomLevel": "Apply",
+            "question": "An AI monitoring system flags a process deviation that falls within specification limits. What should you do?",
+            "options": [
+              "Widen the specification limits to prevent future flags since the current limits are clearly too restrictive for stable operation.",
+              "Immediately adjust the process back to the center target without investigating the cause of the deviation from nominal.",
+              "Ignore the flag completely since the process is within specification and the AI system is generating false alarms.",
+              "Investigate the deviation to understand if it represents early warning of a trend or issue even though it's currently within spec."
+            ],
+            "correctAnswer": 3,
+            "rationale": "Deviations within spec may indicate early warning trends worth investigating. Don't dismiss AI patterns. Adjusting without understanding cause is risky. Changing specs to reduce alerts defeats the purpose of monitoring.",
+            "explanation": "This tests judgment about responding to AI monitoring alerts appropriately.",
+            "tags": [
+              "preventive-action",
+              "trend-analysis",
+              "process-control"
+            ]
+          },
+          {
+            "id": "QDM-OPS-B-008",
+            "level": 2,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.49,
+            "discrimination": 1.19,
+            "bloomLevel": "Understand",
+            "question": "How does data quality affect AI-powered operational monitoring systems?",
+            "options": [
+              "Only completely perfect data can be used with AI monitoring systems since any errors cause total system failure.",
+              "Data quality matters only during initial training and becomes irrelevant once the monitoring system is deployed.",
+              "Poor data quality leads to unreliable patterns, missed anomalies, and false alerts that undermine trust in monitoring systems.",
+              "Data quality has no impact on AI monitoring since the algorithms automatically clean and correct any data issues."
+            ],
+            "correctAnswer": 2,
+            "rationale": "Data quality directly impacts monitoring reliability\u2014poor data causes missed issues and false alerts. AI doesn't fully auto-correct data problems. Perfect data is unrealistic but quality matters. Ongoing data quality remains important, not just during training.",
+            "explanation": "Understanding data quality impact is critical for reliable monitoring.",
+            "tags": [
+              "data-quality",
+              "system-reliability",
+              "data-governance"
+            ]
+          }
+        ]
+      },
+      {
+        "dimensionCode": "SCL",
+        "dimensionName": "Supply Chain & Logistics AI",
+        "description": "Applying AI to supply chain and logistics operations",
+        "weight": 0.125,
+        "totalPoints": 75,
+        "items": [
+          {
+            "id": "SCL-OPS-B-001",
+            "level": 1,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.27,
+            "discrimination": 1.06,
+            "bloomLevel": "Remember",
+            "question": "What is the primary benefit of AI-powered route optimization in logistics?",
+            "options": [
+              "AI guarantees the shortest possible routes in all situations by calculating perfect solutions without any trade-offs.",
+              "AI can evaluate thousands of route combinations considering traffic, weather, fuel costs, and delivery windows to minimize total costs.",
+              "AI route optimization works only for fixed delivery schedules and cannot adapt to real-time changes or urgent requests.",
+              "AI eliminates the need for human dispatchers by making all routing decisions automatically without any oversight requirements."
+            ],
+            "correctAnswer": 1,
+            "rationale": "AI excels at evaluating many variables and combinations to optimize routes. Human oversight remains valuable. AI can adapt in real-time. Optimization involves trade-offs, not perfect solutions with no compromises.",
+            "explanation": "Understanding AI's optimization capabilities in logistics is fundamental.",
+            "tags": [
+              "route-optimization",
+              "logistics",
+              "cost-reduction"
+            ]
+          },
+          {
+            "id": "SCL-OPS-B-002",
+            "level": 1,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.29,
+            "discrimination": 1.07,
+            "bloomLevel": "Remember",
+            "question": "How does AI improve supply chain visibility?",
+            "options": [
+              "AI integrates data from multiple systems and sources to provide real-time tracking and predictive insights about potential delays.",
+              "AI visibility requires every supplier to use identical software systems and data formats throughout the supply chain.",
+              "AI visibility works only within a single company's operations and cannot track products across multiple organizations.",
+              "AI creates perfect supply chain visibility by eliminating all uncertainty about shipment locations and arrival times."
+            ],
+            "correctAnswer": 0,
+            "rationale": "AI integrates diverse data sources for tracking and predictive insights. It can work across organizational boundaries. It improves but doesn't eliminate uncertainty. Integration can work across different systems.",
+            "explanation": "Understanding how AI enhances supply chain visibility is essential.",
+            "tags": [
+              "supply-chain-visibility",
+              "tracking",
+              "integration"
+            ]
+          },
+          {
+            "id": "SCL-OPS-B-003",
+            "level": 2,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.34,
+            "discrimination": 1.09,
+            "bloomLevel": "Understand",
+            "question": "When should AI be used for supply chain decision-making?",
+            "options": [
+              "AI works best for high-frequency, data-rich decisions while humans should handle strategic relationships and major disruptions.",
+              "AI works only for long-term strategic planning and should not be used for operational or tactical supply chain decisions.",
+              "AI should never be used for supply chain decisions since relationships and intuition are more important than data.",
+              "AI should make all supply chain decisions since it can process more information faster than any human decision-maker."
+            ],
+            "correctAnswer": 0,
+            "rationale": "AI excels at frequent, data-intensive decisions. Strategic relationships and crisis management need human judgment. Neither complete automation nor complete avoidance is appropriate. AI helps at all planning horizons.",
+            "explanation": "This tests understanding of appropriate AI application in supply chain management.",
+            "tags": [
+              "decision-making",
+              "human-ai-collaboration",
+              "supply-chain-strategy"
+            ]
+          },
+          {
+            "id": "SCL-OPS-B-004",
+            "level": 2,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.38,
+            "discrimination": 1.11,
+            "bloomLevel": "Understand",
+            "question": "What role should AI play in supplier performance evaluation?",
+            "options": [
+              "AI should focus only on price comparisons and ignore quality, reliability, or other operational performance factors.",
+              "AI should analyze performance metrics and trends to identify issues, but relationship context and improvement plans need human judgment.",
+              "AI should automatically terminate relationships with low-performing suppliers without human review to ensure objectivity.",
+              "AI cannot evaluate supplier performance since this requires subjective judgment that algorithms cannot replicate."
+            ],
+            "correctAnswer": 1,
+            "rationale": "AI analyzes metrics and identifies patterns, but supplier relationships require human judgment about context and improvement potential. Automatic terminations ignore important context. AI can evaluate many factors. Performance includes more than price.",
+            "explanation": "Understanding human-AI collaboration in supplier management is important.",
+            "tags": [
+              "supplier-management",
+              "performance-evaluation",
+              "relationship-management"
+            ]
+          },
+          {
+            "id": "SCL-OPS-B-005",
+            "level": 3,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.41,
+            "discrimination": 1.13,
+            "bloomLevel": "Apply",
+            "question": "An AI system recommends changing suppliers due to 5% cost savings. The current supplier has been reliable for 10 years. What should you do?",
+            "options": [
+              "Follow the AI recommendation immediately since cost optimization is the primary objective in supply chain management.",
+              "Evaluate the recommendation by considering total cost of change, relationship value, switching risks, and supplier's improvement willingness.",
+              "Wait for the AI to recommend at least 15% savings since smaller percentages don't justify the effort of changing suppliers.",
+              "Ignore the AI recommendation completely since the value of established relationships always outweighs potential cost savings."
+            ],
+            "correctAnswer": 1,
+            "rationale": "Good decisions consider total costs, risks, relationship value, and improvement possibilities. Neither automatic acceptance nor rejection is appropriate. The decision depends on comprehensive analysis, not arbitrary thresholds.",
+            "explanation": "This tests practical judgment in supplier decision-making with AI input.",
+            "tags": [
+              "supplier-switching",
+              "cost-benefit-analysis",
+              "risk-assessment"
+            ]
+          },
+          {
+            "id": "SCL-OPS-B-006",
+            "level": 2,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.44,
+            "discrimination": 1.15,
+            "bloomLevel": "Understand",
+            "question": "How should AI be used for supply chain risk management?",
+            "options": [
+              "AI eliminates supply chain risk entirely by predicting and preventing all possible disruptions before they can occur.",
+              "AI should make all risk mitigation decisions automatically to ensure the fastest possible response to potential disruptions.",
+              "AI can monitor multiple risk indicators and identify potential disruptions early, giving time for human-led contingency planning.",
+              "AI risk management works only for risks that have occurred before and cannot help with new or unprecedented threats."
+            ],
+            "correctAnswer": 2,
+            "rationale": "AI monitors and identifies risks early, enabling proactive planning. Risk response requires human judgment for complex decisions. AI can help with novel risks by detecting unusual patterns. AI reduces but doesn't eliminate risk.",
+            "explanation": "Understanding AI's role in risk management is crucial for supply chain resilience.",
+            "tags": [
+              "risk-management",
+              "disruption-detection",
+              "contingency-planning"
+            ]
+          },
+          {
+            "id": "SCL-OPS-B-007",
+            "level": 2,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.47,
+            "discrimination": 1.17,
+            "bloomLevel": "Understand",
+            "question": "What's the most important consideration when implementing AI for inventory positioning across multiple warehouses?",
+            "options": [
+              "Maintain equal inventory levels at all warehouses regardless of AI recommendations to ensure fair treatment of locations.",
+              "Minimize inventory at all locations since AI predictions are accurate enough to eliminate the need for safety stock.",
+              "Maximize inventory at every location to ensure AI forecasting errors cannot result in any stockouts anywhere.",
+              "Balance AI optimization of inventory costs against service level requirements and the flexibility to handle demand variations."
+            ],
+            "correctAnswer": 3,
+            "rationale": "Inventory positioning requires balancing cost optimization with service levels and flexibility. Perfect predictions don't eliminate need for buffers. Equal distribution ignores regional differences. Maximum inventory wastes resources.",
+            "explanation": "This assesses understanding of inventory optimization trade-offs.",
+            "tags": [
+              "inventory-optimization",
+              "service-levels",
+              "trade-offs"
+            ]
+          }
+        ]
+      },
+      {
+        "dimensionCode": "RCO",
+        "dimensionName": "Risk & Compliance in Operations",
+        "description": "Managing operational risk, compliance, and governance with AI",
+        "weight": 0.125,
+        "totalPoints": 75,
+        "items": [
+          {
+            "id": "RCO-OPS-B-001",
+            "level": 1,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.28,
+            "discrimination": 1.07,
+            "bloomLevel": "Remember",
+            "question": "What is the primary compliance requirement when using AI in operations?",
+            "options": [
+              "The primary requirement is maintaining human accountability and audit trails for all consequential operational decisions.",
+              "The primary requirement is ensuring AI systems operate faster than manual processes to justify their implementation cost.",
+              "The primary requirement is obtaining approval from every employee who will interact with AI systems before deployment.",
+              "The primary requirement is achieving 100% accuracy in all AI predictions before the system can be used operationally."
+            ],
+            "correctAnswer": 0,
+            "rationale": "Human accountability and audit trails are fundamental compliance requirements. Speed alone doesn't ensure compliance. Universal employee approval isn't required. Perfect accuracy is unrealistic and not a compliance requirement.",
+            "explanation": "Understanding basic compliance requirements for operational AI is fundamental.",
+            "tags": [
+              "compliance",
+              "accountability",
+              "audit-trails"
+            ]
+          },
+          {
+            "id": "RCO-OPS-B-002",
+            "level": 1,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.3,
+            "discrimination": 1.08,
+            "bloomLevel": "Remember",
+            "question": "How can AI assist with safety monitoring in operations?",
+            "options": [
+              "AI safety monitoring works only during regular business hours and must be disabled during nights and weekends.",
+              "AI completely eliminates workplace safety risks by preventing all accidents and injuries through automated intervention systems.",
+              "AI can continuously monitor for safety hazards, unsafe conditions, and compliance violations to alert supervisors for immediate action.",
+              "AI replaces the need for human safety training since the system automatically prevents all unsafe behaviors."
+            ],
+            "correctAnswer": 2,
+            "rationale": "AI monitors for hazards and violations, alerting humans for action. It doesn't eliminate all risks or prevent all accidents. AI can monitor 24/7. Safety training remains essential even with AI monitoring.",
+            "explanation": "Understanding AI's role in safety monitoring is essential for operations.",
+            "tags": [
+              "safety-monitoring",
+              "hazard-detection",
+              "workplace-safety"
+            ]
+          },
+          {
+            "id": "RCO-OPS-B-003",
+            "level": 2,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.34,
+            "discrimination": 1.1,
+            "bloomLevel": "Understand",
+            "question": "What's the first sign that your operational AI system may need human review?",
+            "options": [
+              "The AI system produces recommendations that seem inconsistent with known operational constraints or recent environmental changes.",
+              "The AI system processes information slightly slower than the maximum theoretical speed it achieved during initial testing.",
+              "The AI system requires more than zero human oversight since truly reliable systems should never need any review.",
+              "The AI system generates any output that differs from previous recommendations even when input conditions have changed."
+            ],
+            "correctAnswer": 0,
+            "rationale": "Recommendations inconsistent with constraints or changes warrant review. Slight speed variations don't indicate review needs. All systems need oversight. Outputs should change when conditions change\u2014that's expected, not a problem.",
+            "explanation": "This tests understanding of when AI outputs require human verification.",
+            "tags": [
+              "human-oversight",
+              "quality-assurance",
+              "operational-risk"
+            ]
+          },
+          {
+            "id": "RCO-OPS-B-004",
+            "level": 2,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.37,
+            "discrimination": 1.11,
+            "bloomLevel": "Understand",
+            "question": "How should audit trails for AI operational decisions be maintained?",
+            "options": [
+              "Store only the final AI outputs since the detailed inputs and processing steps are too technical for audit purposes.",
+              "Maintain audit records only for decisions where the AI recommendation was overridden by human operators.",
+              "Record the inputs, AI recommendations, human decisions made, justifications for overrides, and outcomes for all significant choices.",
+              "Document AI decisions only when they result in negative outcomes or compliance issues that need investigation."
+            ],
+            "correctAnswer": 2,
+            "rationale": "Comprehensive audit trails capture inputs, recommendations, decisions, reasoning, and outcomes. Recording only outputs loses important context. All significant decisions should be auditable, not just overrides or problems.",
+            "explanation": "Understanding proper audit trail requirements is crucial for compliance.",
+            "tags": [
+              "audit-trails",
+              "documentation",
+              "compliance"
+            ]
+          },
+          {
+            "id": "RCO-OPS-B-005",
+            "level": 3,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.4,
+            "discrimination": 1.13,
+            "bloomLevel": "Apply",
+            "question": "An AI system recommends an action that would save costs but slightly increases operational risk. How should you proceed?",
+            "options": [
+              "Evaluate the risk increase quantitatively, assess whether it's acceptable within risk tolerance, and document the decision rationale.",
+              "Follow the AI recommendation automatically since it has been programmed to optimize operations within acceptable parameters.",
+              "Reject the recommendation immediately since any increase in risk is unacceptable regardless of potential cost benefits.",
+              "Implement the recommendation on a trial basis without documentation since it can be reversed if problems occur."
+            ],
+            "correctAnswer": 0,
+            "rationale": "Good risk management requires quantitative assessment against risk tolerance with documentation. Automatic acceptance ignores judgment needs. Risk-benefit tradeoffs are normal business decisions. Undocumented trials create compliance gaps.",
+            "explanation": "This tests practical judgment about risk-benefit decisions with AI input.",
+            "tags": [
+              "risk-assessment",
+              "cost-benefit",
+              "decision-documentation"
+            ]
+          },
+          {
+            "id": "RCO-OPS-B-006",
+            "level": 2,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.43,
+            "discrimination": 1.14,
+            "bloomLevel": "Understand",
+            "question": "What data governance practices are essential for operational AI systems?",
+            "options": [
+              "Limit data governance to IT departments since operations staff don't need to understand technical data management requirements.",
+              "Allow unrestricted access to all operational data since AI systems need comprehensive information to make optimal decisions.",
+              "Store all historical data indefinitely since more data always improves AI performance regardless of relevance or age.",
+              "Establish clear data ownership, access controls, quality standards, retention policies, and procedures for handling sensitive information."
+            ],
+            "correctAnswer": 3,
+            "rationale": "Data governance requires ownership, access controls, quality standards, retention policies, and sensitive data protocols. Unrestricted access creates risk. Unlimited retention isn't always better or legal. Operations staff need data governance awareness.",
+            "explanation": "Understanding data governance fundamentals is essential for responsible AI use.",
+            "tags": [
+              "data-governance",
+              "data-security",
+              "data-quality"
+            ]
+          },
+          {
+            "id": "RCO-OPS-B-007",
+            "level": 3,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.47,
+            "discrimination": 1.16,
+            "bloomLevel": "Apply",
+            "question": "When evaluating an operations AI vendor, what's the most critical compliance question to ask?",
+            "options": [
+              "How does the vendor ensure AI decisions can be explained, audited, and that human accountability is maintained for outcomes?",
+              "How many other companies in your industry are currently using this vendor's AI system for similar applications?",
+              "What discount can the vendor offer if you commit to a multi-year contract without requiring regular performance reviews?",
+              "What is the maximum processing speed the vendor's AI system can achieve compared to competing solutions?"
+            ],
+            "correctAnswer": 0,
+            "rationale": "Explainability, auditability, and accountability are critical compliance requirements. Speed is important but not the primary compliance concern. Industry adoption doesn't ensure compliance. Long-term commitments without reviews create risk.",
+            "explanation": "This tests understanding of compliance-critical vendor evaluation criteria.",
+            "tags": [
+              "vendor-selection",
+              "explainability",
+              "compliance"
+            ]
+          },
+          {
+            "id": "RCO-OPS-B-008",
+            "level": 2,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.51,
+            "discrimination": 1.2,
+            "bloomLevel": "Understand",
+            "question": "When should you prioritize process consistency over AI-driven optimization?",
+            "options": [
+              "Prioritize consistency when regulatory requirements mandate specific procedures or when variation itself creates unacceptable risk.",
+              "Never prioritize consistency because the purpose of AI is specifically to eliminate fixed procedures and maximize adaptability.",
+              "Prioritize consistency only during the first month after AI implementation and then shift fully to optimization.",
+              "Always prioritize AI optimization over consistency since flexibility and efficiency are more important than following rigid procedures."
+            ],
+            "correctAnswer": 0,
+            "rationale": "Regulatory requirements and risk considerations may mandate consistency over optimization. The choice depends on context\u2014neither universal priority is correct. Timing-based rules don't address the real compliance and risk issues.",
+            "explanation": "This assesses understanding of when compliance trumps optimization.",
+            "tags": [
+              "compliance-vs-efficiency",
+              "regulatory-requirements",
+              "risk-management"
+            ]
+          }
+        ]
+      },
+      {
+        "dimensionCode": "CIO",
+        "dimensionName": "Continuous Improvement & Optimization",
+        "description": "Using AI for continuous improvement and operational excellence",
+        "weight": 0.125,
+        "totalPoints": 75,
+        "items": [
+          {
+            "id": "CIO-OPS-B-001",
+            "level": 1,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.29,
+            "discrimination": 1.07,
+            "bloomLevel": "Remember",
+            "question": "How does AI support continuous improvement in operations?",
+            "options": [
+              "AI continuous improvement works only in manufacturing and cannot be applied to service operations or administrative processes.",
+              "AI eliminates the need for continuous improvement by optimizing processes perfectly on the first attempt without iteration.",
+              "AI replaces traditional improvement methodologies like Lean and Six Sigma since they are outdated in the AI era.",
+              "AI identifies patterns, bottlenecks, and improvement opportunities in operational data that humans might miss or take longer to detect."
+            ],
+            "correctAnswer": 3,
+            "rationale": "AI finds patterns and opportunities in data faster and more comprehensively. Perfect optimization doesn't happen instantly\u2014improvement is iterative. AI applies across operation types. AI complements rather than replaces proven methodologies.",
+            "explanation": "Understanding how AI augments continuous improvement efforts is fundamental.",
+            "tags": [
+              "continuous-improvement",
+              "pattern-recognition",
+              "process-optimization"
+            ]
+          },
+          {
+            "id": "CIO-OPS-B-002",
+            "level": 1,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.31,
+            "discrimination": 1.08,
+            "bloomLevel": "Remember",
+            "question": "What is process mining with AI?",
+            "options": [
+              "Process mining is the extraction of valuable minerals from industrial processes using AI-controlled robotic equipment.",
+              "Process mining refers to AI that creates entirely new processes from scratch without using any existing operational data.",
+              "Process mining involves AI systems searching through process documentation to find errors and inconsistencies in written procedures.",
+              "Process mining uses AI to analyze system logs and discover how processes actually work compared to how they're designed."
+            ],
+            "correctAnswer": 3,
+            "rationale": "Process mining analyzes actual process execution from system data to reveal real workflows versus documented ones. It's not about physical mining, document review, or creating processes from scratch.",
+            "explanation": "Understanding process mining fundamentals is important for process improvement.",
+            "tags": [
+              "process-mining",
+              "process-discovery",
+              "workflow-analysis"
+            ]
+          },
+          {
+            "id": "CIO-OPS-B-003",
+            "level": 2,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.35,
+            "discrimination": 1.1,
+            "bloomLevel": "Understand",
+            "question": "How should AI-generated process improvement recommendations be implemented?",
+            "options": [
+              "AI recommendations should be validated through pilot testing and cross-functional review before full implementation.",
+              "AI recommendations should be implemented immediately across all operations to maximize benefits and maintain momentum.",
+              "AI recommendations should always be rejected since frontline workers understand processes better than any algorithm.",
+              "AI recommendations should be implemented only during slow periods when any potential disruptions have minimal impact."
+            ],
+            "correctAnswer": 0,
+            "rationale": "Good implementation includes validation, pilots, and cross-functional input. Immediate full rollout is risky. Blanket rejection wastes valuable insights. Timing matters but isn't the only consideration.",
+            "explanation": "This tests understanding of prudent implementation of AI improvement recommendations.",
+            "tags": [
+              "implementation-strategy",
+              "pilot-testing",
+              "change-management"
+            ]
+          },
+          {
+            "id": "CIO-OPS-B-004",
+            "level": 2,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.39,
+            "discrimination": 1.12,
+            "bloomLevel": "Understand",
+            "question": "What role does AI play in identifying operational bottlenecks?",
+            "options": [
+              "AI automatically resolves all identified bottlenecks without requiring human decisions about resource allocation or process changes.",
+              "AI bottleneck identification works only for physical production lines and cannot analyze service or administrative workflows.",
+              "AI can identify only obvious bottlenecks that are already known to operations managers through direct observation.",
+              "AI analyzes flow data to identify where work accumulates, cycle times increase, and capacity constraints limit throughput."
+            ],
+            "correctAnswer": 3,
+            "rationale": "AI analyzes data to find constraints including subtle ones not obvious from observation. It can identify non-obvious patterns. AI works across operation types. Bottleneck resolution requires human decisions about resources and changes.",
+            "explanation": "Understanding AI's bottleneck analysis capabilities is important for optimization.",
+            "tags": [
+              "bottleneck-analysis",
+              "throughput-optimization",
+              "capacity-planning"
+            ]
+          },
+          {
+            "id": "CIO-OPS-B-005",
+            "level": 3,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.42,
+            "discrimination": 1.14,
+            "bloomLevel": "Apply",
+            "question": "AI suggests optimizing a process that will save 10 minutes per unit but requires 2 weeks to implement. What should you evaluate?",
+            "options": [
+              "Calculate total time savings based on volume, compare to implementation effort, assess risk, and consider opportunity cost of alternatives.",
+              "Implement immediately since any time savings are valuable and the two-week implementation period is relatively short.",
+              "Wait for the AI to propose a larger time saving before taking any action since small improvements aren't strategic.",
+              "Reject the optimization since 10 minutes per unit is too small to justify spending two full weeks on implementation."
+            ],
+            "correctAnswer": 0,
+            "rationale": "Good decisions require calculating total impact, comparing costs, assessing risks, and considering alternatives. Neither automatic acceptance nor rejection based on surface numbers is appropriate. Small per-unit savings can be significant at volume.",
+            "explanation": "This tests practical judgment about evaluating improvement opportunities.",
+            "tags": [
+              "roi-analysis",
+              "opportunity-evaluation",
+              "prioritization"
+            ]
+          },
+          {
+            "id": "CIO-OPS-B-006",
+            "level": 2,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.45,
+            "discrimination": 1.15,
+            "bloomLevel": "Understand",
+            "question": "How should A/B testing be used with AI in operations?",
+            "options": [
+              "Always run A/B tests for at least one year before making any changes to ensure statistical significance.",
+              "Implement all AI recommendations immediately without testing since A/B testing delays benefits and wastes resources.",
+              "Use A/B testing only for marketing decisions since operational processes are too critical to use experimental approaches.",
+              "Test AI-recommended changes with one group while maintaining current practices with another to compare outcomes before full rollout."
+            ],
+            "correctAnswer": 3,
+            "rationale": "A/B testing validates changes before full implementation, managing risk. Skipping testing is risky. Operations can use A/B testing for appropriate changes. Test duration should match the decision's impact and data needs, not arbitrary timeframes.",
+            "explanation": "Understanding A/B testing in operations improvement is important.",
+            "tags": [
+              "ab-testing",
+              "experimentation",
+              "validation"
+            ]
+          },
+          {
+            "id": "CIO-OPS-B-007",
+            "level": 2,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.49,
+            "discrimination": 1.18,
+            "bloomLevel": "Understand",
+            "question": "What's the relationship between AI and traditional Lean/Six Sigma methodologies?",
+            "options": [
+              "AI completely replaces Lean and Six Sigma since these methodologies were developed before AI technology existed.",
+              "AI accelerates data analysis and pattern identification while Lean/Six Sigma provides proven frameworks for improvement execution.",
+              "AI works only for simple problems while Lean/Six Sigma are required for any complex operational improvement initiatives.",
+              "AI and Lean/Six Sigma are incompatible approaches that cannot be used together in the same improvement program."
+            ],
+            "correctAnswer": 1,
+            "rationale": "AI and traditional methodologies are complementary\u2014AI enhances analysis while proven frameworks guide implementation. AI augments rather than replaces. They work together, not in opposition. AI can handle complex problems; both approaches have value.",
+            "explanation": "This assesses understanding of how AI complements traditional improvement methods.",
+            "tags": [
+              "lean-six-sigma",
+              "methodology-integration",
+              "continuous-improvement"
+            ]
+          }
+        ]
+      },
+      {
+        "dimensionCode": "TCI",
+        "dimensionName": "Technology & Change Implementation",
+        "description": "Implementing and managing operational AI technology",
+        "weight": 0.125,
+        "totalPoints": 75,
+        "items": [
+          {
+            "id": "TCI-OPS-B-001",
+            "level": 1,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.3,
+            "discrimination": 1.08,
+            "bloomLevel": "Remember",
+            "question": "What's the most critical success factor when implementing AI in operations?",
+            "options": [
+              "The most critical factor is implementing the AI system as quickly as possible to minimize disruption and maintain momentum.",
+              "The most critical factor is selecting the AI vendor with the largest number of customers in your specific industry.",
+              "The most critical factor is achieving 100% automation to eliminate human involvement and maximize efficiency gains.",
+              "The most critical factor is ensuring operations staff understand how to interpret AI outputs and when to override recommendations."
+            ],
+            "correctAnswer": 3,
+            "rationale": "Staff capability to work with AI\u2014interpreting outputs and knowing when to override\u2014is critical for success. Vendor popularity doesn't ensure fit. Speed without preparation fails. 100% automation is usually neither achievable nor desirable.",
+            "explanation": "Understanding critical success factors for AI implementation is fundamental.",
+            "tags": [
+              "implementation-success",
+              "user-training",
+              "human-ai-collaboration"
+            ]
+          },
+          {
+            "id": "TCI-OPS-B-002",
+            "level": 1,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.32,
+            "discrimination": 1.09,
+            "bloomLevel": "Remember",
+            "question": "What data infrastructure requirement is essential for operational AI?",
+            "options": [
+              "Operational AI requires completely replacing all existing operational systems before any AI implementation can begin.",
+              "Operational AI requires perfect data quality with zero errors or missing values before the system can function at all.",
+              "Operational AI requires storing every piece of operational data ever generated regardless of its relevance or quality.",
+              "Operational AI requires reliable data pipelines that can collect, clean, and deliver relevant data in the timeframe needed for decisions."
+            ],
+            "correctAnswer": 3,
+            "rationale": "AI needs reliable data pipelines with appropriate collection, cleaning, and delivery. Storing everything is wasteful and potentially problematic. Complete replacement is usually unnecessary. Perfect data is unrealistic\u2014AI can work with good enough data.",
+            "explanation": "Understanding data infrastructure needs is essential for successful AI implementation.",
+            "tags": [
+              "data-infrastructure",
+              "data-pipelines",
+              "data-quality"
+            ]
+          },
+          {
+            "id": "TCI-OPS-B-003",
+            "level": 2,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.36,
+            "discrimination": 1.1,
+            "bloomLevel": "Understand",
+            "question": "How should operations teams be trained on AI tools?",
+            "options": [
+              "Training should focus only on technical details of how the AI algorithms work so users fully understand the system.",
+              "Training should be limited to IT staff since operations workers don't need to understand AI to follow its recommendations.",
+              "Training should emphasize that AI is always correct so users learn to trust the system completely without question.",
+              "Training should cover what the AI does, how to interpret outputs, when to trust or question results, and how to provide feedback."
+            ],
+            "correctAnswer": 3,
+            "rationale": "Effective training covers practical usage: capabilities, interpretation, appropriate trust, and feedback. Deep technical details are less important than practical skills. Operations staff need training to use AI effectively. Blind trust is dangerous.",
+            "explanation": "This tests understanding of effective AI training approaches for operations staff.",
+            "tags": [
+              "training",
+              "user-adoption",
+              "change-management"
+            ]
+          },
+          {
+            "id": "TCI-OPS-B-004",
+            "level": 2,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.39,
+            "discrimination": 1.11,
+            "bloomLevel": "Understand",
+            "question": "What integration challenge is most common when adding AI to existing operations systems?",
+            "options": [
+              "The most common challenge is that existing systems automatically reject any integration attempts with AI technology.",
+              "The most common challenge is that AI systems always run much slower than existing systems and create processing delays.",
+              "The most common challenge is getting different systems to share data effectively across various formats and access protocols.",
+              "The most common challenge is finding enough physical space to house the AI servers next to existing infrastructure."
+            ],
+            "correctAnswer": 2,
+            "rationale": "Data integration across different formats and protocols is the primary challenge. AI isn't necessarily slower\u2014often faster. Systems don't auto-reject integration. Cloud AI doesn't require local servers.",
+            "explanation": "Understanding common integration challenges helps with realistic planning.",
+            "tags": [
+              "system-integration",
+              "data-integration",
+              "technical-challenges"
+            ]
+          },
+          {
+            "id": "TCI-OPS-B-005",
+            "level": 3,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.43,
+            "discrimination": 1.14,
+            "bloomLevel": "Apply",
+            "question": "Your operations team is resisting AI implementation, citing concerns about job security. How should you respond?",
+            "options": [
+              "Address concerns directly by explaining how roles will evolve, what new skills they'll develop, and how AI will augment their work.",
+              "Offer early retirement packages to concerned employees and hire new staff who are more comfortable with AI technology.",
+              "Implement the AI system without further discussion since management decisions don't require employee consensus or approval.",
+              "Delay AI implementation indefinitely until all employees enthusiastically support the change without any concerns."
+            ],
+            "correctAnswer": 0,
+            "rationale": "Address concerns transparently with clear communication about role evolution and skill development. Ignoring concerns breeds resistance. Indefinite delay is impractical. Replacing staff wastes institutional knowledge and damages morale.",
+            "explanation": "This tests practical judgment about managing change resistance.",
+            "tags": [
+              "change-resistance",
+              "job-security",
+              "employee-communication"
+            ]
+          },
+          {
+            "id": "TCI-OPS-B-006",
+            "level": 2,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.46,
+            "discrimination": 1.16,
+            "bloomLevel": "Understand",
+            "question": "How should you measure ROI for operational AI implementations?",
+            "options": [
+              "Avoid measuring ROI since AI is a strategic necessity and cost-benefit analysis is not relevant for critical technology.",
+              "Measure only direct cost reductions since these are the only objective and quantifiable benefits of AI implementation.",
+              "Measure both quantitative benefits like time and cost savings and qualitative benefits like decision quality and employee satisfaction.",
+              "Measure ROI only after five years since short-term results don't provide meaningful information about true value."
+            ],
+            "correctAnswer": 2,
+            "rationale": "Comprehensive ROI includes both quantitative metrics (time, cost) and qualitative benefits (quality, satisfaction). Focusing only on cost reduction misses important value. Waiting five years delays learning. All investments should be evaluated.",
+            "explanation": "Understanding comprehensive ROI measurement is important for AI investments.",
+            "tags": [
+              "roi-measurement",
+              "benefits-realization",
+              "performance-metrics"
+            ]
+          },
+          {
+            "id": "TCI-OPS-B-007",
+            "level": 3,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.5,
+            "discrimination": 1.19,
+            "bloomLevel": "Apply",
+            "question": "You're choosing between building custom AI or buying vendor solutions for operations. What should guide your decision?",
+            "options": [
+              "Always buy vendor solutions since building AI requires specialized expertise that operations teams typically lack.",
+              "Choose based solely on initial cost, selecting whichever option has the lowest upfront investment required.",
+              "Consider your unique requirements, internal AI capabilities, time constraints, total costs, and the strategic value of customization.",
+              "Always build custom AI since vendor solutions can never match your specific operational needs and requirements."
+            ],
+            "correctAnswer": 2,
+            "rationale": "Build vs. buy requires considering requirements, capabilities, timing, total costs, and customization value. Neither universal preference (always build or always buy) is appropriate. Initial cost alone ignores important factors.",
+            "explanation": "This tests understanding of build vs. buy decision factors for operational AI.",
+            "tags": [
+              "build-vs-buy",
+              "vendor-selection",
+              "strategic-decisions"
+            ]
+          },
+          {
+            "id": "TCI-OPS-B-008",
+            "level": 2,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.53,
+            "discrimination": 1.2,
+            "bloomLevel": "Understand",
+            "question": "How should you structure your operations AI implementation to ensure scalability?",
+            "options": [
+              "Focus exclusively on small pilot projects indefinitely to minimize risk and avoid the challenges of scaling solutions.",
+              "Immediately implement AI across all operations simultaneously to achieve maximum scale and demonstrate comprehensive commitment.",
+              "Start with high-value use cases that prove ROI, build reusable data infrastructure, and create organizational capabilities gradually.",
+              "Build completely custom AI for each department's unique needs without considering integration or shared infrastructure."
+            ],
+            "correctAnswer": 2,
+            "rationale": "Scalable approaches prove value early, build reusable infrastructure, and develop capabilities incrementally. Simultaneous broad implementation is risky. Perpetual pilots don't scale. Department silos prevent leverage.",
+            "explanation": "This assesses understanding of scalable AI implementation strategies.",
+            "tags": [
+              "scalability",
+              "implementation-strategy",
+              "organizational-capability"
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

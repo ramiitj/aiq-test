@@ -1,6 +1,10 @@
 /**
  * Assessment Adapter
- * Normalizes different JSON formats (Standard and SDE) into a unified structure
+ * Normalizes 4 different JSON formats into a unified structure:
+ * - Standard Format (General, PM, DS, DM, BA, Sales, Ops, HR, Adolescent)
+ * - SDE/Metadata Wrapper Format (SDE files)
+ * - Direct ItemBank Array Format
+ * - Hybrid Metadata with Direct ItemBank
  */
 
 export interface NormalizedDimension {
@@ -13,7 +17,7 @@ export interface NormalizedDimension {
     type: string;
     difficulty?: string;
     options?: string[];
-    correctAnswer?: string | string[];
+    correctAnswer?: string | string[] | number;
     explanation?: string;
     scenario?: string;
   }>;
@@ -28,32 +32,117 @@ export interface NormalizedAssessment {
   dimensions: NormalizedDimension[];
   scoring?: {
     passingScore?: number;
+    totalPoints?: number;
     dimensionWeights?: Record<string, number>;
   };
 }
 
+type FormatType = 'standard' | 'sde-metadata' | 'direct-array' | 'hybrid-metadata';
+
 /**
- * Detect if JSON uses SDE format (has assessmentMetadata wrapper)
+ * Detect which JSON format is being used
  */
-function isSdeFormat(data: any): boolean {
-  return data && typeof data === 'object' && 'assessmentMetadata' in data;
+function detectFormatType(data: any): FormatType {
+  if (!data || typeof data !== 'object') return 'standard';
+
+  // Check for SDE/Metadata wrapper format
+  if ('assessmentMetadata' in data) {
+    const metadata = data.assessmentMetadata;
+    
+    // Check if itemBank is direct array or has dimensions
+    if (data.itemBank && Array.isArray(data.itemBank)) {
+      return 'hybrid-metadata';
+    }
+    
+    if (metadata.dimensions || (data.itemBank && data.itemBank.dimensions)) {
+      return 'sde-metadata';
+    }
+  }
+
+  // Check for direct itemBank array (no dimensions wrapper)
+  if (data.itemBank && Array.isArray(data.itemBank)) {
+    return 'direct-array';
+  }
+
+  // Standard format with itemBank.dimensions
+  return 'standard';
 }
 
 /**
- * Normalize SDE format to standard format
+ * Extract metadata from various format locations
  */
-function normalizeSdeFormat(data: any): any {
-  if (!isSdeFormat(data)) return data;
+function extractMetadata(data: any, format: FormatType): any {
+  switch (format) {
+    case 'sde-metadata':
+    case 'hybrid-metadata':
+      const metadata = data.assessmentMetadata;
+      return {
+        name: metadata.name || metadata.title || 'Unknown Assessment',
+        description: metadata.description || '',
+        assessmentTier: metadata.assessmentTier || metadata.tier || 'beginner',
+        totalTime: extractDuration(data, format),
+        scoring: metadata.scoring || extractScoring(data),
+      };
 
-  const metadata = data.assessmentMetadata;
+    case 'standard':
+    case 'direct-array':
+    default:
+      return {
+        name: data.assessmentName || data.name || 'Unknown Assessment',
+        description: data.description || '',
+        assessmentTier: data.assessmentTier || data.tier || extractTierFromName(data.assessmentName || data.name),
+        totalTime: extractDuration(data, format),
+        scoring: data.scoringConfiguration || data.scoring,
+      };
+  }
+}
+
+/**
+ * Extract duration/time from various locations in the JSON
+ */
+function extractDuration(data: any, format: FormatType): number {
+  // Try multiple possible locations
+  const config = data.assessmentConfiguration || data.configuration || data.assessmentMetadata || data;
   
+  // Check for direct totalTime field
+  if (config.totalTime) return config.totalTime;
+  
+  // Check for estimatedTime string (e.g., "60 minutes")
+  if (config.estimatedTime) {
+    const match = String(config.estimatedTime).match(/(\d+)/);
+    if (match) return parseInt(match[1], 10);
+  }
+  
+  // Check for duration field
+  if (config.duration) {
+    if (typeof config.duration === 'number') return config.duration;
+    const match = String(config.duration).match(/(\d+)/);
+    if (match) return parseInt(match[1], 10);
+  }
+  
+  // Default based on tier
+  return 60;
+}
+
+/**
+ * Extract tier from assessment name if not explicitly provided
+ */
+function extractTierFromName(name: string = ''): string {
+  const lowerName = name.toLowerCase();
+  if (lowerName.includes('advanced') || lowerName.includes('expert')) return 'advanced';
+  if (lowerName.includes('beginner') || lowerName.includes('foundational')) return 'beginner';
+  return 'beginner';
+}
+
+/**
+ * Extract scoring configuration from various locations
+ */
+function extractScoring(data: any): any {
+  const scoring = data.scoringConfiguration || data.scoring || {};
   return {
-    name: metadata.name,
-    description: metadata.description,
-    assessmentTier: metadata.assessmentTier,
-    totalTime: metadata.totalTime,
-    dimensions: metadata.dimensions || [],
-    scoring: metadata.scoring,
+    passingScore: scoring.passingScore,
+    totalPoints: scoring.totalPoints,
+    dimensionWeights: scoring.dimensionWeights,
   };
 }
 
@@ -68,6 +157,31 @@ function countQuestions(dimensions: any[]): number {
 }
 
 /**
+ * Extract dimensions from various JSON structures
+ */
+function extractDimensions(data: any, format: FormatType): any[] {
+  switch (format) {
+    case 'sde-metadata':
+      // SDE format: dimensions in assessmentMetadata or itemBank
+      return data.assessmentMetadata?.dimensions || data.itemBank?.dimensions || [];
+
+    case 'hybrid-metadata':
+      // Hybrid: itemBank is direct array, need to group into dimensions
+      // For now, treat entire array as one dimension
+      return data.itemBank ? [{ items: data.itemBank }] : [];
+
+    case 'direct-array':
+      // Direct array: itemBank[] without dimensions wrapper
+      return data.itemBank ? [{ items: data.itemBank }] : [];
+
+    case 'standard':
+    default:
+      // Standard format: itemBank.dimensions[]
+      return data.itemBank?.dimensions || [];
+  }
+}
+
+/**
  * Validate and normalize dimension structure
  */
 function normalizeDimensions(dimensions: any[]): NormalizedDimension[] {
@@ -79,8 +193,8 @@ function normalizeDimensions(dimensions: any[]): NormalizedDimension[] {
     description: dim.description || '',
     items: Array.isArray(dim.items) ? dim.items.map(item => ({
       id: item.id || item.itemId || '',
-      text: item.text || item.questionText || '',
-      type: item.type || item.questionType || 'multiple_choice',
+      text: item.text || item.question || item.questionText || '',
+      type: item.type || item.questionType || 'multiple-choice',
       difficulty: item.difficulty || item.difficultyLevel,
       options: item.options || item.choices,
       correctAnswer: item.correctAnswer || item.answer,
@@ -94,23 +208,29 @@ function normalizeDimensions(dimensions: any[]): NormalizedDimension[] {
  * Main adapter function to normalize any assessment JSON format
  */
 export function normalizeAssessmentData(rawData: any): NormalizedAssessment {
-  // First, handle SDE format if needed
-  const standardized = normalizeSdeFormat(rawData);
-
-  // Extract dimensions
-  const dimensions = normalizeDimensions(standardized.dimensions || []);
+  // Detect format type
+  const format = detectFormatType(rawData);
+  
+  // Extract metadata based on format
+  const metadata = extractMetadata(rawData, format);
+  
+  // Extract dimensions based on format
+  const rawDimensions = extractDimensions(rawData, format);
+  
+  // Normalize dimensions structure
+  const dimensions = normalizeDimensions(rawDimensions);
   
   // Count total questions
   const questionCount = countQuestions(dimensions);
 
   return {
-    name: standardized.name || 'Unknown Assessment',
-    description: standardized.description || '',
-    assessmentTier: standardized.assessmentTier || 'beginner',
-    totalTime: standardized.totalTime || 60,
+    name: metadata.name,
+    description: metadata.description,
+    assessmentTier: metadata.assessmentTier,
+    totalTime: metadata.totalTime,
     questionCount,
     dimensions,
-    scoring: standardized.scoring,
+    scoring: metadata.scoring,
   };
 }
 

@@ -1,0 +1,1492 @@
+{
+  "assessmentMetadata": {
+    "assessmentId": "AIQ_Sales_Beginner_v1",
+    "title": "AIQ Sales/CRM Professional Beginner Assessment",
+    "version": "1.0",
+    "releaseDate": "2025-11-11",
+    "targetAudience": "Sales professionals, account executives, business development representatives, sales managers, CRM administrators, customer success managers, and anyone in sales roles working with AI-powered sales tools",
+    "description": "Foundational AI literacy evaluation for sales and CRM professionals, measuring essential AI knowledge needed for modern sales roles",
+    "estimatedTime": "60 minutes",
+    "language": "en-US"
+  },
+  "assessmentConfiguration": {
+    "totalQuestions": 60,
+    "questionsPerDimension": "7-8",
+    "passingScore": 420,
+    "totalPoints": 600,
+    "pointsPerDimension": 75,
+    "assessmentType": "fixed-sequential",
+    "allowReview": false,
+    "randomizeQuestions": false,
+    "randomizeOptions": false,
+    "scoringMethod": "simple-sum-weighted"
+  },
+  "scoringRubric": {
+    "levels": [
+      {
+        "level": "Novice",
+        "minScore": 0,
+        "maxScore": 240,
+        "percentage": "0-40%",
+        "description": "Significant foundational learning needed"
+      },
+      {
+        "level": "Beginner",
+        "minScore": 241,
+        "maxScore": 360,
+        "percentage": "41-60%",
+        "description": "Basic awareness established"
+      },
+      {
+        "level": "Developing",
+        "minScore": 361,
+        "maxScore": 480,
+        "percentage": "61-80%",
+        "description": "Good foundational understanding"
+      },
+      {
+        "level": "Proficient",
+        "minScore": 481,
+        "maxScore": 540,
+        "percentage": "81-90%",
+        "description": "Strong grasp of fundamentals"
+      },
+      {
+        "level": "Advanced",
+        "minScore": 541,
+        "maxScore": 600,
+        "percentage": "91-100%",
+        "description": "Excellent foundational mastery"
+      }
+    ]
+  },
+  "psychometricProperties": {
+    "overallStatistics": {
+      "totalItems": 60,
+      "averageDifficulty": 0.383,
+      "difficultyRange": [
+        0.25,
+        0.53
+      ],
+      "difficultySD": 0.08,
+      "averageDiscrimination": 1.15,
+      "discriminationRange": [
+        1.05,
+        1.2
+      ],
+      "discriminationSD": 0.05,
+      "contentCoverageIndex": 0.92,
+      "estimatedReliability": 0.85
+    },
+    "bloomsDistribution": {
+      "remember": {
+        "count": 16,
+        "percentage": 26.7
+      },
+      "understand": {
+        "count": 24,
+        "percentage": 40.0
+      },
+      "apply": {
+        "count": 20,
+        "percentage": 33.3
+      }
+    }
+  },
+  "itemBank": {
+    "dimensions": [
+      {
+        "dimensionCode": "SAI",
+        "dimensionName": "Sales AI Understanding",
+        "description": "Understanding AI capabilities, limitations, and applications in sales contexts",
+        "weight": 0.125,
+        "itemCount": 7,
+        "items": [
+          {
+            "id": "SAI-SL-B-001",
+            "difficulty": 0.25,
+            "discrimination": 1.05,
+            "bloomLevel": "Remember",
+            "questionType": "multiple-choice",
+            "points": 10.75,
+            "question": "What is the primary value AI brings to modern sales work?",
+            "options": [
+              "AI guarantees increased sales quotas by automatically closing deals without human intervention or oversight.",
+              "AI enables sales professionals to prioritize high-value opportunities by analyzing patterns across customer data and predicting deal likelihood.",
+              "AI eliminates the need for CRM systems by storing all customer information in conversational interfaces only.",
+              "AI completely replaces the need for human sales representatives by handling all customer interactions autonomously."
+            ],
+            "correctAnswer": 1,
+            "rationale": "AI's primary value in sales is augmenting human decision-making by surfacing insights, prioritizing opportunities, and predicting outcomes - not replacing sales professionals or guaranteeing results.",
+            "tags": [
+              "ai-value-proposition",
+              "sales-augmentation",
+              "foundational"
+            ]
+          },
+          {
+            "id": "SAI-SL-B-002",
+            "difficulty": 0.3,
+            "discrimination": 1.08,
+            "bloomLevel": "Understand",
+            "questionType": "multiple-choice",
+            "points": 10.9,
+            "question": "Why is it important to understand AI limitations when using sales tools?",
+            "options": [
+              "Understanding limitations prevents you from using AI tools altogether since all AI systems are fundamentally unreliable.",
+              "Understanding limitations only matters for technical teams, not for sales professionals using the tools daily.",
+              "Understanding limitations helps sales professionals verify AI recommendations against their judgment and domain expertise before taking action.",
+              "Understanding limitations is unnecessary because AI sales tools are designed to be completely autonomous and error-free."
+            ],
+            "correctAnswer": 2,
+            "rationale": "Sales professionals need to understand AI limitations to appropriately validate recommendations, combine AI insights with human judgment, and avoid over-reliance on automated suggestions.",
+            "tags": [
+              "ai-limitations",
+              "human-judgment",
+              "critical-thinking"
+            ]
+          },
+          {
+            "id": "SAI-SL-B-003",
+            "difficulty": 0.35,
+            "discrimination": 1.1,
+            "bloomLevel": "Understand",
+            "questionType": "multiple-choice",
+            "points": 11.05,
+            "question": "How can AI bias affect sales forecasting and lead prioritization?",
+            "options": [
+              "AI bias can cause the system to consistently under-prioritize certain customer segments based on historical patterns rather than actual potential.",
+              "AI bias always improves sales outcomes by filtering out unprofitable customer segments automatically.",
+              "AI bias only affects marketing teams and has no relevance to sales processes or outcomes.",
+              "AI bias has no impact on sales because sales data is purely objective and contains no historical patterns."
+            ],
+            "correctAnswer": 0,
+            "rationale": "AI bias can perpetuate historical inequities by under-prioritizing segments that may have been underserved in the past, leading to self-fulfilling prophecies and missed opportunities.",
+            "tags": [
+              "ai-bias",
+              "fairness",
+              "lead-prioritization"
+            ]
+          },
+          {
+            "id": "SAI-SL-B-004",
+            "difficulty": 0.38,
+            "discrimination": 1.12,
+            "bloomLevel": "Understand",
+            "questionType": "multiple-choice",
+            "points": 11.14,
+            "question": "What should sales professionals understand about AI training data recency?",
+            "options": [
+              "Training data recency doesn't matter because AI can accurately predict future trends regardless of when it was trained.",
+              "AI recommendations may not account for recent market changes, new competitors, or shifts in buyer behavior that occurred after training.",
+              "AI systems automatically update their training data in real-time, so recency is never a concern for sales applications.",
+              "Only data scientists need to worry about training data recency, not sales professionals using the tools."
+            ],
+            "correctAnswer": 1,
+            "rationale": "Sales professionals need to recognize that AI models are trained on historical data and may not reflect recent market dynamics, requiring human judgment to adjust for current conditions.",
+            "tags": [
+              "data-recency",
+              "market-dynamics",
+              "model-limitations"
+            ]
+          },
+          {
+            "id": "SAI-SL-B-005",
+            "difficulty": 0.4,
+            "discrimination": 1.13,
+            "bloomLevel": "Apply",
+            "questionType": "scenario-based",
+            "points": 11.2,
+            "question": "Your AI tool recommends focusing on Enterprise deals over SMB deals this quarter. How should you evaluate this recommendation?",
+            "options": [
+              "You should examine the recommendation against current market conditions, team capacity, sales cycle timing, and strategic business goals.",
+              "You should ignore the AI recommendation entirely because human intuition is always superior to data-driven insights.",
+              "You should ask the AI to guarantee specific revenue outcomes before considering the recommendation at all.",
+              "You should immediately follow the AI recommendation without question since AI has analyzed more data than you could manually."
+            ],
+            "correctAnswer": 0,
+            "rationale": "AI recommendations should be evaluated in context - considering team resources, current strategy, market conditions, and business priorities rather than blindly following or ignoring them.",
+            "tags": [
+              "recommendation-evaluation",
+              "critical-thinking",
+              "strategic-alignment"
+            ]
+          },
+          {
+            "id": "SAI-SL-B-006",
+            "difficulty": 0.43,
+            "discrimination": 1.15,
+            "bloomLevel": "Understand",
+            "questionType": "multiple-choice",
+            "points": 11.29,
+            "question": "What is the appropriate role of AI in complex, high-value sales negotiations?",
+            "options": [
+              "AI should be avoided entirely in negotiations because it cannot understand the nuances of human communication.",
+              "AI should only be used to schedule negotiation meetings but never provide any strategic input or recommendations.",
+              "AI should provide background insights, comparable deal data, and suggested strategies while humans conduct the actual negotiation.",
+              "AI should handle all negotiation communications directly with prospects to ensure consistency and eliminate emotional factors."
+            ],
+            "correctAnswer": 2,
+            "rationale": "In complex negotiations, AI is most effective as a support tool providing data-driven insights and pattern recognition while humans leverage relationship skills, emotional intelligence, and real-time adaptation.",
+            "tags": [
+              "negotiation",
+              "human-ai-collaboration",
+              "complex-sales"
+            ]
+          },
+          {
+            "id": "SAI-SL-B-007",
+            "difficulty": 0.45,
+            "discrimination": 1.16,
+            "bloomLevel": "Understand",
+            "questionType": "multiple-choice",
+            "points": 11.35,
+            "question": "How should sales professionals approach AI-generated customer insights and recommendations?",
+            "options": [
+              "Sales professionals should disregard AI insights and rely solely on personal relationships and intuition for all decisions.",
+              "Sales professionals should trust AI insights completely because they're based on comprehensive data analysis beyond human capacity.",
+              "Sales professionals should validate AI insights against direct customer conversations, account history, and market knowledge before acting.",
+              "Sales professionals should only use AI insights for small deals and never apply them to strategic accounts."
+            ],
+            "correctAnswer": 2,
+            "rationale": "The best approach combines AI's pattern recognition and data processing with human context, relationship knowledge, and judgment to make well-informed sales decisions.",
+            "tags": [
+              "insight-validation",
+              "human-ai-partnership",
+              "decision-making"
+            ]
+          }
+        ]
+      },
+      {
+        "dimensionCode": "LPO",
+        "dimensionName": "Lead Prioritization & Opportunity Scoring",
+        "description": "Using AI to identify, score, and prioritize leads and opportunities",
+        "weight": 0.125,
+        "itemCount": 8,
+        "items": [
+          {
+            "id": "LPO-SL-B-001",
+            "difficulty": 0.26,
+            "discrimination": 1.06,
+            "bloomLevel": "Remember",
+            "questionType": "multiple-choice",
+            "points": 10.78,
+            "question": "What is predictive lead scoring in sales AI systems?",
+            "options": [
+              "Predictive lead scoring uses historical data patterns to estimate which leads are most likely to convert into customers.",
+              "Predictive lead scoring eliminates the need for sales representatives to qualify or contact any leads personally.",
+              "Predictive lead scoring randomly assigns numerical values to leads to create an appearance of prioritization.",
+              "Predictive lead scoring guarantees that all high-scored leads will definitely close within a specific timeframe."
+            ],
+            "correctAnswer": 0,
+            "rationale": "Predictive lead scoring analyzes historical conversion patterns to probability-rank leads, helping sales teams focus efforts on opportunities most likely to close based on data patterns.",
+            "tags": [
+              "lead-scoring",
+              "predictive-analytics",
+              "prioritization"
+            ]
+          },
+          {
+            "id": "LPO-SL-B-002",
+            "difficulty": 0.29,
+            "discrimination": 1.07,
+            "bloomLevel": "Understand",
+            "questionType": "multiple-choice",
+            "points": 10.87,
+            "question": "How does AI-powered lead scoring differ from traditional rule-based scoring?",
+            "options": [
+              "AI-powered scoring learns patterns from actual conversion data while rule-based scoring relies on predetermined point assignments.",
+              "AI-powered scoring and rule-based scoring produce identical results but AI is just faster at calculations.",
+              "AI-powered scoring is less accurate than rule-based scoring because it doesn't incorporate sales team expertise.",
+              "AI-powered scoring requires no historical data while rule-based scoring needs extensive past performance records."
+            ],
+            "correctAnswer": 0,
+            "rationale": "AI scoring identifies complex patterns in historical conversion data that may not be obvious, while rule-based scoring applies fixed point values based on predefined criteria.",
+            "tags": [
+              "scoring-methods",
+              "machine-learning",
+              "pattern-recognition"
+            ]
+          },
+          {
+            "id": "LPO-SL-B-003",
+            "difficulty": 0.33,
+            "discrimination": 1.09,
+            "bloomLevel": "Understand",
+            "questionType": "multiple-choice",
+            "points": 10.99,
+            "question": "What factors typically influence AI lead scoring models?",
+            "options": [
+              "AI lead scoring uses completely random factors to ensure unbiased treatment of all potential customers.",
+              "Lead scoring exclusively relies on the sales representative's personal opinion about each prospect's potential value.",
+              "Only demographic information like company size and industry are used because behavioral data is too complex to analyze.",
+              "Lead scoring models combine demographic fit, behavioral engagement signals, firmographic data, and historical conversion patterns."
+            ],
+            "correctAnswer": 3,
+            "rationale": "Effective AI lead scoring integrates multiple signal types - firmographics, demographics, engagement behaviors, and historical patterns - to create comprehensive conversion probability estimates.",
+            "tags": [
+              "scoring-factors",
+              "multi-signal-analysis",
+              "data-integration"
+            ]
+          },
+          {
+            "id": "LPO-SL-B-004",
+            "difficulty": 0.37,
+            "discrimination": 1.11,
+            "bloomLevel": "Apply",
+            "questionType": "scenario-based",
+            "points": 11.11,
+            "question": "A lead has a high AI score but the sales rep knows the company just announced a hiring freeze. What should the rep do?",
+            "options": [
+              "The rep should contact the lead aggressively to close the deal before the hiring freeze affects the budget allocation.",
+              "The rep should ignore their knowledge and follow the AI score exclusively because data is always more reliable than intuition.",
+              "The rep should delete the lead from the CRM entirely since it will never convert under these circumstances.",
+              "The rep should immediately deprioritize this lead since AI scoring cannot account for real-time company announcements and current circumstances."
+            ],
+            "correctAnswer": 3,
+            "rationale": "Sales professionals should combine AI insights with current market intelligence - a hiring freeze is critical context that AI models trained on historical data wouldn't know about.",
+            "tags": [
+              "score-interpretation",
+              "contextual-judgment",
+              "real-time-intelligence"
+            ]
+          },
+          {
+            "id": "LPO-SL-B-005",
+            "difficulty": 0.41,
+            "discrimination": 1.14,
+            "bloomLevel": "Apply",
+            "questionType": "scenario-based",
+            "points": 11.23,
+            "question": "Your AI system consistently scores leads from a specific industry very low, but you've closed several deals there recently. What might this indicate?",
+            "options": [
+              "The AI is probably correct and you should return all revenue from those deals since they weren't properly qualified.",
+              "Your recent deals were anomalies and you should trust the AI's low scores and stop pursuing that industry segment.",
+              "This definitely indicates the AI system is completely broken and should be immediately replaced with manual scoring processes.",
+              "The AI model may not have enough recent data from this industry or market conditions have changed since the model was trained."
+            ],
+            "correctAnswer": 3,
+            "rationale": "Divergence between AI scores and actual outcomes suggests the model may need retraining with current data or that market conditions have shifted in ways not reflected in historical training data.",
+            "tags": [
+              "model-drift",
+              "feedback-loops",
+              "market-changes"
+            ]
+          },
+          {
+            "id": "LPO-SL-B-006",
+            "difficulty": 0.44,
+            "discrimination": 1.15,
+            "bloomLevel": "Understand",
+            "questionType": "multiple-choice",
+            "points": 11.32,
+            "question": "What is the primary limitation of AI opportunity scoring that sales professionals should understand?",
+            "options": [
+              "AI scores are intentionally designed to be wrong 50% of the time to force human oversight.",
+              "AI scores reflect probability based on historical patterns and don't account for unique relationship factors or current context.",
+              "AI opportunity scoring is perfectly accurate and has no limitations that sales professionals need to consider.",
+              "AI opportunity scoring takes too long to calculate, making it useless for fast-moving sales processes."
+            ],
+            "correctAnswer": 1,
+            "rationale": "AI scores are probabilistic predictions based on patterns in historical data - they don't know about personal relationships, recent conversations, or contextual factors that sales reps understand.",
+            "tags": [
+              "scoring-limitations",
+              "probability-vs-certainty",
+              "human-context"
+            ]
+          },
+          {
+            "id": "LPO-SL-B-007",
+            "difficulty": 0.46,
+            "discrimination": 1.17,
+            "bloomLevel": "Apply",
+            "questionType": "scenario-based",
+            "points": 11.38,
+            "question": "How should you handle a situation where AI-scored low-priority leads are converting at higher rates than high-priority leads?",
+            "options": [
+              "Immediately reverse all scores so that low becomes high and high becomes low across the entire lead database.",
+              "Stop using AI for lead scoring permanently and return to purely manual qualification processes for all future leads.",
+              "Continue following the current AI scores exactly as they are since questioning the algorithm shows lack of trust in data.",
+              "Investigate whether the scoring model needs retraining, whether market conditions have changed, or whether the definition of quality has shifted."
+            ],
+            "correctAnswer": 3,
+            "rationale": "Unexpected conversion patterns signal that the model may be stale, market dynamics have changed, or the target profile has evolved - requiring investigation and potentially model updating.",
+            "tags": [
+              "model-monitoring",
+              "conversion-analysis",
+              "adaptive-scoring"
+            ]
+          },
+          {
+            "id": "LPO-SL-B-008",
+            "difficulty": 0.49,
+            "discrimination": 1.18,
+            "bloomLevel": "Apply",
+            "questionType": "scenario-based",
+            "points": 11.47,
+            "question": "What's the best approach when AI scoring conflicts with a sales rep's intuition about a specific opportunity?",
+            "options": [
+              "The rep should always override AI with intuition since human judgment is inherently superior to algorithmic predictions.",
+              "The rep should examine specific factors driving both the AI score and their intuition, then make an informed decision based on available evidence.",
+              "The rep should escalate every conflict to management rather than making independent judgments about opportunity prioritization.",
+              "The rep should always follow the AI score exactly because algorithms eliminate the emotional bias inherent in human decisions."
+            ],
+            "correctAnswer": 1,
+            "rationale": "The optimal approach investigates both the data patterns informing the AI score and the contextual factors driving rep intuition to make the most informed decision possible.",
+            "tags": [
+              "ai-human-collaboration",
+              "decision-synthesis",
+              "conflict-resolution"
+            ]
+          }
+        ]
+      },
+      {
+        "dimensionCode": "CII",
+        "dimensionName": "Customer Intelligence & Insights",
+        "description": "Leveraging AI to understand customer behavior, preferences, and needs",
+        "weight": 0.125,
+        "itemCount": 7,
+        "items": [
+          {
+            "id": "CII-SL-B-001",
+            "difficulty": 0.27,
+            "discrimination": 1.06,
+            "bloomLevel": "Remember",
+            "questionType": "multiple-choice",
+            "points": 10.81,
+            "question": "What is the main purpose of AI-powered customer intelligence in sales?",
+            "options": [
+              "AI customer intelligence automatically makes all purchasing decisions on behalf of customers to streamline transactions.",
+              "AI customer intelligence tracks customers' private personal activities outside of business interactions for comprehensive profiling.",
+              "AI customer intelligence completely replaces the need for sales representatives to have conversations with customers.",
+              "AI customer intelligence analyzes interaction patterns, behaviors, and signals to surface insights that help personalize sales approaches."
+            ],
+            "correctAnswer": 3,
+            "rationale": "AI customer intelligence helps sales professionals understand patterns in customer behavior, engagement, and preferences to tailor their approach and identify the right timing and messaging.",
+            "tags": [
+              "customer-intelligence",
+              "behavioral-analysis",
+              "insight-generation"
+            ]
+          },
+          {
+            "id": "CII-SL-B-002",
+            "difficulty": 0.31,
+            "discrimination": 1.08,
+            "bloomLevel": "Understand",
+            "questionType": "multiple-choice",
+            "points": 10.93,
+            "question": "How can AI help identify buying signals in customer behavior?",
+            "options": [
+              "AI directly asks customers when they plan to buy and stores their exact purchase dates in the system.",
+              "AI cannot identify buying signals because human behavior is too unpredictable for algorithmic pattern recognition.",
+              "AI randomly flags accounts as showing buying signals to ensure sales reps contact all customers equally.",
+              "AI monitors patterns like increased engagement, content consumption, pricing page visits, and competitor research to identify intent signals."
+            ],
+            "correctAnswer": 3,
+            "rationale": "AI identifies buying signals by detecting patterns in customer digital behavior - engagement spikes, specific content consumption, repeated visits to key pages - that historically correlate with purchase readiness.",
+            "tags": [
+              "buying-signals",
+              "intent-detection",
+              "behavioral-patterns"
+            ]
+          },
+          {
+            "id": "CII-SL-B-003",
+            "difficulty": 0.35,
+            "discrimination": 1.1,
+            "bloomLevel": "Understand",
+            "questionType": "multiple-choice",
+            "points": 11.05,
+            "question": "What insight can AI provide about customer engagement patterns?",
+            "options": [
+              "AI can only track engagement for customers who explicitly opt-in to monitoring through formal written consent forms.",
+              "AI tracks engagement but the data is never accurate enough to inform sales strategy or outreach decisions.",
+              "AI can identify which customers are increasing or decreasing engagement and flag accounts that may be at risk or ready to buy.",
+              "AI provides no useful engagement insights because customer behavior changes too randomly to establish meaningful patterns."
+            ],
+            "correctAnswer": 2,
+            "rationale": "AI excels at detecting engagement pattern changes - increasing engagement suggests interest, decreasing engagement may signal churn risk or the need for re-engagement campaigns.",
+            "tags": [
+              "engagement-tracking",
+              "pattern-detection",
+              "risk-identification"
+            ]
+          },
+          {
+            "id": "CII-SL-B-004",
+            "difficulty": 0.39,
+            "discrimination": 1.12,
+            "bloomLevel": "Apply",
+            "questionType": "scenario-based",
+            "points": 11.17,
+            "question": "Your AI tool identifies that a customer's engagement has dropped 60% over the past month. What should you do?",
+            "options": [
+              "Wait for the customer to reach out to you since proactive contact about engagement drops is considered pushy.",
+              "Ignore the signal because AI-detected engagement drops are typically false positives that don't reflect actual customer sentiment.",
+              "Remove the customer from your active pipeline since declining engagement always indicates they've chosen a competitor.",
+              "Immediately contact the customer to understand what's changed and whether there are issues or shifting priorities you should address."
+            ],
+            "correctAnswer": 3,
+            "rationale": "Engagement drops warrant investigation - there may be internal changes, budget shifts, competitive pressure, or dissatisfaction that a proactive conversation can address.",
+            "tags": [
+              "engagement-decline",
+              "proactive-outreach",
+              "churn-prevention"
+            ]
+          },
+          {
+            "id": "CII-SL-B-005",
+            "difficulty": 0.42,
+            "discrimination": 1.14,
+            "bloomLevel": "Understand",
+            "questionType": "multiple-choice",
+            "points": 11.26,
+            "question": "How should sales professionals interpret AI-generated customer sentiment analysis?",
+            "options": [
+              "Sentiment analysis provides directional insights but should be validated through direct conversations since AI may misinterpret context or tone.",
+              "Sentiment analysis is perfectly accurate and should be treated as definitive truth about how customers feel.",
+              "Sentiment analysis should be completely ignored because AI cannot understand human emotions under any circumstances.",
+              "Sentiment analysis only works for written communication and provides no value for sales conversations or calls."
+            ],
+            "correctAnswer": 0,
+            "rationale": "AI sentiment analysis provides useful directional signals but lacks full context understanding - sales professionals should use it as an indicator to inform conversations, not as absolute truth.",
+            "tags": [
+              "sentiment-analysis",
+              "contextual-interpretation",
+              "validation"
+            ]
+          },
+          {
+            "id": "CII-SL-B-006",
+            "difficulty": 0.45,
+            "discrimination": 1.16,
+            "bloomLevel": "Apply",
+            "questionType": "scenario-based",
+            "points": 11.35,
+            "question": "AI analysis suggests a customer is researching your competitor's product. How should you respond?",
+            "options": [
+              "Use this as a conversation starter to understand their evaluation criteria and proactively address how your solution compares.",
+              "Ignore the signal entirely because customers researching competitors never actually switch in real business situations.",
+              "Confront the customer aggressively about their disloyalty and threaten to terminate the relationship immediately.",
+              "Immediately panic and offer massive discounts to prevent the customer from defecting to the competition."
+            ],
+            "correctAnswer": 0,
+            "rationale": "Competitive research signals are opportunities for proactive engagement - understanding what they're evaluating helps you position your strengths and address concerns before they become deal-breakers.",
+            "tags": [
+              "competitive-intelligence",
+              "proactive-engagement",
+              "positioning"
+            ]
+          },
+          {
+            "id": "CII-SL-B-007",
+            "difficulty": 0.47,
+            "discrimination": 1.17,
+            "bloomLevel": "Apply",
+            "questionType": "scenario-based",
+            "points": 11.41,
+            "question": "What's the appropriate use of AI-powered insights about customer organizational changes?",
+            "options": [
+              "Use change signals (new executives, reorganizations, budget shifts) as triggers for timely, contextually relevant outreach.",
+              "Use organizational change information exclusively for gossip with colleagues rather than for strategic sales planning.",
+              "Never act on organizational change insights because customers consider this information private and confidential.",
+              "Immediately call customers the moment any organizational change is detected to demonstrate you're monitoring them closely."
+            ],
+            "correctAnswer": 0,
+            "rationale": "Organizational changes often create new opportunities or risks - using these signals for thoughtful, value-add outreach shows you're paying attention and can help during transitions.",
+            "tags": [
+              "organizational-signals",
+              "strategic-timing",
+              "change-detection"
+            ]
+          }
+        ]
+      },
+      {
+        "dimensionCode": "SFP",
+        "dimensionName": "Sales Forecasting & Pipeline Management",
+        "description": "Using AI for accurate forecasting and effective pipeline management",
+        "weight": 0.125,
+        "itemCount": 8,
+        "items": [
+          {
+            "id": "SFP-SL-B-001",
+            "difficulty": 0.28,
+            "discrimination": 1.07,
+            "bloomLevel": "Remember",
+            "questionType": "multiple-choice",
+            "points": 10.84,
+            "question": "How does AI improve sales forecasting compared to traditional methods?",
+            "options": [
+              "AI eliminates all forecasting errors by guaranteeing exact revenue outcomes with 100% certainty every quarter.",
+              "AI forecasting and manual forecasting produce identical results but AI calculations are slightly faster to compute.",
+              "AI makes forecasting worse because it cannot understand the nuances of individual sales relationships and contexts.",
+              "AI analyzes historical patterns, deal velocity, and engagement signals to predict close probability more accurately than manual estimates."
+            ],
+            "correctAnswer": 3,
+            "rationale": "AI forecasting examines patterns across numerous variables and historical outcomes to generate probabilistic predictions that are typically more accurate than individual judgment alone.",
+            "tags": [
+              "forecasting",
+              "predictive-analytics",
+              "accuracy-improvement"
+            ]
+          },
+          {
+            "id": "SFP-SL-B-002",
+            "difficulty": 0.3,
+            "discrimination": 1.08,
+            "bloomLevel": "Understand",
+            "questionType": "multiple-choice",
+            "points": 10.9,
+            "question": "What factors typically influence AI-powered sales forecast predictions?",
+            "options": [
+              "AI forecasts only use the sales representative's subjective confidence level and ignore all other data points.",
+              "AI forecasts exclusively rely on astrology and market sentiment rather than quantifiable business metrics.",
+              "AI forecasts are based entirely on random number generation with no connection to actual sales data or patterns.",
+              "AI forecasts consider deal stage, historical win rates, engagement velocity, deal age, and customer profile to predict outcomes."
+            ],
+            "correctAnswer": 3,
+            "rationale": "Effective AI forecasting integrates multiple signals - stage progression, engagement patterns, historical conversion rates, deal characteristics, and timing - to estimate close probability.",
+            "tags": [
+              "forecast-factors",
+              "multi-signal-analysis",
+              "prediction-variables"
+            ]
+          },
+          {
+            "id": "SFP-SL-B-003",
+            "difficulty": 0.34,
+            "discrimination": 1.09,
+            "bloomLevel": "Understand",
+            "questionType": "multiple-choice",
+            "points": 11.02,
+            "question": "What does deal velocity analysis in AI systems measure?",
+            "options": [
+              "Deal velocity measures the speed at which competitors are closing similar deals in the same market segments.",
+              "Deal velocity measures how fast sales representatives can physically type opportunity details into the CRM system.",
+              "Deal velocity measures the pace at which opportunities progress through pipeline stages compared to historical patterns and benchmarks.",
+              "Deal velocity measures customer satisfaction scores throughout the sales process from initial contact to contract signing."
+            ],
+            "correctAnswer": 2,
+            "rationale": "Deal velocity tracks progression speed through sales stages - faster-than-average velocity suggests strong interest while slow progression may indicate obstacles or weak engagement.",
+            "tags": [
+              "deal-velocity",
+              "progression-analysis",
+              "timing-signals"
+            ]
+          },
+          {
+            "id": "SFP-SL-B-004",
+            "difficulty": 0.38,
+            "discrimination": 1.11,
+            "bloomLevel": "Apply",
+            "questionType": "scenario-based",
+            "points": 11.14,
+            "question": "AI predicts a 25% close probability for a deal you believe is at 75%. What should you do?",
+            "options": [
+              "Change the opportunity data in your CRM to match your belief regardless of what the AI analysis shows.",
+              "Immediately abandon the deal since AI predictions always represent objective truth about future outcomes.",
+              "Investigate what data is driving the AI's prediction and identify any signals you may have missed or factors that explain the discrepancy.",
+              "Always defer to the AI prediction because algorithms are incapable of making errors in probability assessment."
+            ],
+            "correctAnswer": 2,
+            "rationale": "Large discrepancies between AI predictions and rep estimates warrant investigation - understanding what's driving the AI's prediction may reveal risks you haven't considered or data issues to address.",
+            "tags": [
+              "prediction-discrepancy",
+              "signal-investigation",
+              "probability-calibration"
+            ]
+          },
+          {
+            "id": "SFP-SL-B-005",
+            "difficulty": 0.42,
+            "discrimination": 1.14,
+            "bloomLevel": "Apply",
+            "questionType": "scenario-based",
+            "points": 11.26,
+            "question": "Your pipeline has 50 opportunities but AI suggests you'll only close 8 this quarter. How should you respond?",
+            "options": [
+              "Add 100 more opportunities to your pipeline to increase the total number without changing your approach.",
+              "Panic and immediately mark 42 opportunities as closed-lost to align your pipeline with the prediction.",
+              "Ignore the AI prediction entirely and continue treating all 50 opportunities as equally likely to close.",
+              "Evaluate which opportunities the AI rates highest, accelerate those deals, and identify why others have low predicted close rates."
+            ],
+            "correctAnswer": 3,
+            "rationale": "AI pipeline analysis helps prioritize efforts - focus on opportunities with highest close probability while diagnosing why others are rated low to determine if they can be accelerated or should be deprioritized.",
+            "tags": [
+              "pipeline-management",
+              "prioritization",
+              "forecast-accuracy"
+            ]
+          },
+          {
+            "id": "SFP-SL-B-006",
+            "difficulty": 0.45,
+            "discrimination": 1.16,
+            "bloomLevel": "Understand",
+            "questionType": "multiple-choice",
+            "points": 11.35,
+            "question": "What is the primary limitation of AI sales forecasting that reps should understand?",
+            "options": [
+              "AI forecasts are always 100% accurate because they analyze all possible variables simultaneously in real-time.",
+              "AI forecasts have no limitations and represent perfect knowledge of future sales outcomes.",
+              "AI forecasts are probabilistic predictions based on historical patterns and don't account for unique circumstances or unexpected external factors.",
+              "AI forecasts deliberately introduce errors to keep sales representatives humble and prevent overconfidence in predictions."
+            ],
+            "correctAnswer": 2,
+            "rationale": "AI forecasts are statistical predictions based on past patterns - they don't know about upcoming announcements, external market shifts, or unique relationship factors that might change outcomes.",
+            "tags": [
+              "forecast-limitations",
+              "probability-vs-certainty",
+              "external-factors"
+            ]
+          },
+          {
+            "id": "SFP-SL-B-007",
+            "difficulty": 0.48,
+            "discrimination": 1.18,
+            "bloomLevel": "Apply",
+            "questionType": "scenario-based",
+            "points": 11.44,
+            "question": "How should you handle persistent discrepancies between your forecasts and AI predictions?",
+            "options": [
+              "Alternate between trusting yourself and trusting AI on different deals to ensure balanced decision-making approaches.",
+              "Always trust your personal forecast regardless of AI predictions because human intuition is inherently more reliable.",
+              "Track actual outcomes over time to determine whether your judgment or the AI predictions are more accurate, then adjust accordingly.",
+              "Always trust AI predictions over your judgment because algorithms cannot be wrong about probability assessments."
+            ],
+            "correctAnswer": 2,
+            "rationale": "The way to resolve persistent discrepancies is empirical - track actual outcomes to see which predictions are more accurate, then calibrate your approach based on evidence.",
+            "tags": [
+              "forecast-calibration",
+              "empirical-validation",
+              "continuous-improvement"
+            ]
+          },
+          {
+            "id": "SFP-SL-B-008",
+            "difficulty": 0.51,
+            "discrimination": 1.19,
+            "bloomLevel": "Apply",
+            "questionType": "scenario-based",
+            "points": 11.53,
+            "question": "AI identifies that deals with a specific stakeholder persona historically close 40% faster. How should you use this insight?",
+            "options": [
+              "Prioritize engaging that stakeholder type early in sales processes and research whether you can adjust your approach to involve them sooner.",
+              "Refuse to work on any deals that don't already have this stakeholder type involved from day one.",
+              "Ignore the insight because every deal is unique and historical patterns have no predictive value for future outcomes.",
+              "Demand that all prospects immediately hire someone with this persona before you'll agree to continue sales conversations."
+            ],
+            "correctAnswer": 0,
+            "rationale": "Pattern insights should inform strategy - if certain stakeholder involvement correlates with faster closes, that suggests value in identifying and engaging those individuals earlier in your process.",
+            "tags": [
+              "pattern-application",
+              "stakeholder-strategy",
+              "process-optimization"
+            ]
+          }
+        ]
+      },
+      {
+        "dimensionCode": "CAE",
+        "dimensionName": "Communication & Engagement Automation",
+        "description": "Leveraging AI for personalized communication and engagement",
+        "weight": 0.125,
+        "itemCount": 7,
+        "items": [
+          {
+            "id": "CAE-SL-B-001",
+            "difficulty": 0.29,
+            "discrimination": 1.07,
+            "bloomLevel": "Remember",
+            "questionType": "multiple-choice",
+            "points": 10.87,
+            "question": "What is the appropriate role of AI in sales email communication?",
+            "options": [
+              "AI should be completely avoided in email communication because customers always detect and reject automated messages.",
+              "AI should generate every sales email automatically and send them without any human review or personalization.",
+              "AI should only be used to check spelling and grammar but never to help with content or messaging strategy.",
+              "AI should assist with drafts, suggest messaging, and personalize at scale while humans review and add authentic touches."
+            ],
+            "correctAnswer": 3,
+            "rationale": "AI is most effective as an augmentation tool for sales communication - generating drafts and suggestions at scale while humans add personal context, authenticity, and judgment.",
+            "tags": [
+              "email-automation",
+              "personalization",
+              "human-oversight"
+            ]
+          },
+          {
+            "id": "CAE-SL-B-002",
+            "difficulty": 0.32,
+            "discrimination": 1.09,
+            "bloomLevel": "Understand",
+            "questionType": "multiple-choice",
+            "points": 10.96,
+            "question": "How can AI help personalize outreach at scale?",
+            "options": [
+              "AI can generate customized messages by incorporating customer-specific data points, recent activities, and relevant context into templates.",
+              "AI personalization requires no human input and produces perfect messages that never need editing or review.",
+              "AI personalization always produces generic messages that customers immediately recognize as automated and delete.",
+              "AI personalization is impossible because every sales message must be written completely from scratch for authenticity."
+            ],
+            "correctAnswer": 0,
+            "rationale": "AI enables personalization at scale by dynamically incorporating relevant data points (company news, past interactions, industry trends) into communication frameworks that humans can refine.",
+            "tags": [
+              "personalization-at-scale",
+              "dynamic-content",
+              "contextual-messaging"
+            ]
+          },
+          {
+            "id": "CAE-SL-B-003",
+            "difficulty": 0.36,
+            "discrimination": 1.1,
+            "bloomLevel": "Apply",
+            "questionType": "scenario-based",
+            "points": 11.08,
+            "question": "AI generates a follow-up email that references a customer's recent funding round. What should you do before sending?",
+            "options": [
+              "Verify the funding information is accurate, ensure the tone is appropriate, and add a specific insight or question that demonstrates genuine understanding.",
+              "Send the email immediately without changes since AI-generated content is always factually accurate and well-toned.",
+              "Delete the entire email and start from scratch because any AI-generated content is inherently inauthentic.",
+              "Forward the AI draft to your manager for approval before making any decisions about the content."
+            ],
+            "correctAnswer": 0,
+            "rationale": "AI-generated content should be validated for accuracy and augmented with human insight - verify facts, ensure appropriate tone, and add authentic value beyond what automation provides.",
+            "tags": [
+              "content-validation",
+              "authenticity",
+              "fact-checking"
+            ]
+          },
+          {
+            "id": "CAE-SL-B-004",
+            "difficulty": 0.4,
+            "discrimination": 1.13,
+            "bloomLevel": "Understand",
+            "questionType": "multiple-choice",
+            "points": 11.2,
+            "question": "What's the primary risk of over-automating sales communication?",
+            "options": [
+              "Over-automation has no risks because customers prefer receiving automated messages to personal outreach from sales representatives.",
+              "Over-automation is impossible to achieve since all sales communication requires complete manual creation.",
+              "Over-automation can make communications feel impersonal and generic, damaging relationships and reducing response rates over time.",
+              "Over-automation will cause all CRM systems to crash due to excessive message volume."
+            ],
+            "correctAnswer": 2,
+            "rationale": "Over-automation risks losing the personal touch that builds relationships - customers can often detect generic automated messages and may disengage when communication feels impersonal.",
+            "tags": [
+              "automation-risks",
+              "personalization-balance",
+              "relationship-building"
+            ]
+          },
+          {
+            "id": "CAE-SL-B-005",
+            "difficulty": 0.43,
+            "discrimination": 1.15,
+            "bloomLevel": "Apply",
+            "questionType": "scenario-based",
+            "points": 11.29,
+            "question": "Your AI tool suggests sending a promotional email to a customer who just submitted a support ticket. What should you do?",
+            "options": [
+              "Follow the AI suggestion exactly because algorithms optimize for revenue and know better than human judgment.",
+              "Send both the promotional email and support response simultaneously to maximize efficiency and touchpoints.",
+              "Override the AI suggestion and address the support issue first before any promotional outreach to avoid appearing tone-deaf.",
+              "Ignore both the AI suggestion and the support ticket since they create conflicting priorities."
+            ],
+            "correctAnswer": 2,
+            "rationale": "Context matters - sending promotional content when a customer has an active issue appears insensitive and damages relationships. Address their need first, then consider appropriate timing for other communications.",
+            "tags": [
+              "contextual-timing",
+              "customer-priority",
+              "tone-awareness"
+            ]
+          },
+          {
+            "id": "CAE-SL-B-006",
+            "difficulty": 0.46,
+            "discrimination": 1.17,
+            "bloomLevel": "Understand",
+            "questionType": "multiple-choice",
+            "points": 11.38,
+            "question": "How should sales professionals balance AI efficiency with authentic relationship building?",
+            "options": [
+              "Choose either full automation or no automation - any middle ground compromises both efficiency and authenticity.",
+              "Always prioritize efficiency over authenticity because relationship building doesn't contribute to revenue generation.",
+              "Never use any AI assistance because authentic relationships can only be built through completely manual processes.",
+              "Use AI for initial drafts and research but invest human time in high-value accounts and critical relationship moments."
+            ],
+            "correctAnswer": 3,
+            "rationale": "The optimal approach uses AI to handle scale and routine tasks while preserving human attention for strategic accounts, complex situations, and relationship-defining moments.",
+            "tags": [
+              "efficiency-authenticity-balance",
+              "strategic-allocation",
+              "relationship-priority"
+            ]
+          },
+          {
+            "id": "CAE-SL-B-007",
+            "difficulty": 0.49,
+            "discrimination": 1.18,
+            "bloomLevel": "Apply",
+            "questionType": "scenario-based",
+            "points": 11.47,
+            "question": "What's the best way to use AI-suggested call talking points during an actual sales call?",
+            "options": [
+              "Read the AI-generated talking points word-for-word during the call to ensure consistency and comprehensive coverage.",
+              "Review AI suggestions beforehand to inform your approach, but listen actively and adapt in real-time rather than following a script.",
+              "Completely ignore AI suggestions and improvise the entire call based solely on intuition and energy.",
+              "Display the AI suggestions on screen during the call and ask the customer which talking points they'd prefer to discuss."
+            ],
+            "correctAnswer": 1,
+            "rationale": "AI talking points should inform preparation, not replace active listening - use suggestions to frame your approach but remain flexible to respond authentically to what the customer actually says.",
+            "tags": [
+              "call-preparation",
+              "active-listening",
+              "adaptive-conversation"
+            ]
+          }
+        ]
+      },
+      {
+        "dimensionCode": "PWO",
+        "dimensionName": "Productivity & Workflow Optimization",
+        "description": "Using AI to optimize sales workflows and increase productivity",
+        "weight": 0.125,
+        "itemCount": 8,
+        "items": [
+          {
+            "id": "PWO-SL-B-001",
+            "difficulty": 0.3,
+            "discrimination": 1.08,
+            "bloomLevel": "Remember",
+            "questionType": "multiple-choice",
+            "points": 10.9,
+            "question": "What is the primary productivity benefit of AI in sales workflows?",
+            "options": [
+              "AI completely eliminates the need for sales representatives to do any work at all.",
+              "AI makes sales processes slower by adding extra steps that require human verification and oversight.",
+              "AI automates routine tasks like data entry, research, and scheduling so reps can focus on high-value selling activities.",
+              "AI has no productivity benefits and only serves to monitor and micromanage sales representatives."
+            ],
+            "correctAnswer": 2,
+            "rationale": "AI's core productivity value is automating administrative tasks, research, and routine work so sales professionals can dedicate more time to relationship building and strategic selling.",
+            "tags": [
+              "productivity",
+              "task-automation",
+              "time-optimization"
+            ]
+          },
+          {
+            "id": "PWO-SL-B-002",
+            "difficulty": 0.32,
+            "discrimination": 1.09,
+            "bloomLevel": "Understand",
+            "questionType": "multiple-choice",
+            "points": 10.96,
+            "question": "How does AI-powered CRM data entry improve sales productivity?",
+            "options": [
+              "AI eliminates the need for CRM systems entirely by storing all information in chatbot conversations.",
+              "AI can automatically capture and log activities from emails, calls, and meetings, reducing manual data entry time.",
+              "AI data entry has no impact on productivity since manual entry and automated entry take the same amount of time.",
+              "AI data entry creates more work because sales reps must manually verify every single automated entry."
+            ],
+            "correctAnswer": 1,
+            "rationale": "AI activity capture automatically logs interactions, updates records, and extracts key information from communications, saving hours of manual CRM data entry work per week.",
+            "tags": [
+              "crm-automation",
+              "activity-capture",
+              "administrative-efficiency"
+            ]
+          },
+          {
+            "id": "PWO-SL-B-003",
+            "difficulty": 0.35,
+            "discrimination": 1.1,
+            "bloomLevel": "Understand",
+            "questionType": "multiple-choice",
+            "points": 11.05,
+            "question": "What role does AI play in sales meeting preparation?",
+            "options": [
+              "AI meeting preparation is only useful for junior reps and provides no value for experienced sales professionals.",
+              "AI eliminates the need for any meeting preparation since sales calls should always be completely spontaneous.",
+              "AI handles all meeting preparation but the summaries are always wrong and shouldn't be trusted.",
+              "AI can summarize account history, suggest discussion topics, identify risks, and compile relevant insights to prepare reps efficiently."
+            ],
+            "correctAnswer": 3,
+            "rationale": "AI excels at aggregating information - pulling together account history, recent interactions, company news, and relevant patterns to help reps prepare efficiently for meetings.",
+            "tags": [
+              "meeting-prep",
+              "information-aggregation",
+              "efficiency"
+            ]
+          },
+          {
+            "id": "PWO-SL-B-004",
+            "difficulty": 0.38,
+            "discrimination": 1.12,
+            "bloomLevel": "Apply",
+            "questionType": "scenario-based",
+            "points": 11.14,
+            "question": "You spend 10 hours per week on CRM data entry and administrative tasks. How should you approach AI automation?",
+            "options": [
+              "Hire an assistant to do the manual work instead of using any AI automation tools.",
+              "Keep doing everything manually because automation never works properly and always creates more problems.",
+              "Identify which routine tasks AI can handle reliably, implement automation for those, and reinvest the saved time in customer-facing activities.",
+              "Automate everything immediately without testing or verification to maximize efficiency gains right away."
+            ],
+            "correctAnswer": 2,
+            "rationale": "Strategic automation starts by identifying high-volume, routine tasks suitable for AI, implementing thoughtfully, and redirecting saved time to higher-value work like selling and relationship building.",
+            "tags": [
+              "automation-strategy",
+              "task-prioritization",
+              "time-reallocation"
+            ]
+          },
+          {
+            "id": "PWO-SL-B-005",
+            "difficulty": 0.41,
+            "discrimination": 1.14,
+            "bloomLevel": "Apply",
+            "questionType": "scenario-based",
+            "points": 11.23,
+            "question": "AI automates your follow-up emails but your response rates drop. What should you investigate?",
+            "options": [
+              "Immediately stop all automation and return to writing every single email completely from scratch.",
+              "Continue using the exact same automated approach since efficiency is more important than response rates.",
+              "Review whether the automated emails lack personalization, have poor timing, or don't reflect authentic voice and adjust accordingly.",
+              "Increase the volume of automated emails significantly to compensate for the lower response rates."
+            ],
+            "correctAnswer": 2,
+            "rationale": "Dropping response rates suggest the automation isn't working well - investigate whether messages are too generic, poorly timed, or lack authentic voice, then adjust the approach.",
+            "tags": [
+              "automation-quality",
+              "response-optimization",
+              "effectiveness-monitoring"
+            ]
+          },
+          {
+            "id": "PWO-SL-B-006",
+            "difficulty": 0.44,
+            "discrimination": 1.15,
+            "bloomLevel": "Understand",
+            "questionType": "multiple-choice",
+            "points": 11.32,
+            "question": "What's the appropriate balance between AI efficiency and maintaining deal quality?",
+            "options": [
+              "Efficiency and quality are completely incompatible so you must choose one approach or the other.",
+              "Always prioritize maximum efficiency even if it means sacrificing relationship quality and deal customization.",
+              "Always prioritize perfect customization for every interaction even if it means no efficiency gains from AI.",
+              "Use AI to scale routine activities while maintaining personal attention and judgment on strategic decisions and key relationships."
+            ],
+            "correctAnswer": 3,
+            "rationale": "The optimal approach leverages AI for scale on appropriate tasks while preserving human judgment and personal attention where it matters most for deal quality and relationships.",
+            "tags": [
+              "efficiency-quality-balance",
+              "strategic-automation",
+              "judgment-preservation"
+            ]
+          },
+          {
+            "id": "PWO-SL-B-007",
+            "difficulty": 0.47,
+            "discrimination": 1.17,
+            "bloomLevel": "Apply",
+            "questionType": "scenario-based",
+            "points": 11.41,
+            "question": "How should you decide which sales tasks to automate with AI versus keep manual?",
+            "options": [
+              "Randomly select tasks to automate to ensure balanced distribution between automated and manual work.",
+              "Automate high-volume routine tasks with clear rules while keeping strategic, relationship-critical, and nuanced activities manual.",
+              "Keep everything manual regardless of volume or routine nature to ensure complete control over every process.",
+              "Automate everything possible regardless of task type to maximize efficiency and minimize human involvement."
+            ],
+            "correctAnswer": 1,
+            "rationale": "The automation decision should be based on task characteristics - routine, high-volume, rule-based tasks are great candidates while strategic, nuanced, relationship-critical work benefits from human touch.",
+            "tags": [
+              "automation-criteria",
+              "task-categorization",
+              "strategic-decisions"
+            ]
+          },
+          {
+            "id": "PWO-SL-B-008",
+            "difficulty": 0.5,
+            "discrimination": 1.19,
+            "bloomLevel": "Apply",
+            "questionType": "scenario-based",
+            "points": 11.5,
+            "question": "What's the best way to measure whether AI workflow automation is actually improving your sales productivity?",
+            "options": [
+              "Measure productivity solely by counting the number of automated tasks regardless of impact on outcomes.",
+              "Track time saved on automated tasks, conversion rates, customer satisfaction, and revenue per rep before and after implementation.",
+              "Measure productivity only by asking sales reps if they feel more productive without examining objective metrics.",
+              "Assume all automation improves productivity by definition without measuring any actual performance changes."
+            ],
+            "correctAnswer": 1,
+            "rationale": "Effective measurement examines multiple dimensions - time savings, quality maintenance (conversion rates), relationship health (satisfaction), and business outcomes (revenue) - to assess true productivity impact.",
+            "tags": [
+              "productivity-measurement",
+              "roi-assessment",
+              "comprehensive-metrics"
+            ]
+          }
+        ]
+      },
+      {
+        "dimensionCode": "ETC",
+        "dimensionName": "Ethics, Trust & Compliance",
+        "description": "Ensuring ethical, trustworthy, and compliant use of AI in sales",
+        "weight": 0.125,
+        "itemCount": 7,
+        "items": [
+          {
+            "id": "ETC-SL-B-001",
+            "difficulty": 0.29,
+            "discrimination": 1.07,
+            "bloomLevel": "Remember",
+            "questionType": "multiple-choice",
+            "points": 10.87,
+            "question": "Why is transparency important when using AI in sales?",
+            "options": [
+              "Transparency reduces sales effectiveness by revealing competitive advantages and proprietary methodologies to customers.",
+              "Transparency builds customer trust and allows them to understand how their data is used, which is both ethical and often legally required.",
+              "Transparency is only important for marketing teams and has no relevance to sales professionals.",
+              "Transparency is unnecessary because customers don't care how sales processes work behind the scenes."
+            ],
+            "correctAnswer": 1,
+            "rationale": "Transparency about AI use builds trust, respects customer autonomy, and meets legal requirements - customers deserve to know how their data informs your approach.",
+            "tags": [
+              "transparency",
+              "trust-building",
+              "ethical-standards"
+            ]
+          },
+          {
+            "id": "ETC-SL-B-002",
+            "difficulty": 0.32,
+            "discrimination": 1.09,
+            "bloomLevel": "Understand",
+            "questionType": "multiple-choice",
+            "points": 10.96,
+            "question": "What data privacy considerations apply to AI-powered sales tools?",
+            "options": [
+              "Privacy only matters for personal consumer data and has no relevance to business-to-business sales contexts.",
+              "Data privacy laws don't apply to sales teams because business relationships exempt commercial communications from privacy rules.",
+              "AI tools automatically ensure perfect data privacy compliance so sales reps don't need to think about it.",
+              "Sales professionals must ensure customer data is collected with consent, stored securely, and used only for disclosed purposes."
+            ],
+            "correctAnswer": 3,
+            "rationale": "Privacy regulations like GDPR and CCPA apply to sales contexts - requiring proper consent, security measures, transparency about use, and respect for individual data rights.",
+            "tags": [
+              "data-privacy",
+              "consent",
+              "regulatory-compliance"
+            ]
+          },
+          {
+            "id": "ETC-SL-B-003",
+            "difficulty": 0.36,
+            "discrimination": 1.1,
+            "bloomLevel": "Understand",
+            "questionType": "multiple-choice",
+            "points": 11.08,
+            "question": "How can AI bias affect sales processes and outcomes?",
+            "options": [
+              "AI bias is completely impossible because algorithms are objective and cannot discriminate against any groups.",
+              "AI bias only affects hiring and has no relevance to customer-facing sales and business development processes.",
+              "AI bias can lead to unfair treatment of certain customer segments, perpetuating historical inequities and creating legal and ethical risks.",
+              "AI bias always benefits sales outcomes by filtering out unprofitable segments based on historical patterns."
+            ],
+            "correctAnswer": 2,
+            "rationale": "AI can perpetuate biases from training data - leading to unfair prioritization, pricing, or treatment of certain demographics or segments, creating ethical and legal problems.",
+            "tags": [
+              "ai-bias",
+              "fairness",
+              "ethical-risk"
+            ]
+          },
+          {
+            "id": "ETC-SL-B-004",
+            "difficulty": 0.4,
+            "discrimination": 1.13,
+            "bloomLevel": "Apply",
+            "questionType": "scenario-based",
+            "points": 11.2,
+            "question": "You notice AI consistently deprioritizes leads from a specific geographic region. What should you do?",
+            "options": [
+              "Manually override the AI to make that region the highest priority regardless of any other factors.",
+              "Investigate whether this reflects true market patterns or problematic bias, and raise concerns if it appears to perpetuate unfair treatment.",
+              "Immediately follow the AI prioritization without question since algorithms are always unbiased and accurate.",
+              "Ignore the pattern completely since geographic prioritization is always acceptable and poses no ethical concerns."
+            ],
+            "correctAnswer": 1,
+            "rationale": "Geographic patterns could reflect legitimate market differences or problematic bias - investigating ensures you're not perpetuating unfair treatment while respecting genuine market realities.",
+            "tags": [
+              "bias-detection",
+              "fairness-investigation",
+              "ethical-oversight"
+            ]
+          },
+          {
+            "id": "ETC-SL-B-005",
+            "difficulty": 0.43,
+            "discrimination": 1.15,
+            "bloomLevel": "Apply",
+            "questionType": "scenario-based",
+            "points": 11.29,
+            "question": "A customer asks how your AI tool analyzes their data. How should you respond?",
+            "options": [
+              "Refuse to answer because the AI methodology is proprietary competitive information that cannot be disclosed.",
+              "Give a highly technical explanation full of jargon that the customer cannot understand or verify.",
+              "Lie and tell them no AI is used at all to avoid having a complex conversation about algorithms.",
+              "Provide a clear, honest explanation of what data you collect, how the AI uses it, and what privacy protections are in place."
+            ],
+            "correctAnswer": 3,
+            "rationale": "Customers have a right to understand how their data is used - provide honest, clear explanations that respect their intelligence while maintaining appropriate confidentiality about proprietary methods.",
+            "tags": [
+              "transparency-in-practice",
+              "customer-rights",
+              "honest-communication"
+            ]
+          },
+          {
+            "id": "ETC-SL-B-006",
+            "difficulty": 0.46,
+            "discrimination": 1.17,
+            "bloomLevel": "Understand",
+            "questionType": "multiple-choice",
+            "points": 11.38,
+            "question": "What constitutes manipulative use of AI in sales that should be avoided?",
+            "options": [
+              "Manipulation only involves physical coercion and AI tools cannot engage in manipulative practices.",
+              "Any use of AI in sales is inherently manipulative since it provides an unfair advantage over customers.",
+              "No use of AI can be manipulative because customers can always make free choices regardless of sales techniques.",
+              "Using AI to exploit psychological vulnerabilities, create false urgency, or obscure material information constitutes manipulation."
+            ],
+            "correctAnswer": 3,
+            "rationale": "Manipulative AI use includes exploiting vulnerabilities, creating deceptive urgency, hiding material facts, or using dark patterns - ethical AI use respects customer autonomy and informed decision-making.",
+            "tags": [
+              "manipulation",
+              "dark-patterns",
+              "ethical-boundaries"
+            ]
+          },
+          {
+            "id": "ETC-SL-B-007",
+            "difficulty": 0.48,
+            "discrimination": 1.18,
+            "bloomLevel": "Apply",
+            "questionType": "scenario-based",
+            "points": 11.44,
+            "question": "How should you handle a situation where AI recommendations conflict with ethical sales practices?",
+            "options": [
+              "Always follow AI recommendations regardless of ethical concerns because algorithms are more objective than human judgment.",
+              "Quit your job immediately rather than attempting to resolve the conflict between AI and ethics.",
+              "Ignore both the AI recommendation and ethical concerns and make decisions based purely on potential revenue.",
+              "Always prioritize ethical practices over AI recommendations, document the conflict, and escalate to leadership for review."
+            ],
+            "correctAnswer": 3,
+            "rationale": "Ethics must take precedence over automation - when AI suggests unethical actions, decline to follow the recommendation, document the issue, and raise it with leadership to address the system.",
+            "tags": [
+              "ethical-priority",
+              "ai-governance",
+              "conflict-resolution"
+            ]
+          }
+        ]
+      },
+      {
+        "dimensionCode": "TSI",
+        "dimensionName": "Tools, Systems & Integration",
+        "description": "Understanding and effectively using sales technology and AI platforms",
+        "weight": 0.125,
+        "itemCount": 8,
+        "items": [
+          {
+            "id": "TSI-SL-B-001",
+            "difficulty": 0.3,
+            "discrimination": 1.08,
+            "bloomLevel": "Remember",
+            "questionType": "multiple-choice",
+            "points": 10.9,
+            "question": "What is the primary purpose of AI-powered CRM systems?",
+            "options": [
+              "AI-powered CRMs centralize customer data and provide intelligent insights, automation, and predictions to help sales teams sell more effectively.",
+              "AI-powered CRMs are identical to traditional CRMs with no additional capabilities or intelligence features.",
+              "AI-powered CRMs completely replace the need for sales representatives by handling all customer interactions autonomously.",
+              "AI-powered CRMs exist solely to monitor sales representatives and report their activities to management constantly."
+            ],
+            "correctAnswer": 0,
+            "rationale": "AI-powered CRMs augment traditional customer data management with intelligent features - predictive insights, automation, pattern recognition - to help sales teams work more effectively.",
+            "tags": [
+              "crm-purpose",
+              "ai-capabilities",
+              "sales-enablement"
+            ]
+          },
+          {
+            "id": "TSI-SL-B-002",
+            "difficulty": 0.33,
+            "discrimination": 1.09,
+            "bloomLevel": "Understand",
+            "questionType": "multiple-choice",
+            "points": 10.99,
+            "question": "What factors should you consider when selecting AI sales tools?",
+            "options": [
+              "Consider integration with existing systems, data quality requirements, team adoption needs, and alignment with your sales process.",
+              "Always choose the most expensive tools because higher price always indicates better quality and capabilities.",
+              "Avoid all AI tools completely because traditional manual sales processes are always superior to automation.",
+              "Select tools based purely on marketing hype and vendor promises without evaluating fit with your actual needs."
+            ],
+            "correctAnswer": 0,
+            "rationale": "Effective tool selection evaluates integration capability, data requirements, user adoption factors, and process alignment rather than just features or vendor claims.",
+            "tags": [
+              "tool-selection",
+              "evaluation-criteria",
+              "implementation-success"
+            ]
+          },
+          {
+            "id": "TSI-SL-B-003",
+            "difficulty": 0.37,
+            "discrimination": 1.11,
+            "bloomLevel": "Understand",
+            "questionType": "multiple-choice",
+            "points": 11.11,
+            "question": "Why is CRM data quality critical for AI sales tools?",
+            "options": [
+              "Perfect data quality is impossible to achieve so there's no point in trying to improve it at all.",
+              "AI tools learn from and make predictions based on CRM data, so poor data quality directly leads to unreliable insights and recommendations.",
+              "Data quality only matters for reporting and has no relevance to AI predictions or recommendations.",
+              "Data quality has no impact on AI performance because algorithms automatically correct all errors and inconsistencies."
+            ],
+            "correctAnswer": 1,
+            "rationale": "AI is only as good as its training data - garbage in, garbage out. Poor CRM data quality leads to inaccurate predictions, biased recommendations, and unreliable automation.",
+            "tags": [
+              "data-quality",
+              "ai-accuracy",
+              "garbage-in-garbage-out"
+            ]
+          },
+          {
+            "id": "TSI-SL-B-004",
+            "difficulty": 0.4,
+            "discrimination": 1.13,
+            "bloomLevel": "Apply",
+            "questionType": "scenario-based",
+            "points": 11.2,
+            "question": "Your team adopted a new AI sales tool but nobody is using it. What should you investigate?",
+            "options": [
+              "Examine whether the tool integrates smoothly with workflow, provides clear value, has adequate training, and addresses user concerns.",
+              "Blame sales representatives for being resistant to change rather than examining potential tool or implementation issues.",
+              "Force everyone to use the tool through strict enforcement and disciplinary action for non-compliance.",
+              "Immediately abandon the tool and try a different one without understanding why adoption failed."
+            ],
+            "correctAnswer": 0,
+            "rationale": "Low adoption usually signals workflow friction, unclear value, inadequate training, or legitimate tool limitations - investigating root causes enables effective solutions.",
+            "tags": [
+              "user-adoption",
+              "change-management",
+              "tool-effectiveness"
+            ]
+          },
+          {
+            "id": "TSI-SL-B-005",
+            "difficulty": 0.43,
+            "discrimination": 1.15,
+            "bloomLevel": "Apply",
+            "questionType": "scenario-based",
+            "points": 11.29,
+            "question": "What's the most important consideration when integrating AI tools with your existing sales tech stack?",
+            "options": [
+              "Ensure seamless data flow between systems to avoid creating data silos that prevent AI from accessing complete information.",
+              "Keep all systems completely separate with no integration to maintain maximum flexibility and independence.",
+              "Integration doesn't matter because sales representatives can manually transfer data between systems.",
+              "Only integrate systems from the same vendor and never connect tools from different companies."
+            ],
+            "correctAnswer": 0,
+            "rationale": "AI effectiveness depends on data access - poor integration creates silos where AI tools can't access complete customer information, severely limiting their value and accuracy.",
+            "tags": [
+              "system-integration",
+              "data-silos",
+              "tool-effectiveness"
+            ]
+          },
+          {
+            "id": "TSI-SL-B-006",
+            "difficulty": 0.46,
+            "discrimination": 1.17,
+            "bloomLevel": "Understand",
+            "questionType": "multiple-choice",
+            "points": 11.38,
+            "question": "How should sales teams approach AI tool training and onboarding?",
+            "options": [
+              "Expect sales representatives to figure out AI tools independently without any training or support resources.",
+              "AI tools require no training because they're designed to be completely intuitive and self-explanatory for everyone.",
+              "Only train technical administrators and expect them to mediate all interactions between sales reps and AI tools.",
+              "Provide hands-on practice, explain how AI works, share best practices, and create support resources for ongoing learning."
+            ],
+            "correctAnswer": 3,
+            "rationale": "Effective AI adoption requires proper training - hands-on practice, conceptual understanding, best practices, and ongoing support help teams use tools effectively and avoid common pitfalls.",
+            "tags": [
+              "training",
+              "onboarding",
+              "adoption-success"
+            ]
+          },
+          {
+            "id": "TSI-SL-B-007",
+            "difficulty": 0.49,
+            "discrimination": 1.18,
+            "bloomLevel": "Apply",
+            "questionType": "scenario-based",
+            "points": 11.47,
+            "question": "Your AI sales tool provides insights but sales reps say they don't understand what the recommendations mean. What should you do?",
+            "options": [
+              "Immediately replace the tool with one that has no AI features since complexity creates barriers.",
+              "Blame sales representatives for not being smart enough to understand AI recommendations.",
+              "Tell sales representatives to just follow the recommendations blindly without understanding them.",
+              "Provide training on how to interpret AI outputs, create documentation with examples, and consider whether the tool needs better explanation features."
+            ],
+            "correctAnswer": 3,
+            "rationale": "AI is only valuable if users understand it - invest in training, documentation, and possibly tool improvements to ensure recommendations are interpretable and actionable.",
+            "tags": [
+              "interpretability",
+              "user-understanding",
+              "effective-use"
+            ]
+          },
+          {
+            "id": "TSI-SL-B-008",
+            "difficulty": 0.53,
+            "discrimination": 1.2,
+            "bloomLevel": "Apply",
+            "questionType": "scenario-based",
+            "points": 11.59,
+            "question": "How should you evaluate whether your AI sales tools are delivering ROI?",
+            "options": [
+              "ROI evaluation is impossible for AI tools so you should never attempt to measure their business impact.",
+              "Measure changes in sales productivity, win rates, deal velocity, forecast accuracy, and revenue per rep compared to pre-AI baselines.",
+              "Measure ROI solely by counting how many AI features exist regardless of whether anyone uses them effectively.",
+              "Assume all AI tools deliver positive ROI by definition without measuring any actual business outcomes."
+            ],
+            "correctAnswer": 1,
+            "rationale": "Effective ROI evaluation examines multiple business metrics - productivity gains, conversion improvements, acceleration, prediction accuracy, and revenue impact - compared to pre-implementation baselines.",
+            "tags": [
+              "roi-measurement",
+              "business-impact",
+              "tool-evaluation"
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}
