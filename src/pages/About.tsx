@@ -196,6 +196,96 @@ const About = () => {
           </div>
         </div>
 
+        {/* Three Assessment Tracks Explanation */}
+        <div className="mb-16">
+          <div className="text-center mb-8">
+            <h2 className="text-4xl font-extrabold mb-3">Three Assessment Tracks</h2>
+            <p className="text-muted-foreground max-w-2xl mx-auto">
+              Choose the pathway that best matches your needs and experience level
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-6">
+            <Card className="shadow-sm border-2 border-blue-500/20 hover:border-blue-500/40 transition-colors">
+              <CardContent className="pt-8 pb-8">
+                <div className="p-4 bg-blue-100 dark:bg-blue-900/30 rounded-full w-fit mx-auto mb-4">
+                  <Brain className="h-10 w-10 text-blue-600" />
+                </div>
+                <h3 className="font-bold text-xl mb-3 text-center">General Track</h3>
+                <p className="text-sm text-muted-foreground mb-4">
+                  Universal AI collaboration intelligence for all professionals, regardless of role or industry.
+                </p>
+                <ul className="space-y-2 text-sm text-muted-foreground">
+                  <li className="flex items-start gap-2">
+                    <CheckCircle className="h-4 w-4 text-green-600 mt-0.5 flex-shrink-0" />
+                    <span>Beginner: 60 questions, 60 minutes (fixed items)</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <CheckCircle className="h-4 w-4 text-green-600 mt-0.5 flex-shrink-0" />
+                    <span>Advanced: 80 questions, 80 minutes (IRT-adaptive)</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <CheckCircle className="h-4 w-4 text-green-600 mt-0.5 flex-shrink-0" />
+                    <span>Measures core AI collaboration skills across 8 dimensions</span>
+                  </li>
+                </ul>
+              </CardContent>
+            </Card>
+
+            <Card className="shadow-sm border-2 border-green-500/20 hover:border-green-500/40 transition-colors">
+              <CardContent className="pt-8 pb-8">
+                <div className="p-4 bg-green-100 dark:bg-green-900/30 rounded-full w-fit mx-auto mb-4">
+                  <BookOpen className="h-10 w-10 text-green-600" />
+                </div>
+                <h3 className="font-bold text-xl mb-3 text-center">Student Track</h3>
+                <p className="text-sm text-muted-foreground mb-4">
+                  Age-appropriate AI literacy assessments designed specifically for high school students.
+                </p>
+                <ul className="space-y-2 text-sm text-muted-foreground">
+                  <li className="flex items-start gap-2">
+                    <CheckCircle className="h-4 w-4 text-green-600 mt-0.5 flex-shrink-0" />
+                    <span>Ages 14-15: 24 questions, 24 minutes (fixed items)</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <CheckCircle className="h-4 w-4 text-green-600 mt-0.5 flex-shrink-0" />
+                    <span>Ages 16-17: 48 questions, 48 minutes (fixed items)</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <CheckCircle className="h-4 w-4 text-green-600 mt-0.5 flex-shrink-0" />
+                    <span>Developmentally appropriate content and difficulty</span>
+                  </li>
+                </ul>
+              </CardContent>
+            </Card>
+
+            <Card className="shadow-sm border-2 border-purple-500/20 hover:border-purple-500/40 transition-colors">
+              <CardContent className="pt-8 pb-8">
+                <div className="p-4 bg-purple-100 dark:bg-purple-900/30 rounded-full w-fit mx-auto mb-4">
+                  <Award className="h-10 w-10 text-purple-600" />
+                </div>
+                <h3 className="font-bold text-xl mb-3 text-center">Professional Track</h3>
+                <p className="text-sm text-muted-foreground mb-4">
+                  Role-specific assessments tailored to the unique AI needs of 8 professional specializations.
+                </p>
+                <ul className="space-y-2 text-sm text-muted-foreground">
+                  <li className="flex items-start gap-2">
+                    <CheckCircle className="h-4 w-4 text-green-600 mt-0.5 flex-shrink-0" />
+                    <span>8 roles: PM, SDE, DS, BA, HR, Sales, Ops, DM</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <CheckCircle className="h-4 w-4 text-green-600 mt-0.5 flex-shrink-0" />
+                    <span>Beginner & Advanced levels for each role</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <CheckCircle className="h-4 w-4 text-green-600 mt-0.5 flex-shrink-0" />
+                    <span>Advanced levels use IRT-adaptive selection (80 from 160 items)</span>
+                  </li>
+                </ul>
+              </CardContent>
+            </Card>
+          </div>
+        </div>
+
         {/* Our Methodology */}
         <div className="mb-16">
           <div className="text-center mb-8">
@@ -215,21 +305,21 @@ const About = () => {
                   <div>
                     <h3 className="font-bold text-lg mb-2">Item Response Theory (IRT)</h3>
                     <p className="text-sm text-muted-foreground mb-3">
-                      We use IRT, the gold standard in adaptive testing used by GRE, SAT, and professional certification
-                      exams worldwide.
+                      We use IRT for advanced-level assessments, the gold standard in adaptive testing used by GRE, SAT, and professional certification
+                      exams worldwide. Advanced assessments adaptively select 80 items from a pool of 160 calibrated items.
                     </p>
                     <ul className="space-y-2 text-sm text-muted-foreground">
                       <li className="flex items-start gap-2">
                         <CheckCircle className="h-4 w-4 text-green-600 mt-0.5 flex-shrink-0" />
-                        <span>Questions dynamically adapt to your ability level</span>
+                        <span>Advanced: Questions dynamically adapt to your ability level</span>
                       </li>
                       <li className="flex items-start gap-2">
                         <CheckCircle className="h-4 w-4 text-green-600 mt-0.5 flex-shrink-0" />
-                        <span>Precise measurement across all skill ranges</span>
+                        <span>Beginner & Student: Fixed item sets for consistency</span>
                       </li>
                       <li className="flex items-start gap-2">
                         <CheckCircle className="h-4 w-4 text-green-600 mt-0.5 flex-shrink-0" />
-                        <span>400+ calibrated performance-based items</span>
+                        <span>400+ calibrated performance-based items across all tracks</span>
                       </li>
                     </ul>
                   </div>

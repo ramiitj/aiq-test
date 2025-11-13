@@ -271,7 +271,7 @@ const Index = () => {
                   Role-specific AI collaboration for working professionals
                 </p>
                 <div className="text-3xl font-bold text-primary mb-4">15 Assessments</div>
-                <p className="text-xs text-muted-foreground mb-6">8 roles × 2 levels each</p>
+                <p className="text-xs text-muted-foreground mb-6">8 roles, beginner & advanced levels</p>
                 <Link to="/assessments/professional">
                   <Button className="w-full">Explore Professional Track</Button>
                 </Link>
@@ -348,9 +348,9 @@ const Index = () => {
                 How long does the AIQ assessment take?
               </AccordionTrigger>
               <AccordionContent className="text-muted-foreground leading-relaxed">
-                The Beginner level has 60 questions (60 minutes), and the Advanced level has 80 questions (80 minutes).
-                The assessment uses adaptive testing technology to efficiently measure your AI collaboration abilities
-                across all 8 dimensions.
+                Assessment duration varies by track: General Track assessments are 60 minutes (Beginner) or 80 minutes (Advanced),
+                Student Track assessments are 24 minutes (Ages 14-15) or 48 minutes (Ages 16-17), and Professional Track assessments
+                follow the same 60/80 minute structure as General Track based on the level you choose.
               </AccordionContent>
             </AccordionItem>
             <AccordionItem value="item-3">

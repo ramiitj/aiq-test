@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { supabase } from "@/integrations/supabase/client";
 import { Navigation } from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { PlayCircle, Trophy, User as UserIcon, Play, X, Download, Trash2, ArrowRight, Clock } from "lucide-react";
+import { PlayCircle, Trophy, User as UserIcon, Play, X, Download, Trash2, ArrowRight, Clock, Brain } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import { checkUserRole } from "@/lib/roleUtils";
 import { captureUserLocation } from "@/lib/geolocation";
@@ -200,9 +200,6 @@ const Dashboard = () => {
     }
   };
 
-  const handleStartTest = (version: 'beginner' | 'advanced') => {
-    navigate(`/ai-assessment?version=${version}`);
-  };
 
   const handleResumeTest = (testId: string) => {
     navigate(`/ai-assessment?resume=${testId}`);
@@ -451,22 +448,32 @@ const Dashboard = () => {
               </div>
               <div className="space-y-2">
                 <div className="flex justify-between text-xs">
-                  <span className="text-muted-foreground">Tests Taken</span>
-                  <span className="font-bold tabular-nums">{tests.filter(t => t.completed).length}</span>
+                  <span className="text-muted-foreground">Total Completed</span>
+                  <span className="font-bold tabular-nums">{completedTests.length}</span>
                 </div>
                 <div className="flex justify-between text-xs">
-                  <span className="text-muted-foreground">In Progress</span>
-                  <span className="font-bold tabular-nums">{tests.filter(t => t.paused).length}</span>
+                  <span className="text-muted-foreground">General Track</span>
+                  <span className="font-bold tabular-nums">
+                    {completedTests.filter(t => t.product_slug?.includes('general')).length}
+                  </span>
                 </div>
                 <div className="flex justify-between text-xs">
-                  <span className="text-muted-foreground">Role</span>
-                  <span className="font-bold">{isAdmin ? "Admin" : "User"}</span>
+                  <span className="text-muted-foreground">Student Track</span>
+                  <span className="font-bold tabular-nums">
+                    {completedTests.filter(t => t.product_slug?.includes('adolescent')).length}
+                  </span>
+                </div>
+                <div className="flex justify-between text-xs">
+                  <span className="text-muted-foreground">Professional Track</span>
+                  <span className="font-bold tabular-nums">
+                    {completedTests.filter(t => t.product_slug && !t.product_slug.includes('general') && !t.product_slug.includes('adolescent')).length}
+                  </span>
                 </div>
               </div>
             </CardContent>
           </Card>
 
-          {/* Start New Test CTA - Enhanced for visibility */}
+          {/* Browse All Assessments CTA */}
           <Card className="lg:col-span-2 shadow-lg border-2 border-blue-900 bg-gradient-to-br from-blue-900 to-indigo-900">
             <CardContent className="pt-8 pb-8">
               <div className="flex items-start gap-4 mb-6">
@@ -474,77 +481,103 @@ const Dashboard = () => {
                   <PlayCircle className="h-8 w-8 text-white" />
                 </div>
                 <div className="flex-1">
-                  <h2 className="text-2xl font-black mb-2 text-white">Start New Assessment</h2>
-                  <p className="text-sm text-white/80 mb-4">Choose the level that matches your AI experience and demonstrate your skills</p>
+                  <h2 className="text-2xl font-black mb-2 text-white">Explore All Assessments</h2>
+                  <p className="text-sm text-white/80 mb-4">
+                    Choose from 19 specialized assessments across General, Student, and Professional tracks
+                  </p>
                 </div>
               </div>
               
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                {/* Beginner */}
-                <div className="bg-white dark:bg-gray-900 rounded-lg p-5 hover:shadow-xl transition-all hover:scale-105 cursor-pointer border-2 border-transparent hover:border-blue-400"
-                     onClick={() => handleStartTest('beginner')}>
-                  <div className="flex items-center gap-2 mb-3">
-                    <div className="p-2 bg-blue-100 dark:bg-blue-900/30 rounded">
-                      <PlayCircle className="h-5 w-5 text-blue-600" />
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                {/* General Track */}
+                <Link to="/assessments/general" className="block">
+                  <div className="bg-white dark:bg-gray-900 rounded-lg p-5 hover:shadow-xl transition-all hover:scale-105 cursor-pointer border-2 border-transparent hover:border-blue-400 h-full">
+                    <div className="flex items-center gap-2 mb-3">
+                      <div className="p-2 bg-blue-100 dark:bg-blue-900/30 rounded">
+                        <Brain className="h-5 w-5 text-blue-600" />
+                      </div>
+                      <h3 className="text-base font-black">General Track</h3>
                     </div>
-                    <h3 className="text-base font-black">Beginner</h3>
+                    <div className="space-y-2 mb-4">
+                      <p className="text-xs text-muted-foreground font-semibold">2 Assessments</p>
+                      <p className="text-xs text-muted-foreground">Universal AI collaboration skills</p>
+                    </div>
+                    <div className="space-y-1.5">
+                      <p className="text-xs font-bold text-blue-900 dark:text-blue-100">INCLUDES:</p>
+                      <ul className="text-xs text-muted-foreground space-y-1">
+                        <li>• Beginner Level</li>
+                        <li>• Advanced Level</li>
+                      </ul>
+                    </div>
+                    <Button 
+                      className="w-full mt-4 bg-blue-900 hover:bg-blue-800"
+                      size="sm"
+                    >
+                      Explore General Track
+                      <ArrowRight className="ml-2 h-3 w-3" />
+                    </Button>
                   </div>
-                  <div className="space-y-2 mb-4">
-                    <p className="text-xs text-muted-foreground font-semibold">60 questions • 60 minutes</p>
-                    <p className="text-xs text-muted-foreground">Fixed items per dimension</p>
-                  </div>
-                  <div className="space-y-1.5">
-                    <p className="text-xs font-bold text-blue-900 dark:text-blue-100">BEST FOR:</p>
-                    <ul className="text-xs text-muted-foreground space-y-1">
-                      <li>• Students & beginners</li>
-                      <li>• Career changers</li>
-                      <li>• New to AI tools</li>
-                    </ul>
-                  </div>
-                  <Button 
-                    className="w-full mt-4 bg-blue-900 hover:bg-blue-800"
-                    size="sm"
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      handleStartTest('beginner');
-                    }}
-                  >
-                    Start Beginner
-                  </Button>
-                </div>
+                </Link>
 
-                {/* Advanced */}
-                <div className="bg-white dark:bg-gray-900 rounded-lg p-5 hover:shadow-xl transition-all hover:scale-105 cursor-pointer border-2 border-transparent hover:border-amber-400"
-                     onClick={() => handleStartTest('advanced')}>
-                  <div className="flex items-center gap-2 mb-3">
-                    <div className="p-2 bg-amber-100 dark:bg-amber-900/30 rounded">
-                      <PlayCircle className="h-5 w-5 text-amber-600" />
+                {/* Student Track */}
+                <Link to="/assessments/adolescent" className="block">
+                  <div className="bg-white dark:bg-gray-900 rounded-lg p-5 hover:shadow-xl transition-all hover:scale-105 cursor-pointer border-2 border-transparent hover:border-green-400 h-full">
+                    <div className="flex items-center gap-2 mb-3">
+                      <div className="p-2 bg-green-100 dark:bg-green-900/30 rounded">
+                        <Trophy className="h-5 w-5 text-green-600" />
+                      </div>
+                      <h3 className="text-base font-black">Student Track</h3>
                     </div>
-                    <h3 className="text-base font-black">Advanced</h3>
+                    <div className="space-y-2 mb-4">
+                      <p className="text-xs text-muted-foreground font-semibold">2 Age Groups</p>
+                      <p className="text-xs text-muted-foreground">Age-appropriate for students</p>
+                    </div>
+                    <div className="space-y-1.5">
+                      <p className="text-xs font-bold text-green-900 dark:text-green-100">INCLUDES:</p>
+                      <ul className="text-xs text-muted-foreground space-y-1">
+                        <li>• Ages 14-15 Years</li>
+                        <li>• Ages 16-17 Years</li>
+                      </ul>
+                    </div>
+                    <Button 
+                      className="w-full mt-4 bg-green-600 hover:bg-green-700"
+                      size="sm"
+                    >
+                      Explore Student Track
+                      <ArrowRight className="ml-2 h-3 w-3" />
+                    </Button>
                   </div>
-                  <div className="space-y-2 mb-4">
-                    <p className="text-xs text-muted-foreground font-semibold">80 questions • 80 minutes</p>
-                    <p className="text-xs text-muted-foreground">Adaptive item selection</p>
+                </Link>
+
+                {/* Professional Track */}
+                <Link to="/assessments/professional" className="block">
+                  <div className="bg-white dark:bg-gray-900 rounded-lg p-5 hover:shadow-xl transition-all hover:scale-105 cursor-pointer border-2 border-transparent hover:border-purple-400 h-full">
+                    <div className="flex items-center gap-2 mb-3">
+                      <div className="p-2 bg-purple-100 dark:bg-purple-900/30 rounded">
+                        <Trophy className="h-5 w-5 text-purple-600" />
+                      </div>
+                      <h3 className="text-base font-black">Professional Track</h3>
+                    </div>
+                    <div className="space-y-2 mb-4">
+                      <p className="text-xs text-muted-foreground font-semibold">15 Assessments</p>
+                      <p className="text-xs text-muted-foreground">Role-specific evaluations</p>
+                    </div>
+                    <div className="space-y-1.5">
+                      <p className="text-xs font-bold text-purple-900 dark:text-purple-100">INCLUDES:</p>
+                      <ul className="text-xs text-muted-foreground space-y-1">
+                        <li>• 8 Professional Roles</li>
+                        <li>• Beginner & Advanced</li>
+                      </ul>
+                    </div>
+                    <Button 
+                      className="w-full mt-4 bg-purple-600 hover:bg-purple-700"
+                      size="sm"
+                    >
+                      Explore Professional Track
+                      <ArrowRight className="ml-2 h-3 w-3" />
+                    </Button>
                   </div>
-                  <div className="space-y-1.5">
-                    <p className="text-xs font-bold text-amber-900 dark:text-amber-100">BEST FOR:</p>
-                    <ul className="text-xs text-muted-foreground space-y-1">
-                      <li>• AI professionals & leaders</li>
-                      <li>• Research professionals</li>
-                      <li>• Senior practitioners</li>
-                    </ul>
-                  </div>
-                  <Button 
-                    className="w-full mt-4 bg-amber-600 hover:bg-amber-700"
-                    size="sm"
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      handleStartTest('advanced');
-                    }}
-                  >
-                    Start Advanced
-                  </Button>
-                </div>
+                </Link>
               </div>
             </CardContent>
           </Card>
@@ -600,6 +633,9 @@ const Dashboard = () => {
                             day: 'numeric', 
                             year: 'numeric' 
                           })} • Score: {test.overall_score}
+                          {test.test_duration_seconds && (
+                            <> • {Math.floor(test.test_duration_seconds / 60)} min</>
+                          )}
                         </p>
                       </div>
                       <Button 
