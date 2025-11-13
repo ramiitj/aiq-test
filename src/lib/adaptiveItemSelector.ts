@@ -1,10 +1,11 @@
 /**
- * Adaptive Item Selection for Professional and Expert Assessments
- * Randomly selects items from large item pools while maintaining
- * difficulty balance and ensuring diversity
+ * Adaptive Item Selection for All Assessment Products
+ * Handles variable question counts, durations, and formats
+ * using the unified assessment adapter
  */
 
 import { supabase } from "@/integrations/supabase/client";
+import { loadNormalizedAssessment, type NormalizedAssessment } from "./assessmentAdapter";
 
 export interface TestItem {
   id: string;
@@ -64,34 +65,63 @@ export interface ScoringConfiguration {
 export interface AssessmentData {
   dimensions: Dimension[];
   scoringConfiguration: ScoringConfiguration;
+  assessmentInfo: {
+    name: string;
+    description: string;
+    tier: string;
+    totalTime: number;
+    questionCount: number;
+  };
 }
 
 export type TestVersion = 'beginner' | 'advanced';
 
-export interface VersionConfig {
-  itemsPerDimension: number;
-  totalTime: number; // in minutes
+export interface DifficultyConfig {
   easyCount: number;
   mediumCount: number;
   hardCount: number;
 }
 
-const VERSION_CONFIGS: Record<TestVersion, VersionConfig> = {
-  beginner: {
-    itemsPerDimension: 8, // 8 fixed items per dimension (60 total questions)
-    totalTime: 60, // 60 minutes
-    easyCount: 4, // 50% of items (easier distribution)
-    mediumCount: 3, // 37.5% of items
-    hardCount: 1, // 12.5% of items
-  },
-  advanced: {
-    itemsPerDimension: 10, // Select 10 from 20 (80 total questions)
-    totalTime: 80, // 80 minutes
-    easyCount: 2, // 20% of items (harder distribution)
-    mediumCount: 3, // 30% of items
-    hardCount: 5, // 50% of items
-  },
-};
+/**
+ * Calculate difficulty distribution based on question count
+ * For adaptive assessments (question count differs from available items)
+ */
+function calculateDifficultyDistribution(targetCount: number, availableCount: number): DifficultyConfig {
+  // If target matches available, use all items (fixed assessment)
+  if (targetCount === availableCount) {
+    return {
+      easyCount: Math.ceil(targetCount * 0.4),
+      mediumCount: Math.ceil(targetCount * 0.4),
+      hardCount: Math.ceil(targetCount * 0.2)
+    };
+  }
+  
+  // Adaptive selection with balanced distribution
+  const ratio = targetCount / availableCount;
+  
+  if (ratio < 0.4) {
+    // Selecting less than 40% - focus on harder items
+    return {
+      easyCount: Math.ceil(targetCount * 0.2),
+      mediumCount: Math.ceil(targetCount * 0.3),
+      hardCount: Math.ceil(targetCount * 0.5)
+    };
+  } else if (ratio < 0.7) {
+    // Selecting 40-70% - balanced distribution
+    return {
+      easyCount: Math.ceil(targetCount * 0.3),
+      mediumCount: Math.ceil(targetCount * 0.4),
+      hardCount: Math.ceil(targetCount * 0.3)
+    };
+  } else {
+    // Selecting most items - easier distribution
+    return {
+      easyCount: Math.ceil(targetCount * 0.4),
+      mediumCount: Math.ceil(targetCount * 0.4),
+      hardCount: Math.ceil(targetCount * 0.2)
+    };
+  }
+}
 
 /**
  * Shuffle array using Fisher-Yates algorithm
@@ -107,11 +137,12 @@ function shuffleArray<T>(array: T[]): T[] {
 
 /**
  * Select items from a pool based on difficulty distribution
- * Uses difficulty-based tiering
+ * Uses difficulty-based tiering with dynamic distribution
  */
 export function selectItemsForDimension(
   items: TestItem[],
-  config: VersionConfig,
+  targetCount: number,
+  difficultyConfig: DifficultyConfig,
   selectedItemIds: Set<string>
 ): TestItem[] {
   if (items.length === 0) return [];
@@ -177,13 +208,13 @@ export function selectItemsForDimension(
 
   const selectedItems: TestItem[] = [];
   selectedItems.push(
-    ...pickUnique(easyTier, config.easyCount),
-    ...pickUnique(mediumTier, config.mediumCount),
-    ...pickUnique(hardTier, config.hardCount)
+    ...pickUnique(easyTier, difficultyConfig.easyCount),
+    ...pickUnique(mediumTier, difficultyConfig.mediumCount),
+    ...pickUnique(hardTier, difficultyConfig.hardCount)
   );
 
   // If we couldn't fulfill counts due to limited tier items, top-up from the remaining pool
-  const needed = Math.max(0, config.itemsPerDimension - selectedItems.length);
+  const needed = Math.max(0, targetCount - selectedItems.length);
   if (needed > 0) {
     const remainingPool = sortedItems.filter((i) => !pickedKeys.has(getKey(i)));
     selectedItems.push(...pickUnique(remainingPool, needed));
@@ -197,107 +228,93 @@ export function selectItemsForDimension(
 }
 
 /**
- * Get configuration for a test version
+ * Load and prepare assessment using product slug or file path
+ * Supports all 19 assessment products with variable formats
  */
-export function getVersionConfig(version: TestVersion): VersionConfig {
-  return VERSION_CONFIGS[version];
-}
-
-/**
- * Load and prepare test items based on version
- */
-export async function loadTestItems(version: TestVersion = 'beginner'): Promise<AssessmentData> {
-  console.log(`[loadTestItems] Loading test items for version: ${version}`);
+export async function loadTestItems(
+  slugOrVersion: string = 'general-beginner',
+  legacyFallback: boolean = true
+): Promise<AssessmentData> {
+  console.log(`[loadTestItems] Loading assessment: ${slugOrVersion}`);
   
   try {
-    let data;
-    
-    // Map version to correct file names (use 'advanced' for all non-beginner versions)
-    const fileName = version === 'beginner' ? 'beginner-assessment.json' : 'advanced-assessment.json';
-    console.log(`[loadTestItems] Using file: ${fileName}`);
-    
-    // Try to download from Supabase Storage first
-    try {
-      const { data: fileData, error: downloadError } = await supabase.storage
-        .from('aiq-items')
-        .download(fileName);
-      
-      if (downloadError) {
-        console.log(`[loadTestItems] Could not download from storage, falling back to public folder:`, downloadError.message);
-        throw downloadError;
+    // Map legacy version names to new slugs for backward compatibility
+    let filePath = slugOrVersion;
+    if (legacyFallback) {
+      if (slugOrVersion === 'beginner') {
+        filePath = 'general-beginner';
+      } else if (slugOrVersion === 'advanced' || slugOrVersion === 'professional' || slugOrVersion === 'expert') {
+        filePath = 'general-advanced';
       }
-      
-      if (!fileData) {
-        throw new Error('No file data returned from storage');
-      }
-      
-      const text = await fileData.text();
-      data = JSON.parse(text);
-      console.log(`[loadTestItems] Successfully loaded from Supabase Storage`);
-    } catch (storageError) {
-      // Fallback to public folder
-      console.log(`[loadTestItems] Loading from public folder`);
-      const response = await fetch(`/test-items/${fileName}`);
-      if (!response.ok) {
-        throw new Error(`Failed to fetch test items: ${response.statusText}`);
-      }
-      data = await response.json();
-      console.log(`[loadTestItems] Successfully loaded from public folder`);
     }
     
-    console.log(`[loadTestItems] Raw data structure:`, {
-      hasItemBank: !!data.itemBank,
-      itemBankType: Array.isArray(data.itemBank) ? 'array' : typeof data.itemBank,
-      hasDimensions: !!data.itemBank?.dimensions,
-      dimensionsCount: data.itemBank?.dimensions?.length || data.itemBank?.length || 0
+    // Ensure .json extension
+    if (!filePath.endsWith('.json')) {
+      filePath = `${filePath}.json`;
+    }
+    
+    console.log(`[loadTestItems] Loading file: ${filePath}`);
+    
+    // Use the assessment adapter to load and normalize
+    const normalized = await loadNormalizedAssessment(`/test-items/${filePath}`);
+    
+    console.log(`[loadTestItems] Normalized assessment:`, {
+      name: normalized.name,
+      tier: normalized.assessmentTier,
+      questionCount: normalized.questionCount,
+      dimensionsCount: normalized.dimensions.length,
+      totalTime: normalized.totalTime
     });
     
-    // Get the appropriate version config
-    const config = VERSION_CONFIGS[version];
-    console.log(`[loadTestItems] Using config:`, config);
+    // Convert normalized dimensions to internal format
+    let dimensions: Dimension[] = normalized.dimensions.map(dim => ({
+      dimensionCode: dim.code,
+      dimensionName: dim.name,
+      description: dim.description,
+      weight: 1 / normalized.dimensions.length, // Equal weight by default
+      totalPoints: normalized.scoring?.totalPoints 
+        ? Math.floor(normalized.scoring.totalPoints / normalized.dimensions.length)
+        : 100,
+      items: dim.items.map(item => ({
+        id: item.id,
+        type: (item.type as any) || 'multiple-choice',
+        question: item.text,
+        options: item.options,
+        correctAnswer: typeof item.correctAnswer === 'number' 
+          ? item.correctAnswer 
+          : (typeof item.correctAnswer === 'boolean' ? item.correctAnswer : 0),
+        explanation: item.explanation,
+        rationale: item.explanation,
+        points: 10,
+        difficulty: parseFloat(item.difficulty as any) || 0.5,
+        tags: []
+      }))
+    }));
     
-    // Handle different data structures - detect beginner (nested) vs advanced (flat)
-    let dimensions: Dimension[];
+    // Determine if adaptive selection is needed
+    const totalAvailableItems = dimensions.reduce((sum, d) => sum + d.items.length, 0);
+    const needsAdaptiveSelection = totalAvailableItems > normalized.questionCount;
     
-    if (data.itemBank?.dimensions) {
-      // Beginner format: nested structure with itemBank.dimensions
-      dimensions = data.itemBank.dimensions;
-      console.log(`[loadTestItems] Beginner: Using all ${dimensions[0]?.items?.length || 0} items per dimension (fixed, 60 total)`);
-    } else if (Array.isArray(data.itemBank)) {
-      // Advanced format: flat array structure - group by dimension
-      console.log(`[loadTestItems] Advanced: Processing flat array structure`);
-      const dimensionMap = new Map<string, any>();
+    if (needsAdaptiveSelection && dimensions.length > 0) {
+      console.log(`[loadTestItems] Adaptive selection needed: ${normalized.questionCount} from ${totalAvailableItems} items`);
       
-      (data.itemBank as any[]).forEach((dim: any) => {
-        if (!dimensionMap.has(dim.dimensionCode)) {
-          dimensionMap.set(dim.dimensionCode, {
-            dimensionCode: dim.dimensionCode,
-            dimensionName: dim.dimensionName,
-            description: dim.description,
-            weight: dim.weight || 0.125,
-            totalPoints: dim.totalPoints || 200,
-            items: []
-          });
-        }
-        const dimension = dimensionMap.get(dim.dimensionCode);
-        if (dim.items && Array.isArray(dim.items)) {
-          dimension.items.push(...dim.items);
-        }
-      });
-      
-      dimensions = Array.from(dimensionMap.values());
-      console.log(`[loadTestItems] Advanced: Selecting ${config.itemsPerDimension} from ${dimensions[0]?.items?.length || 0} items per dimension (adaptive, 80 total)`);
-      
-      // Track selected item IDs to prevent duplicates across dimensions
+      const itemsPerDimension = Math.floor(normalized.questionCount / dimensions.length);
       const selectedItemIds = new Set<string>();
       
-      // Apply adaptive selection for advanced
-      dimensions = dimensions.map(dimension => ({
-        ...dimension,
-        items: selectItemsForDimension(dimension.items, config, selectedItemIds)
-      }));
+      dimensions = dimensions.map((dimension, idx) => {
+        const availableCount = dimension.items.length;
+        const targetCount = itemsPerDimension + (idx < (normalized.questionCount % dimensions.length) ? 1 : 0);
+        
+        // Calculate difficulty distribution for this dimension
+        const difficultyConfig = calculateDifficultyDistribution(targetCount, availableCount);
+        
+        return {
+          ...dimension,
+          items: selectItemsForDimension(dimension.items, targetCount, difficultyConfig, selectedItemIds)
+        };
+      });
       
-      // Validate no duplicate items in final assessment
+      // Validate no duplicates
       const allItemIds = dimensions.flatMap(d => d.items.map(i => i.id));
       const uniqueItemIds = new Set(allItemIds);
       if (allItemIds.length !== uniqueItemIds.size) {
@@ -305,47 +322,49 @@ export async function loadTestItems(version: TestVersion = 'beginner'): Promise<
         throw new Error('Assessment generation failed: duplicate items found');
       }
     } else {
-      throw new Error('Unrecognized assessment structure');
+      console.log(`[loadTestItems] Fixed assessment: using all ${totalAvailableItems} items`);
     }
     
-    console.log(`[loadTestItems] Final dimensions:`, {
-      count: dimensions.length,
+    const finalTotalItems = dimensions.reduce((sum, d) => sum + d.items.length, 0);
+    console.log(`[loadTestItems] Final assessment:`, {
+      dimensionsCount: dimensions.length,
       itemsPerDimension: dimensions.map(d => d.items.length),
-      totalItems: dimensions.reduce((sum, d) => sum + d.items.length, 0)
+      totalItems: finalTotalItems
     });
     
-    // Use scoring configuration from JSON, with fallback defaults
-    const scoringConfiguration: ScoringConfiguration = data.scoringConfiguration || {
-      totalPoints: version === 'beginner' ? 600 : 1600,
-      pointsPerDimension: version === 'beginner' ? 75 : 200,
-      passingScore: version === 'beginner' ? 420 : 1280,
-      passingPercentage: version === 'beginner' ? 70 : 80,
+    // Build scoring configuration from normalized data
+    const scoringConfiguration: ScoringConfiguration = {
+      totalPoints: normalized.scoring?.totalPoints || finalTotalItems * 10,
+      pointsPerDimension: normalized.scoring?.totalPoints 
+        ? Math.floor(normalized.scoring.totalPoints / dimensions.length)
+        : Math.floor((finalTotalItems * 10) / dimensions.length),
+      passingScore: normalized.scoring?.passingScore || Math.floor(finalTotalItems * 10 * 0.7),
+      passingPercentage: 70,
       scoringMethod: {
-        type: version === 'beginner' ? 'simple-sum' : 'IRT-weighted-expert',
+        type: 'simple-sum',
         description: 'Points-based scoring with difficulty weighting',
         basePoints: 10,
-        formula: version === 'beginner' 
-          ? 'points = basePoints × (1 + difficulty × 0.3)'
-          : 'points = basePoints × (1 + difficulty × 0.5 + discrimination × 0.25)'
+        formula: 'points = basePoints × (1 + difficulty × 0.3)'
       },
-      scoringGuidelines: version === 'beginner' ? {
-        '0-40%': 'Novice (0-240 points)',
-        '41-60%': 'Beginner (241-360 points)',
-        '61-80%': 'Developing (361-480 points)',
-        '81-90%': 'Proficient (481-540 points)',
-        '91-100%': 'Advanced (541-600 points)'
-      } : {
-        '0-50%': 'Developing (0-800 points)',
-        '51-70%': 'Proficient (801-1120 points)',
-        '71-85%': 'Advanced (1121-1360 points)',
-        '86-95%': 'Expert (1361-1520 points)',
-        '96-100%': 'Master (1521-1600 points)'
+      scoringGuidelines: {
+        '0-40%': 'Novice',
+        '41-60%': 'Beginner',
+        '61-80%': 'Developing',
+        '81-90%': 'Proficient',
+        '91-100%': 'Advanced'
       }
     };
     
     return {
       dimensions,
-      scoringConfiguration
+      scoringConfiguration,
+      assessmentInfo: {
+        name: normalized.name,
+        description: normalized.description,
+        tier: normalized.assessmentTier,
+        totalTime: normalized.totalTime,
+        questionCount: finalTotalItems
+      }
     };
   } catch (error) {
     console.error('[loadTestItems] Error loading test items:', error);
@@ -354,37 +373,17 @@ export async function loadTestItems(version: TestVersion = 'beginner'): Promise<
 }
 
 /**
- * Get display information for a version
+ * Get display information for a product slug
  */
-export function getVersionInfo(version: TestVersion) {
-  const config = VERSION_CONFIGS[version];
-  const totalQuestions = config.itemsPerDimension * 8; // 8 dimensions
-  const timeInMinutes = config.totalTime;
-  
-  let description = '';
-  let audience = '';
-  let adaptive = '';
-  
-  switch (version) {
-    case 'beginner':
-      description = 'Beginner AI literacy assessment for newcomers';
-      audience = 'Students and beginners to AI';
-      adaptive = 'All 60 questions presented (fixed)';
-      break;
-    case 'advanced':
-      description = 'Advanced-level strategic AI assessment';
-      audience = 'AI professionals, leaders and researchers';
-      adaptive = '10 questions per dimension (adaptive selection from 20)';
-      break;
+export function getAssessmentInfo(slugOrVersion: string) {
+  // Map legacy versions for backward compatibility
+  if (slugOrVersion === 'beginner') slugOrVersion = 'general-beginner';
+  if (slugOrVersion === 'advanced' || slugOrVersion === 'professional' || slugOrVersion === 'expert') {
+    slugOrVersion = 'general-advanced';
   }
   
   return {
-    version,
-    totalQuestions,
-    timeInMinutes,
-    description,
-    audience,
-    adaptive,
-    config
+    slug: slugOrVersion,
+    filePath: `/test-items/${slugOrVersion}.json`
   };
 }

@@ -88,10 +88,11 @@ const Test = () => {
   const [testId, setTestId] = useState<string | null>(null);
   const [currentDimension, setCurrentDimension] = useState(0);
   const [currentQuestion, setCurrentQuestion] = useState(0);
-  const [timeRemaining, setTimeRemaining] = useState(3600); // 60 minutes
+  const [timeRemaining, setTimeRemaining] = useState(3600); // Will be set from assessment
   const [answers, setAnswers] = useState<Record<string, string>>({});
   const [dimensions, setDimensions] = useState<Dimension[]>([]);
   const [scoringConfig, setScoringConfig] = useState<any>(null);
+  const [assessmentInfo, setAssessmentInfo] = useState<any>(null);
   
   // Security consent states
   const [showSecurityConsent, setShowSecurityConsent] = useState(true);
@@ -125,6 +126,11 @@ const Test = () => {
 
   const [version, setVersion] = useState<TestVersion>(() => {
     const versionParam = searchParams.get('version') as string;
+    const productParam = searchParams.get('product') as string;
+    
+    // If product param exists, use it directly
+    if (productParam) return productParam as TestVersion;
+    
     // Map old values to new structure for backward compatibility
     if (versionParam === 'professional' || versionParam === 'expert') {
       return 'advanced';
@@ -133,9 +139,14 @@ const Test = () => {
   });
   const resumeId = searchParams.get('resume');
 
-  const questionsPerDimension = version === 'beginner' ? 8 : 10;
-  const totalQuestions = version === 'beginner' ? 60 : 80;
-  const testDuration = version === 'beginner' ? 3600 : 4800; // 60 or 80 minutes
+  // Dynamic values from loaded assessment
+  const questionsPerDimension = assessmentInfo?.questionCount 
+    ? Math.floor(assessmentInfo.questionCount / (dimensions.length || 8))
+    : 8;
+  const totalQuestions = assessmentInfo?.questionCount || 60;
+  const testDuration = assessmentInfo?.totalTime 
+    ? assessmentInfo.totalTime * 60  // Convert minutes to seconds
+    : 3600;
 
   useEffect(() => {
     initializeTest();
@@ -228,15 +239,24 @@ const Test = () => {
     }
     
     try {
-      console.log('[Test] Loading test data for version:', version);
+      console.log('[Test] Loading test data for:', version);
       setLoadError(null);
-      const assessmentData = await loadTestItems(version as TestVersion);
+      const assessmentData = await loadTestItems(version as string, true); // Enable legacy fallback
       console.log('[Test] Assessment data loaded successfully:', {
+        name: assessmentData.assessmentInfo.name,
         dimensionsCount: assessmentData.dimensions.length,
-        totalItems: assessmentData.dimensions.reduce((sum, d) => sum + d.items.length, 0)
+        totalItems: assessmentData.dimensions.reduce((sum, d) => sum + d.items.length, 0),
+        totalTime: assessmentData.assessmentInfo.totalTime
       });
       setDimensions(assessmentData.dimensions);
       setScoringConfig(assessmentData.scoringConfiguration);
+      setAssessmentInfo(assessmentData.assessmentInfo);
+      
+      // Set initial time remaining based on assessment duration
+      if (!resumeId) {
+        setTimeRemaining(assessmentData.assessmentInfo.totalTime * 60); // Convert minutes to seconds
+      }
+      
       setLoading(false);
     } catch (error: any) {
       const errorMsg = error.message || "Failed to load test items";
@@ -291,9 +311,10 @@ const Test = () => {
         setVersion(resumedVersion);
         
         // Load dimensions first, then validate indices
-        const assessmentData = await loadTestItems(resumedVersion);
+        const assessmentData = await loadTestItems(resumedVersion, true);
         setDimensions(assessmentData.dimensions);
         setScoringConfig(assessmentData.scoringConfiguration);
+        setAssessmentInfo(assessmentData.assessmentInfo);
         
         // Validate and set dimension/question indices with boundary checks
         let validDimension = testData.current_dimension || 0;
@@ -313,9 +334,9 @@ const Test = () => {
         setCurrentDimension(validDimension);
         setCurrentQuestion(validQuestion);
         
-        // Fallback to duration based on saved test version if time_remaining is missing
-        const fallbackDuration = (testData.test_version === 'beginner') ? 3600 : (testData.test_version === 'professional' ? 7200 : 9000);
-        setTimeRemaining(typeof testData.time_remaining === 'number' ? testData.time_remaining : fallbackDuration);
+        // Use assessment duration or fallback to saved time_remaining
+        const defaultDuration = assessmentData.assessmentInfo.totalTime * 60; // Convert to seconds
+        setTimeRemaining(typeof testData.time_remaining === 'number' ? testData.time_remaining : defaultDuration);
         setAnswers((testData.answers as Record<string, string>) || {});
         
         // Finished loading - hide loading state
@@ -326,8 +347,7 @@ const Test = () => {
           description: `Resuming from question ${validQuestion + 1} in ${assessmentData.dimensions[validDimension]?.dimensionName || 'dimension ' + (validDimension + 1)}`,
         });
       } else {
-        // New test - show consent
-        setTimeRemaining(testDuration);
+        // New test - will set time from loaded assessment in loadTestData
         setLoading(false);
       }
     } catch (error: any) {
@@ -421,6 +441,11 @@ const Test = () => {
     if (!session) return;
 
     try {
+      // Use dynamic test duration from assessment
+      const initialTimeRemaining = assessmentInfo?.totalTime 
+        ? assessmentInfo.totalTime * 60 
+        : 3600;
+      
       const { data: newTest, error } = await supabase
         .from("tests")
         .insert([{
@@ -429,7 +454,7 @@ const Test = () => {
           json_version: version,
           consent_given: true,
           security_consent_given: true,
-          time_remaining: testDuration,
+          time_remaining: initialTimeRemaining,
           current_dimension: 0,
           current_item: 0,
           answers: {}
