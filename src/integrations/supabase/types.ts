@@ -14,6 +14,72 @@ export type Database = {
   }
   public: {
     Tables: {
+      assessment_products: {
+        Row: {
+          age_group: string | null
+          created_at: string | null
+          description: string
+          difficulty_level: string
+          dimension_codes: Json | null
+          display_order: number | null
+          duration_minutes: number
+          id: string
+          is_active: boolean | null
+          json_file_path: string
+          name: string
+          passing_score: number | null
+          question_count: number
+          role: string | null
+          slug: string
+          target_audience: string
+          total_points: number
+          track: string
+          updated_at: string | null
+        }
+        Insert: {
+          age_group?: string | null
+          created_at?: string | null
+          description: string
+          difficulty_level: string
+          dimension_codes?: Json | null
+          display_order?: number | null
+          duration_minutes: number
+          id?: string
+          is_active?: boolean | null
+          json_file_path: string
+          name: string
+          passing_score?: number | null
+          question_count: number
+          role?: string | null
+          slug: string
+          target_audience: string
+          total_points: number
+          track: string
+          updated_at?: string | null
+        }
+        Update: {
+          age_group?: string | null
+          created_at?: string | null
+          description?: string
+          difficulty_level?: string
+          dimension_codes?: Json | null
+          display_order?: number | null
+          duration_minutes?: number
+          id?: string
+          is_active?: boolean | null
+          json_file_path?: string
+          name?: string
+          passing_score?: number | null
+          question_count?: number
+          role?: string | null
+          slug?: string
+          target_audience?: string
+          total_points?: number
+          track?: string
+          updated_at?: string | null
+        }
+        Relationships: []
+      }
       profiles: {
         Row: {
           city: string | null
@@ -62,6 +128,8 @@ export type Database = {
           overall_score: number
           pdf_url: string | null
           percentile_rank: number | null
+          product_id: string | null
+          product_slug: string | null
           report_generated_at: string | null
           share_code: string
           test_completion_date: string | null
@@ -79,6 +147,8 @@ export type Database = {
           overall_score: number
           pdf_url?: string | null
           percentile_rank?: number | null
+          product_id?: string | null
+          product_slug?: string | null
           report_generated_at?: string | null
           share_code: string
           test_completion_date?: string | null
@@ -96,6 +166,8 @@ export type Database = {
           overall_score?: number
           pdf_url?: string | null
           percentile_rank?: number | null
+          product_id?: string | null
+          product_slug?: string | null
           report_generated_at?: string | null
           share_code?: string
           test_completion_date?: string | null
@@ -106,6 +178,13 @@ export type Database = {
           user_name?: string | null
         }
         Relationships: [
+          {
+            foreignKeyName: "public_results_product_id_fkey"
+            columns: ["product_id"]
+            isOneToOne: false
+            referencedRelation: "assessment_products"
+            referencedColumns: ["id"]
+          },
           {
             foreignKeyName: "public_results_test_id_fkey"
             columns: ["test_id"]
@@ -296,6 +375,8 @@ export type Database = {
           json_version: string
           pause_timestamp: string | null
           paused: boolean | null
+          product_id: string | null
+          product_slug: string | null
           scores: Json
           security_consent_given: boolean | null
           security_terminated: boolean | null
@@ -320,6 +401,8 @@ export type Database = {
           json_version: string
           pause_timestamp?: string | null
           paused?: boolean | null
+          product_id?: string | null
+          product_slug?: string | null
           scores?: Json
           security_consent_given?: boolean | null
           security_terminated?: boolean | null
@@ -344,6 +427,8 @@ export type Database = {
           json_version?: string
           pause_timestamp?: string | null
           paused?: boolean | null
+          product_id?: string | null
+          product_slug?: string | null
           scores?: Json
           security_consent_given?: boolean | null
           security_terminated?: boolean | null
@@ -354,7 +439,15 @@ export type Database = {
           time_remaining?: number | null
           user_id?: string
         }
-        Relationships: []
+        Relationships: [
+          {
+            foreignKeyName: "tests_product_id_fkey"
+            columns: ["product_id"]
+            isOneToOne: false
+            referencedRelation: "assessment_products"
+            referencedColumns: ["id"]
+          },
+        ]
       }
       user_roles: {
         Row: {
