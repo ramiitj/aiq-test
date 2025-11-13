@@ -153,6 +153,9 @@ const Test = () => {
     return (versionParam as TestVersion) || 'beginner';
   });
   const resumeId = searchParams.get('resume');
+  
+  // Check if this is an adolescent assessment
+  const isAdolescent = isAdolescentSlug(productSlug || searchParams.get('product'));
 
   // Dynamic values from loaded assessment
   const questionsPerDimension = assessmentInfo?.questionCount 
@@ -394,7 +397,7 @@ const Test = () => {
   };
 
   const handleConsentSubmit = () => {
-    if (!consentData.dataCollection || !consentData.ageConfirmation) {
+    if (!consentData.dataCollection || (!isAdolescent && !consentData.ageConfirmation)) {
       toast({
         title: "Consent Required",
         description: "Please accept the required terms to continue",
@@ -818,9 +821,6 @@ const Test = () => {
     );
   }
 
-  // Check if this is an adolescent assessment
-  const isAdolescent = isAdolescentSlug(productSlug || searchParams.get('product'));
-
   if (showConsent) {
     return (
       <div className="min-h-screen">
@@ -848,7 +848,7 @@ const Test = () => {
               <div className="flex items-center justify-between">
                 <div>
                 <h2 className="text-lg font-black mb-1">
-                  {version === 'beginner' ? 'Beginner' : 'Advanced'} Assessment
+                  {assessmentInfo?.name || (version === 'beginner' ? 'Beginner Assessment' : 'Advanced Assessment')}
                 </h2>
                   <p className="text-sm text-muted-foreground">
                     {totalQuestions} questions • {Math.floor(testDuration / 60)} minutes • 8 dimensions
@@ -975,14 +975,6 @@ const Test = () => {
                       <span className="font-bold">I confirm that I am 18 years of age or older.</span> 
                       <span className="text-destructive"> *</span>
                     </label>
-                  </div>
-                )}
-
-                {isAdolescent && (
-                  <div className="bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800 rounded-lg p-3">
-                    <p className="text-xs text-blue-900 dark:text-blue-100">
-                      <strong>Note for Students:</strong> If you are under 18, please proceed only with a parent or guardian's permission.
-                    </p>
                   </div>
                 )}
 
