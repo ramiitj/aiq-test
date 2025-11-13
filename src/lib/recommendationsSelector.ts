@@ -1,29 +1,54 @@
 import { tieredRecommendations } from "./recommendationsData";
 
+import type { AssessmentContext } from "./assessmentUtils";
+
 /**
  * Get performance-aware, research-aligned recommendations for a specific dimension
  * @param dimensionCode - The dimension code (e.g., "SAU", "QFP")
  * @param percentage - The performance percentage (0-100)
  * @param assessmentLevel - The assessment level (beginner, professional, expert)
+ * @param assessmentContext - Optional assessment context for role-specific recommendations
  * @returns Array of 3 recommendation strings
  */
 export function getRecommendations(
   dimensionCode: string,
   percentage: number,
-  assessmentLevel: string
+  assessmentLevel: string,
+  assessmentContext?: AssessmentContext
 ): string[] {
-  // Normalize legacy levels to beginner/advanced
-  const normalizedLevel = assessmentLevel.toLowerCase() === 'professional' || 
-                          assessmentLevel.toLowerCase() === 'expert' 
-                          ? 'advanced' 
-                          : assessmentLevel.toLowerCase();
+  let level: "beginner" | "professional" | "expert" | "adolescent" | string = "professional";
   
-  // Map normalized level to tier (for recommendations data compatibility)
-  let level: "beginner" | "professional" | "expert" = "professional";
-  if (normalizedLevel === "beginner") {
-    level = "beginner";
-  } else if (normalizedLevel === "advanced") {
-    level = "expert"; // Map advanced to expert tier for recommendations
+  // Check for adolescent first
+  if (assessmentContext?.isAdolescent) {
+    level = "adolescent";
+  }
+  // Check for role-specific
+  else if (assessmentContext?.type === 'role-specific' && assessmentContext.role) {
+    const roleSlug = assessmentContext.role.toLowerCase();
+    const proficiencyLevel = assessmentLevel.toLowerCase().includes('advanced') ? 'advanced' : 'beginner';
+    const roleSpecificKey = `${roleSlug}-${proficiencyLevel}`;
+    
+    // Check if role-specific recommendations exist
+    const dimensionRecs = tieredRecommendations[dimensionCode];
+    if (dimensionRecs && dimensionRecs[roleSpecificKey]) {
+      level = roleSpecificKey;
+    } else {
+      // Fallback to generic level
+      level = proficiencyLevel === 'beginner' ? 'beginner' : 'expert';
+    }
+  }
+  // Generic levels
+  else {
+    const normalizedLevel = assessmentLevel.toLowerCase() === 'professional' || 
+                            assessmentLevel.toLowerCase() === 'expert' 
+                            ? 'advanced' 
+                            : assessmentLevel.toLowerCase();
+    
+    if (normalizedLevel === "beginner") {
+      level = "beginner";
+    } else if (normalizedLevel === "advanced") {
+      level = "expert";
+    }
   }
 
   // Determine performance tier based on percentage

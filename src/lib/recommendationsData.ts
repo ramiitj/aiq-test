@@ -19,11 +19,19 @@ export const dimensionNames: { [key: string]: string } = {
 
 // Performance-Tiered Recommendations Structure
 type PerformanceTier = "low" | "medium" | "high";
-type AssessmentLevel = "beginner" | "professional" | "expert" | "adolescent";
+type AssessmentLevel = 
+  | "beginner" 
+  | "professional" 
+  | "expert" 
+  | "adolescent"
+  // Role-specific beginner levels
+  | "sde-beginner" | "pm-beginner" | "ba-beginner"
+  // Role-specific advanced levels
+  | "sde-advanced" | "pm-advanced" | "ba-advanced";
 
 interface TieredRecommendations {
   [dimensionCode: string]: {
-    [level in AssessmentLevel]: {
+    [level in AssessmentLevel]?: {
       [tier in PerformanceTier]: string[];
     };
   };
