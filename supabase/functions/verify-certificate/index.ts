@@ -91,7 +91,8 @@ Deno.serve(async (req) => {
         test_version,
         user_name,
         pdf_url,
-        created_at
+        created_at,
+        expires_at
       `)
       .eq('share_code', shareCode)
       .gte('expires_at', new Date().toISOString())
@@ -101,22 +102,6 @@ Deno.serve(async (req) => {
       console.error('Database query error');
       return new Response(
         JSON.stringify({ valid: false, error: 'Internal server error' }),
-        { 
-          status: 500,
-          headers: { ...corsHeaders, 'Content-Type': 'application/json' }
-        }
-      );
-    }
-      .from('public_results')
-      .select('id, overall_score, created_at, expires_at, dimension_scores, user_name, test_duration_seconds, percentile_rank, test_version')
-      .eq('share_code', shareCode)
-      .gt('expires_at', new Date().toISOString())
-      .maybeSingle();
-
-    if (error) {
-      console.error('Database error:', error.message);
-      return new Response(
-        JSON.stringify({ valid: false }),
         { 
           status: 500,
           headers: { ...corsHeaders, 'Content-Type': 'application/json' }
