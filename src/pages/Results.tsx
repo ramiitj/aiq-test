@@ -378,7 +378,7 @@ const Results = () => {
       weakDimensions.forEach(({ code, score }) => {
         const percentage = (score / maxPoints) * 100;
         console.log(`📌 Dimension ${code}: ${score}/${maxPoints} = ${percentage.toFixed(1)}%`);
-        recs[code] = getRecommendations(code, percentage, testVersion);
+        recs[code] = getRecommendations(code, percentage, testVersion, assessmentContext || undefined);
       });
 
       console.log("✅ Loaded recommendations:", recs);
