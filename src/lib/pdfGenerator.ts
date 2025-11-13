@@ -13,6 +13,8 @@ interface DimensionScore {
 
 // Dimension names and recommendations now imported from shared data files
 
+import type { AssessmentContext } from './assessmentUtils';
+
 export async function generatePDFReport(
   overallScore: number, // This is now actual points earned, not percentage
   dimensionScores: DimensionScore[],
@@ -23,6 +25,7 @@ export async function generatePDFReport(
   testDurationSeconds?: number,
   assessmentLevel: string = "professional",
   scoringResult?: any, // Required for accurate total and passing info
+  assessmentContext?: AssessmentContext,
 ): Promise<Blob> {
   const doc = new jsPDF({
     orientation: "portrait",
@@ -59,8 +62,12 @@ export async function generatePDFReport(
     white: [255, 255, 255] as [number, number, number],
   };
 
-  const levelType =
-    assessmentLevel?.toLowerCase() === "beginner"
+  const isAdolescent = assessmentContext?.isAdolescent || false;
+  const assessmentTitle = assessmentContext?.assessmentName || "AIQ Assessment™";
+  
+  const levelType = isAdolescent
+    ? "adolescent"
+    : assessmentLevel?.toLowerCase() === "beginner"
       ? "beginner"
       : assessmentLevel?.toLowerCase() === "expert"
         ? "expert"
@@ -128,7 +135,15 @@ export async function generatePDFReport(
 
   doc.setFontSize(11);
   doc.setFont("helvetica", "normal");
-  doc.text("Official AI Collaboration Capability Certificate", pageWidth / 2 - 8, 28, { align: "center" });
+  
+  // Assessment-specific subtitle
+  if (isAdolescent) {
+    doc.text("Official Student AI Literacy Certificate", pageWidth / 2 - 8, 28, { align: "center" });
+  } else if (assessmentContext?.type === 'role-specific') {
+    doc.text(`Official ${assessmentContext.role} AI Collaboration Certificate`, pageWidth / 2 - 8, 28, { align: "center" });
+  } else {
+    doc.text("Official AI Collaboration Capability Certificate", pageWidth / 2 - 8, 28, { align: "center" });
+  }
 
   doc.setFontSize(9);
   doc.setTextColor(220, 220, 255);
@@ -137,10 +152,17 @@ export async function generatePDFReport(
     month: "long",
     day: "numeric",
   });
-  const capitalizedLevel = assessmentLevel
-    ? assessmentLevel.charAt(0).toUpperCase() + assessmentLevel.slice(1)
-    : "Professional";
-  doc.text(`${capitalizedLevel} Level • Issued ${issueDateStr}`, pageWidth / 2 - 8, 33, {
+  const capitalizedLevel = isAdolescent 
+    ? "Student" 
+    : assessmentLevel
+      ? assessmentLevel.charAt(0).toUpperCase() + assessmentLevel.slice(1)
+      : "Professional";
+  
+  const trackLabel = isAdolescent 
+    ? `${capitalizedLevel} Track${assessmentContext?.ageGroup ? ` • Ages ${assessmentContext.ageGroup}` : ''} • Issued ${issueDateStr}`
+    : `${capitalizedLevel} Level • Issued ${issueDateStr}`;
+  
+  doc.text(trackLabel, pageWidth / 2 - 8, 33, {
     align: "center",
   });
 
@@ -224,7 +246,7 @@ export async function generatePDFReport(
   dimensionScores.forEach((dim) => {
     const fullName = sharedDimensionNames[dim.code] || dim.name;
     const dimPercentage = (dim.score / (totalPossible / dimensionScores.length)) * 100;
-    const profLevel = getProficiencyLevel(dimPercentage, assessmentLevel || "professional");
+    const profLevel = getProficiencyLevel(dimPercentage, levelType);
 
     doc.setFontSize(10);
     doc.setFont("helvetica", "bold");
@@ -276,7 +298,9 @@ export async function generatePDFReport(
   doc.setTextColor(...colors.mediumGray);
 
   let levelDesc = "";
-  if (levelType === "beginner") {
+  if (isAdolescent) {
+    levelDesc = "Age-appropriate pathways to develop essential AI literacy and responsible AI use skills for students";
+  } else if (levelType === "beginner") {
     levelDesc = "Foundational development pathways to build essential AI collaboration competencies";
   } else if (levelType === "expert") {
     levelDesc = "Advanced opportunities for thought leadership and field-advancing contributions";
@@ -299,7 +323,7 @@ export async function generatePDFReport(
       const fullName = sharedDimensionNames[dim.code] || dim.name;
       // Calculate percentage for this dimension
       const dimPercentage = (dim.score / (totalPossible / dimensionScores.length)) * 100;
-      const recs = getRecommendations(dim.code, dimPercentage, assessmentLevel || "professional");
+      const recs = getRecommendations(dim.code, dimPercentage, levelType);
 
       const recText =
         recs.length > 0
@@ -309,7 +333,7 @@ export async function generatePDFReport(
       return [
         fullName,
         dim.score.toFixed(1),
-        getProficiencyLevel(dimPercentage, assessmentLevel || "professional"),
+        getProficiencyLevel(dimPercentage, levelType),
         recText,
       ];
     });

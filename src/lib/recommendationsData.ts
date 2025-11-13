@@ -19,7 +19,7 @@ export const dimensionNames: { [key: string]: string } = {
 
 // Performance-Tiered Recommendations Structure
 type PerformanceTier = "low" | "medium" | "high";
-type AssessmentLevel = "beginner" | "professional" | "expert";
+type AssessmentLevel = "beginner" | "professional" | "expert" | "adolescent";
 
 interface TieredRecommendations {
   [dimensionCode: string]: {
@@ -32,6 +32,23 @@ interface TieredRecommendations {
 // Comprehensive Tiered Recommendations (72 unique sets)
 export const tieredRecommendations: TieredRecommendations = {
   SAU: {
+    adolescent: {
+      low: [
+        "Explore educational AI tools like Khan Academy's AI tutor to understand how AI helps with learning",
+        "Watch age-appropriate videos about AI basics (Code.org AI for Oceans, Crash Course AI series)",
+        "Try simple AI experiments to see what AI can and cannot do (Teachable Machine, Quick, Draw!)"
+      ],
+      medium: [
+        "Learn about different types of AI systems and their capabilities through interactive demos",
+        "Practice identifying when AI is helpful vs when you need to use your own judgment",
+        "Explore how AI is used in apps and websites you use daily (YouTube recommendations, autocomplete)"
+      ],
+      high: [
+        "Research how AI works behind the scenes and share what you learn with classmates",
+        "Create a school project demonstrating AI capabilities and limitations",
+        "Join or start an AI club at your school to explore AI with peers"
+      ]
+    },
     beginner: {
       low: [
         "Start by exploring what AI can and cannot do through hands-on experimentation with basic AI tools",
@@ -85,6 +102,23 @@ export const tieredRecommendations: TieredRecommendations = {
     }
   },
   PEI: {
+    adolescent: {
+      low: [
+        "Practice writing clear questions and instructions when using AI tools for homework help",
+        "Learn to give AI tools enough information to help you effectively",
+        "Start with simple prompts and gradually add more details to see how AI responses change"
+      ],
+      medium: [
+        "Experiment with different ways of asking AI the same question to get better answers",
+        "Learn to provide context and examples when working with AI tools",
+        "Practice refining your questions based on AI responses you receive"
+      ],
+      high: [
+        "Master advanced prompting techniques for creative writing and research projects",
+        "Help classmates improve their AI prompts for school assignments",
+        "Create a guide for your school on effective AI communication strategies"
+      ]
+    },
     beginner: {
       low: [
         "Learn basic prompt structure: clear instructions, specific context, and desired output format",
@@ -138,6 +172,23 @@ export const tieredRecommendations: TieredRecommendations = {
     }
   },
   CEC: {
+    adolescent: {
+      low: [
+        "Always verify AI-generated information with trusted sources like your textbooks or teacher",
+        "Learn to recognize when AI might give incomplete or incorrect answers",
+        "Practice checking AI homework help against your class materials"
+      ],
+      medium: [
+        "Develop a habit of cross-checking AI information with multiple reliable sources",
+        "Learn to spot potential biases or limitations in AI responses",
+        "Use AI as a starting point for research, not the final answer"
+      ],
+      high: [
+        "Teach peers how to critically evaluate AI-generated content for school projects",
+        "Create evaluation checklists for verifying AI assistance in different subjects",
+        "Research and present on AI accuracy issues relevant to students"
+      ]
+    },
     beginner: {
       low: [
         "Learn basic fact-checking methods to verify AI-generated information against reliable sources",
@@ -191,6 +242,23 @@ export const tieredRecommendations: TieredRecommendations = {
     }
   },
   II: {
+    adolescent: {
+      low: [
+        "Start using AI tools for appropriate homework tasks like brainstorming and outlining",
+        "Learn your school's policies on AI use for different assignments",
+        "Practice using AI for study help while understanding when to work independently"
+      ],
+      medium: [
+        "Integrate AI tools into your study routine for note-taking and concept review",
+        "Use AI to enhance creative projects while maintaining your original ideas",
+        "Balance AI assistance with developing your own problem-solving skills"
+      ],
+      high: [
+        "Design innovative ways to use AI for school projects that showcase your learning",
+        "Share best practices with teachers and classmates for educational AI integration",
+        "Create workflows that combine AI tools with traditional study methods effectively"
+      ]
+    },
     beginner: {
       low: [
         "Start with simple task delegation: identify routine tasks that AI can handle independently",
@@ -244,6 +312,23 @@ export const tieredRecommendations: TieredRecommendations = {
     }
   },
   ALC: {
+    adolescent: {
+      low: [
+        "Keep track of what works and doesn't work when using AI for homework",
+        "Stay curious about new educational AI tools as they become available",
+        "Ask teachers and peers for tips on using AI effectively for learning"
+      ],
+      medium: [
+        "Regularly try new AI features and tools to expand your learning capabilities",
+        "Adapt your AI usage based on different subjects and assignment types",
+        "Reflect on how AI is changing your learning process and study habits"
+      ],
+      high: [
+        "Lead discussions at school about emerging AI tools for students",
+        "Mentor younger students on adapting to new educational AI technologies",
+        "Experiment with cutting-edge AI tools and share insights with your school community"
+      ]
+    },
     beginner: {
       low: [
         "Start tracking what works and doesn't work in your AI interactions to build learning patterns",
@@ -297,6 +382,23 @@ export const tieredRecommendations: TieredRecommendations = {
     }
   },
   EJC: {
+    adolescent: {
+      low: [
+        "Always give credit when AI helps with your schoolwork (just like citing sources)",
+        "Learn about privacy and never share personal information with AI tools",
+        "Understand that using AI to cheat violates academic honesty policies"
+      ],
+      medium: [
+        "Make informed decisions about appropriate vs inappropriate AI use for assignments",
+        "Discuss AI ethics scenarios with classmates and teachers",
+        "Practice transparency by documenting when and how you use AI for projects"
+      ],
+      high: [
+        "Lead conversations about responsible AI use in student contexts",
+        "Help develop your school's AI usage guidelines and honor code policies",
+        "Research and present on AI ethics issues affecting students and education"
+      ]
+    },
     beginner: {
       low: [
         "Learn basic ethical principles relevant to AI use: privacy, fairness, and transparency",
@@ -350,6 +452,23 @@ export const tieredRecommendations: TieredRecommendations = {
     }
   },
   CS: {
+    adolescent: {
+      low: [
+        "Notice how AI tools respond differently depending on what subject you're studying",
+        "Learn to adjust your approach when AI doesn't understand your school-specific questions",
+        "Recognize when AI information might not match your textbook or curriculum"
+      ],
+      medium: [
+        "Adapt your AI interactions based on different classes and assignment types",
+        "Understand that AI trained on general knowledge may not match your course content",
+        "Learn to provide subject-specific context to get more relevant AI assistance"
+      ],
+      high: [
+        "Master context-switching between using AI for different subjects and projects",
+        "Help peers understand how to frame questions based on specific course requirements",
+        "Create guides for using AI effectively in different academic contexts"
+      ]
+    },
     beginner: {
       low: [
         "Learn to recognize how different contexts require different approaches to AI use",
@@ -403,6 +522,23 @@ export const tieredRecommendations: TieredRecommendations = {
     }
   },
   CRS: {
+    adolescent: {
+      low: [
+        "Use AI brainstorming tools to generate ideas for creative school projects",
+        "Practice combining AI suggestions with your own creative thinking",
+        "Explore AI tools for art, writing, and music creation under teacher guidance"
+      ],
+      medium: [
+        "Synthesize AI-generated ideas with your own research for original projects",
+        "Use AI to explore multiple perspectives on topics you're studying",
+        "Create unique projects that blend AI capabilities with your creative vision"
+      ],
+      high: [
+        "Design innovative school projects that showcase advanced AI collaboration",
+        "Mentor peers in using AI as a creative partner while maintaining originality",
+        "Push boundaries of educational AI use in arts, sciences, and humanities projects"
+      ]
+    },
     beginner: {
       low: [
         "Start experimenting with using AI for basic creative tasks and problem-solving",
