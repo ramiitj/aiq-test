@@ -273,21 +273,19 @@ const trackLabels = {
 };
 
 interface AssessmentSelectorProps {
-  defaultTrack?: "all" | "general" | "adolescent" | "role-based";
+  defaultTrack?: "general" | "adolescent" | "role-based";
 }
 
-export default function AssessmentSelector({ defaultTrack = "all" }: AssessmentSelectorProps) {
+export default function AssessmentSelector({ defaultTrack = "general" }: AssessmentSelectorProps) {
   const navigate = useNavigate();
   const [searchQuery, setSearchQuery] = useState("");
-  const [activeTrack, setActiveTrack] = useState<"all" | "general" | "adolescent" | "role-based">(defaultTrack);
+  const [activeTrack, setActiveTrack] = useState<"general" | "adolescent" | "role-based">(defaultTrack);
 
   const filteredAssessments = useMemo(() => {
     let filtered = assessments;
 
     // Filter by track
-    if (activeTrack !== "all") {
-      filtered = filtered.filter(a => a.track === activeTrack);
-    }
+    filtered = filtered.filter(a => a.track === activeTrack);
 
     // Filter by search query
     if (searchQuery.trim()) {
@@ -367,46 +365,15 @@ export default function AssessmentSelector({ defaultTrack = "all" }: AssessmentS
               <p className="text-muted-foreground">No assessments found matching your search.</p>
             </div>
           ) : (
-            <div className="space-y-8">
-              {activeTrack === "all" ? (
-                // Grouped view for "All" tab
-                Object.entries(groupedByTrack).map(([track, trackAssessments]) => {
-                  if (trackAssessments.length === 0) return null;
-                  
-                  return (
-                    <div key={track} className="space-y-4">
-                      <h2 className="text-2xl font-semibold text-foreground flex items-center gap-2">
-                        {track === "general" && <Brain className="h-6 w-6" />}
-                        {track === "adolescent" && <GraduationCap className="h-6 w-6" />}
-                        {track === "role-based" && <Briefcase className="h-6 w-6" />}
-                        {trackLabels[track as keyof typeof trackLabels]}
-                      </h2>
-                      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                        {trackAssessments.map(assessment => (
-                          <AssessmentCard
-                            key={assessment.slug}
-                            assessment={assessment}
-                            onStart={handleStartAssessment}
-                            getDifficultyColor={getDifficultyColor}
-                          />
-                        ))}
-                      </div>
-                    </div>
-                  );
-                })
-              ) : (
-                // Single track view
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                  {filteredAssessments.map(assessment => (
-                    <AssessmentCard
-                      key={assessment.slug}
-                      assessment={assessment}
-                      onStart={handleStartAssessment}
-                      getDifficultyColor={getDifficultyColor}
-                    />
-                  ))}
-                </div>
-              )}
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+              {filteredAssessments.map(assessment => (
+                <AssessmentCard
+                  key={assessment.slug}
+                  assessment={assessment}
+                  onStart={handleStartAssessment}
+                  getDifficultyColor={getDifficultyColor}
+                />
+              ))}
             </div>
           )}
         </TabsContent>

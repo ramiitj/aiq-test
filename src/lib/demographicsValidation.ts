@@ -87,7 +87,12 @@ export const validateDemographics = (data: any) => {
 /**
  * Validate individual sections
  */
-export const validateSection = (section: string, data: any) => {
+export const validateSection = (section: string, data: any, isAdolescent: boolean = false) => {
+  // Skip professional validation for adolescent assessments
+  if (section === "professionalBackground" && isAdolescent) {
+    return { success: true };
+  }
+
   const schemas: Record<string, z.ZodSchema> = {
     basicInfo: basicInfoSchema,
     professionalBackground: professionalBackgroundSchema,

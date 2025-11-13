@@ -27,6 +27,9 @@ interface ConsentFormProps {
 }
 
 export const ConsentForm = ({ open, onConsent, onDecline, testVersion }: ConsentFormProps) => {
+  // Detect if this is an adolescent assessment
+  const isAdolescentAssessment = testVersion?.includes('adolescent') || false;
+  
   const [currentTab, setCurrentTab] = useState("basic");
   
   // Section 1: Basic Information
@@ -87,8 +90,13 @@ export const ConsentForm = ({ open, onConsent, onDecline, testVersion }: Consent
 
   // Validate and move to next section
   const handleContinue = (fromTab: string) => {
+    // Skip validation for professional section if adolescent
+    if (fromTab === "professional" && isAdolescentAssessment) {
+      return;
+    }
+    
     const sectionData = getSectionData(fromTab);
-    const validation = validateSection(getSectionKey(fromTab), sectionData);
+    const validation = validateSection(getSectionKey(fromTab), sectionData, isAdolescentAssessment);
     
     if (!validation.success) {
       toast({
@@ -103,7 +111,9 @@ export const ConsentForm = ({ open, onConsent, onDecline, testVersion }: Consent
     setSectionsCompleted(prev => ({ ...prev, [fromTab]: true }));
     
     // Move to next tab
-    const tabs = ["basic", "professional", "aiExperience", "purpose", "demographics", "consent"];
+    const tabs = isAdolescentAssessment 
+      ? ["basic", "aiExperience", "purpose", "demographics", "consent"]
+      : ["basic", "professional", "aiExperience", "purpose", "demographics", "consent"];
     const currentIndex = tabs.indexOf(fromTab);
     if (currentIndex < tabs.length - 1) {
       setCurrentTab(tabs[currentIndex + 1]);
@@ -198,20 +208,22 @@ export const ConsentForm = ({ open, onConsent, onDecline, testVersion }: Consent
         <DialogHeader>
           <DialogTitle className="text-2xl">AIQ Demographics & Consent Form</DialogTitle>
           <DialogDescription className="text-base">
-            Completion time: 3-5 minutes • {Object.values(sectionsCompleted).filter(Boolean).length}/6 sections completed
+            Completion time: {isAdolescentAssessment ? '2-3' : '3-5'} minutes • {Object.values(sectionsCompleted).filter(Boolean).length}/{isAdolescentAssessment ? '5' : '6'} sections completed
           </DialogDescription>
         </DialogHeader>
 
         <Tabs value={currentTab} onValueChange={setCurrentTab} className="w-full">
-          <TabsList className="grid w-full grid-cols-6">
+          <TabsList className={`grid w-full ${isAdolescentAssessment ? 'grid-cols-5' : 'grid-cols-6'}`}>
             <TabsTrigger value="basic" className="text-xs">
               {sectionsCompleted.basic && <CheckCircle2 className="w-3 h-3 mr-1" />}
               Basic
             </TabsTrigger>
-            <TabsTrigger value="professional" className="text-xs">
-              {sectionsCompleted.professional && <CheckCircle2 className="w-3 h-3 mr-1" />}
-              Professional
-            </TabsTrigger>
+            {!isAdolescentAssessment && (
+              <TabsTrigger value="professional" className="text-xs">
+                {sectionsCompleted.professional && <CheckCircle2 className="w-3 h-3 mr-1" />}
+                Professional
+              </TabsTrigger>
+            )}
             <TabsTrigger value="aiExperience" className="text-xs">
               {sectionsCompleted.aiExperience && <CheckCircle2 className="w-3 h-3 mr-1" />}
               AI Experience
@@ -403,16 +415,28 @@ export const ConsentForm = ({ open, onConsent, onDecline, testVersion }: Consent
               <div className="space-y-2">
                 <Label>Which AI tools have you used? <span className="text-destructive">*</span></Label>
                 <div className="grid grid-cols-2 gap-2">
-                  {["ChatGPT", "Claude", "Google Gemini/Bard", "Microsoft Copilot", "Midjourney/DALL-E", "GitHub Copilot", "Jasper/Copy.ai", "Notion AI", "Grammarly", "Other AI tools", "None yet"].map(tool => (
-                    <div key={tool} className="flex items-center space-x-2">
-                      <Checkbox
-                        id={`tool-${tool}`}
-                        checked={aiToolsUsed.includes(tool)}
-                        onCheckedChange={() => toggleInArray(aiToolsUsed, tool, setAiToolsUsed)}
-                      />
-                      <Label htmlFor={`tool-${tool}`} className="text-sm cursor-pointer">{tool}</Label>
-                    </div>
-                  ))}
+                  {isAdolescentAssessment 
+                    ? ["ChatGPT", "Claude", "Google Gemini/Bard", "Microsoft Copilot", "Snapchat AI", "Character.AI", "Midjourney/DALL-E", "Grammarly", "Other AI tools", "None yet"].map(tool => (
+                      <div key={tool} className="flex items-center space-x-2">
+                        <Checkbox
+                          id={`tool-${tool}`}
+                          checked={aiToolsUsed.includes(tool)}
+                          onCheckedChange={() => toggleInArray(aiToolsUsed, tool, setAiToolsUsed)}
+                        />
+                        <Label htmlFor={`tool-${tool}`} className="text-sm cursor-pointer">{tool}</Label>
+                      </div>
+                    ))
+                    : ["ChatGPT", "Claude", "Google Gemini/Bard", "Microsoft Copilot", "Midjourney/DALL-E", "GitHub Copilot", "Jasper/Copy.ai", "Notion AI", "Grammarly", "Other AI tools", "None yet"].map(tool => (
+                      <div key={tool} className="flex items-center space-x-2">
+                        <Checkbox
+                          id={`tool-${tool}`}
+                          checked={aiToolsUsed.includes(tool)}
+                          onCheckedChange={() => toggleInArray(aiToolsUsed, tool, setAiToolsUsed)}
+                        />
+                        <Label htmlFor={`tool-${tool}`} className="text-sm cursor-pointer">{tool}</Label>
+                      </div>
+                    ))
+                  }
                 </div>
               </div>
 
@@ -437,16 +461,28 @@ export const ConsentForm = ({ open, onConsent, onDecline, testVersion }: Consent
               <div className="space-y-2">
                 <Label>What do you primarily use AI for? (Optional)</Label>
                 <div className="grid grid-cols-2 gap-2">
-                  {["Writing/Content creation", "Research", "Data analysis", "Coding/Programming", "Brainstorming", "Learning/Education", "Translation", "Summarization", "Email drafting", "Image generation", "Problem-solving", "Decision support", "Automation", "Creative projects", "Personal productivity", "Other"].map(useCase => (
-                    <div key={useCase} className="flex items-center space-x-2">
-                      <Checkbox
-                        id={`use-${useCase}`}
-                        checked={aiUseCases.includes(useCase)}
-                        onCheckedChange={() => toggleInArray(aiUseCases, useCase, setAiUseCases)}
-                      />
-                      <Label htmlFor={`use-${useCase}`} className="text-sm cursor-pointer">{useCase}</Label>
-                    </div>
-                  ))}
+                  {isAdolescentAssessment
+                    ? ["Homework help", "Learning/Education", "Creative projects", "Writing help", "Research", "Image generation", "Brainstorming", "Fun/Entertainment", "Other"].map(useCase => (
+                      <div key={useCase} className="flex items-center space-x-2">
+                        <Checkbox
+                          id={`use-${useCase}`}
+                          checked={aiUseCases.includes(useCase)}
+                          onCheckedChange={() => toggleInArray(aiUseCases, useCase, setAiUseCases)}
+                        />
+                        <Label htmlFor={`use-${useCase}`} className="text-sm cursor-pointer">{useCase}</Label>
+                      </div>
+                    ))
+                    : ["Writing/Content creation", "Research", "Data analysis", "Coding/Programming", "Brainstorming", "Learning/Education", "Translation", "Summarization", "Email drafting", "Image generation", "Problem-solving", "Decision support", "Automation", "Creative projects", "Personal productivity", "Other"].map(useCase => (
+                      <div key={useCase} className="flex items-center space-x-2">
+                        <Checkbox
+                          id={`use-${useCase}`}
+                          checked={aiUseCases.includes(useCase)}
+                          onCheckedChange={() => toggleInArray(aiUseCases, useCase, setAiUseCases)}
+                        />
+                        <Label htmlFor={`use-${useCase}`} className="text-sm cursor-pointer">{useCase}</Label>
+                      </div>
+                    ))
+                  }
                 </div>
               </div>
 
@@ -457,20 +493,32 @@ export const ConsentForm = ({ open, onConsent, onDecline, testVersion }: Consent
                     <SelectValue placeholder="Select training level" />
                   </SelectTrigger>
                   <SelectContent>
-                    <SelectItem value="none">No formal training</SelectItem>
-                    <SelectItem value="self-taught">Self-taught (online resources, videos)</SelectItem>
-                    <SelectItem value="workshop">Company workshop/training (1-2 hours)</SelectItem>
-                    <SelectItem value="short-course">Short course (1-2 days)</SelectItem>
-                    <SelectItem value="extended">Extended course/bootcamp (1+ weeks)</SelectItem>
-                    <SelectItem value="university">University course/certification</SelectItem>
-                    <SelectItem value="degree">Degree in AI/ML/Data Science</SelectItem>
-                    <SelectItem value="professional">Professional AI certification</SelectItem>
+                    {isAdolescentAssessment ? (
+                      <>
+                        <SelectItem value="none">No formal training</SelectItem>
+                        <SelectItem value="self-taught">Self-taught (online resources, videos)</SelectItem>
+                        <SelectItem value="school-lesson">School lesson or class</SelectItem>
+                        <SelectItem value="workshop">Workshop or camp</SelectItem>
+                        <SelectItem value="online-course">Online course</SelectItem>
+                      </>
+                    ) : (
+                      <>
+                        <SelectItem value="none">No formal training</SelectItem>
+                        <SelectItem value="self-taught">Self-taught (online resources, videos)</SelectItem>
+                        <SelectItem value="workshop">Company workshop/training (1-2 hours)</SelectItem>
+                        <SelectItem value="short-course">Short course (1-2 days)</SelectItem>
+                        <SelectItem value="extended">Extended course/bootcamp (1+ weeks)</SelectItem>
+                        <SelectItem value="university">University course/certification</SelectItem>
+                        <SelectItem value="degree">Degree in AI/ML/Data Science</SelectItem>
+                        <SelectItem value="professional">Professional AI certification</SelectItem>
+                      </>
+                    )}
                   </SelectContent>
                 </Select>
               </div>
 
               <div className="flex justify-between pt-4">
-                <Button variant="outline" onClick={() => setCurrentTab("professional")}>Back</Button>
+                <Button variant="outline" onClick={() => setCurrentTab(isAdolescentAssessment ? "basic" : "professional")}>Back</Button>
                 <Button onClick={() => handleContinue("aiExperience")}>Continue</Button>
               </div>
             </TabsContent>
@@ -482,16 +530,28 @@ export const ConsentForm = ({ open, onConsent, onDecline, testVersion }: Consent
               <div className="space-y-2">
                 <Label>Why are you taking this assessment? <span className="text-destructive">*</span></Label>
                 <div className="grid grid-cols-2 gap-2">
-                  {["Personal learning", "Job requirement", "Career advancement", "Hiring process", "Team assessment", "Training program", "Professional certification", "Academic requirement", "Curiosity", "Benchmark skills", "Recommended by colleague", "Other"].map(reason => (
-                    <div key={reason} className="flex items-center space-x-2">
-                      <Checkbox
-                        id={`reason-${reason}`}
-                        checked={assessmentReasons.includes(reason)}
-                        onCheckedChange={() => toggleInArray(assessmentReasons, reason, setAssessmentReasons)}
-                      />
-                      <Label htmlFor={`reason-${reason}`} className="text-sm cursor-pointer">{reason}</Label>
-                    </div>
-                  ))}
+                  {isAdolescentAssessment
+                    ? ["Personal learning", "School assignment", "Curiosity", "College preparation", "Recommended by teacher", "Recommended by parent", "Career exploration", "Other"].map(reason => (
+                      <div key={reason} className="flex items-center space-x-2">
+                        <Checkbox
+                          id={`reason-${reason}`}
+                          checked={assessmentReasons.includes(reason)}
+                          onCheckedChange={() => toggleInArray(assessmentReasons, reason, setAssessmentReasons)}
+                        />
+                        <Label htmlFor={`reason-${reason}`} className="text-sm cursor-pointer">{reason}</Label>
+                      </div>
+                    ))
+                    : ["Personal learning", "Job requirement", "Career advancement", "Hiring process", "Team assessment", "Training program", "Professional certification", "Academic requirement", "Curiosity", "Benchmark skills", "Recommended by colleague", "Other"].map(reason => (
+                      <div key={reason} className="flex items-center space-x-2">
+                        <Checkbox
+                          id={`reason-${reason}`}
+                          checked={assessmentReasons.includes(reason)}
+                          onCheckedChange={() => toggleInArray(assessmentReasons, reason, setAssessmentReasons)}
+                        />
+                        <Label htmlFor={`reason-${reason}`} className="text-sm cursor-pointer">{reason}</Label>
+                      </div>
+                    ))
+                  }
                 </div>
               </div>
 
@@ -534,14 +594,24 @@ export const ConsentForm = ({ open, onConsent, onDecline, testVersion }: Consent
                     <SelectValue placeholder="Select age range" />
                   </SelectTrigger>
                   <SelectContent>
-                    <SelectItem value="<18">Under 18</SelectItem>
-                    <SelectItem value="18-24">18-24</SelectItem>
-                    <SelectItem value="25-34">25-34</SelectItem>
-                    <SelectItem value="35-44">35-44</SelectItem>
-                    <SelectItem value="45-54">45-54</SelectItem>
-                    <SelectItem value="55-64">55-64</SelectItem>
-                    <SelectItem value="65+">65+</SelectItem>
-                    <SelectItem value="prefer-not">Prefer not to say</SelectItem>
+                    {isAdolescentAssessment ? (
+                      <>
+                        <SelectItem value="14-15">14-15 years</SelectItem>
+                        <SelectItem value="16-17">16-17 years</SelectItem>
+                        <SelectItem value="prefer-not">Prefer not to say</SelectItem>
+                      </>
+                    ) : (
+                      <>
+                        <SelectItem value="<18">Under 18</SelectItem>
+                        <SelectItem value="18-24">18-24</SelectItem>
+                        <SelectItem value="25-34">25-34</SelectItem>
+                        <SelectItem value="35-44">35-44</SelectItem>
+                        <SelectItem value="45-54">45-54</SelectItem>
+                        <SelectItem value="55-64">55-64</SelectItem>
+                        <SelectItem value="65+">65+</SelectItem>
+                        <SelectItem value="prefer-not">Prefer not to say</SelectItem>
+                      </>
+                    )}
                   </SelectContent>
                 </Select>
               </div>
@@ -553,14 +623,24 @@ export const ConsentForm = ({ open, onConsent, onDecline, testVersion }: Consent
                     <SelectValue placeholder="Select education level" />
                   </SelectTrigger>
                   <SelectContent>
-                    <SelectItem value="high-school">High school or equivalent</SelectItem>
-                    <SelectItem value="some-college">Some college/Associate degree</SelectItem>
-                    <SelectItem value="bachelors">Bachelor's degree</SelectItem>
-                    <SelectItem value="masters">Master's degree</SelectItem>
-                    <SelectItem value="doctoral">Doctoral degree (PhD, MD, JD, etc.)</SelectItem>
-                    <SelectItem value="professional">Professional certification</SelectItem>
-                    <SelectItem value="other">Other</SelectItem>
-                    <SelectItem value="prefer-not">Prefer not to say</SelectItem>
+                    {isAdolescentAssessment ? (
+                      <>
+                        <SelectItem value="grade-9-10">Currently in Grade 9-10</SelectItem>
+                        <SelectItem value="grade-11-12">Currently in Grade 11-12</SelectItem>
+                        <SelectItem value="prefer-not">Prefer not to say</SelectItem>
+                      </>
+                    ) : (
+                      <>
+                        <SelectItem value="high-school">High school or equivalent</SelectItem>
+                        <SelectItem value="some-college">Some college/Associate degree</SelectItem>
+                        <SelectItem value="bachelors">Bachelor's degree</SelectItem>
+                        <SelectItem value="masters">Master's degree</SelectItem>
+                        <SelectItem value="doctoral">Doctoral degree (PhD, MD, JD, etc.)</SelectItem>
+                        <SelectItem value="professional">Professional certification</SelectItem>
+                        <SelectItem value="other">Other</SelectItem>
+                        <SelectItem value="prefer-not">Prefer not to say</SelectItem>
+                      </>
+                    )}
                   </SelectContent>
                 </Select>
               </div>
@@ -624,6 +704,14 @@ export const ConsentForm = ({ open, onConsent, onDecline, testVersion }: Consent
             <TabsContent value="consent" className="space-y-4">
               <h3 className="font-semibold text-lg">Consent & Privacy</h3>
               
+              {isAdolescentAssessment && (
+                <div className="p-4 bg-blue-50 dark:bg-blue-950/20 rounded-lg border border-blue-200 dark:border-blue-800">
+                  <p className="text-sm text-blue-900 dark:text-blue-100">
+                    <strong>Note for Students:</strong> If you are under 18, please ensure you have parental or guardian consent before taking this assessment.
+                  </p>
+                </div>
+              )}
+              
               <div className="space-y-4 border-t pt-4">
                 <h4 className="font-semibold">Required Consents</h4>
                 
@@ -634,7 +722,7 @@ export const ConsentForm = ({ open, onConsent, onDecline, testVersion }: Consent
                     onCheckedChange={(checked) => setConsentAssessment(checked as boolean)}
                   />
                   <Label htmlFor="consent1" className="text-sm cursor-pointer leading-relaxed">
-                    <span className="text-destructive">*</span> I consent to taking this <span className="whitespace-nowrap">AI Quotient (AIQ)</span> assessment and understand that my responses will be used to evaluate my AI competency across 8 dimensions.
+                    <span className="text-destructive">*</span> I {isAdolescentAssessment ? 'have parental/guardian permission and' : ''} consent to taking this <span className="whitespace-nowrap">AI Quotient (AIQ)</span> assessment and understand that my responses will be used to evaluate my AI competency across 8 dimensions.
                   </Label>
                 </div>
 
