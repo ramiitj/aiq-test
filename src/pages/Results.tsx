@@ -176,8 +176,15 @@ const Results = () => {
         testVersion,
       );
 
-      setScoringResult(calculatedScores);
-      setIsPassed(calculatedScores.passed);
+      // Store scoring guidelines from assessment data
+      const scoringGuidelinesFromJSON = assessmentData.scoringConfiguration?.scoringGuidelines || {};
+      const enrichedScores = {
+        ...calculatedScores,
+        scoringGuidelines: scoringGuidelinesFromJSON,
+      };
+
+      setScoringResult(enrichedScores);
+      setIsPassed(enrichedScores.passed);
 
       // Extract bottom 3 dimensions for recommendations
       const sortedDimensions = Object.entries(calculatedScores.dimensionScores)

@@ -56,8 +56,26 @@ export function getRecommendations(
  */
 export function getProficiencyLevel(
   percentage: number,
-  assessmentLevel: string
+  assessmentLevel: string,
+  scoringGuidelines?: Record<string, string>
 ): string {
+  // Use scoring guidelines from the assessment JSON if available
+  if (scoringGuidelines) {
+    const ranges = Object.entries(scoringGuidelines).sort((a, b) => {
+      const aMin = parseInt(a[0].split('-')[0]);
+      const bMin = parseInt(b[0].split('-')[0]);
+      return bMin - aMin; // Sort descending
+    });
+    
+    for (const [range, level] of ranges) {
+      const [min, max] = range.split('-').map(s => parseInt(s.replace('%', '')));
+      if (percentage >= min && percentage <= max) {
+        // Extract just the level name (e.g., "Master" from "Master (1521-1600 points)")
+        return level.split('(')[0].trim();
+      }
+    }
+  }
+
   // Normalize legacy levels
   const normalizedLevel = assessmentLevel.toLowerCase() === 'professional' || 
                           assessmentLevel.toLowerCase() === 'expert' 

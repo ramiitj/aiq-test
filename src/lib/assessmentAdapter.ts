@@ -27,13 +27,16 @@ export interface NormalizedAssessment {
   name: string;
   description: string;
   assessmentTier: string;
+  assessmentType: 'fixed' | 'adaptive';
   totalTime: number;
   questionCount: number;
+  totalAvailableItems?: number;
   dimensions: NormalizedDimension[];
   scoring?: {
     passingScore?: number;
     totalPoints?: number;
     dimensionWeights?: Record<string, number>;
+    scoringGuidelines?: Record<string, string>;
   };
 }
 
@@ -72,6 +75,8 @@ function detectFormatType(data: any): FormatType {
  * Extract metadata from various format locations
  */
 function extractMetadata(data: any, format: FormatType): any {
+  const assessmentType = data.assessmentType || data.assessmentConfiguration?.assessmentType || 'fixed';
+  
   switch (format) {
     case 'sde-metadata':
     case 'hybrid-metadata':
@@ -80,8 +85,13 @@ function extractMetadata(data: any, format: FormatType): any {
         name: metadata.name || metadata.title || 'Unknown Assessment',
         description: metadata.description || '',
         assessmentTier: metadata.assessmentTier || metadata.tier || 'beginner',
+        assessmentType: assessmentType === 'adaptive-sequential' ? 'adaptive' : assessmentType,
         totalTime: extractDuration(data, format),
-        scoring: metadata.scoring || extractScoring(data),
+        scoring: {
+          ...metadata.scoring,
+          ...extractScoring(data),
+          scoringGuidelines: data.scoringConfiguration?.scoringGuidelines || metadata.scoring?.scoringGuidelines,
+        },
       };
 
     case 'standard':
@@ -91,8 +101,13 @@ function extractMetadata(data: any, format: FormatType): any {
         name: data.assessmentName || data.name || 'Unknown Assessment',
         description: data.description || '',
         assessmentTier: data.assessmentTier || data.tier || extractTierFromName(data.assessmentName || data.name),
+        assessmentType: assessmentType === 'adaptive-sequential' ? 'adaptive' : assessmentType,
         totalTime: extractDuration(data, format),
-        scoring: data.scoringConfiguration || data.scoring,
+        scoring: {
+          ...data.scoringConfiguration,
+          ...data.scoring,
+          scoringGuidelines: data.scoringConfiguration?.scoringGuidelines,
+        },
       };
   }
 }
@@ -220,15 +235,28 @@ export function normalizeAssessmentData(rawData: any): NormalizedAssessment {
   // Normalize dimensions structure
   const dimensions = normalizeDimensions(rawDimensions);
   
-  // Count total questions
-  const questionCount = countQuestions(dimensions);
+  // Count total available items
+  const totalAvailableItems = countQuestions(dimensions);
+  
+  // For adaptive assessments, use configured target question count
+  // For fixed assessments, question count = available items
+  let questionCount = totalAvailableItems;
+  if (metadata.assessmentType === 'adaptive') {
+    const configuredCount = rawData.assessmentConfiguration?.totalQuestions || 
+                           rawData.assessmentMetadata?.totalItems;
+    if (configuredCount && configuredCount < totalAvailableItems) {
+      questionCount = configuredCount;
+    }
+  }
 
   return {
     name: metadata.name,
     description: metadata.description,
     assessmentTier: metadata.assessmentTier,
+    assessmentType: metadata.assessmentType,
     totalTime: metadata.totalTime,
     questionCount,
+    totalAvailableItems,
     dimensions,
     scoring: metadata.scoring,
   };

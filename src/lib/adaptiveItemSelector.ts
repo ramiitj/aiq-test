@@ -261,7 +261,9 @@ export async function loadTestItems(
     console.log(`[loadTestItems] Normalized assessment:`, {
       name: normalized.name,
       tier: normalized.assessmentTier,
+      type: normalized.assessmentType,
       questionCount: normalized.questionCount,
+      availableItems: normalized.totalAvailableItems,
       dimensionsCount: normalized.dimensions.length,
       totalTime: normalized.totalTime
     });
@@ -291,12 +293,13 @@ export async function loadTestItems(
       }))
     }));
     
-    // Determine if adaptive selection is needed
+    // Determine if adaptive IRT-based selection is needed
     const totalAvailableItems = dimensions.reduce((sum, d) => sum + d.items.length, 0);
-    const needsAdaptiveSelection = totalAvailableItems > normalized.questionCount;
+    const isAdaptive = normalized.assessmentType === 'adaptive';
+    const needsSelection = totalAvailableItems > normalized.questionCount;
     
-    if (needsAdaptiveSelection && dimensions.length > 0) {
-      console.log(`[loadTestItems] Adaptive selection needed: ${normalized.questionCount} from ${totalAvailableItems} items`);
+    if (isAdaptive && needsSelection && dimensions.length > 0) {
+      console.log(`[loadTestItems] IRT-based adaptive selection: ${normalized.questionCount} from ${totalAvailableItems} items`);
       
       const itemsPerDimension = Math.floor(normalized.questionCount / dimensions.length);
       const selectedItemIds = new Set<string>();

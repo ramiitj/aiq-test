@@ -13,6 +13,11 @@ interface ProductStat {
   completed_tests: number;
   avg_score: number;
   pass_rate: number;
+  question_count: number;
+  duration_minutes: number;
+  total_points: number;
+  passing_score: number | null;
+  difficulty_level: string;
 }
 
 export function AdminProductAnalytics() {
@@ -25,10 +30,10 @@ export function AdminProductAnalytics() {
 
   const fetchProductStats = async () => {
     try {
-      // Fetch all assessment products
+      // Fetch all assessment products with full details
       const { data: products } = await supabase
         .from("assessment_products")
-        .select("slug, name, track")
+        .select("slug, name, track, question_count, duration_minutes, total_points, passing_score, difficulty_level")
         .eq("is_active", true)
         .order("display_order");
 
@@ -79,6 +84,11 @@ export function AdminProductAnalytics() {
           completed_tests: completedTests || 0,
           avg_score: avgScore,
           pass_rate: passRate,
+          question_count: product.question_count,
+          duration_minutes: product.duration_minutes,
+          total_points: product.total_points,
+          passing_score: product.passing_score,
+          difficulty_level: product.difficulty_level,
         };
       });
 
@@ -174,6 +184,80 @@ export function AdminProductAnalytics() {
           </CardContent>
         </Card>
       </div>
+
+      {/* Test Structure Summary */}
+      <Card>
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2">
+            <TrendingUp className="h-5 w-5" />
+            Test Structure & Configuration
+          </CardTitle>
+          <CardDescription>Item selection strategy and timing by assessment type</CardDescription>
+        </CardHeader>
+        <CardContent>
+          <div className="space-y-6">
+            {/* Group by track */}
+            {Array.from(new Set(stats.map((s) => s.track))).map((track) => {
+              const trackProducts = stats.filter((s) => s.track === track);
+              return (
+                <div key={track} className="space-y-3">
+                  <h3 className="font-semibold text-lg capitalize flex items-center gap-2">
+                    {track === "general" && "🌐"}
+                    {track === "adolescent" && "🎓"}
+                    {track === "role-based" && "💼"}
+                    {track} Track
+                  </h3>
+                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
+                    {trackProducts.map((product) => {
+                      const isAdaptive = product.difficulty_level === "advanced";
+                      const isAdolescent = product.track === "adolescent";
+                      return (
+                        <Card key={product.product_slug} className="border-l-4 border-primary/30">
+                          <CardHeader className="pb-2">
+                            <CardTitle className="text-sm font-medium">{product.product_name}</CardTitle>
+                          </CardHeader>
+                          <CardContent className="text-xs space-y-1.5">
+                            <div className="flex items-center justify-between">
+                              <span className="text-muted-foreground">Type:</span>
+                              <Badge variant="outline" className="text-xs">
+                                {isAdaptive ? "IRT-Adaptive" : "Fixed"}
+                              </Badge>
+                            </div>
+                            {isAdaptive && (
+                              <div className="flex items-center justify-between">
+                                <span className="text-muted-foreground">Selection:</span>
+                                <span className="font-medium">80 from 160 items</span>
+                              </div>
+                            )}
+                            <div className="flex items-center justify-between">
+                              <span className="text-muted-foreground">Questions:</span>
+                              <span className="font-medium">{product.question_count}</span>
+                            </div>
+                            <div className="flex items-center justify-between">
+                              <span className="text-muted-foreground">Duration:</span>
+                              <span className="font-medium">{product.duration_minutes} min</span>
+                            </div>
+                            <div className="flex items-center justify-between">
+                              <span className="text-muted-foreground">Total Points:</span>
+                              <span className="font-medium">{product.total_points}</span>
+                            </div>
+                            {product.passing_score && (
+                              <div className="flex items-center justify-between">
+                                <span className="text-muted-foreground">Passing:</span>
+                                <span className="font-medium">{product.passing_score} pts</span>
+                              </div>
+                            )}
+                          </CardContent>
+                        </Card>
+                      );
+                    })}
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        </CardContent>
+      </Card>
 
       {/* Track Breakdown */}
       <Card>
