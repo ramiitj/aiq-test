@@ -305,11 +305,11 @@ const Admin = () => {
           </CardHeader>
           <CardContent className="space-y-8">
             {/* General Assessments */}
-            {products.filter(p => p.target_audience === 'general').length > 0 && (
+            {products.filter(p => p.slug.startsWith('general-')).length > 0 && (
               <div>
                 <h3 className="text-lg font-semibold mb-4">General Assessments</h3>
                 <div className="space-y-4">
-                  {products.filter(p => p.target_audience === 'general').map(product => (
+                  {products.filter(p => p.slug.startsWith('general-')).map(product => (
                     <UploadCard key={product.id} product={product} />
                   ))}
                 </div>
@@ -317,11 +317,11 @@ const Admin = () => {
             )}
 
             {/* Student/Adolescent Assessments */}
-            {products.filter(p => p.target_audience === 'adolescent').length > 0 && (
+            {products.filter(p => p.slug.startsWith('adolescent-')).length > 0 && (
               <div>
                 <h3 className="text-lg font-semibold mb-4">Student Assessments</h3>
                 <div className="space-y-4">
-                  {products.filter(p => p.target_audience === 'adolescent').map(product => (
+                  {products.filter(p => p.slug.startsWith('adolescent-')).map(product => (
                     <UploadCard key={product.id} product={product} />
                   ))}
                 </div>
@@ -329,11 +329,11 @@ const Admin = () => {
             )}
 
             {/* Professional/Role-Based Assessments */}
-            {products.filter(p => p.target_audience === 'professional').length > 0 && (
+            {products.filter(p => !p.slug.startsWith('general-') && !p.slug.startsWith('adolescent-')).length > 0 && (
               <div>
                 <h3 className="text-lg font-semibold mb-4">Professional Assessments</h3>
                 <div className="space-y-4">
-                  {products.filter(p => p.target_audience === 'professional').map(product => (
+                  {products.filter(p => !p.slug.startsWith('general-') && !p.slug.startsWith('adolescent-')).map(product => (
                     <UploadCard key={product.id} product={product} />
                   ))}
                 </div>
