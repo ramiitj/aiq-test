@@ -1,0 +1,731 @@
+{
+  "assessmentName": "AIQ Adolescent Assessment (Ages 14-15)",
+  "version": "1.0",
+  "assessmentType": "fixed",
+  "description": "An age-appropriate AI literacy assessment for lower high school students (grades 9-10) with 24 items featuring balanced, sentence-structured options that eliminate length-based cues and reduce pattern recognition strategies.",
+  "assessmentConfiguration": {
+    "totalQuestions": 24,
+    "questionsPerDimension": 3,
+    "estimatedTime": "25 minutes",
+    "targetAudience": "High school students ages 14-15 (grades 9-10) with basic digital literacy",
+    "timePerQuestion": "60 seconds average",
+    "presentationMode": {
+      "type": "fixed-sequential",
+      "description": "All questions presented in fixed order",
+      "sequencing": "By dimension, 3 questions per dimension"
+    },
+    "questionDistribution": {
+      "totalItems": 24,
+      "itemsPerDimension": "3 per dimension",
+      "selectionRatio": "100% (all items presented)"
+    },
+    "dimensionSequencing": {
+      "type": "fixed-order",
+      "sequence": [
+        "SAU",
+        "PEI",
+        "CEC",
+        "II",
+        "ALC",
+        "EJC",
+        "CS",
+        "CRS"
+      ],
+      "description": "Students complete 3 questions per dimension in sequence"
+    }
+  },
+  "scoringConfiguration": {
+    "totalPoints": 240,
+    "pointsPerDimension": 30,
+    "passingScore": 168,
+    "passingPercentage": 70,
+    "scoringMethod": {
+      "type": "simple-sum",
+      "description": "Direct sum of points from correct answers with differential weighting by item difficulty",
+      "basePoints": 10,
+      "formula": "points = basePoints × (1 + difficulty × 0.3) for each correct answer"
+    },
+    "scoringGuidelines": {
+      "0-40%": "Novice (0-96 points) - Significant foundational learning needed",
+      "41-60%": "Beginner (97-144 points) - Basic awareness established",
+      "61-80%": "Developing (145-192 points) - Good foundational understanding",
+      "81-90%": "Proficient (193-216 points) - Strong grasp of fundamentals",
+      "91-100%": "Advanced (217-240 points) - Excellent foundational mastery"
+    }
+  },
+  "instructions": "This AIQ assessment evaluates your understanding of AI and how to work with it effectively. You will answer 24 questions (3 per topic area) in approximately 25 minutes. Read each question carefully and choose the best answer. There is no penalty for guessing.",
+  "assessmentGuidelines": {
+    "targetLevel": "Foundational awareness appropriate for ages 14-15",
+    "cognitiveEmphasis": "70% Remember/Understand (Bloom's levels 1-2), 30% Apply (Bloom's level 3)",
+    "questionTypes": "Multiple-choice with real-world scenarios relevant to student life",
+    "difficultyProfile": "Age-appropriate distractors that test genuine understanding",
+    "timeAllocation": "Moderate time for careful consideration",
+    "reliabilityTarget": "Cronbach's alpha ≥ 0.75",
+    "optionDesign": "All options structured as complete sentences with balanced length (±10% word count) to eliminate superficial cues",
+    "culturalConsiderations": "All scenarios and examples are culturally neutral and globally applicable"
+  },
+  "itemBank": {
+    "totalItems": 24,
+    "itemsPerDimension": 3,
+    "description": "Complete item set with 24 questions featuring age-appropriate, culturally neutral content with randomized answer placement",
+    "bankStatistics": {
+      "averageDifficulty": 0.30,
+      "difficultySD": 0.12,
+      "averageDiscrimination": 1.08,
+      "discriminationSD": 0.20,
+      "contentCoverageIndex": 0.88,
+      "estimatedReliability": 0.78,
+      "totalItems": 24
+    },
+    "dimensions": [
+      {
+        "dimensionCode": "SAU",
+        "dimensionName": "Strategic AI Understanding",
+        "description": "Understanding AI capabilities, limitations, and how AI works",
+        "weight": 0.125,
+        "totalPoints": 30,
+        "items": [
+          {
+            "id": "SAU-A14-001",
+            "level": 1,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.22,
+            "discrimination": 1.00,
+            "bloomLevel": "Remember",
+            "question": "What does it mean when someone says an AI 'hallucinates'?",
+            "options": [
+              "The AI creates information that sounds confident and believable but is actually incorrect or made up by the system.",
+              "The AI experiences technical errors that cause it to crash or stop working properly during operation.",
+              "The AI becomes confused by complex questions and therefore refuses to provide any answer to the user.",
+              "The AI mixes up different languages in its responses because it was trained on data from multiple countries."
+            ],
+            "correctAnswer": 0,
+            "rationale": "AI hallucination refers to when AI generates false information presented as fact. It's not about crashes, refusals, or language mixing—it's specifically about confidently producing incorrect content.",
+            "explanation": "Understanding AI hallucination helps students critically evaluate AI outputs.",
+            "tags": [
+              "ai-limitations",
+              "hallucination",
+              "critical-evaluation"
+            ]
+          },
+          {
+            "id": "SAU-A14-002",
+            "level": 1,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.28,
+            "discrimination": 1.05,
+            "bloomLevel": "Understand",
+            "question": "Why might an AI trained on internet data from the past give outdated advice about technology?",
+            "options": [
+              "The AI only knows what was available during its training period and cannot update itself with new information automatically.",
+              "The AI deliberately prefers older information because it has been tested and verified over a longer time period.",
+              "The AI becomes slower and less effective over time as the technology inside the computer system ages gradually.",
+              "The AI cannot distinguish between old and new information so it randomly selects from all time periods equally."
+            ],
+            "correctAnswer": 0,
+            "rationale": "AI models have fixed training data and don't automatically update. They reflect the time period of their training data. This isn't about preference, system aging, or inability to distinguish—it's about training data boundaries.",
+            "explanation": "Understanding training data limitations helps students know when to verify AI information.",
+            "tags": [
+              "training-data",
+              "knowledge-cutoff",
+              "limitations"
+            ]
+          },
+          {
+            "id": "SAU-A14-003",
+            "level": 2,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.35,
+            "discrimination": 1.08,
+            "bloomLevel": "Apply",
+            "question": "You're using AI to research a school project about recent events. What should you do to ensure accuracy?",
+            "options": [
+              "Check the AI's information against current, reliable sources like news websites or official organizations before using it.",
+              "Use the AI's information directly in your project since AI systems are designed to provide only accurate facts.",
+              "Ask the AI multiple times using different words until all the answers match exactly with each other.",
+              "Only use the AI for ideas but write everything yourself without referencing any of the information it provided."
+            ],
+            "correctAnswer": 0,
+            "rationale": "Verification against reliable sources is essential, especially for recent events. AI can be outdated or hallucinate. Multiple rephrased questions don't guarantee accuracy. AI can be useful beyond just ideation if properly verified.",
+            "explanation": "Critical verification is essential when using AI for factual information.",
+            "tags": [
+              "verification",
+              "research-practices",
+              "accuracy"
+            ]
+          }
+        ]
+      },
+      {
+        "dimensionCode": "PEI",
+        "dimensionName": "Prompt Engineering & Iteration",
+        "description": "Effectively communicating with AI and refining interactions",
+        "weight": 0.125,
+        "totalPoints": 30,
+        "items": [
+          {
+            "id": "PEI-A14-001",
+            "level": 1,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.25,
+            "discrimination": 1.02,
+            "bloomLevel": "Remember",
+            "question": "What usually produces better results when asking AI for help with homework?",
+            "options": [
+              "Explaining exactly what subject you're studying, what specific help you need, and what format would be most useful.",
+              "Asking the shortest possible question to save time, such as just typing the topic name without other details.",
+              "Using very formal and complicated language to show the AI that you are serious about getting good results.",
+              "Copying your entire homework assignment into the chat exactly as it appears on the page without additional context."
+            ],
+            "correctAnswer": 0,
+            "rationale": "Clear, specific context helps AI understand your needs. Brief questions lack necessary information. Formal language doesn't improve results. Raw assignment copying doesn't provide context about what type of help you need.",
+            "explanation": "Clear communication with context produces better AI responses.",
+            "tags": [
+              "prompt-clarity",
+              "context-provision",
+              "effective-communication"
+            ]
+          },
+          {
+            "id": "PEI-A14-002",
+            "level": 2,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.32,
+            "discrimination": 1.06,
+            "bloomLevel": "Understand",
+            "question": "You asked AI to explain a math concept, but the explanation is too complicated. What's the best next step?",
+            "options": [
+              "Ask the AI to explain the same concept using simpler language or everyday examples that would make sense to students.",
+              "Give up on using AI for this topic and try to find the answer somewhere else instead.",
+              "Keep reading the complicated explanation multiple times until you eventually understand what it means.",
+              "Ask for an even more detailed and technical explanation since more information usually helps with understanding difficult topics."
+            ],
+            "correctAnswer": 0,
+            "rationale": "AI can adjust its explanation style when asked. Giving up wastes the opportunity. Rereading without comprehension doesn't help. More technical detail makes things worse, not better. Iteration and refinement are key.",
+            "explanation": "Effective AI use involves iteratively refining requests for better results.",
+            "tags": [
+              "iteration",
+              "clarity-adjustment",
+              "learning-support"
+            ]
+          },
+          {
+            "id": "PEI-A14-003",
+            "level": 2,
+            "type": "scenario-based",
+            "points": 10,
+            "difficulty": 0.38,
+            "discrimination": 1.10,
+            "bloomLevel": "Apply",
+            "question": "You're creating a presentation about climate change for class. How can you use AI most effectively?",
+            "options": [
+              "Ask AI to suggest main topics to cover, help organize your ideas, and provide examples, then add your own research and perspective.",
+              "Have AI create the entire presentation from start to finish, then submit it exactly as created without any changes.",
+              "Only use AI to check spelling and grammar after you've completely finished creating every slide on your own.",
+              "Avoid using AI entirely for school projects because teachers always prefer work that is done completely without any assistance."
+            ],
+            "correctAnswer": 0,
+            "rationale": "AI works best as a collaborative tool—helping with structure and ideas while you add research and voice. Complete AI creation is academically dishonest. Limiting to spell-check wastes AI's potential. Most teachers accept appropriate AI use with proper attribution.",
+            "explanation": "Effective AI use involves collaboration, not replacement of your own thinking.",
+            "tags": [
+              "collaboration",
+              "project-development",
+              "appropriate-use"
+            ]
+          }
+        ]
+      },
+      {
+        "dimensionCode": "CEC",
+        "dimensionName": "Critical Evaluation & Calibration",
+        "description": "Assessing AI output quality and knowing when to trust AI",
+        "weight": 0.125,
+        "totalPoints": 30,
+        "items": [
+          {
+            "id": "CEC-A14-001",
+            "level": 1,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.26,
+            "discrimination": 1.03,
+            "bloomLevel": "Remember",
+            "question": "When should you be most careful about trusting information from AI?",
+            "options": [
+              "When the information involves recent events, medical advice, legal issues, or important facts that could affect real decisions.",
+              "When the AI provides a very long and detailed answer because longer answers always indicate less reliable information.",
+              "When the AI responds very quickly to your question since fast responses mean the AI didn't think carefully enough.",
+              "When the AI uses simple everyday language instead of technical terms since simplicity usually indicates lower quality information."
+            ],
+            "correctAnswer": 0,
+            "rationale": "Critical areas (recent events, medical, legal, consequential facts) require careful verification. Length, speed, and simplicity don't indicate reliability. Content type and stakes matter most.",
+            "explanation": "Understanding when AI needs verification protects against harmful mistakes.",
+            "tags": [
+              "critical-evaluation",
+              "verification-needs",
+              "risk-assessment"
+            ]
+          },
+          {
+            "id": "CEC-A14-002",
+            "level": 2,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.33,
+            "discrimination": 1.07,
+            "bloomLevel": "Understand",
+            "question": "AI confidently tells you a historical 'fact' that you haven't heard before. What should you do?",
+            "options": [
+              "Look up the fact in reliable sources like encyclopedias or educational websites before believing or using it.",
+              "Trust the information completely since AI systems are trained on accurate historical data from reliable sources only.",
+              "Ask the AI to repeat the fact several times to see if it changes its answer or stays consistent.",
+              "Assume the fact is wrong since you haven't heard it before, and avoid using AI for historical information."
+            ],
+            "correctAnswer": 0,
+            "rationale": "Verification is essential even when AI seems confident—confidence doesn't equal accuracy. AI isn't trained only on reliable sources. Repetition doesn't verify accuracy. Unfamiliarity doesn't mean incorrectness, but verification is still needed.",
+            "explanation": "AI confidence doesn't guarantee accuracy; verification is always important.",
+            "tags": [
+              "verification",
+              "confidence-vs-accuracy",
+              "fact-checking"
+            ]
+          },
+          {
+            "id": "CEC-A14-003",
+            "level": 2,
+            "type": "scenario-based",
+            "points": 10,
+            "difficulty": 0.40,
+            "discrimination": 1.12,
+            "bloomLevel": "Apply",
+            "question": "You're comparing two AI-generated answers to the same science question. One is detailed but uses unfamiliar terms; the other is simple but clear. How do you decide which to trust?",
+            "options": [
+              "Check both answers against your textbook or reliable science websites to see which aligns with established scientific facts.",
+              "Always choose the more detailed answer because complex language and technical terms indicate higher quality and accuracy.",
+              "Always choose the simpler answer because it's easier to understand and AI should make information accessible.",
+              "Trust whichever answer the AI provided first since the AI's initial response is usually its most accurate one."
+            ],
+            "correctAnswer": 0,
+            "rationale": "Verification against reliable sources is the only way to assess accuracy. Complexity doesn't equal correctness. Simplicity doesn't equal correctness. Order doesn't indicate accuracy. External verification is essential.",
+            "explanation": "Quality assessment requires verification against reliable sources, not surface-level features.",
+            "tags": [
+              "verification-methods",
+              "quality-assessment",
+              "source-checking"
+            ]
+          }
+        ]
+      },
+      {
+        "dimensionCode": "II",
+        "dimensionName": "Iterative Improvement",
+        "description": "Refining AI outputs through feedback and collaboration",
+        "weight": 0.125,
+        "totalPoints": 30,
+        "items": [
+          {
+            "id": "II-A14-001",
+            "level": 1,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.24,
+            "discrimination": 1.01,
+            "bloomLevel": "Remember",
+            "question": "What does it mean to 'iterate' when working with AI?",
+            "options": [
+              "Going back and forth with the AI, making small improvements each time until you get the result you want.",
+              "Using the exact same prompt multiple times in a row until the AI provides a perfect answer.",
+              "Accepting whatever the AI creates on the first try without making any changes or asking for revisions.",
+              "Switching between multiple different AI tools rapidly to compare their answers and find the best one available."
+            ],
+            "correctAnswer": 0,
+            "rationale": "Iteration means refining through cycles of feedback. It's not about repetition without changes, accepting first output, or tool-switching. It's about progressive refinement through dialogue.",
+            "explanation": "Understanding iteration helps students improve AI outputs systematically.",
+            "tags": [
+              "iteration",
+              "refinement-process",
+              "feedback-loops"
+            ]
+          },
+          {
+            "id": "II-A14-002",
+            "level": 2,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.30,
+            "discrimination": 1.05,
+            "bloomLevel": "Understand",
+            "question": "AI wrote a story for you, but the ending feels rushed. What's the most effective way to improve it?",
+            "options": [
+              "Tell the AI specifically what you didn't like about the ending and ask it to rewrite that part with more detail.",
+              "Start completely over with a brand new prompt and hope the next story has a better ending.",
+              "Accept the rushed ending as it is since AI cannot understand creative feedback about story quality.",
+              "Copy the story into a completely different AI tool to see if that AI can automatically fix the ending."
+            ],
+            "correctAnswer": 0,
+            "rationale": "Specific feedback enables targeted improvement. Starting over loses progress. AI can process feedback about quality. Tool-switching without feedback doesn't address the specific issue. Iteration with clear feedback is most effective.",
+            "explanation": "Specific feedback enables effective iterative improvement.",
+            "tags": [
+              "specific-feedback",
+              "creative-iteration",
+              "targeted-improvement"
+            ]
+          },
+          {
+            "id": "II-A14-003",
+            "level": 2,
+            "type": "scenario-based",
+            "points": 10,
+            "difficulty": 0.37,
+            "discrimination": 1.09,
+            "bloomLevel": "Apply",
+            "question": "You asked AI for study tips and got generic advice. How can you improve the response to better match your needs?",
+            "options": [
+              "Provide more details about your specific subject, learning style, and study challenges, then ask the AI to personalize its advice.",
+              "Keep asking for study tips using the exact same wording until eventually the AI provides more specific advice.",
+              "Accept that AI can only give generic advice and look for study tips elsewhere instead.",
+              "Tell the AI the response was bad without explaining why, then wait to see if it improves on its own."
+            ],
+            "correctAnswer": 0,
+            "rationale": "Adding context enables personalization. Repetition without new information doesn't help. AI can provide specific advice with proper context. Non-specific criticism without explanation doesn't enable improvement. Context drives quality.",
+            "explanation": "Providing context and specific needs enables AI to give personalized, useful responses.",
+            "tags": [
+              "personalization",
+              "context-provision",
+              "feedback-quality"
+            ]
+          }
+        ]
+      },
+      {
+        "dimensionCode": "ALC",
+        "dimensionName": "Appropriate Learning & Content Use",
+        "description": "Using AI ethically and appropriately for learning",
+        "weight": 0.125,
+        "totalPoints": 30,
+        "items": [
+          {
+            "id": "ALC-A14-001",
+            "level": 1,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.20,
+            "discrimination": 0.98,
+            "bloomLevel": "Remember",
+            "question": "What is the main problem with copying AI-generated text directly into your homework without changes?",
+            "options": [
+              "It's academically dishonest because you're presenting someone else's work as your own without proper attribution or understanding.",
+              "The AI might include technical errors in the writing that would cause your computer to malfunction or crash.",
+              "Teachers can always automatically detect AI-generated text, so you will definitely get caught every single time.",
+              "AI-generated text is automatically copyrighted by the AI company, so using it violates international copyright laws."
+            ],
+            "correctAnswer": 0,
+            "rationale": "Direct copying without attribution is academic dishonesty. It's not about technical errors or computer issues. Detection isn't foolproof but dishonesty is still wrong. AI output isn't automatically copyrighted by the company. The core issue is integrity.",
+            "explanation": "Understanding academic integrity helps students use AI appropriately.",
+            "tags": [
+              "academic-integrity",
+              "plagiarism",
+              "ethical-use"
+            ]
+          },
+          {
+            "id": "ALC-A14-002",
+            "level": 2,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.28,
+            "discrimination": 1.04,
+            "bloomLevel": "Understand",
+            "question": "Which is an appropriate way to use AI when studying for a test?",
+            "options": [
+              "Ask AI to create practice questions about topics you find difficult, then try answering them yourself to test your understanding.",
+              "Have AI memorize all the material for you since you can always access AI during the actual test.",
+              "Ask AI to tell you exactly which topics will definitely appear on the test so you only study those areas.",
+              "Have AI write sample answers to possible test questions, then memorize those answers word-for-word without understanding them."
+            ],
+            "correctAnswer": 0,
+            "rationale": "Practice questions help develop understanding. AI won't be available during tests. AI can't predict specific test content. Memorizing without understanding doesn't build genuine knowledge. Active learning is key.",
+            "explanation": "AI should support learning, not replace it.",
+            "tags": [
+              "appropriate-use",
+              "learning-support",
+              "test-preparation"
+            ]
+          },
+          {
+            "id": "ALC-A14-003",
+            "level": 2,
+            "type": "scenario-based",
+            "points": 10,
+            "difficulty": 0.35,
+            "discrimination": 1.08,
+            "bloomLevel": "Apply",
+            "question": "Your teacher allows AI use for brainstorming but not for final writing. You've used AI to organize your essay ideas. What should you do next?",
+            "options": [
+              "Use the AI's organizational structure as a guide but write every sentence yourself in your own words and voice.",
+              "Copy the AI's structure exactly into your essay since the teacher only said you can't use AI for writing.",
+              "Ignore the AI's structure completely and start over so there's no connection to AI in your final essay.",
+              "Have AI write a first draft from the structure, then change a few words so the essay sounds more like you."
+            ],
+            "correctAnswer": 0,
+            "rationale": "Using structure as a guide while writing yourself respects the boundary. Structure is part of 'writing' holistically. Completely ignoring useful structure wastes the brainstorming. AI-drafted text with minor changes still violates the policy. Original writing is required.",
+            "explanation": "Following teacher guidelines while using AI appropriately demonstrates integrity.",
+            "tags": [
+              "appropriate-use",
+              "teacher-guidelines",
+              "writing-process"
+            ]
+          }
+        ]
+      },
+      {
+        "dimensionCode": "EJC",
+        "dimensionName": "Ethical Judgment & Context",
+        "description": "Making ethical decisions about AI use",
+        "weight": 0.125,
+        "totalPoints": 30,
+        "items": [
+          {
+            "id": "EJC-A14-001",
+            "level": 1,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.23,
+            "discrimination": 1.00,
+            "bloomLevel": "Remember",
+            "question": "Why is it important to think about ethics when using AI?",
+            "options": [
+              "AI can produce harmful content, make biased decisions, or be misused in ways that hurt people if we're not careful.",
+              "Ethics are required by law in most countries, and you can get into legal trouble for not considering them.",
+              "AI systems become less accurate over time if people don't consciously think about ethics while using them.",
+              "Without ethical thinking, AI systems consume significantly more electricity and therefore harm the environment more."
+            ],
+            "correctAnswer": 0,
+            "rationale": "Ethics matter because AI can cause real harm through bias, misinformation, or misuse. It's not primarily about legal requirements. Ethics don't affect AI accuracy directly. Ethical thinking doesn't affect power consumption. The core is about preventing harm.",
+            "explanation": "Ethical awareness helps prevent AI-related harm.",
+            "tags": [
+              "ethics-foundation",
+              "harm-prevention",
+              "responsible-use"
+            ]
+          },
+          {
+            "id": "EJC-A14-002",
+            "level": 2,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.31,
+            "discrimination": 1.06,
+            "bloomLevel": "Understand",
+            "question": "Your friend wants to use AI to create fake screenshots of text messages to prank another friend. What's the main ethical issue?",
+            "options": [
+              "Creating fake evidence can damage trust, harm reputations, and cause real emotional distress even if intended as a prank.",
+              "Using AI for pranks violates the AI company's terms of service and could result in account suspension.",
+              "Fake screenshots always look obviously fake, so the prank won't work and your friend will be embarrassed.",
+              "Creating any kind of image with AI violates copyright laws even if the content is completely fictional."
+            ],
+            "correctAnswer": 0,
+            "rationale": "The ethical core is potential harm—damaged trust, reputation, distress. Terms of service might prohibit it but that's secondary. Quality of fakes isn't the ethical issue. Copyright isn't the primary concern here. Real harm to real people is the key issue.",
+            "explanation": "Understanding consequences of AI-generated deception prevents harm.",
+            "tags": [
+              "deception",
+              "harm-assessment",
+              "digital-ethics"
+            ]
+          },
+          {
+            "id": "EJC-A14-003",
+            "level": 2,
+            "type": "scenario-based",
+            "points": 10,
+            "difficulty": 0.38,
+            "discrimination": 1.10,
+            "bloomLevel": "Apply",
+            "question": "You notice that AI gives different career suggestions for the same qualifications depending on whether you say the person is male or female. What should you do?",
+            "options": [
+              "Recognize this as potential gender bias and make career decisions based on your own interests rather than stereotyped AI suggestions.",
+              "Always use the gender that gets better career suggestions from the AI regardless of your actual gender identity.",
+              "Stop using AI for career advice completely since any AI that shows bias is totally useless for all purposes.",
+              "Trust that the AI's different suggestions are based on accurate statistical data about career success rates."
+            ],
+            "correctAnswer": 0,
+            "rationale": "Recognizing bias and making independent decisions is correct. Gaming the system by misrepresenting gender doesn't fix bias. Total avoidance overreacts—bias awareness enables better use. Statistical patterns can reflect societal bias, not optimal guidance. Critical awareness is key.",
+            "explanation": "Recognizing AI bias helps you make better, independent decisions.",
+            "tags": [
+              "bias-recognition",
+              "critical-thinking",
+              "independent-judgment"
+            ]
+          }
+        ]
+      },
+      {
+        "dimensionCode": "CS",
+        "dimensionName": "Collaboration & Synthesis",
+        "description": "Combining AI capabilities with human judgment",
+        "weight": 0.125,
+        "totalPoints": 30,
+        "items": [
+          {
+            "id": "CS-A14-001",
+            "level": 1,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.25,
+            "discrimination": 1.02,
+            "bloomLevel": "Remember",
+            "question": "What does it mean to 'collaborate' with AI?",
+            "options": [
+              "Working together with AI where you provide ideas and judgment while AI provides information and suggestions.",
+              "Letting AI do all the thinking and work while you simply approve or reject what it creates.",
+              "Competing with AI to see whether human intelligence or artificial intelligence produces better results.",
+              "Using multiple AI systems at the same time and combining their different answers together automatically."
+            ],
+            "correctAnswer": 0,
+            "rationale": "Collaboration means working together with complementary contributions. It's not about AI doing everything. It's not about competition. It's not just about using multiple AIs. It's about human-AI partnership with different strengths.",
+            "explanation": "Understanding collaboration helps students use AI as a partner, not a replacement.",
+            "tags": [
+              "collaboration-definition",
+              "human-ai-partnership",
+              "complementary-strengths"
+            ]
+          },
+          {
+            "id": "CS-A14-002",
+            "level": 2,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.29,
+            "discrimination": 1.04,
+            "bloomLevel": "Understand",
+            "question": "AI suggests five different approaches to solving a problem you're working on. What's the best way to use these suggestions?",
+            "options": [
+              "Evaluate each approach based on your specific situation and goals, then choose or combine elements that work best for you.",
+              "Always pick the first suggestion since AI lists options in order from best to worst automatically.",
+              "Choose the longest or most complicated approach since complexity usually indicates the highest quality solution.",
+              "Try each approach exactly as suggested without any modifications to see which one works perfectly as written."
+            ],
+            "correctAnswer": 0,
+            "rationale": "Evaluation based on your context and needs is correct. AI doesn't necessarily order by quality. Complexity doesn't equal quality. Blind implementation without adaptation misses the value of human judgment. Context-aware evaluation is key.",
+            "explanation": "Human judgment about context and goals should guide use of AI suggestions.",
+            "tags": [
+              "evaluation",
+              "contextual-judgment",
+              "selective-use"
+            ]
+          },
+          {
+            "id": "CS-A14-003",
+            "level": 2,
+            "type": "scenario-based",
+            "points": 10,
+            "difficulty": 0.36,
+            "discrimination": 1.09,
+            "bloomLevel": "Apply",
+            "question": "You're writing a story and AI generates descriptions of three different characters. How can you best use this to create your story?",
+            "options": [
+              "Take interesting details from different characters, adapt them to fit your story vision, and add your own creative elements.",
+              "Pick one complete character exactly as described and use it without changes so the description stays consistent.",
+              "Reject all AI suggestions and create completely original characters to ensure your story is truly creative.",
+              "Combine all three characters into one by including every detail from all descriptions to maximize the character depth."
+            ],
+            "correctAnswer": 0,
+            "rationale": "Selective synthesis with your own creativity optimizes the collaboration. Using one unchanged misses creative opportunities. Rejecting all suggestions wastes useful material. Combining everything creates incoherent results. Strategic synthesis is optimal.",
+            "explanation": "Effective collaboration involves selective synthesis guided by creative vision.",
+            "tags": [
+              "creative-synthesis",
+              "selective-combination",
+              "creative-control"
+            ]
+          }
+        ]
+      },
+      {
+        "dimensionCode": "CRS",
+        "dimensionName": "Creative & Reflective Synthesis",
+        "description": "Using AI creatively while maintaining your own voice",
+        "weight": 0.125,
+        "totalPoints": 30,
+        "items": [
+          {
+            "id": "CRS-A14-001",
+            "level": 1,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.27,
+            "discrimination": 1.03,
+            "bloomLevel": "Remember",
+            "question": "What is the main advantage humans have over AI when it comes to creative work?",
+            "options": [
+              "Humans can draw from personal experiences, emotions, and original ideas that AI cannot truly understand or replicate.",
+              "Humans can work much faster than AI systems when creating stories, art, or other creative projects.",
+              "Humans never make mistakes in creative work while AI frequently produces errors that need fixing.",
+              "Humans can create unlimited amounts of creative content while AI has strict limits on what it can generate."
+            ],
+            "correctAnswer": 0,
+            "rationale": "Human advantage is authentic experience, emotion, and genuine originality. AI is often faster than humans. Both humans and AI make mistakes. AI can generate vast amounts while humans have time/energy limits. Authentic human experience is the key differentiator.",
+            "explanation": "Understanding human creative advantages helps students know what they uniquely contribute.",
+            "tags": [
+              "human-creativity",
+              "authentic-experience",
+              "originality"
+            ]
+          },
+          {
+            "id": "CRS-A14-002",
+            "level": 2,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.33,
+            "discrimination": 1.07,
+            "bloomLevel": "Understand",
+            "question": "You're using AI to help write song lyrics, but they sound generic and could be about anyone. How can you make them more personal?",
+            "options": [
+              "Add specific details from your own life, emotions, and experiences that only you know and can authentically describe.",
+              "Ask the AI to write more lyrics using different prompts until it randomly creates something that feels more personal.",
+              "Use more complicated vocabulary and advanced poetic techniques to make the lyrics sound more sophisticated overall.",
+              "Combine lyrics from multiple AI-generated songs together to create something that feels more unique and original."
+            ],
+            "correctAnswer": 0,
+            "rationale": "Personal specificity creates authenticity. More AI generation without personal input stays generic. Complexity doesn't create personal connection. Combining generic outputs produces more generic results. Your unique details create authenticity.",
+            "explanation": "Personal details and authentic experience create meaningful creative work.",
+            "tags": [
+              "personalization",
+              "authenticity",
+              "creative-voice"
+            ]
+          },
+          {
+            "id": "CRS-A14-003",
+            "level": 2,
+            "type": "scenario-based",
+            "points": 10,
+            "difficulty": 0.40,
+            "discrimination": 1.11,
+            "bloomLevel": "Apply",
+            "question": "You want to create a video project about your community for a school assignment. What's the best way to use AI in this creative process?",
+            "options": [
+              "Use AI to help plan structure and suggest ideas, but film real places and people from your actual community with your own perspective.",
+              "Have AI generate everything including realistic-looking images of community places and people so you don't need to film anything.",
+              "Only use AI to add background music after you've completely finished creating and editing all the video content yourself.",
+              "Use AI to research what other communities look like, then create your video based on those examples rather than your own community."
+            ],
+            "correctAnswer": 0,
+            "rationale": "AI assists planning while you capture authentic reality. Fabricating your community with AI is dishonest and misses the point. Limiting AI to music wastes collaborative potential. Copying other communities loses authenticity. Real documentation with AI assistance is optimal.",
+            "explanation": "Effective creative AI use combines AI assistance with authentic human perspective and content.",
+            "tags": [
+              "creative-collaboration",
+              "authenticity",
+              "appropriate-use"
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}
