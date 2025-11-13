@@ -93,6 +93,8 @@ const Test = () => {
   const [dimensions, setDimensions] = useState<Dimension[]>([]);
   const [scoringConfig, setScoringConfig] = useState<any>(null);
   const [assessmentInfo, setAssessmentInfo] = useState<any>(null);
+  const [productId, setProductId] = useState<string | null>(null);
+  const [productSlug, setProductSlug] = useState<string | null>(null);
   
   // Security consent states
   const [showSecurityConsent, setShowSecurityConsent] = useState(true);
@@ -241,6 +243,24 @@ const Test = () => {
     try {
       console.log('[Test] Loading test data for:', version);
       setLoadError(null);
+      
+      // Try to fetch product from database if we have a product slug
+      const productParam = searchParams.get("product");
+      if (productParam) {
+        const { data: product, error: productError } = await supabase
+          .from("assessment_products")
+          .select("*")
+          .eq("slug", productParam)
+          .eq("is_active", true)
+          .maybeSingle();
+        
+        if (!productError && product) {
+          setProductId(product.id);
+          setProductSlug(product.slug);
+          console.log('[Test] Loaded product:', product.name);
+        }
+      }
+      
       const assessmentData = await loadTestItems(version as string, true); // Enable legacy fallback
       console.log('[Test] Assessment data loaded successfully:', {
         name: assessmentData.assessmentInfo.name,
@@ -457,7 +477,9 @@ const Test = () => {
           time_remaining: initialTimeRemaining,
           current_dimension: 0,
           current_item: 0,
-          answers: {}
+          answers: {},
+          product_id: productId,
+          product_slug: productSlug
         }])
         .select()
         .single();

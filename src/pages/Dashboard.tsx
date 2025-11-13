@@ -5,10 +5,11 @@ import { Navigation } from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { PlayCircle, Trophy, User as UserIcon, Play, X, Download, Trash2, ArrowRight } from "lucide-react";
+import { PlayCircle, Trophy, User as UserIcon, Play, X, Download, Trash2, ArrowRight, Clock } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import { checkUserRole } from "@/lib/roleUtils";
 import { captureUserLocation } from "@/lib/geolocation";
+import { Badge } from "@/components/ui/badge";
 import {
   AlertDialog,
   AlertDialogAction,
@@ -34,11 +35,25 @@ interface Test {
   paused: boolean;
   time_remaining: number;
   current_dimension: number;
+  test_version?: string;
+  product_slug?: string;
+}
+
+interface CompletedTest {
+  id: string;
+  created_at: string;
+  test_completion_date: string;
+  overall_score: number;
+  test_version: string;
+  product_slug?: string;
+  product_name?: string;
+  test_duration_seconds?: number;
 }
 
 const Dashboard = () => {
   const [profile, setProfile] = useState<Profile | null>(null);
   const [tests, setTests] = useState<Test[]>([]);
+  const [completedTests, setCompletedTests] = useState<CompletedTest[]>([]);
   const [loading, setLoading] = useState(true);
   const [isAdmin, setIsAdmin] = useState(false);
   const navigate = useNavigate();
@@ -101,12 +116,50 @@ const Dashboard = () => {
 
       const { data: testsData, error: testsError } = await supabase
         .from("tests")
-        .select("id, created_at, completed, scores, paused, time_remaining, current_dimension")
+        .select("id, created_at, completed, scores, paused, time_remaining, current_dimension, test_version, product_slug")
         .eq("user_id", session.user.id)
+        .eq("completed", false)
         .order("created_at", { ascending: false })
         .limit(5);
 
+      // Fetch completed tests with product info
+      const { data: completedData, error: completedError } = await supabase
+        .from("public_results")
+        .select(`
+          id,
+          created_at,
+          test_completion_date,
+          overall_score,
+          test_version,
+          product_slug,
+          test_duration_seconds
+        `)
+        .eq("user_id", session.user.id)
+        .order("test_completion_date", { ascending: false })
+        .limit(10);
+
       if (testsError) throw testsError;
+      if (completedError) throw completedError;
+
+      // Fetch product names for completed tests
+      if (completedData && completedData.length > 0) {
+        const productSlugs = [...new Set(completedData.map(t => t.product_slug).filter(Boolean))];
+        if (productSlugs.length > 0) {
+          const { data: products } = await supabase
+            .from("assessment_products")
+            .select("slug, name")
+            .in("slug", productSlugs);
+
+          const productMap = new Map(products?.map(p => [p.slug, p.name]) || []);
+          
+          setCompletedTests(completedData.map(test => ({
+            ...test,
+            product_name: test.product_slug ? productMap.get(test.product_slug) : undefined
+          })));
+        } else {
+          setCompletedTests(completedData);
+        }
+      }
       
       // Auto-pause abandoned tests (incomplete, not paused, older than 5 minutes)
       const fiveMinutesAgo = new Date(Date.now() - 5 * 60 * 1000).toISOString();
@@ -126,8 +179,9 @@ const Dashboard = () => {
         // Refetch to get updated data
         const { data: updatedData } = await supabase
           .from("tests")
-          .select("id, created_at, completed, scores, paused, time_remaining, current_dimension")
+          .select("id, created_at, completed, scores, paused, time_remaining, current_dimension, test_version, product_slug")
           .eq("user_id", session.user.id)
+          .eq("completed", false)
           .order("created_at", { ascending: false })
           .limit(5);
         
@@ -166,6 +220,30 @@ const Dashboard = () => {
       toast({
         title: "Test Abandoned",
         description: "The paused test has been removed",
+      });
+
+      checkAuth();
+    } catch (error: any) {
+      toast({
+        title: "Error",
+        description: error.message,
+        variant: "destructive",
+      });
+    }
+  };
+
+  const handleDeleteTest = async (testId: string) => {
+    try {
+      const { error } = await supabase
+        .from("tests")
+        .delete()
+        .eq("id", testId);
+
+      if (error) throw error;
+
+      toast({
+        title: "Test Deleted",
+        description: "The test has been permanently removed",
       });
 
       checkAuth();
@@ -472,27 +550,95 @@ const Dashboard = () => {
           </Card>
         </div>
 
-        {/* Recent Results */}
-        <Card className="mb-6 shadow-sm border">
-          <CardHeader className="pb-4">
-            <div className="flex items-center justify-between">
+        {/* Completed Assessments - Grouped by Track */}
+        {completedTests.length > 0 && (
+          <Card className="mb-6 shadow-sm border">
+            <CardHeader className="pb-4">
               <div className="flex items-center gap-2">
                 <div className="p-2 bg-primary/10 rounded-lg">
                   <Trophy className="h-5 w-5 text-primary" />
                 </div>
                 <div>
-                  <CardTitle className="text-lg font-black">Recent Results</CardTitle>
-                  <CardDescription className="text-xs">Your latest AIQ<sup className="text-[0.6em]">™</sup> assessments</CardDescription>
+                  <CardTitle className="text-lg font-black">Completed Assessments</CardTitle>
+                  <CardDescription className="text-xs">
+                    Your AIQ<sup className="text-[0.6em]">™</sup> assessment history
+                  </CardDescription>
+                </div>
+              </div>
+            </CardHeader>
+            <CardContent className="pt-0">
+              <div className="space-y-3">
+                {completedTests.map((test) => {
+                  const productName = test.product_name || 
+                    (test.test_version === 'beginner' ? 'AIQ General Assessment - Beginner' : 
+                     'AIQ General Assessment - Advanced');
+                  const trackBadge = test.product_slug?.includes('adolescent') ? 'Student' :
+                    test.product_slug?.includes('general') ? 'General' : 'Professional';
+                  const passed = test.overall_score >= (test.test_version === 'beginner' ? 336 : 448);
+                  
+                  return (
+                    <div
+                      key={test.id}
+                      className="flex items-center justify-between p-4 border rounded-lg hover:bg-accent/50 cursor-pointer transition-colors group"
+                      onClick={() => navigate(`/results/${test.id}`)}
+                    >
+                      <div className="flex-1">
+                        <div className="flex items-center gap-2 mb-1">
+                          <p className="text-sm font-bold">{productName}</p>
+                          <Badge variant="outline" className="text-xs">
+                            {trackBadge}
+                          </Badge>
+                          {passed && (
+                            <Badge className="text-xs bg-green-500">
+                              Passed
+                            </Badge>
+                          )}
+                        </div>
+                        <p className="text-xs text-muted-foreground">
+                          Completed {new Date(test.test_completion_date || test.created_at).toLocaleDateString('en-US', { 
+                            month: 'short', 
+                            day: 'numeric', 
+                            year: 'numeric' 
+                          })} • Score: {test.overall_score}
+                        </p>
+                      </div>
+                      <Button 
+                        variant="ghost" 
+                        size="sm" 
+                        className="text-xs group-hover:bg-accent"
+                      >
+                        View Results
+                        <ArrowRight className="ml-1 h-3 w-3" />
+                      </Button>
+                    </div>
+                  );
+                })}
+              </div>
+            </CardContent>
+          </Card>
+        )}
+
+        {/* Recent In-Progress Tests */}
+        <Card className="mb-6 shadow-sm border">
+          <CardHeader className="pb-4">
+            <div className="flex items-center justify-between">
+              <div className="flex items-center gap-2">
+                <div className="p-2 bg-primary/10 rounded-lg">
+                  <Clock className="h-5 w-5 text-primary" />
+                </div>
+                <div>
+                  <CardTitle className="text-lg font-black">Recent Activity</CardTitle>
+                  <CardDescription className="text-xs">In-progress and recent tests</CardDescription>
                 </div>
               </div>
             </div>
           </CardHeader>
           <CardContent className="pt-0">
-            {tests.length === 0 ? (
+            {tests.filter(t => !t.paused).length === 0 ? (
               <div className="text-center py-8 bg-secondary/20 rounded-lg">
                 <PlayCircle className="h-12 w-12 text-muted-foreground mx-auto mb-3 opacity-50" />
-                <p className="text-sm text-muted-foreground font-medium mb-2">No tests taken yet</p>
-                <p className="text-xs text-muted-foreground">Start your first AIQ<sup className="text-[0.6em]">™</sup> assessment to see results here</p>
+                <p className="text-sm text-muted-foreground font-medium mb-2">No recent activity</p>
+                <p className="text-xs text-muted-foreground">Start a new assessment to see it here</p>
               </div>
             ) : (
               <div className="space-y-2">
@@ -549,9 +695,11 @@ const Dashboard = () => {
                         </AlertDialogTrigger>
                         <AlertDialogContent>
                           <AlertDialogHeader>
-                            <AlertDialogTitle className="font-black">Delete Test?</AlertDialogTitle>
+                            <AlertDialogTitle className="font-black">Delete Test Record?</AlertDialogTitle>
                             <AlertDialogDescription>
-                              This will permanently delete this test and its results. This action cannot be undone.
+                              {test.completed 
+                                ? "This will permanently delete this test and its results. This action cannot be undone."
+                                : "This will permanently delete this incomplete test. This action cannot be undone."}
                             </AlertDialogDescription>
                           </AlertDialogHeader>
                           <AlertDialogFooter>
@@ -559,7 +707,7 @@ const Dashboard = () => {
                             <AlertDialogAction
                               onClick={(e) => {
                                 e.stopPropagation();
-                                handleAbandonTest(test.id);
+                                handleDeleteTest(test.id);
                               }}
                               className="bg-destructive hover:bg-destructive/90"
                             >

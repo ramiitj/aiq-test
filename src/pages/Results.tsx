@@ -36,6 +36,8 @@ interface TestResult {
   completed: boolean;
   test_duration_seconds: number;
   test_version?: string;
+  product_slug?: string;
+  product_name?: string;
 }
 
 interface ScoringResult {
@@ -125,6 +127,20 @@ const Results = () => {
         return;
       }
 
+      // Fetch product name if product_slug exists
+      let productName: string | undefined;
+      if (data.product_slug) {
+        const { data: product } = await supabase
+          .from("assessment_products")
+          .select("name")
+          .eq("slug", data.product_slug)
+          .maybeSingle();
+        
+        if (product) {
+          productName = product.name;
+        }
+      }
+
       // Store test data
       setResult({
         id: data.id,
@@ -134,6 +150,8 @@ const Results = () => {
         completed: data.completed,
         test_duration_seconds: Number(data.test_duration_seconds) || 0,
         test_version: data.test_version || "beginner",
+        product_slug: data.product_slug,
+        product_name: productName,
       });
 
       // Recalculate scores with new IRT system
@@ -593,13 +611,7 @@ const Results = () => {
             {scoringResult.passed ? `Congratulations, ${userName}!` : `Well Done, ${userName}!`}
           </h1>
           <p className="text-center text-muted-foreground font-medium mb-4">
-            You've completed the AIQ<sup className="text-[0.6em]">™</sup>{" "}
-            {result.test_version === "beginner"
-              ? "Beginner"
-              : result.test_version === "professional"
-                ? "Professional"
-                : "Expert"}{" "}
-            Assessment
+            You've completed {result.product_name || `the AIQ™ ${result.test_version === "beginner" ? "Beginner" : "Advanced"} Assessment`}
           </p>
 
           {/* Test Meta Info */}
