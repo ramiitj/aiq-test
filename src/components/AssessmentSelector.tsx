@@ -333,7 +333,7 @@ export default function AssessmentSelector({ defaultTrack = "general" }: Assessm
           Choose Your Assessment
         </h1>
         <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-          Choose from General (2), Student (2), or Professional (15) assessments across specialized tracks.
+          Browse assessments by track: General, Students, Professional.
         </p>
       </div>
 
@@ -352,11 +352,10 @@ export default function AssessmentSelector({ defaultTrack = "general" }: Assessm
 
       {/* Tabs */}
       <Tabs value={activeTrack} onValueChange={(v) => setActiveTrack(v as any)} className="w-full">
-        <TabsList className="grid w-full max-w-2xl mx-auto grid-cols-4">
-          <TabsTrigger value="all">All ({assessments.length})</TabsTrigger>
-          <TabsTrigger value="general">General (2)</TabsTrigger>
-          <TabsTrigger value="adolescent">Students (2)</TabsTrigger>
-          <TabsTrigger value="role-based">Professional (15)</TabsTrigger>
+        <TabsList className="grid w-full max-w-2xl mx-auto grid-cols-3">
+          <TabsTrigger value="general">General</TabsTrigger>
+          <TabsTrigger value="adolescent">Students</TabsTrigger>
+          <TabsTrigger value="role-based">Professional</TabsTrigger>
         </TabsList>
 
         <TabsContent value={activeTrack} className="mt-6">

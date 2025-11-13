@@ -126,12 +126,25 @@ const Test = () => {
   // State for matching questions
   const [matchingPairs, setMatchingPairs] = useState<Record<number, number>>({});
 
+  // Helper to detect adolescent assessments
+  const isAdolescentSlug = (slug?: string | null): boolean => {
+    return !!slug && slug.startsWith('adolescent-');
+  };
+
+  // Helper to normalize version for database
+  const deriveTestVersionFromSlugOrVersion = (input: string): 'beginner' | 'advanced' => {
+    if (input.includes('advanced')) return 'advanced';
+    return 'beginner';
+  };
+
   const [version, setVersion] = useState<TestVersion>(() => {
     const versionParam = searchParams.get('version') as string;
     const productParam = searchParams.get('product') as string;
     
-    // If product param exists, use it directly
-    if (productParam) return productParam as TestVersion;
+    // If product param exists, normalize it
+    if (productParam) {
+      return deriveTestVersionFromSlugOrVersion(productParam) as TestVersion;
+    }
     
     // Map old values to new structure for backward compatibility
     if (versionParam === 'professional' || versionParam === 'expert') {
@@ -805,6 +818,9 @@ const Test = () => {
     );
   }
 
+  // Check if this is an adolescent assessment
+  const isAdolescent = isAdolescentSlug(productSlug || searchParams.get('product'));
+
   if (showConsent) {
     return (
       <div className="min-h-screen">
@@ -945,20 +961,30 @@ const Test = () => {
                   </label>
                 </div>
 
-                <div className="flex items-start gap-3">
-                  <Checkbox
-                    id="ageConfirmation"
-                    checked={consentData.ageConfirmation}
-                    onCheckedChange={(checked) => 
-                      setConsentData(prev => ({ ...prev, ageConfirmation: checked as boolean }))
-                    }
-                    className="mt-0.5"
-                  />
-                  <label htmlFor="ageConfirmation" className="text-sm leading-relaxed cursor-pointer">
-                    <span className="font-bold">I confirm that I am 18 years of age or older.</span> 
-                    <span className="text-destructive"> *</span>
-                  </label>
-                </div>
+                {!isAdolescent && (
+                  <div className="flex items-start gap-3">
+                    <Checkbox
+                      id="ageConfirmation"
+                      checked={consentData.ageConfirmation}
+                      onCheckedChange={(checked) => 
+                        setConsentData(prev => ({ ...prev, ageConfirmation: checked as boolean }))
+                      }
+                      className="mt-0.5"
+                    />
+                    <label htmlFor="ageConfirmation" className="text-sm leading-relaxed cursor-pointer">
+                      <span className="font-bold">I confirm that I am 18 years of age or older.</span> 
+                      <span className="text-destructive"> *</span>
+                    </label>
+                  </div>
+                )}
+
+                {isAdolescent && (
+                  <div className="bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800 rounded-lg p-3">
+                    <p className="text-xs text-blue-900 dark:text-blue-100">
+                      <strong>Note for Students:</strong> If you are under 18, please proceed only with a parent or guardian's permission.
+                    </p>
+                  </div>
+                )}
 
                 <p className="text-xs text-muted-foreground pt-2">
                   <span className="text-destructive">*</span> Required to proceed with assessment
@@ -978,7 +1004,7 @@ const Test = () => {
             </Button>
             <Button
               onClick={handleConsentSubmit}
-              disabled={!consentData.dataCollection || !consentData.ageConfirmation}
+              disabled={!consentData.dataCollection || (!isAdolescent && !consentData.ageConfirmation)}
               className="flex-1 bg-blue-900 hover:bg-blue-800 font-semibold"
             >
               Accept & Continue
@@ -1060,12 +1086,21 @@ const Test = () => {
                       <SelectValue placeholder="Select age range" />
                     </SelectTrigger>
                     <SelectContent>
-                      <SelectItem value="18-24">18-24</SelectItem>
-                      <SelectItem value="25-34">25-34</SelectItem>
-                      <SelectItem value="35-44">35-44</SelectItem>
-                      <SelectItem value="45-54">45-54</SelectItem>
-                      <SelectItem value="55-64">55-64</SelectItem>
-                      <SelectItem value="65+">65+</SelectItem>
+                      {isAdolescent ? (
+                        <>
+                          <SelectItem value="14-15">14-15 years</SelectItem>
+                          <SelectItem value="16-17">16-17 years</SelectItem>
+                        </>
+                      ) : (
+                        <>
+                          <SelectItem value="18-24">18-24</SelectItem>
+                          <SelectItem value="25-34">25-34</SelectItem>
+                          <SelectItem value="35-44">35-44</SelectItem>
+                          <SelectItem value="45-54">45-54</SelectItem>
+                          <SelectItem value="55-64">55-64</SelectItem>
+                          <SelectItem value="65+">65+</SelectItem>
+                        </>
+                      )}
                     </SelectContent>
                   </Select>
                 </div>
@@ -1108,11 +1143,20 @@ const Test = () => {
                       <SelectValue placeholder="Select education level" />
                     </SelectTrigger>
                     <SelectContent>
-                      <SelectItem value="high-school">High School</SelectItem>
-                      <SelectItem value="bachelors">Bachelor's Degree</SelectItem>
-                      <SelectItem value="masters">Master's Degree</SelectItem>
-                      <SelectItem value="phd">Ph.D. or Doctorate</SelectItem>
-                      <SelectItem value="other">Other</SelectItem>
+                      {isAdolescent ? (
+                        <>
+                          <SelectItem value="grades-9-10">Grades 9-10 (Ages 14-15)</SelectItem>
+                          <SelectItem value="grades-11-12">Grades 11-12 (Ages 16-17)</SelectItem>
+                        </>
+                      ) : (
+                        <>
+                          <SelectItem value="high-school">High School</SelectItem>
+                          <SelectItem value="bachelors">Bachelor's Degree</SelectItem>
+                          <SelectItem value="masters">Master's Degree</SelectItem>
+                          <SelectItem value="phd">Ph.D. or Doctorate</SelectItem>
+                          <SelectItem value="other">Other</SelectItem>
+                        </>
+                      )}
                     </SelectContent>
                   </Select>
                 </div>
@@ -1141,49 +1185,52 @@ const Test = () => {
                   </Select>
                 </div>
 
-                {/* Occupation */}
-                <div className="space-y-2">
-                  <Label htmlFor="occupation" className="text-sm font-bold">
-                    Current Occupation
-                  </Label>
-                  <Input
-                    id="occupation"
-                    placeholder="e.g., Software Engineer, Student, etc."
-                    value={demographicsData.occupation}
-                    onChange={(e) => 
-                      setDemographicsData(prev => ({ ...prev, occupation: e.target.value }))
-                    }
-                  />
-                </div>
+                {/* Occupation - hide for adolescents */}
+                {!isAdolescent && (
+                  <div className="space-y-2">
+                    <Label htmlFor="occupation" className="text-sm font-bold">
+                      Current Occupation
+                    </Label>
+                    <Input
+                      id="occupation"
+                      placeholder="e.g., Software Engineer, Student, etc."
+                      value={demographicsData.occupation}
+                      onChange={(e) => 
+                        setDemographicsData(prev => ({ ...prev, occupation: e.target.value }))
+                      }
+                    />
+                  </div>
+                )}
 
-                {/* Industry */}
-                <div className="space-y-2">
-                  <Label htmlFor="industry" className="text-sm font-bold">
-                    Industry/Field
-                  </Label>
-                  <Select
-                    value={demographicsData.industry}
-                    onValueChange={(value) => 
-                      setDemographicsData(prev => ({ ...prev, industry: value }))
-                    }
-                  >
-                    <SelectTrigger id="industry">
-                      <SelectValue placeholder="Select industry" />
-                    </SelectTrigger>
-                    <SelectContent>
-                      <SelectItem value="technology">Technology</SelectItem>
-                      <SelectItem value="healthcare">Healthcare</SelectItem>
-                      <SelectItem value="finance">Finance</SelectItem>
-                      <SelectItem value="education">Education</SelectItem>
-                      <SelectItem value="manufacturing">Manufacturing</SelectItem>
-                      <SelectItem value="retail">Retail</SelectItem>
-                      <SelectItem value="consulting">Consulting</SelectItem>
-                      <SelectItem value="government">Government</SelectItem>
-                      <SelectItem value="student">Student</SelectItem>
-                      <SelectItem value="other">Other</SelectItem>
-                    </SelectContent>
-                  </Select>
-                </div>
+                {/* Industry - hide for adolescents */}
+                {!isAdolescent && (
+                  <div className="space-y-2">
+                    <Label htmlFor="industry" className="text-sm font-bold">
+                      Industry/Field
+                    </Label>
+                    <Select
+                      value={demographicsData.industry}
+                      onValueChange={(value) => 
+                        setDemographicsData(prev => ({ ...prev, industry: value }))
+                      }
+                    >
+                      <SelectTrigger id="industry">
+                        <SelectValue placeholder="Select industry" />
+                      </SelectTrigger>
+                      <SelectContent>
+                        <SelectItem value="technology">Technology</SelectItem>
+                        <SelectItem value="healthcare">Healthcare</SelectItem>
+                        <SelectItem value="finance">Finance</SelectItem>
+                        <SelectItem value="education">Education</SelectItem>
+                        <SelectItem value="manufacturing">Manufacturing</SelectItem>
+                        <SelectItem value="retail">Retail</SelectItem>
+                        <SelectItem value="consulting">Consulting</SelectItem>
+                        <SelectItem value="government">Government</SelectItem>
+                        <SelectItem value="other">Other</SelectItem>
+                      </SelectContent>
+                    </Select>
+                  </div>
+                )}
 
                 {/* Country */}
                 <div className="space-y-2 md:col-span-2">
