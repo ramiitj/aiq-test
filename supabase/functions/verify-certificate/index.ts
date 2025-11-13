@@ -78,6 +78,36 @@ Deno.serve(async (req) => {
     // Server-side validation with share code check
     const { data, error } = await supabase
       .from('public_results')
+      .select(`
+        id,
+        test_id,
+        user_id,
+        overall_score,
+        dimension_scores,
+        test_completion_date,
+        test_duration_seconds,
+        percentile_rank,
+        product_slug,
+        test_version,
+        user_name,
+        pdf_url,
+        created_at
+      `)
+      .eq('share_code', shareCode)
+      .gte('expires_at', new Date().toISOString())
+      .maybeSingle();
+
+    if (error) {
+      console.error('Database query error');
+      return new Response(
+        JSON.stringify({ valid: false, error: 'Internal server error' }),
+        { 
+          status: 500,
+          headers: { ...corsHeaders, 'Content-Type': 'application/json' }
+        }
+      );
+    }
+      .from('public_results')
       .select('id, overall_score, created_at, expires_at, dimension_scores, user_name, test_duration_seconds, percentile_rank, test_version')
       .eq('share_code', shareCode)
       .gt('expires_at', new Date().toISOString())

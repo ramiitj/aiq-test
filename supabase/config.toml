@@ -1,1 +1,13 @@
 project_id = "knuzxxycwaecffulaquk"
+
+[functions.load-assessment]
+verify_jwt = true
+
+[functions.score-test]
+verify_jwt = true
+
+[functions.log-security-violation]
+verify_jwt = true
+
+[functions.verify-certificate]
+verify_jwt = false
