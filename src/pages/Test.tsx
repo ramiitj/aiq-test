@@ -1568,23 +1568,8 @@ const Test = () => {
                 )}
               </div>
             </div>
+            </CardContent>
           </Card>
-        </div>
-      </main>
-          <div className="flex gap-3">
-            <AlertCircle className="h-5 w-5 text-blue-700 dark:text-blue-300 flex-shrink-0 mt-0.5" />
-            <div className="text-sm text-blue-900 dark:text-blue-100">
-              <p className="font-semibold mb-1">Assessment Tips:</p>
-              <ul className="text-xs space-y-1 text-blue-700 dark:text-blue-300">
-                <li>• Take your time to read each question carefully</li>
-                <li>• You can navigate back to review previous questions</li>
-                <li>• Your progress is automatically saved</li>
-                {currentItem.type === 'multiple-response' && (
-                  <li>• Select ALL options that apply for multiple-response questions</li>
-                )}
-              </ul>
-            </div>
-          </div>
         </div>
       </main>
     </div>
