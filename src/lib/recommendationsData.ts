@@ -24,10 +24,14 @@ type AssessmentLevel =
   | "professional" 
   | "expert" 
   | "adolescent"
-  // Role-specific beginner levels
-  | "sde-beginner" | "pm-beginner" | "ba-beginner"
-  // Role-specific advanced levels
-  | "sde-advanced" | "pm-advanced" | "ba-advanced";
+  | "sde-beginner" | "sde-advanced"
+  | "pm-beginner" | "pm-advanced"
+  | "ba-beginner" | "ba-advanced"
+  | "dm-beginner" | "dm-advanced"
+  | "ds-beginner" | "ds-advanced"
+  | "hr-beginner" | "hr-advanced"
+  | "ops-beginner" | "ops-advanced"
+  | "sales-beginner" | "sales-advanced";
 
 interface TieredRecommendations {
   [dimensionCode: string]: {
