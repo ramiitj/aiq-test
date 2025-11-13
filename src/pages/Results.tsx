@@ -230,6 +230,16 @@ const Results = () => {
       return;
     }
 
+    // Check if user met minimum dimension requirements
+    if (scoringResult.failedDimensions && scoringResult.failedDimensions.length > 0) {
+      toast({
+        title: "Certificate Not Available",
+        description: `You did not meet the minimum requirement of ${scoringResult.dimensionMinimumRequired}% in the following dimensions: ${scoringResult.failedDimensions.join(', ')}`,
+        variant: "destructive",
+      });
+      return;
+    }
+
     setDownloadingPDF(true);
     try {
       // Convert dimension scores to array format for PDF
