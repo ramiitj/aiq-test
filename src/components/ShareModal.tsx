@@ -7,6 +7,7 @@ import { Download, Copy, Linkedin, Twitter, Facebook, Loader2, Share2, CheckCirc
 import { useToast } from "@/hooks/use-toast";
 import { generateSocialMediaImage, getLevelText } from "@/lib/socialMediaGenerator";
 import { generateCaption } from "@/lib/captionGenerator";
+import type { AssessmentContext } from "@/lib/assessmentUtils";
 
 interface ShareModalProps {
   open: boolean;
@@ -17,6 +18,7 @@ interface ShareModalProps {
   verificationCode: string;
   verificationUrl: string;
   passed: boolean;
+  assessmentContext?: AssessmentContext;
 }
 
 export function ShareModal({
@@ -28,6 +30,7 @@ export function ShareModal({
   verificationCode,
   verificationUrl,
   passed,
+  assessmentContext,
 }: ShareModalProps) {
   const [imageBlob, setImageBlob] = useState<Blob | null>(null);
   const [imageUrl, setImageUrl] = useState<string>("");
@@ -43,15 +46,6 @@ export function ShareModal({
   useEffect(() => {
     if (open && !imageBlob) {
       generateImage();
-    const generatedCaption = generateCaption({
-      score,
-      totalPossible,
-      level,
-      topDimensions,
-      verificationUrl,
-      passed,
-    });
-      setCaption(generatedCaption);
     }
   }, [open]);
 
@@ -65,10 +59,23 @@ export function ShareModal({
         verificationCode,
         dimensions: topDimensions,
         verificationUrl,
+        assessmentContext,
       });
       setImageBlob(blob);
       const url = URL.createObjectURL(blob);
       setImageUrl(url);
+      
+      // Generate caption with assessment context
+      const generatedCaption = generateCaption({
+        score,
+        totalPossible,
+        level,
+        topDimensions,
+        verificationUrl,
+        passed,
+        assessmentContext,
+      });
+      setCaption(generatedCaption);
     } catch (error) {
       toast({
         title: "Error Generating Image",

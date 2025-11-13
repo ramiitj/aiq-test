@@ -1,4 +1,5 @@
 import { getProficiencyLevel } from './recommendationsSelector';
+import type { AssessmentContext } from './assessmentUtils';
 
 interface SocialMediaImageData {
   score: number;
@@ -8,6 +9,7 @@ interface SocialMediaImageData {
   dimensions: Array<{ name: string; score: number }>;
   verificationUrl: string;
   assessmentLevel?: string;
+  assessmentContext?: AssessmentContext;
 }
 
 export async function generateSocialMediaImage(data: SocialMediaImageData): Promise<Blob> {
@@ -47,7 +49,21 @@ export async function generateSocialMediaImage(data: SocialMediaImageData): Prom
   ctx.fillStyle = 'white';
   ctx.font = 'bold 28px Inter, system-ui, sans-serif';
   ctx.textAlign = 'center';
-  ctx.fillText('AIQ Assessment™ Results', 600, 60);
+  
+  if (data.assessmentContext?.isAdolescent) {
+    ctx.fillText('AIQ Student Assessment™', 600, 50);
+    ctx.font = '600 18px Inter, system-ui, sans-serif';
+    ctx.fillText(`Ages ${data.assessmentContext.ageGroup || '14-17'}`, 600, 75);
+  } else if (data.assessmentContext?.type === 'role-specific') {
+    const shortTitle = data.assessmentContext.assessmentName.length > 35 
+      ? `${data.assessmentContext.role} AIQ Assessment™` 
+      : data.assessmentContext.assessmentName;
+    ctx.fillText(shortTitle, 600, 50);
+    ctx.font = '600 18px Inter, system-ui, sans-serif';
+    ctx.fillText('Professional Track Results', 600, 75);
+  } else {
+    ctx.fillText('AIQ Assessment™ Results', 600, 60);
+  }
 
   // Draw decorative line
   ctx.strokeStyle = 'rgba(255, 255, 255, 0.3)';
@@ -74,8 +90,12 @@ export async function generateSocialMediaImage(data: SocialMediaImageData): Prom
   ctx.fillStyle = 'white';
   ctx.fill();
 
-  // Badge border
-  ctx.strokeStyle = '#F59E0B';
+  // Badge border - different color for students
+  if (data.assessmentContext?.isAdolescent) {
+    ctx.strokeStyle = '#10B981'; // Green for students
+  } else {
+    ctx.strokeStyle = '#F59E0B'; // Gold for professionals
+  }
   ctx.lineWidth = 6;
   ctx.stroke();
 

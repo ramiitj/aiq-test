@@ -23,12 +23,15 @@ import {
   ExternalLink,
   Brain,
   User,
+  GraduationCap,
+  Briefcase,
 } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import { ShareModal } from "@/components/ShareModal";
 import { generatePDFReport } from "@/lib/pdfGenerator";
 import { calculateTestScores } from "@/lib/scoreCalculator";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
+import { getAssessmentContext, getPerformanceDescriptor, type AssessmentContext } from "@/lib/assessmentUtils";
 
 interface TestResult {
   id: string;
@@ -93,6 +96,7 @@ const Results = () => {
   const [recommendations, setRecommendations] = useState<{ [key: string]: string[] }>({});
   const [loadingRecommendations, setLoadingRecommendations] = useState(false);
   const [isPassed, setIsPassed] = useState(false);
+  const [assessmentContext, setAssessmentContext] = useState<AssessmentContext | null>(null);
   const navigate = useNavigate();
   const { toast } = useToast();
 
@@ -130,19 +134,32 @@ const Results = () => {
         return;
       }
 
-      // Fetch product name if product_slug exists
+      // Fetch product details if product_slug exists
       let productName: string | undefined;
       let productId: string | undefined;
+      let context: AssessmentContext | null = null;
+      
       if (data.product_slug) {
         const { data: product } = await supabase
           .from("assessment_products")
-          .select("id, name")
+          .select("*")
           .eq("slug", data.product_slug)
           .maybeSingle();
         
         if (product) {
           productName = product.name;
           productId = product.id;
+          
+          // Create assessment context
+          context = getAssessmentContext(
+            product.name,
+            product.slug,
+            product.age_group,
+            product.track,
+            product.role
+          );
+          
+          setAssessmentContext(context);
         }
       }
 
@@ -300,7 +317,8 @@ const Results = () => {
         userName,
         result.test_duration_seconds || 0,
         result.test_version || 'professional',
-        scoringResult // Pass full scoring result for validation
+        scoringResult, // Pass full scoring result for validation
+        assessmentContext || undefined // Pass assessment context
       );
 
       // Update report_generated_at
@@ -449,12 +467,29 @@ const Results = () => {
     const maxPointsPerDimension = scoringResult.totalPossiblePoints / 8;
     const percentage = (points / maxPointsPerDimension) * 100;
     
-    // Get test version to use correct thresholds
-    const testVersion = result?.test_version || 'professional';
     let label = "Emerging";
     let color = "text-orange-600 dark:text-orange-400";
     let bg = "bg-orange-50 dark:bg-orange-950/20";
     
+    // Use assessment context if available
+    if (assessmentContext) {
+      label = getPerformanceDescriptor(percentage, assessmentContext);
+      // Set colors based on label
+      if (label === "Outstanding" || label === "Advanced" || label === "Expert" || label === "Master") {
+        color = "text-green-600 dark:text-green-400";
+        bg = "bg-green-50 dark:bg-green-950/20";
+      } else if (label === "Excellent" || label === "Proficient") {
+        color = "text-blue-600 dark:text-blue-400";
+        bg = "bg-blue-50 dark:bg-blue-950/20";
+      } else if (label === "Good Progress" || label === "Developing") {
+        color = "text-yellow-600 dark:text-yellow-400";
+        bg = "bg-yellow-50 dark:bg-yellow-950/20";
+      }
+      return { label, color, bg };
+    }
+    
+    // Fallback to test version
+    const testVersion = result?.test_version || 'professional';
     if (testVersion.includes("beginner")) {
       // Beginner thresholds
       if (percentage >= 91) {
@@ -537,9 +572,27 @@ const Results = () => {
       <div className="bg-white dark:bg-gray-900 border-b-2 py-8">
         <div className="container max-w-5xl">
           <div className="text-center">
-            <Brain className="w-20 h-20 mx-auto mb-4 text-primary" />
+            {assessmentContext?.isAdolescent ? (
+              <GraduationCap className="w-20 h-20 mx-auto mb-4 text-primary" />
+            ) : assessmentContext?.type === 'role-specific' ? (
+              <Briefcase className="w-20 h-20 mx-auto mb-4 text-primary" />
+            ) : (
+              <Brain className="w-20 h-20 mx-auto mb-4 text-primary" />
+            )}
             <h1 className="font-serif text-4xl font-bold mb-2">Official Score Report</h1>
-            <p className="text-lg text-muted-foreground">AIQ Assessment™</p>
+            <p className="text-lg text-muted-foreground">
+              {assessmentContext?.displayTitle || 'AIQ Assessment™'}
+            </p>
+            {assessmentContext?.isAdolescent && assessmentContext.ageGroup && (
+              <p className="text-sm text-muted-foreground mt-1">
+                Student Track • Ages {assessmentContext.ageGroup}
+              </p>
+            )}
+            {assessmentContext?.type === 'role-specific' && (
+              <p className="text-sm text-muted-foreground mt-1">
+                Professional Track • {assessmentContext.role}
+              </p>
+            )}
             <div className="mt-4 flex items-center justify-center gap-6 text-sm text-muted-foreground flex-wrap">
               <div className="flex items-center gap-2">
                 <User className="w-4 h-4" />
@@ -728,6 +781,7 @@ const Results = () => {
         verificationCode={verificationCode}
         verificationUrl={verificationUrl}
         passed={scoringResult.passed}
+        assessmentContext={assessmentContext || undefined}
       />
     </div>
   );
