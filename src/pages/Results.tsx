@@ -518,35 +518,207 @@ const Results = () => {
   };
 
   return (
-    <div className="min-h-screen flex flex-col animate-fade-in">
+    <div className="min-h-screen bg-gray-50 dark:bg-gray-950">
       <Navigation isAuthenticated={true} />
-
-      <main className="container py-8 max-w-5xl flex-grow">
-        {/* Pass/Fail Banner */}
-        {scoringResult.passed ? (
-          <div className="bg-gradient-to-r from-green-500 to-emerald-600 text-white p-6 rounded-xl mb-8 shadow-lg">
-            <div className="flex items-start gap-4">
-              <div className="p-3 bg-white/20 rounded-full flex-shrink-0">
-                <CheckCircle2 className="h-8 w-8" />
+      
+      {/* Official Header with Logo */}
+      <div className="bg-white dark:bg-gray-900 border-b-2 py-8">
+        <div className="container max-w-5xl">
+          <div className="text-center">
+            <Brain className="w-20 h-20 mx-auto mb-4 text-primary" />
+            <h1 className="font-serif text-4xl font-bold mb-2">Official Score Report</h1>
+            <p className="text-lg text-muted-foreground">AIQ Assessment™</p>
+            <div className="mt-4 flex items-center justify-center gap-6 text-sm text-muted-foreground flex-wrap">
+              <div className="flex items-center gap-2">
+                <User className="w-4 h-4" />
+                <span>{userName || 'Test Taker'}</span>
               </div>
-              <div className="flex-1">
-                <h2 className="text-2xl font-black mb-2">
-                  🎉 Congratulations! You Passed the AIQ<sup className="text-[0.6em]">™</sup> Assessment
-                </h2>
-                <p className="text-white/90 text-lg mb-3">
-                  You achieved <span className="font-bold">{scoringResult.overallScore} points</span> out of{" "}
-                  {scoringResult.totalPossiblePoints}
-                  (passing score: {scoringResult.passingScore})
-                </p>
-                <p className="text-sm text-white/80">
-                  Performance Level: <span className="font-semibold">{scoringResult.performanceLevel}</span> •
-                  {scoringResult.correctCount} out of {scoringResult.totalCount} questions correct
-                </p>
+              <div className="flex items-center gap-2">
+                <Calendar className="w-4 h-4" />
+                <span>{new Date(result.created_at).toLocaleDateString('en-US', { 
+                  year: 'numeric', 
+                  month: 'long', 
+                  day: 'numeric' 
+                })}</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <Clock className="w-4 h-4" />
+                <span>{Math.floor(result.test_duration_seconds / 60)} minutes</span>
               </div>
             </div>
           </div>
+        </div>
+      </div>
+      
+      <div className="container max-w-5xl py-12 space-y-8">
+        {/* Pass/Fail Banner */}
+        {scoringResult.passed ? (
+          <Alert className="border-2 border-success bg-success/10">
+            <CheckCircle2 className="h-5 w-5 text-success" />
+            <AlertTitle className="text-lg font-bold text-success">Assessment Passed</AlertTitle>
+            <AlertDescription className="text-success">
+              Congratulations! You have successfully demonstrated proficiency in AI collaboration and intelligence.
+              You are eligible to receive your official certificate.
+            </AlertDescription>
+          </Alert>
         ) : (
-          <div className="bg-gradient-to-r from-amber-500 to-orange-600 text-white p-6 rounded-xl mb-8 shadow-lg">
+          <Alert className="border-2 border-destructive bg-destructive/10">
+            <AlertCircle className="h-5 w-5 text-destructive" />
+            <AlertTitle className="text-lg font-bold text-destructive">Assessment Not Passed</AlertTitle>
+            <AlertDescription className="text-destructive">
+              You did not meet the passing criteria. Review your dimension scores below and consider 
+              retaking the assessment after additional preparation.
+            </AlertDescription>
+          </Alert>
+        )}
+        
+        {/* Overall Score Summary Card */}
+        <Card className="test-card">
+          <CardHeader className="test-section-header">
+            <h2 className="font-serif text-2xl font-bold">Overall Performance Summary</h2>
+          </CardHeader>
+          <CardContent className="p-8">
+            <div className="grid md:grid-cols-3 gap-8 mb-6">
+              {/* Total Score */}
+              <div className="text-center">
+                <p className="text-sm text-muted-foreground mb-2 uppercase tracking-wide">Total Score</p>
+                <p className="text-6xl font-bold text-primary mb-2 tabular-nums">
+                  {scoringResult.overallScore}
+                </p>
+                <p className="text-sm text-muted-foreground">
+                  out of {scoringResult.totalPossiblePoints} points
+                </p>
+              </div>
+              
+              {/* Percentage */}
+              <div className="text-center border-x-2">
+                <p className="text-sm text-muted-foreground mb-2 uppercase tracking-wide">Score Percentage</p>
+                <p className="text-6xl font-bold text-primary mb-2 tabular-nums">
+                  {Math.round(scoringResult.percentageScore)}%
+                </p>
+                <p className="text-sm text-muted-foreground">
+                  Performance Level
+                </p>
+              </div>
+              
+              {/* Status */}
+              <div className="text-center">
+                <p className="text-sm text-muted-foreground mb-2 uppercase tracking-wide">Status</p>
+                {scoringResult.passed ? (
+                  <div>
+                    <CheckCircle2 className="w-20 h-20 mx-auto text-success mb-2" />
+                    <p className="text-2xl font-bold text-success uppercase tracking-wide">PASSED</p>
+                  </div>
+                ) : (
+                  <div>
+                    <AlertCircle className="w-20 h-20 mx-auto text-destructive mb-2" />
+                    <p className="text-2xl font-bold text-destructive uppercase tracking-wide">NOT PASSED</p>
+                  </div>
+                )}
+              </div>
+            </div>
+            
+            {/* Performance Level Badge */}
+            <div className="text-center pt-6 border-t-2">
+              <p className="text-sm text-muted-foreground mb-2">Performance Classification</p>
+              <span className="inline-flex px-6 py-2 bg-primary/10 text-primary text-lg font-bold rounded-full">
+                {scoringResult.performanceLevel}
+              </span>
+            </div>
+          </CardContent>
+        </Card>
+        
+        {/* Dimension Analysis */}
+        <Card className="test-card">
+          <CardHeader className="test-section-header">
+            <h2 className="font-serif text-2xl font-bold">Dimension Analysis</h2>
+            <p className="text-sm text-muted-foreground mt-1">
+              Detailed breakdown of your performance across all 8 AIQ dimensions
+            </p>
+          </CardHeader>
+          <CardContent className="p-0">
+            <div className="divide-y-2">
+              {dimensionsWithNames.map((dim, idx) => {
+                const maxScore = scoringResult.totalPossiblePoints / 8;
+                const percentage = (dim.score / maxScore) * 100;
+                const { label, color, bg } = getScoreLevel(dim.score);
+                
+                return (
+                  <div key={idx} className="p-6 hover:bg-accent/50 transition-colors">
+                    <div className="flex items-center justify-between mb-3">
+                      <div className="flex-1">
+                        <h4 className="font-semibold text-base">{dim.name}</h4>
+                        <span className={`inline-flex mt-1 px-2 py-0.5 text-xs font-semibold rounded ${bg} ${color}`}>
+                          {label}
+                        </span>
+                      </div>
+                      <div className="text-right ml-4">
+                        <p className="text-2xl font-bold tabular-nums">{dim.score}</p>
+                        <p className="text-xs text-muted-foreground">points</p>
+                      </div>
+                    </div>
+                    <Progress value={percentage} className="h-3" />
+                    <p className="text-xs text-muted-foreground mt-2">
+                      {percentage.toFixed(1)}% proficiency • {dim.score} of {maxScore.toFixed(0)} points
+                    </p>
+                  </div>
+                );
+              })}
+            </div>
+          </CardContent>
+        </Card>
+        
+        {/* Action Buttons */}
+        <div className="grid md:grid-cols-2 gap-4">
+          {scoringResult.passed && (
+            <Button 
+              size="lg" 
+              className="professional" 
+              onClick={handleDownloadPDF}
+              disabled={downloadingPDF}
+            >
+              <Download className="w-5 h-5 mr-2" />
+              {downloadingPDF ? 'Generating...' : 'Download Official Certificate'}
+            </Button>
+          )}
+          <Button 
+            size="lg" 
+            variant="outline"
+            onClick={handleGenerateShareablePost}
+          >
+            <Share2 className="w-5 h-5 mr-2" />
+            Share Results
+          </Button>
+          <Button 
+            size="lg" 
+            variant="outline"
+            onClick={() => navigate('/dashboard')}
+          >
+            Return to Dashboard
+          </Button>
+          <Button 
+            size="lg" 
+            variant="outline"
+            onClick={() => navigate('/about')}
+          >
+            <Lightbulb className="w-5 h-5 mr-2" />
+            Learn More About AIQ
+          </Button>
+        </div>
+      </div>
+      
+      <ShareModal
+        isOpen={shareModalOpen}
+        onClose={() => setShareModalOpen(false)}
+        verificationCode={verificationCode}
+        assessmentName={result.product_name || 'AIQ Assessment'}
+        score={scoringResult.percentageScore}
+      />
+    </div>
+  );
+};
+
+export default Results;
             <div className="flex items-start gap-4">
               <div className="p-3 bg-white/20 rounded-full flex-shrink-0">
                 <AlertCircle className="h-8 w-8" />

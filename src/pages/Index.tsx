@@ -14,6 +14,7 @@ import {
   Briefcase,
   Rocket,
   Share2,
+  ChevronRight,
 } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { Navigation } from "@/components/Navigation";
@@ -22,6 +23,50 @@ import AssessmentSelector from "@/components/AssessmentSelector";
 
 const Index = () => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [currentSampleQuestion, setCurrentSampleQuestion] = useState(0);
+
+  // Sample questions for preview
+  const sampleQuestions = [
+    {
+      question: "Which of the following best describes the primary advantage of using AI-powered tools for content generation?",
+      dimension: "Strategic AI Understanding",
+      options: [
+        'Eliminates the need for human oversight',
+        'Accelerates ideation and drafting processes',
+        'Guarantees factual accuracy in all outputs',
+        'Replaces domain expertise requirements'
+      ],
+      correctAnswer: 1
+    },
+    {
+      question: "When crafting prompts for an AI system, which approach is most effective for obtaining precise, actionable outputs?",
+      dimension: "Prompt Engineering & Iteration",
+      options: [
+        'Using vague, open-ended instructions',
+        'Providing specific context and desired output format',
+        'Asking multiple unrelated questions simultaneously',
+        'Avoiding examples to let AI interpret freely'
+      ],
+      correctAnswer: 1
+    },
+    {
+      question: "What is the most critical factor when evaluating AI-generated content for professional use?",
+      dimension: "Critical Evaluation & Calibration",
+      options: [
+        'Length and formatting of the output',
+        'Speed of generation',
+        'Accuracy, relevance, and alignment with goals',
+        'Complexity of vocabulary used'
+      ],
+      correctAnswer: 2
+    }
+  ];
+
+  const handleNextSample = () => {
+    setCurrentSampleQuestion((prev) => (prev + 1) % sampleQuestions.length);
+  };
+
+  const currentSample = sampleQuestions[currentSampleQuestion];
 
   useEffect(() => {
     checkAuth();
@@ -300,26 +345,26 @@ const Index = () => {
                   <div>
                     <h3 className="text-lg font-serif font-semibold">Sample Question</h3>
                     <p className="text-sm text-muted-foreground mt-1">
-                      Dimension: Strategic AI Understanding
+                      Dimension: {currentSample.dimension}
                     </p>
                   </div>
                   <div className="text-right">
-                    <p className="text-sm font-mono text-muted-foreground">Question 1 of 3</p>
+                    <p className="text-sm font-mono text-muted-foreground">
+                      Question {currentSampleQuestion + 1} of {sampleQuestions.length}
+                    </p>
                   </div>
                 </div>
               </CardHeader>
               <CardContent className="p-8">
                 <p className="text-base leading-relaxed mb-6">
-                  Which of the following best describes the primary advantage of using AI-powered tools for content generation?
+                  {currentSample.question}
                 </p>
                 <div className="space-y-3">
-                  {['Eliminates the need for human oversight', 
-                    'Accelerates ideation and drafting processes', 
-                    'Guarantees factual accuracy in all outputs',
-                    'Replaces domain expertise requirements'].map((option, i) => (
+                  {currentSample.options.map((option, i) => (
                     <button
                       key={i}
                       className="question-option"
+                      disabled
                     >
                       <div className="flex items-start gap-3">
                         <span className="flex-shrink-0 w-7 h-7 flex items-center justify-center rounded-full border-2 font-mono font-semibold text-sm">
@@ -330,9 +375,21 @@ const Index = () => {
                     </button>
                   ))}
                 </div>
-                <div className="mt-6 pt-6 border-t">
-                  <Button variant="outline" size="lg" className="w-full">
-                    View More Sample Questions
+                <div className="mt-6 pt-6 border-t flex items-center justify-between">
+                  <p className="text-sm text-muted-foreground">
+                    {currentSampleQuestion < sampleQuestions.length - 1 
+                      ? 'Click to see the next sample question' 
+                      : 'This is a preview - start the real assessment to get your score'}
+                  </p>
+                  <Button 
+                    variant="outline" 
+                    size="lg"
+                    onClick={handleNextSample}
+                  >
+                    {currentSampleQuestion < sampleQuestions.length - 1 
+                      ? 'Next Sample Question' 
+                      : 'Back to First Question'}
+                    <ChevronRight className="w-4 h-4 ml-2" />
                   </Button>
                 </div>
               </CardContent>

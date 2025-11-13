@@ -4,7 +4,7 @@ import { supabase } from "@/integrations/supabase/client";
 import { Navigation } from "@/components/Navigation";
 import { loadTestItems, type Dimension, type TestVersion } from "@/lib/adaptiveItemSelector";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Progress } from "@/components/ui/progress";
 import { Checkbox } from "@/components/ui/checkbox";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
@@ -20,7 +20,8 @@ import {
   Brain,
   User,
   GripVertical,
-  ArrowUpDown
+  ArrowUpDown,
+  ArrowRight
 } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import { Input } from "@/components/ui/input";
@@ -827,46 +828,47 @@ const Test = () => {
 
   if (showConsent) {
     return (
-      <div className="min-h-screen">
+      <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white dark:from-gray-950 dark:to-gray-900">
         <Navigation isAuthenticated={true} />
         
-        <main className="container py-8 max-w-4xl">
-          {/* Consent Header */}
-          <div className="mb-6">
-            <div className="flex items-center gap-3 mb-3">
-              <div className="p-2 bg-blue-100 dark:bg-blue-900/30 rounded-lg">
-                <Shield className="h-6 w-6 text-blue-700 dark:text-blue-300" />
-              </div>
-              <div>
-                <h1 className="text-3xl font-black tracking-tight">Informed Consent</h1>
-                <p className="text-sm text-muted-foreground font-medium">
-                  Please review and accept before starting your assessment
-                </p>
-              </div>
-            </div>
-          </div>
-
-          {/* Test Info Card */}
-          <Card className="mb-6 shadow-sm border bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-blue-950/20 dark:to-indigo-950/20">
-            <CardContent className="pt-5 pb-5">
-              <div className="flex items-center justify-between">
+        <main className="container py-12 max-w-3xl">
+          <Card className="test-card">
+            <CardHeader className="test-section-header">
+              <div className="flex items-center gap-3">
+                <FileText className="w-6 h-6 text-primary" />
                 <div>
-                <h2 className="text-lg font-black mb-1">
-                  {assessmentInfo?.name || (version === 'beginner' ? 'Beginner Assessment' : 'Advanced Assessment')}
-                </h2>
-                  <p className="text-sm text-muted-foreground">
-                    {totalQuestions} questions • {Math.floor(testDuration / 60)} minutes • 8 dimensions
+                  <h1 className="font-serif text-xl font-bold">Assessment Agreement</h1>
+                  <p className="text-sm text-muted-foreground mt-1">
+                    Please review and accept the terms before proceeding
                   </p>
                 </div>
-                <div className="text-right">
-                  <div className="text-2xl font-black text-blue-900 dark:text-blue-100">
-                    {formatTime(testDuration)}
+              </div>
+            </CardHeader>
+            
+            <CardContent className="p-8 space-y-6">
+              {/* Assessment Details Summary Card */}
+              <div className="bg-muted/50 rounded-lg p-6 border-2">
+                <h3 className="font-serif font-semibold text-lg mb-4 text-center">Assessment Details</h3>
+                <div className="grid grid-cols-3 gap-4 text-center">
+                  <div>
+                    <p className="text-3xl font-bold text-primary tabular-nums">{totalQuestions}</p>
+                    <p className="text-sm text-muted-foreground mt-1">Questions</p>
                   </div>
-                  <p className="text-xs text-muted-foreground">Total Time</p>
+                  <div className="border-x">
+                    <p className="text-3xl font-bold text-primary tabular-nums">{Math.floor(testDuration / 60)}</p>
+                    <p className="text-sm text-muted-foreground mt-1">Minutes</p>
+                  </div>
+                  <div>
+                    <p className="text-3xl font-bold text-primary tabular-nums">8</p>
+                    <p className="text-sm text-muted-foreground mt-1">Dimensions</p>
+                  </div>
+                </div>
+                <div className="mt-4 pt-4 border-t text-center">
+                  <p className="text-base font-semibold">
+                    {assessmentInfo?.name || (version === 'beginner' ? 'Beginner Assessment' : 'Advanced Assessment')}
+                  </p>
                 </div>
               </div>
-            </CardContent>
-          </Card>
 
           {/* Consent Content */}
           <Card className="mb-6 shadow-sm border">
@@ -930,89 +932,75 @@ const Test = () => {
             </CardContent>
           </Card>
 
-          {/* Consent Checkboxes */}
-          <Card className="mb-6 shadow-sm border">
-            <CardContent className="pt-6 pb-6">
+              
+              {/* Consent Checkboxes with Professional Layout */}
               <div className="space-y-4">
-                <div className="flex items-start gap-3">
+                <div className="flex items-start gap-3 p-4 border-2 rounded-lg hover:bg-accent/50 transition-colors">
                   <Checkbox
-                    id="dataCollection"
+                    id="data-collection"
                     checked={consentData.dataCollection}
                     onCheckedChange={(checked) => 
-                      setConsentData(prev => ({ ...prev, dataCollection: checked as boolean }))
+                      setConsentData(prev => ({ ...prev, dataCollection: !!checked }))
                     }
-                    className="mt-0.5"
+                    className="mt-1"
                   />
-                  <label htmlFor="dataCollection" className="text-sm leading-relaxed cursor-pointer">
-                    <span className="font-bold">I consent to data collection</span> for the purpose of generating 
-                    my AIQ assessment results. I understand my data will be stored securely and I can export or 
-                    delete it at any time. <span className="text-destructive">*</span>
-                  </label>
+                  <Label htmlFor="data-collection" className="text-sm leading-relaxed cursor-pointer flex-1">
+                    I consent to the collection and processing of my assessment data for scoring, 
+                    certification, and research purposes. My data will be stored securely and used 
+                    in accordance with privacy regulations.
+                  </Label>
                 </div>
-
-                <div className="flex items-start gap-3">
-                  <Checkbox
-                    id="researchParticipation"
-                    checked={consentData.researchParticipation}
-                    onCheckedChange={(checked) => 
-                      setConsentData(prev => ({ ...prev, researchParticipation: checked as boolean }))
-                    }
-                    className="mt-0.5"
-                  />
-                  <label htmlFor="researchParticipation" className="text-sm leading-relaxed cursor-pointer">
-                    <span className="font-bold">I consent to anonymized research participation</span> to help 
-                    improve the AIQ framework and advance human-AI collaboration research. (Optional)
-                  </label>
-                </div>
-
+                
                 {!isAdolescent && (
-                  <div className="flex items-start gap-3">
+                  <div className="flex items-start gap-3 p-4 border-2 rounded-lg hover:bg-accent/50 transition-colors">
                     <Checkbox
-                      id="ageConfirmation"
+                      id="age-confirm"
                       checked={consentData.ageConfirmation}
-                      onCheckedChange={(checked) => 
-                        setConsentData(prev => ({ ...prev, ageConfirmation: checked as boolean }))
+                      onCheckedChange={(checked) =>
+                        setConsentData(prev => ({ ...prev, ageConfirmation: !!checked }))
                       }
-                      className="mt-0.5"
+                      className="mt-1"
                     />
-                    <label htmlFor="ageConfirmation" className="text-sm leading-relaxed cursor-pointer">
-                      <span className="font-bold">I confirm that I am 18 years of age or older.</span> 
-                      <span className="text-destructive"> *</span>
-                    </label>
+                    <Label htmlFor="age-confirm" className="text-sm leading-relaxed cursor-pointer flex-1">
+                      I confirm that I am 18 years of age or older and am voluntarily participating 
+                      in this assessment.
+                    </Label>
                   </div>
                 )}
-
-                <p className="text-xs text-muted-foreground pt-2">
-                  <span className="text-destructive">*</span> Required to proceed with assessment
-                </p>
+                
+                <div className="flex items-start gap-3 p-4 border-2 rounded-lg hover:bg-accent/50 transition-colors">
+                  <Checkbox
+                    id="research-participation"
+                    checked={consentData.researchParticipation}
+                    onCheckedChange={(checked) =>
+                      setConsentData(prev => ({ ...prev, researchParticipation: !!checked }))
+                    }
+                    className="mt-1"
+                  />
+                  <Label htmlFor="research-participation" className="text-sm leading-relaxed cursor-pointer flex-1">
+                    I agree to participate in research studies (optional). My anonymized results may 
+                    be used for academic research and product improvement.
+                  </Label>
+                </div>
               </div>
+              
+              {/* Professional CTA */}
+              <Button
+                size="lg"
+                className="w-full professional"
+                disabled={!consentData.dataCollection || (!isAdolescent && !consentData.ageConfirmation)}
+                onClick={handleConsentSubmit}
+              >
+                Begin Assessment
+                <ArrowRight className="w-4 h-4 ml-2" />
+              </Button>
+              
+              <p className="text-xs text-center text-muted-foreground">
+                By clicking "Begin Assessment", you acknowledge that you have read and understood 
+                the terms outlined above.
+              </p>
             </CardContent>
           </Card>
-
-          {/* Action Buttons */}
-          <div className="flex gap-3">
-            <Button
-              onClick={() => navigate("/dashboard")}
-              variant="outline"
-              className="flex-1 font-semibold"
-            >
-              Cancel
-            </Button>
-            <Button
-              onClick={handleConsentSubmit}
-              disabled={!consentData.dataCollection || (!isAdolescent && !consentData.ageConfirmation)}
-              className="flex-1 bg-blue-900 hover:bg-blue-800 font-semibold"
-            >
-              Accept & Continue
-              <ChevronRight className="ml-2 h-4 w-4" />
-            </Button>
-          </div>
-
-          {/* Footer Note */}
-          <p className="text-xs text-center text-muted-foreground mt-6">
-            By proceeding, you acknowledge that you have read and understood the consent information above.
-            For questions, contact: ram@iitj.ac.in
-          </p>
         </main>
       </div>
     );
@@ -1327,52 +1315,73 @@ const Test = () => {
         />
       )}
       
-      {/* Test Header */}
-      <div className="border-b bg-white/80 dark:bg-gray-950/80 backdrop-blur-sm sticky top-16 z-40">
-        <div className="container py-3">
-          <div className="flex items-center justify-between mb-2">
+      {/* Professional Test Header - Fixed at top */}
+      <div className="sticky top-0 z-50 bg-white dark:bg-gray-900 border-b-2 border-gray-200 dark:border-gray-700 shadow-sm">
+        <div className="container max-w-6xl">
+          <div className="flex items-center justify-between py-3">
+            {/* Left: Test Info */}
+            <div className="flex items-center gap-4">
+              <Brain className="w-6 h-6 text-primary" />
+              <div>
+                <h1 className="text-sm font-semibold">AIQ Assessment™</h1>
+                <p className="text-xs text-muted-foreground">
+                  {assessmentInfo?.name || 'Professional Assessment'}
+                </p>
+              </div>
+            </div>
+            
+            {/* Center: Progress */}
+            <div className="hidden md:flex items-center gap-3">
+              <span className="text-sm font-mono">
+                Question {globalQuestionNumber} of {actualTotalQuestions}
+              </span>
+              <div className="w-32 h-2 bg-gray-200 dark:bg-gray-700 rounded-full overflow-hidden">
+                <div 
+                  className="h-full bg-primary transition-all duration-300"
+                  style={{ width: `${progress}%` }}
+                />
+              </div>
+            </div>
+            
+            {/* Right: Timer */}
             <div className="flex items-center gap-3">
-              <div className="flex items-center gap-2">
-                <Clock className="h-4 w-4 text-primary" />
-                <span className="text-sm font-bold tabular-nums">
+              <div className="flex items-center gap-2 px-3 py-1.5 bg-muted rounded-md">
+                <Clock className="w-4 h-4" />
+                <span className="text-sm font-mono font-semibold">
                   {formatTime(timeRemaining)}
                 </span>
               </div>
-              <div className="h-4 w-px bg-border" />
-               <span className="text-sm font-medium text-muted-foreground">
-                 Question {globalQuestionNumber} of {actualTotalQuestions}
-               </span>
-            </div>
-            <div className="flex gap-2">
-              <Button
-                onClick={handlePauseTest}
-                variant="outline"
-                size="sm"
-                className="font-semibold"
-              >
-                <Pause className="h-4 w-4 mr-2" />
-                Pause
+              <Button variant="ghost" size="sm" onClick={handlePauseTest}>
+                <Pause className="w-4 h-4" />
               </Button>
             </div>
           </div>
-          <Progress value={progress} className="h-2" />
         </div>
       </div>
 
-      <main className="container py-6 max-w-4xl">
-        {/* Current Dimension */}
-        <div className="mb-6">
-          <h2 className="text-2xl font-black mb-1">
-            {dimensions[currentDimension]?.dimensionName || dimensions[currentDimension]?.dimensionCode || `Dimension ${currentDimension + 1}`}
-          </h2>
-           <p className="sr-only">
-             Question {currentQuestion + 1} of {dimensions[currentDimension]?.items?.length ?? 0}
-           </p>
-        </div>
-
-        {/* Question Card */}
-        <Card className="mb-6 shadow-sm border">
-          <CardContent className="pt-6 pb-6">
+      <main className="min-h-screen bg-gray-50 dark:bg-gray-950 pt-8 pb-12">
+        <div className="container max-w-4xl">
+          {/* Dimension Badge */}
+          <div className="mb-6">
+            <span className="inline-flex items-center gap-2 px-3 py-1.5 bg-primary/10 text-primary text-sm font-medium rounded-md">
+              <Brain className="w-4 h-4" />
+              Dimension {currentDimension + 1}: {dimensions[currentDimension]?.dimensionName || dimensions[currentDimension]?.dimensionCode || 'Assessment'}
+            </span>
+          </div>
+          
+          {/* Question Card */}
+          <Card className="test-card">
+            <CardHeader className="test-section-header">
+              <div className="flex items-center justify-between">
+                <h2 className="text-lg font-serif font-semibold">
+                  Question {globalQuestionNumber}
+                </h2>
+                <span className="text-sm font-mono text-muted-foreground">
+                  {globalQuestionNumber} / {actualTotalQuestions}
+                </span>
+              </div>
+            </CardHeader>
+            <CardContent className="p-8">
             {currentItem ? (
               <div className="space-y-6">
                 {(() => {
@@ -1510,47 +1519,58 @@ const Test = () => {
                 <p className="text-muted-foreground">Loading question...</p>
               </div>
             )}
-          </CardContent>
-        </Card>
-
-        {/* Navigation Buttons */}
-        <div className="flex gap-3">
-          <Button
-            onClick={goToPreviousQuestion}
-            disabled={currentDimension === 0 && currentQuestion === 0}
-            variant="outline"
-            className="font-semibold"
-          >
-            <ChevronLeft className="h-4 w-4 mr-2" />
-            Previous
-          </Button>
-          
-          {isLastQuestion ? (
-            <Button
-             onClick={() => handleSubmitTest()}
-             disabled={Object.keys(answers).length < actualTotalQuestions}
-              className="flex-1 bg-green-600 hover:bg-green-700 font-semibold disabled:opacity-50 disabled:cursor-not-allowed"
-              title={Object.keys(answers).length < actualTotalQuestions ? "Please answer all questions before submitting" : "Submit test"}
-            >
-              <CheckCircle className="h-4 w-4 mr-2" />
-              Submit Assessment
-            </Button>
-           ) : (
-             // Show Next button - validate answer exists and is not empty
-             <Button
-               onClick={advanceToNextQuestion}
-               disabled={!answers[questionKey] || answers[questionKey].trim() === ''}
-               className="flex-1 bg-blue-900 hover:bg-blue-800 font-semibold disabled:opacity-50 disabled:cursor-not-allowed"
-               title={!answers[questionKey] || answers[questionKey].trim() === '' ? "Please select an answer before continuing" : "Continue to next question"}
-             >
-               Next Question
-               <ChevronRight className="h-4 w-4 ml-2" />
-             </Button>
-           )}
+            
+            {/* Professional Navigation Footer */}
+            <div className="border-t-2 border-gray-200 dark:border-gray-700 px-8 py-4 bg-gray-50 dark:bg-gray-800">
+              <div className="flex items-center justify-between">
+                <Button
+                  variant="outline"
+                  onClick={goToPreviousQuestion}
+                  disabled={currentDimension === 0 && currentQuestion === 0}
+                  size="lg"
+                >
+                  <ChevronLeft className="w-4 h-4 mr-1" />
+                  Previous
+                </Button>
+                
+                <div className="text-sm text-muted-foreground">
+                  {answers[questionKey] ? (
+                    <span className="flex items-center gap-2 text-success font-medium">
+                      <CheckCircle className="w-4 h-4" />
+                      Answered
+                    </span>
+                  ) : (
+                    <span className="flex items-center gap-2">
+                      <AlertCircle className="w-4 h-4" />
+                      Not answered
+                    </span>
+                  )}
+                </div>
+                
+                {isLastQuestion ? (
+                  <Button
+                    onClick={() => handleSubmitTest()}
+                    disabled={Object.keys(answers).length < actualTotalQuestions}
+                    size="lg"
+                  >
+                    Review & Submit
+                    <ChevronRight className="w-4 h-4 ml-1" />
+                  </Button>
+                ) : (
+                  <Button
+                    onClick={advanceToNextQuestion}
+                    disabled={!answers[questionKey] || answers[questionKey].trim() === ''}
+                    size="lg"
+                  >
+                    Next Question
+                    <ChevronRight className="w-4 h-4 ml-1" />
+                  </Button>
+                )}
+              </div>
+            </div>
+          </Card>
         </div>
-
-        {/* Helper Text */}
-        <div className="mt-6 p-4 bg-blue-50 dark:bg-blue-950/20 rounded-lg border border-blue-200 dark:border-blue-900">
+      </main>
           <div className="flex gap-3">
             <AlertCircle className="h-5 w-5 text-blue-700 dark:text-blue-300 flex-shrink-0 mt-0.5" />
             <div className="text-sm text-blue-900 dark:text-blue-100">
