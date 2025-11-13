@@ -17,6 +17,7 @@ import {
 import { supabase } from "@/integrations/supabase/client";
 import { Navigation } from "@/components/Navigation";
 import Footer from "@/components/Footer";
+import AssessmentSelector from "@/components/AssessmentSelector";
 
 const Index = () => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -212,76 +213,70 @@ const Index = () => {
           </div>
         </section>
 
-        {/* Assessment Levels Section */}
+        {/* Assessment Selector Section */}
         <section className="bg-secondary/30 py-16">
-          <div className="container max-w-6xl">
-            <h2 className="text-4xl font-extrabold text-center mb-3 tracking-tight">Choose Your Assessment Level</h2>
-            <p className="text-center text-muted-foreground mb-10 max-w-2xl mx-auto">
-              Select the assessment that matches your current experience with AI
-            </p>
-            <div className="grid md:grid-cols-2 gap-6">
-              {assessmentLevels.map((level) => {
-                const Icon = level.icon;
-                return (
-                  <Card
-                    key={level.id}
-                    className="shadow-sm border relative overflow-hidden hover:shadow-lg transition-shadow"
-                  >
-                    {level.recommended && (
-                      <div className="absolute top-4 right-4 bg-primary text-primary-foreground px-3 py-1 rounded-full text-xs font-bold z-10">
-                        Recommended
-                      </div>
-                    )}
-                    <CardContent className="pt-6 pb-6">
-                      <div
-                        className={`inline-flex items-center gap-2 mb-3 p-3 bg-gradient-to-br ${level.gradient} rounded-lg`}
-                      >
-                        <Icon className="h-6 w-6 text-white" />
-                      </div>
-                      <h3 className="text-2xl font-extrabold mb-2">{level.title}</h3>
-                      <p className="text-sm text-muted-foreground mb-4">{level.description}</p>
+          <div className="container max-w-7xl">
+            <AssessmentSelector />
+          </div>
+        </section>
 
-                      {/* Assessment Details */}
-                      <div className="space-y-2 mb-4">
-                        <div className="flex items-center gap-2 text-sm">
-                          <CheckCircle className="h-4 w-4 text-green-600 flex-shrink-0" />
-                          <span className="font-semibold">{level.questions}</span>
-                        </div>
-                        <div className="flex items-center gap-2 text-sm">
-                          <CheckCircle className="h-4 w-4 text-green-600 flex-shrink-0" />
-                          <span className="font-semibold">{level.time}</span>
-                        </div>
-                        <div className="flex items-center gap-2 text-sm">
-                          <CheckCircle className="h-4 w-4 text-green-600 flex-shrink-0" />
-                          <span className="text-muted-foreground text-xs">{level.details}</span>
-                        </div>
-                      </div>
+        {/* Three Assessment Tracks Overview */}
+        <section className="container py-16 max-w-6xl">
+          <h2 className="text-4xl font-extrabold text-center mb-3 tracking-tight">Three Assessment Pathways</h2>
+          <p className="text-center text-muted-foreground mb-10 max-w-2xl mx-auto">
+            Choose the track that best fits your needs - from general assessments to role-specific evaluations
+          </p>
+          <div className="grid md:grid-cols-3 gap-6">
+            <Card className="shadow-sm border hover:shadow-lg transition-shadow">
+              <CardContent className="pt-8 pb-8 text-center">
+                <div className="inline-flex items-center justify-center w-16 h-16 bg-primary/10 rounded-full mb-4">
+                  <Brain className="h-8 w-8 text-primary" />
+                </div>
+                <h3 className="text-2xl font-extrabold mb-2">General Track</h3>
+                <p className="text-sm text-muted-foreground mb-4">
+                  Universal AI collaboration intelligence for all professionals
+                </p>
+                <div className="text-3xl font-bold text-primary mb-4">2 Assessments</div>
+                <p className="text-xs text-muted-foreground mb-6">Beginner & Advanced levels</p>
+                <Link to="/assessments/general">
+                  <Button className="w-full">Explore General Track</Button>
+                </Link>
+              </CardContent>
+            </Card>
 
-                      {/* Ideal For */}
-                      <div className="mb-4 p-3 bg-secondary/30 rounded-lg">
-                        <p className="text-xs font-bold text-muted-foreground mb-1">IDEAL FOR:</p>
-                        <p className="text-xs font-semibold">{level.idealFor}</p>
-                      </div>
+            <Card className="shadow-sm border hover:shadow-lg transition-shadow">
+              <CardContent className="pt-8 pb-8 text-center">
+                <div className="inline-flex items-center justify-center w-16 h-16 bg-primary/10 rounded-full mb-4">
+                  <GraduationCap className="h-8 w-8 text-primary" />
+                </div>
+                <h3 className="text-2xl font-extrabold mb-2">Student Track</h3>
+                <p className="text-sm text-muted-foreground mb-4">
+                  Age-appropriate AI literacy for high school students
+                </p>
+                <div className="text-3xl font-bold text-primary mb-4">2 Age Groups</div>
+                <p className="text-xs text-muted-foreground mb-6">Ages 14-15 & 16-17 years</p>
+                <Link to="/assessments/adolescent">
+                  <Button className="w-full">Explore Student Track</Button>
+                </Link>
+              </CardContent>
+            </Card>
 
-                      {/* What You'll Demonstrate */}
-                      {level.demonstrates && (
-                        <div className="space-y-2">
-                          <p className="text-xs font-bold text-muted-foreground">YOU'LL DEMONSTRATE:</p>
-                          <ul className="space-y-1.5">
-                            {level.demonstrates.slice(0, 3).map((item, idx) => (
-                              <li key={idx} className="flex items-start gap-2 text-xs">
-                                <span className="text-green-600 mt-0.5">•</span>
-                                <span className="text-muted-foreground leading-tight">{item}</span>
-                              </li>
-                            ))}
-                          </ul>
-                        </div>
-                      )}
-                    </CardContent>
-                  </Card>
-                );
-              })}
-            </div>
+            <Card className="shadow-sm border hover:shadow-lg transition-shadow">
+              <CardContent className="pt-8 pb-8 text-center">
+                <div className="inline-flex items-center justify-center w-16 h-16 bg-primary/10 rounded-full mb-4">
+                  <Briefcase className="h-8 w-8 text-primary" />
+                </div>
+                <h3 className="text-2xl font-extrabold mb-2">Professional Track</h3>
+                <p className="text-sm text-muted-foreground mb-4">
+                  Role-specific AI collaboration for working professionals
+                </p>
+                <div className="text-3xl font-bold text-primary mb-4">15 Assessments</div>
+                <p className="text-xs text-muted-foreground mb-6">8 roles × 2 levels each</p>
+                <Link to="/assessments/professional">
+                  <Button className="w-full">Explore Professional Track</Button>
+                </Link>
+              </CardContent>
+            </Card>
           </div>
         </section>
 

@@ -17,6 +17,9 @@ import Verify from "./pages/Verify";
 import Privacy from "./pages/Privacy";
 import Sitemap from "./pages/Sitemap";
 import NotFound from "./pages/NotFound";
+import GeneralAssessments from "./pages/assessments/General";
+import AdolescentAssessments from "./pages/assessments/Adolescent";
+import ProfessionalAssessments from "./pages/assessments/Professional";
 
 const queryClient = new QueryClient();
 
@@ -39,6 +42,11 @@ const App = () => (
           <Route path="/verify-certificate/:code" element={<Verify />} />
           <Route path="/privacy-policy" element={<Privacy />} />
           <Route path="/sitemap" element={<Sitemap />} />
+          
+          {/* Assessment Track Routes */}
+          <Route path="/assessments/general" element={<GeneralAssessments />} />
+          <Route path="/assessments/adolescent" element={<AdolescentAssessments />} />
+          <Route path="/assessments/professional" element={<ProfessionalAssessments />} />
           
           {/* Legacy URL redirects for SEO */}
           <Route path="/auth" element={<Auth />} />

@@ -272,10 +272,14 @@ const trackLabels = {
   "role-based": "Professional Track"
 };
 
-export default function AssessmentSelector() {
+interface AssessmentSelectorProps {
+  defaultTrack?: "all" | "general" | "adolescent" | "role-based";
+}
+
+export default function AssessmentSelector({ defaultTrack = "all" }: AssessmentSelectorProps) {
   const navigate = useNavigate();
   const [searchQuery, setSearchQuery] = useState("");
-  const [activeTrack, setActiveTrack] = useState<"all" | "general" | "adolescent" | "role-based">("all");
+  const [activeTrack, setActiveTrack] = useState<"all" | "general" | "adolescent" | "role-based">(defaultTrack);
 
   const filteredAssessments = useMemo(() => {
     let filtered = assessments;
