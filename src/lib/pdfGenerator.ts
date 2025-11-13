@@ -323,7 +323,7 @@ export async function generatePDFReport(
       const fullName = sharedDimensionNames[dim.code] || dim.name;
       // Calculate percentage for this dimension
       const dimPercentage = (dim.score / (totalPossible / dimensionScores.length)) * 100;
-      const recs = getRecommendations(dim.code, dimPercentage, levelType);
+      const recs = getRecommendations(dim.code, dimPercentage, levelType, assessmentContext);
 
       const recText =
         recs.length > 0
