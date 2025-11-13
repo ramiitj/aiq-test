@@ -831,40 +831,40 @@ const Test = () => {
       <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white dark:from-gray-950 dark:to-gray-900">
         <Navigation isAuthenticated={true} />
         
-        <main className="container py-12 max-w-3xl">
+        <main className="container py-8 sm:py-12 max-w-3xl px-3 sm:px-4">
           <Card className="test-card">
             <CardHeader className="test-section-header">
-              <div className="flex items-center gap-3">
-                <FileText className="w-6 h-6 text-primary" />
+              <div className="flex items-center gap-2 sm:gap-3">
+                <FileText className="w-5 h-5 sm:w-6 sm:h-6 text-primary flex-shrink-0" />
                 <div>
-                  <h1 className="font-serif text-xl font-bold">Assessment Agreement</h1>
-                  <p className="text-sm text-muted-foreground mt-1">
+                  <h1 className="font-serif text-lg sm:text-xl font-bold">Assessment Agreement</h1>
+                  <p className="text-xs sm:text-sm text-muted-foreground mt-1">
                     Please review and accept the terms before proceeding
                   </p>
                 </div>
               </div>
             </CardHeader>
             
-            <CardContent className="p-8 space-y-6">
+            <CardContent className="p-4 sm:p-6 lg:p-8 space-y-4 sm:space-y-6">
               {/* Assessment Details Summary Card */}
-              <div className="bg-muted/50 rounded-lg p-6 border-2">
-                <h3 className="font-serif font-semibold text-lg mb-4 text-center">Assessment Details</h3>
-                <div className="grid grid-cols-3 gap-4 text-center">
+              <div className="bg-muted/50 rounded-lg p-4 sm:p-6 border-2">
+                <h3 className="font-serif font-semibold text-base sm:text-lg mb-3 sm:mb-4 text-center">Assessment Details</h3>
+                <div className="grid grid-cols-3 gap-2 sm:gap-4 text-center">
                   <div>
-                    <p className="text-3xl font-bold text-primary tabular-nums">{totalQuestions}</p>
-                    <p className="text-sm text-muted-foreground mt-1">Questions</p>
+                    <p className="text-2xl sm:text-3xl font-bold text-primary tabular-nums">{totalQuestions}</p>
+                    <p className="text-xs sm:text-sm text-muted-foreground mt-1">Questions</p>
                   </div>
                   <div className="border-x">
-                    <p className="text-3xl font-bold text-primary tabular-nums">{Math.floor(testDuration / 60)}</p>
-                    <p className="text-sm text-muted-foreground mt-1">Minutes</p>
+                    <p className="text-2xl sm:text-3xl font-bold text-primary tabular-nums">{Math.floor(testDuration / 60)}</p>
+                    <p className="text-xs sm:text-sm text-muted-foreground mt-1">Minutes</p>
                   </div>
                   <div>
-                    <p className="text-3xl font-bold text-primary tabular-nums">8</p>
-                    <p className="text-sm text-muted-foreground mt-1">Dimensions</p>
+                    <p className="text-2xl sm:text-3xl font-bold text-primary tabular-nums">8</p>
+                    <p className="text-xs sm:text-sm text-muted-foreground mt-1">Dimensions</p>
                   </div>
                 </div>
-                <div className="mt-4 pt-4 border-t text-center">
-                  <p className="text-base font-semibold">
+                <div className="mt-3 sm:mt-4 pt-3 sm:pt-4 border-t text-center">
+                  <p className="text-sm sm:text-base font-semibold">
                     {assessmentInfo?.name || (version === 'beginner' ? 'Beginner Assessment' : 'Advanced Assessment')}
                   </p>
                 </div>
@@ -934,17 +934,17 @@ const Test = () => {
 
               
               {/* Consent Checkboxes with Professional Layout */}
-              <div className="space-y-4">
-                <div className="flex items-start gap-3 p-4 border-2 rounded-lg hover:bg-accent/50 transition-colors">
+              <div className="space-y-3 sm:space-y-4">
+                <div className="flex items-start gap-2 sm:gap-3 p-3 sm:p-4 border-2 rounded-lg hover:bg-accent/50 transition-colors">
                   <Checkbox
                     id="data-collection"
                     checked={consentData.dataCollection}
                     onCheckedChange={(checked) => 
                       setConsentData(prev => ({ ...prev, dataCollection: !!checked }))
                     }
-                    className="mt-1"
+                    className="mt-1 flex-shrink-0"
                   />
-                  <Label htmlFor="data-collection" className="text-sm leading-relaxed cursor-pointer flex-1">
+                  <Label htmlFor="data-collection" className="text-xs sm:text-sm leading-relaxed cursor-pointer flex-1">
                     I consent to the collection and processing of my assessment data for scoring, 
                     certification, and research purposes. My data will be stored securely and used 
                     in accordance with privacy regulations.
@@ -952,32 +952,32 @@ const Test = () => {
                 </div>
                 
                 {!isAdolescent && (
-                  <div className="flex items-start gap-3 p-4 border-2 rounded-lg hover:bg-accent/50 transition-colors">
+                  <div className="flex items-start gap-2 sm:gap-3 p-3 sm:p-4 border-2 rounded-lg hover:bg-accent/50 transition-colors">
                     <Checkbox
                       id="age-confirm"
                       checked={consentData.ageConfirmation}
                       onCheckedChange={(checked) =>
                         setConsentData(prev => ({ ...prev, ageConfirmation: !!checked }))
                       }
-                      className="mt-1"
+                      className="mt-1 flex-shrink-0"
                     />
-                    <Label htmlFor="age-confirm" className="text-sm leading-relaxed cursor-pointer flex-1">
+                    <Label htmlFor="age-confirm" className="text-xs sm:text-sm leading-relaxed cursor-pointer flex-1">
                       I confirm that I am 18 years of age or older and am voluntarily participating 
                       in this assessment.
                     </Label>
                   </div>
                 )}
                 
-                <div className="flex items-start gap-3 p-4 border-2 rounded-lg hover:bg-accent/50 transition-colors">
+                <div className="flex items-start gap-2 sm:gap-3 p-3 sm:p-4 border-2 rounded-lg hover:bg-accent/50 transition-colors">
                   <Checkbox
                     id="research-participation"
                     checked={consentData.researchParticipation}
                     onCheckedChange={(checked) =>
                       setConsentData(prev => ({ ...prev, researchParticipation: !!checked }))
                     }
-                    className="mt-1"
+                    className="mt-1 flex-shrink-0"
                   />
-                  <Label htmlFor="research-participation" className="text-sm leading-relaxed cursor-pointer flex-1">
+                  <Label htmlFor="research-participation" className="text-xs sm:text-sm leading-relaxed cursor-pointer flex-1">
                     I agree to participate in research studies (optional). My anonymized results may 
                     be used for academic research and product improvement.
                   </Label>
@@ -987,15 +987,15 @@ const Test = () => {
               {/* Professional CTA */}
               <Button
                 size="lg"
-                className="w-full professional"
+                className="w-full professional h-11 sm:h-12"
                 disabled={!consentData.dataCollection || (!isAdolescent && !consentData.ageConfirmation)}
                 onClick={handleConsentSubmit}
               >
-                Begin Assessment
+                <span className="text-sm sm:text-base">Begin Assessment</span>
                 <ArrowRight className="w-4 h-4 ml-2" />
               </Button>
               
-              <p className="text-xs text-center text-muted-foreground">
+              <p className="text-[10px] sm:text-xs text-center text-muted-foreground leading-relaxed">
                 By clicking "Begin Assessment", you acknowledge that you have read and understood 
                 the terms outlined above.
               </p>
@@ -1011,16 +1011,16 @@ const Test = () => {
       <div className="min-h-screen">
         <Navigation isAuthenticated={true} />
         
-        <main className="container py-8 max-w-4xl">
+        <main className="container py-6 sm:py-8 max-w-4xl px-3 sm:px-4">
           {/* Demographics Header */}
-          <div className="mb-6">
-            <div className="flex items-center gap-3 mb-3">
-              <div className="p-2 bg-green-100 dark:bg-green-900/30 rounded-lg">
-                <User className="h-6 w-6 text-green-700 dark:text-green-300" />
+          <div className="mb-4 sm:mb-6">
+            <div className="flex items-center gap-2 sm:gap-3 mb-3">
+              <div className="p-1.5 sm:p-2 bg-green-100 dark:bg-green-900/30 rounded-lg flex-shrink-0">
+                <User className="h-5 w-5 sm:h-6 sm:w-6 text-green-700 dark:text-green-300" />
               </div>
               <div>
-                <h1 className="text-3xl font-black tracking-tight">Demographics Information</h1>
-                <p className="text-sm text-muted-foreground font-medium">
+                <h1 className="text-xl sm:text-2xl lg:text-3xl font-black tracking-tight">Demographics Information</h1>
+                <p className="text-xs sm:text-sm text-muted-foreground font-medium">
                   Help us understand your background (used for research purposes only)
                 </p>
               </div>
@@ -1053,8 +1053,8 @@ const Test = () => {
 
           {/* Demographics Form */}
           <Card className="mb-6 shadow-sm border">
-            <CardContent className="pt-6 pb-6">
-              <div className="grid md:grid-cols-2 gap-5">
+            <CardContent className="pt-4 pb-4 sm:pt-6 sm:pb-6 px-3 sm:px-6">
+              <div className="grid md:grid-cols-2 gap-4 sm:gap-5">
                 {/* Age Range */}
                 <div className="space-y-2">
                   <Label htmlFor="age" className="text-sm font-bold">
@@ -1259,26 +1259,26 @@ const Test = () => {
           </Card>
 
           {/* Action Buttons */}
-          <div className="flex gap-3">
+          <div className="flex gap-2 sm:gap-3">
             <Button
               onClick={() => {
                 setShowDemographics(false);
                 setShowConsent(true);
               }}
               variant="outline"
-              className="font-semibold"
+              className="font-semibold h-10 sm:h-11 px-3 sm:px-4"
             >
-              <ChevronLeft className="mr-2 h-4 w-4" />
-              Back
+              <ChevronLeft className="mr-1 sm:mr-2 h-4 w-4" />
+              <span className="hidden sm:inline">Back</span>
             </Button>
             <Button
               onClick={handleDemographicsSubmit}
               disabled={!demographicsData.age || !demographicsData.gender || 
                        !demographicsData.education || !demographicsData.aiExperience}
-              className="flex-1 bg-blue-900 hover:bg-blue-800 font-semibold"
+              className="flex-1 bg-blue-900 hover:bg-blue-800 font-semibold h-10 sm:h-11 text-sm sm:text-base"
             >
               Start Assessment
-              <ChevronRight className="ml-2 h-4 w-4" />
+              <ChevronRight className="ml-1 sm:ml-2 h-4 w-4" />
             </Button>
           </div>
         </main>
@@ -1317,22 +1317,22 @@ const Test = () => {
       
       {/* Professional Test Header - Fixed at top */}
       <div className="sticky top-0 z-50 bg-white dark:bg-gray-900 border-b-2 border-gray-200 dark:border-gray-700 shadow-sm">
-        <div className="container max-w-6xl">
-          <div className="flex items-center justify-between py-3">
+        <div className="container max-w-6xl px-3 sm:px-4">
+          <div className="flex items-center justify-between py-2 sm:py-3 gap-2">
             {/* Left: Test Info */}
-            <div className="flex items-center gap-4">
-              <Brain className="w-6 h-6 text-primary" />
-              <div>
-                <h1 className="text-sm font-semibold">AIQ Assessment™</h1>
-                <p className="text-xs text-muted-foreground">
+            <div className="flex items-center gap-2 sm:gap-4 min-w-0">
+              <Brain className="w-5 h-5 sm:w-6 sm:h-6 text-primary flex-shrink-0" />
+              <div className="min-w-0">
+                <h1 className="text-xs sm:text-sm font-semibold truncate">AIQ Assessment™</h1>
+                <p className="text-[10px] sm:text-xs text-muted-foreground truncate hidden sm:block">
                   {assessmentInfo?.name || 'Professional Assessment'}
                 </p>
               </div>
             </div>
             
-            {/* Center: Progress */}
-            <div className="hidden md:flex items-center gap-3">
-              <span className="text-sm font-mono">
+            {/* Center: Progress - Desktop only */}
+            <div className="hidden lg:flex items-center gap-3">
+              <span className="text-sm font-mono whitespace-nowrap">
                 Question {globalQuestionNumber} of {actualTotalQuestions}
               </span>
               <div className="w-32 h-2 bg-gray-200 dark:bg-gray-700 rounded-full overflow-hidden">
@@ -1344,28 +1344,46 @@ const Test = () => {
             </div>
             
             {/* Right: Timer */}
-            <div className="flex items-center gap-3">
-              <div className="flex items-center gap-2 px-3 py-1.5 bg-muted rounded-md">
-                <Clock className="w-4 h-4" />
-                <span className="text-sm font-mono font-semibold">
+            <div className="flex items-center gap-1 sm:gap-3 flex-shrink-0">
+              <div className="flex items-center gap-1 sm:gap-2 px-2 sm:px-3 py-1 sm:py-1.5 bg-muted rounded-md">
+                <Clock className="w-3 h-3 sm:w-4 sm:h-4" />
+                <span className="text-xs sm:text-sm font-mono font-semibold">
                   {formatTime(timeRemaining)}
                 </span>
               </div>
-              <Button variant="ghost" size="sm" onClick={handlePauseTest}>
+              <Button variant="ghost" size="sm" onClick={handlePauseTest} className="h-8 w-8 p-0 hidden sm:flex">
                 <Pause className="w-4 h-4" />
               </Button>
+            </div>
+          </div>
+          
+          {/* Mobile Progress Bar */}
+          <div className="lg:hidden pb-2">
+            <div className="flex items-center justify-between mb-1">
+              <span className="text-xs font-mono text-muted-foreground">
+                Question {globalQuestionNumber} of {actualTotalQuestions}
+              </span>
+              <span className="text-xs text-muted-foreground">
+                {Math.round(progress)}%
+              </span>
+            </div>
+            <div className="w-full h-1.5 bg-gray-200 dark:bg-gray-700 rounded-full overflow-hidden">
+              <div 
+                className="h-full bg-primary transition-all duration-300"
+                style={{ width: `${progress}%` }}
+              />
             </div>
           </div>
         </div>
       </div>
 
-      <main className="min-h-screen bg-gray-50 dark:bg-gray-950 pt-8 pb-12">
-        <div className="container max-w-4xl">
+      <main className="min-h-screen bg-gray-50 dark:bg-gray-950 pt-4 sm:pt-8 pb-8 sm:pb-12">
+        <div className="container max-w-4xl px-3 sm:px-4">
           {/* Dimension Badge */}
-          <div className="mb-6">
-            <span className="inline-flex items-center gap-2 px-3 py-1.5 bg-primary/10 text-primary text-sm font-medium rounded-md">
-              <Brain className="w-4 h-4" />
-              Dimension {currentDimension + 1}: {dimensions[currentDimension]?.dimensionName || dimensions[currentDimension]?.dimensionCode || 'Assessment'}
+          <div className="mb-4 sm:mb-6">
+            <span className="inline-flex items-center gap-2 px-2.5 sm:px-3 py-1 sm:py-1.5 bg-primary/10 text-primary text-xs sm:text-sm font-medium rounded-md">
+              <Brain className="w-3 h-3 sm:w-4 sm:h-4" />
+              <span className="truncate">Dimension {currentDimension + 1}: {dimensions[currentDimension]?.dimensionName || dimensions[currentDimension]?.dimensionCode || 'Assessment'}</span>
             </span>
           </div>
           
@@ -1373,15 +1391,15 @@ const Test = () => {
           <Card className="test-card">
             <CardHeader className="test-section-header">
               <div className="flex items-center justify-between">
-                <h2 className="text-lg font-serif font-semibold">
+                <h2 className="text-base sm:text-lg font-serif font-semibold">
                   Question {globalQuestionNumber}
                 </h2>
-                <span className="text-sm font-mono text-muted-foreground">
+                <span className="text-xs sm:text-sm font-mono text-muted-foreground">
                   {globalQuestionNumber} / {actualTotalQuestions}
                 </span>
               </div>
             </CardHeader>
-            <CardContent className="p-8">
+            <CardContent className="p-4 sm:p-6 lg:p-8">
             {currentItem ? (
               <div className="space-y-6">
                 {(() => {
@@ -1391,7 +1409,7 @@ const Test = () => {
                     <>
                       {/* Main Question */}
                       {main && (
-                        <p className="text-lg font-semibold leading-relaxed text-foreground">
+                        <p className="text-base sm:text-lg font-semibold leading-relaxed text-foreground">
                           {main}
                         </p>
                       )}
@@ -1400,7 +1418,7 @@ const Test = () => {
                       {items.length > 0 && (
                         <ul className="space-y-2 pl-1">
                           {items.map((item, idx) => (
-                            <li key={idx} className="text-sm text-muted-foreground leading-relaxed">
+                            <li key={idx} className="text-xs sm:text-sm text-muted-foreground leading-relaxed">
                               {item}
                             </li>
                           ))}
@@ -1521,28 +1539,29 @@ const Test = () => {
             )}
             
             {/* Professional Navigation Footer */}
-            <div className="border-t-2 border-gray-200 dark:border-gray-700 px-8 py-4 bg-gray-50 dark:bg-gray-800">
-              <div className="flex items-center justify-between">
+            <div className="border-t-2 border-gray-200 dark:border-gray-700 px-3 sm:px-6 lg:px-8 py-3 sm:py-4 bg-gray-50 dark:bg-gray-800">
+              <div className="flex items-center justify-between gap-2 sm:gap-4">
                 <Button
                   variant="outline"
                   onClick={goToPreviousQuestion}
                   disabled={currentDimension === 0 && currentQuestion === 0}
                   size="lg"
+                  className="h-10 sm:h-11 px-3 sm:px-8"
                 >
-                  <ChevronLeft className="w-4 h-4 mr-1" />
-                  Previous
+                  <ChevronLeft className="w-4 h-4 sm:mr-1" />
+                  <span className="hidden sm:inline">Previous</span>
                 </Button>
                 
-                <div className="text-sm text-muted-foreground">
+                <div className="text-xs sm:text-sm text-muted-foreground">
                   {answers[questionKey] ? (
-                    <span className="flex items-center gap-2 text-success font-medium">
-                      <CheckCircle className="w-4 h-4" />
-                      Answered
+                    <span className="flex items-center gap-1 sm:gap-2 text-success font-medium">
+                      <CheckCircle className="w-3 h-3 sm:w-4 sm:h-4" />
+                      <span className="hidden sm:inline">Answered</span>
                     </span>
                   ) : (
-                    <span className="flex items-center gap-2">
-                      <AlertCircle className="w-4 h-4" />
-                      Not answered
+                    <span className="flex items-center gap-1 sm:gap-2">
+                      <AlertCircle className="w-3 h-3 sm:w-4 sm:h-4" />
+                      <span className="hidden sm:inline">Not answered</span>
                     </span>
                   )}
                 </div>
@@ -1552,18 +1571,22 @@ const Test = () => {
                     onClick={() => handleSubmitTest()}
                     disabled={Object.keys(answers).length < actualTotalQuestions}
                     size="lg"
+                    className="h-10 sm:h-11 px-3 sm:px-8"
                   >
-                    Review & Submit
-                    <ChevronRight className="w-4 h-4 ml-1" />
+                    <span className="hidden sm:inline">Review & Submit</span>
+                    <span className="sm:hidden">Submit</span>
+                    <ChevronRight className="w-4 h-4 sm:ml-1" />
                   </Button>
                 ) : (
                   <Button
                     onClick={advanceToNextQuestion}
                     disabled={!answers[questionKey] || answers[questionKey].trim() === ''}
                     size="lg"
+                    className="h-10 sm:h-11 px-3 sm:px-8"
                   >
-                    Next Question
-                    <ChevronRight className="w-4 h-4 ml-1" />
+                    <span className="hidden sm:inline">Next Question</span>
+                    <span className="sm:hidden">Next</span>
+                    <ChevronRight className="w-4 h-4 sm:ml-1" />
                   </Button>
                 )}
               </div>

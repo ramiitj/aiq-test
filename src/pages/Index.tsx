@@ -271,21 +271,20 @@ const Index = () => {
           <div className="grid md:grid-cols-2 gap-8 items-center">
             {/* Left: Certificate Image Preview */}
             <div className="relative">
-              <div className="aspect-[1.414/1] bg-white dark:bg-gray-900 rounded-lg shadow-2xl border-2 border-gray-200 dark:border-gray-700 p-8 overflow-hidden">
-                <div className="border-4 border-double border-gray-800 dark:border-gray-200 p-6 h-full flex flex-col">
-                  <div className="text-center mb-4">
-                    <Brain className="w-12 h-12 mx-auto mb-2 text-primary" />
-                    <h3 className="font-serif text-2xl font-bold">AIQ Assessment™</h3>
-                    <p className="text-sm text-muted-foreground">Certificate of Achievement</p>
+              <div className="aspect-[1.414/1] bg-white dark:bg-gray-900 rounded-lg shadow-2xl border-2 border-gray-200 dark:border-gray-700 p-6 sm:p-8 overflow-hidden">
+                <div className="border-4 border-double border-gray-800 dark:border-gray-200 p-4 sm:p-6 h-full flex flex-col">
+                  <div className="text-center mb-3">
+                    <h3 className="font-serif text-xl sm:text-2xl font-bold">AIQ Assessment™</h3>
+                    <p className="text-xs sm:text-sm text-muted-foreground">Certificate of Achievement</p>
                   </div>
-                  <div className="flex-1 flex flex-col justify-center space-y-3">
-                    <p className="text-center text-sm">This certifies that</p>
-                    <p className="text-center font-serif text-xl font-bold">Certificate Holder</p>
-                    <p className="text-center text-sm">has successfully demonstrated proficiency in</p>
-                    <p className="text-center font-semibold">AI Collaboration & Intelligence</p>
-                    <div className="mt-4 pt-4 border-t">
-                      <p className="text-center text-xs text-muted-foreground">
-                        Score: 85% | Verification Code: ABC123XYZ
+                  <div className="flex-1 flex flex-col justify-center space-y-2 sm:space-y-3 px-2">
+                    <p className="text-center text-xs sm:text-sm">This certifies that</p>
+                    <p className="text-center font-serif text-lg sm:text-xl font-bold">Certificate Holder</p>
+                    <p className="text-center text-xs sm:text-sm leading-snug">has successfully demonstrated proficiency in</p>
+                    <p className="text-center font-semibold text-sm sm:text-base">AI Collaboration & Intelligence</p>
+                    <div className="mt-3 pt-3 border-t">
+                      <p className="text-center text-[10px] sm:text-xs text-muted-foreground leading-tight">
+                        Score: 85% | Verification: ABC123XYZ
                       </p>
                     </div>
                   </div>
