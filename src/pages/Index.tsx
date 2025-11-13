@@ -94,9 +94,9 @@ const Index = () => {
     },
     {
       icon: Award,
-      title: "Verified Certification",
+      title: "Research-Backed Certificate",
       description:
-        "Shareable certificate (for thsoe who pass) backed by peer-reviewed research to showcase your AI collaboration skills.",
+        "Shareable certificate documenting your AI collaboration competencies, validated through peer-reviewed methodology.",
     },
     {
       icon: Lightbulb,
@@ -161,9 +161,8 @@ const Index = () => {
           </h1>
           <p className="text-lg text-muted-foreground mb-6 max-w-3xl mx-auto leading-relaxed">
             The AIQ assessment is a <strong>research-validated evaluation</strong> of your ability to collaborate
-            effectively with artificial intelligence. Measure your <strong>AI readiness</strong>, discover your
-            strengths across 8 key dimensions, and receive personalized insights to improve your{" "}
-            <strong>AI collaboration skills</strong>.
+            effectively with artificial intelligence. Measure and develop your <strong>AI collaboration skills</strong> 
+            across 8 key dimensions with personalized insights backed by <strong>peer-reviewed methodology</strong>.
           </p>
           <div className="flex gap-3 justify-center flex-wrap mb-6">
             {isAuthenticated ? (
@@ -309,9 +308,9 @@ const Index = () => {
               <div className="flex items-start gap-3">
                 <Award className="w-6 h-6 text-primary mt-1 flex-shrink-0" />
                 <div>
-                  <h4 className="font-semibold mb-1">Industry-Recognized</h4>
+                  <h4 className="font-semibold mb-1">Research-Validated</h4>
                   <p className="text-sm text-muted-foreground">
-                    Accepted by Fortune 500 companies and leading academic institutions
+                    Backed by peer-reviewed methodology published in academic journals
                   </p>
                 </div>
               </div>
@@ -507,6 +506,96 @@ const Index = () => {
               </div>
             </CardContent>
           </Card>
+          <div className="mt-6 pt-6 border-t container max-w-4xl">
+            <p className="text-sm text-muted-foreground text-center max-w-2xl mx-auto">
+              This assessment represents academic rigor in measuring AI collaboration skills. As AI capabilities 
+              evolve rapidly, standardized competency frameworks like AIQ provide structured approaches to skill 
+              development—valuable for professionals building expertise in this emerging domain.
+            </p>
+          </div>
+        </section>
+
+        {/* Real-World Value & Skills Development */}
+        <section className="container py-16 max-w-5xl">
+          <div className="text-center mb-10">
+            <h2 className="text-4xl font-extrabold mb-4 tracking-tight">
+              Your AI Skills Development Journey
+            </h2>
+            <p className="text-lg text-muted-foreground max-w-3xl mx-auto leading-relaxed">
+              The AIQ assessment provides research-backed validation of your AI collaboration capabilities—a rapidly 
+              emerging skill set that organizations are beginning to prioritize
+            </p>
+          </div>
+          
+          <div className="grid md:grid-cols-2 gap-8">
+            <Card className="border-2">
+              <CardHeader>
+                <h3 className="text-xl font-bold flex items-center gap-2">
+                  <CheckCircle className="h-5 w-5 text-green-600" />
+                  What This Assessment Demonstrates
+                </h3>
+              </CardHeader>
+              <CardContent>
+                <ul className="space-y-3 text-muted-foreground">
+                  <li className="flex items-start gap-2">
+                    <ChevronRight className="h-5 w-5 mt-0.5 text-primary flex-shrink-0" />
+                    <span><strong>Scientifically validated skills:</strong> Peer-reviewed methodology published in academic journals</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <ChevronRight className="h-5 w-5 mt-0.5 text-primary flex-shrink-0" />
+                    <span><strong>Concrete competency measurement:</strong> Objective assessment across 8 AI collaboration dimensions</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <ChevronRight className="h-5 w-5 mt-0.5 text-primary flex-shrink-0" />
+                    <span><strong>Professional development roadmap:</strong> Personalized insights for continuous improvement</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <ChevronRight className="h-5 w-5 mt-0.5 text-primary flex-shrink-0" />
+                    <span><strong>Skills portfolio evidence:</strong> Shareable documentation of your AI capabilities</span>
+                  </li>
+                </ul>
+              </CardContent>
+            </Card>
+            
+            <Card className="border-2">
+              <CardHeader>
+                <h3 className="text-xl font-bold flex items-center gap-2">
+                  <TrendingUp className="h-5 w-5 text-blue-600" />
+                  Growing Industry Recognition
+                </h3>
+              </CardHeader>
+              <CardContent>
+                <ul className="space-y-3 text-muted-foreground">
+                  <li className="flex items-start gap-2">
+                    <ChevronRight className="h-5 w-5 mt-0.5 text-primary flex-shrink-0" />
+                    <span><strong>Emerging credential:</strong> As AI skills become critical, evidence-based assessments gain importance</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <ChevronRight className="h-5 w-5 mt-0.5 text-primary flex-shrink-0" />
+                    <span><strong>Academic foundation:</strong> Built on rigorous research recognized by academic institutions</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <ChevronRight className="h-5 w-5 mt-0.5 text-primary flex-shrink-0" />
+                    <span><strong>Early adopter advantage:</strong> Demonstrate forward-thinking commitment to AI competency</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <ChevronRight className="h-5 w-5 mt-0.5 text-primary flex-shrink-0" />
+                    <span><strong>Conversation starter:</strong> Use results to discuss AI skills in interviews and reviews</span>
+                  </li>
+                </ul>
+              </CardContent>
+            </Card>
+          </div>
+          
+          <div className="mt-8 p-6 bg-blue-50 dark:bg-blue-950/30 rounded-lg border-2 border-blue-200 dark:border-blue-800">
+            <p className="text-sm text-muted-foreground leading-relaxed">
+              <strong className="text-foreground">Transparency note:</strong> The AIQ assessment is an emerging professional 
+              credential backed by peer-reviewed research. While not yet formally recognized by major corporations or 
+              certification bodies, it provides valuable, evidence-based validation of AI collaboration skills—a capability 
+              that organizations increasingly seek but few can objectively measure. Use your results as part of a broader 
+              skills portfolio to demonstrate your AI readiness.
+            </p>
+          </div>
         </section>
 
         {/* FAQ Section */}
@@ -597,6 +686,21 @@ const Index = () => {
                 complete assessment history in your dashboard.
               </AccordionContent>
             </AccordionItem>
+            <AccordionItem value="item-9">
+              <AccordionTrigger className="text-left font-semibold">
+                Is the AIQ certificate recognized by employers?
+              </AccordionTrigger>
+              <AccordionContent className="text-muted-foreground leading-relaxed">
+                The AIQ assessment is an emerging credential backed by peer-reviewed academic research. While it is not 
+                yet formally recognized by Fortune 500 companies or major certification bodies, it provides scientifically 
+                validated evidence of AI collaboration skills—competencies that organizations increasingly value but lack 
+                standardized ways to measure. The assessment is most valuable as: (1) A tool for personal skill development 
+                and tracking progress, (2) Evidence of your commitment to AI competency in professional conversations, 
+                (3) A structured way to identify and address skill gaps, and (4) Documentation for your professional 
+                portfolio as AI skills become more critical across industries. As the field matures, research-backed 
+                assessments like AIQ are positioned to become recognized standards for measuring AI collaboration abilities.
+              </AccordionContent>
+            </AccordionItem>
           </Accordion>
         </section>
 
@@ -607,7 +711,7 @@ const Index = () => {
               Ready to Measure Your AIQ<sup className="text-[0.6em]">™</sup>?
             </h2>
             <p className="text-lg mb-8 opacity-90">
-              Join professionals worldwide who are measuring and improving their AI collaboration skills
+              Join early adopters building and validating their AI collaboration skills with research-backed assessment
             </p>
             {isAuthenticated ? (
               <Link to="/dashboard">
@@ -628,7 +732,7 @@ const Index = () => {
                 </Button>
               </Link>
             )}
-            <p className="text-xs mt-5 opacity-75">Free assessment • Instant results • Shareable certificate</p>
+            <p className="text-xs mt-5 opacity-75">Research-validated • Actionable insights • Skills documentation</p>
           </div>
         </section>
       </main>
