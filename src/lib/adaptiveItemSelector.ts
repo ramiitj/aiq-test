@@ -241,11 +241,14 @@ export async function loadTestItems(
     // Map legacy version names to new slugs for backward compatibility
     let filePath = slugOrVersion;
     if (legacyFallback) {
-      if (slugOrVersion === 'beginner') {
+      // ONLY map if it's exactly 'beginner', 'advanced', etc without dashes
+      // This preserves slugs like 'adolescent-14-15', 'pm-beginner', etc
+      if (slugOrVersion === 'beginner' && !slugOrVersion.includes('-')) {
         filePath = 'general-beginner';
-      } else if (slugOrVersion === 'advanced' || slugOrVersion === 'professional' || slugOrVersion === 'expert') {
+      } else if ((slugOrVersion === 'advanced' || slugOrVersion === 'professional' || slugOrVersion === 'expert') && !slugOrVersion.includes('-')) {
         filePath = 'general-advanced';
       }
+      // Otherwise, use slugOrVersion as-is (e.g., 'adolescent-14-15', 'pm-beginner')
     }
     
     // Ensure .json extension

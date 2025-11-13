@@ -260,6 +260,8 @@ const Test = () => {
       console.log('[Test] Loading test data for:', version);
       setLoadError(null);
       
+      let slugToLoad: string = version; // Default fallback
+      
       // Try to fetch product from database if we have a product slug
       const productParam = searchParams.get("product");
       if (productParam) {
@@ -273,11 +275,13 @@ const Test = () => {
         if (!productError && product) {
           setProductId(product.id);
           setProductSlug(product.slug);
-          console.log('[Test] Loaded product:', product.name);
+          slugToLoad = product.slug; // Use the actual product slug
+          console.log('[Test] Loaded product:', product.name, 'slug:', slugToLoad);
         }
       }
       
-      const assessmentData = await loadTestItems(version as string, true); // Enable legacy fallback
+      // Load test items using the product slug (not normalized version)
+      const assessmentData = await loadTestItems(slugToLoad as any, true); // Enable legacy fallback
       console.log('[Test] Assessment data loaded successfully:', {
         name: assessmentData.assessmentInfo.name,
         dimensionsCount: assessmentData.dimensions.length,
