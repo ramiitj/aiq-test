@@ -12,6 +12,55 @@ import { checkUserRole } from "@/lib/roleUtils";
 import { sanitizeJsonString, sanitizeKeys } from "@/lib/jsonSanitizer";
 import { AdminDataTables } from "@/components/AdminDataTables";
 import { AdminProductAnalytics } from "@/components/AdminProductAnalytics";
+import { z } from "zod";
+
+// Comprehensive validation schema for assessment uploads
+const assessmentItemSchema = z.object({
+  id: z.string().regex(/^[A-Z]{2,3}-[A-Z]-\d{3}$/, "Invalid item ID format"),
+  level: z.number().min(1).max(3),
+  type: z.enum(['multiple-choice', 'true-false', 'multiple-response', 'scenario-based', 'rank-ordering']),
+  points: z.number().min(1).max(50),
+  difficulty: z.number().min(0).max(1),
+  bloomLevel: z.string().optional(),
+  question: z.string().min(10).max(2000),
+  options: z.array(z.string().min(1).max(500)).min(2).max(10).optional(),
+  correctAnswer: z.union([z.number(), z.boolean()]).optional(),
+  correctAnswers: z.array(z.number()).optional(),
+  rationale: z.string().max(1000).optional(),
+  explanation: z.string().max(2000).optional(),
+  tags: z.array(z.string()).optional(),
+  discrimination: z.number().min(0).max(3).optional(),
+});
+
+const dimensionSchema = z.object({
+  dimensionCode: z.enum(['SAU', 'PEI', 'CEC', 'II', 'ALC', 'EJC', 'CS', 'CRS', 'PAI', 'AIF', 'UEA', 'DMI', 'DMP', 'DP', 'DSA', 'PMA']),
+  dimensionName: z.string().min(1).max(200),
+  description: z.string().max(1000).optional(),
+  weight: z.number().min(0).max(1).optional(),
+  items: z.array(assessmentItemSchema).min(1).max(100),
+  totalPoints: z.number().positive().optional(),
+});
+
+const assessmentUploadSchema = z.object({
+  assessmentName: z.string().min(1).max(200),
+  version: z.string().min(1).max(50),
+  tier: z.string().optional(),
+  type: z.string().optional(),
+  description: z.string().max(2000).optional(),
+  itemBank: z.object({
+    dimensions: z.array(dimensionSchema).min(1).max(20),
+  }),
+  scoringConfiguration: z.object({
+    totalPoints: z.number().positive(),
+    pointsPerDimension: z.number().positive().optional(),
+    passingScore: z.number().min(0).max(100),
+    scoringMethod: z.string().optional(),
+  }),
+  assessmentConfiguration: z.object({
+    totalQuestions: z.number().positive().optional(),
+    estimatedTime: z.number().positive().optional(),
+  }).optional(),
+});
 
 const Admin = () => {
   const [isAdmin, setIsAdmin] = useState(false);
@@ -145,15 +194,36 @@ const Admin = () => {
         return;
       }
 
-      // Validate basic structure
-      const hasBasicMetadata = jsonData.assessmentName && jsonData.version;
+      // Comprehensive Zod validation
+      const validationResult = assessmentUploadSchema.safeParse(jsonData);
       
-      if (!hasBasicMetadata) {
-        throw new Error("Invalid AIQ assessment structure: must include assessmentName and version");
+      if (!validationResult.success) {
+        const firstError = validationResult.error.errors[0];
+        const errorPath = firstError.path.join('.');
+        toast({
+          title: "Validation Failed",
+          description: `${errorPath}: ${firstError.message}`,
+          variant: "destructive",
+        });
+        setUploading(prev => ({ ...prev, [product.slug]: false }));
+        return;
       }
 
-      if (!jsonData.scoringConfiguration) {
-        throw new Error('Missing scoringConfiguration object');
+      // Use validated data
+      jsonData = validationResult.data;
+
+      // Additional business logic validation
+      const totalItemPoints = jsonData.itemBank.dimensions.reduce(
+        (sum: number, dim: any) => sum + dim.items.reduce((s: number, item: any) => s + item.points, 0),
+        0
+      );
+      
+      if (Math.abs(totalItemPoints - jsonData.scoringConfiguration.totalPoints) > 1) {
+        toast({
+          title: "Validation Warning",
+          description: `Total item points (${totalItemPoints}) doesn't match scoring config (${jsonData.scoringConfiguration.totalPoints})`,
+          variant: "destructive",
+        });
       }
 
       // Use the file path from the product's json_file_path

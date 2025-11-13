@@ -70,7 +70,7 @@ Deno.serve(async (req) => {
       .gte('created_at', oneMinuteAgo);
 
     if (countError) {
-      console.error('Error checking rate limit:', countError.message);
+      console.error('Rate limit check error');
     } else if (count !== null && count >= 10) {
       return new Response(
         JSON.stringify({ error: 'Rate limit exceeded - maximum 10 violations per minute' }),
@@ -96,7 +96,7 @@ Deno.serve(async (req) => {
       });
 
     if (insertError) {
-      console.error('Error inserting violation:', insertError.message);
+      console.error('Violation insert error');
       return new Response(
         JSON.stringify({ error: 'Failed to log violation' }),
         { status: 500, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
@@ -111,7 +111,7 @@ Deno.serve(async (req) => {
       .single();
 
     if (testError) {
-      console.error('Error fetching test:', testError.message);
+      console.error('Test fetch error');
       return new Response(
         JSON.stringify({ error: 'Failed to fetch test' }),
         { status: 500, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
