@@ -51,8 +51,8 @@ const assessments: Assessment[] = [
     name: "AIQ Student Assessment (Ages 14-15)",
     track: "adolescent",
     difficulty: "beginner",
-    duration: 60,
-    questionCount: 60,
+    duration: 24,
+    questionCount: 24,
     description: "Age-appropriate AI literacy assessment for high school students (Grades 9-10)",
     targetAudience: "Students aged 14-15 years",
     icon: GraduationCap
@@ -62,8 +62,8 @@ const assessments: Assessment[] = [
     name: "AIQ Student Assessment (Ages 16-17)",
     track: "adolescent",
     difficulty: "beginner",
-    duration: 60,
-    questionCount: 60,
+    duration: 48,
+    questionCount: 48,
     description: "Advanced AI literacy assessment for senior high school students (Grades 11-12)",
     targetAudience: "Students aged 16-17 years",
     icon: GraduationCap
@@ -102,8 +102,8 @@ const assessments: Assessment[] = [
     track: "role-based",
     role: "Data Scientist",
     difficulty: "advanced",
-    duration: 150,
-    questionCount: 160,
+    duration: 80,
+    questionCount: 80,
     description: "Advanced AI collaboration capabilities for senior data scientists",
     targetAudience: "Experienced data scientists leveraging AI at scale",
     icon: Briefcase
@@ -128,8 +128,8 @@ const assessments: Assessment[] = [
     track: "role-based",
     role: "Software Engineer",
     difficulty: "advanced",
-    duration: 150,
-    questionCount: 160,
+    duration: 80,
+    questionCount: 80,
     description: "Expert-level AI collaboration for senior software engineers",
     targetAudience: "Senior engineers mastering AI-powered development",
     icon: Briefcase
@@ -154,8 +154,8 @@ const assessments: Assessment[] = [
     track: "role-based",
     role: "Digital Marketer",
     difficulty: "advanced",
-    duration: 150,
-    questionCount: 160,
+    duration: 80,
+    questionCount: 80,
     description: "Advanced AI marketing strategies and implementation",
     targetAudience: "Senior marketers driving AI-powered growth",
     icon: Briefcase
@@ -180,8 +180,8 @@ const assessments: Assessment[] = [
     track: "role-based",
     role: "Business Analyst",
     difficulty: "advanced",
-    duration: 150,
-    questionCount: 160,
+    duration: 80,
+    questionCount: 80,
     description: "Advanced AI-driven business intelligence and analysis",
     targetAudience: "Senior analysts leveraging AI for strategic insights",
     icon: Briefcase
@@ -206,8 +206,8 @@ const assessments: Assessment[] = [
     track: "role-based",
     role: "Sales Professional",
     difficulty: "advanced",
-    duration: 150,
-    questionCount: 160,
+    duration: 80,
+    questionCount: 80,
     description: "Advanced AI strategies for sales optimization and growth",
     targetAudience: "Senior sales leaders mastering AI-driven pipelines",
     icon: Briefcase
@@ -232,8 +232,8 @@ const assessments: Assessment[] = [
     track: "role-based",
     role: "Operations Manager",
     difficulty: "advanced",
-    duration: 150,
-    questionCount: 160,
+    duration: 80,
+    questionCount: 80,
     description: "Advanced AI-driven operational excellence and efficiency",
     targetAudience: "Senior operations leaders optimizing with AI at scale",
     icon: Briefcase
@@ -258,8 +258,8 @@ const assessments: Assessment[] = [
     track: "role-based",
     role: "HR Professional",
     difficulty: "advanced",
-    duration: 150,
-    questionCount: 160,
+    duration: 80,
+    questionCount: 80,
     description: "Advanced AI strategies for talent management and development",
     targetAudience: "Senior HR leaders driving AI-powered people strategies",
     icon: Briefcase
@@ -335,7 +335,7 @@ export default function AssessmentSelector({ defaultTrack = "all" }: AssessmentS
           Choose Your Assessment
         </h1>
         <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-          19 specialized assessments across 3 tracks. Find the perfect assessment for your needs.
+          Choose from General (2), Student (2), or Professional (15) assessments across specialized tracks.
         </p>
       </div>
 

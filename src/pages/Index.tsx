@@ -213,13 +213,6 @@ const Index = () => {
           </div>
         </section>
 
-        {/* Assessment Selector Section */}
-        <section className="bg-secondary/30 py-16">
-          <div className="container max-w-7xl">
-            <AssessmentSelector />
-          </div>
-        </section>
-
         {/* Three Assessment Tracks Overview */}
         <section className="container py-16 max-w-6xl">
           <h2 className="text-4xl font-extrabold text-center mb-3 tracking-tight">Three Assessment Pathways</h2>
@@ -268,15 +261,22 @@ const Index = () => {
                 </div>
                 <h3 className="text-2xl font-extrabold mb-2">Professional Track</h3>
                 <p className="text-sm text-muted-foreground mb-4">
-                  Role-specific AI collaboration for working professionals
+                  8 professional roles with tailored assessments
                 </p>
                 <div className="text-3xl font-bold text-primary mb-4">15 Assessments</div>
-                <p className="text-xs text-muted-foreground mb-6">8 roles, beginner & advanced levels</p>
+                <p className="text-xs text-muted-foreground mb-6">Beginner & Advanced for each role</p>
                 <Link to="/assessments/professional">
                   <Button className="w-full">Explore Professional Track</Button>
                 </Link>
               </CardContent>
             </Card>
+          </div>
+        </section>
+
+        {/* Assessment Selector Section */}
+        <section className="bg-secondary/30 py-16">
+          <div className="container max-w-7xl">
+            <AssessmentSelector />
           </div>
         </section>
 
@@ -291,7 +291,8 @@ const Index = () => {
               <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-8">
                 <div className="text-center">
                   <div className="text-4xl font-extrabold text-blue-900 mb-1">400+</div>
-                  <p className="text-xs text-muted-foreground font-semibold">Calibrated Items</p>
+                  <p className="text-xs text-muted-foreground font-semibold">Test Items</p>
+                  <p className="text-xs text-muted-foreground/70 mt-1">Across all tracks & levels</p>
                 </div>
                 <div className="text-center">
                   <div className="text-4xl font-extrabold text-blue-900 mb-1">8</div>
@@ -390,7 +391,7 @@ const Index = () => {
                 Yes! The AIQ assessment is backed by rigorous peer-reviewed academic research published in Discover
                 Artificial Intelligence (Springer Nature, 2025). It uses Item Response Theory (IRT), the same
                 psychometric methodology used in standardized tests like the GRE and SAT. The assessment was developed
-                with 200+ calibrated items across 8 validated dimensions.
+                with 400+ calibrated items across all tracks and validated dimensions.
               </AccordionContent>
             </AccordionItem>
             <AccordionItem value="item-7">
