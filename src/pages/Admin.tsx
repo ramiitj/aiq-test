@@ -12,6 +12,7 @@ import { Upload, BarChart3, Users } from "lucide-react";
 import { checkUserRole } from "@/lib/roleUtils";
 import { sanitizeJsonString, sanitizeKeys } from "@/lib/jsonSanitizer";
 import { AdminDataTables } from "@/components/AdminDataTables";
+import { AdminProductAnalytics } from "@/components/AdminProductAnalytics";
 
 const Admin = () => {
   const [isAdmin, setIsAdmin] = useState(false);
@@ -286,8 +287,6 @@ const Admin = () => {
           </Card>
         </div>
 
-        <AdminDataTables />
-
         <Card className="shadow-elegant">
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
@@ -464,6 +463,12 @@ const Admin = () => {
             </div>
           </CardContent>
         </Card>
+
+        {/* Product Analytics Section */}
+        <AdminProductAnalytics />
+
+        {/* Data Tables Section */}
+        <AdminDataTables />
       </main>
 
       <Footer />

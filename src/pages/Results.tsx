@@ -36,6 +36,7 @@ interface TestResult {
   completed: boolean;
   test_duration_seconds: number;
   test_version?: string;
+  product_id?: string;
   product_slug?: string;
   product_name?: string;
 }
@@ -129,15 +130,17 @@ const Results = () => {
 
       // Fetch product name if product_slug exists
       let productName: string | undefined;
+      let productId: string | undefined;
       if (data.product_slug) {
         const { data: product } = await supabase
           .from("assessment_products")
-          .select("name")
+          .select("id, name")
           .eq("slug", data.product_slug)
           .maybeSingle();
         
         if (product) {
           productName = product.name;
+          productId = product.id;
         }
       }
 
@@ -150,6 +153,7 @@ const Results = () => {
         completed: data.completed,
         test_duration_seconds: Number(data.test_duration_seconds) || 0,
         test_version: data.test_version || "beginner",
+        product_id: productId || data.product_id,
         product_slug: data.product_slug,
         product_name: productName,
       });
@@ -258,6 +262,8 @@ const Results = () => {
             test_completion_date: result.created_at,
             test_duration_seconds: result.test_duration_seconds,
             test_version: result.test_version || 'professional',
+            product_id: result.product_id,
+            product_slug: result.product_slug,
           });
 
           if (error) throw error;
@@ -379,6 +385,8 @@ const Results = () => {
             test_completion_date: result.created_at,
             test_duration_seconds: result.test_duration_seconds,
             test_version: result.test_version || 'professional',
+            product_id: result.product_id,
+            product_slug: result.product_slug,
           });
 
         if (error) throw error;

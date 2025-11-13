@@ -1,8 +1,14 @@
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { LogOut, LayoutDashboard, BookOpen, Settings } from "lucide-react";
+import { LogOut, LayoutDashboard, BookOpen, Settings, GraduationCap, ChevronDown } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { useNavigate } from "react-router-dom";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 
 interface NavigationProps {
   isAuthenticated: boolean;
@@ -35,6 +41,33 @@ export const Navigation = ({ isAuthenticated, isAdmin }: NavigationProps) => {
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center gap-2">
+            <DropdownMenu>
+              <DropdownMenuTrigger asChild>
+                <Button variant="ghost" size="sm" className="font-semibold text-sm">
+                  <GraduationCap className="h-4 w-4 mr-2" />
+                  Assessments
+                  <ChevronDown className="h-3 w-3 ml-1" />
+                </Button>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent align="end" className="w-56">
+                <DropdownMenuItem asChild>
+                  <Link to="/assessments/general" className="cursor-pointer">
+                    General Track
+                  </Link>
+                </DropdownMenuItem>
+                <DropdownMenuItem asChild>
+                  <Link to="/assessments/adolescent" className="cursor-pointer">
+                    Student Track
+                  </Link>
+                </DropdownMenuItem>
+                <DropdownMenuItem asChild>
+                  <Link to="/assessments/professional" className="cursor-pointer">
+                    Professional Track
+                  </Link>
+                </DropdownMenuItem>
+              </DropdownMenuContent>
+            </DropdownMenu>
+
             <Link to="/about">
               <Button variant="ghost" size="sm" className="font-semibold text-sm">
                 <BookOpen className="h-4 w-4 mr-2" />
