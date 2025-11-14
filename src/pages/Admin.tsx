@@ -16,7 +16,7 @@ import { z } from "zod";
 
 // Comprehensive validation schema for assessment uploads
 const assessmentItemSchema = z.object({
-  id: z.string().regex(/^[A-Z]{2,3}-[A-Z]-\d{3}$/, "Invalid item ID format"),
+  id: z.string().regex(/^[A-Z]{2,3}-[A-Z0-9]+-\d{3}$/, "Invalid item ID format"),
   level: z.number().min(1).max(3),
   type: z.enum(['multiple-choice', 'true-false', 'multiple-response', 'scenario-based', 'rank-ordering']),
   points: z.number().min(1).max(50),
