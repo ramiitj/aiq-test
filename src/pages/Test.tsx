@@ -268,19 +268,19 @@ const Test = () => {
   // Questions are ready to display (no initialization needed for current types)
 
   const loadTestData = async () => {
-    // Skip if we're resuming (dimensions loaded in initializeTest)
+    // Skip if we're resuming (will be handled in initializeTest)
     if (resumeId) {
       console.log('[Test] Skipping loadTestData - resuming test');
       return;
     }
     
     try {
-      console.log('[Test] Loading test data for:', version);
+      console.log('[Test] Loading product metadata for:', version);
       setLoadError(null);
       
       let slugToLoad: string = version; // Default fallback
       
-      // Try to fetch product from database if we have a product slug
+      // Try to fetch product metadata from database
       const productParam = searchParams.get("product");
       if (productParam) {
         const { data: product, error: productError } = await supabase
@@ -293,31 +293,26 @@ const Test = () => {
         if (!productError && product) {
           setProductId(product.id);
           setProductSlug(product.slug);
-          slugToLoad = product.slug; // Use the actual product slug
-          console.log('[Test] Loaded product:', product.name, 'slug:', slugToLoad);
+          slugToLoad = product.slug;
+          
+          // Set basic assessment info from product metadata
+          setAssessmentInfo({
+            name: product.name,
+            totalTime: product.duration_minutes,
+            questionCount: product.question_count,
+            description: product.description
+          });
+          
+          // Set initial time remaining
+          setTimeRemaining(product.duration_minutes * 60);
+          
+          console.log('[Test] Loaded product metadata:', product.name);
         }
-      }
-      
-      // Load test items using the product slug (not normalized version)
-      const assessmentData = await loadTestItems(slugToLoad as any, true); // Enable legacy fallback
-      console.log('[Test] Assessment data loaded successfully:', {
-        name: assessmentData.assessmentInfo.name,
-        dimensionsCount: assessmentData.dimensions.length,
-        totalItems: assessmentData.dimensions.reduce((sum, d) => sum + d.items.length, 0),
-        totalTime: assessmentData.assessmentInfo.totalTime
-      });
-      setDimensions(assessmentData.dimensions);
-      setScoringConfig(assessmentData.scoringConfiguration);
-      setAssessmentInfo(assessmentData.assessmentInfo);
-      
-      // Set initial time remaining based on assessment duration
-      if (!resumeId) {
-        setTimeRemaining(assessmentData.assessmentInfo.totalTime * 60); // Convert minutes to seconds
       }
       
       setLoading(false);
     } catch (error: any) {
-      const errorMsg = error.message || "Failed to load test items";
+      const errorMsg = error.message || "Failed to load product metadata";
       console.error('[Test] Error loading test data:', errorMsg, error);
       setLoadError(errorMsg);
       toast({
@@ -368,8 +363,9 @@ const Test = () => {
         const resumedVersion = (testData.test_version === 'professional' || testData.test_version === 'expert') ? 'advanced' : ((testData.test_version as TestVersion) || 'beginner');
         setVersion(resumedVersion);
         
-        // Load dimensions first, then validate indices
-        const assessmentData = await loadTestItems(resumedVersion, true);
+        // Load dimensions securely via edge function
+        const slugToLoad = testData.product_slug || resumedVersion;
+        const assessmentData = await loadTestItems(slugToLoad, testData.id, supabase, true);
         setDimensions(assessmentData.dimensions);
         setScoringConfig(assessmentData.scoringConfiguration);
         setAssessmentInfo(assessmentData.assessmentInfo);
@@ -521,7 +517,7 @@ const Test = () => {
     if (!session) return;
 
     try {
-      // Use dynamic test duration from assessment
+      // Use dynamic test duration from assessment metadata
       const initialTimeRemaining = assessmentInfo?.totalTime 
         ? assessmentInfo.totalTime * 60 
         : 3600;
@@ -585,6 +581,19 @@ const Test = () => {
       if (demographicsError) throw demographicsError;
 
       setTestId(newTest.id);
+      
+      // NOW load the actual assessment questions via secure edge function
+      const slugToLoad = productSlug || version;
+      const assessmentData = await loadTestItems(slugToLoad, newTest.id, supabase, true);
+      
+      console.log('[Test] Assessment questions loaded securely:', {
+        dimensionsCount: assessmentData.dimensions.length,
+        totalItems: assessmentData.dimensions.reduce((sum, d) => sum + d.items.length, 0)
+      });
+      
+      setDimensions(assessmentData.dimensions);
+      setScoringConfig(assessmentData.scoringConfiguration);
+      
       setShowDemographics(false);
       
       // Mark test as started NOW (when first question is displayed)
@@ -663,43 +672,30 @@ const Test = () => {
     }
 
     try {
-      // Import scoring function
-      const { calculateTestScores } = await import("@/lib/scoreCalculator");
+      // Call the secure score-test edge function
+      console.log('[Test] Calling score-test edge function for test:', testId);
       
-      // Calculate scores before completing
-      const scoringResult = calculateTestScores(
-        answers, 
-        dimensions, 
-        scoringConfig, 
-        version
-      );
-      
-      // Calculate test duration
-      const testStartTime = timeRemaining === testDuration ? Date.now() : Date.now() - ((testDuration - timeRemaining) * 1000);
-      const testDurationSeconds = Math.floor((Date.now() - testStartTime) / 1000);
+      const { data: scoreData, error: scoreError } = await supabase.functions.invoke('score-test', {
+        body: { 
+          testId, 
+          answers 
+        }
+      });
 
-      await supabase
-        .from("tests")
-        .update({
-          completed: true,
-          paused: false,
-          answers: answers,
-          scores: scoringResult.dimensionScores,
-          time_remaining: timeRemaining,
-          test_duration_seconds: testDurationSeconds,
-        })
-        .eq("id", testId);
+      if (scoreError) throw scoreError;
+
+      console.log('[Test] Scoring complete:', scoreData);
 
       toast({
         title: "Assessment Complete!",
-        description: "Calculating your AIQ scores...",
+        description: "Your results are ready!",
       });
 
       navigate(`/results/${testId}`);
     } catch (error: any) {
       toast({
         title: "Error",
-        description: error.message,
+        description: error.message || "Failed to submit test",
         variant: "destructive",
       });
     }

@@ -228,38 +228,35 @@ export function selectItemsForDimension(
 }
 
 /**
- * Load and prepare assessment using product slug or file path
+ * Load and prepare assessment securely using edge function
  * Supports all 19 assessment products with variable formats
  */
 export async function loadTestItems(
   slugOrVersion: string = 'general-beginner',
+  testId: string,
+  supabaseClient: any,
   legacyFallback: boolean = true
 ): Promise<AssessmentData> {
   console.log(`[loadTestItems] Loading assessment: ${slugOrVersion}`);
   
   try {
     // Map legacy version names to new slugs for backward compatibility
-    let filePath = slugOrVersion;
+    let productSlug = slugOrVersion;
     if (legacyFallback) {
       // ONLY map if it's exactly 'beginner', 'advanced', etc without dashes
       // This preserves slugs like 'adolescent-14-15', 'pm-beginner', etc
       if (slugOrVersion === 'beginner' && !slugOrVersion.includes('-')) {
-        filePath = 'general-beginner';
+        productSlug = 'general-beginner';
       } else if ((slugOrVersion === 'advanced' || slugOrVersion === 'professional' || slugOrVersion === 'expert') && !slugOrVersion.includes('-')) {
-        filePath = 'general-advanced';
+        productSlug = 'general-advanced';
       }
       // Otherwise, use slugOrVersion as-is (e.g., 'adolescent-14-15', 'pm-beginner')
     }
     
-    // Ensure .json extension
-    if (!filePath.endsWith('.json')) {
-      filePath = `${filePath}.json`;
-    }
+    console.log(`[loadTestItems] Loading via edge function for test: ${testId}`);
     
-    console.log(`[loadTestItems] Loading file: ${filePath}`);
-    
-    // Use the assessment adapter to load and normalize
-    const normalized = await loadNormalizedAssessment(`/test-items/${filePath}`);
+    // Use the assessment adapter to load securely from edge function
+    const normalized = await loadNormalizedAssessment(productSlug, testId, supabaseClient);
     
     console.log(`[loadTestItems] Normalized assessment:`, {
       name: normalized.name,
