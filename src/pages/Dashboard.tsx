@@ -5,7 +5,7 @@ import { Navigation } from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { PlayCircle, Trophy, User as UserIcon, Play, X, Download, Trash2, ArrowRight, Clock, Brain } from "lucide-react";
+import { PlayCircle, Trophy, User as UserIcon, Play, X, Download, Trash2, ArrowRight, Clock, Brain, GraduationCap, Briefcase } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import { checkUserRole } from "@/lib/roleUtils";
 import { captureUserLocation } from "@/lib/geolocation";
@@ -476,105 +476,94 @@ const Dashboard = () => {
           {/* Browse All Assessments CTA */}
           <Card className="lg:col-span-2 shadow-lg border-2 border-blue-900 bg-gradient-to-br from-blue-900 to-indigo-900">
             <CardContent className="pt-8 pb-8">
-              <div className="flex items-start gap-4 mb-6">
-                <div className="p-3 bg-white/10 rounded-lg">
-                  <PlayCircle className="h-8 w-8 text-white" />
-                </div>
-                <div className="flex-1">
-                  <h2 className="text-2xl font-black mb-2 text-white">Explore All Assessments</h2>
-                  <p className="text-sm text-white/80 mb-4">
-                    Choose from 19 specialized assessments across General, Student, and Professional tracks
-                  </p>
-                </div>
+              <div className="mb-6">
+                <h2 className="text-2xl font-black mb-2 text-white">Explore All Assessments</h2>
+                <p className="text-sm text-white/90">
+                  19 specialized assessments across 3 tracks
+                </p>
               </div>
               
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                 {/* General Track */}
-                <Link to="/assessments/general" className="block">
-                  <div className="bg-white dark:bg-gray-900 rounded-lg p-5 hover:shadow-xl transition-all hover:scale-105 cursor-pointer border-2 border-transparent hover:border-blue-400 h-full">
+                <Link to="/assessments/general" className="block group">
+                  <div className="bg-white dark:bg-gray-900 rounded-lg p-4 hover:shadow-xl transition-all hover:scale-[1.02] border-2 border-transparent hover:border-blue-400 h-full flex flex-col">
                     <div className="flex items-center gap-2 mb-3">
                       <div className="p-2 bg-blue-100 dark:bg-blue-900/30 rounded">
-                        <Brain className="h-5 w-5 text-blue-600" />
+                        <Brain className="h-4 w-4 text-blue-600" />
                       </div>
-                      <h3 className="text-base font-black">General Track</h3>
+                      <h3 className="text-sm font-black">General Track</h3>
                     </div>
-                    <div className="space-y-2 mb-4">
-                      <p className="text-xs text-muted-foreground font-semibold">2 Assessments</p>
-                      <p className="text-xs text-muted-foreground">Universal AI collaboration skills</p>
-                    </div>
-                    <div className="space-y-1.5">
-                      <p className="text-xs font-bold text-blue-900 dark:text-blue-100">INCLUDES:</p>
-                      <ul className="text-xs text-muted-foreground space-y-1">
-                        <li>• Beginner Level</li>
-                        <li>• Advanced Level</li>
-                      </ul>
+                    <p className="text-xs text-muted-foreground mb-3">
+                      Universal AI collaboration • 2 levels
+                    </p>
+                    <div className="flex-1 mb-3">
+                      <div className="text-xs space-y-1 text-muted-foreground">
+                        <div>• Beginner Level</div>
+                        <div>• Advanced Level</div>
+                      </div>
                     </div>
                     <Button 
-                      className="w-full mt-4 bg-blue-900 hover:bg-blue-800 text-xs sm:text-sm"
+                      className="w-full bg-blue-600 hover:bg-blue-700 h-9"
                       size="sm"
                     >
-                      <span className="truncate">Explore General Track</span>
-                      <ArrowRight className="ml-2 h-3 w-3 flex-shrink-0" />
+                      View General
+                      <ArrowRight className="ml-1.5 h-3.5 w-3.5" />
                     </Button>
                   </div>
                 </Link>
 
                 {/* Student Track */}
-                <Link to="/assessments/adolescent" className="block">
-                  <div className="bg-white dark:bg-gray-900 rounded-lg p-5 hover:shadow-xl transition-all hover:scale-105 cursor-pointer border-2 border-transparent hover:border-green-400 h-full">
+                <Link to="/assessments/adolescent" className="block group">
+                  <div className="bg-white dark:bg-gray-900 rounded-lg p-4 hover:shadow-xl transition-all hover:scale-[1.02] border-2 border-transparent hover:border-green-400 h-full flex flex-col">
                     <div className="flex items-center gap-2 mb-3">
                       <div className="p-2 bg-green-100 dark:bg-green-900/30 rounded">
-                        <Trophy className="h-5 w-5 text-green-600" />
+                        <GraduationCap className="h-4 w-4 text-green-600" />
                       </div>
-                      <h3 className="text-base font-black">Student Track</h3>
+                      <h3 className="text-sm font-black">Student Track</h3>
                     </div>
-                    <div className="space-y-2 mb-4">
-                      <p className="text-xs text-muted-foreground font-semibold">2 Age Groups</p>
-                      <p className="text-xs text-muted-foreground">Age-appropriate for students</p>
-                    </div>
-                    <div className="space-y-1.5">
-                      <p className="text-xs font-bold text-green-900 dark:text-green-100">INCLUDES:</p>
-                      <ul className="text-xs text-muted-foreground space-y-1">
-                        <li>• Ages 14-15 Years</li>
-                        <li>• Ages 16-17 Years</li>
-                      </ul>
+                    <p className="text-xs text-muted-foreground mb-3">
+                      Age-appropriate literacy • 2 groups
+                    </p>
+                    <div className="flex-1 mb-3">
+                      <div className="text-xs space-y-1 text-muted-foreground">
+                        <div>• Ages 14-15</div>
+                        <div>• Ages 16-17</div>
+                      </div>
                     </div>
                     <Button 
-                      className="w-full mt-4 bg-green-600 hover:bg-green-700 text-xs sm:text-sm"
+                      className="w-full bg-green-600 hover:bg-green-700 h-9"
                       size="sm"
                     >
-                      <span className="truncate">Explore Student Track</span>
-                      <ArrowRight className="ml-2 h-3 w-3 flex-shrink-0" />
+                      View Student
+                      <ArrowRight className="ml-1.5 h-3.5 w-3.5" />
                     </Button>
                   </div>
                 </Link>
 
                 {/* Professional Track */}
-                <Link to="/assessments/professional" className="block">
-                  <div className="bg-white dark:bg-gray-900 rounded-lg p-5 hover:shadow-xl transition-all hover:scale-105 cursor-pointer border-2 border-transparent hover:border-purple-400 h-full">
+                <Link to="/assessments/professional" className="block group">
+                  <div className="bg-white dark:bg-gray-900 rounded-lg p-4 hover:shadow-xl transition-all hover:scale-[1.02] border-2 border-transparent hover:border-purple-400 h-full flex flex-col">
                     <div className="flex items-center gap-2 mb-3">
                       <div className="p-2 bg-purple-100 dark:bg-purple-900/30 rounded">
-                        <Trophy className="h-5 w-5 text-purple-600" />
+                        <Briefcase className="h-4 w-4 text-purple-600" />
                       </div>
-                      <h3 className="text-base font-black">Professional Track</h3>
+                      <h3 className="text-sm font-black">Professional Track</h3>
                     </div>
-                    <div className="space-y-2 mb-4">
-                      <p className="text-xs text-muted-foreground font-semibold">15 Assessments</p>
-                      <p className="text-xs text-muted-foreground">Role-specific evaluations</p>
-                    </div>
-                    <div className="space-y-1.5">
-                      <p className="text-xs font-bold text-purple-900 dark:text-purple-100">INCLUDES:</p>
-                      <ul className="text-xs text-muted-foreground space-y-1">
-                        <li>• 8 Professional Roles</li>
-                        <li>• Beginner & Advanced</li>
-                      </ul>
+                    <p className="text-xs text-muted-foreground mb-3">
+                      Role-specific • 8 roles • 15 tests
+                    </p>
+                    <div className="flex-1 mb-3">
+                      <div className="text-xs space-y-1 text-muted-foreground">
+                        <div>• 8 Professional Roles</div>
+                        <div>• Beginner & Advanced</div>
+                      </div>
                     </div>
                     <Button 
-                      className="w-full mt-4 bg-purple-600 hover:bg-purple-700 text-xs sm:text-sm"
+                      className="w-full bg-purple-600 hover:bg-purple-700 h-9"
                       size="sm"
                     >
-                      <span className="truncate">Explore Professional Track</span>
-                      <ArrowRight className="ml-2 h-3 w-3 flex-shrink-0" />
+                      View Professional
+                      <ArrowRight className="ml-1.5 h-3.5 w-3.5" />
                     </Button>
                   </div>
                 </Link>

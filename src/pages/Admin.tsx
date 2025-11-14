@@ -53,8 +53,9 @@ const assessmentUploadSchema = z.object({
   scoringConfiguration: z.object({
     totalPoints: z.number().positive(),
     pointsPerDimension: z.number().positive().optional(),
-    passingScore: z.number().min(0).max(100),
-    scoringMethod: z.string().optional(),
+    passingScore: z.number().min(0),
+    passingPercentage: z.number().min(0).max(100).optional(),
+    scoringMethod: z.union([z.string(), z.object({}).passthrough()]).optional(),
   }),
   assessmentConfiguration: z.object({
     totalQuestions: z.number().positive().optional(),
