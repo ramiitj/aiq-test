@@ -175,6 +175,13 @@ const Test = () => {
     loadTestData();
   }, [version]);
 
+  // Auto-show consent dialog once assessment data is loaded
+  useEffect(() => {
+    if (!loading && assessmentInfo && securityConsentGiven && !showConsent && !showDemographics && !resumeId) {
+      setShowConsent(true);
+    }
+  }, [loading, assessmentInfo, securityConsentGiven, showConsent, showDemographics, resumeId]);
+
   useEffect(() => {
     if (!showConsent && timeRemaining > 0) {
       const timer = setInterval(() => {
@@ -411,6 +418,15 @@ const Test = () => {
       return;
     }
 
+    // Wait for assessment info to load before showing demographics
+    if (!assessmentInfo || loading) {
+      toast({
+        title: "Loading Assessment",
+        description: "Please wait while we load the assessment details...",
+      });
+      return;
+    }
+
     setShowConsent(false);
     setShowDemographics(true);
   };
@@ -418,7 +434,10 @@ const Test = () => {
   const handleSecurityConsentAccept = () => {
     setSecurityConsentGiven(true);
     setShowSecurityConsent(false);
-    setShowConsent(true);
+    // Only show consent after assessment data is loaded
+    if (!loading && assessmentInfo) {
+      setShowConsent(true);
+    }
   };
   
   const handleSecurityConsentDecline = () => {
