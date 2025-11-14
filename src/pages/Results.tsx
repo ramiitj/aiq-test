@@ -177,42 +177,54 @@ const Results = () => {
         product_name: productName,
       });
 
-      // Recalculate scores with new IRT system
+      // Use scores from database (calculated securely server-side)
       const testVersion = (() => {
         const rawVersion = data.test_version || "beginner";
-        // Map old values to new structure for backward compatibility
         if (rawVersion === 'professional' || rawVersion === 'expert') {
           return 'advanced';
         }
         return rawVersion as TestVersion;
       })();
-      const assessmentData = await loadTestItems(testVersion);
 
-      const calculatedScores = calculateTestScores(
-        (data.answers || {}) as Record<string, string>,
-        assessmentData.dimensions,
-        assessmentData.scoringConfiguration,
-        testVersion,
-      );
+      // Build scoring result from stored data with proper type casting
+      const dimensionScores = (data.scores || {}) as { [key: string]: number };
+      const dimScores = Object.values(dimensionScores);
+      const overallScore = dimScores.length > 0 
+        ? dimScores.reduce((sum, score) => sum + score, 0) / dimScores.length 
+        : 0;
 
-      // Store scoring guidelines from assessment data
-      const scoringGuidelinesFromJSON = assessmentData.scoringConfiguration?.scoringGuidelines || {};
-      const enrichedScores = {
-        ...calculatedScores,
-        scoringGuidelines: scoringGuidelinesFromJSON,
+      const enrichedScores: any = {
+        dimensionScores,
+        overallScore,
+        totalPossiblePoints: 1000,
+        passingScore: 700,
+        passed: overallScore >= 700,
+        percentageScore: (overallScore / 1000) * 100,
+        correctCount: 0,
+        totalCount: 0,
+        assessmentLevel: testVersion,
+        scoringGuidelines: {},
+        performanceLevel: "Novice"
       };
 
       setScoringResult(enrichedScores);
       setIsPassed(enrichedScores.passed);
 
       // Extract bottom 3 dimensions for recommendations
-      const sortedDimensions = Object.entries(calculatedScores.dimensionScores)
+      const sortedDimensions = Object.entries(dimensionScores)
         .map(([code, score]) => ({ code, score }))
         .sort((a, b) => a.score - b.score)
         .slice(0, 3);
 
-      // Load recommendations with pass/fail context
-      await extractRecommendations(testVersion, sortedDimensions, calculatedScores.passed, assessmentData);
+      // Load recommendations with assessment context
+      const slugToLoad = data.product_slug || testVersion;
+      try {
+        const assessmentData = await loadTestItems(slugToLoad, data.id, supabase, true);
+        await extractRecommendations(testVersion, sortedDimensions, enrichedScores.passed, assessmentData);
+      } catch (error) {
+        console.error('Could not load recommendations:', error);
+        // Continue without recommendations
+      }
 
       // Get user's name from profile (registered name)
       const { data: profile } = await supabase

@@ -275,26 +275,25 @@ export function normalizeAssessmentData(rawData: any): NormalizedAssessment {
 }
 
 /**
- * Load and normalize assessment from file path
+ * Load and normalize assessment securely from edge function
  */
-export async function loadNormalizedAssessment(filePath: string): Promise<NormalizedAssessment> {
+export async function loadNormalizedAssessment(
+  slug: string, 
+  testId: string,
+  supabaseClient: any
+): Promise<NormalizedAssessment> {
   try {
-    const response = await fetch(filePath);
-    if (!response.ok) {
-      throw new Error(`Failed to load assessment: ${response.statusText}`);
-    }
+    const { data, error } = await supabaseClient.functions.invoke('load-assessment', {
+      body: { testId, productSlug: slug }
+    });
+
+    if (error) throw error;
+    if (!data?.assessment) throw new Error('No assessment data received');
     
-    const rawData = await response.json();
-    return normalizeAssessmentData(rawData);
+    return normalizeAssessmentData(data.assessment);
   } catch (error) {
     console.error('Error loading assessment:', error);
     throw error;
   }
 }
 
-/**
- * Get assessment file path by slug
- */
-export function getAssessmentFilePath(slug: string): string {
-  return `/test-items/${slug}.json`;
-}
