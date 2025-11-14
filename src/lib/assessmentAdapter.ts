@@ -17,7 +17,8 @@ export interface NormalizedDimension {
     type: string;
     difficulty?: string;
     options?: string[];
-    correctAnswer?: string | string[] | number;
+    correctAnswer?: string | string[] | number | boolean;
+    correctAnswers?: number[]; // For multiple-response questions
     explanation?: string;
     scenario?: string;
   }>;
@@ -206,16 +207,27 @@ function normalizeDimensions(dimensions: any[]): NormalizedDimension[] {
     code: dim.code || dim.dimensionCode || '',
     name: dim.name || dim.dimensionName || '',
     description: dim.description || '',
-    items: Array.isArray(dim.items) ? dim.items.map(item => ({
-      id: item.id || item.itemId || '',
-      text: item.text || item.question || item.questionText || '',
-      type: item.type || item.questionType || 'multiple-choice',
-      difficulty: item.difficulty || item.difficultyLevel,
-      options: item.options || item.choices,
-      correctAnswer: item.correctAnswer || item.answer,
-      explanation: item.explanation || item.rationale,
-      scenario: item.scenario,
-    })) : [],
+    items: Array.isArray(dim.items) ? dim.items.map(item => {
+      // Handle both single correctAnswer and multiple correctAnswers
+      let correctAnswer = item.correctAnswer !== undefined ? item.correctAnswer : item.answer;
+      
+      // For multiple-response questions, use correctAnswers array
+      if (item.correctAnswers && Array.isArray(item.correctAnswers)) {
+        correctAnswer = item.correctAnswers;
+      }
+      
+      return {
+        id: item.id || item.itemId || '',
+        text: item.text || item.question || item.questionText || '',
+        type: item.type || item.questionType || 'multiple-choice',
+        difficulty: item.difficulty || item.difficultyLevel,
+        options: item.options || item.choices,
+        correctAnswer,
+        correctAnswers: item.correctAnswers, // Keep correctAnswers for multiple-response
+        explanation: item.explanation || item.rationale,
+        scenario: item.scenario,
+      };
+    }) : [],
   }));
 }
 

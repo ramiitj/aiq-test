@@ -207,7 +207,7 @@ const Test = () => {
     }
   }, [showConsent, timeRemaining]);
 
-  // Auto-pause test when user closes tab or navigates away
+  // Auto-pause test when user closes tab or navigates away (NEVER delete)
   useEffect(() => {
     if (!testId || showConsent || showDemographics) return;
 
@@ -226,6 +226,7 @@ const Test = () => {
         if (!session) return;
 
         // Use fetch with keepalive for better reliability during page unload
+        // Only PAUSE the test, never delete it - users can resume or delete from dashboard
         fetch(`${import.meta.env.VITE_SUPABASE_URL}/rest/v1/tests?id=eq.${testId}`, {
           method: 'PATCH',
           headers: {
@@ -396,6 +397,16 @@ const Test = () => {
         setTimeRemaining(typeof testData.time_remaining === 'number' ? testData.time_remaining : defaultDuration);
         setAnswers((testData.answers as Record<string, string>) || {});
         
+        // Ensure test_started is true when resuming (should already be true, but just in case)
+        if (!testData.test_started) {
+          await supabase
+            .from("tests")
+            .update({ test_started: true })
+            .eq("id", testData.id);
+        }
+        
+        setTestStarted(true);
+        
         // Finished loading - hide loading state
         setLoading(false);
         
@@ -515,6 +526,7 @@ const Test = () => {
         ? assessmentInfo.totalTime * 60 
         : 3600;
       
+      // Create test record (rate limits don't apply yet)
       const { data: newTest, error } = await supabase
         .from("tests")
         .insert([{
@@ -528,7 +540,8 @@ const Test = () => {
           current_item: 0,
           answers: {},
           product_id: productId,
-          product_slug: productSlug
+          product_slug: productSlug,
+          test_started: false // Not started yet, just created
         }])
         .select()
         .single();
@@ -573,6 +586,20 @@ const Test = () => {
 
       setTestId(newTest.id);
       setShowDemographics(false);
+      
+      // Mark test as started NOW (when first question is displayed)
+      // This is where rate limits are checked
+      const { error: startError } = await supabase
+        .from("tests")
+        .update({ test_started: true })
+        .eq("id", newTest.id);
+      
+      if (startError) {
+        // Rate limit error - delete the test we just created
+        await supabase.from("tests").delete().eq("id", newTest.id);
+        throw startError;
+      }
+      
       setTestStarted(true); // Activate AIBlocker now that test is starting
       
       // Scroll to top when test starts
