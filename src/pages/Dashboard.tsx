@@ -510,11 +510,11 @@ const Dashboard = () => {
                       </ul>
                     </div>
                     <Button 
-                      className="w-full mt-4 bg-blue-900 hover:bg-blue-800"
+                      className="w-full mt-4 bg-blue-900 hover:bg-blue-800 text-xs sm:text-sm"
                       size="sm"
                     >
-                      Explore General Track
-                      <ArrowRight className="ml-2 h-3 w-3" />
+                      <span className="truncate">Explore General Track</span>
+                      <ArrowRight className="ml-2 h-3 w-3 flex-shrink-0" />
                     </Button>
                   </div>
                 </Link>
@@ -540,11 +540,11 @@ const Dashboard = () => {
                       </ul>
                     </div>
                     <Button 
-                      className="w-full mt-4 bg-green-600 hover:bg-green-700"
+                      className="w-full mt-4 bg-green-600 hover:bg-green-700 text-xs sm:text-sm"
                       size="sm"
                     >
-                      Explore Student Track
-                      <ArrowRight className="ml-2 h-3 w-3" />
+                      <span className="truncate">Explore Student Track</span>
+                      <ArrowRight className="ml-2 h-3 w-3 flex-shrink-0" />
                     </Button>
                   </div>
                 </Link>
@@ -570,11 +570,11 @@ const Dashboard = () => {
                       </ul>
                     </div>
                     <Button 
-                      className="w-full mt-4 bg-purple-600 hover:bg-purple-700"
+                      className="w-full mt-4 bg-purple-600 hover:bg-purple-700 text-xs sm:text-sm"
                       size="sm"
                     >
-                      Explore Professional Track
-                      <ArrowRight className="ml-2 h-3 w-3" />
+                      <span className="truncate">Explore Professional Track</span>
+                      <ArrowRight className="ml-2 h-3 w-3 flex-shrink-0" />
                     </Button>
                   </div>
                 </Link>
