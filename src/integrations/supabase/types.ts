@@ -383,6 +383,7 @@ export type Database = {
           security_violations_count: number | null
           start_time: string
           test_duration_seconds: number | null
+          test_started: boolean | null
           test_version: string
           time_remaining: number | null
           user_id: string
@@ -409,6 +410,7 @@ export type Database = {
           security_violations_count?: number | null
           start_time?: string
           test_duration_seconds?: number | null
+          test_started?: boolean | null
           test_version?: string
           time_remaining?: number | null
           user_id: string
@@ -435,6 +437,7 @@ export type Database = {
           security_violations_count?: number | null
           start_time?: string
           test_duration_seconds?: number | null
+          test_started?: boolean | null
           test_version?: string
           time_remaining?: number | null
           user_id?: string

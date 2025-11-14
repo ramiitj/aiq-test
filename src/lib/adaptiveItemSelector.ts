@@ -285,9 +285,10 @@ export async function loadTestItems(
         type: (item.type as any) || 'multiple-choice',
         question: item.text,
         options: item.options,
-        correctAnswer: typeof item.correctAnswer === 'number' 
+        correctAnswer: typeof item.correctAnswer === 'number' || typeof item.correctAnswer === 'boolean'
           ? item.correctAnswer 
-          : (typeof item.correctAnswer === 'boolean' ? item.correctAnswer : 0),
+          : (Array.isArray(item.correctAnswer) ? 0 : 0),
+        correctAnswers: item.correctAnswers, // Preserve for multiple-response
         explanation: item.explanation,
         rationale: item.explanation,
         points: 10,
