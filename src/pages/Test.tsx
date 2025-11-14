@@ -177,10 +177,19 @@ const Test = () => {
 
   // Auto-show consent dialog once assessment data is loaded
   useEffect(() => {
-    if (!loading && assessmentInfo && securityConsentGiven && !showConsent && !showDemographics && !resumeId) {
+    if (
+      !loading &&
+      assessmentInfo &&
+      securityConsentGiven &&
+      !showConsent &&
+      !showDemographics &&
+      !resumeId &&
+      !testStarted &&
+      !testId
+    ) {
       setShowConsent(true);
     }
-  }, [loading, assessmentInfo, securityConsentGiven, showConsent, showDemographics, resumeId]);
+  }, [loading, assessmentInfo, securityConsentGiven, showConsent, showDemographics, resumeId, testStarted, testId]);
 
   useEffect(() => {
     if (!showConsent && timeRemaining > 0) {
