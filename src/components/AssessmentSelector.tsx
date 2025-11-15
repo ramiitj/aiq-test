@@ -82,6 +82,18 @@ const assessments: Assessment[] = [
     targetAudience: "Product managers new to AI-powered workflows",
     icon: Briefcase
   },
+  {
+    slug: "pm-advanced",
+    name: "Product Manager - Advanced",
+    track: "role-based",
+    role: "Product Manager",
+    difficulty: "advanced",
+    duration: 150,
+    questionCount: 160,
+    description: "Advanced AI collaboration and strategy for senior product leaders",
+    targetAudience: "Senior PMs, VP/CPO-level leaders, AI product strategists",
+    icon: Briefcase
+  },
   
   // Data Scientist
   {
@@ -325,6 +337,31 @@ export default function AssessmentSelector({ defaultTrack = "general" }: Assessm
     return grouped;
   }, [filteredAssessments]);
 
+  // Group role-based assessments by role for side-by-side display
+  const groupedByRole = useMemo(() => {
+    if (activeTrack !== "role-based") return {};
+    
+    const roleGroups: Record<string, Assessment[]> = {};
+    
+    filteredAssessments.forEach(assessment => {
+      if (assessment.role) {
+        if (!roleGroups[assessment.role]) {
+          roleGroups[assessment.role] = [];
+        }
+        roleGroups[assessment.role].push(assessment);
+      }
+    });
+    
+    // Sort assessments within each role by difficulty (beginner first)
+    Object.keys(roleGroups).forEach(role => {
+      roleGroups[role].sort((a, b) => 
+        a.difficulty === "beginner" ? -1 : 1
+      );
+    });
+    
+    return roleGroups;
+  }, [filteredAssessments, activeTrack]);
+
   return (
     <div className="w-full space-y-6">
       {/* Header */}
@@ -362,6 +399,27 @@ export default function AssessmentSelector({ defaultTrack = "general" }: Assessm
           {filteredAssessments.length === 0 ? (
             <div className="text-center py-12">
               <p className="text-muted-foreground">No assessments found matching your search.</p>
+            </div>
+          ) : activeTrack === "role-based" ? (
+            <div className="space-y-8">
+              {Object.entries(groupedByRole).map(([role, roleAssessments]) => (
+                <div key={role} className="space-y-3">
+                  <h3 className="text-xl font-semibold text-foreground flex items-center gap-2">
+                    <Briefcase className="h-5 w-5 text-primary" />
+                    {role}
+                  </h3>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    {roleAssessments.map(assessment => (
+                      <AssessmentCard
+                        key={assessment.slug}
+                        assessment={assessment}
+                        onStart={handleStartAssessment}
+                        getDifficultyColor={getDifficultyColor}
+                      />
+                    ))}
+                  </div>
+                </div>
+              ))}
             </div>
           ) : (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
