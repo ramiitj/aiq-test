@@ -88,8 +88,8 @@ const assessments: Assessment[] = [
     track: "role-based",
     role: "Product Manager",
     difficulty: "advanced",
-    duration: 150,
-    questionCount: 160,
+    duration: 80,
+    questionCount: 80,
     description: "Advanced AI collaboration and strategy for senior product leaders",
     targetAudience: "Senior PMs, VP/CPO-level leaders, AI product strategists",
     icon: Briefcase
