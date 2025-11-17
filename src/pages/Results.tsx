@@ -123,12 +123,12 @@ const Results = () => {
         .eq("user_id", session.user.id)
         .maybeSingle();
 
-      // If not found in tests table, try public_results
+      // If not found in tests table, try public_results (check both test_id and id columns)
       if (!data) {
         const { data: publicResult, error: publicError } = await supabase
           .from("public_results")
           .select("*")
-          .eq("test_id", testId)
+          .or(`test_id.eq.${testId},id.eq.${testId}`)
           .eq("user_id", session.user.id)
           .maybeSingle();
 
