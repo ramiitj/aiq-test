@@ -67,6 +67,14 @@ Deno.serve(async (req) => {
 
     // Map product slug to actual storage filename
     const mapSlugToFileName = (slug: string): string => {
+      // Adolescent assessments
+      if (slug.includes('adolescent-14-15') || slug === 'adolescent-14-15') {
+        return 'adolescent-14-15.json';
+      }
+      if (slug.includes('adolescent-16-17') || slug === 'adolescent-16-17') {
+        return 'adolescent-16-17.json';
+      }
+      
       // Beginner tier assessments
       if (slug.includes('beginner') || slug === 'beginner') {
         return 'beginner-assessment.json';
