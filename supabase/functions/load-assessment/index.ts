@@ -101,16 +101,34 @@ Deno.serve(async (req) => {
     
     console.log(`Loading assessment: slug=${slug}, fileName=${fileName}`);
     
-    const { data: fileData, error: downloadError } = await supabaseClient.storage
+    let { data: fileData, error: downloadError } = await supabaseClient.storage
       .from('aiq-items')
       .download(fileName);
 
     if (downloadError || !fileData) {
       console.error(`Failed to download assessment file from storage: ${fileName}`, downloadError?.message ?? downloadError);
-      return new Response(
-        JSON.stringify({ error: 'Assessment file not found in storage', fileName, details: downloadError?.message ?? null }),
-        { status: 404, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
-      );
+
+      // Fallback: use beginner assessment so the test can still run
+      const fallbackFileName = 'beginner-assessment.json';
+      console.log(`Falling back to assessment file: ${fallbackFileName}`);
+
+      const fallbackResult = await supabaseClient.storage
+        .from('aiq-items')
+        .download(fallbackFileName);
+
+      if (fallbackResult.error || !fallbackResult.data) {
+        console.error('Fallback assessment download also failed', fallbackResult.error?.message ?? fallbackResult.error);
+        return new Response(
+          JSON.stringify({
+            error: 'Assessment file not found in storage',
+            fileName,
+            details: downloadError?.message ?? null,
+          }),
+          { status: 404, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
+        );
+      }
+
+      fileData = fallbackResult.data;
     }
 
     const assessmentText = await fileData.text();
