@@ -65,8 +65,34 @@ Deno.serve(async (req) => {
       );
     }
 
+    // Map product slug to actual storage filename
+    const mapSlugToFileName = (slug: string): string => {
+      // Beginner tier assessments
+      if (slug.includes('beginner') || slug === 'beginner') {
+        return 'beginner-assessment.json';
+      }
+      
+      // Professional tier assessments
+      if (slug.includes('professional') || slug === 'professional') {
+        return 'professional-assessment.json';
+      }
+      
+      // Advanced/Expert tier assessments
+      if (slug.includes('advanced') || slug.includes('expert') || 
+          slug === 'advanced' || slug === 'expert') {
+        return 'expert-assessment.json';
+      }
+      
+      // Default fallback to beginner
+      return 'beginner-assessment.json';
+    };
+    
     // Load assessment from storage bucket
-    const fileName = `${productSlug || test.product_slug}.json`;
+    const slug = productSlug || test.product_slug || 'beginner';
+    const fileName = mapSlugToFileName(slug);
+    
+    console.log(`Loading assessment: slug=${slug}, fileName=${fileName}`);
+    
     const { data: fileData, error: downloadError } = await supabaseClient.storage
       .from('aiq-items')
       .download(fileName);
