@@ -107,27 +107,33 @@ Deno.serve(async (req) => {
     const assessmentText = await fileData.text();
     const assessment = JSON.parse(assessmentText);
 
-    // Sanitize assessment - remove correct answers and sensitive data
-    const sanitizeItem = (item: any) => {
-      const sanitized = { ...item };
-      delete sanitized.correctAnswer;
-      delete sanitized.correctAnswers;
-      delete sanitized.rationale;
-      delete sanitized.explanation;
-      delete sanitized.discrimination;
-      return sanitized;
+    // Sanitize assessment - remove correct answers and sensitive data recursively
+    const sensitiveKeys = new Set([
+      'correctAnswer',
+      'correctAnswers',
+      'rationale',
+      'explanation',
+      'discrimination',
+    ]);
+
+    const deepSanitize = (value: any): any => {
+      if (Array.isArray(value)) {
+        return value.map(deepSanitize);
+      }
+
+      if (value !== null && typeof value === 'object') {
+        const sanitized: any = {};
+        for (const [key, nested] of Object.entries(value)) {
+          if (sensitiveKeys.has(key)) continue;
+          sanitized[key] = deepSanitize(nested);
+        }
+        return sanitized;
+      }
+
+      return value;
     };
 
-    const sanitizedAssessment = {
-      ...assessment,
-      itemBank: {
-        ...assessment.itemBank,
-        dimensions: assessment.itemBank.dimensions.map((dim: any) => ({
-          ...dim,
-          items: dim.items.map(sanitizeItem),
-        })),
-      },
-    };
+    const sanitizedAssessment = deepSanitize(assessment);
 
     console.log(`Assessment loaded for test ${testId.substring(0, 8)}...`);
 
