@@ -1,8 +1,8 @@
 {
   "assessmentName": "AIQ Adolescent Assessment (Ages 16-17)",
   "version": "1.1",
-  "assessmentType": "adaptive",
-  "description": "An age-appropriate AI literacy assessment for upper high school students (grades 11-12) with 48 items adaptively selected from a larger item pool, featuring balanced, sentence-structured options that eliminate length-based cues and randomized correct answer positions to prevent pattern recognition strategies.",
+  "assessmentType": "fixed",
+  "description": "An age-appropriate AI literacy assessment for upper high school students (grades 11-12) with 48 items featuring balanced, sentence-structured options that eliminate length-based cues and randomized correct answer positions to prevent pattern recognition strategies.",
   "assessmentConfiguration": {
     "totalQuestions": 48,
     "questionsPerDimension": 6,
@@ -10,9 +10,9 @@
     "targetAudience": "High school students ages 16-17 (grades 11-12) preparing for college or career",
     "timePerQuestion": "60 seconds average",
     "presentationMode": {
-      "type": "adaptive-sequential",
-      "description": "48 items adaptively selected using IRT from larger pool",
-      "sequencing": "By dimension, 6 questions per dimension selected based on difficulty"
+      "type": "fixed-sequential",
+      "description": "All questions presented in fixed order",
+      "sequencing": "By dimension, 6 questions per dimension"
     },
     "questionDistribution": {
       "totalItems": 48,
