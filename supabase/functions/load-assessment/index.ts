@@ -106,8 +106,9 @@ Deno.serve(async (req) => {
       .download(fileName);
 
     if (downloadError || !fileData) {
+      console.error(`Failed to download assessment file from storage: ${fileName}`, downloadError?.message ?? downloadError);
       return new Response(
-        JSON.stringify({ error: 'Assessment file not found' }),
+        JSON.stringify({ error: 'Assessment file not found in storage', fileName, details: downloadError?.message ?? null }),
         { status: 404, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
       );
     }
