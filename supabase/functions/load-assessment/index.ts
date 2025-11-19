@@ -40,7 +40,7 @@ Deno.serve(async (req) => {
     // Verify user has an active test session
     const { data: test, error: testError } = await supabaseClient
       .from('tests')
-      .select('id, user_id, completed, security_terminated, product_slug')
+      .select('id, user_id, completed, security_terminated, product_slug, product_id')
       .eq('id', testId)
       .single();
 
@@ -114,6 +114,33 @@ Deno.serve(async (req) => {
 
     const assessmentText = await fileData.text();
     const assessment = JSON.parse(assessmentText);
+
+    // If test has a product_id, fetch the product configuration
+    let productConfig = null;
+    if (test.product_id) {
+      const { data: product } = await supabaseClient
+        .from('assessment_products')
+        .select('question_count, duration_minutes, difficulty_level')
+        .eq('id', test.product_id)
+        .single();
+      
+      if (product) {
+        productConfig = product;
+        console.log(`Product config found: ${product.question_count} questions, ${product.duration_minutes} minutes`);
+      }
+    }
+
+    // Override assessment configuration with product config if available
+    if (productConfig) {
+      if (!assessment.assessmentConfiguration) {
+        assessment.assessmentConfiguration = {};
+      }
+      // Ensure totalQuestions matches the database configuration
+      assessment.assessmentConfiguration.totalQuestions = productConfig.question_count;
+      assessment.assessmentConfiguration.estimatedTime = `${productConfig.duration_minutes} minutes`;
+      
+      console.log(`Overriding assessment config: totalQuestions=${productConfig.question_count}`);
+    }
 
     // Sanitize assessment - remove correct answers and sensitive data recursively
     const sensitiveKeys = new Set([
