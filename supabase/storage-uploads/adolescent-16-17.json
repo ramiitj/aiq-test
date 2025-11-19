@@ -6,7 +6,7 @@
   "assessmentConfiguration": {
     "totalQuestions": 48,
     "questionsPerDimension": 6,
-    "estimatedTime": "50 minutes",
+    "estimatedTime": 50,
     "targetAudience": "High school students ages 16-17 (grades 11-12) preparing for college or career",
     "timePerQuestion": "60 seconds average",
     "presentationMode": {

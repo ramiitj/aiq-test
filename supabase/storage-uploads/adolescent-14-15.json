@@ -6,7 +6,7 @@
   "assessmentConfiguration": {
     "totalQuestions": 24,
     "questionsPerDimension": 3,
-    "estimatedTime": "25 minutes",
+    "estimatedTime": 25,
     "targetAudience": "High school students ages 14-15 (grades 9-10) with basic digital literacy",
     "timePerQuestion": "60 seconds average",
     "presentationMode": {
