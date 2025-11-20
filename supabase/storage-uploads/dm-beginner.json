@@ -1,0 +1,1532 @@
+{
+  "assessmentName": "AIQ DM Beginner Assessment - Digital Marketer Focus",
+  "version": "1.0",
+  "assessmentType": "fixed",
+  "description": "A rigorously designed foundational AI literacy assessment for digital marketers with 60 items featuring balanced options, randomized correct answer positions, complete sentence formatting, and enhanced anti-gaming measures.",
+  "assessmentConfiguration": {
+    "totalQuestions": 60,
+    "questionsPerDimension": "7-8",
+    "estimatedTime": "60 minutes",
+    "targetAudience": "Digital marketers, content marketers, social media managers, marketing analysts, and marketing professionals with varying AI experience levels",
+    "timePerQuestion": "60 seconds average",
+    "presentationMode": {
+      "type": "fixed-sequential",
+      "description": "All questions presented in fixed order",
+      "sequencing": "By dimension, 7-8 questions per dimension"
+    },
+    "questionDistribution": {
+      "totalItems": 60,
+      "itemsPerDimension": "7-8 per dimension",
+      "selectionRatio": "100% (all items presented)"
+    },
+    "dimensionSequencing": {
+      "type": "fixed-order",
+      "sequence": [
+        "MAI",
+        "CAC",
+        "CSI",
+        "CPO",
+        "PMM",
+        "PEC",
+        "ETC",
+        "TAP"
+      ],
+      "description": "Candidates complete 7-8 questions per dimension in sequence"
+    }
+  },
+  "scoringConfiguration": {
+    "totalPoints": 600,
+    "pointsPerDimension": 75,
+    "passingScore": 420,
+    "passingPercentage": 70,
+    "scoringMethod": {
+      "type": "simple-sum",
+      "description": "Direct sum of points from correct answers with differential weighting by item difficulty",
+      "basePoints": 10,
+      "formula": "points = basePoints × (1 + difficulty × 0.3) for each correct answer"
+    },
+    "scoringGuidelines": {
+      "0-40%": "Novice (0-240 points) - Significant foundational learning needed",
+      "41-60%": "Beginner (241-360 points) - Basic awareness established",
+      "61-80%": "Developing (361-480 points) - Good foundational understanding",
+      "81-90%": "Proficient (481-540 points) - Strong grasp of fundamentals",
+      "91-100%": "Advanced (541-600 points) - Excellent foundational mastery"
+    }
+  },
+  "instructions": "This AIQ DM Beginner assessment evaluates your foundational AI literacy specifically for digital marketing contexts. You will answer 60 questions total (7-8 per dimension) across 8 marketing-focused dimensions in approximately 60 minutes. Questions feature nuanced options designed to test genuine understanding of AI's role in digital marketing. Answer all questions to the best of your ability.",
+  "assessmentGuidelines": {
+    "targetLevel": "Foundational awareness and basic understanding of AI in digital marketing",
+    "cognitiveEmphasis": "65% Remember/Understand (Bloom's levels 1-2), 35% Apply (Bloom's level 3)",
+    "questionTypes": "Multiple-choice (70%), scenario-based (30%)",
+    "difficultyProfile": "Realistic distractors that require genuine marketing understanding to differentiate",
+    "timeAllocation": "Moderate time for careful consideration of marketing-specific nuances",
+    "reliabilityTarget": "Cronbach's alpha ≥ 0.80"
+  },
+  "itemBank": {
+    "totalItems": 60,
+    "description": "Complete item set with 60 questions (7-8 per dimension) focused on AI literacy for digital marketers",
+    "bankStatistics": {
+      "averageDifficulty": 0.383,
+      "difficultySD": 0.08,
+      "averageDiscrimination": 1.15,
+      "discriminationSD": 0.05,
+      "contentCoverageIndex": 0.92,
+      "estimatedReliability": 0.85,
+      "totalItems": 60
+    },
+    "dimensions": [
+      {
+        "dimensionCode": "MAI",
+        "dimensionName": "Marketing AI Understanding",
+        "description": "Understanding AI capabilities, limitations, and applications in digital marketing contexts",
+        "weight": 0.125,
+        "totalPoints": 75,
+        "items": [
+          {
+            "id": "MAI-DM-B-001",
+            "level": 1,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.25,
+            "discrimination": 1.05,
+            "bloomLevel": "Remember",
+            "question": "What is the primary value AI brings to digital marketing work?",
+            "options": [
+              "AI guarantees perfect ROI predictions for every marketing campaign, making budget decisions straightforward and risk-free.",
+              "AI completely eliminates the need for human marketers by automatically creating and executing all campaigns without oversight.",
+              "AI removes all creative work from marketing by generating content that outperforms human creativity in every situation.",
+              "AI enables marketers to personalize experiences at scale by analyzing customer behavior patterns and automating content delivery across segments."
+            ],
+            "correctAnswer": 3,
+            "rationale": "AI's core value in marketing is enabling personalization at scale through behavior analysis and automation, not replacing human strategic thinking or creativity.",
+            "tags": [
+              "ai-fundamentals",
+              "marketing-automation",
+              "personalization"
+            ]
+          },
+          {
+            "id": "MAI-DM-B-002",
+            "level": 2,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.3,
+            "discrimination": 1.08,
+            "bloomLevel": "Understand",
+            "question": "Why is it important for marketers to understand AI training data limitations?",
+            "options": [
+              "Training data concerns are only relevant for data scientists and don't influence how marketers should interpret AI recommendations.",
+              "Understanding training data is unnecessary because AI automatically updates itself with the latest marketing trends daily.",
+              "AI models reflect patterns from their training data, which may not include recent trends or events affecting current marketing strategies.",
+              "Training data limitations only affect technical teams and have no practical impact on marketing campaign execution."
+            ],
+            "correctAnswer": 2,
+            "rationale": "Marketers must understand that AI models are limited by their training data recency, which affects the relevance of their recommendations for current campaigns.",
+            "tags": [
+              "ai-limitations",
+              "training-data",
+              "marketing-context"
+            ]
+          },
+          {
+            "id": "MAI-DM-B-003",
+            "level": 3,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.35,
+            "discrimination": 1.1,
+            "bloomLevel": "Understand",
+            "question": "What is a key limitation of AI in creative marketing work?",
+            "options": [
+              "AI cannot generate any creative content at all and is only useful for data analysis and reporting tasks.",
+              "AI has no limitations in creative work and can fully replace creative teams in all marketing content production.",
+              "AI creative outputs are always superior to human creativity because they are based on data rather than subjective opinions.",
+              "AI lacks genuine cultural understanding and emotional intelligence, requiring human oversight for brand voice and sensitive cultural contexts."
+            ],
+            "correctAnswer": 3,
+            "rationale": "While AI can assist with creative tasks, it lacks deep cultural understanding and emotional intelligence that humans bring to brand storytelling.",
+            "tags": [
+              "creative-limitations",
+              "brand-voice",
+              "cultural-sensitivity"
+            ]
+          },
+          {
+            "id": "MAI-DM-B-004",
+            "level": 4,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.38,
+            "discrimination": 1.12,
+            "bloomLevel": "Understand",
+            "question": "How can AI bias affect marketing targeting and segmentation?",
+            "options": [
+              "AI bias only affects technical systems and has no impact on marketing decisions or customer targeting strategies.",
+              "AI completely eliminates human bias from marketing by making purely objective decisions based on mathematical algorithms.",
+              "AI models can perpetuate historical biases in targeting data, potentially excluding certain demographic groups or reinforcing stereotypes.",
+              "Bias in AI systems self-corrects automatically over time without requiring human intervention or monitoring."
+            ],
+            "correctAnswer": 2,
+            "rationale": "AI systems can amplify existing biases in training data, leading to unfair targeting practices that marketers must actively monitor and correct.",
+            "tags": [
+              "ai-bias",
+              "ethical-marketing",
+              "targeting"
+            ]
+          },
+          {
+            "id": "MAI-DM-B-005",
+            "level": 5,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.4,
+            "discrimination": 1.14,
+            "bloomLevel": "Understand",
+            "question": "When should marketers be cautious about using AI-generated content recommendations?",
+            "options": [
+              "Marketers should never use AI content recommendations because they always contain errors that damage brand reputation.",
+              "AI recommendations require no caution as they are pre-validated for accuracy and compliance across all industries.",
+              "Caution is only needed when AI generates visual content, not for text-based marketing content or recommendations.",
+              "When the recommendations involve regulated industries, sensitive topics, or claims that require fact-checking and compliance verification."
+            ],
+            "correctAnswer": 3,
+            "rationale": "AI-generated content requires extra scrutiny in regulated industries and sensitive contexts where accuracy, compliance, and brand safety are critical.",
+            "tags": [
+              "content-validation",
+              "compliance",
+              "risk-management"
+            ]
+          },
+          {
+            "id": "MAI-DM-B-006",
+            "level": 6,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.42,
+            "discrimination": 1.16,
+            "bloomLevel": "Apply",
+            "question": "Your AI tool suggests a targeting strategy that conflicts with your brand values. What should you do?",
+            "options": [
+              "Always follow AI recommendations because they are data-driven and more objective than human judgment about brand values.",
+              "Immediately abandon all AI tools for targeting decisions if any single recommendation conflicts with company values.",
+              "Ignore the conflict and implement the AI strategy while keeping the brand value concerns private from stakeholders.",
+              "Override the AI recommendation and document why your brand values take precedence over the algorithmic suggestion for this campaign."
+            ],
+            "correctAnswer": 3,
+            "rationale": "Human judgment about brand values and ethics should always override AI recommendations, with clear documentation of the reasoning.",
+            "tags": [
+              "ethical-decisions",
+              "brand-values",
+              "ai-override"
+            ]
+          },
+          {
+            "id": "MAI-DM-B-007",
+            "level": 7,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.45,
+            "discrimination": 1.18,
+            "bloomLevel": "Understand",
+            "question": "What does it mean when an AI marketing tool has a 'knowledge cutoff date'?",
+            "options": [
+              "After that date, the AI only provides recommendations for historical campaigns and cannot help with current marketing.",
+              "The tool stops working completely on that date and requires a subscription renewal to continue functioning for marketing.",
+              "The AI's training stopped at that date, so it lacks awareness of events, trends, or platform changes that occurred afterward.",
+              "The cutoff date indicates when the AI achieved perfect accuracy and no longer needs updates or human verification."
+            ],
+            "correctAnswer": 2,
+            "rationale": "Knowledge cutoff dates indicate when AI training ended, meaning the model lacks information about subsequent events, trends, or changes.",
+            "tags": [
+              "knowledge-cutoff",
+              "ai-limitations",
+              "data-currency"
+            ]
+          }
+        ]
+      },
+      {
+        "dimensionCode": "CAC",
+        "dimensionName": "Content & Asset Creation",
+        "description": "Leveraging AI for content creation, optimization, and asset development",
+        "weight": 0.125,
+        "totalPoints": 75,
+        "items": [
+          {
+            "id": "CAC-DM-B-001",
+            "level": 1,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.26,
+            "discrimination": 1.06,
+            "bloomLevel": "Remember",
+            "question": "How should digital marketers approach using AI for content creation?",
+            "options": [
+              "Rely entirely on AI-generated content without editing to maximize efficiency and reduce content production costs.",
+              "Use AI only for final polishing of human-written content, never for ideation or initial drafting of marketing materials.",
+              "Use AI as a collaborative tool for drafts and ideas, but always apply human judgment for brand alignment, accuracy, and creative refinement.",
+              "Avoid AI tools completely for content creation because they always produce generic, low-quality marketing materials."
+            ],
+            "correctAnswer": 2,
+            "rationale": "AI should augment human creativity in content creation, serving as a collaborative tool that requires human oversight for quality and brand alignment.",
+            "tags": [
+              "content-creation",
+              "ai-collaboration",
+              "brand-alignment"
+            ]
+          },
+          {
+            "id": "CAC-DM-B-002",
+            "level": 2,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.29,
+            "discrimination": 1.08,
+            "bloomLevel": "Understand",
+            "question": "What is the primary risk of publishing AI-generated content without human review?",
+            "options": [
+              "AI can generate plausible-sounding but factually incorrect information, produce off-brand messaging, or create unintended offensive content.",
+              "AI content is always perfect and error-free, so the main risk is wasting time on unnecessary human review.",
+              "The only risk is that competitors will recognize the AI-generated style and copy your content creation approach.",
+              "The primary risk is that AI content performs too well and sets unrealistic expectations for future campaign performance."
+            ],
+            "correctAnswer": 0,
+            "rationale": "AI can produce convincing but inaccurate content and may not align with brand voice or detect potentially offensive elements without human review.",
+            "tags": [
+              "content-validation",
+              "accuracy",
+              "brand-safety"
+            ]
+          },
+          {
+            "id": "CAC-DM-B-003",
+            "level": 3,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.33,
+            "discrimination": 1.1,
+            "bloomLevel": "Apply",
+            "question": "You're using AI to generate social media post variations. How should you maintain brand voice consistency?",
+            "options": [
+              "Use different AI tools for each social platform since brand voice should vary completely across all channels.",
+              "Avoid giving the AI any brand guidelines so it can create fresh, unbiased content that appeals to new audiences.",
+              "Provide the AI with detailed brand voice guidelines, examples, and review all outputs against your brand style guide before publishing.",
+              "Trust the AI to automatically learn and maintain brand voice after generating a few posts without specific guidelines."
+            ],
+            "correctAnswer": 2,
+            "rationale": "Maintaining brand voice with AI requires explicit guidelines, reference examples, and consistent human review against established brand standards.",
+            "tags": [
+              "brand-voice",
+              "social-media",
+              "content-consistency"
+            ]
+          },
+          {
+            "id": "CAC-DM-B-004",
+            "level": 4,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.37,
+            "discrimination": 1.12,
+            "bloomLevel": "Understand",
+            "question": "What copyright considerations should marketers understand when using AI-generated images?",
+            "options": [
+              "Copyright only applies to human-created content, so AI-generated images can never have any legal restrictions.",
+              "All AI-generated images are automatically copyright-free and can be used without any attribution or legal concerns.",
+              "Using AI for image generation completely eliminates all copyright issues compared to using stock photography services.",
+              "AI-generated images may have unclear copyright status, and some training data may include copyrighted works, requiring legal review."
+            ],
+            "correctAnswer": 3,
+            "rationale": "AI-generated content has complex and evolving copyright implications, particularly regarding training data sources and ownership rights.",
+            "tags": [
+              "copyright",
+              "legal-compliance",
+              "image-generation"
+            ]
+          },
+          {
+            "id": "CAC-DM-B-005",
+            "level": 5,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.4,
+            "discrimination": 1.14,
+            "bloomLevel": "Apply",
+            "question": "Your AI tool generates compelling ad copy, but you notice it makes unsupported product claims. What should you do?",
+            "options": [
+              "Add a small disclaimer at the bottom rather than changing the copy, preserving the AI's compelling messaging.",
+              "Publish the copy quickly before competitors use similar AI-generated messaging for their own advertising campaigns.",
+              "Use the compelling copy as written since AI-generated content is legally protected from false advertising claims.",
+              "Revise the copy to ensure all claims are accurate and substantiated, even if it reduces the emotional appeal of the message."
+            ],
+            "correctAnswer": 3,
+            "rationale": "Accuracy and truthfulness must take precedence over persuasiveness in marketing copy, regardless of the content source.",
+            "tags": [
+              "advertising-standards",
+              "accuracy",
+              "ethical-marketing"
+            ]
+          },
+          {
+            "id": "CAC-DM-B-006",
+            "level": 6,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.44,
+            "discrimination": 1.16,
+            "bloomLevel": "Apply",
+            "question": "How should marketers balance AI efficiency with creative authenticity in content production?",
+            "options": [
+              "Maximize authenticity by avoiding all AI tools and returning to fully manual content creation processes for all materials.",
+              "Always choose efficiency over authenticity since audiences cannot distinguish AI-generated content from human-created content.",
+              "Use AI for scalable tasks like variations and optimizations, while prioritizing human creativity for brand storytelling and strategic campaigns.",
+              "Completely separate AI and human content into different channels so they never overlap in any marketing campaigns."
+            ],
+            "correctAnswer": 2,
+            "rationale": "The optimal approach uses AI for appropriate scalable tasks while reserving human creativity for strategic, brand-defining content.",
+            "tags": [
+              "creative-strategy",
+              "efficiency-balance",
+              "authenticity"
+            ]
+          },
+          {
+            "id": "CAC-DM-B-007",
+            "level": 7,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.46,
+            "discrimination": 1.17,
+            "bloomLevel": "Understand",
+            "question": "What quality control steps are essential when using AI for video content generation?",
+            "options": [
+              "Only check that the video file format is correct since AI-generated content is pre-validated for all other factors.",
+              "Quality control should focus solely on technical specifications like resolution and length, not content appropriateness.",
+              "No quality control is needed because video AI tools have built-in safeguards that prevent all potential problems.",
+              "Review for accuracy, brand alignment, accessibility compliance, and test with diverse audiences to identify unintended messaging issues."
+            ],
+            "correctAnswer": 3,
+            "rationale": "AI-generated video requires comprehensive quality control including accuracy, brand fit, accessibility, and audience testing for potential issues.",
+            "tags": [
+              "video-content",
+              "quality-assurance",
+              "accessibility"
+            ]
+          },
+          {
+            "id": "CAC-DM-B-008",
+            "level": 8,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.49,
+            "discrimination": 1.19,
+            "bloomLevel": "Apply",
+            "question": "When should marketers disclose that content was created or significantly assisted by AI?",
+            "options": [
+              "When transparency is legally required, when it affects trust or purchasing decisions, or when your brand values prioritize honest communication.",
+              "Never disclose AI involvement because it reduces content credibility and makes audiences less likely to engage with marketing.",
+              "Only disclose AI use when the content performs poorly, using it as an excuse for lower-than-expected engagement rates.",
+              "Always prominently label every piece of AI-assisted content regardless of the level of AI involvement or editing."
+            ],
+            "correctAnswer": 0,
+            "rationale": "Disclosure decisions should balance legal requirements, customer trust, and brand values, varying based on context and AI involvement level.",
+            "tags": [
+              "transparency",
+              "disclosure",
+              "ethical-marketing"
+            ]
+          }
+        ]
+      },
+      {
+        "dimensionCode": "CSI",
+        "dimensionName": "Customer Segmentation & Insights",
+        "description": "Using AI to analyze customer data and derive actionable marketing insights",
+        "weight": 0.125,
+        "totalPoints": 75,
+        "items": [
+          {
+            "id": "CSI-DM-B-001",
+            "level": 1,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.27,
+            "discrimination": 1.07,
+            "bloomLevel": "Remember",
+            "question": "How does AI enhance customer segmentation beyond traditional demographic approaches?",
+            "options": [
+              "AI enhancement is limited to creating visual charts of existing segments without identifying any new customer groupings.",
+              "AI can identify behavioral patterns and micro-segments in real-time based on actions, preferences, and engagement signals across channels.",
+              "AI replaces all demographic segmentation with completely random groupings that surprisingly perform better in campaigns.",
+              "AI only improves segmentation speed but uses the exact same demographic categories as traditional marketing approaches."
+            ],
+            "correctAnswer": 1,
+            "rationale": "AI's advantage in segmentation comes from identifying complex behavioral patterns and real-time micro-segments beyond static demographics.",
+            "tags": [
+              "segmentation",
+              "behavioral-analysis",
+              "customer-insights"
+            ]
+          },
+          {
+            "id": "CSI-DM-B-002",
+            "level": 2,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.31,
+            "discrimination": 1.09,
+            "bloomLevel": "Understand",
+            "question": "What is predictive customer analytics in AI-powered marketing?",
+            "options": [
+              "Creating detailed customer profiles based only on their past purchases without any forecasting of future behaviors.",
+              "Analyzing only demographic data to predict which traditional marketing channels customers prefer for receiving advertisements.",
+              "Predicting which customers will complain on social media so marketing teams can preemptively block their accounts.",
+              "Using historical data patterns to forecast future customer behaviors like purchase likelihood, churn risk, or lifetime value."
+            ],
+            "correctAnswer": 3,
+            "rationale": "Predictive analytics uses patterns in historical data to forecast future customer behaviors and likelihood of specific actions.",
+            "tags": [
+              "predictive-analytics",
+              "customer-behavior",
+              "forecasting"
+            ]
+          },
+          {
+            "id": "CSI-DM-B-003",
+            "level": 3,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.35,
+            "discrimination": 1.11,
+            "bloomLevel": "Understand",
+            "question": "Why should marketers validate AI-generated customer insights before acting on them?",
+            "options": [
+              "Validation wastes time because AI insights are always more accurate than human analysis of customer data.",
+              "Validation is unnecessary because AI models are legally certified for accuracy before being released to marketers.",
+              "AI may identify spurious correlations or patterns based on incomplete data that don't represent true customer preferences or behaviors.",
+              "AI insights only need validation if they conflict with the CMO's personal opinions about customer segments."
+            ],
+            "correctAnswer": 2,
+            "rationale": "AI can find false patterns or correlations in data that don't reflect real customer behavior, requiring human validation before action.",
+            "tags": [
+              "insight-validation",
+              "data-quality",
+              "critical-thinking"
+            ]
+          },
+          {
+            "id": "CSI-DM-B-004",
+            "level": 4,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.39,
+            "discrimination": 1.13,
+            "bloomLevel": "Apply",
+            "question": "Your AI analysis shows high-value customers are concentrated in an unexpected demographic segment. What's your first step?",
+            "options": [
+              "Announce the discovery to the executive team before verifying the data quality or statistical significance.",
+              "Ignore the finding because it contradicts your existing assumptions about your target customer demographics.",
+              "Immediately shift all marketing budget to target this demographic since AI predictions are always reliable.",
+              "Investigate whether this is a genuine pattern or a data quality issue by examining the underlying data and sample size."
+            ],
+            "correctAnswer": 3,
+            "rationale": "Unexpected AI insights require investigation of data quality and statistical validity before making strategic decisions or resource shifts.",
+            "tags": [
+              "insight-validation",
+              "data-investigation",
+              "strategic-caution"
+            ]
+          },
+          {
+            "id": "CSI-DM-B-005",
+            "level": 5,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.41,
+            "discrimination": 1.14,
+            "bloomLevel": "Apply",
+            "question": "AI identifies a new micro-segment with high engagement but small size. What should you prioritize?",
+            "options": [
+              "Assess whether the segment's lifetime value and growth potential justify creating dedicated campaigns versus broader targeting.",
+              "Always create dedicated campaigns for every segment AI identifies, regardless of size or business impact.",
+              "Ignore small segments completely and only focus on the largest customer groups for maximum marketing efficiency.",
+              "Merge this segment with similar larger segments to simplify campaign management, even if needs differ significantly."
+            ],
+            "correctAnswer": 0,
+            "rationale": "Small but engaged segments require ROI analysis considering lifetime value and growth potential before investing in dedicated campaigns.",
+            "tags": [
+              "segment-evaluation",
+              "roi-analysis",
+              "strategic-prioritization"
+            ]
+          },
+          {
+            "id": "CSI-DM-B-006",
+            "level": 6,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.44,
+            "discrimination": 1.16,
+            "bloomLevel": "Understand",
+            "question": "What privacy considerations apply when using AI for customer segmentation?",
+            "options": [
+              "Ensure segmentation complies with data privacy laws, obtain proper consent, and avoid creating discriminatory categories.",
+              "Only B2C companies need to consider privacy in segmentation, while B2B marketing has no privacy restrictions.",
+              "As long as data is aggregated at the segment level, there are no privacy concerns about individual customer data.",
+              "Privacy laws don't apply to AI-powered segmentation since the analysis is automated rather than done by humans."
+            ],
+            "correctAnswer": 0,
+            "rationale": "AI segmentation must comply with privacy regulations, require proper consent, and avoid discriminatory or sensitive categories.",
+            "tags": [
+              "privacy-compliance",
+              "data-ethics",
+              "gdpr"
+            ]
+          },
+          {
+            "id": "CSI-DM-B-007",
+            "level": 7,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.47,
+            "discrimination": 1.18,
+            "bloomLevel": "Apply",
+            "question": "How should marketers translate AI-generated customer insights into actionable campaign strategies?",
+            "options": [
+              "Combine AI insights with market knowledge and customer feedback to develop hypotheses, then test with controlled experiments.",
+              "Share AI insights with the team but continue using existing campaigns since changing strategy is too risky.",
+              "Create detailed 12-month campaign plans based solely on AI insights without any flexibility for market changes.",
+              "Directly implement every AI insight as a campaign without testing since the data-driven approach guarantees success."
+            ],
+            "correctAnswer": 0,
+            "rationale": "Effective strategy combines AI insights with human expertise and market knowledge, then validates through testing before full implementation.",
+            "tags": [
+              "insight-application",
+              "strategy-development",
+              "hypothesis-testing"
+            ]
+          }
+        ]
+      },
+      {
+        "dimensionCode": "CPO",
+        "dimensionName": "Campaign Planning & Optimization",
+        "description": "Planning, executing, and optimizing marketing campaigns with AI assistance",
+        "weight": 0.125,
+        "totalPoints": 75,
+        "items": [
+          {
+            "id": "CPO-DM-B-001",
+            "level": 1,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.28,
+            "discrimination": 1.07,
+            "bloomLevel": "Remember",
+            "question": "How can AI improve campaign budget allocation decisions?",
+            "options": [
+              "AI provides one-time budget recommendations at the start of campaigns but cannot adjust allocations during active campaigns.",
+              "AI makes budget decisions randomly to test different allocation strategies and find optimal spending patterns through trial.",
+              "Budget allocation AI only works for digital channels and cannot incorporate traditional media spending into recommendations.",
+              "AI analyzes historical performance across channels and predicts ROI to recommend optimal budget distribution, continuously adjusting based on results."
+            ],
+            "correctAnswer": 3,
+            "rationale": "AI's value in budget allocation comes from analyzing historical data, predicting performance, and enabling dynamic optimization during campaigns.",
+            "tags": [
+              "budget-optimization",
+              "campaign-planning",
+              "predictive-analytics"
+            ]
+          },
+          {
+            "id": "CPO-DM-B-002",
+            "level": 2,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.32,
+            "discrimination": 1.09,
+            "bloomLevel": "Understand",
+            "question": "What is the primary benefit of AI-powered A/B testing automation?",
+            "options": [
+              "AI eliminates the need for statistical significance by always choosing the variation with higher engagement rates.",
+              "Automated testing only works for email campaigns and cannot be applied to other marketing channels or touchpoints.",
+              "AI can run multivariate tests simultaneously, identify winning variations faster, and automatically allocate traffic to better-performing options.",
+              "A/B testing automation simply speeds up manual processes without changing the statistical approach or results quality."
+            ],
+            "correctAnswer": 2,
+            "rationale": "AI enables more sophisticated testing by running multiple variants simultaneously, detecting winners faster, and optimizing traffic allocation.",
+            "tags": [
+              "ab-testing",
+              "optimization",
+              "automation"
+            ]
+          },
+          {
+            "id": "CPO-DM-B-003",
+            "level": 3,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.36,
+            "discrimination": 1.11,
+            "bloomLevel": "Understand",
+            "question": "Why is it important to set baseline performance metrics before using AI for campaign optimization?",
+            "options": [
+              "Setting baselines wastes time because AI automatically accounts for all historical performance when making optimization decisions.",
+              "Baselines help you measure AI's actual impact and distinguish between AI-driven improvements and natural market fluctuations or seasonality.",
+              "Baselines are only needed for compliance reporting and don't affect how you interpret AI optimization results.",
+              "Baseline metrics are unnecessary because AI-optimized campaigns always outperform previous results by significant margins."
+            ],
+            "correctAnswer": 1,
+            "rationale": "Establishing baselines before AI optimization is critical for measuring true impact and separating AI effects from other factors.",
+            "tags": [
+              "performance-measurement",
+              "baseline-metrics",
+              "impact-assessment"
+            ]
+          },
+          {
+            "id": "CPO-DM-B-004",
+            "level": 4,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.4,
+            "discrimination": 1.13,
+            "bloomLevel": "Apply",
+            "question": "AI recommends shifting 40% of your budget from channel A to channel B mid-campaign. How should you respond?",
+            "options": [
+              "Immediately implement the full 40% shift since AI recommendations are based on comprehensive data analysis.",
+              "Shift 60% instead of 40% to maximize the improvement opportunity that AI has identified in channel B.",
+              "Review the data driving the recommendation, test with a smaller budget shift first, and monitor results before full implementation.",
+              "Reject the recommendation because mid-campaign strategy changes always disrupt performance and confuse customers."
+            ],
+            "correctAnswer": 2,
+            "rationale": "AI recommendations should be validated through controlled testing before full implementation, especially for significant strategic shifts.",
+            "tags": [
+              "recommendation-validation",
+              "risk-management",
+              "testing-approach"
+            ]
+          },
+          {
+            "id": "CPO-DM-B-005",
+            "level": 5,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.42,
+            "discrimination": 1.14,
+            "bloomLevel": "Apply",
+            "question": "Your AI system shows declining campaign performance. What should you investigate first?",
+            "options": [
+              "Stop the campaign entirely and restart with completely different targeting to avoid wasting additional marketing budget.",
+              "Replace all creative assets with AI-generated alternatives since performance decline indicates creative fatigue.",
+              "Immediately increase the budget since declining performance always indicates insufficient reach or frequency.",
+              "Check whether audience fatigue, market changes, or data quality issues are affecting results before adjusting the campaign strategy."
+            ],
+            "correctAnswer": 3,
+            "rationale": "Performance declines require root cause analysis of multiple factors before making strategic changes or optimizations.",
+            "tags": [
+              "performance-analysis",
+              "troubleshooting",
+              "root-cause-analysis"
+            ]
+          },
+          {
+            "id": "CPO-DM-B-006",
+            "level": 6,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.46,
+            "discrimination": 1.16,
+            "bloomLevel": "Understand",
+            "question": "What is multi-touch attribution and why is AI valuable for it?",
+            "options": [
+              "Attribution only credits the first touchpoint in the customer journey, and AI simply automates this straightforward calculation.",
+              "AI attribution randomly distributes credit across all touchpoints to ensure fair budget allocation across marketing channels.",
+              "Multi-touch attribution assigns credit to multiple touchpoints in the customer journey; AI can analyze complex paths humans cannot process.",
+              "Multi-touch attribution is a manual process where marketers subjectively assign credit, with no role for AI analysis."
+            ],
+            "correctAnswer": 2,
+            "rationale": "AI excels at multi-touch attribution by analyzing complex customer journeys and touchpoint interactions that exceed human analytical capacity.",
+            "tags": [
+              "attribution",
+              "customer-journey",
+              "analytics"
+            ]
+          },
+          {
+            "id": "CPO-DM-B-007",
+            "level": 7,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.48,
+            "discrimination": 1.17,
+            "bloomLevel": "Apply",
+            "question": "How should marketers use AI forecasting for campaign planning?",
+            "options": [
+              "Share AI forecasts directly with executives as committed targets without including uncertainty ranges or confidence intervals.",
+              "Treat AI forecasts as guaranteed outcomes and build inflexible plans that assume predictions will be perfectly accurate.",
+              "Use AI forecasts as one input for planning decisions, combining them with market knowledge, strategic goals, and scenario planning.",
+              "Ignore AI forecasts entirely and rely only on historical averages since predictive models are too unreliable."
+            ],
+            "correctAnswer": 2,
+            "rationale": "AI forecasts should inform planning as probability ranges combined with human judgment, not treated as certain predictions.",
+            "tags": [
+              "forecasting",
+              "campaign-planning",
+              "strategic-decision-making"
+            ]
+          },
+          {
+            "id": "CPO-DM-B-008",
+            "level": 8,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.51,
+            "discrimination": 1.19,
+            "bloomLevel": "Apply",
+            "question": "When should you override AI optimization recommendations in favor of human judgment?",
+            "options": [
+              "When AI suggestions conflict with brand strategy, upcoming product launches, or market changes not yet reflected in the data.",
+              "Never override AI recommendations because they are always more accurate than human intuition about campaign performance.",
+              "Only override AI when it recommends budget increases that exceed your available marketing spend for the period.",
+              "Override AI recommendations whenever they suggest changes to campaigns that are currently meeting baseline performance goals."
+            ],
+            "correctAnswer": 0,
+            "rationale": "Human override is appropriate when strategic context, future plans, or market knowledge contradict data-driven AI recommendations.",
+            "tags": [
+              "human-judgment",
+              "strategic-context",
+              "ai-override"
+            ]
+          }
+        ]
+      },
+      {
+        "dimensionCode": "PMM",
+        "dimensionName": "Performance Measurement & Metrics",
+        "description": "Measuring, analyzing, and interpreting marketing performance with AI tools",
+        "weight": 0.125,
+        "totalPoints": 75,
+        "items": [
+          {
+            "id": "PMM-DM-B-001",
+            "level": 1,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.29,
+            "discrimination": 1.08,
+            "bloomLevel": "Remember",
+            "question": "What is the primary advantage of AI-powered marketing analytics over traditional reporting?",
+            "options": [
+              "The main advantage is generating more visually appealing charts and dashboards rather than deeper analytical insights.",
+              "AI can automatically detect anomalies, identify trends, and surface insights across multiple data sources that manual analysis might miss.",
+              "AI analytics eliminates the need for marketers to understand statistics or metrics by making all decisions automatically.",
+              "AI analytics simply creates the same reports faster without adding any new insights or analytical capabilities."
+            ],
+            "correctAnswer": 1,
+            "rationale": "AI analytics adds value through automatic anomaly detection, trend identification, and insight generation across complex multi-source data.",
+            "tags": [
+              "analytics",
+              "anomaly-detection",
+              "insight-generation"
+            ]
+          },
+          {
+            "id": "PMM-DM-B-002",
+            "level": 2,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.33,
+            "discrimination": 1.1,
+            "bloomLevel": "Understand",
+            "question": "Why is understanding confidence intervals important when interpreting AI performance predictions?",
+            "options": [
+              "Confidence intervals show the range of uncertainty in predictions, helping marketers make risk-aware decisions and set realistic expectations.",
+              "Confidence intervals simply indicate how confident the AI is, with 100% meaning perfect accuracy in all predictions.",
+              "AI predictions with confidence intervals are less reliable than those without them, so marketers should avoid using them.",
+              "Confidence intervals are only relevant for statisticians and don't affect how marketers should interpret or act on predictions."
+            ],
+            "correctAnswer": 0,
+            "rationale": "Understanding prediction uncertainty through confidence intervals enables better risk assessment and more realistic planning.",
+            "tags": [
+              "statistical-literacy",
+              "uncertainty",
+              "prediction-confidence"
+            ]
+          },
+          {
+            "id": "PMM-DM-B-003",
+            "level": 3,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.37,
+            "discrimination": 1.12,
+            "bloomLevel": "Understand",
+            "question": "What is the difference between correlation and causation in marketing analytics?",
+            "options": [
+              "Correlation shows variables moving together, while causation proves one variable causes changes in another; AI often finds correlations without causation.",
+              "Correlation and causation are the same thing, so any correlation found by AI proves one variable causes the other.",
+              "AI can automatically determine causation from correlation by analyzing large enough datasets with sufficient statistical power.",
+              "Causation is less important than correlation for marketing decisions since both indicate useful relationships between variables."
+            ],
+            "correctAnswer": 0,
+            "rationale": "Distinguishing correlation from causation is critical because AI readily identifies correlations that don't represent causal relationships.",
+            "tags": [
+              "data-interpretation",
+              "causation",
+              "analytical-rigor"
+            ]
+          },
+          {
+            "id": "PMM-DM-B-004",
+            "level": 4,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.41,
+            "discrimination": 1.14,
+            "bloomLevel": "Apply",
+            "question": "Your AI dashboard shows a sudden spike in conversion rate. What should you do before celebrating?",
+            "options": [
+              "Immediately announce the success to stakeholders and request increased budget based on the improved conversion performance.",
+              "Ignore the spike completely since temporary fluctuations in metrics don't matter for long-term marketing strategy.",
+              "Investigate whether this is a real improvement, a data tracking error, a sample size issue, or caused by unusual external factors.",
+              "Assume the spike is real and permanent, then set higher targets for all future campaigns based on this new level."
+            ],
+            "correctAnswer": 2,
+            "rationale": "Unexpected metric changes require investigation to rule out data errors, statistical noise, or temporary factors before drawing conclusions.",
+            "tags": [
+              "data-validation",
+              "critical-analysis",
+              "anomaly-investigation"
+            ]
+          },
+          {
+            "id": "PMM-DM-B-005",
+            "level": 5,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.43,
+            "discrimination": 1.15,
+            "bloomLevel": "Apply",
+            "question": "How should marketers select KPIs for AI-powered campaign optimization?",
+            "options": [
+              "Select the maximum number of KPIs possible so AI has more data points to optimize across all aspects of campaigns.",
+              "Only use vanity metrics like impressions and reach since they are easiest to improve and show positive results.",
+              "Choose KPIs that align with business objectives, are influenced by marketing actions, and can be measured reliably with available data.",
+              "Let the AI automatically select KPIs based on what it finds easiest to predict and optimize in your data."
+            ],
+            "correctAnswer": 2,
+            "rationale": "Effective KPI selection requires alignment with business goals, actionability by marketing, and reliable measurement capabilities.",
+            "tags": [
+              "kpi-selection",
+              "metrics-strategy",
+              "business-alignment"
+            ]
+          },
+          {
+            "id": "PMM-DM-B-006",
+            "level": 6,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.45,
+            "discrimination": 1.16,
+            "bloomLevel": "Understand",
+            "question": "What role does AI play in marketing attribution modeling?",
+            "options": [
+              "AI replaces attribution modeling by focusing only on the last click, since that touchpoint directly led to conversion.",
+              "Attribution AI simply divides credit equally among all touchpoints without analyzing their actual impact on decisions.",
+              "AI attribution is only useful for e-commerce and cannot provide insights for B2B or offline conversion tracking.",
+              "AI can analyze complex customer journeys across touchpoints to determine which interactions most influenced conversion decisions."
+            ],
+            "correctAnswer": 3,
+            "rationale": "AI's strength in attribution is processing complex multi-touchpoint journeys to identify influential interactions in conversion paths.",
+            "tags": [
+              "attribution-modeling",
+              "customer-journey",
+              "impact-analysis"
+            ]
+          },
+          {
+            "id": "PMM-DM-B-007",
+            "level": 7,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.47,
+            "discrimination": 1.17,
+            "bloomLevel": "Apply",
+            "question": "AI shows two campaigns with similar ROI but very different customer lifetime values. What does this suggest?",
+            "options": [
+              "Both campaigns are equally valuable since ROI is the only metric that matters for marketing performance evaluation.",
+              "The campaign attracting higher LTV customers may be more valuable long-term despite similar immediate ROI, warranting further investment.",
+              "The campaign with lower LTV is better because it attracts more price-sensitive customers who convert more quickly.",
+              "LTV differences are irrelevant if current ROI is similar, so maintain equal budget allocation between the campaigns."
+            ],
+            "correctAnswer": 1,
+            "rationale": "Looking beyond immediate ROI to lifetime value reveals different campaign quality and long-term value creation potential.",
+            "tags": [
+              "lifetime-value",
+              "holistic-metrics",
+              "strategic-analysis"
+            ]
+          }
+        ]
+      },
+      {
+        "dimensionCode": "PEC",
+        "dimensionName": "Personalization & Customer Experience",
+        "description": "Creating personalized experiences and optimizing customer journeys with AI",
+        "weight": 0.125,
+        "totalPoints": 75,
+        "items": [
+          {
+            "id": "PEC-DM-B-001",
+            "level": 1,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.3,
+            "discrimination": 1.08,
+            "bloomLevel": "Remember",
+            "question": "What is the primary goal of AI-powered personalization in marketing?",
+            "options": [
+              "Delivering relevant, timely content and experiences to each customer based on their behaviors, preferences, and context to improve engagement.",
+              "Making every customer feel like they are being watched by showing them that you know everything about their activities.",
+              "Collecting as much personal data as possible about customers to demonstrate the company's advanced technology capabilities.",
+              "Increasing prices dynamically based on individual customer willingness to pay as detected by AI behavioral analysis."
+            ],
+            "correctAnswer": 0,
+            "rationale": "Personalization aims to improve customer experience and engagement through relevant content, not to demonstrate surveillance or manipulate pricing.",
+            "tags": [
+              "personalization-goals",
+              "customer-experience",
+              "relevance"
+            ]
+          },
+          {
+            "id": "PEC-DM-B-002",
+            "level": 2,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.34,
+            "discrimination": 1.1,
+            "bloomLevel": "Understand",
+            "question": "How do AI recommendation engines work in marketing contexts?",
+            "options": [
+              "Recommendation engines show random products to customers and learn which ones people like through trial and error.",
+              "They analyze patterns in customer behavior and product interactions to predict which items or content each user is most likely to engage with.",
+              "Recommendation AI simply shows the most popular or highest-margin products to all customers regardless of preferences.",
+              "They only work by analyzing what similar customers purchased, without considering individual user's specific behavior patterns."
+            ],
+            "correctAnswer": 1,
+            "rationale": "Recommendation engines use behavior patterns and interaction data to predict individual preferences and likely engagement.",
+            "tags": [
+              "recommendation-engines",
+              "personalization",
+              "predictive-modeling"
+            ]
+          },
+          {
+            "id": "PEC-DM-B-003",
+            "level": 3,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.38,
+            "discrimination": 1.12,
+            "bloomLevel": "Apply",
+            "question": "You're implementing dynamic website personalization. What is the most important consideration?",
+            "options": [
+              "Showing users you have their data by referencing specific past purchases in every interaction throughout the site.",
+              "Maximizing the number of personalized elements on each page to demonstrate your advanced AI capabilities to visitors.",
+              "Personalizing product prices based on individual user's browsing behavior and perceived willingness to pay.",
+              "Ensuring personalization adds genuine value for users rather than creating an invasive or creepy experience that damages trust."
+            ],
+            "correctAnswer": 3,
+            "rationale": "Personalization must balance relevance with privacy, adding value without creating discomfort or damaging customer trust.",
+            "tags": [
+              "value-balance",
+              "user-experience",
+              "trust"
+            ]
+          },
+          {
+            "id": "PEC-DM-B-004",
+            "level": 4,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.42,
+            "discrimination": 1.14,
+            "bloomLevel": "Understand",
+            "question": "What is the role of AI chatbots in customer experience?",
+            "options": [
+              "Giving the impression of human interaction by deliberately deceiving customers about whether they are talking to a bot.",
+              "Replacing all human customer service representatives to reduce costs and eliminate the need for customer service teams.",
+              "Providing instant responses to common questions, qualifying leads, and routing complex issues to appropriate human agents when needed.",
+              "Engaging customers in long conversations to collect maximum personal data for marketing purposes regardless of helpfulness."
+            ],
+            "correctAnswer": 2,
+            "rationale": "Chatbots should efficiently handle routine queries and seamlessly escalate complex issues to humans when appropriate.",
+            "tags": [
+              "chatbots",
+              "customer-service",
+              "automation"
+            ]
+          },
+          {
+            "id": "PEC-DM-B-005",
+            "level": 5,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.46,
+            "discrimination": 1.16,
+            "bloomLevel": "Apply",
+            "question": "How should marketers balance personalization with customer privacy concerns?",
+            "options": [
+              "Avoid personalization entirely since any use of customer data for marketing purposes violates privacy expectations.",
+              "Collect all possible data and personalize everything since customers accept this by using the website or service.",
+              "Use transparent data practices, offer clear opt-in choices, and implement personalization that adds genuine value rather than just demonstrating data collection.",
+              "Personalize aggressively but hide data collection in lengthy terms of service that customers won't read carefully."
+            ],
+            "correctAnswer": 2,
+            "rationale": "Privacy-respecting personalization requires transparency, meaningful consent, and value creation that justifies the data use.",
+            "tags": [
+              "privacy",
+              "consent",
+              "value-exchange"
+            ]
+          },
+          {
+            "id": "PEC-DM-B-006",
+            "level": 6,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.49,
+            "discrimination": 1.17,
+            "bloomLevel": "Understand",
+            "question": "What does 'customer journey mapping' mean in the context of AI marketing?",
+            "options": [
+              "Mapping the physical journey customers take through retail stores using GPS tracking and surveillance cameras.",
+              "Creating fictional customer stories that marketers believe might happen based on their intuitions about buyer behavior.",
+              "Tracking only the final purchase decision without considering any of the research or consideration steps before conversion.",
+              "Using AI to analyze how customers interact with your brand across touchpoints over time to identify optimization opportunities and pain points."
+            ],
+            "correctAnswer": 3,
+            "rationale": "AI-powered journey mapping analyzes actual customer interactions across touchpoints to find patterns and improvement opportunities.",
+            "tags": [
+              "customer-journey",
+              "journey-mapping",
+              "optimization"
+            ]
+          },
+          {
+            "id": "PEC-DM-B-007",
+            "level": 7,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.51,
+            "discrimination": 1.18,
+            "bloomLevel": "Apply",
+            "question": "When testing personalized experiences, what should be your control group?",
+            "options": [
+              "The control group should receive an even more personalized experience to test the upper limits of personalization.",
+              "A group receiving the standard, non-personalized experience to measure whether personalization actually improves key metrics.",
+              "A control group that receives randomly selected content variations to test different personalization algorithms simultaneously.",
+              "There is no need for a control group since personalization always improves performance compared to generic experiences."
+            ],
+            "correctAnswer": 1,
+            "rationale": "Proper testing requires a non-personalized control group to measure the actual incremental impact of personalization efforts.",
+            "tags": [
+              "testing-methodology",
+              "control-groups",
+              "experimentation"
+            ]
+          },
+          {
+            "id": "PEC-DM-B-008",
+            "level": 8,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.53,
+            "discrimination": 1.19,
+            "bloomLevel": "Apply",
+            "question": "When does personalization cross the line into invasive behavior that could harm customer relationships?",
+            "options": [
+              "Personalization never crosses any line since customers implicitly consent by using digital services and visiting websites.",
+              "When it reveals surveillance-level tracking, references sensitive information, or personalizes in ways that feel manipulative rather than helpful.",
+              "Personalization is only problematic when customers complain directly; otherwise, marketers should maximize personalization depth.",
+              "Only when explicitly prohibited by law; otherwise, any personalization that improves metrics is acceptable marketing practice."
+            ],
+            "correctAnswer": 1,
+            "rationale": "Personalization becomes invasive when it feels like surveillance, exploits sensitive data, or prioritizes manipulation over genuine value.",
+            "tags": [
+              "ethical-personalization",
+              "boundaries",
+              "customer-trust"
+            ]
+          }
+        ]
+      },
+      {
+        "dimensionCode": "ETC",
+        "dimensionName": "Ethics, Trust & Compliance",
+        "description": "Ensuring ethical, trustworthy, and compliant use of AI in marketing",
+        "weight": 0.125,
+        "totalPoints": 75,
+        "items": [
+          {
+            "id": "ETC-DM-B-001",
+            "level": 1,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.29,
+            "discrimination": 1.08,
+            "bloomLevel": "Remember",
+            "question": "Why is transparency important when using AI for customer targeting?",
+            "options": [
+              "Being transparent about AI use reduces campaign effectiveness since customers prefer not knowing about targeting methods.",
+              "Transparency builds trust and allows customers to understand how their data is used, which is both ethically important and legally required.",
+              "Transparency is unnecessary because AI decision-making is too complex for customers to understand anyway.",
+              "Transparency requirements only apply to financial services and healthcare, not to general marketing activities."
+            ],
+            "correctAnswer": 1,
+            "rationale": "Transparency in AI use builds customer trust and is often legally required, allowing customers to make informed choices about data use.",
+            "tags": [
+              "transparency",
+              "trust",
+              "compliance"
+            ]
+          },
+          {
+            "id": "ETC-DM-B-002",
+            "level": 2,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.33,
+            "discrimination": 1.1,
+            "bloomLevel": "Understand",
+            "question": "What are 'dark patterns' in AI-powered marketing?",
+            "options": [
+              "Marketing automation that sends messages during evening hours when customers are more likely to respond.",
+              "Effective persuasion techniques that use AI to identify the most compelling way to present offers to customers.",
+              "Visual design elements with dark color schemes that AI recommends for better conversion rates on websites.",
+              "Deceptive design choices and AI-driven tactics that manipulate users into actions they didn't intend, undermining informed consent."
+            ],
+            "correctAnswer": 3,
+            "rationale": "Dark patterns are manipulative design tactics that exploit psychology to trick users, which is unethical even when AI-powered.",
+            "tags": [
+              "dark-patterns",
+              "ethical-design",
+              "manipulation"
+            ]
+          },
+          {
+            "id": "ETC-DM-B-003",
+            "level": 3,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.37,
+            "discrimination": 1.12,
+            "bloomLevel": "Understand",
+            "question": "How can bias in AI targeting lead to discriminatory marketing practices?",
+            "options": [
+              "AI completely eliminates discrimination by making objective mathematical decisions without human prejudices or biases.",
+              "Bias only affects hiring AI, not marketing AI, since marketing doesn't involve protected characteristics or legal concerns.",
+              "AI trained on historical data can perpetuate discrimination by excluding certain groups or making unfair assumptions based on protected characteristics.",
+              "Addressing bias reduces marketing effectiveness since some demographic patterns do predict purchasing behavior accurately."
+            ],
+            "correctAnswer": 2,
+            "rationale": "AI can amplify historical biases in data, leading to discriminatory targeting that may violate laws and certainly violates ethical principles.",
+            "tags": [
+              "bias",
+              "discrimination",
+              "fairness"
+            ]
+          },
+          {
+            "id": "ETC-DM-B-004",
+            "level": 4,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.41,
+            "discrimination": 1.14,
+            "bloomLevel": "Apply",
+            "question": "Your AI system shows better performance when targeting excludes certain demographic groups. What should you do?",
+            "options": [
+              "Continue current targeting but hide the demographic exclusions in technical documentation rather than campaign descriptions.",
+              "Investigate whether this exclusion is discriminatory, consult legal counsel, and adjust targeting to ensure fair treatment of all groups.",
+              "Implement the AI recommendation since it is based on data and improves performance metrics for the campaign.",
+              "Ignore demographic patterns entirely and use only behavioral targeting to avoid any possible discrimination concerns."
+            ],
+            "correctAnswer": 1,
+            "rationale": "Performance gains never justify discriminatory practices; marketers must ensure fair treatment even when AI suggests exclusions.",
+            "tags": [
+              "ethical-decisions",
+              "non-discrimination",
+              "compliance"
+            ]
+          },
+          {
+            "id": "ETC-DM-B-005",
+            "level": 5,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.43,
+            "discrimination": 1.15,
+            "bloomLevel": "Understand",
+            "question": "What customer data practices does GDPR require for AI-powered marketing in Europe?",
+            "options": [
+              "GDPR only requires a privacy policy on the website; no specific consent or transparency about AI is necessary.",
+              "European customers automatically consent to data processing when visiting websites or using services from companies.",
+              "GDPR only applies to companies physically located in Europe, not to companies marketing to European customers.",
+              "Obtaining explicit consent for data processing, providing transparency about AI use, and enabling data access, correction, and deletion rights."
+            ],
+            "correctAnswer": 3,
+            "rationale": "GDPR mandates explicit consent, transparency, and data rights that significantly impact how companies can use AI for marketing.",
+            "tags": [
+              "gdpr",
+              "privacy-compliance",
+              "data-rights"
+            ]
+          },
+          {
+            "id": "ETC-DM-B-006",
+            "level": 6,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.45,
+            "discrimination": 1.16,
+            "bloomLevel": "Apply",
+            "question": "How should marketers handle situations where AI recommendations conflict with ethical guidelines?",
+            "options": [
+              "Abandon AI tools entirely if they ever produce recommendations that conflict with any ethical guidelines.",
+              "Always follow AI recommendations since they are data-driven and therefore more objective than human ethical concerns.",
+              "Implement AI recommendations while adding disclaimers to satisfy ethical guidelines without changing the actual approach.",
+              "Prioritize ethical guidelines over AI optimization, document the decision, and work to improve AI to align with ethical standards."
+            ],
+            "correctAnswer": 3,
+            "rationale": "Ethics must take precedence over optimization, with human oversight ensuring AI serves rather than undermines ethical values.",
+            "tags": [
+              "ethical-override",
+              "value-alignment",
+              "governance"
+            ]
+          },
+          {
+            "id": "ETC-DM-B-007",
+            "level": 7,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.48,
+            "discrimination": 1.17,
+            "bloomLevel": "Apply",
+            "question": "What does 'responsible AI' mean in marketing contexts?",
+            "options": [
+              "Responsible AI simply means following data privacy laws; there are no additional ethical considerations beyond legal compliance.",
+              "Responsible AI requires avoiding all automated decision-making and maintaining complete human control over every marketing choice.",
+              "Using AI responsibly means achieving the best possible marketing results while staying within legal boundaries.",
+              "Using AI in ways that are transparent, fair, privacy-respecting, and aligned with both legal requirements and ethical principles."
+            ],
+            "correctAnswer": 3,
+            "rationale": "Responsible AI encompasses transparency, fairness, privacy, and ethics beyond mere legal compliance, ensuring AI serves customers well.",
+            "tags": [
+              "responsible-ai",
+              "ethical-framework",
+              "best-practices"
+            ]
+          }
+        ]
+      },
+      {
+        "dimensionCode": "TAP",
+        "dimensionName": "Tools, Automation & Platforms",
+        "description": "Understanding and selecting marketing technology, automation tools, and AI platforms",
+        "weight": 0.125,
+        "totalPoints": 75,
+        "items": [
+          {
+            "id": "TAP-DM-B-001",
+            "level": 1,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.3,
+            "discrimination": 1.08,
+            "bloomLevel": "Remember",
+            "question": "What is the most critical factor when selecting AI-powered marketing tools?",
+            "options": [
+              "Integration capability with existing martech stack and data sources is critical to avoid creating data silos and workflow friction.",
+              "Brand reputation of the vendor matters most since well-known companies always provide superior AI tools.",
+              "Price is the only important factor; the cheapest AI marketing tool that meets basic requirements is the best choice.",
+              "The tool with the most AI features and capabilities should always be selected regardless of integration requirements."
+            ],
+            "correctAnswer": 0,
+            "rationale": "Successful AI tool adoption requires seamless integration with existing systems to maintain data flow and workflow efficiency.",
+            "tags": [
+              "tool-selection",
+              "integration",
+              "martech-stack"
+            ]
+          },
+          {
+            "id": "TAP-DM-B-002",
+            "level": 2,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.34,
+            "discrimination": 1.1,
+            "bloomLevel": "Understand",
+            "question": "What is a marketing automation platform's primary function?",
+            "options": [
+              "Automating repetitive marketing tasks like email sends, lead scoring, and nurture campaigns based on customer behaviors and triggers.",
+              "Simply sending scheduled emails on predefined dates without any behavioral triggers or customer data integration.",
+              "Automatically increasing advertising spend across all channels whenever campaign performance exceeds target metrics.",
+              "Replacing marketing teams by completely automating all marketing strategy, creative, and execution without human involvement."
+            ],
+            "correctAnswer": 0,
+            "rationale": "Marketing automation platforms streamline repetitive tasks and enable behavior-triggered workflows while requiring human strategy and oversight.",
+            "tags": [
+              "marketing-automation",
+              "workflow-automation",
+              "efficiency"
+            ]
+          },
+          {
+            "id": "TAP-DM-B-003",
+            "level": 3,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.38,
+            "discrimination": 1.12,
+            "bloomLevel": "Understand",
+            "question": "Why is data quality critical for AI marketing tools to work effectively?",
+            "options": [
+              "Modern AI tools have built-in validation that guarantees accurate results regardless of input data quality.",
+              "AI models are only as good as their training data; poor data quality leads to inaccurate predictions and flawed recommendations.",
+              "Only data quantity matters for AI performance; the quality is irrelevant as long as sufficient volume exists.",
+              "Data quality doesn't matter because AI can automatically clean, correct, and enhance any data it receives."
+            ],
+            "correctAnswer": 1,
+            "rationale": "AI effectiveness depends entirely on data quality; flawed inputs produce flawed outputs regardless of algorithm sophistication.",
+            "tags": [
+              "data-quality",
+              "ai-effectiveness",
+              "garbage-in-garbage-out"
+            ]
+          },
+          {
+            "id": "TAP-DM-B-004",
+            "level": 4,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.42,
+            "discrimination": 1.14,
+            "bloomLevel": "Apply",
+            "question": "Your company uses five different AI marketing tools with separate datasets. What problem does this create?",
+            "options": [
+              "Data silos prevent a unified customer view, reduce AI effectiveness, and create inconsistent customer experiences across touchpoints.",
+              "This is the recommended approach since integrating all tools into one platform would create excessive vendor lock-in.",
+              "Multiple tools with separate data actually improve privacy protection since no single system has complete customer information.",
+              "Separate datasets are advantageous because they allow testing different AI approaches in parallel without interference."
+            ],
+            "correctAnswer": 0,
+            "rationale": "Data silos fragment customer understanding and reduce AI effectiveness, making integration a critical strategic priority.",
+            "tags": [
+              "data-silos",
+              "integration",
+              "unified-data"
+            ]
+          },
+          {
+            "id": "TAP-DM-B-005",
+            "level": 5,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.46,
+            "discrimination": 1.16,
+            "bloomLevel": "Apply",
+            "question": "What should be your first step when implementing a new AI marketing platform?",
+            "options": [
+              "Audit your existing data quality, define clear business objectives, and establish success metrics before selecting or implementing tools.",
+              "Immediately purchase and implement the most advanced AI platform available to avoid falling behind competitors.",
+              "Start using the tool extensively across all campaigns to gather data about its capabilities and limitations.",
+              "Skip planning and begin implementation since AI tools learn and improve automatically through usage over time."
+            ],
+            "correctAnswer": 0,
+            "rationale": "Successful AI implementation requires clear objectives, success metrics, and data preparation before tool selection or deployment.",
+            "tags": [
+              "implementation-strategy",
+              "planning",
+              "success-metrics"
+            ]
+          },
+          {
+            "id": "TAP-DM-B-006",
+            "level": 6,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.49,
+            "discrimination": 1.17,
+            "bloomLevel": "Understand",
+            "question": "What is the role of a Customer Data Platform (CDP) in AI-powered marketing?",
+            "options": [
+              "CDPs simply store customer contact information for email marketing campaigns without any data integration capabilities.",
+              "A CDP is just another name for a CRM system with no meaningful differences in functionality or purpose.",
+              "CDPs replace all other marketing tools by providing a single platform for all marketing technology needs.",
+              "CDPs unify customer data from multiple sources to create comprehensive profiles that power personalization and AI marketing tools."
+            ],
+            "correctAnswer": 3,
+            "rationale": "CDPs create unified customer views by integrating data from multiple sources, enabling more effective AI personalization and analytics.",
+            "tags": [
+              "cdp",
+              "data-unification",
+              "customer-profiles"
+            ]
+          },
+          {
+            "id": "TAP-DM-B-007",
+            "level": 7,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.51,
+            "discrimination": 1.18,
+            "bloomLevel": "Apply",
+            "question": "How should marketers evaluate the accuracy claims of AI marketing tools before purchasing?",
+            "options": [
+              "Accuracy doesn't matter as long as the tool provides any improvement over current manual processes and workflows.",
+              "Choose tools from the largest vendors since their size guarantees their AI accuracy claims are truthful.",
+              "Trust vendor accuracy claims since AI performance metrics are standardized and regulated across the industry.",
+              "Request case studies with specific metrics, run pilot tests with your data, and verify claims with independent reviews or references."
+            ],
+            "correctAnswer": 3,
+            "rationale": "Vendor claims require independent validation through testing, references, and objective evaluation before making purchasing commitments.",
+            "tags": [
+              "vendor-evaluation",
+              "due-diligence",
+              "validation"
+            ]
+          },
+          {
+            "id": "TAP-DM-B-008",
+            "level": 8,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.53,
+            "discrimination": 1.19,
+            "bloomLevel": "Apply",
+            "question": "What infrastructure considerations are most important when implementing AI marketing automation?",
+            "options": [
+              "Infrastructure planning is unnecessary for marketing AI since these tools work independently without technical dependencies.",
+              "Data security, system scalability, integration capabilities, and compliance with privacy regulations across your customer data ecosystem.",
+              "Only consider the monthly subscription cost since AI tools are cloud-based and have no other infrastructure requirements.",
+              "Infrastructure considerations are IT's responsibility and don't require marketing team input or involvement in planning."
+            ],
+            "correctAnswer": 1,
+            "rationale": "Successful AI implementation requires careful infrastructure planning for security, scalability, integration, and compliance.",
+            "tags": [
+              "infrastructure",
+              "implementation-planning",
+              "technical-requirements"
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

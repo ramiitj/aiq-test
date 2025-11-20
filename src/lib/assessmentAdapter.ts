@@ -287,8 +287,22 @@ export async function loadNormalizedAssessment(
       body: { testId, productSlug: slug }
     });
 
-    if (error) throw error;
-    if (!data?.assessment) throw new Error('No assessment data received');
+    if (error) {
+      console.error('Failed to load assessment from edge function', error);
+      
+      // Provide more specific error messages
+      if (error.message?.includes('404') || error.message?.includes('not found')) {
+        throw new Error(
+          `Assessment file "${slug}.json" not found in storage. Please contact support.`
+        );
+      }
+      
+      throw new Error(`Failed to load assessment: ${error.message || 'Unknown error'}`);
+    }
+
+    if (!data?.assessment) {
+      throw new Error('Invalid assessment data received from server');
+    }
     
     return normalizeAssessmentData(data.assessment);
   } catch (error) {

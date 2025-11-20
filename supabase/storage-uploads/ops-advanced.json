@@ -1,0 +1,1428 @@
+{
+  "assessmentMetadata": {
+    "assessmentId": "AIQ-OPS-ADV-v1",
+    "version": "1.0",
+    "title": "AIQ Operations/Process Manager Advanced Assessment",
+    "subtitle": "Expert Edition for Operations and Workflow Leaders",
+    "createdDate": "2025-11-11T10:30:00.000000",
+    "targetAudience": [
+      "Operations Managers",
+      "Process Excellence Leaders",
+      "Workflow Optimization Managers",
+      "Operations Directors",
+      "Process Improvement Managers",
+      "Six Sigma Black Belts working with AI"
+    ],
+    "totalItems": 160,
+    "estimatedMinutes": 150,
+    "passingScore": 1280,
+    "totalPoints": 1600
+  },
+  "assessmentConfiguration": {
+    "assessmentType": "adaptive-sequential",
+    "itemResponseTheory": true,
+    "randomizeOptions": true,
+    "randomizeItems": false,
+    "allowSkip": false,
+    "showProgressBar": true,
+    "timedPerQuestion": false,
+    "immediateResults": false
+  },
+  "scoringConfiguration": {
+    "totalPoints": 1600,
+    "pointsPerDimension": 200,
+    "passingThreshold": 0.8,
+    "passingPoints": 1280,
+    "scoringLevels": [
+      {
+        "level": "Developing Ops Manager",
+        "minPercentage": 0,
+        "maxPercentage": 50,
+        "minPoints": 0,
+        "maxPoints": 800,
+        "description": "Foundational AI operations knowledge needed"
+      },
+      {
+        "level": "Proficient Ops Manager",
+        "minPercentage": 51,
+        "maxPercentage": 70,
+        "minPoints": 801,
+        "maxPoints": 1120,
+        "description": "Solid understanding of AI operations concepts"
+      },
+      {
+        "level": "Advanced Ops Manager",
+        "minPercentage": 71,
+        "maxPercentage": 85,
+        "minPoints": 1121,
+        "maxPoints": 1360,
+        "description": "Strong AI operations capability"
+      },
+      {
+        "level": "Expert Ops Manager",
+        "minPercentage": 86,
+        "maxPercentage": 95,
+        "minPoints": 1361,
+        "maxPoints": 1520,
+        "description": "Exceptional AI operations leadership"
+      },
+      {
+        "level": "Master Ops Manager",
+        "minPercentage": 96,
+        "maxPercentage": 100,
+        "minPoints": 1521,
+        "maxPoints": 1600,
+        "description": "World-class AI operations mastery"
+      }
+    ]
+  },
+  "itemBank": [
+    {
+      "dimensionCode": "PWO",
+      "dimensionName": "Process & Workflow Optimization",
+      "dimensionDescription": "Advanced assessment of AI-driven process improvement, workflow design, and operational efficiency",
+      "itemCount": 20,
+      "maxPoints": 200,
+      "items": [
+        {
+          "id": "PWO-OPS-E-001",
+          "question": "Your manufacturing line has 12 sequential inspection points, each taking 45-90 seconds. AI could automate some inspections but with 92% accuracy versus 98% human accuracy. What optimization approach maximizes throughput while maintaining quality?",
+          "options": [
+            "Replace all 12 inspection points with AI to maximize speed gains, then add a final human quality check at the end of the line to catch any errors the AI systems missed.",
+            "Keep all human inspections but use AI as a pre-filter to flag likely defects, allowing inspectors to focus their attention on flagged items while quickly passing clear cases.",
+            "Identify the 6 highest-volume, lowest-complexity inspections for full AI automation, retain human inspection for complex cases, and implement statistical process control to monitor AI performance continuously.",
+            "Run AI and human inspections in parallel for 90 days to collect comparison data, then use machine learning to predict which inspection types AI handles best before making automation decisions."
+          ],
+          "correctAnswer": 2,
+          "difficulty": 0.64,
+          "discrimination": 1.42,
+          "points": 13,
+          "bloomLevel": "Evaluate",
+          "tags": [
+            "process-optimization",
+            "quality-control",
+            "throughput",
+            "hybrid-automation"
+          ],
+          "rationale": "Strategic partial automation of high-volume, low-complexity tasks with continuous monitoring balances speed gains with quality requirements while managing risk."
+        },
+        {
+          "id": "PWO-OPS-E-002",
+          "question": "You manage a customer service operation where AI could handle 70% of inquiries automatically. However, customers currently rate human agent satisfaction at 4.2/5.0, and early AI pilot shows 3.6/5.0. How do you optimize this transition?",
+          "options": [
+            "Deploy AI for the full 70% of eligible inquiries immediately to capture efficiency gains, then invest the cost savings into training improvements that will gradually raise AI satisfaction scores over time.",
+            "Segment inquiries by complexity and emotional sensitivity, deploy AI only for straightforward transactional queries (40% of volume), and create seamless human escalation paths for complex or emotional situations.",
+            "Implement AI as a co-pilot that suggests responses to human agents rather than handling inquiries directly, allowing agents to maintain personal touch while improving response speed and consistency.",
+            "Delay AI deployment until satisfaction scores match human performance, using the interim period to improve AI training data and refine response quality through controlled testing."
+          ],
+          "correctAnswer": 1,
+          "difficulty": 0.66,
+          "discrimination": 1.44,
+          "points": 13,
+          "bloomLevel": "Evaluate",
+          "tags": [
+            "customer-experience",
+            "transition-planning",
+            "satisfaction-metrics",
+            "segmentation"
+          ],
+          "rationale": "Strategic segmentation deploys AI where it performs best while preserving human touch for high-stakes interactions, optimizing both efficiency and experience."
+        },
+        {
+          "id": "PWO-OPS-E-003",
+          "question": "Your accounts payable process involves 8,000 invoices monthly with 15-step workflow. AI could reduce processing time by 60% but requires significant process redesign. What approach best manages this transformation?",
+          "options": [
+            "Implement AI automation step-by-step across the existing 15-step workflow, replacing manual work with AI at each step while maintaining the current process structure to minimize disruption.",
+            "Redesign the entire workflow from scratch around AI capabilities, consolidating steps and eliminating handoffs, then implement the new streamlined process in a single cutover to maximize benefits.",
+            "Create a parallel 'fast-track' AI-powered workflow for simple, standard invoices (60% of volume) while maintaining the existing workflow for exceptions, then gradually expand AI coverage as confidence builds.",
+            "Outsource the process to a vendor with mature AI automation capabilities rather than building internal capability, allowing your team to focus on strategic activities while experts handle the transition."
+          ],
+          "correctAnswer": 2,
+          "difficulty": 0.65,
+          "discrimination": 1.43,
+          "points": 13,
+          "bloomLevel": "Evaluate",
+          "tags": [
+            "workflow-redesign",
+            "change-management",
+            "parallel-processes",
+            "risk-management"
+          ],
+          "rationale": "Parallel processing allows proving AI value on straightforward cases while maintaining operational continuity, reducing risk while building organizational confidence."
+        },
+        {
+          "id": "PWO-OPS-E-004",
+          "question": "You're optimizing a supply chain planning process where AI forecasting shows 15% accuracy improvement over current methods, but requires real-time data integration from 40 supplier systems. How do you sequence this implementation?",
+          "options": [
+            "Negotiate data integration agreements with all 40 suppliers simultaneously, then implement AI forecasting in a single deployment once all data connections are established to ensure complete accuracy improvement.",
+            "Implement AI forecasting using only internal data initially, then add supplier integrations incrementally based on supplier volume and data quality, gradually expanding forecast accuracy as integrations complete.",
+            "Select the top 10 suppliers representing 80% of volume for priority data integration, implement AI forecasting for these suppliers first, and run parallel legacy forecasting for remaining suppliers during phased rollout.",
+            "Deploy AI forecasting across the entire supply chain using historical data and publicly available market signals initially, then layer in supplier-specific real-time data as integrations become available over time."
+          ],
+          "correctAnswer": 2,
+          "difficulty": 0.67,
+          "discrimination": 1.45,
+          "points": 13,
+          "bloomLevel": "Evaluate",
+          "tags": [
+            "supply-chain",
+            "phased-implementation",
+            "data-integration",
+            "pareto-principle"
+          ],
+          "rationale": "Focusing on high-impact suppliers first (80/20 rule) delivers majority of benefits quickly while managing integration complexity and maintaining continuity."
+        },
+        {
+          "id": "PWO-OPS-E-005",
+          "question": "Your quality control process generates 500GB of inspection data daily. AI could detect patterns humans miss, but processing requires 4-hour batch windows. Your production runs 24/7. What workflow optimization resolves this constraint?",
+          "options": [
+            "Shift to continuous streaming data processing where AI analyzes data in real-time as it's generated, eliminating batch windows and providing immediate quality insights throughout the production cycle.",
+            "Schedule AI processing during planned maintenance windows when production is offline, accepting the delay between data generation and analysis in exchange for avoiding production interruptions.",
+            "Reduce data collection frequency to create smaller datasets that fit within existing shift change gaps, processing AI analysis during 30-minute transition periods between production shifts.",
+            "Implement a two-tier analysis system where AI performs lightweight real-time screening for critical defects, while deeper pattern analysis runs in nightly batch processing for trend identification."
+          ],
+          "correctAnswer": 0,
+          "difficulty": 0.63,
+          "discrimination": 1.41,
+          "points": 12,
+          "bloomLevel": "Analyze",
+          "tags": [
+            "real-time-processing",
+            "data-volume",
+            "continuous-operations",
+            "quality-control"
+          ],
+          "rationale": "Streaming processing architecture eliminates the fundamental constraint of batch windows, enabling continuous AI insights aligned with 24/7 operations."
+        },
+        {
+          "id": "PWO-OPS-E-006",
+          "question": "You manage warehouse operations where AI route optimization could reduce picker travel time by 35%. However, your workforce has used the same picking patterns for 10 years. How do you optimize adoption while maintaining productivity?",
+          "options": [
+            "Deploy AI route optimization system-wide immediately with mandatory compliance, providing intensive training during a planned slow period to ensure quick adaptation before high-volume season arrives.",
+            "Implement AI routing in a single warehouse zone as a pilot, recruit volunteer early adopters, demonstrate productivity gains through visible performance metrics, then expand based on peer influence and proven results.",
+            "Introduce AI routing gradually by having the system suggest optional route improvements that pickers can choose to follow, allowing organic adoption as workers discover efficiency gains through voluntary experimentation.",
+            "Use AI routing only for new hires who have no established patterns, allowing experienced pickers to maintain current methods while new team members prove the concept through their superior productivity metrics."
+          ],
+          "correctAnswer": 1,
+          "difficulty": 0.64,
+          "discrimination": 1.42,
+          "points": 13,
+          "bloomLevel": "Evaluate",
+          "tags": [
+            "change-management",
+            "workforce-adoption",
+            "pilot-programs",
+            "performance-metrics"
+          ],
+          "rationale": "Localized pilot with visible metrics and volunteer champions creates peer proof points and reduces resistance, enabling smoother organization-wide adoption."
+        },
+        {
+          "id": "PWO-OPS-E-007",
+          "question": "Your call center handles 50,000 calls monthly. AI transcription and analysis could identify training needs and process improvements. However, processing all recordings would cost $15,000 monthly. How do you optimize value extraction?",
+          "options": [
+            "Process 100% of calls to ensure comprehensive insights, justifying the cost through even modest improvements in efficiency or customer satisfaction that result from data-driven training and process changes.",
+            "Implement stratified sampling analyzing 20% of calls across all agents, call types, and time periods, using statistical methods to extrapolate insights while reducing costs to $3,000 monthly.",
+            "Focus analysis on specific high-value scenarios like customer complaints, escalations, and quality failures rather than routine calls, ensuring insight depth where improvement impact is highest.",
+            "Delay implementation until AI processing costs decrease or negotiate with vendors for volume discounts, meanwhile collecting audio files for future analysis when economics improve."
+          ],
+          "correctAnswer": 2,
+          "difficulty": 0.66,
+          "discrimination": 1.44,
+          "points": 13,
+          "bloomLevel": "Evaluate",
+          "tags": [
+            "cost-optimization",
+            "targeted-analysis",
+            "value-prioritization",
+            "sampling-strategy"
+          ],
+          "rationale": "Focusing on high-impact scenarios maximizes insight value per dollar spent, targeting improvement opportunities with highest potential return."
+        },
+        {
+          "id": "PWO-OPS-E-008",
+          "question": "You're implementing AI-powered demand forecasting that could reduce inventory holding costs by $2M annually. However, procurement teams resist because forecast errors could cause stockouts. How do you balance optimization with risk management?",
+          "options": [
+            "Implement AI forecasting with conservative safety stock buffers initially (higher than current levels), then gradually reduce buffers as teams build confidence in AI accuracy through demonstrated performance.",
+            "Deploy AI forecasting only for C-category items (low-value, low-criticality) first, maintaining human forecasting for A and B categories until AI proves itself on less risky inventory.",
+            "Create a blended forecast combining 70% AI predictions with 30% human judgment, allowing teams to maintain some control while introducing AI capabilities progressively.",
+            "Establish a fallback protocol where AI drives procurement decisions but human planners can override specific forecasts they distrust, gradually reducing override frequency as confidence grows."
+          ],
+          "correctAnswer": 1,
+          "difficulty": 0.68,
+          "discrimination": 1.46,
+          "points": 13,
+          "bloomLevel": "Evaluate",
+          "tags": [
+            "risk-management",
+            "phased-deployment",
+            "stakeholder-confidence",
+            "inventory-optimization"
+          ],
+          "rationale": "Starting with low-risk items allows proving AI value without exposing critical operations to forecast errors, building organizational confidence through safe demonstration."
+        },
+        {
+          "id": "PWO-OPS-E-009",
+          "question": "Your maintenance operations could benefit from AI predictive analytics identifying equipment failures 72 hours in advance. However, maintenance crews are already fully scheduled. How do you optimize this capability without adding headcount?",
+          "options": [
+            "Implement AI predictions to replace reactive maintenance entirely, converting emergency response capacity into proactive scheduled maintenance guided by AI insights about impending failures.",
+            "Use AI to optimize the maintenance schedule itself, identifying which planned preventive maintenance tasks can be safely deferred based on equipment health predictions, freeing capacity for predicted failures.",
+            "Deploy AI predictions to prioritize work orders, ensuring the most critical predicted failures receive attention first while less urgent scheduled maintenance shifts to accommodate emergency capacity needs.",
+            "Create a dynamic scheduling system where AI predictions trigger automatic schedule adjustments, moving maintenance resources from low-priority preventive work to high-priority predicted failures in real-time."
+          ],
+          "correctAnswer": 1,
+          "difficulty": 0.69,
+          "discrimination": 1.47,
+          "points": 14,
+          "bloomLevel": "Create",
+          "tags": [
+            "predictive-maintenance",
+            "resource-optimization",
+            "schedule-optimization",
+            "capacity-management"
+          ],
+          "rationale": "Optimizing the entire schedule using AI insights both to predict failures and to defer unnecessary preventive work creates capacity within existing resources."
+        },
+        {
+          "id": "PWO-OPS-E-010",
+          "question": "You manage a document processing operation handling 100,000 forms monthly. AI could extract data with 94% accuracy, but errors are costly to fix. Current manual processing is 99.5% accurate. What hybrid approach optimizes this workflow?",
+          "options": [
+            "Implement AI for initial extraction on all documents, then route 100% through human review to catch errors, reducing review time from full data entry to quick verification of AI-extracted data.",
+            "Use AI confidence scores to segment documents: auto-process high-confidence extractions (60% of volume), route medium-confidence to humans (35%), and flag low-confidence for expert review (5%).",
+            "Deploy AI extraction for standard form types where accuracy is highest, maintain human processing for complex or non-standard documents, and implement continuous learning to expand AI coverage over time.",
+            "Create a closed-loop system where AI extracts data, downstream processes flag errors when data doesn't validate, and these exceptions route to humans while providing feedback to improve AI accuracy."
+          ],
+          "correctAnswer": 1,
+          "difficulty": 0.67,
+          "discrimination": 1.45,
+          "points": 13,
+          "bloomLevel": "Evaluate",
+          "tags": [
+            "document-processing",
+            "confidence-scoring",
+            "hybrid-workflow",
+            "quality-assurance"
+          ],
+          "rationale": "Confidence-based routing optimizes by fully automating high-confidence cases while directing human effort to uncertain cases, balancing efficiency with accuracy requirements."
+        },
+        {
+          "id": "PWO-OPS-E-011",
+          "question": "Your shipping operations face 15% seasonal volume spikes that require temporary staff. AI could smooth these fluctuations through better scheduling and route optimization. However, implementation takes 6 months and peak season starts in 4 months. What's the optimal approach?",
+          "options": [
+            "Accelerate implementation by reducing scope to core scheduling optimization only, deferring advanced features like route optimization to post-peak implementation after validating core benefits.",
+            "Delay full implementation until after peak season to avoid disruption, but deploy AI in advisory mode during peak to collect data and build staff confidence for full deployment afterward.",
+            "Proceed with full 6-month implementation accepting that you'll miss this peak season, focusing on long-term benefits rather than short-term gains that risk operational disruption.",
+            "Implement a temporary AI-augmented process for peak season only using lighter-weight tools, then evaluate whether to invest in comprehensive enterprise solution based on pilot results and cost-benefit analysis."
+          ],
+          "correctAnswer": 1,
+          "difficulty": 0.65,
+          "discrimination": 1.43,
+          "points": 13,
+          "bloomLevel": "Evaluate",
+          "tags": [
+            "timing-strategy",
+            "peak-season",
+            "implementation-planning",
+            "risk-mitigation"
+          ],
+          "rationale": "Advisory deployment during peak builds confidence and collects real-world data without operational risk, while positioning for full deployment when timing is optimal."
+        },
+        {
+          "id": "PWO-OPS-E-012",
+          "question": "You're optimizing a returns processing workflow handling 5,000 items weekly. AI could determine refund/replace/repair decisions in 2 seconds versus 10 minutes human processing. However, 8% of AI decisions differ from what humans would choose. How do you structure this workflow?",
+          "options": [
+            "Let AI make all decisions autonomously to maximize speed benefits, then analyze the 8% difference patterns quarterly to refine AI logic and acceptance criteria based on business impact of decision variances.",
+            "Implement AI decision-making for clear-cut cases (70% of volume) while routing ambiguous situations to human decision-makers, with continuous learning from human decisions to expand AI's clear-cut case coverage.",
+            "Use AI to make recommendations for all returns but require human approval before executing any refund, replace, or repair action, speeding research while maintaining human judgment in final decisions.",
+            "Segment returns by value threshold: AI handles full autonomy for low-value returns (<$50) where decision impact is minimal, while humans handle high-value returns where decision accuracy justifies processing time."
+          ],
+          "correctAnswer": 3,
+          "difficulty": 0.66,
+          "discrimination": 1.44,
+          "points": 13,
+          "bloomLevel": "Evaluate",
+          "tags": [
+            "decision-automation",
+            "value-based-routing",
+            "risk-stratification",
+            "returns-management"
+          ],
+          "rationale": "Value-based segmentation aligns decision automation level with business risk, automating fully where impact is low while preserving judgment where it matters most."
+        },
+        {
+          "id": "PWO-OPS-E-013",
+          "question": "Your quality assurance team spends 40% of time on repetitive compliance checks and 60% on complex problem-solving. AI could fully automate compliance checks. How do you optimize team transition and value creation?",
+          "options": [
+            "Automate compliance checks immediately and reduce team size by 40%, reallocating cost savings to strategic quality initiatives while maintaining the same level of complex problem-solving capacity with remaining staff.",
+            "Automate compliance checks but maintain full team, redirecting freed capacity to proactive quality improvement projects, root cause analysis, and supplier quality development activities that currently receive insufficient attention.",
+            "Implement AI compliance checking as a parallel validation system that runs alongside human checks for 6 months, then transition fully to AI once confidence is established through zero-error validation.",
+            "Use AI to augment rather than replace compliance work by having systems flag potential issues for human verification, reducing time per check from 15 minutes to 3 minutes rather than eliminating the role entirely."
+          ],
+          "correctAnswer": 1,
+          "difficulty": 0.64,
+          "discrimination": 1.42,
+          "points": 13,
+          "bloomLevel": "Evaluate",
+          "tags": [
+            "workforce-transition",
+            "capacity-reallocation",
+            "value-creation",
+            "strategic-focus"
+          ],
+          "rationale": "Redirecting freed capacity to higher-value activities maximizes organizational benefit while maintaining workforce, shifting from compliance checking to strategic quality improvement."
+        },
+        {
+          "id": "PWO-OPS-E-014",
+          "question": "You manage a loan underwriting process with 30-minute average processing time. AI could reduce this to 3 minutes for 75% of applications, but regulators require human review of all AI decisions. How do you optimize for both speed and compliance?",
+          "options": [
+            "Implement AI to prepare complete underwriting analysis for human review, reducing human effort from full analysis (30 minutes) to verification and approval (5 minutes) while meeting regulatory requirements.",
+            "Deploy AI for instant preliminary decisions with human underwriters conducting full subsequent review, providing customers immediate provisional responses while final approval follows within original 30-minute timeline.",
+            "Use AI to prioritize and triage applications by complexity, routing simple cases to junior underwriters with AI support and complex cases to senior underwriters, optimizing skill deployment while maintaining human involvement.",
+            "Create a post-approval review process where AI makes immediate lending decisions but a human samples and audits 20% of decisions daily to ensure ongoing compliance and catch any systemic errors."
+          ],
+          "correctAnswer": 0,
+          "difficulty": 0.68,
+          "discrimination": 1.46,
+          "points": 13,
+          "bloomLevel": "Evaluate",
+          "tags": [
+            "regulatory-compliance",
+            "human-in-loop",
+            "process-acceleration",
+            "risk-management"
+          ],
+          "rationale": "AI preparation with human verification maintains required human oversight while dramatically reducing human effort, optimizing both speed and compliance within regulatory constraints."
+        },
+        {
+          "id": "PWO-OPS-E-015",
+          "question": "Your field service operations manage 200 technicians with complex scheduling constraints. AI optimization could improve schedule efficiency by 25%, but technicians value schedule autonomy and predictability. How do you balance optimization with workforce satisfaction?",
+          "options": [
+            "Implement AI scheduling with technician preference parameters weighted heavily in the optimization algorithm, accepting somewhat lower mathematical efficiency to maintain schedule quality-of-life and workforce satisfaction.",
+            "Deploy AI for initial schedule creation based on pure efficiency, then allow technicians to request swaps and adjustments within defined constraints, combining optimization with flexibility and worker control.",
+            "Use AI optimization only for new service requests and emergency scheduling while maintaining traditional scheduling patterns for regular maintenance and planned work, minimizing disruption to established routines.",
+            "Create a hybrid system where AI optimizes regional routing and timing but technicians retain client assignment consistency, preserving important customer relationships while improving travel efficiency."
+          ],
+          "correctAnswer": 0,
+          "difficulty": 0.67,
+          "discrimination": 1.45,
+          "points": 13,
+          "bloomLevel": "Evaluate",
+          "tags": [
+            "workforce-satisfaction",
+            "schedule-optimization",
+            "constraint-management",
+            "change-management"
+          ],
+          "rationale": "Incorporating technician preferences as weighted parameters in optimization creates schedules that balance efficiency with satisfaction, optimizing holistically rather than purely mathematically."
+        },
+        {
+          "id": "PWO-OPS-E-016",
+          "question": "You're implementing AI-powered resource allocation across 12 regional operations centers. Each center has developed unique processes over time. How do you optimize for both standardization and local adaptability?",
+          "options": [
+            "Implement a single standardized AI system across all centers with identical configuration, eliminating local variations to maximize consistency, cross-training flexibility, and system maintenance efficiency.",
+            "Deploy core AI resource allocation logic uniformly but allow centers to configure local business rules, constraints, and priorities within the system, balancing standardization with regional requirements.",
+            "Let each center customize their AI implementation completely based on local needs, accepting variation in exchange for optimal local fit and higher adoption rates from center-specific tailoring.",
+            "Start with standardized deployment in one model center, refine the approach based on lessons learned, then replicate this proven configuration across remaining centers with minimal local variation."
+          ],
+          "correctAnswer": 1,
+          "difficulty": 0.69,
+          "discrimination": 1.47,
+          "points": 14,
+          "bloomLevel": "Create",
+          "tags": [
+            "standardization",
+            "local-adaptation",
+            "multi-site-deployment",
+            "configuration-management"
+          ],
+          "rationale": "Standardized core with configurable parameters provides consistency benefits while accommodating legitimate regional variations, optimizing global-local balance."
+        },
+        {
+          "id": "PWO-OPS-E-017",
+          "question": "Your distribution network includes 15 warehouses with varying capabilities. AI could optimize inventory placement, but requires real-time visibility of all locations. Three warehouses operate on legacy systems incompatible with real-time data sharing. What's the optimal implementation approach?",
+          "options": [
+            "Delay AI implementation until all warehouses modernize their systems, using the interim period to develop comprehensive requirements and ensure the eventual solution delivers full network optimization benefits.",
+            "Implement AI optimization for the 12 connected warehouses while managing the 3 legacy locations with traditional methods, accepting sub-optimal network performance until legacy systems are eventually replaced.",
+            "Deploy middleware integration layer for legacy warehouses to achieve near-real-time data updates (15-minute latency), enabling full network AI optimization with acceptable accuracy given update frequency.",
+            "Exclude legacy warehouses from AI-driven dynamic inventory placement but include them in AI consumption forecasting, allowing partial optimization while working around technical constraints of legacy systems."
+          ],
+          "correctAnswer": 2,
+          "difficulty": 0.68,
+          "discrimination": 1.46,
+          "points": 13,
+          "bloomLevel": "Evaluate",
+          "tags": [
+            "system-integration",
+            "legacy-systems",
+            "network-optimization",
+            "technical-constraints"
+          ],
+          "rationale": "Middleware integration enables network-wide optimization without waiting for complete modernization, capturing most benefits while managing technical debt pragmatically."
+        },
+        {
+          "id": "PWO-OPS-E-018",
+          "question": "You manage a 24/7 operation where shift handoffs create quality and continuity issues. AI could provide perfect information transfer through detailed logs and context. However, your workforce values face-to-face communication and team cohesion. How do you optimize this transition?",
+          "options": [
+            "Implement comprehensive AI-powered digital handoff system and reduce physical handoff time from 30 minutes to 10 minutes, using AI to eliminate redundant verbal information sharing while preserving brief personal interaction.",
+            "Augment physical handoffs with AI-generated handoff reports that crews review together during face-to-face transitions, combining technology benefits with human interaction and relationship maintenance.",
+            "Create role-specific handoff approaches where operational details transfer via AI system but team huddles continue for coordination and problem-solving, separating information transfer from team building functions.",
+            "Deploy AI handoff system for night/weekend shifts when teams are smaller and dispersed, maintaining traditional face-to-face handoffs during weekday operations when full teams are present and co-located."
+          ],
+          "correctAnswer": 1,
+          "difficulty": 0.65,
+          "discrimination": 1.43,
+          "points": 13,
+          "bloomLevel": "Evaluate",
+          "tags": [
+            "shift-operations",
+            "communication",
+            "team-dynamics",
+            "technology-adoption"
+          ],
+          "rationale": "Augmenting rather than replacing face-to-face communication captures AI's information completeness while preserving valuable team interaction and cohesion."
+        },
+        {
+          "id": "PWO-OPS-E-019",
+          "question": "Your procurement operation processes 50,000 purchase orders annually. AI could auto-approve 60% of standard POs instantly while flagging unusual patterns for review. However, procurement team worries about losing control and missing savings opportunities. How do you optimize adoption?",
+          "options": [
+            "Implement full AI auto-approval for the 60% standard POs to maximize efficiency gains, while providing procurement team detailed monthly reports on auto-approved patterns so they can audit for missed opportunities retrospectively.",
+            "Deploy AI as a procurement assistant that drafts all PO approvals instantly but holds them for one-click human confirmation, reducing effort from full review to quick verification while maintaining control perception.",
+            "Start with AI auto-approval for very low-value POs (<$500) only, gradually raising thresholds as procurement team observes that AI flagging works correctly and no savings opportunities are missed.",
+            "Use AI to score and prioritize POs for human review rather than auto-approving any, directing procurement team attention to highest-value opportunities while AI handles routine screening and organization."
+          ],
+          "correctAnswer": 2,
+          "difficulty": 0.66,
+          "discrimination": 1.44,
+          "points": 13,
+          "bloomLevel": "Evaluate",
+          "tags": [
+            "procurement-automation",
+            "trust-building",
+            "gradual-adoption",
+            "control-perception"
+          ],
+          "rationale": "Gradual threshold increase builds demonstrated trust in AI decision-making while proving the system catches issues, enabling confident expansion of automation scope."
+        },
+        {
+          "id": "PWO-OPS-E-020",
+          "question": "You're optimizing a cross-functional approval workflow involving 7 departments. Current process takes 8 days on average. AI could intelligently route requests and predict approval outcomes. However, departments guard their approval authority. What approach optimizes both speed and political dynamics?",
+          "options": [
+            "Implement AI to prepare approval packages with all required information and route to all approvers simultaneously, reducing sequential delays while preserving each department's approval authority and decision control.",
+            "Use AI to predict which approvals will be routine versus contested, routing predicted routine approvals through fast-track process while complex cases follow full review, reducing overall cycle time without bypassing authority.",
+            "Deploy AI analytics to identify bottleneck departments and escalation patterns, then negotiate SLA improvements with data-driven insights rather than changing the workflow structure that departments are defending.",
+            "Create parallel fast-track workflow for standard requests using AI pre-validation, maintaining traditional workflow for exceptions, and gradually expanding fast-track eligibility as departments see benefits and become comfortable."
+          ],
+          "correctAnswer": 3,
+          "difficulty": 0.70,
+          "discrimination": 1.48,
+          "points": 14,
+          "bloomLevel": "Create",
+          "tags": [
+            "cross-functional-process",
+            "political-dynamics",
+            "change-management",
+            "workflow-redesign"
+          ],
+          "rationale": "Parallel workflows with expanding eligibility respects existing authority structures while proving AI value, enabling political acceptance and gradual process transformation."
+        }
+      ]
+    },
+    {
+      "dimensionCode": "PMQ",
+      "dimensionName": "Performance Metrics & Quality",
+      "dimensionDescription": "Advanced assessment of KPI development, quality assurance, and performance management for AI operations",
+      "itemCount": 20,
+      "maxPoints": 200,
+      "items": [
+        {
+          "id": "PMQ-OPS-E-001",
+          "question": "You're implementing AI in customer service operations. Traditional metrics show 20% improvement in handle time, but customer satisfaction drops from 85% to 78%. How do you diagnose and address this apparent paradox?",
+          "options": [
+            "Segment satisfaction data by interaction type and customer demographics to identify which specific scenarios or populations are experiencing service degradation, then refine AI handling of those specific situations while maintaining speed for others.",
+            "Rebalance the AI optimization algorithm to weight satisfaction more heavily than speed, accepting longer handle times in exchange for better customer experience until both metrics meet targets.",
+            "Investigate the satisfaction measurement methodology to determine if the survey is capturing customer frustration with talking to AI rather than actual service quality, potentially adjusting how satisfaction is measured post-AI implementation.",
+            "Implement mandatory quality calibration sessions where supervisors review AI interactions alongside satisfaction surveys to identify specific AI behaviors or responses that correlate with lower satisfaction scores."
+          ],
+          "correctAnswer": 0,
+          "difficulty": 0.67,
+          "discrimination": 1.45,
+          "points": 13,
+          "bloomLevel": "Evaluate",
+          "tags": [
+            "metric-analysis",
+            "customer-satisfaction",
+            "performance-paradox",
+            "root-cause-analysis"
+          ],
+          "rationale": "Segmented analysis reveals which specific situations cause satisfaction issues, enabling targeted refinement rather than broad adjustments that might sacrifice speed unnecessarily."
+        },
+        {
+          "id": "PMQ-OPS-E-002",
+          "question": "Your warehouse AI optimization shows impressive productivity metrics, but employee turnover increased from 15% to 28% annually post-implementation. What measurement approach best captures the full operational impact?",
+          "options": [
+            "Calculate total cost of operations including turnover costs (recruiting, training, productivity ramp) alongside direct productivity metrics to create a holistic view of AI's true economic impact on operations.",
+            "Implement employee satisfaction surveys specifically focused on AI tool usability and work experience to identify which aspects of the AI system are driving turnover so they can be addressed.",
+            "Benchmark turnover against industry standards for AI-enabled warehouses to determine if your 28% rate is actually normal for this type of operation, potentially adjusting expectations accordingly.",
+            "Create a balanced scorecard measuring productivity, quality, safety, and workforce stability equally, requiring AI optimization to improve all dimensions rather than optimizing only productivity."
+          ],
+          "correctAnswer": 0,
+          "difficulty": 0.68,
+          "discrimination": 1.46,
+          "points": 13,
+          "bloomLevel": "Evaluate",
+          "tags": [
+            "total-cost-analysis",
+            "employee-turnover",
+            "holistic-metrics",
+            "economic-impact"
+          ],
+          "rationale": "Total cost analysis captures hidden costs of turnover that offset productivity gains, providing true economic impact measurement rather than siloed productivity metrics."
+        },
+        {
+          "id": "PMQ-OPS-E-003",
+          "question": "You've deployed AI quality inspection that catches 98% of defects versus 94% for human inspection. However, downstream customer complaints increased by 15%. What quality measurement gap might explain this paradox?",
+          "options": [
+            "AI may be catching more minor cosmetic defects while missing critical functional issues that matter more to customers, suggesting the AI's training prioritized the wrong defect types based on available training data.",
+            "The 15% increase in complaints may reflect customers receiving products faster due to AI efficiency, resulting in more products in market and proportionally more complaints even if defect rates actually decreased.",
+            "Human inspectors likely caught defect patterns that AI wasn't trained to recognize, and removing human judgment eliminated detection of novel or evolving quality issues not present in AI training data.",
+            "Customer complaint measurement may have changed coincidentally with AI implementation, with improved complaint tracking systems or customer communication channels capturing issues that previously went unreported."
+          ],
+          "correctAnswer": 0,
+          "difficulty": 0.69,
+          "discrimination": 1.47,
+          "points": 14,
+          "bloomLevel": "Evaluate",
+          "tags": [
+            "quality-paradox",
+            "customer-complaints",
+            "defect-prioritization",
+            "measurement-validity"
+          ],
+          "rationale": "AI optimization of overall defect detection may have inadvertently deprioritized the specific defects that most impact customer experience, revealing measurement-outcome misalignment."
+        },
+        {
+          "id": "PMQ-OPS-E-004",
+          "question": "Your AI-powered predictive maintenance system predicts 85% of failures accurately with 72-hour lead time. However, maintenance costs increased 30% due to false positives. What metric framework best optimizes this tradeoff?",
+          "options": [
+            "Calculate the cost per correctly predicted failure (including false positive costs) compared to cost per unplanned downtime incident, optimizing AI threshold to minimize total cost rather than maximizing prediction accuracy.",
+            "Implement a confusion matrix analysis measuring true positives, false positives, true negatives, and false negatives, then adjust AI sensitivity to achieve optimal balance between catching failures and avoiding false alarms.",
+            "Measure maintenance efficiency as revenue protected per dollar spent on maintenance, capturing both the value of prevented downtime and the cost of unnecessary interventions in a single business outcome metric.",
+            "Create separate metrics for different equipment categories based on downtime cost, allowing higher false positive rates for critical equipment where downtime is expensive and lower rates for non-critical equipment."
+          ],
+          "correctAnswer": 0,
+          "difficulty": 0.70,
+          "discrimination": 1.48,
+          "points": 14,
+          "bloomLevel": "Evaluate",
+          "tags": [
+            "predictive-maintenance",
+            "cost-optimization",
+            "false-positive-management",
+            "tradeoff-analysis"
+          ],
+          "rationale": "Cost-based optimization directly measures business impact of both false positives and missed failures, enabling economically optimal threshold setting rather than accuracy-focused optimization."
+        },
+        {
+          "id": "PMQ-OPS-E-005",
+          "question": "You manage a fraud detection operation where AI flags 2% of transactions for review (down from 5% human-flagged rate). Fraud losses decreased 10% but processing costs increased because flagged transactions require expensive investigation. How do you measure success?",
+          "options": [
+            "Calculate fraud prevention ROI as fraud losses prevented minus investigation costs, measuring net economic benefit of the AI system compared to previous human-flagged approach and baseline fraud losses.",
+            "Measure precision (percentage of flagged transactions that are truly fraud) and recall (percentage of fraud caught) as primary metrics, optimizing AI to improve both detection accuracy and investigation efficiency.",
+            "Track total loss ratio combining fraud losses plus investigation costs as percentage of transaction volume, aiming to minimize combined losses regardless of how they split between fraud and investigation.",
+            "Implement a value-weighted flagging metric where investigation cost factors into flagging decision, catching only fraud attempts above economic threshold where investigation cost is justified by potential loss prevented."
+          ],
+          "correctAnswer": 2,
+          "difficulty": 0.68,
+          "discrimination": 1.46,
+          "points": 13,
+          "bloomLevel": "Evaluate",
+          "tags": [
+            "fraud-detection",
+            "cost-benefit-analysis",
+            "total-loss-optimization",
+            "economic-measurement"
+          ],
+          "rationale": "Total loss ratio captures all economic impacts of fraud management, avoiding sub-optimization of fraud reduction at the expense of investigation costs."
+        },
+        {
+          "id": "PMQ-OPS-E-006",
+          "question": "Your AI-optimized supply chain reduced inventory by 25% (saving $5M) but increased freight costs by 15% ($2M) due to more frequent shipments. What performance measurement approach best evaluates this outcome?",
+          "options": [
+            "Measure total supply chain costs as a single metric combining inventory carrying costs, freight, and all logistics expenses, evaluating AI success based on overall cost reduction rather than individual components.",
+            "Calculate cash-to-cash cycle time measuring days from payment to suppliers until customer payment received, capturing how inventory reduction improves working capital regardless of freight cost impacts.",
+            "Implement activity-based costing that allocates all supply chain costs to products, measuring cost per unit delivered as the ultimate metric of supply chain efficiency and AI optimization success.",
+            "Create a supply chain efficiency index weighting inventory, freight, service level, and flexibility equally, requiring AI to balance all dimensions rather than optimizing only inventory reduction."
+          ],
+          "correctAnswer": 0,
+          "difficulty": 0.66,
+          "discrimination": 1.44,
+          "points": 13,
+          "bloomLevel": "Evaluate",
+          "tags": [
+            "total-cost-measurement",
+            "supply-chain-optimization",
+            "tradeoff-evaluation",
+            "holistic-metrics"
+          ],
+          "rationale": "Total supply chain cost measurement prevents local optimization of inventory at expense of other cost components, revealing true economic impact of AI changes."
+        },
+        {
+          "id": "PMQ-OPS-E-007",
+          "question": "You implemented AI workforce scheduling that improved labor efficiency by 12% but employee survey scores for 'work-life balance' dropped significantly. What balanced performance measurement framework addresses this tension?",
+          "options": [
+            "Implement a weighted balanced scorecard measuring operational efficiency (40%), employee satisfaction (30%), cost performance (20%), and customer service (10%), requiring improvement across all dimensions not just efficiency.",
+            "Calculate total labor cost including overtime, turnover replacement costs, and training expenses alongside efficiency metrics to determine if efficiency gains are economically sustainable when accounting for workforce impacts.",
+            "Measure schedule stability index tracking how far in advance schedules are published, frequency of changes, and shift preference accommodation alongside efficiency, optimizing for both productivity and predictability.",
+            "Create separate metrics for different employee segments, allowing more aggressive optimization for employees who prefer variable schedules while maintaining stability for those who value predictability."
+          ],
+          "correctAnswer": 1,
+          "difficulty": 0.67,
+          "discrimination": 1.45,
+          "points": 13,
+          "bloomLevel": "Evaluate",
+          "tags": [
+            "workforce-metrics",
+            "work-life-balance",
+            "sustainable-efficiency",
+            "total-cost-optimization"
+          ],
+          "rationale": "Total labor cost measurement reveals whether efficiency gains are sustainable or come at hidden costs of turnover and reduced workforce stability."
+        },
+        {
+          "id": "PMQ-OPS-E-008",
+          "question": "Your AI-powered customer service handles 70% of inquiries automatically with 45-second resolution time versus 8-minute human handling. However, 30% escalate to humans who need 15 minutes due to customer frustration. How do you measure true efficiency?",
+          "options": [
+            "Calculate weighted average handle time combining AI (70% × 45 seconds) and human escalations (30% × 15 minutes) to determine true average resolution time accounting for all interactions.",
+            "Measure first-contact resolution rate separately for AI and human channels, tracking what percentage of inquiries are truly resolved without requiring escalation or follow-up contacts.",
+            "Implement end-to-end resolution time from initial customer contact through final resolution regardless of handoffs, capturing total customer effort rather than just AI or human handling time.",
+            "Track cost per resolution combining AI costs for automated handling, human labor costs for escalations, and opportunity cost of extended resolution time for customer satisfaction."
+          ],
+          "correctAnswer": 2,
+          "difficulty": 0.69,
+          "discrimination": 1.47,
+          "points": 14,
+          "bloomLevel": "Evaluate",
+          "tags": [
+            "end-to-end-metrics",
+            "escalation-impact",
+            "customer-effort",
+            "true-efficiency"
+          ],
+          "rationale": "End-to-end resolution time captures total customer experience and true efficiency including escalation impacts, revealing actual system performance beyond isolated AI metrics."
+        },
+        {
+          "id": "PMQ-OPS-E-009",
+          "question": "You deployed AI route optimization for delivery drivers showing 18% mileage reduction. However, delivery completion rates dropped from 98% to 93%, and driver satisfaction declined. What measurement approach diagnoses the root cause?",
+          "options": [
+            "Analyze failed deliveries by route characteristics, time windows, and customer location patterns to determine if AI optimization is creating unrealistic schedules that drivers cannot actually execute within time constraints.",
+            "Measure route complexity scoring turns, traffic patterns, and delivery density to determine if more efficient routes are also more difficult to execute, explaining both completion and satisfaction issues.",
+            "Track driver schedule adherence measuring actual versus planned timing at each stop to identify where routes diverge from AI plans, revealing whether the problem is unrealistic planning or driver non-compliance.",
+            "Implement driver feedback sessions combined with GPS tracking analysis to understand specific pain points in AI-generated routes that cause stress and completion failures beyond pure mileage optimization."
+          ],
+          "correctAnswer": 0,
+          "difficulty": 0.68,
+          "discrimination": 1.46,
+          "points": 13,
+          "bloomLevel": "Evaluate",
+          "tags": [
+            "route-optimization",
+            "diagnostic-analysis",
+            "feasibility-measurement",
+            "performance-investigation"
+          ],
+          "rationale": "Analyzing failure patterns reveals whether AI optimization created theoretically optimal but practically infeasible routes, explaining both completion and satisfaction issues."
+        },
+        {
+          "id": "PMQ-OPS-E-010",
+          "question": "Your AI quality control system shows 99% defect detection accuracy in testing but only 89% accuracy in production. What measurement and diagnostic approach identifies the accuracy gap?",
+          "options": [
+            "Implement production data drift monitoring comparing current production inputs to training data characteristics, identifying when real-world conditions diverge from test conditions causing accuracy degradation.",
+            "Create a confusion matrix separately for production versus testing to determine if specific defect types or scenarios perform differently in production, revealing which detection capabilities don't transfer from test to reality.",
+            "Measure AI confidence scores in production versus test environments to determine if production uncertainty is higher, suggesting environmental factors like lighting, positioning, or material variations affect performance.",
+            "Establish continuous validation by randomly sampling production inspections for expert human review, comparing human findings to AI decisions to measure true production accuracy beyond model self-assessment."
+          ],
+          "correctAnswer": 0,
+          "difficulty": 0.70,
+          "discrimination": 1.48,
+          "points": 14,
+          "bloomLevel": "Create",
+          "tags": [
+            "production-accuracy",
+            "data-drift",
+            "test-vs-production",
+            "diagnostic-measurement"
+          ],
+          "rationale": "Data drift monitoring identifies when production conditions diverge from test conditions, explaining accuracy gaps and guiding model retraining or environmental adjustments."
+        },
+        {
+          "id": "PMQ-OPS-E-011",
+          "question": "You measure AI system performance using precision (90%) and recall (85%). Business stakeholders are confused by these metrics and can't interpret whether performance is acceptable. What measurement approach better communicates performance?",
+          "options": [
+            "Translate precision and recall into business outcomes: '90 out of 100 flagged issues are real problems' and 'system catches 85 out of 100 actual problems,' making metrics tangible and interpretable.",
+            "Calculate F1 score (harmonic mean of precision and recall) as a single performance number (87.4%), simplifying communication to a single metric that stakeholders can track over time.",
+            "Replace technical metrics with business impact measures: 'system prevents $500K monthly losses while generating $100K false alarm costs,' framing performance in economic terms stakeholders understand.",
+            "Create performance tiers (Excellent >95%, Good 85-95%, Acceptable 75-85%, Poor <75%) and report which tier the AI achieves, simplifying interpretation to category-based assessment."
+          ],
+          "correctAnswer": 2,
+          "difficulty": 0.65,
+          "discrimination": 1.43,
+          "points": 13,
+          "bloomLevel": "Evaluate",
+          "tags": [
+            "stakeholder-communication",
+            "business-metrics",
+            "metric-translation",
+            "economic-measurement"
+          ],
+          "rationale": "Economic impact metrics translate technical performance into business outcomes stakeholders can evaluate and make decisions about, improving communication and decision quality."
+        },
+        {
+          "id": "PMQ-OPS-E-012",
+          "question": "Your AI-powered order fulfillment reduced order-to-ship time from 48 hours to 6 hours. However, shipping errors increased from 2% to 5%. What quality metric framework balances speed and accuracy appropriately?",
+          "options": [
+            "Calculate perfect order percentage (orders shipped on time, complete, and error-free) as comprehensive metric capturing both speed and accuracy in single measure of fulfillment excellence.",
+            "Measure customer impact weighting errors by severity: minor errors (wrong packing slip) versus major errors (wrong product), focusing quality efforts on errors that most affect customer experience.",
+            "Implement statistical process control tracking error rate trends over time to determine if 5% represents initial learning curve that will improve or sustained higher error rate requiring intervention.",
+            "Calculate total fulfillment cost per order including cost of speed improvements and cost of error correction, optimizing for lowest total cost rather than optimizing speed and accuracy independently."
+          ],
+          "correctAnswer": 0,
+          "difficulty": 0.67,
+          "discrimination": 1.45,
+          "points": 13,
+          "bloomLevel": "Evaluate",
+          "tags": [
+            "perfect-order",
+            "speed-accuracy-tradeoff",
+            "comprehensive-metrics",
+            "fulfillment-excellence"
+          ],
+          "rationale": "Perfect order percentage captures both speed and accuracy in customer-centric metric that measures complete fulfillment success rather than individual dimension optimization."
+        },
+        {
+          "id": "PMQ-OPS-E-013",
+          "question": "You implemented AI-powered workforce scheduling achieving 95% labor cost target adherence. However, actual output decreased by 8% due to misaligned skills and timing. What performance measurement reveals this efficiency-effectiveness gap?",
+          "options": [
+            "Measure labor productivity as output per labor dollar spent rather than just cost adherence, revealing whether cost optimization came at expense of output effectiveness.",
+            "Track schedule quality scoring skill matching, experience distribution, and work timing alongside cost metrics to measure both efficiency and effectiveness of scheduling decisions.",
+            "Implement variance analysis comparing planned output (based on scheduled labor) versus actual output to identify when labor deployment doesn't translate to expected productivity.",
+            "Calculate total factor productivity measuring output relative to all inputs (labor, materials, equipment) rather than just labor cost, revealing whether labor optimization affected overall efficiency."
+          ],
+          "correctAnswer": 0,
+          "difficulty": 0.68,
+          "discrimination": 1.46,
+          "points": 13,
+          "bloomLevel": "Evaluate",
+          "tags": [
+            "productivity-measurement",
+            "efficiency-vs-effectiveness",
+            "output-optimization",
+            "performance-paradox"
+          ],
+          "rationale": "Labor productivity directly measures output per cost, revealing when cost optimization reduces effectiveness and distinguishing between efficiency (doing things right) and effectiveness (doing right things)."
+        },
+        {
+          "id": "PMQ-OPS-E-014",
+          "question": "Your AI system's accuracy varied from 94% to 78% across different days without apparent cause. What measurement and monitoring approach helps stabilize and understand performance variation?",
+          "options": [
+            "Implement statistical process control charts tracking daily accuracy with control limits, distinguishing between normal variation and special causes requiring investigation and intervention.",
+            "Correlate accuracy variation with operational variables (time of day, data volume, staff on duty, external conditions) to identify factors driving variation and enable mitigation strategies.",
+            "Establish minimum acceptable performance thresholds with automatic alerts when accuracy drops below critical levels, triggering investigation and potential manual override protocols.",
+            "Create a performance stability index measuring variation coefficient alongside average accuracy, tracking both performance level and consistency as dual measures of system quality."
+          ],
+          "correctAnswer": 1,
+          "difficulty": 0.69,
+          "discrimination": 1.47,
+          "points": 14,
+          "bloomLevel": "Evaluate",
+          "tags": [
+            "performance-variation",
+            "root-cause-analysis",
+            "stability-measurement",
+            "correlation-analysis"
+          ],
+          "rationale": "Correlating performance with operational variables identifies root causes of variation, enabling targeted interventions rather than just monitoring variation after it occurs."
+        },
+        {
+          "id": "PMQ-OPS-E-015",
+          "question": "You're measuring AI impact on first-call resolution (FCR), which improved from 72% to 81%. However, call volume increased 20% as customers retry after poor AI experiences. What measurement framework captures true performance?",
+          "options": [
+            "Measure unique customer issue resolution rate tracking what percentage of distinct customer problems are resolved regardless of how many calls each requires, revealing true resolution effectiveness.",
+            "Calculate total contact volume per resolved issue combining calls, chats, and emails required to achieve resolution, measuring customer effort rather than just first-contact success.",
+            "Track repeat contact rate measuring percentage of customers who contact again within 7 days about the same issue, distinguishing true resolution from temporary resolution or abandonment.",
+            "Implement customer effort score (CES) surveys asking customers to rate ease of issue resolution, capturing subjective experience alongside objective metrics like FCR and call volume."
+          ],
+          "correctAnswer": 2,
+          "difficulty": 0.70,
+          "discrimination": 1.48,
+          "points": 14,
+          "bloomLevel": "Create",
+          "tags": [
+            "resolution-measurement",
+            "customer-effort",
+            "repeat-contact",
+            "true-resolution"
+          ],
+          "rationale": "Repeat contact rate reveals whether improved FCR represents true resolution or just customers giving up, capturing resolution quality beyond first-contact metrics."
+        },
+        {
+          "id": "PMQ-OPS-E-016",
+          "question": "Your AI quality system detects defects earlier in production (Stage 2 vs. Stage 5 previously), reducing scrap costs by 40%. However, earlier detection increased production stops by 60%, reducing throughput. How do you measure net impact?",
+          "options": [
+            "Calculate total cost of quality including scrap costs, rework costs, production interruption costs, and quality inspection costs, measuring whether early detection reduces total quality-related expenses.",
+            "Measure quality cost as percentage of production value, tracking whether early detection reduces quality losses relative to output despite increasing inspection and interruption costs.",
+            "Implement overall equipment effectiveness (OEE) combining availability, performance, and quality to measure holistic production efficiency accounting for both reduced scrap and increased stops.",
+            "Track defect escape rate to later production stages and final customer, measuring whether early detection prevents downstream quality issues regardless of immediate production flow impact."
+          ],
+          "correctAnswer": 2,
+          "difficulty": 0.68,
+          "discrimination": 1.46,
+          "points": 13,
+          "bloomLevel": "Evaluate",
+          "tags": [
+            "overall-equipment-effectiveness",
+            "quality-vs-throughput",
+            "holistic-measurement",
+            "production-efficiency"
+          ],
+          "rationale": "OEE provides comprehensive production efficiency measurement that balances quality improvements against throughput impacts, revealing true operational effectiveness."
+        },
+        {
+          "id": "PMQ-OPS-E-017",
+          "question": "You measure AI chatbot success using containment rate (percentage of chats not escalated to humans), currently 68%. However, analysis shows 15% of contained chats involve frustrated customers who should have been escalated. What metric better captures quality?",
+          "options": [
+            "Implement customer satisfaction surveys specifically for AI-handled interactions, measuring whether containment represents successful resolution or customer resignation and abandoned attempts.",
+            "Track escalation accuracy measuring what percentage of escalations were appropriate versus containments that should have escalated, balancing under-escalation and over-escalation errors.",
+            "Measure resolution quality score combining containment rate, customer satisfaction, and repeat contact rate into composite metric that captures both efficiency and effectiveness of AI handling.",
+            "Replace containment rate with successful resolution rate defined as contained interactions that result in customer satisfaction above threshold and no repeat contact within 48 hours."
+          ],
+          "correctAnswer": 3,
+          "difficulty": 0.67,
+          "discrimination": 1.45,
+          "points": 13,
+          "bloomLevel": "Evaluate",
+          "tags": [
+            "containment-quality",
+            "successful-resolution",
+            "metric-refinement",
+            "customer-satisfaction"
+          ],
+          "rationale": "Successful resolution rate distinguishes true resolution from containment due to customer frustration, measuring meaningful completion rather than just lack of escalation."
+        },
+        {
+          "id": "PMQ-OPS-E-018",
+          "question": "Your AI system's performance metrics show consistent 87% accuracy. However, the 13% of errors occur disproportionately in critical scenarios with 10x cost impact. What measurement approach captures this risk concentration?",
+          "options": [
+            "Implement error cost weighting where each error is multiplied by its business impact cost, creating weighted accuracy metric that reflects true economic performance rather than simple error rate.",
+            "Segment accuracy measurement by scenario criticality (critical, important, routine), requiring high accuracy in critical scenarios while accepting lower accuracy in routine cases with minimal business impact.",
+            "Calculate expected loss metric combining error probability with average error cost to create single risk-adjusted performance measure capturing both frequency and impact of errors.",
+            "Create scenario-specific accuracy targets setting 98% requirement for critical scenarios and 80% for routine scenarios, recognizing that uniform accuracy targets don't match variable business requirements."
+          ],
+          "correctAnswer": 0,
+          "difficulty": 0.69,
+          "discrimination": 1.47,
+          "points": 14,
+          "bloomLevel": "Create",
+          "tags": [
+            "risk-weighted-metrics",
+            "error-impact",
+            "cost-weighted-accuracy",
+            "business-impact"
+          ],
+          "rationale": "Error cost weighting transforms accuracy into economically meaningful metric that captures business impact, revealing that uniform accuracy percentages don't reflect variable error consequences."
+        },
+        {
+          "id": "PMQ-OPS-E-019",
+          "question": "You're implementing performance dashboards for AI operations. Executives want 3 key metrics, operations managers want 15 detailed metrics, and frontline workers want real-time feedback. What measurement architecture serves all needs?",
+          "options": [
+            "Create layered dashboards with executive summary showing 3 strategic metrics, manager dashboard showing 15 operational metrics, and worker dashboard showing real-time performance, all derived from single data source.",
+            "Establish 3 primary metrics everyone monitors with detailed metrics available on-demand for diagnosis, focusing organizational attention on key outcomes while providing analytical depth when needed.",
+            "Design role-based metric frameworks where each level has appropriate metrics for their decisions, with clear relationships showing how frontline metrics aggregate to operational metrics and ultimately strategic outcomes.",
+            "Implement balanced scorecard approach with 3 metrics per perspective (financial, customer, process, learning) providing 12 total metrics that cascade from strategic to operational to tactical levels."
+          ],
+          "correctAnswer": 2,
+          "difficulty": 0.68,
+          "discrimination": 1.46,
+          "points": 13,
+          "bloomLevel": "Evaluate",
+          "tags": [
+            "dashboard-architecture",
+            "multi-level-metrics",
+            "role-based-measurement",
+            "metric-hierarchy"
+          ],
+          "rationale": "Role-based metric frameworks with clear aggregation relationships provide appropriate metrics for each level's decisions while showing how individual actions connect to organizational outcomes."
+        },
+        {
+          "id": "PMQ-OPS-E-020",
+          "question": "Your AI system achieved target performance in pilot (85% accuracy, 40% cost reduction) but performance degraded in scaled deployment (78% accuracy, 25% cost reduction). What measurement approach diagnoses scaling issues?",
+          "options": [
+            "Compare pilot versus production environments across data characteristics, user populations, volume, and integration complexity to identify which factors differ and affect performance at scale.",
+            "Implement phased measurement tracking performance at different scales (pilot = 100 users, phase 1 = 1000 users, phase 2 = 10,000 users) to identify at what scale performance degrades and why.",
+            "Create pilot-to-production transition metrics tracking changes in model performance, data quality, user adoption, and system integration throughout scaling to identify degradation points.",
+            "Conduct statistical analysis comparing pilot and production data distributions to determine if population differences or sample bias in pilot caused artificially high pilot performance that didn't scale."
+          ],
+          "correctAnswer": 0,
+          "difficulty": 0.70,
+          "discrimination": 1.48,
+          "points": 14,
+          "bloomLevel": "Create",
+          "tags": [
+            "scaling-diagnosis",
+            "pilot-vs-production",
+            "performance-degradation",
+            "environment-comparison"
+          ],
+          "rationale": "Systematic environmental comparison identifies specific differences between pilot and production that cause performance degradation, enabling targeted remediation of scaling issues."
+        }
+      ]
+    },
+    {
+      "dimensionCode": "CAI",
+      "dimensionName": "Capacity & Asset Intelligence",
+      "dimensionDescription": "Advanced assessment of resource optimization, capacity planning, and asset management with AI",
+      "itemCount": 20,
+      "maxPoints": 200,
+      "items": [
+        {
+          "id": "CAI-OPS-E-001",
+          "question": "Your manufacturing plant operates at 72% capacity. AI analysis suggests you could increase to 88% with minor retooling, but historical data shows quality issues above 80% capacity. How do you determine optimal capacity target?",
+          "options": [
+            "Implement AI-driven dynamic capacity management that adjusts production targets based on real-time quality metrics, running higher capacity when quality is stable and reducing when quality indicators deteriorate.",
+            "Test capacity increases incrementally (72% → 76% → 80%) with intensive quality monitoring at each level, establishing empirical quality thresholds rather than relying on historical patterns that may not apply post-AI optimization.",
+            "Analyze quality issue root causes from historical high-capacity periods to determine if AI-enabled real-time monitoring and process control could mitigate factors that previously caused quality degradation above 80%.",
+            "Maintain conservative 80% capacity target but use AI to optimize production mix and scheduling within that constraint, maximizing revenue and throughput while staying within proven quality-safe capacity levels."
+          ],
+          "correctAnswer": 2,
+          "difficulty": 0.67,
+          "discrimination": 1.45,
+          "points": 13,
+          "bloomLevel": "Evaluate",
+          "tags": [
+            "capacity-planning",
+            "quality-constraints",
+            "optimization-boundaries",
+            "risk-assessment"
+          ],
+          "rationale": "Understanding whether AI capabilities can mitigate historical quality issues enables informed capacity decisions rather than assuming past constraints still apply with new AI monitoring."
+        },
+        {
+          "id": "CAI-OPS-E-002",
+          "question": "Your delivery fleet includes 50 trucks with varying ages, fuel efficiency, and maintenance costs. AI suggests purchasing 10 new trucks and retiring 15 old ones. However, this increases fixed costs while reducing variable costs. How do you evaluate this trade-off?",
+          "options": [
+            "Calculate total cost of ownership (TCO) over vehicle lifetime including purchase, maintenance, fuel, and insurance for both current fleet and proposed fleet, comparing long-term economics rather than just immediate cost changes.",
+            "Model fleet costs under different demand scenarios (baseline, +20%, -20% volume) to determine which fleet composition provides lowest cost across likely demand variations, accounting for both fixed and variable cost structures.",
+            "Implement marginal cost analysis comparing incremental cost of operating each existing truck versus new truck, creating a rank-ordered replacement schedule that retires highest-cost vehicles first.",
+            "Calculate fleet flexibility value considering that newer trucks provide better reliability and routing options, quantifying operational benefits beyond pure cost comparison when evaluating fleet composition."
+          ],
+          "correctAnswer": 1,
+          "difficulty": 0.68,
+          "discrimination": 1.46,
+          "points": 13,
+          "bloomLevel": "Evaluate",
+          "tags": [
+            "fleet-optimization",
+            "fixed-vs-variable-costs",
+            "scenario-analysis",
+            "asset-strategy"
+          ],
+          "rationale": "Scenario-based analysis reveals which fleet composition is most robust across demand variations, avoiding decisions optimized for single scenario that may not hold."
+        },
+        {
+          "id": "CAI-OPS-E-003",
+          "question": "AI analysis shows your warehouse could handle 40% more volume by reorganizing layout and optimizing pick paths. However, reorganization requires 2-week shutdown costing $800K in lost revenue. How do you determine if optimization is worthwhile?",
+          "options": [
+            "Calculate incremental margin from 40% additional volume over time horizon until next planned downtime, comparing revenue gains to $800K shutdown cost to determine payback period and net present value.",
+            "Negotiate with customers to smooth demand during reorganization period, reducing shutdown impact through advance planning, then evaluate optimization based on reduced disruption cost rather than full shutdown scenario.",
+            "Implement phased reorganization during nights and weekends over 3 months, accepting slower implementation and ongoing disruption costs to avoid concentrated shutdown, then compare total costs of approaches.",
+            "Model warehouse capacity expansion alternatives including reorganization, off-site overflow facility, and third-party logistics to determine lowest-cost path to 40% additional capacity including all implementation costs."
+          ],
+          "correctAnswer": 0,
+          "difficulty": 0.65,
+          "discrimination": 1.43,
+          "points": 13,
+          "bloomLevel": "Evaluate",
+          "tags": [
+            "capacity-expansion",
+            "disruption-costs",
+            "payback-analysis",
+            "implementation-timing"
+          ],
+          "rationale": "NPV analysis comparing ongoing capacity benefits to one-time shutdown cost provides economic decision framework for timing and justification of disruptive optimization."
+        },
+        {
+          "id": "CAI-OPS-E-004",
+          "question": "Your call center has 200 agents across 3 shifts. AI workforce modeling suggests consolidating to 2 shifts with 150 agents plus flexible overflow capacity. However, many agents require 3-shift schedule options for personal reasons. How do you optimize this transition?",
+          "options": [
+            "Implement the AI-recommended 2-shift model for new hires while grandfathering current 3-shift workers until natural attrition, gradually transitioning to optimal structure without forcing incumbent employee schedule changes.",
+            "Offer premium pay differential for remaining 3rd shift positions (50 agents) to retain needed flexibility, using AI optimization for core 2-shift scheduling while maintaining limited traditional scheduling for premium shifts.",
+            "Deploy virtual/remote agent capability enabling flexible scheduling unconstrained by physical shift requirements, using AI to manage complex scheduling across distributed workforce rather than forcing consolidation.",
+            "Conduct detailed employee surveys on schedule preferences, using AI to optimize schedules that balance operational efficiency with employee preference satisfaction, potentially finding better solution than forced 2-shift model."
+          ],
+          "correctAnswer": 3,
+          "difficulty": 0.69,
+          "discrimination": 1.47,
+          "points": 14,
+          "bloomLevel": "Create",
+          "tags": [
+            "workforce-scheduling",
+            "employee-preferences",
+            "constraint-optimization",
+            "workforce-flexibility"
+          ],
+          "rationale": "Multi-objective optimization considering both operational efficiency and employee preferences may reveal better solutions than optimization focused solely on operational metrics."
+        },
+        {
+          "id": "CAI-OPS-E-005",
+          "question": "Your equipment maintenance team has 15 technicians with specialized skills. AI analysis suggests cross-training technicians could improve response time by 30% and capacity utilization by 25%. However, deep specialization currently ensures quality. How do you balance these objectives?",
+          "options": [
+            "Implement T-shaped skill development where technicians maintain deep expertise in primary specialization but gain working knowledge in adjacent areas, enabling limited cross-coverage while preserving specialist quality.",
+            "Create specialist-generalist roles where 10 technicians cross-train for broad capability while 5 remain specialists for complex issues, using AI to route appropriate work to generalists versus specialists based on problem complexity.",
+            "Deploy AI-powered diagnostic support tools that enable generalist technicians to handle specialized equipment with AI guidance, reducing need for specialization while maintaining quality through technology augmentation.",
+            "Maintain current specialization but use AI to optimize technician scheduling and geographic coverage, improving response time through better logistics rather than reducing specialization that ensures quality."
+          ],
+          "correctAnswer": 1,
+          "difficulty": 0.68,
+          "discrimination": 1.46,
+          "points": 13,
+          "bloomLevel": "Evaluate",
+          "tags": [
+            "skill-optimization",
+            "specialization-vs-flexibility",
+            "workforce-development",
+            "quality-preservation"
+          ],
+          "rationale": "Dual specialist-generalist model captures flexibility benefits while preserving specialist expertise for complex situations, optimizing utilization without sacrificing quality."
+        },
+        {
+          "id": "CAI-OPS-E-006",
+          "question": "AI analysis of your production equipment shows that 3 of 12 machines create bottlenecks limiting overall throughput to 85% of theoretical capacity. Upgrading these 3 machines costs $2M and increases capacity to 98%. How do you justify this investment?",
+          "options": [
+            "Calculate throughput improvement value by multiplying 13% capacity increase by product margin and production hours per year, comparing annual incremental profit to $2M investment to determine ROI and payback period.",
+            "Model demand scenarios over 5-year equipment life to determine probability-weighted capacity value, accounting for uncertainty in future demand when evaluating investment in capacity that may not be fully utilized.",
+            "Evaluate alternatives to machine upgrade including process optimization, reduced changeover time, and better scheduling that might relieve bottlenecks at lower cost than $2M capital investment.",
+            "Consider strategic value beyond financial ROI, including ability to accept larger orders, improve delivery times, and reduce dependency on overtime or outsourcing in holistic business case for investment."
+          ],
+          "correctAnswer": 2,
+          "difficulty": 0.67,
+          "discrimination": 1.45,
+          "points": 13,
+          "bloomLevel": "Evaluate",
+          "tags": [
+            "bottleneck-management",
+            "capacity-investment",
+            "alternative-evaluation",
+            "capital-budgeting"
+          ],
+          "rationale": "Evaluating alternatives before capital investment ensures optimal solution to bottleneck constraint, as process improvements or scheduling may achieve results at fraction of capital cost."
+        },
+        {
+          "id": "CAI-OPS-E-007",
+          "question": "Your distribution network includes 8 warehouses serving different regions. AI optimization suggests consolidating to 5 larger facilities would reduce total costs by 15% but increase average delivery time by 0.5 days. How do you evaluate this tradeoff?",
+          "options": [
+            "Survey customers on delivery time sensitivity and willingness to pay for speed, quantifying customer value of 0.5-day delivery improvement to compare against 15% cost reduction in customer-value terms.",
+            "Segment customers by delivery time sensitivity, implementing regional strategies that maintain fast delivery for time-sensitive segments while accepting longer delivery for price-sensitive segments.",
+            "Calculate lost revenue from competitive disadvantage of slower delivery using market share models and competitor analysis, comparing revenue loss to 15% cost savings to determine net impact of consolidation.",
+            "Implement hybrid distribution model with 5 primary warehouses supplemented by 3 smaller rapid-delivery hubs for time-sensitive orders, capturing cost savings while mitigating delivery time impact for critical segments."
+          ],
+          "correctAnswer": 3,
+          "difficulty": 0.70,
+          "discrimination": 1.48,
+          "points": 14,
+          "bloomLevel": "Create",
+          "tags": [
+            "network-optimization",
+            "cost-service-tradeoff",
+            "segmentation-strategy",
+            "distribution-design"
+          ],
+          "rationale": "Hybrid model captures cost consolidation benefits while maintaining service for time-sensitive needs, optimizing for differentiated customer requirements rather than uniform service."
+        },
+        {
+          "id": "CAI-OPS-E-008",
+          "question": "AI analysis shows your customer service capacity is consistently 95% utilized during business hours but only 40% utilized overnight. Customers show increasing preference for 24/7 support. How do you optimize this capacity gap?",
+          "options": [
+            "Deploy AI chatbot for overnight hours handling routine inquiries autonomously while human agents focus on complex issues, using technology to extend coverage without proportional headcount increases.",
+            "Implement global follow-the-sun support model with agents in different time zones providing 24/7 coverage at consistent 75% utilization, spreading demand across time zones rather than peak-trough pattern.",
+            "Offer customer incentives (priority response, premium features) for overnight support requests, attempting to shift demand to off-peak hours rather than adding capacity for low-utilization periods.",
+            "Maintain current business hours coverage with overnight emergency-only support, accepting that full 24/7 coverage isn't economically justified given 40% utilization during expanded hours."
+          ],
+          "correctAnswer": 1,
+          "difficulty": 0.66,
+          "discrimination": 1.44,
+          "points": 13,
+          "bloomLevel": "Evaluate",
+          "tags": [
+            "24-7-operations",
+            "capacity-utilization",
+            "global-coverage",
+            "demand-patterns"
+          ],
+          "rationale": "Follow-the-sun model achieves 24/7 coverage with better utilization economics than single-location overnight coverage, optimizing capacity across global resources."
+        },
+        {
+          "id": "CAI-OPS-E-009",
+          "question": "Your restaurant operation has 20 locations with varying demand patterns. AI suggests centralized food prep could reduce total kitchen capacity needs by 30% and labor by 25%. However, fresh preparation is core brand positioning. How do you evaluate this tradeoff?",
+          "options": [
+            "Implement hybrid model with centralized prep of components (sauces, stocks, marinades) while maintaining on-site final preparation and cooking, capturing efficiency without compromising fresh preparation positioning.",
+            "Segment menu into items where centralization doesn't impact customer perception (baked goods, sauces) versus core items requiring on-site preparation, capturing partial efficiency while protecting brand elements.",
+            "Test centralized preparation in 3 pilot locations with customer satisfaction monitoring, measuring whether efficiency changes actually impact customer perception of freshness and quality before full deployment.",
+            "Calculate brand value risk by surveying customers on importance of fresh preparation and conducting conjoint analysis on fresh versus efficient, quantifying potential revenue loss from positioning change."
+          ],
+          "correctAnswer": 0,
+          "difficulty": 0.68,
+          "discrimination": 1.46,
+          "points": 13,
+          "bloomLevel": "Evaluate",
+          "tags": [
+            "centralization-tradeoffs",
+            "brand-positioning",
+            "hybrid-models",
+            "customer-perception"
+          ],
+          "rationale": "Hybrid approach captures efficiency from component centralization while maintaining customer-visible fresh preparation, optimizing operations without compromising brand positioning."
+        },
+        {
+          "id": "CAI-OPS-E-010",
+          "question": "AI analysis of your IT support operation shows that 60% of tickets could be resolved by junior staff with AI guidance tools, but you currently assign all tickets to senior engineers. How do you optimize this skill deployment?",
+          "options": [
+            "Implement AI-powered ticket classification and routing sending straightforward issues to junior staff with AI tools, complex issues to senior engineers, optimizing skill deployment across support team.",
+            "Deploy AI co-pilot tools enabling junior staff to handle complex tickets with AI assistance, effectively multiplying junior staff capability while freeing senior staff for highest-complexity issues.",
+            "Create tiered support model where junior staff attempt resolution first with AI tools, escalating to senior staff when needed, capturing efficiency while maintaining resolution capability for complex issues.",
+            "Maintain current assignment to senior staff but equip them with AI tools that accelerate simple ticket resolution, reducing time senior staff spend on routine issues rather than changing assignment patterns."
+          ],
+          "correctAnswer": 2,
+          "difficulty": 0.67,
+          "discrimination": 1.45,
+          "points": 13,
+          "bloomLevel": "Evaluate",
+          "tags": [
+            "skill-tiering",
+            "ai-augmentation",
+            "escalation-management",
+            "resource-optimization"
+          ],
+          "rationale": "Tiered support with AI-enabled junior staff provides first-line resolution for straightforward issues while maintaining senior expertise for complex cases, optimizing skill deployment."
+        },
+        {
+          "id": "CAI-OPS-E-011",
+          "question": "Your logistics operation owns 100 trucks but needs 120 during peak season. AI suggests optimizing owned fleet scheduling could meet peak demand without additional trucks. However, this requires complex dynamic routing that may stress drivers. How do you evaluate this capacity solution?",
+          "options": [
+            "Model driver workload and stress under current simple routing versus AI dynamic routing, measuring whether routing complexity materially impacts driver experience or if efficiency gains actually reduce pressure.",
+            "Implement AI routing during peak season only when capacity constraint is binding, maintaining simpler routing during normal periods to balance capacity optimization with driver experience throughout year.",
+            "Deploy AI routing with driver preference parameters weighted in optimization algorithm, ensuring efficiency improvements don't come at expense of driver satisfaction and sustainable work conditions.",
+            "Compare total costs of AI routing optimization versus seasonal truck leasing (20 trucks for 3 months), evaluating both hard costs and soft costs including driver turnover risk in economic comparison."
+          ],
+          "correctAnswer": 3,
+          "difficulty": 0.69,
+          "discrimination": 1.47,
+          "points": 14,
+          "bloomLevel": "Evaluate",
+          "tags": [
+            "capacity-alternatives",
+            "driver-experience",
+            "total-cost-analysis",
+            "seasonal-demand"
+          ],
+          "rationale": "Comprehensive cost comparison including workforce impacts reveals true economic tradeoff between routing optimization and capacity leasing, informing optimal capacity strategy."
+        },
+        {
+          "id": "CAI-OPS-E-012",
+          "question": "Your manufacturing plant can produce Products A, B, and C using shared equipment. AI optimization suggests product mix changes increasing profit by 18%. However, your sales team has concerns about market relationships and customer expectations. How do you balance optimization with market realities?",
+          "options": [
+            "Implement AI optimization within constraints defined by sales team minimum commitments to strategic customers, maximizing profit subject to real-world relationship and market requirements.",
+            "Share AI optimization findings with sales team to inform pricing strategy, potentially raising prices on products AI suggests underproducing to balance demand with optimal production allocation.",
+            "Deploy AI optimization in production planning but give sales team authority to override mix within defined thresholds, balancing analytical optimization with market knowledge and relationship management.",
+            "Test AI-recommended mix changes gradually over quarters while monitoring customer satisfaction and market position, validating optimization assumptions against real-world market response."
+          ],
+          "correctAnswer": 0,
+          "difficulty": 0.68,
+          "discrimination": 1.46,
+          "points": 13,
+          "bloomLevel": "Evaluate",
+          "tags": [
+            "production-mix",
+            "optimization-constraints",
+            "market-relationships",
+            "constrained-optimization"
+          ],
+          "rationale": "Constrained optimization incorporating real-world market commitments captures significant optimization benefits while respecting strategic customer relationships and market positioning."
+        },
+        {
+          "id": "CAI-OPS-E-013",
+          "question": "AI analysis shows that predictive maintenance could reduce equipment downtime by 40% and maintenance costs by 20%. However, this requires $500K in IoT sensors and data infrastructure. Equipment is already 60% through useful life. How do you evaluate this investment?",
+          "options": [
+            "Calculate expected benefits over remaining equipment life (40% of normal lifetime), comparing 4-year benefit stream to $500K investment to determine whether payback occurs before equipment replacement.",
+            "Consider predictive maintenance infrastructure as investment in organizational capability that transfers to next equipment generation, valuing system beyond current equipment lifetime.",
+            "Pilot predictive maintenance on newest equipment with longest remaining life to prove value and build capability, deferring investment on equipment near end-of-life until replacement cycle.",
+            "Negotiate with equipment vendor to include predictive maintenance capability in next equipment purchase, avoiding retrofit investment on aging equipment while ensuring future capability."
+          ],
+          "correctAnswer": 2,
+          "difficulty": 0.70,
+          "discrimination": 1.48,
+          "points": 14,
+          "bloomLevel": "Create",
+          "tags": [
+            "predictive-maintenance",
+            "asset-lifecycle",
+            "investment-timing",
+            "pilot-strategy"
+          ],
+          "rationale": "Strategic pilot on newest equipment proves value while avoiding investment on near-end-of-life assets, optimizing investment timing relative to equipment lifecycle."
+        },
+        {
+          "id": "CAI-OPS-E-014",
+          "question": "Your retail stores have varying layouts and square footage but similar sales volumes. AI suggests standardized layouts could improve sales per square foot by 22% and labor efficiency by 15%. However, each location has unique characteristics. How do you approach standardization?",
+          "options": [
+            "Develop 3-4 standard layout templates based on store size categories, allowing some variation while capturing standardization benefits across stores with similar characteristics.",
+            "Create modular standardized components (checkout configuration, product displays, storage areas) that can be arranged differently in each store, standardizing elements rather than entire layouts.",
+            "Implement AI-recommended layouts in new stores and major remodels only, avoiding disruption to existing stores while building toward standardization through natural renovation cycles.",
+            "Test standardized layouts in 5 pilot stores across different size and market categories, measuring sales and efficiency impacts before committing to chain-wide standardization program."
+          ],
+          "correctAnswer": 1,
+          "difficulty": 0.67,
+          "discrimination": 1.45,
+          "points": 13,
+          "bloomLevel": "Evaluate",
+          "tags": [
+            "standardization-strategy",
+            "modular-design",
+            "retail-operations",
+            "layout-optimization"
+          ],
+          "rationale": "Modular component standardization captures efficiency and learning benefits while allowing site-specific adaptation, balancing standardization value with local optimization."
+        },
+        {
+          "id": "CAI-OPS-E-015",
+          "question": "AI workforce capacity planning suggests you're consistently overstaffed by 12% but experience service degradation during unpredictable demand spikes. How do you optimize this apparent overcapacity while maintaining service reliability?",
+          "options": [
+            "Implement AI demand forecasting to better predict spikes, allowing tighter base staffing with more accurate surge planning, reducing average capacity while improving spike management.",
+            "Create flexible capacity through part-time and on-call staff who can be activated during spikes, maintaining lower base capacity while ensuring surge capability for unpredictable demand.",
+            "Deploy AI-powered real-time task allocation that routes work to available capacity more efficiently during spikes, potentially handling surges within current 88% utilization without additional staff.",
+            "Accept 12% baseline overcapacity as insurance against service failures during spikes, calculating that cost of degraded service during spikes exceeds cost of maintaining capacity buffer."
+          ],
+          "correctAnswer": 1,
+          "difficulty": 0.68,
+          "discrimination": 1.46,
+          "points": 13,
+          "bloomLevel": "Evaluate",
+          "tags": [
+            "capacity-flexibility",
+            "demand-variability",
+            "workforce-strategy",
+            "service-reliability"
+          ],
+          "rationale": "Flexible capacity model optimizes baseline staffing while maintaining surge capability through scalable resources, balancing efficiency with reliability requirements."
+        },
+        {
+          "id": "CAI-OPS-E-016",
+          "question": "Your production facility operates single shift (8 hours) at 92% capacity. Adding second shift could double output but requires $3M in equipment duplication and increases overhead by $1.5M annually. How do you evaluate multi-shift operations?",
+          "options": [
+            "Calculate incremental revenue from doubled production capacity minus additional $1.5M overhead and $3M equipment depreciation, determining whether margin on additional volume justifies multi-shift investment.",
+            "Model demand growth scenarios to determine when single-shift capacity will be insufficient, timing multi-shift transition to occur just before capacity constraint becomes binding rather than investing prematurely.",
+            "Evaluate alternatives including outsourcing, contract manufacturing, or incremental single-shift capacity improvements that might meet growth without full multi-shift complexity and investment.",
+            "Consider strategic value of excess capacity including ability to accept large orders, respond to market opportunities, and reduce supplier dependency beyond pure financial analysis of capacity expansion."
+          ],
+          "correctAnswer": 2,
+          "difficulty": 0.69,
+          "discrimination": 1.47,
+          "points": 14,
+          "bloomLevel": "Evaluate",
+          "tags": [
+            "multi-shift-analysis",
+            "capacity-expansion-alternatives",
+            "make-vs-buy",
+            "capital-investment"
+          ],
+          "rationale": "Evaluating alternatives before major capacity investment ensures optimal solution, as outsourcing or partnerships may provide capacity more economically than internal expansion."
+        },
+        {
+          "id": "CAI-OPS-E-017",
+          "question": "AI analysis shows your customer service quality is identical across experienced (5+ years) and new (0-2 years) agents when both use AI assistance tools. Experienced agents cost 40% more. How do you optimize this workforce composition?",
+          "options": [
+            "Gradually shift composition toward newer lower-cost agents with AI tools as experienced agents naturally attrite, capturing cost savings without forced turnover while maintaining service quality.",
+            "Redeploy experienced agents to complex escalation handling, coaching, and quality assurance where experience adds value, while new agents with AI handle routine contacts where experience doesn't differentiate.",
+            "Maintain current workforce composition but negotiate compensation that reflects AI-enabled productivity rather than pure experience, adjusting pay to match contribution in AI-augmented environment.",
+            "Accelerate hiring of new agents to replace expensive experienced staff, using AI tools to eliminate experience premium and reduce overall labor costs while maintaining quality through technology."
+          ],
+          "correctAnswer": 1,
+          "difficulty": 0.68,
+          "discrimination": 1.46,
+          "points": 13,
+          "bloomLevel": "Evaluate",
+          "tags": [
+            "workforce-composition",
+            "experience-vs-cost",
+            "ai-augmentation",
+            "skill-deployment"
+          ],
+          "rationale": "Redeploying experienced agents to roles where experience provides unique value optimizes workforce while maintaining experience benefits in situations where AI augmentation is insufficient."
+        },
+        {
+          "id": "CAI-OPS-E-018",
+          "question": "Your field service operation has geographic territories with varying demand density. AI optimization suggests consolidating 20 territories into 15 larger regions with 25% reduction in travel time. However, technicians value territory ownership and customer relationships. How do you manage this optimization?",
+          "options": [
+            "Implement consolidated territories for new hires while allowing current technicians to maintain existing territories until retirement or departure, managing change through natural workforce transition.",
+            "Create consolidated primary territories but allow technicians to retain key customer relationships through flexible routing that maintains continuity for strategic accounts.",
+            "Deploy AI dynamic territory assignment that optimizes daily rather than permanent territories, improving efficiency while giving technicians varied customer exposure and new relationship opportunities.",
+            "Present consolidation as opportunity for technicians to develop expertise across broader customer base and larger territories, repositioning change as career development rather than loss of ownership."
+          ],
+          "correctAnswer": 1,
+          "difficulty": 0.70,
+          "discrimination": 1.48,
+          "points": 14,
+          "bloomLevel": "Create",
+          "tags": [
+            "territory-optimization",
+            "relationship-management",
+            "change-management",
+            "workforce-satisfaction"
+          ],
+          "rationale": "Hybrid approach captures routing efficiency while preserving critical customer relationships that provide service quality and competitive advantages beyond pure efficiency metrics."
+        },
+        {
+          "id": "CAI-OPS-E-019",
+          "question": "AI analysis suggests that your facility could increase capacity by 30% through better space utilization and flow optimization. However, current layout evolved organically over 15 years based on employee knowledge of workflow. How do you validate and implement AI recommendations?",
+          "options": [
+            "Engage frontline employees in reviewing AI recommendations to identify where AI optimizes without considering tacit knowledge, combining analytical optimization with operational wisdom.",
+            "Implement AI recommendations in isolated section as pilot to measure actual capacity impact and identify unforeseen issues before full facility reorganization.",
+            "Use simulation modeling to test AI layout recommendations virtually, including workflow complexity and edge cases that pure optimization might miss before physical implementation.",
+            "Document current state workflow and capacity bottlenecks with employee input, providing AI better data about current operations to generate recommendations that incorporate tacit knowledge and constraints."
+          ],
+          "correctAnswer": 2,
+          "difficulty": 0.67,
+          "discrimination": 1.45,
+          "points": 13,
+          "bloomLevel": "Evaluate",
+          "tags": [
+            "layout-optimization",
+            "tacit-knowledge",
+            "simulation-validation",
+            "change-validation"
+          ],
+          "rationale": "Simulation testing validates AI recommendations against complex real-world operations before disruptive implementation, identifying issues that pure optimization might miss."
+        },
+        {
+          "id": "CAI-OPS-E-020",
+          "question": "Your company has excess capacity during economic downturns that could be sold to other companies. AI suggests creating capacity marketplace offering unused resources to competitors during low-demand periods. How do you evaluate this strategic capacity decision?",
+          "options": [
+            "Analyze revenue potential from capacity sharing versus strategic risks of enabling competitors and revealing operational capabilities, requiring risk-adjusted valuation of marketplace opportunity.",
+            "Segment capacity marketplace by risk level, offering commodity services to competitors while reserving strategic capabilities exclusively, capturing revenue without competitive exposure.",
+            "Test capacity marketplace concept with non-competing companies in adjacent industries first, proving business model and building capability before considering competitor participation.",
+            "Develop detailed capacity pricing that ensures participation is profitable even at discounted rates, calculating minimum rates that cover variable costs plus contribution margin rather than full cost recovery."
+          ],
+          "correctAnswer": 1,
+          "difficulty": 0.69,
+          "discrimination": 1.47,
+          "points": 14,
+          "bloomLevel": "Create",
+          "tags": [
+            "capacity-marketplace",
+            "strategic-risk",
+            "competitive-dynamics",
+            "asset-utilization"
+          ],
+          "rationale": "Risk-segmented marketplace approach captures capacity utilization revenue while protecting strategic capabilities from competitor access, balancing opportunity with competitive risk."
+        }
+      ]
+    }
+  ]
+}

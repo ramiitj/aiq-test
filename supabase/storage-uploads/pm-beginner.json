@@ -1,0 +1,1593 @@
+{
+  "assessmentName": "AIQ PM Beginner Assessment - Product Manager Focus",
+  "version": "2.0-Robust",
+  "assessmentType": "fixed",
+  "description": "A rigorously designed foundational AI literacy assessment for product managers with 60 items featuring balanced options, randomized correct answer positions, complete sentence formatting, and enhanced anti-gaming measures.",
+  "assessmentConfiguration": {
+    "totalQuestions": 60,
+    "questionsPerDimension": "7-8",
+    "estimatedTime": "60 minutes",
+    "targetAudience": "Product managers, product leads, product strategists with varying AI experience levels",
+    "timePerQuestion": "60 seconds average",
+    "presentationMode": {
+      "type": "fixed-sequential",
+      "description": "All questions presented in fixed order",
+      "sequencing": "By dimension, 7-8 questions per dimension"
+    },
+    "questionDistribution": {
+      "totalItems": 60,
+      "itemsPerDimension": "7-8 per dimension",
+      "selectionRatio": "100% (all items presented)"
+    },
+    "dimensionSequencing": {
+      "type": "fixed-order",
+      "sequence": [
+        "PAI",
+        "AIF",
+        "UEA",
+        "PDM",
+        "RDC",
+        "SMI",
+        "PRL",
+        "CPE"
+      ],
+      "description": "Candidates complete 7-8 questions per dimension in sequence"
+    }
+  },
+  "scoringConfiguration": {
+    "totalPoints": 600,
+    "pointsPerDimension": 75,
+    "passingScore": 420,
+    "passingPercentage": 70,
+    "scoringMethod": {
+      "type": "simple-sum",
+      "description": "Direct sum of points from correct answers with differential weighting by item difficulty",
+      "basePoints": 10,
+      "formula": "points = basePoints × (1 + difficulty × 0.3) for each correct answer"
+    },
+    "scoringGuidelines": {
+      "0-40%": "Novice (0-240 points) - Significant foundational learning needed",
+      "41-60%": "Beginner (241-360 points) - Basic awareness established",
+      "61-80%": "Developing (361-480 points) - Good foundational understanding",
+      "81-90%": "Proficient (481-540 points) - Strong grasp of fundamentals",
+      "91-100%": "Advanced (541-600 points) - Excellent foundational mastery"
+    }
+  },
+  "instructions": "This AIQ PM Beginner assessment evaluates your foundational AI literacy specifically for product management contexts. You will answer 60 questions total (7-8 per dimension) across 8 PM-focused dimensions in approximately 60 minutes. Questions feature nuanced options designed to test genuine understanding of AI's strategic role in product development. Answer all questions to the best of your ability.",
+  "assessmentGuidelines": {
+    "targetLevel": "Foundational awareness and basic understanding of AI in product management",
+    "cognitiveEmphasis": "65% Remember/Understand (Bloom's levels 1-2), 35% Apply (Bloom's level 3)",
+    "questionTypes": "Multiple-choice (70%), scenario-based (30%)",
+    "difficultyProfile": "Realistic distractors that require genuine PM understanding to differentiate",
+    "timeAllocation": "Moderate time for careful consideration of PM-specific nuances",
+    "reliabilityTarget": "Cronbach's alpha ≥ 0.80"
+  },
+  "itemBank": {
+    "totalItems": 60,
+    "itemsPerDimension": 8,
+    "description": "Complete item set with 60 questions (7-8 per dimension) focused on AI literacy for product managers",
+    "bankStatistics": {
+      "averageDifficulty": 0.39,
+      "difficultySD": 0.08,
+      "averageDiscrimination": 1.15,
+      "discriminationSD": 0.05,
+      "contentCoverageIndex": 0.92,
+      "estimatedReliability": 0.85,
+      "totalItems": 60
+    },
+    "dimensions": [
+      {
+        "dimensionCode": "PAI",
+        "dimensionName": "Product AI Understanding",
+        "description": "Understanding AI capabilities, limitations, and strategic deployment in product contexts",
+        "weight": 0.125,
+        "totalPoints": 75,
+        "items": [
+          {
+            "id": "PAI-PM-B-001",
+            "level": 1,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.25,
+            "discrimination": 1.05,
+            "bloomLevel": "Remember",
+            "question": "In product management terms, what is the primary strategic advantage of AI-powered features?",
+            "options": [
+              "AI-powered features enable products to handle scale, personalization, and complexity beyond human capability.",
+              "AI-powered features eliminate the need for human decision-making in product strategy development.",
+              "AI-powered features reduce product development costs to near-zero levels across the organization.",
+              "AI-powered features guarantee indefinite competitive advantage once successfully implemented in products."
+            ],
+            "correctAnswer": 0,
+            "rationale": "AI extends product reach and personalization at scale.",
+            "explanation": "Understanding what AI fundamentally enables in products is critical.",
+            "tags": [
+              "ai-strategy",
+              "product-value",
+              "scale"
+            ]
+          },
+          {
+            "id": "PAI-PM-B-002",
+            "level": 1,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.28,
+            "discrimination": 1.07,
+            "bloomLevel": "Remember",
+            "question": "What does a 'knowledge cutoff' mean for product features using generative AI?",
+            "options": [
+              "The AI feature stops working after that date and must be replaced with a newer version.",
+              "The feature can only serve and display content that was created before that specific date.",
+              "The AI lacks up-to-date information beyond that date, which may impact accuracy for current events.",
+              "Users cannot access the feature after that date until the system receives updates."
+            ],
+            "correctAnswer": 2,
+            "rationale": "Knowledge cutoff means training data ended on that date.",
+            "explanation": "Product managers must understand this limitation.",
+            "tags": [
+              "ai-limitations",
+              "knowledge-cutoff",
+              "product-design"
+            ]
+          },
+          {
+            "id": "PAI-PM-B-003",
+            "level": 2,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.32,
+            "discrimination": 1.1,
+            "bloomLevel": "Understand",
+            "question": "Your product team discovers the AI recommendation engine reflects biases from training data. How should you approach this as a product decision?",
+            "options": [
+              "You should recognize this as a product quality issue requiring systematic assessment and remediation planning.",
+              "You should ignore it since AI is objective and based on mathematical algorithms.",
+              "You should remove all AI recommendations from the product immediately to avoid potential liability.",
+              "You should assume bias only affects a small portion of users and monitor feedback over time."
+            ],
+            "correctAnswer": 0,
+            "rationale": "Bias is a product quality issue like any other bug.",
+            "explanation": "Product leaders must treat AI bias as a quality issue.",
+            "tags": [
+              "ai-bias",
+              "product-quality",
+              "risk-management"
+            ]
+          },
+          {
+            "id": "PAI-PM-B-004",
+            "level": 2,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.35,
+            "discrimination": 1.12,
+            "bloomLevel": "Understand",
+            "question": "When should you prioritize explaining AI limitations to users?",
+            "options": [
+              "You should explain limitations only when users specifically ask about how the feature works.",
+              "You should never explain limitations because users only care about results, not how features work.",
+              "You should explain limitations only in regulatory-required fine print disclosures at the bottom of pages.",
+              "You should prioritize explaining limitations in high-stakes decisions where users might over-rely on AI recommendations."
+            ],
+            "correctAnswer": 3,
+            "rationale": "Users need to understand limitations in high-stakes contexts.",
+            "explanation": "User trust depends on appropriate expectations.",
+            "tags": [
+              "user-trust",
+              "transparency",
+              "product-ethics"
+            ]
+          },
+          {
+            "id": "PAI-PM-B-005",
+            "level": 2,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.38,
+            "discrimination": 1.14,
+            "bloomLevel": "Understand",
+            "question": "Your product currently uses rule-based recommendations. When is adding AI most strategic?",
+            "options": [
+              "Adding AI is most strategic when it's currently trending in your industry.",
+              "Adding AI is most strategic immediately, before competitors adopt it in their products.",
+              "Adding AI is most strategic when you have complex patterns rules can't capture and sufficient data to train models.",
+              "Adding AI is most strategic only as a complete replacement when ready to rebuild from scratch."
+            ],
+            "correctAnswer": 2,
+            "rationale": "AI adds value when complexity exceeds rule-based capability.",
+            "explanation": "Smart AI adoption requires aligning capability with data.",
+            "tags": [
+              "ai-strategy",
+              "product-roadmap",
+              "feature-prioritization"
+            ]
+          },
+          {
+            "id": "PAI-PM-B-006",
+            "level": 3,
+            "type": "scenario-based",
+            "points": 10,
+            "difficulty": 0.42,
+            "discrimination": 1.16,
+            "bloomLevel": "Apply",
+            "question": "Competitors just launched an AI feature. Your leadership wants to launch a similar feature immediately. What should you recommend?",
+            "options": [
+              "AI can personalize for individual users while simultaneously scaling to serve millions of them.",
+              "AI can personalize every interaction but doesn't scale well beyond small user bases.",
+              "AI requires manual configuration for each individual user to achieve true personalization.",
+              "AI can personalize only broad demographic segments, not individual users at scale."
+            ],
+            "correctAnswer": 0,
+            "rationale": "Assessment ensures launching features users want.",
+            "explanation": "Smart product leaders balance urgency with strategy.",
+            "tags": [
+              "competitive-strategy",
+              "decision-making",
+              "product-timing"
+            ]
+          },
+          {
+            "id": "PAI-PM-B-007",
+            "level": 3,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.45,
+            "discrimination": 1.18,
+            "bloomLevel": "Apply",
+            "question": "How should you communicate AI capabilities internally to your engineering and design teams?",
+            "options": [
+              "You should not deploy AI when you lack quality data or organizational capability to maintain the feature properly.",
+              "You should not deploy AI when internal teams resist using AI tools and prefer established processes.",
+              "You should not deploy AI when the costs exceed the budget allocated for technology investments.",
+              "You should not deploy AI when competitors haven't yet adopted AI features in their own products."
+            ],
+            "correctAnswer": 0,
+            "rationale": "Teams need accurate expectations to design well.",
+            "explanation": "Product managers are knowledge brokers.",
+            "tags": [
+              "team-communication",
+              "cross-functional",
+              "expectations"
+            ]
+          }
+        ]
+      },
+      {
+        "dimensionCode": "AIF",
+        "dimensionName": "AI Feature Development",
+        "description": "Designing, prioritizing, and building AI-powered features",
+        "weight": 0.125,
+        "totalPoints": 75,
+        "items": [
+          {
+            "id": "AIF-PM-B-001",
+            "level": 1,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.26,
+            "discrimination": 1.04,
+            "bloomLevel": "Remember",
+            "question": "What's the first step in deciding whether to add an AI feature to your product?",
+            "options": [
+              "AI features should be built first, then product strategy should adapt to what's technically possible.",
+              "AI and product strategy should evolve separately with minimal coordination between teams.",
+              "AI strategy should always lead because technology capabilities determine what products can achieve.",
+              "Product strategy should define the problems to solve, then AI becomes one tool to potentially address them."
+            ],
+            "correctAnswer": 3,
+            "rationale": "User problems drive product decisions.",
+            "explanation": "Problem-first thinking prevents building solutions without problems.",
+            "tags": [
+              "product-fundamentals",
+              "problem-identification",
+              "ai-features"
+            ]
+          },
+          {
+            "id": "AIF-PM-B-002",
+            "level": 1,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.29,
+            "discrimination": 1.07,
+            "bloomLevel": "Remember",
+            "question": "What type of data does an AI recommendation feature need to perform well?",
+            "options": [
+              "The technology is cutting-edge and demonstrates innovation to stakeholders.",
+              "Competitors are building similar features and you need to match their capabilities.",
+              "The feature creates a meaningful improvement in user outcomes that users value and will adopt.",
+              "The AI model achieves high accuracy scores in technical benchmarks and evaluations."
+            ],
+            "correctAnswer": 2,
+            "rationale": "Data quality and relevance matter most.",
+            "explanation": "Pattern data shows what worked.",
+            "tags": [
+              "data-requirements",
+              "ai-features",
+              "product-planning"
+            ]
+          },
+          {
+            "id": "AIF-PM-B-003",
+            "level": 2,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.33,
+            "discrimination": 1.11,
+            "bloomLevel": "Understand",
+            "question": "You have two potential AI features to build: one solves a frequent problem for 20% of users; another solves an occasional problem for 80% of users. Which should you prioritize?",
+            "options": [
+              "AI can fully automate complex product decisions that previously required human judgment.",
+              "AI should make all decisions to eliminate human bias from the product completely.",
+              "AI can augment human decision-making by providing data-driven insights and pattern recognition.",
+              "AI can handle edge cases better than humans because of its processing power."
+            ],
+            "correctAnswer": 2,
+            "rationale": "Impact comes from reach × frequency.",
+            "explanation": "Product prioritization balances multiple dimensions.",
+            "tags": [
+              "feature-prioritization",
+              "impact-analysis",
+              "product-strategy"
+            ]
+          },
+          {
+            "id": "AIF-PM-B-004",
+            "level": 2,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.36,
+            "discrimination": 1.13,
+            "bloomLevel": "Understand",
+            "question": "When scoping an AI feature, what should you communicate to engineering about uncertainty?",
+            "options": [
+              "Evaluate based on strategic importance, build capabilities, and resource constraints for each specific feature.",
+              "Build AI capabilities in-house to maintain full control over technology and intellectual property.",
+              "Use third-party AI platforms and services to accelerate time-to-market and reduce technical complexity.",
+              "Wait until you have a complete internal AI team before adding any AI features."
+            ],
+            "correctAnswer": 0,
+            "rationale": "AI projects have performance uncertainties.",
+            "explanation": "Transparent scoping prevents project failures.",
+            "tags": [
+              "project-management",
+              "cross-functional",
+              "ai-development"
+            ]
+          },
+          {
+            "id": "AIF-PM-B-005",
+            "level": 2,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.39,
+            "discrimination": 1.15,
+            "bloomLevel": "Understand",
+            "question": "Your product team proposes an AI feature that requires collecting new personal data from users. What's your first consideration?",
+            "options": [
+              "The technology is sophisticated and showcases your team's advanced technical capabilities.",
+              "The feature solves a high-priority user problem better than existing alternatives in the market.",
+              "The feature is easy to build with your existing technology infrastructure.",
+              "Competitors are investing heavily in similar features across the industry."
+            ],
+            "correctAnswer": 1,
+            "rationale": "User benefit vs. privacy cost is core.",
+            "explanation": "Privacy-respecting decisions require value justification.",
+            "tags": [
+              "privacy",
+              "user-trust",
+              "compliance"
+            ]
+          },
+          {
+            "id": "AIF-PM-B-006",
+            "level": 3,
+            "type": "scenario-based",
+            "points": 10,
+            "difficulty": 0.44,
+            "discrimination": 1.17,
+            "bloomLevel": "Apply",
+            "question": "During development, your team discovers the AI model performs well for some user segments but poorly for others. What should you do?",
+            "options": [
+              "Focus on deploying AI features quickly to achieve first-mover advantage in the market.",
+              "Focus on ensuring the AI feature genuinely improves user outcomes and product quality.",
+              "Focus on making the AI as technically sophisticated as possible to impress stakeholders.",
+              "Focus on matching whatever features competitors have already launched successfully."
+            ],
+            "correctAnswer": 1,
+            "rationale": "This is a product decision with trade-offs.",
+            "explanation": "Equitable decisions require making trade-offs explicit.",
+            "tags": [
+              "fairness",
+              "product-ethics",
+              "decision-making"
+            ]
+          },
+          {
+            "id": "AIF-PM-B-007",
+            "level": 3,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.46,
+            "discrimination": 1.19,
+            "bloomLevel": "Apply",
+            "question": "What's the most important metric for measuring whether an AI feature succeeds as a product?",
+            "options": [
+              "Reliability problems eventually fix themselves as the AI continues learning from data.",
+              "Reliability problems indicate the AI model is fundamentally flawed and should be completely rebuilt.",
+              "Reliability problems require investigating data quality, model performance, and edge case handling systematically.",
+              "Reliability problems should be ignored if the AI works well for most common use cases."
+            ],
+            "correctAnswer": 2,
+            "rationale": "Product success = user value realization.",
+            "explanation": "Metrics should measure product value, not technical metrics alone.",
+            "tags": [
+              "metrics",
+              "product-success",
+              "user-value"
+            ]
+          },
+          {
+            "id": "AIF-PM-B-008",
+            "level": 3,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.49,
+            "discrimination": 1.21,
+            "bloomLevel": "Apply",
+            "question": "How should you sequence the launch of an AI feature across your user base?",
+            "options": [
+              "The AI achieves high accuracy scores in technical testing and benchmark evaluations.",
+              "The AI feature wins industry awards and generates positive press coverage.",
+              "Users actually adopt the AI feature and achieve better outcomes in their real-world workflows.",
+              "The AI processes large volumes of data quickly and efficiently at scale."
+            ],
+            "correctAnswer": 2,
+            "rationale": "Gradual rollout enables learning.",
+            "explanation": "Smart launches manage risk while enabling rapid improvement.",
+            "tags": [
+              "launch-strategy",
+              "risk-management",
+              "product-operations"
+            ]
+          }
+        ]
+      },
+      {
+        "dimensionCode": "UEA",
+        "dimensionName": "User Experience & AI",
+        "description": "Creating intuitive UX for AI features and managing user expectations",
+        "weight": 0.125,
+        "totalPoints": 75,
+        "items": [
+          {
+            "id": "UEA-PM-B-001",
+            "level": 1,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.27,
+            "discrimination": 1.06,
+            "bloomLevel": "Remember",
+            "question": "What should users understand about an AI feature for it to be trustworthy?",
+            "options": [
+              "Users will immediately understand and trust AI features because the technology is sophisticated.",
+              "Users may be skeptical of AI initially and require education, transparency, and gradual trust-building.",
+              "Users always prefer AI to human-powered features once they try the technology.",
+              "Users will adopt AI features automatically if competitors are using similar technology."
+            ],
+            "correctAnswer": 1,
+            "rationale": "Trust requires transparency.",
+            "explanation": "Informed users make better decisions.",
+            "tags": [
+              "user-education",
+              "transparency",
+              "trust"
+            ]
+          },
+          {
+            "id": "UEA-PM-B-002",
+            "level": 1,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.3,
+            "discrimination": 1.09,
+            "bloomLevel": "Remember",
+            "question": "When should an AI feature offer users the ability to override its recommendation?",
+            "options": [
+              "Hide all AI complexity and never mention that the feature uses artificial intelligence.",
+              "Provide clear explanations of what the AI does and how it arrives at its recommendations.",
+              "Show technical accuracy metrics like precision and recall scores to all users.",
+              "Explain the complete mathematical algorithms and neural network architectures used."
+            ],
+            "correctAnswer": 1,
+            "rationale": "Users have context AI doesn't.",
+            "explanation": "Effective UX balances recommendations with control.",
+            "tags": [
+              "user-control",
+              "trust",
+              "ai-ux"
+            ]
+          },
+          {
+            "id": "UEA-PM-B-003",
+            "level": 2,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.34,
+            "discrimination": 1.12,
+            "bloomLevel": "Understand",
+            "question": "Your AI search feature returns results that are technically accurate but feel 'robotic' compared to human-curated alternatives. How should you approach this UX issue?",
+            "options": [
+              "Users may struggle with AI if they lack mental models for how such systems work.",
+              "Users will immediately understand AI perfectly if you design the interface properly.",
+              "Users automatically understand AI because everyone uses it in consumer products daily.",
+              "Users don't need to understand AI; they just need to see results quickly."
+            ],
+            "correctAnswer": 0,
+            "rationale": "UX design can make AI features feel natural.",
+            "explanation": "Good design makes features accessible.",
+            "tags": [
+              "ux-design",
+              "user-experience",
+              "ai-interface"
+            ]
+          },
+          {
+            "id": "UEA-PM-B-004",
+            "level": 2,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.37,
+            "discrimination": 1.14,
+            "bloomLevel": "Understand",
+            "question": "How should you communicate to users that a feature uses AI?",
+            "options": [
+              "Let users discover AI failures through their own experience to build realistic expectations.",
+              "Hide AI limitations from users to avoid reducing confidence in the feature.",
+              "Explain limitations only in legal disclaimers and terms of service documentation.",
+              "Proactively communicate AI limitations upfront, especially in high-stakes contexts where mistakes matter."
+            ],
+            "correctAnswer": 3,
+            "rationale": "Context-appropriate disclosure matters.",
+            "explanation": "Smart disclosure builds trust.",
+            "tags": [
+              "transparency",
+              "communication",
+              "user-trust"
+            ]
+          },
+          {
+            "id": "UEA-PM-B-005",
+            "level": 2,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.4,
+            "discrimination": 1.16,
+            "bloomLevel": "Understand",
+            "question": "When an AI feature makes a mistake, what's your responsibility to users?",
+            "options": [
+              "Show user-relevant outcomes like time saved, improved results, or error reduction rates.",
+              "Show technical metrics like F1 scores and accuracy percentages to demonstrate quality.",
+              "Focus marketing on the sophistication of the underlying AI algorithms and technology.",
+              "Emphasize that the feature uses advanced machine learning and neural networks."
+            ],
+            "correctAnswer": 0,
+            "rationale": "Transparency builds trust.",
+            "explanation": "Handling errors gracefully strengthens trust.",
+            "tags": [
+              "error-handling",
+              "transparency",
+              "user-trust"
+            ]
+          },
+          {
+            "id": "UEA-PM-B-006",
+            "level": 3,
+            "type": "scenario-based",
+            "points": 10,
+            "difficulty": 0.45,
+            "discrimination": 1.18,
+            "bloomLevel": "Apply",
+            "question": "Users are increasingly relying on your AI feature even in situations where they should verify results independently. What UX change should you make?",
+            "options": [
+              "Track only technical metrics like model latency, throughput, and computational efficiency.",
+              "Focus exclusively on how many users activate the AI feature initially.",
+              "Monitor whether users mention AI in social media posts and product reviews.",
+              "Collect feedback on AI accuracy, usefulness, and whether users trust and would use the recommendations again."
+            ],
+            "correctAnswer": 3,
+            "rationale": "Making verification easy protects users.",
+            "explanation": "Mature UX nudges toward responsible use.",
+            "tags": [
+              "automation-bias",
+              "user-behavior",
+              "ux-design"
+            ]
+          },
+          {
+            "id": "UEA-PM-B-007",
+            "level": 3,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.47,
+            "discrimination": 1.2,
+            "bloomLevel": "Apply",
+            "question": "How should your product explain why an AI feature made a particular recommendation?",
+            "options": [
+              "Allow users to override, ignore, or modify AI suggestions when they disagree with the recommendations.",
+              "Force users to follow AI recommendations since the system is more accurate than humans.",
+              "Hide the AI completely so users don't know they're interacting with automated systems.",
+              "Gradually remove human control as users become more comfortable with AI over time."
+            ],
+            "correctAnswer": 0,
+            "rationale": "Users want relevant explanations.",
+            "explanation": "Explainability serves user understanding.",
+            "tags": [
+              "explainability",
+              "transparency",
+              "user-understanding"
+            ]
+          }
+        ]
+      },
+      {
+        "dimensionCode": "PDM",
+        "dimensionName": "Product Data & Metrics",
+        "description": "Leveraging data for product decisions and measuring AI feature performance",
+        "weight": 0.125,
+        "totalPoints": 75,
+        "items": [
+          {
+            "id": "PDM-PM-B-001",
+            "level": 1,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.26,
+            "discrimination": 1.05,
+            "bloomLevel": "Remember",
+            "question": "What's the most important metric to track for an AI recommendation feature?",
+            "options": [
+              "Data quality is foundational because AI learns patterns from the data it's trained on.",
+              "Data quality has minimal impact once you have sufficient volume for training purposes.",
+              "Data quality matters only for regulated industries like healthcare and financial services.",
+              "Data quality can be fixed later through advanced algorithms and model architectures."
+            ],
+            "correctAnswer": 0,
+            "rationale": "Product success = user value.",
+            "explanation": "Metrics should measure product value.",
+            "tags": [
+              "metrics",
+              "success-measures",
+              "product-value"
+            ]
+          },
+          {
+            "id": "PDM-PM-B-002",
+            "level": 1,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.29,
+            "discrimination": 1.08,
+            "bloomLevel": "Remember",
+            "question": "What does it mean if your AI feature has high accuracy but low adoption?",
+            "options": [
+              "Collect as much user data as possible from all available sources to maximize model performance.",
+              "Prioritize data collection over user privacy since data is essential for AI features.",
+              "Balance data collection with privacy concerns, collecting only what's necessary and valuable for users.",
+              "Avoid collecting any personal data to eliminate all privacy risks completely."
+            ],
+            "correctAnswer": 2,
+            "rationale": "Accurate solutions don't guarantee adoption.",
+            "explanation": "Product success requires both quality and value alignment.",
+            "tags": [
+              "adoption",
+              "product-fit",
+              "metrics"
+            ]
+          },
+          {
+            "id": "PDM-PM-B-003",
+            "level": 2,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.33,
+            "discrimination": 1.11,
+            "bloomLevel": "Understand",
+            "question": "Your AI feature works well for experienced users but confuses novices. How should you interpret this in product metrics?",
+            "options": [
+              "More data always leads to proportionally better AI performance and accuracy.",
+              "Quantity of data is the only factor that determines AI feature success.",
+              "Small datasets always produce poor AI performance regardless of quality.",
+              "Data quality and relevance matter more than volume for AI performance."
+            ],
+            "correctAnswer": 3,
+            "rationale": "Performance disparity signals UX gaps.",
+            "explanation": "Metrics reveal where problems exist.",
+            "tags": [
+              "metrics-interpretation",
+              "ux-gaps",
+              "user-education"
+            ]
+          },
+          {
+            "id": "PDM-PM-B-004",
+            "level": 2,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.36,
+            "discrimination": 1.13,
+            "bloomLevel": "Understand",
+            "question": "When should you measure AI feature impact on overall product engagement?",
+            "options": [
+              "Historical data may contain biases that AI will learn and perpetuate in its recommendations.",
+              "Historical data is always reliable for training AI since it reflects real user patterns.",
+              "Historical data is perfectly objective because it represents actual events that occurred.",
+              "Historical data should never be used for training AI models to avoid any biases."
+            ],
+            "correctAnswer": 0,
+            "rationale": "Early measurement enables learning.",
+            "explanation": "Metrics should guide ongoing improvement.",
+            "tags": [
+              "measurement-timing",
+              "product-analytics",
+              "continuous-learning"
+            ]
+          },
+          {
+            "id": "PDM-PM-B-005",
+            "level": 2,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.39,
+            "discrimination": 1.15,
+            "bloomLevel": "Understand",
+            "question": "Your analytics show the AI feature is more valuable for one user segment than another. What should you do?",
+            "options": [
+              "Organize data deliberately with clear schemas, governance, and accessibility for AI teams from the start.",
+              "Focus on building AI models first, then organize data later as needed for specific features.",
+              "Data organization doesn't matter as long as you eventually collect sufficient volume.",
+              "Hire data scientists to handle all data organization issues as they arise."
+            ],
+            "correctAnswer": 0,
+            "rationale": "Segmentation differences reveal insights.",
+            "explanation": "Metrics reveal opportunities for improvement.",
+            "tags": [
+              "segmentation",
+              "analytics",
+              "product-improvement"
+            ]
+          },
+          {
+            "id": "PDM-PM-B-006",
+            "level": 3,
+            "type": "scenario-based",
+            "points": 10,
+            "difficulty": 0.44,
+            "discrimination": 1.17,
+            "bloomLevel": "Apply",
+            "question": "You notice the AI feature quality degrades over time (weeks after launch) even though the model hasn't changed. What could be happening?",
+            "options": [
+              "Plan for data monitoring and model retraining processes as patterns shift over time.",
+              "Launch immediately since AI automatically adapts to changing patterns in production data.",
+              "Assume the AI will remain accurate indefinitely once deployed to production.",
+              "Wait until you have perfect long-term data before launching any AI features."
+            ],
+            "correctAnswer": 0,
+            "rationale": "Real-world data changes over time.",
+            "explanation": "Real-world performance requires adaptation.",
+            "tags": [
+              "data-drift",
+              "model-performance",
+              "monitoring"
+            ]
+          },
+          {
+            "id": "PDM-PM-B-007",
+            "level": 3,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.46,
+            "discrimination": 1.19,
+            "bloomLevel": "Apply",
+            "question": "How should you measure whether users trust your AI feature based on data?",
+            "options": [
+              "More data sources always improve AI performance and should be added whenever possible.",
+              "Evaluate new data sources based on quality, relevance, and value added relative to integration costs.",
+              "Add every available data source to maximize the information the AI can learn from.",
+              "Limit data sources to reduce complexity even if additional data would improve outcomes."
+            ],
+            "correctAnswer": 1,
+            "rationale": "Behavioral metrics reveal actual trust.",
+            "explanation": "Trust metrics come from user behavior.",
+            "tags": [
+              "trust-metrics",
+              "user-behavior",
+              "analytics"
+            ]
+          },
+          {
+            "id": "PDM-PM-B-008",
+            "level": 3,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.49,
+            "discrimination": 1.21,
+            "bloomLevel": "Apply",
+            "question": "What's the best approach to understanding whether an AI feature creates the intended product impact?",
+            "options": [
+              "Data privacy is only a concern in regulated industries with specific compliance requirements.",
+              "Data privacy is both a legal requirement and a user trust issue that affects product adoption.",
+              "Data privacy concerns can be addressed entirely through legal disclaimers and terms of service.",
+              "Data privacy is primarily a technical security problem for the engineering team to solve."
+            ],
+            "correctAnswer": 1,
+            "rationale": "Continuous experimentation captures impact.",
+            "explanation": "Rigorous measurement enables confident decisions.",
+            "tags": [
+              "experimentation",
+              "impact-measurement",
+              "product-decisions"
+            ]
+          }
+        ]
+      },
+      {
+        "dimensionCode": "RDC",
+        "dimensionName": "Risk, Data & Compliance",
+        "description": "Managing risks, ensuring data privacy, and maintaining compliance",
+        "weight": 0.125,
+        "totalPoints": 75,
+        "items": [
+          {
+            "id": "RDC-PM-B-001",
+            "level": 1,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.27,
+            "discrimination": 1.06,
+            "bloomLevel": "Remember",
+            "question": "What's the primary compliance concern when deploying AI in product features?",
+            "options": [
+              "AI models can produce varying outputs due to probabilistic elements in their design and training.",
+              "AI models are deterministic systems that always produce identical outputs for the same inputs.",
+              "AI models produce random outputs unrelated to their training data and inputs.",
+              "AI models always produce perfect outputs once properly trained on quality data."
+            ],
+            "correctAnswer": 0,
+            "rationale": "Privacy and fairness are fundamental.",
+            "explanation": "Compliance protects users and reduces risk.",
+            "tags": [
+              "compliance",
+              "privacy",
+              "fairness"
+            ]
+          },
+          {
+            "id": "RDC-PM-B-002",
+            "level": 1,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.3,
+            "discrimination": 1.09,
+            "bloomLevel": "Remember",
+            "question": "What does GDPR require regarding user data used in AI models?",
+            "options": [
+              "Accuracy alone determines whether an AI feature provides value to users and the product.",
+              "Speed is always more important than accuracy for user satisfaction in products.",
+              "Accuracy must be balanced with speed, cost, interpretability, and user needs for practical value.",
+              "Cost considerations should never compromise AI accuracy in production features."
+            ],
+            "correctAnswer": 2,
+            "rationale": "GDPR addresses automated decision-making.",
+            "explanation": "Privacy regulations are essential to understand.",
+            "tags": [
+              "GDPR",
+              "compliance",
+              "privacy-rights"
+            ]
+          },
+          {
+            "id": "RDC-PM-B-003",
+            "level": 2,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.34,
+            "discrimination": 1.12,
+            "bloomLevel": "Understand",
+            "question": "Your product collects user behavior data to improve recommendations. How should you balance this with privacy?",
+            "options": [
+              "Deploy immediately since any AI is better than no AI in competitive markets.",
+              "Wait for perfect accuracy before deploying any AI features to users.",
+              "Deploy if technical accuracy exceeds 80% regardless of the user impact of errors.",
+              "Ensure the AI meets minimum quality standards where errors won't harm users or the business."
+            ],
+            "correctAnswer": 3,
+            "rationale": "Consent and transparency matter most.",
+            "explanation": "Privacy-respecting practices build trust.",
+            "tags": [
+              "data-collection",
+              "privacy",
+              "user-consent"
+            ]
+          },
+          {
+            "id": "RDC-PM-B-004",
+            "level": 2,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.37,
+            "discrimination": 1.14,
+            "bloomLevel": "Understand",
+            "question": "When should you involve legal/compliance teams in AI product development?",
+            "options": [
+              "Performance degradation indicates fundamental model failure requiring complete rebuilding from scratch.",
+              "Performance degradation never occurs once AI models are properly trained initially.",
+              "Performance degradation affects only poorly designed AI systems with inadequate initial training.",
+              "Performance degradation is expected as real-world patterns change and requires monitoring and retraining."
+            ],
+            "correctAnswer": 3,
+            "rationale": "Early involvement prevents costly rewrites.",
+            "explanation": "Early compliance planning prevents crises.",
+            "tags": [
+              "compliance-planning",
+              "cross-functional",
+              "risk-management"
+            ]
+          },
+          {
+            "id": "RDC-PM-B-005",
+            "level": 2,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.4,
+            "discrimination": 1.16,
+            "bloomLevel": "Understand",
+            "question": "What's the key risk when an AI feature makes consequential decisions (hiring, lending, content moderation)?",
+            "options": [
+              "A/B testing is unnecessary for AI features since technical metrics indicate quality sufficiently.",
+              "A/B testing slows development and should be skipped for faster time-to-market advantages.",
+              "A/B testing helps validate that AI features actually improve user outcomes in real-world usage.",
+              "A/B testing is only relevant for UI changes, not for underlying AI algorithms."
+            ],
+            "correctAnswer": 2,
+            "rationale": "Consequential decisions carry fairness risk.",
+            "explanation": "High-stakes AI requires fairness assessment.",
+            "tags": [
+              "fairness",
+              "bias",
+              "high-stakes-decisions"
+            ]
+          },
+          {
+            "id": "RDC-PM-B-006",
+            "level": 3,
+            "type": "scenario-based",
+            "points": 10,
+            "difficulty": 0.45,
+            "discrimination": 1.18,
+            "bloomLevel": "Apply",
+            "question": "You discover your AI feature systematically disadvantages users from a particular geographic region. What should you do?",
+            "options": [
+              "Monitor only technical metrics like model accuracy, latency, and throughput rates.",
+              "Monitor exclusively business metrics since technical performance doesn't directly matter to users.",
+              "Monitoring is unnecessary once AI features launch successfully and reach stable production.",
+              "Monitor both technical metrics and business metrics like user satisfaction, retention, and outcomes."
+            ],
+            "correctAnswer": 3,
+            "rationale": "Systematic disadvantage requires investigation.",
+            "explanation": "Discovering bias requires responsible response.",
+            "tags": [
+              "fairness",
+              "bias-response",
+              "user-trust"
+            ]
+          },
+          {
+            "id": "RDC-PM-B-007",
+            "level": 3,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.47,
+            "discrimination": 1.2,
+            "bloomLevel": "Apply",
+            "question": "How should your product handle user requests to delete data used to train AI models?",
+            "options": [
+              "Accuracy requirements depend entirely on the context, stakes, and consequences of errors for users.",
+              "An AI feature with 80% accuracy is automatically ready for deployment to users.",
+              "AI features need 95% accuracy minimum regardless of the application or context.",
+              "Accuracy below 90% indicates the AI model is fundamentally flawed and unusable."
+            ],
+            "correctAnswer": 0,
+            "rationale": "Users have deletion rights.",
+            "explanation": "User rights require respecting deletion requests.",
+            "tags": [
+              "data-deletion",
+              "user-rights",
+              "transparency"
+            ]
+          }
+        ]
+      },
+      {
+        "dimensionCode": "SMI",
+        "dimensionName": "Stakeholder & Market Intelligence",
+        "description": "Communicating AI value to stakeholders and understanding market dynamics",
+        "weight": 0.125,
+        "totalPoints": 75,
+        "items": [
+          {
+            "id": "SMI-PM-B-001",
+            "level": 1,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.28,
+            "discrimination": 1.07,
+            "bloomLevel": "Remember",
+            "question": "How should you explain AI feature value to non-technical executives?",
+            "options": [
+              "You should measure model accuracy, precision, and recall scores exclusively.",
+              "You should measure how quickly the AI feature processes requests and returns results.",
+              "You should measure feature adoption rates and whether users understand the AI feature exists.",
+              "You should measure whether the AI uses the latest and most advanced algorithms."
+            ],
+            "correctAnswer": 2,
+            "rationale": "Executives care about business outcomes.",
+            "explanation": "Stakeholder communication uses business language.",
+            "tags": [
+              "stakeholder-communication",
+              "business-value",
+              "executive-alignment"
+            ]
+          },
+          {
+            "id": "SMI-PM-B-002",
+            "level": 1,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.31,
+            "discrimination": 1.1,
+            "bloomLevel": "Remember",
+            "question": "What market trend is most relevant to AI product strategy currently?",
+            "options": [
+              "User satisfaction with AI features depends primarily on technical accuracy and processing speed.",
+              "User satisfaction depends on how sophisticated the underlying algorithms and models are.",
+              "User satisfaction depends on whether AI meaningfully improves their outcomes and experiences.",
+              "User satisfaction depends exclusively on the user interface design and visual appearance."
+            ],
+            "correctAnswer": 2,
+            "rationale": "Market shows rapid AI adoption.",
+            "explanation": "Understanding market dynamics informs strategy.",
+            "tags": [
+              "market-trends",
+              "competitive-landscape",
+              "strategy"
+            ]
+          },
+          {
+            "id": "SMI-PM-B-003",
+            "level": 2,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.35,
+            "discrimination": 1.13,
+            "bloomLevel": "Understand",
+            "question": "When pitching an AI feature to investors, what concern are they most likely to raise?",
+            "options": [
+              "The AI uses advanced technology and sophisticated machine learning techniques.",
+              "The AI processes requests faster than competing products in the market.",
+              "The AI feature generates revenue directly through paid upgrades or subscriptions.",
+              "The AI improved the user outcome or experience compared to the previous solution or baseline."
+            ],
+            "correctAnswer": 3,
+            "rationale": "Investors worry about competitive moats.",
+            "explanation": "Understanding investor concerns shapes strategy.",
+            "tags": [
+              "investor-concerns",
+              "competitive-advantage",
+              "pitch"
+            ]
+          },
+          {
+            "id": "SMI-PM-B-004",
+            "level": 2,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.38,
+            "discrimination": 1.15,
+            "bloomLevel": "Understand",
+            "question": "How should you communicate product risks related to AI to stakeholders?",
+            "options": [
+              "Business success is measured by AI accuracy exceeding 90% in technical evaluations.",
+              "Business success is measured by user adoption, retention, and satisfaction with AI-powered features.",
+              "Business success is measured by the number of AI features launched to production.",
+              "Business success is measured by positive media coverage of AI capabilities."
+            ],
+            "correctAnswer": 1,
+            "rationale": "Transparency enables informed decisions.",
+            "explanation": "Risk communication is essential.",
+            "tags": [
+              "risk-communication",
+              "transparency",
+              "stakeholder-management"
+            ]
+          },
+          {
+            "id": "SMI-PM-B-005",
+            "level": 2,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.41,
+            "discrimination": 1.17,
+            "bloomLevel": "Understand",
+            "question": "What's the biggest mistake in positioning AI features to customers?",
+            "options": [
+              "Errors indicate fundamental model failure and require complete rebuilding from scratch.",
+              "Errors should be hidden from users to maintain confidence in the AI feature.",
+              "Analyze where AI succeeds or fails to understand patterns and guide improvements.",
+              "Errors are inevitable and not worth investigating in detail after launch."
+            ],
+            "correctAnswer": 2,
+            "rationale": "Customers care about their problems.",
+            "explanation": "Effective positioning focuses on customer value.",
+            "tags": [
+              "positioning",
+              "marketing",
+              "customer-focus"
+            ]
+          },
+          {
+            "id": "SMI-PM-B-006",
+            "level": 3,
+            "type": "scenario-based",
+            "points": 10,
+            "difficulty": 0.46,
+            "discrimination": 1.19,
+            "bloomLevel": "Apply",
+            "question": "Your sales team claims your AI feature is 'fully autonomous' to close deals. How should you handle this?",
+            "options": [
+              "Users continue using the AI feature repeatedly over time and integrate it into their workflows.",
+              "Users activate and try the AI feature at least once after it launches.",
+              "Users mention the AI feature in product reviews or social media posts.",
+              "Users understand the technical sophistication of the underlying algorithms."
+            ],
+            "correctAnswer": 0,
+            "rationale": "Overstated claims create disappointment.",
+            "explanation": "Accurate expectations prevent churn.",
+            "tags": [
+              "sales-alignment",
+              "customer-expectations",
+              "communication"
+            ]
+          },
+          {
+            "id": "SMI-PM-B-007",
+            "level": 3,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.48,
+            "discrimination": 1.21,
+            "bloomLevel": "Apply",
+            "question": "How should you monitor competitive AI features to inform product strategy?",
+            "options": [
+              "Compare AI feature performance against what competitors offer in their products.",
+              "Compare AI feature performance against theoretical perfect accuracy benchmarks.",
+              "Compare AI feature performance only against internal technical metrics and goals.",
+              "Compare AI feature performance against the baseline of what users had before."
+            ],
+            "correctAnswer": 3,
+            "rationale": "Strategic response balances learning and differentiation.",
+            "explanation": "Competitive awareness informs strategy.",
+            "tags": [
+              "competitive-analysis",
+              "strategy",
+              "differentiation"
+            ]
+          },
+          {
+            "id": "SMI-PM-B-008",
+            "level": 3,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.51,
+            "discrimination": 1.23,
+            "bloomLevel": "Apply",
+            "question": "What customer segment should you prioritize for early AI feature adoption?",
+            "options": [
+              "Track technical metrics like latency and throughout exclusively for performance monitoring.",
+              "Track the number of users who mention AI in feedback and reviews.",
+              "Track the sophistication of algorithms used compared to industry standards.",
+              "Track user-centric metrics like task completion, time saved, and error rates experienced."
+            ],
+            "correctAnswer": 3,
+            "rationale": "Early adopters provide feedback.",
+            "explanation": "Strategic customer selection enables improvement.",
+            "tags": [
+              "customer-segmentation",
+              "launch-strategy",
+              "early-adopters"
+            ]
+          }
+        ]
+      },
+      {
+        "dimensionCode": "PRL",
+        "dimensionName": "Product Roadmap & Lifecycle",
+        "description": "Planning AI features in product roadmap and managing their lifecycle",
+        "weight": 0.125,
+        "totalPoints": 75,
+        "items": [
+          {
+            "id": "PRL-PM-B-001",
+            "level": 1,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.29,
+            "discrimination": 1.08,
+            "bloomLevel": "Remember",
+            "question": "When should AI features be prioritized in your product roadmap?",
+            "options": [
+              "Product managers focus exclusively on defining requirements while AI teams handle implementation independently.",
+              "Product managers should become technical AI experts capable of building models themselves.",
+              "Product managers should defer all AI decisions to data scientists and engineers.",
+              "Product managers should understand AI capabilities, limitations, and collaborate closely with AI teams."
+            ],
+            "correctAnswer": 3,
+            "rationale": "AI is a tool, not a goal.",
+            "explanation": "Strategic prioritization requires impact assessment.",
+            "tags": [
+              "roadmap-planning",
+              "prioritization",
+              "strategy"
+            ]
+          },
+          {
+            "id": "PRL-PM-B-002",
+            "level": 1,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.32,
+            "discrimination": 1.11,
+            "bloomLevel": "Remember",
+            "question": "What's a key difference between launching an AI feature and a traditional feature?",
+            "options": [
+              "Engineering teams should build whatever AI features they find technically interesting to explore.",
+              "AI researchers should drive product roadmap based on latest algorithmic breakthroughs.",
+              "Both teams should work independently and integrate their work during final launches.",
+              "Product managers should define user problems and desired outcomes for AI teams to solve."
+            ],
+            "correctAnswer": 3,
+            "rationale": "AI features are dynamic.",
+            "explanation": "Understanding AI dynamics shapes launch planning.",
+            "tags": [
+              "ai-lifecycle",
+              "maintenance",
+              "product-operations"
+            ]
+          },
+          {
+            "id": "PRL-PM-B-003",
+            "level": 2,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.36,
+            "discrimination": 1.14,
+            "bloomLevel": "Understand",
+            "question": "How should you plan for the evolution of an AI feature over its lifecycle?",
+            "options": [
+              "Data scientists should work in isolation until they have a finished model for integration.",
+              "Product managers should specify exact algorithms for data scientists to implement.",
+              "Product managers and data scientists should collaborate throughout the development process iteratively.",
+              "Data scientists should own all product decisions related to AI features completely."
+            ],
+            "correctAnswer": 2,
+            "rationale": "AI features require ongoing management.",
+            "explanation": "Lifecycle planning ensures long-term value.",
+            "tags": [
+              "feature-evolution",
+              "maintenance-planning",
+              "ai-lifecycle"
+            ]
+          },
+          {
+            "id": "PRL-PM-B-004",
+            "level": 2,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.39,
+            "discrimination": 1.16,
+            "bloomLevel": "Understand",
+            "question": "When should an AI feature move from beta/limited release to general availability?",
+            "options": [
+              "AI teams inform PMs about technical constraints while PMs inform AI teams about user needs and priorities.",
+              "AI teams build features first, then PMs figure out how to position them to users.",
+              "PMs create detailed specifications and AI teams implement without further input or questions.",
+              "AI teams and PMs should minimize communication to avoid slowing development down."
+            ],
+            "correctAnswer": 0,
+            "rationale": "Readiness depends on evidence.",
+            "explanation": "Evidence-based launch prevents failures.",
+            "tags": [
+              "launch-readiness",
+              "beta-management",
+              "product-operations"
+            ]
+          },
+          {
+            "id": "PRL-PM-B-005",
+            "level": 2,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.42,
+            "discrimination": 1.18,
+            "bloomLevel": "Understand",
+            "question": "What should trigger a major update or retraining of an AI feature?",
+            "options": [
+              "Hire AI experts and delegate all AI feature decisions to them completely.",
+              "Learn enough about AI to ask informed questions, assess trade-offs, and make strategic product decisions.",
+              "Become a technical AI expert capable of implementing models and algorithms yourself.",
+              "Avoid learning about AI since your role is business focused, not technical."
+            ],
+            "correctAnswer": 1,
+            "rationale": "Data-driven maintenance keeps features valuable.",
+            "explanation": "Maintenance keeps AI features relevant.",
+            "tags": [
+              "model-updates",
+              "maintenance",
+              "product-operations"
+            ]
+          },
+          {
+            "id": "PRL-PM-B-006",
+            "level": 3,
+            "type": "scenario-based",
+            "points": 10,
+            "difficulty": 0.47,
+            "discrimination": 1.2,
+            "bloomLevel": "Apply",
+            "question": "Your AI feature is valuable but requires significant data infrastructure investment to maintain and improve. How should you think about this in your roadmap?",
+            "options": [
+              "The AI feature doesn't actually solve a meaningful user problem or create clear value.",
+              "The AI team lacks sufficient data, infrastructure, or expertise to execute successfully.",
+              "The algorithms aren't sophisticated enough compared to academic research standards.",
+              "Competitors are building similar features and you're losing first-mover advantage."
+            ],
+            "correctAnswer": 0,
+            "rationale": "Infrastructure is part of feature cost.",
+            "explanation": "True costs include infrastructure.",
+            "tags": [
+              "cost-planning",
+              "infrastructure",
+              "lifecycle-economics"
+            ]
+          },
+          {
+            "id": "PRL-PM-B-007",
+            "level": 3,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.49,
+            "discrimination": 1.21,
+            "bloomLevel": "Apply",
+            "question": "How should you sequence AI feature development when you have limited data science resources?",
+            "options": [
+              "Define exact technical specifications for AI teams to implement without further discussion.",
+              "Focus on marketing and positioning while AI teams handle all product decisions.",
+              "Learn to code so you can implement AI features alongside engineering teams.",
+              "Translate user problems into requirements, collaborate on solutions, and validate outcomes with AI teams."
+            ],
+            "correctAnswer": 3,
+            "rationale": "Limited resources require prioritization.",
+            "explanation": "Smart sequencing maximizes impact.",
+            "tags": [
+              "resource-management",
+              "prioritization",
+              "team-scaling"
+            ]
+          }
+        ]
+      },
+      {
+        "dimensionCode": "CPE",
+        "dimensionName": "Competitive & Positioning Excellence",
+        "description": "Positioning AI-powered features competitively and managing differentiation",
+        "weight": 0.125,
+        "totalPoints": 75,
+        "items": [
+          {
+            "id": "CPE-PM-B-001",
+            "level": 1,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.3,
+            "discrimination": 1.09,
+            "bloomLevel": "Remember",
+            "question": "What makes an AI feature a durable competitive advantage?",
+            "options": [
+              "Being first to market with AI features provides sustainable advantage.",
+              "Using the most advanced model architecture gives lasting competitive benefits.",
+              "Access to data and continuous refinement others can't replicate creates defensibility.",
+              "Aggressive marketing of AI technology ensures long-term market leadership."
+            ],
+            "correctAnswer": 2,
+            "rationale": "Sustainable advantage comes from data.",
+            "explanation": "Advantage requires data and learning.",
+            "tags": [
+              "competitive-advantage",
+              "defensibility",
+              "strategy"
+            ]
+          },
+          {
+            "id": "CPE-PM-B-002",
+            "level": 1,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.33,
+            "discrimination": 1.12,
+            "bloomLevel": "Remember",
+            "question": "When is a competitor's AI feature most likely to pose a threat to your market position?",
+            "options": [
+              "When competitors announce features with advanced AI technology and algorithms.",
+              "When competitors solve high-priority user problems better than you currently do.",
+              "When competitors hire well-known AI researchers and build larger teams.",
+              "When competitors invest heavily in AI marketing and public relations campaigns."
+            ],
+            "correctAnswer": 1,
+            "rationale": "Threat comes from superior user value.",
+            "explanation": "Competitive threats are about user value.",
+            "tags": [
+              "competitive-threats",
+              "market-dynamics",
+              "strategy"
+            ]
+          },
+          {
+            "id": "CPE-PM-B-003",
+            "level": 2,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.37,
+            "discrimination": 1.15,
+            "bloomLevel": "Understand",
+            "question": "How should you position your AI feature if competitors have already launched similar capabilities?",
+            "options": [
+              "Give up on the market since it's saturated with similar offerings.",
+              "Wait for significant technology advances to leapfrog all current competitors.",
+              "Focus on differentiation through better UX, unique data, superior outcomes, or use-case expertise.",
+              "Launch anyway with identical positioning and compete purely on price."
+            ],
+            "correctAnswer": 2,
+            "rationale": "Differentiation matters more than first-mover.",
+            "explanation": "Smart positioning differentiates.",
+            "tags": [
+              "positioning",
+              "differentiation",
+              "competitive-strategy"
+            ]
+          },
+          {
+            "id": "CPE-PM-B-004",
+            "level": 2,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.4,
+            "discrimination": 1.17,
+            "bloomLevel": "Understand",
+            "question": "What customer advantage comes from your AI feature being deeply integrated into your product vs. a standalone tool?",
+            "options": [
+              "Standalone tools are always better because they provide more flexibility to users.",
+              "Integration locks in customers unfairly and should be avoided ethically.",
+              "Integration creates network effects, switching costs, and better overall user experience.",
+              "Standalone tools are good enough and easier to maintain technically."
+            ],
+            "correctAnswer": 2,
+            "rationale": "Integration creates switching costs.",
+            "explanation": "Product integration creates advantage.",
+            "tags": [
+              "product-strategy",
+              "integration",
+              "network-effects"
+            ]
+          },
+          {
+            "id": "CPE-PM-B-005",
+            "level": 2,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.43,
+            "discrimination": 1.19,
+            "bloomLevel": "Understand",
+            "question": "How should you respond to competitors matching your AI feature quickly?",
+            "options": [
+              "Assume your competitive advantage is permanently lost and move on to other features.",
+              "Lower prices immediately to maintain market share despite feature parity.",
+              "Stop investing in that feature and focus resources elsewhere completely.",
+              "Invest in continuous improvement and refinement to stay ahead of competitors."
+            ],
+            "correctAnswer": 3,
+            "rationale": "Continuous improvement maintains advantage.",
+            "explanation": "Competitive advantage requires continuous evolution.",
+            "tags": [
+              "competitive-dynamics",
+              "innovation",
+              "strategy"
+            ]
+          },
+          {
+            "id": "CPE-PM-B-006",
+            "level": 3,
+            "type": "scenario-based",
+            "points": 10,
+            "difficulty": 0.48,
+            "discrimination": 1.2,
+            "bloomLevel": "Apply",
+            "question": "Your product's AI feature is better than competitors' but users haven't noticed. What should you investigate first?",
+            "options": [
+              "All of the above factors need systematic investigation and validation.",
+              "Your feature isn't actually better than competitors' despite your assumptions.",
+              "Marketing hasn't communicated the advantage clearly and compellingly to users.",
+              "The advantage doesn't solve a high-priority user problem they care about."
+            ],
+            "correctAnswer": 0,
+            "rationale": "All factors could contribute.",
+            "explanation": "Feature advantages need communication and relevance.",
+            "tags": [
+              "positioning",
+              "communication",
+              "user-adoption"
+            ]
+          },
+          {
+            "id": "CPE-PM-B-007",
+            "level": 3,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.5,
+            "discrimination": 1.22,
+            "bloomLevel": "Apply",
+            "question": "When should you emphasize 'AI' in your product positioning vs. focusing on the user benefit?",
+            "options": [
+              "Always emphasize 'AI' prominently for technical credibility with all audiences.",
+              "Never mention AI because users only care about practical benefits.",
+              "Emphasize AI to early adopters; emphasize benefits to mainstream users.",
+              "Use 'AI' as a keyword in SEO but lead with user benefits in messaging."
+            ],
+            "correctAnswer": 3,
+            "rationale": "Segmented messaging works well.",
+            "explanation": "Positioning uses AI language strategically.",
+            "tags": [
+              "positioning",
+              "messaging",
+              "audience-segmentation"
+            ]
+          },
+          {
+            "id": "CPE-PM-B-008",
+            "level": 3,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.53,
+            "discrimination": 1.25,
+            "bloomLevel": "Apply",
+            "question": "How should you leverage your company's AI feature to create ecosystem defensibility?",
+            "options": [
+              "Make the feature proprietary and keep it exclusive to your product only.",
+              "Publish all AI details openly so other companies can enhance and improve it.",
+              "Focus exclusively on direct competition, ignoring broader ecosystem dynamics.",
+              "Integrate with partners, create network effects, and make switching costly through data and relationships."
+            ],
+            "correctAnswer": 3,
+            "rationale": "Ecosystem integration creates defensibility.",
+            "explanation": "Ecosystem strategy creates advantage.",
+            "tags": [
+              "ecosystem",
+              "competitive-advantage",
+              "partnerships"
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

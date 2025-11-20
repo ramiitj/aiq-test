@@ -1,0 +1,1593 @@
+{
+  "assessmentName": "AIQ DS Beginner Assessment - Data Scientist Focus",
+  "version": "1.0",
+  "assessmentType": "fixed",
+  "description": "A rigorously designed foundational AI literacy assessment for data scientists with 60 items featuring balanced options, randomized correct answer positions, complete sentence formatting, and enhanced anti-gaming measures.",
+  "assessmentConfiguration": {
+    "totalQuestions": 60,
+    "questionsPerDimension": "7-8",
+    "estimatedTime": "60 minutes",
+    "targetAudience": "Data scientists, machine learning engineers, analytics engineers with varying AI/ML experience levels",
+    "timePerQuestion": "60 seconds average",
+    "presentationMode": {
+      "type": "fixed-sequential",
+      "description": "All questions presented in fixed order",
+      "sequencing": "By dimension, 7-8 questions per dimension"
+    },
+    "questionDistribution": {
+      "totalItems": 60,
+      "itemsPerDimension": "7-8 per dimension",
+      "selectionRatio": "100% (all items presented)"
+    },
+    "dimensionSequencing": {
+      "type": "fixed-order",
+      "sequence": [
+        "MAI",
+        "MDE",
+        "MEV",
+        "DPP",
+        "MPD",
+        "ERM",
+        "CCE",
+        "TIO"
+      ],
+      "description": "Candidates complete 7-8 questions per dimension in sequence"
+    }
+  },
+  "scoringConfiguration": {
+    "totalPoints": 600,
+    "pointsPerDimension": 75,
+    "passingScore": 420,
+    "passingPercentage": 70,
+    "scoringMethod": {
+      "type": "simple-sum",
+      "description": "Direct sum of points from correct answers with differential weighting by item difficulty",
+      "basePoints": 10,
+      "formula": "points = basePoints \u00d7 (1 + difficulty \u00d7 0.3) for each correct answer"
+    },
+    "scoringGuidelines": {
+      "0-40%": "Novice (0-240 points) - Significant foundational learning needed",
+      "41-60%": "Beginner (241-360 points) - Basic awareness established",
+      "61-80%": "Developing (361-480 points) - Good foundational understanding",
+      "81-90%": "Proficient (481-540 points) - Strong grasp of fundamentals",
+      "91-100%": "Advanced (541-600 points) - Excellent foundational mastery"
+    }
+  },
+  "instructions": "This AIQ DS Beginner assessment evaluates your foundational AI/ML literacy specifically for data science contexts. You will answer 60 questions total (7-8 per dimension) across 8 data science-focused dimensions in approximately 60 minutes. Questions feature nuanced options designed to test genuine understanding of machine learning fundamentals. Answer all questions to the best of your ability.",
+  "assessmentGuidelines": {
+    "targetLevel": "Foundational awareness and basic understanding of AI/ML in data science",
+    "cognitiveEmphasis": "65% Remember/Understand (Bloom's levels 1-2), 35% Apply (Bloom's level 3)",
+    "questionTypes": "Multiple-choice (70%), scenario-based (30%)",
+    "difficultyProfile": "Realistic distractors that require genuine ML understanding to differentiate",
+    "timeAllocation": "Moderate time for careful consideration of DS-specific nuances",
+    "reliabilityTarget": "Cronbach's alpha \u2265 0.80"
+  },
+  "itemBank": {
+    "totalItems": 60,
+    "itemsPerDimension": 8,
+    "description": "Complete item set with 60 questions (7-8 per dimension) focused on AI/ML literacy for data scientists",
+    "bankStatistics": {
+      "averageDifficulty": 0.383,
+      "difficultySD": 0.08,
+      "averageDiscrimination": 1.15,
+      "discriminationSD": 0.05,
+      "contentCoverageIndex": 0.92,
+      "estimatedReliability": 0.85,
+      "totalItems": 60
+    },
+    "dimensions": [
+      {
+        "dimensionCode": "MAI",
+        "dimensionName": "Model AI Understanding",
+        "description": "Understanding ML/AI model architectures, capabilities, and appropriate use cases",
+        "weight": 0.125,
+        "totalPoints": 75,
+        "items": [
+          {
+            "id": "MAI-DS-B-001",
+            "level": 1,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.25,
+            "discrimination": 1.05,
+            "bloomLevel": "Remember",
+            "question": "What is the primary reason to use transfer learning instead of training a model from scratch?",
+            "options": [
+              "Transfer learning leverages patterns learned from large datasets, requiring less data and computation for your specific task.",
+              "Transfer learning eliminates the need for any training data by using pre-existing model weights directly.",
+              "Transfer learning guarantees better performance than models trained from scratch in all situations and domains.",
+              "Transfer learning reduces model complexity by removing layers from pre-trained networks automatically during adaptation."
+            ],
+            "correctAnswer": 0,
+            "rationale": "Transfer learning's key advantage is leveraging learned representations from large-scale training, which reduces both data and computational requirements for domain-specific tasks. It doesn't eliminate training needs, guarantee superior performance universally, or automatically simplify architectures.",
+            "tags": [
+              "transfer_learning",
+              "model_efficiency",
+              "pre-training",
+              "foundational"
+            ]
+          },
+          {
+            "id": "MAI-DS-B-002",
+            "level": 2,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.3,
+            "discrimination": 1.08,
+            "bloomLevel": "Understand",
+            "question": "What distinguishes supervised learning from unsupervised learning in machine learning contexts?",
+            "options": [
+              "Supervised learning requires labeled training data with known outcomes, while unsupervised learning finds patterns without labels.",
+              "Supervised learning always performs better than unsupervised learning across all problem types and datasets.",
+              "Supervised learning uses neural networks exclusively, while unsupervised learning uses traditional statistical methods only.",
+              "Supervised learning processes structured data only, while unsupervised learning handles unstructured data exclusively."
+            ],
+            "correctAnswer": 0,
+            "rationale": "The fundamental distinction is the presence or absence of labeled outcomes in training data. Supervised learning learns from input-output pairs, while unsupervised learning discovers structure in unlabeled data. Performance, architecture choice, and data structure aren't defining characteristics.",
+            "tags": [
+              "learning_paradigms",
+              "supervised_learning",
+              "unsupervised_learning",
+              "foundational"
+            ]
+          },
+          {
+            "id": "MAI-DS-B-003",
+            "level": 3,
+            "type": "scenario",
+            "points": 10,
+            "difficulty": 0.35,
+            "discrimination": 1.1,
+            "bloomLevel": "Apply",
+            "question": "You need to predict customer churn for a subscription service. Which type of machine learning problem is this?",
+            "options": [
+              "This is a binary classification problem where you predict whether customers will churn or remain subscribed.",
+              "This is a regression problem where you predict the continuous probability value of customer satisfaction levels.",
+              "This is a clustering problem where you group customers into different segments based on behavior patterns.",
+              "This is a reinforcement learning problem where you optimize actions to maximize customer retention rewards."
+            ],
+            "correctAnswer": 0,
+            "rationale": "Customer churn prediction is a binary classification task with two discrete outcomes: churn or not churn. While you might output probabilities, the target is categorical. Clustering groups customers but doesn't predict outcomes, and reinforcement learning optimizes sequential decisions rather than predicting events.",
+            "tags": [
+              "classification",
+              "problem_formulation",
+              "churn_prediction",
+              "applied"
+            ]
+          },
+          {
+            "id": "MAI-DS-B-004",
+            "level": 4,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.38,
+            "discrimination": 1.12,
+            "bloomLevel": "Understand",
+            "question": "How does model capacity relate to overfitting and underfitting in machine learning?",
+            "options": [
+              "Higher capacity models can fit training data better but risk overfitting, while lower capacity models may underfit complex patterns.",
+              "Higher capacity models always prevent overfitting by learning more generalizable patterns from available training data.",
+              "Model capacity is unrelated to fitting issues, which depend entirely on the quality of training data.",
+              "Lower capacity models always overfit because they memorize training examples rather than learning patterns."
+            ],
+            "correctAnswer": 0,
+            "rationale": "Model capacity represents the range of functions a model can learn. High capacity enables fitting complex patterns but risks memorizing noise (overfitting), while low capacity may fail to capture true patterns (underfitting). Capacity alone doesn't prevent overfitting or guarantee it.",
+            "tags": [
+              "overfitting",
+              "underfitting",
+              "model_capacity",
+              "bias_variance"
+            ]
+          },
+          {
+            "id": "MAI-DS-B-005",
+            "level": 5,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.4,
+            "discrimination": 1.13,
+            "bloomLevel": "Understand",
+            "question": "What is the key advantage of foundation models like BERT or GPT in modern machine learning?",
+            "options": [
+              "Foundation models learn general representations from vast data that can be adapted to many downstream tasks efficiently.",
+              "Foundation models eliminate the need for domain expertise by automatically understanding all specialized contexts.",
+              "Foundation models require no fine-tuning and work optimally for any task immediately after pre-training.",
+              "Foundation models guarantee better performance than task-specific models across all applications without exception."
+            ],
+            "correctAnswer": 0,
+            "rationale": "Foundation models' power lies in learning broad representations from large-scale pre-training that transfer effectively to diverse tasks with minimal adaptation. They don't replace domain expertise, often require fine-tuning, and aren't universally superior to specialized models.",
+            "tags": [
+              "foundation_models",
+              "pre-training",
+              "transfer_learning",
+              "llms"
+            ]
+          },
+          {
+            "id": "MAI-DS-B-006",
+            "level": 6,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.42,
+            "discrimination": 1.15,
+            "bloomLevel": "Understand",
+            "question": "When should you choose a generative model over a discriminative model?",
+            "options": [
+              "Choose generative models when you need to understand data distribution, generate new samples, or handle missing data.",
+              "Choose generative models exclusively for classification tasks because they provide better decision boundaries always.",
+              "Choose generative models when computational efficiency is the primary concern for production deployment.",
+              "Choose generative models only when you have limited training data and need to maximize prediction accuracy."
+            ],
+            "correctAnswer": 0,
+            "rationale": "Generative models model the joint probability P(X,Y) and are valuable for understanding distributions, sampling, and handling incomplete data. Discriminative models often perform better for pure classification and are typically more efficient. Neither is universally superior.",
+            "tags": [
+              "generative_models",
+              "discriminative_models",
+              "model_selection",
+              "probability"
+            ]
+          },
+          {
+            "id": "MAI-DS-B-007",
+            "level": 7,
+            "type": "scenario",
+            "points": 10,
+            "difficulty": 0.45,
+            "discrimination": 1.17,
+            "bloomLevel": "Understand",
+            "question": "Your team is debating whether to use a deep learning model or traditional ML for a tabular dataset with 50,000 rows and 30 features. What should guide this decision?",
+            "options": [
+              "Consider whether deep learning's complexity is justified given that traditional ML often performs well on tabular data with this scale.",
+              "Always choose deep learning because it represents the latest technology and guarantees superior results on any dataset.",
+              "Choose traditional ML exclusively because deep learning requires millions of samples to function effectively on any problem.",
+              "The decision is arbitrary since both approaches produce identical results on structured tabular datasets regardless of size."
+            ],
+            "correctAnswer": 0,
+            "rationale": "For moderate-sized tabular data, traditional ML (random forests, XGBoost) often matches or exceeds deep learning performance while being simpler and more interpretable. Deep learning shines with very large datasets, unstructured data, or complex feature interactions. Neither is universally optimal.",
+            "tags": [
+              "model_selection",
+              "deep_learning",
+              "traditional_ml",
+              "tabular_data"
+            ]
+          }
+        ]
+      },
+      {
+        "dimensionCode": "MDE",
+        "dimensionName": "Model Development & Experimentation",
+        "description": "Practical model development, experimentation, and iteration practices",
+        "weight": 0.125,
+        "totalPoints": 75,
+        "items": [
+          {
+            "id": "MDE-DS-B-001",
+            "level": 1,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.26,
+            "discrimination": 1.06,
+            "bloomLevel": "Remember",
+            "question": "What's the first step you should take when starting a new machine learning project?",
+            "options": [
+              "You should establish a simple baseline model to understand minimum acceptable performance before building complexity.",
+              "You should immediately implement the most advanced deep learning architecture available for the problem domain.",
+              "You should collect as much data as possible before considering any modeling approaches or baselines.",
+              "You should focus on hyperparameter tuning to optimize performance before establishing any baseline metrics."
+            ],
+            "correctAnswer": 0,
+            "rationale": "Starting with a simple baseline (e.g., naive prediction, simple heuristic) provides a performance floor and helps determine if complex models add value. Jumping to complex models or extensive tuning before understanding baselines wastes time and obscures whether sophistication is justified.",
+            "tags": [
+              "baseline",
+              "project_initiation",
+              "best_practices",
+              "methodology"
+            ]
+          },
+          {
+            "id": "MDE-DS-B-002",
+            "level": 2,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.3,
+            "discrimination": 1.08,
+            "bloomLevel": "Understand",
+            "question": "Why do you split data into training, validation, and test sets rather than just training and test?",
+            "options": [
+              "The validation set allows you to tune models and hyperparameters without biasing your final test set performance estimate.",
+              "Using three sets guarantees better model performance by providing more opportunities to adjust the algorithm.",
+              "The validation set is required by all machine learning frameworks and cannot be omitted from any project.",
+              "Three sets are needed because models must be trained separately on each subset to ensure robust predictions."
+            ],
+            "correctAnswer": 0,
+            "rationale": "Validation sets enable iterative model development and hyperparameter tuning while preserving test set integrity for unbiased final evaluation. Using test data for tuning decisions creates optimistic bias. The validation set isn't about more training but about honest evaluation during development.",
+            "tags": [
+              "train_test_split",
+              "validation",
+              "evaluation_methodology",
+              "bias"
+            ]
+          },
+          {
+            "id": "MDE-DS-B-003",
+            "level": 3,
+            "type": "scenario",
+            "points": 10,
+            "difficulty": 0.34,
+            "discrimination": 1.1,
+            "bloomLevel": "Apply",
+            "question": "You're tuning hyperparameters for a model and notice that performance improves on validation data but worsens on training data. What does this suggest?",
+            "options": [
+              "This suggests the model is becoming less overfit and achieving better generalization to unseen data patterns.",
+              "This indicates a critical error in your code because training performance should always improve with better hyperparameters.",
+              "This means your validation set is too easy and you need to collect more challenging validation examples.",
+              "This shows that hyperparameter tuning has failed and you should return to default parameter settings."
+            ],
+            "correctAnswer": 0,
+            "rationale": "When validation improves while training performance decreases, the model is generalizing better by reducing overfitting. Lower training performance with better validation performance indicates the model is learning real patterns rather than memorizing training noise.",
+            "tags": [
+              "hyperparameter_tuning",
+              "overfitting",
+              "generalization",
+              "evaluation"
+            ]
+          },
+          {
+            "id": "MDE-DS-B-004",
+            "level": 4,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.38,
+            "discrimination": 1.12,
+            "bloomLevel": "Understand",
+            "question": "What is the primary purpose of cross-validation in model development?",
+            "options": [
+              "Cross-validation provides more reliable performance estimates by evaluating the model on multiple different data splits.",
+              "Cross-validation increases the effective size of your dataset by creating multiple copies of training examples.",
+              "Cross-validation eliminates the need for a separate test set by using all data for both training and evaluation.",
+              "Cross-validation automatically selects the best hyperparameters without requiring manual tuning or search strategies."
+            ],
+            "correctAnswer": 0,
+            "rationale": "Cross-validation's key value is robust performance estimation through multiple train/validation splits, reducing variance in evaluation metrics. It doesn't create more data, doesn't replace test sets, and doesn't automate hyperparameter selection\u2014it provides better estimates during selection.",
+            "tags": [
+              "cross_validation",
+              "model_evaluation",
+              "statistical_rigor",
+              "methodology"
+            ]
+          },
+          {
+            "id": "MDE-DS-B-005",
+            "level": 5,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.41,
+            "discrimination": 1.14,
+            "bloomLevel": "Apply",
+            "question": "Why is experiment tracking essential in machine learning projects?",
+            "options": [
+              "Experiment tracking enables reproducibility, comparison of approaches, and understanding what works through systematic documentation.",
+              "Experiment tracking is only necessary for academic research and provides no value in applied industry projects.",
+              "Experiment tracking automatically improves model performance by identifying optimal configurations without manual analysis.",
+              "Experiment tracking replaces the need for proper version control by storing all code changes with results."
+            ],
+            "correctAnswer": 0,
+            "rationale": "Systematic experiment tracking (parameters, metrics, code versions) enables reproducibility, informed decision-making, and knowledge accumulation. It's valuable in all contexts, doesn't auto-optimize models, and complements rather than replaces version control.",
+            "tags": [
+              "experiment_tracking",
+              "reproducibility",
+              "mlops",
+              "best_practices"
+            ]
+          },
+          {
+            "id": "MDE-DS-B-006",
+            "level": 6,
+            "type": "scenario",
+            "points": 10,
+            "difficulty": 0.44,
+            "discrimination": 1.15,
+            "bloomLevel": "Apply",
+            "question": "You've trained five different models on the same problem. How should you select which model to deploy?",
+            "options": [
+              "Select based on validation performance, computational requirements, interpretability needs, and maintenance considerations together.",
+              "Always select the model with the highest validation accuracy regardless of other factors or constraints.",
+              "Select the most complex model because complexity correlates with better performance in production environments.",
+              "Select randomly among models with similar performance because differences are statistically insignificant in practice."
+            ],
+            "correctAnswer": 0,
+            "rationale": "Model selection requires balancing multiple factors: performance, computational cost, interpretability, maintenance burden, and business requirements. Maximizing a single metric ignores critical tradeoffs. Complexity doesn't guarantee production success, and similar validation performance can hide important differences.",
+            "tags": [
+              "model_selection",
+              "tradeoffs",
+              "deployment",
+              "decision_making"
+            ]
+          },
+          {
+            "id": "MDE-DS-B-007",
+            "level": 7,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.46,
+            "discrimination": 1.16,
+            "bloomLevel": "Understand",
+            "question": "What role does feature engineering play in modern machine learning with deep learning models?",
+            "options": [
+              "Feature engineering remains valuable even with deep learning, especially for structured data and domain-specific insights.",
+              "Feature engineering is completely obsolete because deep learning automatically discovers all optimal features from raw data.",
+              "Feature engineering is only necessary when working with traditional machine learning algorithms exclusively.",
+              "Feature engineering is harmful to deep learning models because manual features interfere with automatic representation learning."
+            ],
+            "correctAnswer": 0,
+            "rationale": "While deep learning can learn features automatically, domain-informed feature engineering often improves performance, especially for structured/tabular data. It's not obsolete, not limited to traditional ML, and doesn't harm deep learning\u2014thoughtful features enhance rather than interfere with learning.",
+            "tags": [
+              "feature_engineering",
+              "deep_learning",
+              "domain_knowledge",
+              "representation_learning"
+            ]
+          },
+          {
+            "id": "MDE-DS-B-008",
+            "level": 8,
+            "type": "scenario",
+            "points": 10,
+            "difficulty": 0.49,
+            "discrimination": 1.18,
+            "bloomLevel": "Apply",
+            "question": "Your model shows great performance on validation data but performs poorly when you deploy it. What's the most likely issue?",
+            "options": [
+              "There's likely a distribution shift between your validation data and real-world production data characteristics.",
+              "The validation set was too small, making all performance estimates unreliable regardless of model quality.",
+              "The model architecture was poorly chosen and needs to be replaced with a different algorithm entirely.",
+              "The hyperparameters were incorrectly tuned, requiring a complete restart of the tuning process from scratch."
+            ],
+            "correctAnswer": 0,
+            "rationale": "When validation performance doesn't translate to production, distribution shift (differences between training/validation and production data) is the primary suspect. This could be temporal drift, sampling bias, or data collection differences. It's usually not about validation size, architecture, or hyperparameters if validation performance was strong.",
+            "tags": [
+              "distribution_shift",
+              "production",
+              "validation",
+              "debugging"
+            ]
+          }
+        ]
+      },
+      {
+        "dimensionCode": "MEV",
+        "dimensionName": "Model Evaluation & Validation",
+        "description": "Evaluating model performance and ensuring validity",
+        "weight": 0.125,
+        "totalPoints": 75,
+        "items": [
+          {
+            "id": "MEV-DS-B-001",
+            "level": 1,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.27,
+            "discrimination": 1.06,
+            "bloomLevel": "Remember",
+            "question": "When should you prioritize recall over precision in a classification model?",
+            "options": [
+              "You should prioritize recall when missing positive cases (false negatives) is more costly than having false positives.",
+              "You should prioritize recall when you need to minimize the total number of predictions made by the model.",
+              "You should prioritize recall exclusively for regression problems where continuous values require accurate predictions.",
+              "You should always prioritize recall over precision because it represents overall model accuracy better."
+            ],
+            "correctAnswer": 0,
+            "rationale": "Recall prioritization is appropriate when false negatives are more problematic than false positives (e.g., disease screening, fraud detection). The choice depends on cost asymmetry between error types, not prediction volume, problem type, or universal rules.",
+            "tags": [
+              "precision_recall",
+              "evaluation_metrics",
+              "cost_sensitive",
+              "classification"
+            ]
+          },
+          {
+            "id": "MEV-DS-B-002",
+            "level": 2,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.31,
+            "discrimination": 1.08,
+            "bloomLevel": "Understand",
+            "question": "What does a confusion matrix reveal about classification model performance?",
+            "options": [
+              "A confusion matrix shows the distribution of predictions across actual classes, revealing specific error patterns and types.",
+              "A confusion matrix displays the mathematical formula used by the model to calculate prediction probabilities.",
+              "A confusion matrix proves whether the model architecture was optimally designed for the given problem.",
+              "A confusion matrix automatically determines the best threshold for converting probabilities to class predictions."
+            ],
+            "correctAnswer": 0,
+            "rationale": "Confusion matrices display actual vs predicted class distributions, making error types (false positives, false negatives) visible. They don't show model internals, prove architectural optimality, or determine thresholds\u2014they reveal what the model predicts given some threshold.",
+            "tags": [
+              "confusion_matrix",
+              "error_analysis",
+              "classification",
+              "evaluation"
+            ]
+          },
+          {
+            "id": "MEV-DS-B-003",
+            "level": 3,
+            "type": "scenario",
+            "points": 10,
+            "difficulty": 0.35,
+            "discrimination": 1.1,
+            "bloomLevel": "Apply",
+            "question": "Your binary classifier achieves 95% accuracy, but stakeholders are unhappy with performance. What might be the issue?",
+            "options": [
+              "High accuracy can be misleading with class imbalance where the model simply predicts the majority class.",
+              "The model architecture is fundamentally flawed and needs complete replacement with a different algorithm.",
+              "Stakeholders don't understand machine learning metrics and need education about acceptable performance levels.",
+              "The training data quality was poor, making any level of accuracy impossible to achieve reliably."
+            ],
+            "correctAnswer": 0,
+            "rationale": "High accuracy with stakeholder dissatisfaction often indicates class imbalance where accuracy is misleading. A model predicting only the 95% majority class achieves 95% accuracy but fails on the important minority class. This is about metric appropriateness, not architecture, stakeholder knowledge, or data quality necessarily.",
+            "tags": [
+              "class_imbalance",
+              "accuracy_paradox",
+              "evaluation",
+              "metrics"
+            ]
+          },
+          {
+            "id": "MEV-DS-B-004",
+            "level": 4,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.39,
+            "discrimination": 1.12,
+            "bloomLevel": "Understand",
+            "question": "What does the ROC curve help you understand about a classification model?",
+            "options": [
+              "The ROC curve shows the tradeoff between true positive rate and false positive rate across different thresholds.",
+              "The ROC curve displays the exact accuracy level achieved by the model on training data exclusively.",
+              "The ROC curve identifies which features are most important for making accurate predictions in the model.",
+              "The ROC curve determines the optimal model architecture by comparing different algorithm performances."
+            ],
+            "correctAnswer": 0,
+            "rationale": "ROC curves plot TPR vs FPR across classification thresholds, visualizing the sensitivity-specificity tradeoff. They don't show accuracy directly, identify features, or compare architectures\u2014they characterize threshold-dependent performance for a given model.",
+            "tags": [
+              "roc_curve",
+              "threshold_analysis",
+              "classification",
+              "evaluation_metrics"
+            ]
+          },
+          {
+            "id": "MEV-DS-B-005",
+            "level": 5,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.41,
+            "discrimination": 1.13,
+            "bloomLevel": "Understand",
+            "question": "How does data leakage affect model evaluation?",
+            "options": [
+              "Data leakage causes overly optimistic performance estimates by including information from test data in training.",
+              "Data leakage improves model generalization by exposing the algorithm to a wider variety of patterns.",
+              "Data leakage only matters in academic settings and has minimal impact on production model performance.",
+              "Data leakage automatically corrects itself during model deployment when exposed to new real-world data."
+            ],
+            "correctAnswer": 0,
+            "rationale": "Data leakage (test information bleeding into training) creates falsely optimistic metrics that don't reflect real-world performance. It doesn't improve generalization, matters critically in production, and persists in deployment where the model fails on truly unseen data.",
+            "tags": [
+              "data_leakage",
+              "evaluation_validity",
+              "overfitting",
+              "bias"
+            ]
+          },
+          {
+            "id": "MEV-DS-B-006",
+            "level": 6,
+            "type": "scenario",
+            "points": 10,
+            "difficulty": 0.44,
+            "discrimination": 1.15,
+            "bloomLevel": "Apply",
+            "question": "How do you determine if your model's performance improvement is statistically significant?",
+            "options": [
+              "You should use statistical tests like t-tests or bootstrap confidence intervals to assess whether differences exceed random variation.",
+              "Any performance improvement is automatically significant if it appears on validation data regardless of magnitude.",
+              "Statistical significance is unnecessary in machine learning because model architecture determines reliability completely.",
+              "You only need to check that validation accuracy is higher than training accuracy to confirm significance."
+            ],
+            "correctAnswer": 0,
+            "rationale": "Statistical testing (t-tests, permutation tests, bootstrap CIs) distinguishes real improvements from random variation. Not all improvements are significant, significance testing is crucial in ML, and comparing train/validation accuracy addresses overfitting not statistical significance.",
+            "tags": [
+              "statistical_significance",
+              "hypothesis_testing",
+              "evaluation_rigor",
+              "methodology"
+            ]
+          },
+          {
+            "id": "MEV-DS-B-007",
+            "level": 7,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.47,
+            "discrimination": 1.17,
+            "bloomLevel": "Apply",
+            "question": "Your model performs well on standard metrics but poorly on specific customer segments. What evaluation approach addresses this?",
+            "options": [
+              "You should perform stratified evaluation by analyzing performance separately across different customer segments.",
+              "You should increase the overall training data size until aggregate metrics satisfy all stakeholder requirements.",
+              "You should switch to a different model architecture that inherently handles all segments equally well.",
+              "You should remove problematic segments from evaluation to focus on where the model performs acceptably."
+            ],
+            "correctAnswer": 0,
+            "rationale": "Segment-specific evaluation reveals disparate performance that aggregate metrics hide. Simply adding data, changing architectures, or excluding segments doesn't address the root issue\u2014you need stratified analysis to understand and address segment-specific problems.",
+            "tags": [
+              "stratified_evaluation",
+              "segment_analysis",
+              "fairness",
+              "evaluation_methodology"
+            ]
+          }
+        ]
+      },
+      {
+        "dimensionCode": "DPP",
+        "dimensionName": "Data Preparation & Processing",
+        "description": "Data quality, preprocessing, and feature engineering",
+        "weight": 0.125,
+        "totalPoints": 75,
+        "items": [
+          {
+            "id": "DPP-DS-B-001",
+            "level": 1,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.26,
+            "discrimination": 1.06,
+            "bloomLevel": "Remember",
+            "question": "What's the most important consideration when handling missing data in your training set?",
+            "options": [
+              "The most important consideration is understanding why data is missing and whether the missingness pattern is informative.",
+              "The most important consideration is always removing all rows with any missing values to ensure clean data.",
+              "The most important consideration is replacing all missing values with zeros to maintain dataset size.",
+              "The most important consideration is ignoring missing data entirely because algorithms handle it automatically."
+            ],
+            "correctAnswer": 0,
+            "rationale": "Understanding missingness mechanisms (MCAR, MAR, MNAR) is crucial because the pattern may be informative. Blindly deleting rows loses information, filling with zeros can introduce bias, and algorithms don't universally handle missingness well\u2014the approach depends on why data is missing.",
+            "tags": [
+              "missing_data",
+              "data_quality",
+              "preprocessing",
+              "methodology"
+            ]
+          },
+          {
+            "id": "DPP-DS-B-002",
+            "level": 2,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.3,
+            "discrimination": 1.08,
+            "bloomLevel": "Understand",
+            "question": "Why is feature scaling important for many machine learning algorithms?",
+            "options": [
+              "Feature scaling prevents features with larger ranges from dominating distance calculations and gradient-based optimization.",
+              "Feature scaling is purely cosmetic and provides no mathematical or practical benefit to model performance.",
+              "Feature scaling is required by law when deploying models to production environments for fairness reasons.",
+              "Feature scaling eliminates all correlation between features, making models learn independent patterns only."
+            ],
+            "correctAnswer": 0,
+            "rationale": "Algorithms using distances (KNN, SVM) or gradients (neural networks, linear models) are sensitive to feature scales. Scaling ensures features contribute proportionally. It's not cosmetic, not legally required, and doesn't remove correlation\u2014it equalizes the influence of different-scale features.",
+            "tags": [
+              "feature_scaling",
+              "normalization",
+              "preprocessing",
+              "algorithm_requirements"
+            ]
+          },
+          {
+            "id": "DPP-DS-B-003",
+            "level": 3,
+            "type": "scenario",
+            "points": 10,
+            "difficulty": 0.34,
+            "discrimination": 1.1,
+            "bloomLevel": "Apply",
+            "question": "You need to encode a categorical variable with 100 unique cities. What encoding approach is most appropriate?",
+            "options": [
+              "Consider target encoding, embeddings, or frequency encoding rather than one-hot encoding for high-cardinality categories.",
+              "Always use one-hot encoding regardless of cardinality because it's the only mathematically correct approach.",
+              "Convert cities to arbitrary integer labels because the order doesn't matter for categorical variables.",
+              "Remove the city variable entirely because categorical variables with high cardinality cannot be properly encoded."
+            ],
+            "correctAnswer": 0,
+            "rationale": "High-cardinality categories make one-hot encoding impractical (100 features). Target encoding, embeddings, or frequency encoding better handle this. One-hot isn't always optimal, arbitrary integers imply false ordinal relationships, and removing features loses information.",
+            "tags": [
+              "categorical_encoding",
+              "high_cardinality",
+              "feature_engineering",
+              "preprocessing"
+            ]
+          },
+          {
+            "id": "DPP-DS-B-004",
+            "level": 4,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.38,
+            "discrimination": 1.12,
+            "bloomLevel": "Understand",
+            "question": "What is the primary risk of performing feature selection on your entire dataset before splitting train/test?",
+            "options": [
+              "This creates data leakage by using test set information in feature selection, leading to overly optimistic performance estimates.",
+              "This reduces model accuracy by eliminating potentially useful features before the model has trained properly.",
+              "This violates statistical assumptions about independence, making all subsequent hypothesis tests completely invalid.",
+              "This increases computational cost unnecessarily by processing the full dataset before creating smaller splits."
+            ],
+            "correctAnswer": 0,
+            "rationale": "Feature selection before splitting leaks test information into the training process. Features selected based on all data include test patterns, creating optimistic bias. This doesn't necessarily reduce accuracy on biased metrics, isn't about statistical test assumptions, and isn't about computation.",
+            "tags": [
+              "feature_selection",
+              "data_leakage",
+              "methodology",
+              "evaluation_validity"
+            ]
+          },
+          {
+            "id": "DPP-DS-B-005",
+            "level": 5,
+            "type": "scenario",
+            "points": 10,
+            "difficulty": 0.41,
+            "discrimination": 1.13,
+            "bloomLevel": "Apply",
+            "question": "Your dataset has several outliers that could be errors or legitimate extreme values. How should you proceed?",
+            "options": [
+              "Investigate outliers individually to understand their origin before deciding whether to remove, transform, or keep them.",
+              "Automatically remove all outliers using a fixed threshold like values beyond 3 standard deviations.",
+              "Keep all outliers regardless of source because removing data always introduces bias into models.",
+              "Transform all features to eliminate outliers mathematically before examining what they represent."
+            ],
+            "correctAnswer": 0,
+            "rationale": "Outlier handling requires understanding context\u2014are they errors, rare events, or extreme but valid values? Automatic removal can lose information, keeping errors introduces noise, and blind transformation obscures meaning. Investigation before action is essential.",
+            "tags": [
+              "outliers",
+              "data_quality",
+              "preprocessing",
+              "domain_knowledge"
+            ]
+          },
+          {
+            "id": "DPP-DS-B-006",
+            "level": 6,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.44,
+            "discrimination": 1.15,
+            "bloomLevel": "Understand",
+            "question": "What is the purpose of creating polynomial features or interaction terms in feature engineering?",
+            "options": [
+              "Polynomial and interaction features allow models to capture non-linear relationships and feature dependencies more effectively.",
+              "These transformations are required to satisfy the normality assumptions of all machine learning algorithms.",
+              "Polynomial features automatically improve model performance regardless of whether non-linear patterns exist in data.",
+              "Interaction terms reduce model complexity by combining multiple features into single derived variables."
+            ],
+            "correctAnswer": 0,
+            "rationale": "Polynomial features and interactions help linear models capture non-linear patterns and feature dependencies. They're not required for normality (irrelevant for most ML), don't universally improve performance if patterns aren't present, and increase rather than decrease complexity.",
+            "tags": [
+              "feature_engineering",
+              "polynomial_features",
+              "interactions",
+              "non_linearity"
+            ]
+          },
+          {
+            "id": "DPP-DS-B-007",
+            "level": 7,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.46,
+            "discrimination": 1.16,
+            "bloomLevel": "Apply",
+            "question": "How should you handle temporal features like timestamps in machine learning models?",
+            "options": [
+              "Extract meaningful temporal components like hour, day-of-week, or seasonality that capture relevant patterns for your problem.",
+              "Always convert timestamps to seconds since epoch and use them directly as continuous numerical features.",
+              "Remove all temporal features because time information introduces complexity that models cannot handle effectively.",
+              "Use timestamps only as sorting keys and never include them in model features under any circumstances."
+            ],
+            "correctAnswer": 0,
+            "rationale": "Raw timestamps are rarely useful\u2014extracting cyclical patterns (hour, day), trends, or domain-specific temporal features captures relevant information. Seconds-since-epoch may lack meaningful patterns, removing time loses information, and absolute prohibition ignores valid use cases.",
+            "tags": [
+              "temporal_features",
+              "feature_engineering",
+              "time_series",
+              "preprocessing"
+            ]
+          },
+          {
+            "id": "DPP-DS-B-008",
+            "level": 8,
+            "type": "scenario",
+            "points": 10,
+            "difficulty": 0.49,
+            "discrimination": 1.18,
+            "bloomLevel": "Apply",
+            "question": "You need to preprocess data identically in training and production. What's the best approach?",
+            "options": [
+              "Create a preprocessing pipeline that fits on training data and can be saved, versioned, and applied consistently in production.",
+              "Document preprocessing steps manually and implement them separately in training and production code.",
+              "Apply preprocessing independently each time using the current dataset's statistics for maximum data-specific optimization.",
+              "Store preprocessed data rather than pipelines since transformations are too complex to reproduce reliably."
+            ],
+            "correctAnswer": 0,
+            "rationale": "Preprocessing pipelines (scikit-learn Pipeline, feature stores) ensure consistency by fitting on training data and applying the same transformation in production. Manual documentation invites errors, per-dataset fitting causes train-serve skew, and storing transformed data doesn't help with new production data.",
+            "tags": [
+              "preprocessing_pipeline",
+              "train_serve_consistency",
+              "mlops",
+              "production"
+            ]
+          }
+        ]
+      },
+      {
+        "dimensionCode": "MPD",
+        "dimensionName": "Model Production & Deployment",
+        "description": "Taking models from development to production",
+        "weight": 0.125,
+        "totalPoints": 75,
+        "items": [
+          {
+            "id": "MPD-DS-B-001",
+            "level": 1,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.27,
+            "discrimination": 1.06,
+            "bloomLevel": "Remember",
+            "question": "What's the primary reason to monitor model predictions in production?",
+            "options": [
+              "The primary reason is to detect model drift where real-world data distributions change from training data.",
+              "The primary reason is to collect user complaints about model errors for legal liability purposes.",
+              "The primary reason is to automatically retrain models whenever prediction confidence scores drop below thresholds.",
+              "The primary reason is to satisfy regulatory requirements that mandate continuous model observation."
+            ],
+            "correctAnswer": 0,
+            "rationale": "Production monitoring detects drift (data or concept drift) where incoming data differs from training distributions, degrading performance. It's not primarily about collecting complaints, doesn't automatically trigger retraining, and while regulations may require monitoring, drift detection is the core purpose.",
+            "tags": [
+              "model_monitoring",
+              "drift_detection",
+              "production",
+              "mlops"
+            ]
+          },
+          {
+            "id": "MPD-DS-B-002",
+            "level": 2,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.31,
+            "discrimination": 1.08,
+            "bloomLevel": "Understand",
+            "question": "What distinguishes model serving from model training in machine learning systems?",
+            "options": [
+              "Model serving focuses on low-latency inference at scale, while training optimizes for computational throughput and accuracy.",
+              "Model serving and training are identical processes that use the same infrastructure and optimization strategies.",
+              "Model serving requires more computational resources than training because it handles higher data volumes.",
+              "Model serving is less important than training because inference code is simpler and rarely causes problems."
+            ],
+            "correctAnswer": 0,
+            "rationale": "Serving prioritizes latency, availability, and throughput for inference; training prioritizes computational efficiency for learning. They have different infrastructure needs, aren't identical processes, and training typically uses more resources than individual inference (though serving handles more volume).",
+            "tags": [
+              "model_serving",
+              "inference",
+              "production",
+              "architecture"
+            ]
+          },
+          {
+            "id": "MPD-DS-B-003",
+            "level": 3,
+            "type": "scenario",
+            "points": 10,
+            "difficulty": 0.35,
+            "discrimination": 1.1,
+            "bloomLevel": "Apply",
+            "question": "Your production model's performance has degraded over time despite no code changes. What's the likely cause?",
+            "options": [
+              "The likely cause is concept drift where the relationship between features and targets has changed over time.",
+              "The likely cause is a hardware failure on the production server that corrupted the model weights.",
+              "The likely cause is that users have learned to game the model's predictions through adversarial behavior.",
+              "The likely cause is random performance fluctuation that will self-correct without intervention needed."
+            ],
+            "correctAnswer": 0,
+            "rationale": "Gradual performance degradation with static code suggests concept drift (or data drift)\u2014the world changes while the model stays fixed. Hardware corruption would cause sudden failure, adversarial gaming is possible but less common than drift, and sustained degradation isn't random fluctuation.",
+            "tags": [
+              "concept_drift",
+              "model_degradation",
+              "production",
+              "monitoring"
+            ]
+          },
+          {
+            "id": "MPD-DS-B-004",
+            "level": 4,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.39,
+            "discrimination": 1.12,
+            "bloomLevel": "Understand",
+            "question": "Why is model versioning important in production ML systems?",
+            "options": [
+              "Model versioning enables reproducibility, rollback capability, and tracking which model generated specific predictions.",
+              "Model versioning is only necessary for regulatory compliance and provides no operational benefits otherwise.",
+              "Model versioning prevents model drift by locking model parameters and preventing any changes over time.",
+              "Model versioning automatically improves model performance by enabling ensemble predictions from multiple versions."
+            ],
+            "correctAnswer": 0,
+            "rationale": "Versioning enables reproducibility (which model made this prediction?), rollback (revert to previous version), and audit trails. It's not just regulatory, doesn't prevent drift (models still drift), and doesn't automatically create ensembles\u2014it's about tracking and control.",
+            "tags": [
+              "model_versioning",
+              "mlops",
+              "reproducibility",
+              "production"
+            ]
+          },
+          {
+            "id": "MPD-DS-B-005",
+            "level": 5,
+            "type": "scenario",
+            "points": 10,
+            "difficulty": 0.41,
+            "discrimination": 1.13,
+            "bloomLevel": "Apply",
+            "question": "How should you deploy a new model version that might impact user experience?",
+            "options": [
+              "Use A/B testing or canary deployment to gradually expose users to the new model while monitoring metrics.",
+              "Deploy immediately to all users to maximize the speed of model improvement and minimize technical debt.",
+              "Deploy only during low-traffic periods to minimize potential impact if the model performs poorly.",
+              "Deploy to internal users first for one month before any external user exposure occurs."
+            ],
+            "correctAnswer": 0,
+            "rationale": "A/B testing or canary deployment (gradual rollout) allows controlled exposure with monitoring before full deployment. Full immediate deployment is risky, low-traffic deployment doesn't reduce per-user risk, and one-month internal testing delays feedback without statistical rigor of A/B testing.",
+            "tags": [
+              "ab_testing",
+              "canary_deployment",
+              "gradual_rollout",
+              "production"
+            ]
+          },
+          {
+            "id": "MPD-DS-B-006",
+            "level": 6,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.44,
+            "discrimination": 1.15,
+            "bloomLevel": "Apply",
+            "question": "What's the primary tradeoff between model complexity and inference latency in production?",
+            "options": [
+              "More complex models generally provide better accuracy but require longer inference times, impacting user experience.",
+              "Model complexity has no relationship to inference latency because optimization eliminates any performance differences.",
+              "Simpler models always have higher latency because they require more preprocessing and feature computation.",
+              "Inference latency is determined entirely by hardware and is independent of model architecture choices."
+            ],
+            "correctAnswer": 0,
+            "rationale": "Complex models (deep networks, large ensembles) typically offer better accuracy at the cost of inference time. Optimization helps but doesn't eliminate differences, simpler models are generally faster not slower, and while hardware matters, model architecture significantly impacts latency.",
+            "tags": [
+              "inference_latency",
+              "model_complexity",
+              "tradeoffs",
+              "production"
+            ]
+          },
+          {
+            "id": "MPD-DS-B-007",
+            "level": 7,
+            "type": "scenario",
+            "points": 10,
+            "difficulty": 0.47,
+            "discrimination": 1.17,
+            "bloomLevel": "Apply",
+            "question": "Your model needs to serve millions of predictions per day with sub-100ms latency. What deployment consideration is most critical?",
+            "options": [
+              "The most critical consideration is infrastructure for low-latency serving, including caching, batching, and efficient model formats.",
+              "The most critical consideration is model accuracy because high volume amplifies the cost of prediction errors.",
+              "The most critical consideration is explainability since many predictions require human review before use.",
+              "The most critical consideration is cost reduction by using the smallest possible infrastructure for deployment."
+            ],
+            "correctAnswer": 0,
+            "rationale": "High-volume, low-latency requirements demand serving infrastructure optimization (model serving frameworks, batching, caching, model quantization/distillation). While accuracy matters, the primary challenge here is meeting latency requirements at scale. Explainability doesn't suit high-volume automated decisions, and minimal infrastructure can't meet performance requirements.",
+            "tags": [
+              "high_volume_serving",
+              "latency_optimization",
+              "production",
+              "infrastructure"
+            ]
+          }
+        ]
+      },
+      {
+        "dimensionCode": "ERM",
+        "dimensionName": "Ethics, Risk & Model Governance",
+        "description": "Responsible AI development and deployment",
+        "weight": 0.125,
+        "totalPoints": 75,
+        "items": [
+          {
+            "id": "ERM-DS-B-001",
+            "level": 1,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.28,
+            "discrimination": 1.07,
+            "bloomLevel": "Remember",
+            "question": "When is model interpretability most critical in a data science project?",
+            "options": [
+              "Model interpretability is most critical when decisions significantly affect individuals and require explanation or appeal mechanisms.",
+              "Model interpretability is equally critical across all projects regardless of their impact or application domain.",
+              "Model interpretability is only required for academic research and has minimal relevance in industry applications.",
+              "Model interpretability is unnecessary when model accuracy exceeds 90% on validation data regardless of use case."
+            ],
+            "correctAnswer": 0,
+            "rationale": "Interpretability matters most for high-stakes decisions (credit, healthcare, criminal justice) where affected individuals need explanations and recourse. Not all projects have equal interpretability needs, industry applications often require it, and high accuracy doesn't eliminate explanation requirements.",
+            "tags": [
+              "interpretability",
+              "explainability",
+              "high_stakes",
+              "ethics"
+            ]
+          },
+          {
+            "id": "ERM-DS-B-002",
+            "level": 2,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.32,
+            "discrimination": 1.09,
+            "bloomLevel": "Understand",
+            "question": "What is algorithmic bias in machine learning models?",
+            "options": [
+              "Algorithmic bias occurs when models produce systematically unfair outcomes for certain groups due to training data or design.",
+              "Algorithmic bias is the statistical variance in model predictions that decreases with larger training datasets.",
+              "Algorithmic bias refers to the preference for certain algorithms over others based on computational efficiency.",
+              "Algorithmic bias is the tendency of models to overfit training data rather than generalize to test data."
+            ],
+            "correctAnswer": 0,
+            "rationale": "Algorithmic bias means systematic unfairness in model outcomes across demographic or other groups, often from biased training data or problem formulation. It's not statistical variance, not algorithm preference, and distinct from overfitting (which relates to generalization, not fairness).",
+            "tags": [
+              "algorithmic_bias",
+              "fairness",
+              "ethics",
+              "discrimination"
+            ]
+          },
+          {
+            "id": "ERM-DS-B-003",
+            "level": 3,
+            "type": "scenario",
+            "points": 10,
+            "difficulty": 0.36,
+            "discrimination": 1.1,
+            "bloomLevel": "Apply",
+            "question": "What's the first indicator that your model may have learned biased patterns?",
+            "options": [
+              "The first indicator is differential performance across demographic groups when evaluating on stratified test data.",
+              "The first indicator is low overall accuracy on the validation set regardless of subgroup performance.",
+              "The first indicator is stakeholder complaints about model decisions after deployment to production environments.",
+              "The first indicator is high correlation between input features in the training dataset correlation matrix."
+            ],
+            "correctAnswer": 0,
+            "rationale": "Disparate performance across groups (by race, gender, age, etc.) signals potential bias. Low overall accuracy isn't about bias specifically, post-deployment complaints come too late, and feature correlation doesn't directly indicate unfair treatment of groups.",
+            "tags": [
+              "bias_detection",
+              "fairness_evaluation",
+              "disparate_impact",
+              "testing"
+            ]
+          },
+          {
+            "id": "ERM-DS-B-004",
+            "level": 4,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.4,
+            "discrimination": 1.12,
+            "bloomLevel": "Understand",
+            "question": "How does data privacy relate to machine learning model development?",
+            "options": [
+              "Data privacy requires minimizing personal data collection, ensuring secure storage, and respecting individual data rights throughout ML.",
+              "Data privacy is unrelated to model development since anonymization eliminates all privacy concerns automatically.",
+              "Data privacy only applies to data storage and has no implications for model training or deployment.",
+              "Data privacy regulations don't apply to machine learning because models don't store individual records."
+            ],
+            "correctAnswer": 0,
+            "rationale": "Privacy is integral to ML\u2014from data collection to model deployment. Anonymization doesn't eliminate all risks (re-identification, inference attacks), privacy affects training (federated learning, differential privacy), and models can leak training data (memorization), making regulations very relevant.",
+            "tags": [
+              "data_privacy",
+              "privacy_regulations",
+              "gdpr",
+              "personal_data"
+            ]
+          },
+          {
+            "id": "ERM-DS-B-005",
+            "level": 5,
+            "type": "scenario",
+            "points": 10,
+            "difficulty": 0.43,
+            "discrimination": 1.14,
+            "bloomLevel": "Apply",
+            "question": "Your model performs well overall but disadvantages a protected demographic group. What should you do?",
+            "options": [
+              "Investigate the cause, collect more representative data, adjust fairness metrics, or redesign to mitigate disparate impact.",
+              "Deploy the model as designed because overall performance is good and individual groups don't require separate consideration.",
+              "Simply remove demographic features from training to eliminate the fairness issue automatically and completely.",
+              "Document the disparity but proceed with deployment since ML models cannot be held to fairness standards."
+            ],
+            "correctAnswer": 0,
+            "rationale": "Disparate impact requires investigation and mitigation through data augmentation, fairness constraints, or redesign. Ignoring protected groups is ethically and legally problematic, removing demographic features doesn't prevent proxy discrimination, and ML models absolutely should meet fairness standards.",
+            "tags": [
+              "fairness_mitigation",
+              "disparate_impact",
+              "protected_groups",
+              "ethics"
+            ]
+          },
+          {
+            "id": "ERM-DS-B-006",
+            "level": 6,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.46,
+            "discrimination": 1.16,
+            "bloomLevel": "Understand",
+            "question": "What is the purpose of model documentation and model cards in ML governance?",
+            "options": [
+              "Model documentation provides transparency about model purpose, limitations, performance, and ethical considerations for stakeholders.",
+              "Model documentation is purely a regulatory requirement with no practical value for model development or deployment.",
+              "Model documentation automatically improves model performance by forcing engineers to optimize during documentation.",
+              "Model documentation exists only for legal liability protection and should be minimized to reduce organizational risk."
+            ],
+            "correctAnswer": 0,
+            "rationale": "Documentation (model cards, datasheets) promotes transparency, informed use, and accountability by detailing model capabilities, limitations, and testing. It's not just regulatory, doesn't improve performance automatically, and should be comprehensive not minimal\u2014it enables responsible use.",
+            "tags": [
+              "model_cards",
+              "documentation",
+              "transparency",
+              "governance"
+            ]
+          },
+          {
+            "id": "ERM-DS-B-007",
+            "level": 7,
+            "type": "scenario",
+            "points": 10,
+            "difficulty": 0.49,
+            "discrimination": 1.18,
+            "bloomLevel": "Apply",
+            "question": "When should you prioritize model interpretability over raw predictive performance?",
+            "options": [
+              "Prioritize interpretability in high-stakes domains requiring human oversight, explanation, or where trust and transparency are essential.",
+              "Always prioritize predictive performance because accuracy is the only meaningful metric for model quality.",
+              "Never prioritize interpretability because complex models always provide better decisions than interpretable ones.",
+              "Prioritize interpretability only when models fail to meet minimum accuracy thresholds on validation data."
+            ],
+            "correctAnswer": 0,
+            "rationale": "Interpretability should outweigh raw performance in high-stakes, regulated, or trust-critical domains (healthcare, lending, criminal justice). Accuracy isn't the only consideration, complex models aren't universally superior, and interpretability matters independently of meeting accuracy thresholds.",
+            "tags": [
+              "interpretability_tradeoff",
+              "high_stakes",
+              "explainability",
+              "priorities"
+            ]
+          },
+          {
+            "id": "ERM-DS-B-008",
+            "level": 8,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.51,
+            "discrimination": 1.19,
+            "bloomLevel": "Apply",
+            "question": "How should you handle the tradeoff between different fairness metrics that conflict in your model?",
+            "options": [
+              "Choose fairness metrics aligned with stakeholder values and legal requirements, documenting tradeoffs and rationale explicitly.",
+              "Optimize for all fairness metrics simultaneously since mathematical techniques guarantee compatibility across metrics.",
+              "Ignore fairness considerations entirely because no solution satisfies all fairness definitions simultaneously.",
+              "Select the fairness metric that makes your model perform best rather than considering ethical implications."
+            ],
+            "correctAnswer": 0,
+            "rationale": "Fairness metrics often conflict mathematically (impossibility theorems). The solution is stakeholder-engaged prioritization aligned with values and context, not ignoring fairness or optimizing for model performance. Universal optimization across metrics is often impossible.",
+            "tags": [
+              "fairness_tradeoffs",
+              "fairness_metrics",
+              "impossibility_theorem",
+              "stakeholder_engagement"
+            ]
+          }
+        ]
+      },
+      {
+        "dimensionCode": "CCE",
+        "dimensionName": "Collaboration & Communication Excellence",
+        "description": "Communicating findings and collaborating effectively",
+        "weight": 0.125,
+        "totalPoints": 75,
+        "items": [
+          {
+            "id": "CCE-DS-B-001",
+            "level": 1,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.29,
+            "discrimination": 1.07,
+            "bloomLevel": "Remember",
+            "question": "How should you explain model confidence scores to business stakeholders?",
+            "options": [
+              "You should frame confidence scores in terms of practical decision-making implications and real-world outcomes.",
+              "You should provide the mathematical formula used to calculate confidence scores with full technical details.",
+              "You should avoid mentioning confidence scores because non-technical stakeholders cannot understand probabilistic concepts.",
+              "You should present confidence scores as absolute certainty levels that guarantee specific prediction accuracy rates."
+            ],
+            "correctAnswer": 0,
+            "rationale": "Business stakeholders need practical interpretation\u2014what confidence scores mean for decisions and actions. Technical formulas aren't accessible, avoiding probabilistic concepts underestimates stakeholders, and confidence scores shouldn't be misrepresented as certainty guarantees.",
+            "tags": [
+              "stakeholder_communication",
+              "confidence_scores",
+              "business_translation",
+              "communication"
+            ]
+          },
+          {
+            "id": "CCE-DS-B-002",
+            "level": 2,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.33,
+            "discrimination": 1.09,
+            "bloomLevel": "Understand",
+            "question": "What's the most important principle when visualizing model performance for non-technical audiences?",
+            "options": [
+              "The most important principle is clarity and simplicity, focusing on key insights rather than comprehensive technical details.",
+              "The most important principle is including every available metric to provide complete information for decisions.",
+              "The most important principle is using advanced statistical visualizations to establish your technical credibility.",
+              "The most important principle is matching the exact format used in academic papers for consistency."
+            ],
+            "correctAnswer": 0,
+            "rationale": "Non-technical audiences need clear, focused visualizations highlighting key insights. Overwhelming with metrics reduces understanding, complex visualizations can confuse, and academic formats aren't designed for business communication. Clarity trumps comprehensiveness.",
+            "tags": [
+              "data_visualization",
+              "stakeholder_communication",
+              "simplicity",
+              "insights"
+            ]
+          },
+          {
+            "id": "CCE-DS-B-003",
+            "level": 3,
+            "type": "scenario",
+            "points": 10,
+            "difficulty": 0.37,
+            "discrimination": 1.11,
+            "bloomLevel": "Apply",
+            "question": "Your model achieves 80% accuracy, but stakeholders expected 95%. How should you address this?",
+            "options": [
+              "Explain why 80% may be realistic given the problem difficulty, provide context with baselines, and discuss accuracy-feasibility tradeoffs.",
+              "Immediately promise to achieve 95% accuracy through additional model development regardless of feasibility.",
+              "Blame the data quality and request budget for more data collection before discussing model limitations.",
+              "Use technical jargon to confuse stakeholders until they accept the 80% result without further questions."
+            ],
+            "correctAnswer": 0,
+            "rationale": "Manage expectations by contextualizing performance with problem difficulty, baselines, and feasibility constraints. Making unrealistic promises creates future problems, blaming data without context isn't constructive, and confusing stakeholders destroys trust and collaboration.",
+            "tags": [
+              "expectation_management",
+              "stakeholder_communication",
+              "transparency",
+              "context"
+            ]
+          },
+          {
+            "id": "CCE-DS-B-004",
+            "level": 4,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.4,
+            "discrimination": 1.12,
+            "bloomLevel": "Understand",
+            "question": "How should you communicate model uncertainty to stakeholders making business decisions?",
+            "options": [
+              "Present uncertainty with confidence intervals and scenarios, explaining implications for risk and decision-making.",
+              "Hide all uncertainty information because it reduces stakeholder confidence in your work and recommendations.",
+              "Present only point estimates without uncertainty because decision-makers prefer definitive answers exclusively.",
+              "Use technical statistical terminology like 'heteroskedasticity' to describe uncertainty precisely and accurately."
+            ],
+            "correctAnswer": 0,
+            "rationale": "Stakeholders need uncertainty information (CIs, scenarios) to make informed decisions balancing risk and confidence. Hiding uncertainty is unethical, point estimates without context mislead, and technical jargon doesn't serve non-technical audiences\u2014translate uncertainty into decision implications.",
+            "tags": [
+              "uncertainty_communication",
+              "risk",
+              "confidence_intervals",
+              "decision_support"
+            ]
+          },
+          {
+            "id": "CCE-DS-B-005",
+            "level": 5,
+            "type": "scenario",
+            "points": 10,
+            "difficulty": 0.43,
+            "discrimination": 1.14,
+            "bloomLevel": "Apply",
+            "question": "How should you translate a business problem into a machine learning problem?",
+            "options": [
+              "Identify the business objective, determine what predictions would help, define success metrics, and assess data availability.",
+              "Immediately choose the latest machine learning algorithm and find a dataset that fits its input requirements.",
+              "Focus exclusively on data availability and build whatever models the existing data supports regardless of business value.",
+              "Ask stakeholders to specify the exact algorithm and hyperparameters they want implemented for the problem."
+            ],
+            "correctAnswer": 0,
+            "rationale": "Translation starts with understanding business objectives, then determining helpful predictions, metrics aligned with objectives, and data feasibility. Algorithm-first or data-first approaches miss the point\u2014business value drives problem formulation. Stakeholders shouldn't specify technical solutions.",
+            "tags": [
+              "problem_formulation",
+              "business_translation",
+              "requirements_gathering",
+              "alignment"
+            ]
+          },
+          {
+            "id": "CCE-DS-B-006",
+            "level": 6,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.46,
+            "discrimination": 1.16,
+            "bloomLevel": "Apply",
+            "question": "What should you include in documentation for other data scientists to reproduce your work?",
+            "options": [
+              "Include data sources, preprocessing steps, model architecture, hyperparameters, training procedures, and evaluation methodology.",
+              "Include only the final model code since experienced data scientists can infer all other details automatically.",
+              "Include extensive theoretical background about algorithms but omit practical implementation details as obvious.",
+              "Include just the model accuracy figure since that's the only information needed to evaluate work quality."
+            ],
+            "correctAnswer": 0,
+            "rationale": "Reproducibility requires comprehensive documentation: data provenance, preprocessing, architecture, hyperparameters, training setup, evaluation. Code alone is insufficient, theoretical background without implementation details doesn't help reproduction, and accuracy without methodology is meaningless.",
+            "tags": [
+              "documentation",
+              "reproducibility",
+              "knowledge_sharing",
+              "best_practices"
+            ]
+          },
+          {
+            "id": "CCE-DS-B-007",
+            "level": 7,
+            "type": "scenario",
+            "points": 10,
+            "difficulty": 0.49,
+            "discrimination": 1.18,
+            "bloomLevel": "Apply",
+            "question": "Your cross-functional team disagrees on whether to deploy your model. How should you facilitate resolution?",
+            "options": [
+              "Present objective performance data, acknowledge concerns across perspectives, and facilitate discussion of risk-benefit tradeoffs.",
+              "Insist on deployment because your technical expertise outweighs non-technical team members' concerns.",
+              "Defer entirely to the most senior person's opinion regardless of evidence or technical considerations.",
+              "Delay indefinitely to avoid conflict rather than pushing for a decision on the deployment question."
+            ],
+            "correctAnswer": 0,
+            "rationale": "Resolve disagreements through data-driven discussion acknowledging legitimate concerns from different perspectives. Technical expertise doesn't override valid business/legal/ethical concerns, seniority shouldn't substitute for evidence-based decisions, and avoiding decisions creates worse outcomes. Facilitate, don't dominate or defer.",
+            "tags": [
+              "cross_functional_collaboration",
+              "conflict_resolution",
+              "facilitation",
+              "decision_making"
+            ]
+          }
+        ]
+      },
+      {
+        "dimensionCode": "TIO",
+        "dimensionName": "Tools, Infrastructure & Operations",
+        "description": "Technical infrastructure and operational practices",
+        "weight": 0.125,
+        "totalPoints": 75,
+        "items": [
+          {
+            "id": "TIO-DS-B-001",
+            "level": 1,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.3,
+            "discrimination": 1.08,
+            "bloomLevel": "Remember",
+            "question": "What's the most important factor when choosing between cloud and local infrastructure for model training?",
+            "options": [
+              "The most important factor is balancing computational requirements, costs, and data security constraints for your specific use case.",
+              "The most important factor is always choosing cloud because local infrastructure is obsolete for machine learning.",
+              "The most important factor is selecting whatever infrastructure your competitors use to maintain industry alignment.",
+              "The most important factor is minimizing costs by choosing the cheapest option regardless of other considerations."
+            ],
+            "correctAnswer": 0,
+            "rationale": "Infrastructure choice requires balancing compute needs, budget, security/compliance, and organizational context. Cloud isn't universally optimal (costs, latency, control), competitor choices aren't relevant to your specific needs, and minimizing costs without considering requirements creates problems.",
+            "tags": [
+              "infrastructure_choice",
+              "cloud_vs_local",
+              "tradeoffs",
+              "decision_making"
+            ]
+          },
+          {
+            "id": "TIO-DS-B-002",
+            "level": 2,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.34,
+            "discrimination": 1.1,
+            "bloomLevel": "Understand",
+            "question": "Why is version control important for machine learning projects beyond just code versioning?",
+            "options": [
+              "ML version control should track code, data versions, model versions, and experiments to ensure reproducibility.",
+              "Version control for ML is identical to software engineering and requires no special considerations beyond code.",
+              "Version control is unnecessary in ML because experiment tracking tools replace all version control functionality.",
+              "Version control only matters for team projects and provides no benefit for individual data scientist work."
+            ],
+            "correctAnswer": 0,
+            "rationale": "ML version control must extend beyond code to data, models, and experiments for reproducibility. It's not identical to standard software (data/model versioning), experiment tracking complements rather than replaces version control, and individual work benefits from reproducibility too.",
+            "tags": [
+              "version_control",
+              "reproducibility",
+              "mlops",
+              "data_versioning"
+            ]
+          },
+          {
+            "id": "TIO-DS-B-003",
+            "level": 3,
+            "type": "scenario",
+            "points": 10,
+            "difficulty": 0.38,
+            "discrimination": 1.12,
+            "bloomLevel": "Apply",
+            "question": "Your model training takes 48 hours on your local machine. What's the first optimization to consider?",
+            "options": [
+              "Consider using cloud resources with GPUs/TPUs or distributed training to reduce training time significantly.",
+              "Continue with 48-hour training since faster training would compromise model quality and final accuracy.",
+              "Reduce your dataset size by randomly sampling to speed up training without considering other options.",
+              "Switch to a simpler model architecture that trains faster regardless of performance implications."
+            ],
+            "correctAnswer": 0,
+            "rationale": "Long training times should prompt considering better hardware (GPUs, TPUs) or distributed training before compromising data or models. Training time doesn't determine quality inherently, random sampling loses information, and simpler models may underperform. Scale compute first.",
+            "tags": [
+              "training_optimization",
+              "compute_resources",
+              "gpus",
+              "efficiency"
+            ]
+          },
+          {
+            "id": "TIO-DS-B-004",
+            "level": 4,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.42,
+            "discrimination": 1.13,
+            "bloomLevel": "Understand",
+            "question": "What is the purpose of experiment tracking tools like MLflow or Weights & Biases?",
+            "options": [
+              "Experiment tracking tools log parameters, metrics, and artifacts to compare runs and ensure reproducibility.",
+              "Experiment tracking tools automatically select optimal hyperparameters without requiring manual tuning effort.",
+              "Experiment tracking tools replace the need for proper software engineering practices like testing and documentation.",
+              "Experiment tracking tools are only useful for academic research and provide minimal value in industry."
+            ],
+            "correctAnswer": 0,
+            "rationale": "Experiment tracking logs runs (params, metrics, artifacts) enabling comparison and reproducibility. They don't automate hyperparameter optimization (that's separate tools), don't replace software engineering practices, and are valuable in industry for systematic development.",
+            "tags": [
+              "experiment_tracking",
+              "mlflow",
+              "reproducibility",
+              "tools"
+            ]
+          },
+          {
+            "id": "TIO-DS-B-005",
+            "level": 5,
+            "type": "scenario",
+            "points": 10,
+            "difficulty": 0.45,
+            "discrimination": 1.15,
+            "bloomLevel": "Apply",
+            "question": "Your team is building multiple ML models with different frameworks. How should you standardize the development environment?",
+            "options": [
+              "Use containerization (Docker) and environment management (conda/venv) to create reproducible, isolated environments for each project.",
+              "Require everyone to use identical hardware and operating systems to guarantee complete environmental consistency.",
+              "Install all frameworks globally on shared servers and trust developers to avoid version conflicts.",
+              "Mandate a single framework for all projects regardless of project-specific requirements or optimality."
+            ],
+            "correctAnswer": 0,
+            "rationale": "Containers and environment management enable reproducibility across hardware/OS while isolating dependencies. Identical hardware is impractical and unnecessary, global installations create conflicts, and framework mandates prevent using optimal tools. Isolation and reproducibility are key.",
+            "tags": [
+              "environment_management",
+              "docker",
+              "reproducibility",
+              "standardization"
+            ]
+          },
+          {
+            "id": "TIO-DS-B-006",
+            "level": 6,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.48,
+            "discrimination": 1.17,
+            "bloomLevel": "Apply",
+            "question": "What's the primary advantage of using managed ML platforms like SageMaker or Vertex AI?",
+            "options": [
+              "Managed platforms provide integrated infrastructure, reducing operational overhead for training, deployment, and monitoring.",
+              "Managed platforms always produce better models than custom infrastructure through proprietary optimization algorithms.",
+              "Managed platforms eliminate all costs associated with machine learning infrastructure and development.",
+              "Managed platforms require no ML expertise since they automate all modeling decisions end-to-end."
+            ],
+            "correctAnswer": 0,
+            "rationale": "Managed platforms' value is reducing infrastructure overhead through integrated tools for the ML lifecycle. They don't inherently improve model quality (that's about data/algorithms), don't eliminate costs (they charge for services), and don't replace ML expertise\u2014they streamline operations.",
+            "tags": [
+              "managed_platforms",
+              "mlops",
+              "infrastructure",
+              "cloud_services"
+            ]
+          },
+          {
+            "id": "TIO-DS-B-007",
+            "level": 7,
+            "type": "scenario",
+            "points": 10,
+            "difficulty": 0.51,
+            "discrimination": 1.19,
+            "bloomLevel": "Apply",
+            "question": "How should you design data pipelines for machine learning projects to ensure reliability?",
+            "options": [
+              "Design idempotent, versioned pipelines with monitoring, error handling, and validation at each stage.",
+              "Create the simplest possible pipeline without error handling since data issues will surface during model training.",
+              "Build completely custom pipeline code for each project to optimize for specific requirements maximally.",
+              "Use only batch processing and avoid any streaming components to eliminate pipeline complexity entirely."
+            ],
+            "correctAnswer": 0,
+            "rationale": "Reliable pipelines are idempotent, versioned, monitored, and validated. Skipping error handling creates debugging nightmares, complete custom builds prevent reuse, and avoiding streaming when needed isn't about reliability. Design for observability and resilience.",
+            "tags": [
+              "data_pipelines",
+              "reliability",
+              "mlops",
+              "infrastructure"
+            ]
+          },
+          {
+            "id": "TIO-DS-B-008",
+            "level": 8,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.53,
+            "discrimination": 1.2,
+            "bloomLevel": "Apply",
+            "question": "How should you structure your ML infrastructure to support rapid experimentation while maintaining reproducibility?",
+            "options": [
+              "Create standardized templates, shared environments, experiment tracking, and version control integrated with flexible compute resources.",
+              "Require manual documentation of every experiment and prohibit any infrastructure changes to maintain consistency.",
+              "Give each data scientist complete freedom with no standardization to maximize individual experimentation speed.",
+              "Build a rigid pipeline that only permits pre-approved experiments with fixed hyperparameter ranges."
+            ],
+            "correctAnswer": 0,
+            "rationale": "Balance flexibility and reproducibility with standards (templates, tracking, version control) plus flexible resources. Rigid manual processes slow experimentation, complete freedom prevents reproducibility, and pre-approval rigidity kills innovation. Enable structured flexibility.",
+            "tags": [
+              "infrastructure_design",
+              "experimentation",
+              "reproducibility",
+              "mlops"
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

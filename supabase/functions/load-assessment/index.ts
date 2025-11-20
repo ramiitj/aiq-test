@@ -37,6 +37,8 @@ Deno.serve(async (req) => {
 
     const { testId, productSlug } = await req.json();
 
+    console.log(`Load assessment request - testId: ${testId}, productSlug: ${productSlug}`);
+
     // Verify user has an active test session
     const { data: test, error: testError } = await supabaseClient
       .from('tests')
@@ -67,13 +69,20 @@ Deno.serve(async (req) => {
 
     // Load assessment from storage bucket
     const fileName = `${productSlug || test.product_slug}.json`;
+    console.log(`Attempting to load file: ${fileName} from aiq-items bucket`);
+    
     const { data: fileData, error: downloadError } = await supabaseClient.storage
       .from('aiq-items')
       .download(fileName);
 
     if (downloadError || !fileData) {
+      console.error(`Failed to load assessment file: ${fileName}`, downloadError);
       return new Response(
-        JSON.stringify({ error: 'Assessment file not found' }),
+        JSON.stringify({ 
+          error: 'Assessment file not found',
+          fileName: fileName,
+          details: downloadError?.message || 'File does not exist in storage bucket'
+        }),
         { status: 404, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
       );
     }
