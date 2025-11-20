@@ -63,14 +63,8 @@ function detectFormatType(data: any): FormatType {
     }
   }
 
-  // Check for itemBank as array of dimension objects (expert-assessment format)
+  // Check for direct itemBank array (no dimensions wrapper)
   if (data.itemBank && Array.isArray(data.itemBank)) {
-    // If first element has dimensionCode or dimensionName, it's an array of dimensions
-    const firstItem = data.itemBank[0];
-    if (firstItem && (firstItem.dimensionCode || firstItem.dimensionName)) {
-      return 'standard'; // Treat as standard since it has proper dimension structure
-    }
-    // Otherwise it's a direct array of items
     return 'direct-array';
   }
 
@@ -198,16 +192,8 @@ function extractDimensions(data: any, format: FormatType): any[] {
 
     case 'standard':
     default:
-      // Standard format can be either:
-      // 1. itemBank.dimensions[] (nested structure)
-      // 2. itemBank[] where each element is a dimension object
-      if (data.itemBank?.dimensions) {
-        return data.itemBank.dimensions;
-      } else if (Array.isArray(data.itemBank)) {
-        // itemBank is directly an array of dimensions
-        return data.itemBank;
-      }
-      return [];
+      // Standard format: itemBank.dimensions[]
+      return data.itemBank?.dimensions || [];
   }
 }
 

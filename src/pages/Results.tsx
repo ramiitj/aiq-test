@@ -115,102 +115,12 @@ const Results = () => {
     }
 
     try {
-      // Try fetching from tests table first
       const { data, error } = await supabase
         .from("tests")
         .select("*")
         .eq("id", testId)
         .eq("user_id", session.user.id)
-        .maybeSingle();
-
-      // If not found in tests table, try public_results (check both test_id and id columns)
-      if (!data) {
-        const { data: publicResult, error: publicError } = await supabase
-          .from("public_results")
-          .select("*")
-          .or(`test_id.eq.${testId},id.eq.${testId}`)
-          .eq("user_id", session.user.id)
-          .maybeSingle();
-
-        if (publicError) throw publicError;
-        
-        if (!publicResult) {
-          throw new Error("Test results not found");
-        }
-
-        // Process results from public_results table
-        let productName: string | undefined;
-        let context: AssessmentContext | null = null;
-        
-        if (publicResult.product_slug) {
-          const { data: product } = await supabase
-            .from("assessment_products")
-            .select("*")
-            .eq("slug", publicResult.product_slug)
-            .maybeSingle();
-          
-          if (product) {
-            productName = product.name;
-            context = getAssessmentContext(
-              product.name,
-              product.slug,
-              product.age_group,
-              product.track,
-              product.role
-            );
-            setAssessmentContext(context);
-          }
-        }
-
-        // Store test data
-        setResult({
-          id: publicResult.test_id,
-          scores: publicResult.dimension_scores,
-          answers: {},
-          created_at: publicResult.created_at,
-          completed: true,
-          test_duration_seconds: publicResult.test_duration_seconds || 0,
-          test_version: publicResult.test_version,
-          product_id: publicResult.product_id,
-          product_slug: publicResult.product_slug,
-          product_name: productName,
-        });
-
-        // Build scoring result from public_results data
-        const dimensionScores = (publicResult.dimension_scores || {}) as { [key: string]: number };
-        const dimScores = Object.values(dimensionScores);
-        const overallScore = publicResult.overall_score || (dimScores.length > 0 
-          ? dimScores.reduce((sum, score) => sum + score, 0) / dimScores.length 
-          : 0);
-
-        const enrichedScores: any = {
-          dimensionScores,
-          overallScore,
-          totalPossiblePoints: 1000,
-          passingScore: 700,
-          passed: overallScore >= 700,
-          percentageScore: (overallScore / 1000) * 100,
-          correctCount: 0,
-          totalCount: 0,
-          assessmentLevel: publicResult.test_version,
-          scoringGuidelines: {},
-          performanceLevel: "Novice"
-        };
-
-        setScoringResult(enrichedScores);
-        setIsPassed(enrichedScores.passed);
-
-        // Get user's name from profile
-        const { data: profile } = await supabase
-          .from("profiles")
-          .select("name")
-          .eq("user_id", session.user.id)
-          .maybeSingle();
-
-        setUserName(profile?.name || session.user.email || "AIQ™ Participant");
-        setLoading(false);
-        return;
-      }
+        .single();
 
       if (error) throw error;
 

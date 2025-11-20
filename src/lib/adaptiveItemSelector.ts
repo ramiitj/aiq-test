@@ -299,17 +299,8 @@ export async function loadTestItems(
     const isAdaptive = normalized.assessmentType === 'adaptive';
     const needsSelection = totalAvailableItems > normalized.questionCount;
     
-    console.log(`[loadTestItems] Adaptive check:`, {
-      assessmentType: normalized.assessmentType,
-      isAdaptive,
-      totalAvailableItems,
-      targetQuestionCount: normalized.questionCount,
-      needsSelection,
-      dimensionsCount: dimensions.length
-    });
-    
     if (isAdaptive && needsSelection && dimensions.length > 0) {
-      console.log(`[loadTestItems] ✅ Running IRT-based adaptive selection: ${normalized.questionCount} from ${totalAvailableItems} items`);
+      console.log(`[loadTestItems] IRT-based adaptive selection: ${normalized.questionCount} from ${totalAvailableItems} items`);
       
       const itemsPerDimension = Math.floor(normalized.questionCount / dimensions.length);
       const selectedItemIds = new Set<string>();
@@ -334,16 +325,8 @@ export async function loadTestItems(
         console.error('Duplicate items detected in assessment');
         throw new Error('Assessment generation failed: duplicate items found');
       }
-      
-      const selectedTotal = dimensions.reduce((sum, d) => sum + d.items.length, 0);
-      console.log(`[loadTestItems] ✅ Adaptive selection complete: ${selectedTotal} items selected (target: ${normalized.questionCount})`);
     } else {
-      console.log(`[loadTestItems] ℹ️ Using all available items (no adaptive selection):`, {
-        reason: !isAdaptive ? 'assessment type is not adaptive' : !needsSelection ? 'selection not needed' : 'no dimensions found',
-        assessmentType: normalized.assessmentType,
-        totalItems: totalAvailableItems,
-        targetCount: normalized.questionCount
-      });
+      console.log(`[loadTestItems] Fixed assessment: using all ${totalAvailableItems} items`);
     }
     
     const finalTotalItems = dimensions.reduce((sum, d) => sum + d.items.length, 0);

@@ -2,13 +2,13 @@
   "assessmentName": "AIQ Expert Assessment - Fresh Complete Professional Edition",
   "version": "6.0",
   "assessmentType": "adaptive",
-  "description": "Expert-level AI literacy with 160 unique items, 80 selected adaptively using IRT based on difficulty",
+  "description": "Expert-level AI literacy with 160 unique professional questions and randomized answer positions",
   "assessmentConfiguration": {
-    "totalQuestions": 80,
-    "questionsPerDimension": 10,
-    "estimatedTime": "80 minutes",
+    "totalQuestions": 160,
+    "questionsPerDimension": 20,
+    "estimatedTime": "150 minutes",
     "targetAudience": "AI strategy leaders, senior data science professionals, executives",
-    "timePerQuestion": "60 seconds average",
+    "timePerQuestion": "55 seconds average",
     "presentationMode": {
       "type": "adaptive-sequential",
       "description": "Adaptive difficulty with IRT"
@@ -33,9 +33,9 @@
     }
   },
   "scoringConfiguration": {
-    "totalPoints": 800,
-    "pointsPerDimension": 100,
-    "passingScore": 640,
+    "totalPoints": 1600,
+    "pointsPerDimension": 200,
+    "passingScore": 1280,
     "passingPercentage": 80,
     "scoringMethod": {
       "type": "IRT-weighted-expert",
@@ -50,7 +50,7 @@
       "96-100%": "Master"
     }
   },
-  "instructions": "Expert assessment evaluating world-class AI literacy across 8 dimensions. 80 questions selected adaptively using IRT, 80 minutes.",
+  "instructions": "Expert assessment evaluating world-class AI literacy across 8 dimensions. 160 questions, 150 minutes.",
   "itemBank": [
     {
       "dimensionCode": "SAU",

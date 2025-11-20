@@ -40,7 +40,7 @@ Deno.serve(async (req) => {
     // Verify user has an active test session
     const { data: test, error: testError } = await supabaseClient
       .from('tests')
-      .select('id, user_id, completed, security_terminated, product_slug, product_id')
+      .select('id, user_id, completed, security_terminated, product_slug')
       .eq('id', testId)
       .single();
 
@@ -65,102 +65,43 @@ Deno.serve(async (req) => {
       );
     }
 
-    // Map product slug to actual storage filename
-    const mapSlugToFileName = (slug: string): string => {
-      // Adolescent assessments
-      if (slug.includes('adolescent-14-15') || slug === 'adolescent-14-15') {
-        return 'adolescent-14-15.json';
-      }
-      if (slug.includes('adolescent-16-17') || slug === 'adolescent-16-17') {
-        return 'adolescent-16-17.json';
-      }
-      
-      // Beginner tier assessments
-      if (slug.includes('beginner') || slug === 'beginner') {
-        return 'beginner-assessment.json';
-      }
-      
-      // Professional tier assessments
-      if (slug.includes('professional') || slug === 'professional') {
-        return 'professional-assessment.json';
-      }
-      
-      // Advanced/Expert tier assessments
-      if (slug.includes('advanced') || slug.includes('expert') || 
-          slug === 'advanced' || slug === 'expert') {
-        return 'expert-assessment.json';
-      }
-      
-      // Default fallback to beginner
-      return 'beginner-assessment.json';
-    };
-    
     // Load assessment from storage bucket
-    const slug = productSlug || test.product_slug || 'beginner';
-    const fileName = mapSlugToFileName(slug);
-    
-    console.log(`Loading assessment: slug=${slug}, fileName=${fileName}`);
-    
-    let { data: fileData, error: downloadError } = await supabaseClient.storage
+    const fileName = `${productSlug || test.product_slug}.json`;
+    const { data: fileData, error: downloadError } = await supabaseClient.storage
       .from('aiq-items')
       .download(fileName);
 
     if (downloadError || !fileData) {
-      console.error(`Failed to download assessment file from storage: ${fileName}`, downloadError?.message ?? downloadError);
-
-      // Fallback: use beginner assessment so the test can still run
-      const fallbackFileName = 'beginner-assessment.json';
-      console.log(`Falling back to assessment file: ${fallbackFileName}`);
-
-      const fallbackResult = await supabaseClient.storage
-        .from('aiq-items')
-        .download(fallbackFileName);
-
-      if (fallbackResult.error || !fallbackResult.data) {
-        console.error('Fallback assessment download also failed', fallbackResult.error?.message ?? fallbackResult.error);
-        return new Response(
-          JSON.stringify({
-            error: 'Assessment file not found in storage',
-            fileName,
-            details: downloadError?.message ?? null,
-          }),
-          { status: 404, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
-        );
-      }
-
-      fileData = fallbackResult.data;
+      return new Response(
+        JSON.stringify({ error: 'Assessment file not found' }),
+        { status: 404, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
+      );
     }
 
     const assessmentText = await fileData.text();
     const assessment = JSON.parse(assessmentText);
 
-    // Sanitize assessment - remove correct answers and sensitive data recursively
-    const sensitiveKeys = new Set([
-      'correctAnswer',
-      'correctAnswers',
-      'rationale',
-      'explanation',
-      'discrimination',
-    ]);
-
-    const deepSanitize = (value: any): any => {
-      if (Array.isArray(value)) {
-        return value.map(deepSanitize);
-      }
-
-      if (value !== null && typeof value === 'object') {
-        const sanitized: any = {};
-        for (const [key, nested] of Object.entries(value)) {
-          if (sensitiveKeys.has(key)) continue;
-          sanitized[key] = deepSanitize(nested);
-        }
-        return sanitized;
-      }
-
-      return value;
+    // Sanitize assessment - remove correct answers and sensitive data
+    const sanitizeItem = (item: any) => {
+      const sanitized = { ...item };
+      delete sanitized.correctAnswer;
+      delete sanitized.correctAnswers;
+      delete sanitized.rationale;
+      delete sanitized.explanation;
+      delete sanitized.discrimination;
+      return sanitized;
     };
 
-    const sanitizedAssessment = deepSanitize(assessment);
+    const sanitizedAssessment = {
+      ...assessment,
+      itemBank: {
+        ...assessment.itemBank,
+        dimensions: assessment.itemBank.dimensions.map((dim: any) => ({
+          ...dim,
+          items: dim.items.map(sanitizeItem),
+        })),
+      },
+    };
 
     console.log(`Assessment loaded for test ${testId.substring(0, 8)}...`);
 
