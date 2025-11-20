@@ -1,0 +1,1604 @@
+{
+  "assessmentName": "AIQ HR Professional Beginner Assessment - HR Focus",
+  "version": "1.0",
+  "assessmentType": "fixed",
+  "description": "A rigorously designed foundational AI literacy assessment for HR professionals with 60 items featuring balanced options, randomized correct answer positions, complete sentence formatting, and enhanced anti-gaming measures.",
+  "assessmentConfiguration": {
+    "totalQuestions": 60,
+    "questionsPerDimension": "7-8",
+    "estimatedTime": "60 minutes",
+    "targetAudience": "HR professionals, talent acquisition specialists, people operations managers with varying AI experience levels",
+    "timePerQuestion": "60 seconds average",
+    "presentationMode": {
+      "type": "fixed-sequential",
+      "description": "All questions presented in fixed order",
+      "sequencing": "By dimension, 7-8 questions per dimension"
+    },
+    "questionDistribution": {
+      "totalItems": 60,
+      "itemsPerDimension": "7-8 per dimension",
+      "selectionRatio": "100% (all items presented)"
+    },
+    "dimensionSequencing": {
+      "type": "fixed-order",
+      "sequence": [
+        "HAI",
+        "TAA",
+        "PDA",
+        "HRA",
+        "EEC",
+        "CEG",
+        "SCS",
+        "VTO"
+      ],
+      "description": "Candidates complete 7-8 questions per dimension in sequence"
+    }
+  },
+  "scoringConfiguration": {
+    "totalPoints": 600,
+    "pointsPerDimension": 75,
+    "passingScore": 420,
+    "passingPercentage": 70,
+    "scoringMethod": {
+      "type": "simple-sum",
+      "description": "Direct sum of points from correct answers with differential weighting by item difficulty",
+      "basePoints": 10,
+      "formula": "points = basePoints \u00d7 (1 + difficulty \u00d7 0.3) for each correct answer"
+    },
+    "scoringGuidelines": {
+      "0-40%": "Novice (0-240 points) - Significant foundational learning needed",
+      "41-60%": "Beginner (241-360 points) - Basic awareness established",
+      "61-80%": "Developing (361-480 points) - Good foundational understanding",
+      "81-90%": "Proficient (481-540 points) - Strong grasp of fundamentals",
+      "91-100%": "Advanced (541-600 points) - Excellent foundational mastery"
+    }
+  },
+  "instructions": "This AIQ HR Professional Beginner assessment evaluates your foundational AI literacy specifically for HR contexts. You will answer 60 questions total (7-8 per dimension) across 8 HR-focused dimensions in approximately 60 minutes. Questions feature nuanced options designed to test genuine understanding of AI applications in HR. Answer all questions to the best of your ability.",
+  "assessmentGuidelines": {
+    "targetLevel": "Foundational awareness and basic understanding of AI in HR",
+    "cognitiveEmphasis": "65% Remember/Understand (Bloom's levels 1-2), 35% Apply (Bloom's level 3)",
+    "questionTypes": "Multiple-choice (70%), scenario-based (30%)",
+    "difficultyProfile": "Realistic distractors that require genuine AI/HR understanding to differentiate",
+    "timeAllocation": "Moderate time for careful consideration of HR-specific nuances",
+    "reliabilityTarget": "Cronbach's alpha \u2265 0.80"
+  },
+  "itemBank": {
+    "totalItems": 60,
+    "itemsPerDimension": 8,
+    "description": "Complete item set with 60 questions (7-8 per dimension) focused on AI literacy for HR professionals",
+    "bankStatistics": {
+      "averageDifficulty": 0.383,
+      "difficultySD": 0.08,
+      "averageDiscrimination": 1.15,
+      "discriminationSD": 0.05,
+      "contentCoverageIndex": 0.92,
+      "estimatedReliability": 0.85,
+      "totalItems": 60
+    },
+    "dimensions": [
+      {
+        "dimensionCode": "HAI",
+        "dimensionName": "HR AI Understanding",
+        "description": "Understanding AI capabilities, limitations, and strategic applications in HR contexts",
+        "weight": 0.125,
+        "totalPoints": 75,
+        "items": [
+          {
+            "id": "HAI-HR-B-001",
+            "level": 1,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.25,
+            "discrimination": 1.05,
+            "bloomLevel": "Remember",
+            "question": "What is the primary strategic advantage of using AI in HR processes?",
+            "options": [
+              "AI guarantees perfectly fair hiring decisions by removing all human involvement from candidate evaluation processes.",
+              "AI completely eliminates the need for human HR professionals by automating all people-related decisions accurately.",
+              "AI reduces HR costs by replacing expensive human workers with inexpensive technology solutions.",
+              "AI enables HR to handle high-volume repetitive tasks consistently while freeing humans for relationship-building and complex judgment."
+            ],
+            "correctAnswer": 3,
+            "rationale": "The primary strategic advantage of AI in HR is augmentation rather than replacement. AI excels at handling repetitive, high-volume tasks (like resume screening or scheduling) consistently, which frees HR professionals to focus on relationship-building, strategic thinking, and complex judgment calls that require human insight. The other options incorrectly suggest AI replaces humans entirely, guarantees fairness automatically, or is primarily about cost reduction rather than strategic value.",
+            "tags": [
+              "strategic-value",
+              "ai-augmentation",
+              "hr-fundamentals",
+              "human-ai-collaboration"
+            ]
+          },
+          {
+            "id": "HAI-HR-B-002",
+            "level": 1,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.3,
+            "discrimination": 1.08,
+            "bloomLevel": "Understand",
+            "question": "Why is understanding AI limitations critical for HR professionals deploying AI tools?",
+            "options": [
+              "Understanding limitations helps HR prove that AI should never be used for any people-related decisions.",
+              "Understanding limitations is only important for technical teams but not for HR professionals using the tools.",
+              "Understanding limitations helps HR set appropriate expectations and maintain necessary human oversight for people decisions.",
+              "Understanding limitations allows HR to completely avoid using AI tools that have any weaknesses or constraints."
+            ],
+            "correctAnswer": 2,
+            "rationale": "Understanding AI limitations is critical because it allows HR professionals to set realistic expectations with stakeholders and, most importantly, maintain appropriate human oversight where needed. All AI systems have limitations, but this doesn't mean they shouldn't be used\u2014it means they should be used thoughtfully with human judgment where consequential decisions are made. The other options incorrectly suggest avoiding AI entirely, delegating understanding to technical teams, or using limitations as a reason to reject AI completely.",
+            "tags": [
+              "ai-limitations",
+              "oversight",
+              "responsible-ai",
+              "expectations"
+            ]
+          },
+          {
+            "id": "HAI-HR-B-003",
+            "level": 2,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.35,
+            "discrimination": 1.1,
+            "bloomLevel": "Understand",
+            "question": "How does bias in AI systems manifest differently than bias in human decision-making?",
+            "options": [
+              "AI bias is always less harmful than human bias because algorithms are inherently more objective than people.",
+              "AI bias only affects technical outputs but doesn't impact actual people decisions or organizational outcomes.",
+              "AI bias disappears automatically over time as the system processes more data and learns better patterns.",
+              "AI bias can scale rapidly across thousands of decisions and persist consistently unless explicitly corrected through system changes."
+            ],
+            "correctAnswer": 3,
+            "rationale": "AI bias can be particularly harmful because it scales rapidly\u2014a biased algorithm can affect thousands or millions of decisions consistently and quickly. Unlike human bias, which varies by individual and situation, AI bias persists systematically unless the model is retrained or corrected. AI bias isn't automatically less harmful, doesn't disappear on its own without intervention, and absolutely affects real people and outcomes, making the first option correct.",
+            "tags": [
+              "bias",
+              "scale",
+              "fairness",
+              "systemic-issues"
+            ]
+          },
+          {
+            "id": "HAI-HR-B-004",
+            "level": 2,
+            "type": "scenario-based",
+            "points": 10,
+            "difficulty": 0.4,
+            "discrimination": 1.12,
+            "bloomLevel": "Apply",
+            "question": "Your manager asks why you want to keep humans involved in final hiring decisions even after implementing an AI screening system. What's the best explanation?",
+            "options": [
+              "Humans should stay involved only to satisfy legal requirements but AI decisions are generally more accurate anyway.",
+              "Humans need to remain involved primarily to protect their jobs rather than for any decision quality reasons.",
+              "Humans must evaluate context, cultural fit, and growth potential that AI cannot fully assess from historical patterns alone.",
+              "Humans should review decisions to occasionally override the AI when personal preferences suggest a different choice."
+            ],
+            "correctAnswer": 2,
+            "rationale": "The best explanation focuses on the unique value humans bring: evaluating context, assessing cultural fit, recognizing potential that may not match historical patterns, and exercising judgment in novel situations. AI is excellent at pattern matching from historical data but cannot fully evaluate nuanced human qualities, growth trajectory, or fit with specific team dynamics. The correct answer emphasizes complementary strengths rather than viewing human involvement as merely legal compliance, job protection, or personal preference.",
+            "tags": [
+              "human-ai-collaboration",
+              "hiring",
+              "judgment",
+              "scenario"
+            ]
+          },
+          {
+            "id": "HAI-HR-B-005",
+            "level": 2,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.38,
+            "discrimination": 1.11,
+            "bloomLevel": "Understand",
+            "question": "What distinguishes predictive AI (like attrition risk models) from generative AI (like ChatGPT) in HR applications?",
+            "options": [
+              "Predictive AI is always more accurate than generative AI because predictions are based on factual data patterns.",
+              "Predictive AI requires much less data to train effectively compared to generative AI systems for HR use.",
+              "Predictive AI is appropriate for all HR decisions while generative AI should never be used in HR contexts.",
+              "Predictive AI forecasts outcomes based on patterns while generative AI creates new content like job descriptions or interview questions."
+            ],
+            "correctAnswer": 3,
+            "rationale": "The key distinction is their function: predictive AI analyzes patterns to forecast outcomes (like predicting which employees might leave), while generative AI creates new content (like drafting job descriptions or generating interview questions). Neither is universally more accurate\u2014accuracy depends on the specific use case and implementation. Training data requirements vary by specific model and application, not by category. Both types can be appropriate for different HR applications when used thoughtfully.",
+            "tags": [
+              "ai-types",
+              "predictive",
+              "generative",
+              "applications"
+            ]
+          },
+          {
+            "id": "HAI-HR-B-006",
+            "level": 2,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.42,
+            "discrimination": 1.13,
+            "bloomLevel": "Understand",
+            "question": "When should HR prioritize transparency about AI system limitations to employees?",
+            "options": [
+              "HR should only share AI limitations when employees explicitly ask questions about how systems work.",
+              "HR should prioritize transparency only after problems occur to avoid creating unnecessary employee concerns.",
+              "HR should avoid discussing AI limitations to maintain employee confidence in the organization's technology decisions.",
+              "HR should prioritize transparency when AI systems make decisions that significantly impact employee careers, compensation, or opportunities."
+            ],
+            "correctAnswer": 3,
+            "rationale": "Transparency about AI limitations is most critical when systems make consequential decisions affecting employee careers, pay, or opportunities. This proactive transparency builds trust, allows employees to understand how decisions are made, and enables them to provide input or raise concerns appropriately. Waiting for questions, avoiding the topic to maintain confidence, or only sharing information after problems occur all undermine trust and can lead to more significant issues when limitations inevitably become apparent.",
+            "tags": [
+              "transparency",
+              "communication",
+              "trust",
+              "employee-relations"
+            ]
+          },
+          {
+            "id": "HAI-HR-B-007",
+            "level": 3,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.45,
+            "discrimination": 1.15,
+            "bloomLevel": "Understand",
+            "question": "How should HR explain the role of AI in people decisions to concerned employees?",
+            "options": [
+              "HR should minimize discussion of AI's role to avoid creating anxiety about technology replacing human judgment.",
+              "HR should emphasize that AI makes more objective decisions than humans and therefore reduces bias automatically.",
+              "HR should explain that AI provides data-driven insights to inform human decision-makers who retain final accountability for people decisions.",
+              "HR should explain that AI systems are too complex for most people to understand so they should trust the technology."
+            ],
+            "correctAnswer": 2,
+            "rationale": "The most effective and honest explanation is that AI provides insights to inform human decision-makers who retain final accountability. This approach is transparent about AI's role while reassuring employees that humans remain responsible for consequential people decisions. Claiming AI is automatically more objective can be misleading, avoiding the discussion undermines trust, and suggesting the technology is too complex to understand is both condescending and unhelpful. Honest, clear communication about AI as a decision support tool is the best approach.",
+            "tags": [
+              "communication",
+              "employee-relations",
+              "accountability",
+              "transparency"
+            ]
+          }
+        ]
+      },
+      {
+        "dimensionCode": "TAA",
+        "dimensionName": "Talent Acquisition & AI",
+        "description": "Applying AI effectively in recruitment, screening, and hiring processes",
+        "weight": 0.125,
+        "totalPoints": 75,
+        "items": [
+          {
+            "id": "TAA-HR-B-001",
+            "level": 1,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.26,
+            "discrimination": 1.06,
+            "bloomLevel": "Remember",
+            "question": "What's the most important consideration when implementing AI-powered resume screening?",
+            "options": [
+              "The most important consideration is maximizing the speed of screening to process more candidates efficiently.",
+              "The most important consideration is using the most advanced AI technology available regardless of organizational needs.",
+              "The most important consideration is ensuring the AI doesn't perpetuate historical biases present in past hiring data.",
+              "The most important consideration is reducing recruiter workload by letting AI make final hiring decisions automatically."
+            ],
+            "correctAnswer": 2,
+            "rationale": "The most critical consideration when implementing AI resume screening is ensuring it doesn't perpetuate or amplify historical biases. If an organization historically hired certain demographics, AI trained on that data may discriminate against underrepresented groups. While speed and efficiency matter, they should never come at the expense of fairness. AI should support rather than replace final hiring decisions, and the most advanced technology isn't always the most appropriate for specific organizational needs.",
+            "tags": [
+              "resume-screening",
+              "bias",
+              "fairness",
+              "implementation"
+            ]
+          },
+          {
+            "id": "TAA-HR-B-002",
+            "level": 1,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.31,
+            "discrimination": 1.08,
+            "bloomLevel": "Understand",
+            "question": "How do AI-powered resume parsing tools typically work?",
+            "options": [
+              "They extract structured information from unstructured resumes by identifying keywords, patterns, and formatting to populate candidate profiles.",
+              "They eliminate the need for recruiters to read any resumes by making autonomous hiring recommendations.",
+              "They rank all candidates from best to worst based entirely on years of experience and education level automatically.",
+              "They rewrite candidate resumes to match job descriptions more closely before presenting them to hiring managers."
+            ],
+            "correctAnswer": 0,
+            "rationale": "AI resume parsing tools extract structured information (like skills, experience, education) from unstructured resume formats by identifying keywords, patterns, and formatting. This creates searchable, comparable candidate profiles. They don't simply rank by experience/education (which would be overly simplistic), don't make autonomous hiring decisions (human judgment is still needed), and don't rewrite resumes (which would be unethical manipulation of candidate submissions).",
+            "tags": [
+              "resume-parsing",
+              "automation",
+              "data-extraction",
+              "fundamentals"
+            ]
+          },
+          {
+            "id": "TAA-HR-B-003",
+            "level": 2,
+            "type": "scenario-based",
+            "points": 10,
+            "difficulty": 0.38,
+            "discrimination": 1.11,
+            "bloomLevel": "Apply",
+            "question": "Your AI recruiting tool is screening out more candidates from a particular demographic group. What should your first step be?",
+            "options": [
+              "Immediately discontinue all AI recruiting tools to avoid legal liability from discriminatory outcomes in hiring.",
+              "Adjust the AI system to ensure equal representation by lowering standards for the affected demographic group.",
+              "Analyze which screening criteria are causing the disparate impact and whether they are actually predictive of job success.",
+              "Continue using the tool since AI decisions are based on data rather than human bias and are therefore acceptable."
+            ],
+            "correctAnswer": 2,
+            "rationale": "The first step should be analyzing which specific criteria are causing disparate impact and whether those criteria actually predict job success. Some criteria may be unnecessarily eliminating qualified candidates. Continuing without investigation could perpetuate discrimination, discontinuing all AI tools is an overreaction that misses the opportunity to correct the issue, and lowering standards undermines the goal of fair evaluation. The correct approach is thoughtful analysis to ensure criteria are truly job-related and necessary.",
+            "tags": [
+              "bias-detection",
+              "disparate-impact",
+              "fairness",
+              "analysis",
+              "scenario"
+            ]
+          },
+          {
+            "id": "TAA-HR-B-004",
+            "level": 2,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.43,
+            "discrimination": 1.13,
+            "bloomLevel": "Apply",
+            "question": "How should recruiters validate that an AI screening tool is identifying genuinely qualified candidates?",
+            "options": [
+              "Recruiters should rely solely on whether hiring managers like the candidates since manager satisfaction indicates tool effectiveness.",
+              "Recruiters should trust the vendor's accuracy claims without additional validation since they are the technical experts.",
+              "Recruiters should measure validation exclusively by how much time the tool saves compared to manual screening processes.",
+              "Recruiters should compare AI recommendations with manual reviews of samples and track whether AI-recommended candidates succeed in roles."
+            ],
+            "correctAnswer": 3,
+            "rationale": "Proper validation requires comparing AI recommendations with manual reviews and tracking whether AI-selected candidates actually succeed in their roles. This validates both immediate screening accuracy and longer-term predictive validity. Blindly trusting vendor claims is insufficient (independent validation is necessary), manager satisfaction alone doesn't indicate the tool is finding the best talent (just acceptable talent), and time savings don't matter if the tool is screening out qualified candidates or recommending poor fits.",
+            "tags": [
+              "validation",
+              "quality-assurance",
+              "metrics",
+              "effectiveness"
+            ]
+          },
+          {
+            "id": "TAA-HR-B-005",
+            "level": 2,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.36,
+            "discrimination": 1.1,
+            "bloomLevel": "Understand",
+            "question": "What is the main risk of using AI to automatically schedule interviews without human review?",
+            "options": [
+              "The main risk is that automated scheduling cannot technically integrate with modern calendar systems effectively.",
+              "The main risk is that interview scheduling AI violates employment laws by making decisions about candidates.",
+              "The main risk is that automated scheduling is always slower than human coordinators managing calendars manually.",
+              "The main risk is that AI may not account for important contextual factors like candidate availability constraints or interview panel preferences."
+            ],
+            "correctAnswer": 3,
+            "rationale": "The primary risk of fully automated interview scheduling is missing important context\u2014like a candidate who needs flexibility due to current employment, preferred interview panel combinations, or special accommodation needs. Automated scheduling is typically faster than manual coordination (not slower), doesn't violate employment laws (it's a coordination task, not a selection decision), and can integrate effectively with calendar systems. The issue is context awareness, not speed, legality, or technical capability.",
+            "tags": [
+              "automation",
+              "scheduling",
+              "context",
+              "limitations"
+            ]
+          },
+          {
+            "id": "TAA-HR-B-006",
+            "level": 2,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.46,
+            "discrimination": 1.15,
+            "bloomLevel": "Apply",
+            "question": "When should human recruiters override AI candidate recommendations?",
+            "options": [
+              "Recruiters should only override AI when explicitly instructed to do so by senior management or legal counsel.",
+              "Recruiters should never override AI recommendations since the algorithm is more objective than human judgment in all cases.",
+              "Recruiters should override AI when they identify relevant qualifications or context that the AI system cannot evaluate from available data.",
+              "Recruiters should override AI recommendations whenever they personally prefer a different candidate for any subjective reason."
+            ],
+            "correctAnswer": 2,
+            "rationale": "Recruiters should override AI when they identify relevant qualifications, context, or potential that the AI cannot evaluate\u2014such as unique experiences, career trajectory, transferable skills from different industries, or other factors not captured in the data the AI analyzes. Recruiters should never blindly follow AI without judgment, but overrides should be based on legitimate job-related factors, not merely personal preference. Requiring management approval for all overrides would eliminate the value of recruiter expertise and judgment.",
+            "tags": [
+              "human-oversight",
+              "judgment",
+              "override-criteria",
+              "collaboration"
+            ]
+          },
+          {
+            "id": "TAA-HR-B-007",
+            "level": 3,
+            "type": "scenario-based",
+            "points": 10,
+            "difficulty": 0.49,
+            "discrimination": 1.17,
+            "bloomLevel": "Apply",
+            "question": "Your AI recruiting tool rates candidates highly who have titles like 'Senior' or 'Lead' but you're hiring for an entry-level role. What does this reveal?",
+            "options": [
+              "This reveals the AI system is malfunctioning and should be immediately replaced with a different vendor's solution.",
+              "This reveals that your job description is poorly written and needs to be revised before using AI tools.",
+              "This reveals the AI is correctly identifying that candidates with senior experience will always outperform entry-level candidates.",
+              "This reveals the AI may be overfitting to your historical data where successful hires had senior titles in previous roles."
+            ],
+            "correctAnswer": 3,
+            "rationale": "This pattern suggests the AI is overfitting to historical data\u2014perhaps your organization previously hired people with senior titles who succeeded, so the AI learned to prefer those titles. However, for an entry-level role, this criteria is inappropriate and would screen out qualified entry-level candidates. This doesn't mean the AI is fundamentally broken or that senior experience always predicts success (context matters). The issue is in the training data and features the AI is using, not necessarily the job description. This is a correctable model training issue.",
+            "tags": [
+              "overfitting",
+              "training-data",
+              "model-behavior",
+              "analysis",
+              "scenario"
+            ]
+          },
+          {
+            "id": "TAA-HR-B-008",
+            "level": 3,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.47,
+            "discrimination": 1.16,
+            "bloomLevel": "Apply",
+            "question": "How should talent acquisition teams measure the success of AI screening beyond just efficiency gains?",
+            "options": [
+              "Teams should measure quality of hire, diversity of candidate pools, offer acceptance rates, and feedback from hiring managers on candidate quality.",
+              "Teams should measure success exclusively by the number of resumes screened per hour compared to manual processes.",
+              "Teams should measure success by comparing their AI system's features to competitors' recruiting technology capabilities.",
+              "Teams should rely entirely on candidate satisfaction scores from those who were interviewed as the key success metric."
+            ],
+            "correctAnswer": 0,
+            "rationale": "Comprehensive success measurement must include quality outcomes, not just efficiency. Key metrics include quality of hire (do AI-screened candidates succeed?), diversity (is the funnel improving?), offer acceptance (are we identifying candidates who want to join?), and hiring manager satisfaction with candidate quality. Measuring only resumes/hour misses quality entirely, candidate satisfaction is just one input (and only reflects those who made it through), and comparing features to competitors doesn't indicate whether the tool is achieving desired outcomes.",
+            "tags": [
+              "metrics",
+              "success-measurement",
+              "quality",
+              "comprehensive-evaluation"
+            ]
+          }
+        ]
+      },
+      {
+        "dimensionCode": "PDA",
+        "dimensionName": "Performance & Development with AI",
+        "description": "Leveraging AI for performance management, learning, and employee development",
+        "weight": 0.125,
+        "totalPoints": 75,
+        "items": [
+          {
+            "id": "PDA-HR-B-001",
+            "level": 1,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.27,
+            "discrimination": 1.06,
+            "bloomLevel": "Remember",
+            "question": "How should AI-generated performance insights be used in employee evaluations?",
+            "options": [
+              "AI insights should automatically determine ratings with managers only adding brief comments after the AI decides.",
+              "AI insights should inform manager judgment but never replace the human evaluation of context, growth, and potential.",
+              "AI insights should be kept from managers entirely to avoid biasing their independent human judgment of performance.",
+              "AI insights should be the primary basis for performance ratings since they are more objective than manager opinions."
+            ],
+            "correctAnswer": 1,
+            "rationale": "AI insights should inform but never replace human judgment in performance evaluation. Managers must evaluate context (like changing business conditions), recognize growth and learning, assess potential, and consider factors AI cannot measure (like handling of sensitive situations). AI can provide useful data about productivity patterns or comparisons, but human managers must integrate these insights with broader context and judgment. Making AI primary, hiding insights from managers, or letting AI determine ratings all inappropriately remove essential human evaluation.",
+            "tags": [
+              "performance-management",
+              "human-oversight",
+              "judgment",
+              "evaluation"
+            ]
+          },
+          {
+            "id": "PDA-HR-B-002",
+            "level": 1,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.32,
+            "discrimination": 1.09,
+            "bloomLevel": "Understand",
+            "question": "What is the primary benefit of AI-powered personalized learning recommendations?",
+            "options": [
+              "AI eliminates the need for learning and development professionals by automating all training program decisions completely.",
+              "AI can accurately predict which employees will be promoted and should therefore receive priority in development programs.",
+              "AI guarantees that employees will complete recommended training by using behavioral psychology to compel engagement.",
+              "AI can identify skill gaps and suggest relevant learning resources at scale based on individual roles, goals, and learning patterns."
+            ],
+            "correctAnswer": 3,
+            "rationale": "The key benefit of AI-powered learning recommendations is personalization at scale\u2014AI can analyze individual roles, career goals, skill gaps, and learning patterns to suggest relevant resources for many employees simultaneously. AI doesn't replace L&D professionals (who still design strategy, curate content, and provide coaching), can't and shouldn't compel engagement, and while it may identify high-potential employees, accurate promotion prediction is much more complex than learning recommendation. The value is in scaling personalized development guidance.",
+            "tags": [
+              "learning-development",
+              "personalization",
+              "scale",
+              "skill-development"
+            ]
+          },
+          {
+            "id": "PDA-HR-B-003",
+            "level": 2,
+            "type": "scenario-based",
+            "points": 10,
+            "difficulty": 0.39,
+            "discrimination": 1.12,
+            "bloomLevel": "Apply",
+            "question": "An AI system identifies an employee as 'high attrition risk' based on behavior patterns. How should their manager use this information?",
+            "options": [
+              "The manager should immediately offer the employee a raise or promotion to prevent them from leaving the organization.",
+              "The manager should ignore the AI prediction since it might become a self-fulfilling prophecy if the manager acts on it.",
+              "The manager should use this as a prompt to have an open conversation about the employee's satisfaction, growth, and career goals.",
+              "The manager should begin documenting performance issues to prepare for the employee's departure before they resign."
+            ],
+            "correctAnswer": 2,
+            "rationale": "Attrition risk predictions are best used as prompts for proactive conversation, not automatic actions. The manager should use this signal to initiate an open discussion about satisfaction, career goals, and growth opportunities. Immediately offering raises/promotions without understanding concerns could waste resources or miss the real issues. Preparing for departure creates a negative self-fulfilling prophecy. Ignoring the signal wastes the insight. The correct approach is using AI as a conversation prompt to understand and address employee needs proactively.",
+            "tags": [
+              "attrition-prediction",
+              "retention",
+              "conversation",
+              "manager-action",
+              "scenario"
+            ]
+          },
+          {
+            "id": "PDA-HR-B-004",
+            "level": 2,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.45,
+            "discrimination": 1.14,
+            "bloomLevel": "Apply",
+            "question": "What's the most important consideration when using AI to identify skill gaps for development planning?",
+            "options": [
+              "The most important consideration is making sure skill gap analysis happens frequently to track all changes immediately.",
+              "The most important consideration is ensuring the AI system uses the most sophisticated machine learning algorithms available.",
+              "The most important consideration is identifying as many skill gaps as possible to maximize employee learning opportunities.",
+              "The most important consideration is validating that identified gaps are actually relevant to the employee's role and career trajectory."
+            ],
+            "correctAnswer": 3,
+            "rationale": "The most critical consideration is relevance\u2014identified skill gaps must actually matter for the employee's current role or realistic career trajectory. An AI might identify many technical skills an employee lacks, but if those skills aren't relevant to their work or goals, development resources are wasted and employees may feel overwhelmed. More gaps identified isn't better, algorithm sophistication doesn't ensure relevance, and frequency of analysis matters less than accuracy and relevance of insights. Focus should be on actionable, relevant gaps.",
+            "tags": [
+              "skill-gaps",
+              "development-planning",
+              "relevance",
+              "prioritization"
+            ]
+          },
+          {
+            "id": "PDA-HR-B-005",
+            "level": 2,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.35,
+            "discrimination": 1.1,
+            "bloomLevel": "Understand",
+            "question": "How can AI support career pathing more effectively than traditional approaches?",
+            "options": [
+              "AI can analyze diverse career paths across the organization to suggest non-obvious progression opportunities based on skills and interests.",
+              "AI can guarantee specific career outcomes for employees by predicting exactly which roles they will achieve in the future.",
+              "AI can eliminate the need for career conversations by automatically assigning employees to their optimal next roles.",
+              "AI can identify a single best career path for each employee that they should follow to maximize their success."
+            ],
+            "correctAnswer": 0,
+            "rationale": "AI's strength in career pathing is analyzing many career paths across the organization to identify non-obvious opportunities that align with an employee's skills and interests. A traditional career conversation might miss possibilities because humans can only remember limited examples. AI cannot guarantee career outcomes (which depend on many factors), should not replace career conversations (human guidance is essential), and should suggest multiple paths rather than prescribing a single 'best' path (employees have agency in their careers).",
+            "tags": [
+              "career-pathing",
+              "opportunity-identification",
+              "career-development",
+              "possibilities"
+            ]
+          },
+          {
+            "id": "PDA-HR-B-006",
+            "level": 2,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.42,
+            "discrimination": 1.13,
+            "bloomLevel": "Understand",
+            "question": "What is the primary risk of using AI to deliver real-time performance feedback to employees?",
+            "options": [
+              "The primary risk is that AI may lack context about why performance varied and could deliver demotivating feedback at inappropriate times.",
+              "The primary risk is that employees will ignore feedback from AI systems and only respond to input from human managers.",
+              "The primary risk is that AI-generated feedback is too technical for most employees to understand without extensive training.",
+              "The primary risk is that real-time feedback is always less effective than traditional annual review processes for development."
+            ],
+            "correctAnswer": 0,
+            "rationale": "The main risk is lack of context\u2014AI might flag a productivity dip without knowing the employee was handling a critical client issue or dealing with a personal situation. Poorly-timed or misunderstood AI feedback can demotivate rather than develop. Real-time feedback can be valuable (it's not inherently less effective than annual reviews), employees may value AI feedback if it's useful, and AI feedback can be written clearly (it doesn't have to be overly technical). The core issue is contextual awareness and appropriate timing.",
+            "tags": [
+              "real-time-feedback",
+              "context",
+              "timing",
+              "risk-management"
+            ]
+          },
+          {
+            "id": "PDA-HR-B-007",
+            "level": 3,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.47,
+            "discrimination": 1.15,
+            "bloomLevel": "Apply",
+            "question": "How should organizations balance AI-driven learning recommendations with employee autonomy in development choices?",
+            "options": [
+              "Organizations should present AI recommendations as suggestions that employees can accept, modify, or decline based on their own judgment and preferences.",
+              "Organizations should make AI recommendations mandatory for underperformers but optional for high performers to reward top talent.",
+              "Organizations should let employees ignore AI recommendations entirely since self-directed learning is always more effective than guided development.",
+              "Organizations should require employees to complete all AI-recommended learning to ensure systematic skill development across the workforce."
+            ],
+            "correctAnswer": 0,
+            "rationale": "The best balance treats AI recommendations as helpful suggestions that employees can accept, modify, or decline based on their own knowledge of what they need and want to develop. This respects employee autonomy while providing useful guidance. Mandating all recommendations removes autonomy and may include irrelevant suggestions, completely ignoring recommendations wastes the AI investment and useful guidance, and creating different rules for different performers is both complicated and potentially demotivating. Suggestions that respect autonomy is the optimal approach.",
+            "tags": [
+              "autonomy",
+              "recommendations",
+              "employee-choice",
+              "balance"
+            ]
+          }
+        ]
+      },
+      {
+        "dimensionCode": "HRA",
+        "dimensionName": "HR Analytics & Data",
+        "description": "Understanding and applying HR analytics powered by AI",
+        "weight": 0.125,
+        "totalPoints": 75,
+        "items": [
+          {
+            "id": "HRA-HR-B-001",
+            "level": 1,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.26,
+            "discrimination": 1.06,
+            "bloomLevel": "Remember",
+            "question": "What's the most critical factor when building predictive attrition models?",
+            "options": [
+              "The most critical factor is collecting as much employee data as possible to ensure maximum predictive accuracy.",
+              "The most critical factor is achieving the highest possible accuracy percentage regardless of other considerations.",
+              "The most critical factor is using the most advanced machine learning algorithms available for model development.",
+              "The most critical factor is understanding why employees leave through qualitative context, not just identifying statistical patterns."
+            ],
+            "correctAnswer": 3,
+            "rationale": "While statistical patterns and prediction accuracy matter, the most critical factor is understanding why employees actually leave. A model might predict attrition accurately without revealing actionable causes\u2014for example, predicting someone will leave without understanding if it's due to poor management, lack of growth, or compensation. Understanding 'why' enables intervention. More data doesn't automatically improve models, sophisticated algorithms aren't always better than simpler ones, and optimizing only for accuracy can miss the goal of generating actionable insights.",
+            "tags": [
+              "attrition-modeling",
+              "causation",
+              "actionability",
+              "why-matters"
+            ]
+          },
+          {
+            "id": "HRA-HR-B-002",
+            "level": 1,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.33,
+            "discrimination": 1.09,
+            "bloomLevel": "Understand",
+            "question": "How does AI-powered workforce planning differ from traditional headcount planning?",
+            "options": [
+              "AI replaces the need for input from business leaders by autonomously determining optimal organizational structures.",
+              "AI simplifies workforce planning by focusing only on headcount numbers without considering skills or capabilities.",
+              "AI can model multiple scenarios, predict skill needs based on business strategy, and identify gaps before they become critical.",
+              "AI eliminates all uncertainty in workforce planning by accurately predicting exact future staffing requirements years ahead."
+            ],
+            "correctAnswer": 2,
+            "rationale": "AI-powered workforce planning's advantage is sophisticated scenario modeling\u2014analyzing how different business strategies affect skill needs, identifying emerging gaps, and comparing multiple future scenarios. AI cannot eliminate uncertainty in an uncertain world, should not replace business leader input (their strategic vision is essential), and should absolutely consider skills and capabilities, not just headcount numbers. The value is in more sophisticated analysis that incorporates business context, skills, and scenarios\u2014not in replacing human judgment or ignoring complexity.",
+            "tags": [
+              "workforce-planning",
+              "scenarios",
+              "skill-forecasting",
+              "strategic"
+            ]
+          },
+          {
+            "id": "HRA-HR-B-003",
+            "level": 2,
+            "type": "scenario-based",
+            "points": 10,
+            "difficulty": 0.4,
+            "discrimination": 1.12,
+            "bloomLevel": "Apply",
+            "question": "Your AI analytics reveal that a specific department has significantly higher attrition than others. What should HR investigate first?",
+            "options": [
+              "HR should assume the department's work is inherently less desirable and focus recruiting efforts on finding replacements instead.",
+              "HR should investigate management practices, team dynamics, and growth opportunities within that specific department before drawing conclusions.",
+              "HR should immediately implement retention bonuses for the entire department to prevent further attrition before investigating causes.",
+              "HR should conclude that AI has identified poor performers self-selecting out and view the high attrition positively."
+            ],
+            "correctAnswer": 1,
+            "rationale": "Before taking action, HR should investigate root causes specific to that department\u2014management quality, team culture, growth opportunities, workload, or other factors driving attrition. Immediately implementing retention bonuses without understanding causes may waste resources if the issue is non-financial. Assuming the work is undesirable misses potentially fixable issues. Viewing all attrition positively ignores that good employees might be leaving due to correctable problems. Investigation of causes must precede action.",
+            "tags": [
+              "root-cause-analysis",
+              "investigation",
+              "attrition",
+              "department-analysis",
+              "scenario"
+            ]
+          },
+          {
+            "id": "HRA-HR-B-004",
+            "level": 2,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.44,
+            "discrimination": 1.14,
+            "bloomLevel": "Apply",
+            "question": "How do you determine if an AI-powered attrition prediction is actionable for HR?",
+            "options": [
+              "A prediction is actionable whenever it achieves high statistical accuracy regardless of whether causes are identified or addressable.",
+              "A prediction is actionable if it processes more employee data points than traditional methods of identifying attrition risk.",
+              "A prediction is actionable when it identifies specific risk factors that HR and managers can address through interventions or policy changes.",
+              "A prediction is actionable only when it can guarantee that specific employees will definitely leave within a certain timeframe."
+            ],
+            "correctAnswer": 2,
+            "rationale": "Actionability requires identifying specific addressable risk factors\u2014things HR can actually do something about, like poor manager relationships, lack of development, or compensation concerns. A highly accurate 'black box' prediction that doesn't reveal why someone might leave isn't actionable because HR doesn't know what intervention might help. Predictions can't guarantee individual behavior, and using more data doesn't make predictions actionable if they don't reveal causes. Actionability is about identifiable, addressable drivers, not just accuracy or data volume.",
+            "tags": [
+              "actionability",
+              "intervention",
+              "prediction-utility",
+              "addressable-factors"
+            ]
+          },
+          {
+            "id": "HRA-HR-B-005",
+            "level": 2,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.37,
+            "discrimination": 1.11,
+            "bloomLevel": "Understand",
+            "question": "What's the primary challenge in measuring diversity with AI-powered analytics?",
+            "options": [
+              "The primary challenge is that diversity metrics are always subjective and therefore cannot be measured quantitatively at all.",
+              "The primary challenge is that AI cannot process categorical demographic data effectively due to technical limitations.",
+              "The primary challenge is collecting diversity data since employees universally refuse to provide demographic information to employers.",
+              "The primary challenge is defining meaningful diversity dimensions that align with organizational values while respecting employee privacy and legal constraints."
+            ],
+            "correctAnswer": 3,
+            "rationale": "The main challenge is defining which diversity dimensions matter for the organization (race, gender, age, disability, veteran status, etc.), doing so in ways that align with organizational values and legal requirements, while respecting employee privacy and voluntary disclosure. Employees don't universally refuse to share (though self-identification must be voluntary), AI can absolutely process categorical data, and diversity metrics can be measured quantitatively (though interpretation requires context). The challenge is in thoughtful definition and appropriate, respectful data collection.",
+            "tags": [
+              "diversity-metrics",
+              "definition",
+              "privacy",
+              "legal-considerations"
+            ]
+          },
+          {
+            "id": "HRA-HR-B-006",
+            "level": 2,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.46,
+            "discrimination": 1.15,
+            "bloomLevel": "Understand",
+            "question": "Why is data quality more critical than data quantity for HR analytics?",
+            "options": [
+              "Data quality only matters for compliance reporting but has no impact on the usefulness of people analytics insights.",
+              "Data quality concerns are overstated because modern AI can automatically correct for any errors in the underlying data.",
+              "Poor quality data can lead to misleading conclusions and harmful decisions, while appropriate quality data in smaller quantities can still generate valuable insights.",
+              "Data quality is equally important to quantity since AI algorithms need both to function at their optimal performance level."
+            ],
+            "correctAnswer": 2,
+            "rationale": "Data quality is critical because poor quality data leads to wrong conclusions and potentially harmful decisions\u2014'garbage in, garbage out.' Having complete but inaccurate data about performance, demographics, or attrition is worse than having limited but accurate data. Quality matters for analytics (not just compliance), is more important than quantity (quality data beats volume), and AI cannot automatically fix poor underlying data quality. The foundation of good analytics is accurate, reliable data, even if limited in scope.",
+            "tags": [
+              "data-quality",
+              "accuracy",
+              "reliability",
+              "garbage-in-garbage-out"
+            ]
+          },
+          {
+            "id": "HRA-HR-B-007",
+            "level": 3,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.49,
+            "discrimination": 1.17,
+            "bloomLevel": "Apply",
+            "question": "How should HR interpret AI-identified correlations between employee characteristics and performance outcomes?",
+            "options": [
+              "HR should use correlations to create separate policies for different employee groups based on predicted performance differences.",
+              "HR should treat all statistically significant correlations as proven causal relationships that justify policy changes immediately.",
+              "HR should treat correlations as hypotheses requiring further investigation to understand causation and avoid spurious relationships.",
+              "HR should ignore correlations entirely since correlation never provides any useful information for decision-making."
+            ],
+            "correctAnswer": 2,
+            "rationale": "Correlations should be treated as hypotheses requiring further investigation. A correlation might be spurious (coincidental), might have reverse causation (outcome causes the characteristic rather than vice versa), or might be mediated by unmeasured factors. Correlations aren't proof of causation and shouldn't automatically drive policy changes, but they're not useless either\u2014they highlight patterns worth investigating. Using correlations to create differential policies could lead to discrimination. The correct approach is treating correlations as signals for deeper investigation, not as conclusions.",
+            "tags": [
+              "correlation-causation",
+              "interpretation",
+              "spurious-relationships",
+              "investigation"
+            ]
+          },
+          {
+            "id": "HRA-HR-B-008",
+            "level": 3,
+            "type": "scenario-based",
+            "points": 10,
+            "difficulty": 0.48,
+            "discrimination": 1.16,
+            "bloomLevel": "Apply",
+            "question": "Your analytics show employees who work remotely have lower performance ratings. Before making remote work policy changes, what's most important to analyze?",
+            "options": [
+              "Analyze whether rating differences reflect actual performance differences or manager biases in evaluating remote versus office-based workers.",
+              "Immediately restrict remote work options since the data clearly demonstrates that office work leads to better performance outcomes.",
+              "Ignore the analytics entirely since performance ratings are too subjective to use for any policy decisions about work arrangements.",
+              "Focus on hiring employees who prefer office work to avoid the performance problems associated with remote workers."
+            ],
+            "correctAnswer": 0,
+            "rationale": "Before acting on this correlation, HR must investigate whether remote workers truly perform worse or whether managers rate them lower due to visibility bias, proximity bias, or other evaluation biases. The correlation might reflect manager bias rather than actual performance differences. Immediately restricting remote work or focusing hiring on office-preferring employees would be premature without understanding the cause. Ignoring the data entirely also misses an opportunity to investigate a potential real issue or bias. Investigation of causation is essential before action.",
+            "tags": [
+              "remote-work",
+              "bias-investigation",
+              "performance-ratings",
+              "causation",
+              "scenario"
+            ]
+          }
+        ]
+      },
+      {
+        "dimensionCode": "EEC",
+        "dimensionName": "Employee Experience & Communication",
+        "description": "Enhancing employee experience through AI-powered tools and communication",
+        "weight": 0.125,
+        "totalPoints": 75,
+        "items": [
+          {
+            "id": "EEC-HR-B-001",
+            "level": 1,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.27,
+            "discrimination": 1.07,
+            "bloomLevel": "Remember",
+            "question": "When should HR use AI chatbots versus human support for employee questions?",
+            "options": [
+              "AI chatbots should be avoided entirely in HR since employees always prefer speaking with human representatives for everything.",
+              "AI chatbots work best for routine policy questions while humans should handle sensitive issues, complex situations, and emotional support.",
+              "AI chatbots should handle sensitive issues to ensure consistent policy application while humans focus on routine questions.",
+              "AI chatbots should handle all employee questions since they provide faster responses and are available 24/7 unlike humans."
+            ],
+            "correctAnswer": 1,
+            "rationale": "AI chatbots excel at routine, factual questions about policies, processes, or deadlines\u2014queries with straightforward answers available 24/7. Humans should handle sensitive matters (harassment, mental health, conflicts), complex situations requiring judgment, and anything requiring emotional support or empathy. Not everything should go to chatbots (humans add critical value), not everything should go to humans (chatbots are effective for routine queries), and sensitive issues particularly need human judgment and empathy, not consistent automation.",
+            "tags": [
+              "chatbots",
+              "human-support",
+              "employee-questions",
+              "triage"
+            ]
+          },
+          {
+            "id": "EEC-HR-B-002",
+            "level": 1,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.34,
+            "discrimination": 1.1,
+            "bloomLevel": "Understand",
+            "question": "What is the primary benefit of using AI to personalize employee communications?",
+            "options": [
+              "AI can tailor messages to individual roles, locations, and circumstances, making communications more relevant and increasing engagement.",
+              "AI can compel employees to read and respond to messages by using behavioral psychology techniques that humans cannot.",
+              "AI ensures all employees receive identical messages simultaneously to maintain fairness and prevent any perception of favoritism.",
+              "AI eliminates the need for HR to understand employees personally by automating all communication decisions completely."
+            ],
+            "correctAnswer": 0,
+            "rationale": "The key benefit is relevance through personalization\u2014AI can tailor messages based on role, location, tenure, circumstances (like relevant benefits for new parents), making communications more useful and engaging. AI doesn't replace HR's need to understand employees (judgment is still needed), shouldn't make everyone receive identical messages (that's actually less fair since circumstances differ), and can't and shouldn't compel engagement. The value is in making communications more relevant and therefore more likely to be read and acted upon.",
+            "tags": [
+              "personalization",
+              "communication",
+              "relevance",
+              "engagement"
+            ]
+          },
+          {
+            "id": "EEC-HR-B-003",
+            "level": 2,
+            "type": "scenario-based",
+            "points": 10,
+            "difficulty": 0.41,
+            "discrimination": 1.12,
+            "bloomLevel": "Apply",
+            "question": "Your AI sentiment analysis of employee surveys shows declining satisfaction in one department. What should HR's first action be?",
+            "options": [
+              "HR should speak directly with employees and managers in that department to understand context behind the sentiment patterns.",
+              "HR should implement immediate policy changes to address declining satisfaction before it spreads to other departments.",
+              "HR should rely entirely on the AI analysis and create action plans without additional investigation or employee input.",
+              "HR should assume the sentiment analysis is incorrect and continue monitoring without taking any investigative action."
+            ],
+            "correctAnswer": 0,
+            "rationale": "Sentiment analysis identifies patterns but doesn't reveal full context or specific issues. HR should follow up with conversations to understand what's driving negative sentiment\u2014is it a specific event, management change, workload, or something else? Implementing changes without understanding root causes may address wrong issues, relying only on AI analysis misses nuance and context, and ignoring the signal wastes the insight. Conversations to understand context should precede action.",
+            "tags": [
+              "sentiment-analysis",
+              "investigation",
+              "context",
+              "follow-up",
+              "scenario"
+            ]
+          },
+          {
+            "id": "EEC-HR-B-004",
+            "level": 2,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.38,
+            "discrimination": 1.11,
+            "bloomLevel": "Apply",
+            "question": "How should organizations balance automation of employee support with maintaining human connection?",
+            "options": [
+              "Organizations should automate everything possible to maximize efficiency since human connection is less important than speed.",
+              "Organizations should only allow human support for executives and automate support for all other employees to save costs.",
+              "Organizations should automate transactional tasks while preserving human touchpoints for moments that matter emotionally to employees.",
+              "Organizations should avoid automation entirely to preserve personal relationships even if it creates delays in support."
+            ],
+            "correctAnswer": 2,
+            "rationale": "The best balance automates routine, transactional tasks (benefits enrollment, PTO requests, policy questions) while preserving human connection for emotionally significant moments (life events, career conversations, conflicts, recognition). Automating everything sacrifices important human moments, avoiding automation entirely creates unnecessary inefficiency, and creating different support tiers by level is both complicated and potentially damaging to culture. The key is automating transactions while humanizing meaningful moments.",
+            "tags": [
+              "automation",
+              "human-connection",
+              "balance",
+              "moments-that-matter"
+            ]
+          },
+          {
+            "id": "EEC-HR-B-005",
+            "level": 2,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.44,
+            "discrimination": 1.14,
+            "bloomLevel": "Understand",
+            "question": "What's the biggest risk of relying too heavily on AI sentiment analysis of employee feedback?",
+            "options": [
+              "The biggest risk is that sentiment analysis is never accurate enough to provide any useful insights for HR decisions.",
+              "The biggest risk is that employees will learn to game sentiment analysis by writing feedback designed to trigger desired responses.",
+              "The biggest risk is missing nuance, context, and the 'why' behind sentiments that only human interpretation can understand.",
+              "The biggest risk is that sentiment analysis requires so much computing power that it's too expensive for most organizations."
+            ],
+            "correctAnswer": 2,
+            "rationale": "The main risk is missing nuance and context. AI might classify comments as negative when employees are actually satisfied (for example, 'this is crazy good'), might miss sarcasm, and can't understand why sentiment is positive or negative without additional analysis. Sentiment analysis can be useful (it's not completely inaccurate), employees gaming it isn't the primary concern (most provide genuine feedback), and computing cost isn't a significant barrier with modern technology. The limitation is in depth of understanding, not accuracy, gaming, or cost.",
+            "tags": [
+              "sentiment-analysis",
+              "limitations",
+              "nuance",
+              "context"
+            ]
+          },
+          {
+            "id": "EEC-HR-B-006",
+            "level": 2,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.39,
+            "discrimination": 1.11,
+            "bloomLevel": "Understand",
+            "question": "Why is accessibility important when implementing AI-powered employee experience tools?",
+            "options": [
+              "Accessibility is only a legal compliance issue and doesn't affect the actual user experience for most employees significantly.",
+              "Accessibility features are nice to have but can be skipped if they slow down tool implementation or increase costs.",
+              "Accessibility primarily benefits older employees who struggle with technology and isn't relevant for modern digital-native workforces.",
+              "Accessibility ensures all employees, including those with disabilities, can effectively use tools and access the same level of support and information."
+            ],
+            "correctAnswer": 3,
+            "rationale": "Accessibility is critical to ensure all employees, including those with visual, auditory, motor, or cognitive disabilities, can use tools effectively and access the same information and support. It's not just legal compliance (though that matters)\u2014it's about equity and inclusion in employee experience. Accessibility shouldn't be skipped for speed or cost (that leaves employees behind), and it benefits everyone (not just older workers)\u2014captions help in noisy environments, keyboard navigation helps with broken mice, clear language helps non-native speakers. Accessibility is fundamental equity.",
+            "tags": [
+              "accessibility",
+              "inclusion",
+              "disabilities",
+              "equity"
+            ]
+          },
+          {
+            "id": "EEC-HR-B-007",
+            "level": 3,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.47,
+            "discrimination": 1.15,
+            "bloomLevel": "Apply",
+            "question": "How should HR build employee trust when introducing AI-powered tools that affect their work experience?",
+            "options": [
+              "HR should minimize discussion of AI to avoid creating anxiety and let employees discover AI capabilities through natural use over time.",
+              "HR should clearly explain what the AI does, how it makes decisions, how employees can provide input, and maintain transparency about limitations.",
+              "HR should emphasize that AI decisions are always correct to build employee confidence in the new technology's capabilities.",
+              "HR should introduce AI tools without announcement to gather unbiased data on natural employee interactions and behaviors."
+            ],
+            "correctAnswer": 1,
+            "rationale": "Building trust requires transparency: clearly explaining what AI does, how decisions are made, how employees can provide input or challenge decisions, and being honest about limitations. Minimizing discussion creates anxiety through uncertainty, claiming AI is always correct is dishonest and breaks trust when errors occur, and introducing AI secretly is unethical and destroys trust if discovered. Proactive, honest, clear communication builds trust; secrecy, minimization, or overclaiming undermines it.",
+            "tags": [
+              "trust-building",
+              "transparency",
+              "communication",
+              "employee-relations"
+            ]
+          }
+        ]
+      },
+      {
+        "dimensionCode": "CEG",
+        "dimensionName": "Compliance, Ethics & Governance",
+        "description": "Managing ethical, legal, and governance aspects of HR AI systems",
+        "weight": 0.125,
+        "totalPoints": 75,
+        "items": [
+          {
+            "id": "CEG-HR-B-001",
+            "level": 1,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.28,
+            "discrimination": 1.07,
+            "bloomLevel": "Remember",
+            "question": "What's the primary compliance concern when deploying AI in HR?",
+            "options": [
+              "The primary concern is ensuring AI systems comply with employment laws, including EEOC, ADA, GDPR, and other anti-discrimination regulations.",
+              "The primary concern is keeping AI systems completely secret from employees to avoid creating concerns about algorithmic decision-making.",
+              "The primary concern is maximizing the speed of AI deployment to gain competitive advantage before compliance issues arise.",
+              "The primary concern is using the most advanced AI technology regardless of whether it meets legal and regulatory requirements."
+            ],
+            "correctAnswer": 0,
+            "rationale": "The primary compliance concern is ensuring AI systems comply with employment laws\u2014EEOC (preventing discrimination), ADA (reasonable accommodations), GDPR/privacy laws (data protection), and other relevant regulations. Speed of deployment should never trump compliance, secrecy about AI use can violate transparency requirements and destroy trust, and advanced technology must still meet legal requirements. Compliance must be foundational to AI deployment, not an afterthought.",
+            "tags": [
+              "compliance",
+              "employment-law",
+              "regulations",
+              "legal-requirements"
+            ]
+          },
+          {
+            "id": "CEG-HR-B-002",
+            "level": 1,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.35,
+            "discrimination": 1.1,
+            "bloomLevel": "Understand",
+            "question": "Why is bias auditing essential for HR AI systems?",
+            "options": [
+              "Bias auditing is only necessary when complaints are filed and should be reactive rather than proactive in nature.",
+              "Bias auditing helps identify whether AI systems produce discriminatory outcomes across protected groups, enabling corrective action before harm occurs.",
+              "Bias auditing is purely a public relations exercise and doesn't provide meaningful insights about actual system fairness.",
+              "Bias auditing eliminates all possible bias from AI systems permanently after a single comprehensive evaluation."
+            ],
+            "correctAnswer": 1,
+            "rationale": "Bias auditing is essential for proactively identifying whether AI systems produce disparate outcomes for protected groups (race, gender, age, disability, etc.), enabling corrective action before widespread harm. Waiting for complaints is reactive and allows bias to affect many people first, single audits don't permanently eliminate bias (systems should be regularly audited as data and uses change), and auditing provides real insights, not just PR value. Proactive bias auditing is a core responsibility for responsible AI deployment.",
+            "tags": [
+              "bias-auditing",
+              "fairness",
+              "discrimination-testing",
+              "proactive"
+            ]
+          },
+          {
+            "id": "CEG-HR-B-003",
+            "level": 2,
+            "type": "scenario-based",
+            "points": 10,
+            "difficulty": 0.42,
+            "discrimination": 1.13,
+            "bloomLevel": "Apply",
+            "question": "An employee requests an explanation of why they weren't recommended for a role by your AI system. What should HR's response include?",
+            "options": [
+              "HR should tell the employee that AI decisions cannot be explained but are more objective than human decisions.",
+              "HR should refuse to provide any explanation since the AI's decision-making process is proprietary vendor information.",
+              "HR should provide the employee with raw algorithm code and technical documentation to ensure complete transparency.",
+              "HR should explain the key factors the AI considered and provide human review of whether the decision was appropriate, offering recourse if needed."
+            ],
+            "correctAnswer": 3,
+            "rationale": "HR should provide a meaningful explanation of key factors the system considered (qualifications, experience, skills), have a human review whether the decision was appropriate, and offer recourse if the employee believes the decision was wrong. Refusing explanation violates transparency principles and potentially legal requirements, providing raw code isn't meaningful to most employees and isn't required, and claiming AI can't be explained is false and unhelpful. Employees deserve understandable explanations and human review of consequential decisions.",
+            "tags": [
+              "explainability",
+              "transparency",
+              "employee-rights",
+              "recourse",
+              "scenario"
+            ]
+          },
+          {
+            "id": "CEG-HR-B-004",
+            "level": 2,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.48,
+            "discrimination": 1.16,
+            "bloomLevel": "Apply",
+            "question": "What makes an HR AI system's decision-making 'explainable' in a meaningful way?",
+            "options": [
+              "The system refers employees to read the vendor's published research papers on the algorithm's development and validation.",
+              "The system provides a complete mathematical formula showing every calculation step in precise technical detail.",
+              "The system can identify which factors most influenced the decision in terms that employees and managers can understand and evaluate.",
+              "The system simply states it used 'artificial intelligence' to make the most accurate decision possible without specifics."
+            ],
+            "correctAnswer": 2,
+            "rationale": "Meaningful explainability means identifying influential factors in understandable terms\u2014'the system weighted experience in role X and skills in areas Y and Z most heavily' rather than mathematical formulas that aren't meaningful to most people. Simply stating 'AI was used' provides no useful explanation, mathematical formulas aren't understandable explanations for most employees, and referring to research papers isn't a practical or meaningful explanation for individual decisions. Explainability means understandable, relevant factors that influenced the specific decision.",
+            "tags": [
+              "explainability",
+              "meaningful-explanation",
+              "factors",
+              "understandable"
+            ]
+          },
+          {
+            "id": "CEG-HR-B-005",
+            "level": 2,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.4,
+            "discrimination": 1.12,
+            "bloomLevel": "Understand",
+            "question": "Why must HR maintain human accountability for AI-assisted people decisions?",
+            "options": [
+              "Human accountability is only required by law and doesn't serve any practical purpose in modern AI-augmented organizations.",
+              "Human accountability is unnecessary when AI systems achieve high accuracy since algorithms make better decisions than humans.",
+              "Human accountability ensures someone is responsible for decisions, can exercise judgment in exceptional cases, and maintains employee trust.",
+              "Human accountability just slows down decision-making and should be eliminated for efficiency once AI is fully implemented."
+            ],
+            "correctAnswer": 2,
+            "rationale": "Human accountability is essential for several reasons: someone must be responsible when things go wrong, humans can exercise judgment in exceptional circumstances AI hasn't seen, and employees need to know humans are responsible for decisions affecting their careers. High-accuracy AI doesn't eliminate the need for human responsibility (edge cases and novel situations will always occur), accountability serves practical purposes beyond legal compliance, and efficiency should never trump appropriate human oversight of consequential people decisions.",
+            "tags": [
+              "accountability",
+              "human-oversight",
+              "responsibility",
+              "trust"
+            ]
+          },
+          {
+            "id": "CEG-HR-B-006",
+            "level": 2,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.45,
+            "discrimination": 1.14,
+            "bloomLevel": "Understand",
+            "question": "What's the most important aspect of data privacy when implementing HR AI systems?",
+            "options": [
+              "The most important aspect is using employee data freely since employment relationships imply automatic consent for all uses.",
+              "The most important aspect is collecting maximum employee data since more data always produces better AI model performance.",
+              "The most important aspect is keeping all data collection completely secret so employees don't worry about privacy implications.",
+              "The most important aspect is ensuring employee data is used only for legitimate business purposes with appropriate consent and security protections."
+            ],
+            "correctAnswer": 3,
+            "rationale": "Data privacy requires using employee data only for legitimate business purposes, with appropriate consent (where required), transparency about use, and strong security protections. More data doesn't automatically improve models and can create privacy risks, secrecy about data collection violates privacy principles and can be illegal, and employment doesn't grant blanket consent for all possible data uses. Privacy requires purpose limitation, transparency, security, and respecting employee rights over their personal information.",
+            "tags": [
+              "privacy",
+              "data-protection",
+              "consent",
+              "legitimate-use"
+            ]
+          },
+          {
+            "id": "CEG-HR-B-007",
+            "level": 3,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.51,
+            "discrimination": 1.18,
+            "bloomLevel": "Apply",
+            "question": "When should HR prioritize explainability over predictive accuracy in AI systems?",
+            "options": [
+              "HR should never trade accuracy for explainability since any accuracy reduction is unfair to employees receiving decisions.",
+              "HR should prioritize explainability when decisions significantly affect employees and require justification, appeal mechanisms, or regulatory compliance.",
+              "HR should prioritize explainability only when specifically required by law but otherwise focus entirely on performance.",
+              "HR should always prioritize accuracy over explainability since making correct decisions matters more than explaining them."
+            ],
+            "correctAnswer": 1,
+            "rationale": "Explainability should be prioritized when decisions significantly affect employees (promotions, terminations, compensation), require justification and appeal processes, or face regulatory requirements. A slightly less accurate but explainable model may be better than a marginally more accurate black box when employees need to understand and potentially challenge decisions. Always prioritizing accuracy ignores legitimate transparency needs, waiting for legal requirements is insufficient (ethical obligations exist beyond minimum legal compliance), and small accuracy tradeoffs for explainability aren't necessarily unfair\u2014transparency can increase overall fairness.",
+            "tags": [
+              "explainability-accuracy-tradeoff",
+              "prioritization",
+              "consequential-decisions",
+              "transparency"
+            ]
+          },
+          {
+            "id": "CEG-HR-B-008",
+            "level": 3,
+            "type": "scenario-based",
+            "points": 10,
+            "difficulty": 0.49,
+            "discrimination": 1.17,
+            "bloomLevel": "Apply",
+            "question": "Your AI vendor cannot explain how their algorithm makes hiring recommendations. How should HR respond?",
+            "options": [
+              "HR should deploy the system anyway since vendor reputation and accuracy metrics indicate the algorithm is effective and fair.",
+              "HR should not deploy the system for consequential decisions until adequate explainability is achieved or alternative approaches are found.",
+              "HR should deploy the system but disclaim responsibility by noting the vendor controls the algorithm and its decisions.",
+              "HR should use the system only for internal candidates where explainability requirements are less stringent than external hiring."
+            ],
+            "correctAnswer": 1,
+            "rationale": "Without adequate explainability, HR cannot verify fairness, explain decisions to employees, or ensure compliance with regulations requiring decision explanations. HR should not deploy unexplainable systems for consequential decisions regardless of vendor reputation (trust but verify is appropriate), explainability is important for internal candidates too (potentially more so given ongoing relationships), and HR cannot disclaim responsibility (they're accountable for decisions made using tools they deploy). Adequate explainability should be a requirement for deployment.",
+            "tags": [
+              "explainability-requirements",
+              "vendor-evaluation",
+              "deployment-decision",
+              "accountability",
+              "scenario"
+            ]
+          }
+        ]
+      },
+      {
+        "dimensionCode": "SCS",
+        "dimensionName": "Strategic Change & Stakeholder Management",
+        "description": "Leading AI transformation initiatives and managing stakeholder expectations",
+        "weight": 0.125,
+        "totalPoints": 75,
+        "items": [
+          {
+            "id": "SCS-HR-B-001",
+            "level": 1,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.29,
+            "discrimination": 1.08,
+            "bloomLevel": "Remember",
+            "question": "How should HR communicate the introduction of AI tools to employees?",
+            "options": [
+              "HR should emphasize that AI will eventually replace many HR jobs to set realistic expectations about workforce automation.",
+              "HR should transparently explain what the AI will do, how decisions are made, and how employees can provide input or appeal outcomes.",
+              "HR should describe AI capabilities in technical detail to ensure employees fully understand the sophisticated algorithms being deployed.",
+              "HR should introduce AI tools without prior announcement to avoid creating anxiety and let employees discover capabilities naturally."
+            ],
+            "correctAnswer": 1,
+            "rationale": "Transparent communication is essential: explain what AI will do (and won't do), how decisions are made, how employees can provide input, and how they can challenge or appeal decisions. Surprise introductions create anxiety and distrust, emphasizing job replacement is unnecessarily alarming and often inaccurate (AI typically augments rather than replaces), and technical algorithm details aren't meaningful or necessary for most employees. Clear, honest communication about AI's role, capabilities, and employee rights builds trust.",
+            "tags": [
+              "communication",
+              "transparency",
+              "employee-relations",
+              "ai-introduction"
+            ]
+          },
+          {
+            "id": "SCS-HR-B-002",
+            "level": 1,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.36,
+            "discrimination": 1.1,
+            "bloomLevel": "Understand",
+            "question": "What's the most important element of a business case for HR AI investment?",
+            "options": [
+              "The most important element is minimizing the projected costs to make the investment appear affordable regardless of actual requirements.",
+              "The most important element is emphasizing that competitors are using AI so the organization must invest to avoid falling behind.",
+              "The most important element is highlighting the sophisticated technology features and advanced capabilities of proposed AI systems.",
+              "The most important element is demonstrating clear value through improved outcomes, efficiency gains, or enhanced employee experience with measurable impact."
+            ],
+            "correctAnswer": 3,
+            "rationale": "A strong business case demonstrates clear value: improved hiring quality, reduced attrition, better employee development, efficiency gains, or enhanced employee experience\u2014with measurable impact. Simply claiming competitors use AI doesn't demonstrate value for this organization, technical features don't necessarily translate to business value, and understating costs undermines credibility and can lead to underfunded implementations. The focus should be on demonstrable outcomes and measurable value, not competitive pressure, technical sophistication, or cost minimization.",
+            "tags": [
+              "business-case",
+              "value-demonstration",
+              "roi",
+              "investment-justification"
+            ]
+          },
+          {
+            "id": "SCS-HR-B-003",
+            "level": 2,
+            "type": "scenario-based",
+            "points": 10,
+            "difficulty": 0.43,
+            "discrimination": 1.13,
+            "bloomLevel": "Apply",
+            "question": "Managers resist your new AI-powered performance tool, saying it undermines their judgment. How should HR respond?",
+            "options": [
+              "HR should mandate tool usage regardless of manager concerns since executives approved the investment and it must be adopted.",
+              "HR should eliminate manager involvement entirely by having AI make performance decisions automatically without manager input.",
+              "HR should emphasize that AI provides insights to inform manager judgment, not replace it, and involve managers in defining how AI supports their work.",
+              "HR should abandon the AI tool implementation since manager buy-in is impossible to achieve once resistance emerges."
+            ],
+            "correctAnswer": 2,
+            "rationale": "The best response addresses the concern directly: AI provides insights to inform manager judgment, not replace it. Involving managers in defining how AI supports (rather than dictates) their work builds buy-in. Mandating adoption without addressing concerns creates resentment and workarounds, eliminating manager input entirely would be counterproductive (manager judgment is valuable), and abandoning implementation at first resistance is premature. The solution is collaborative engagement to show AI as a tool that enhances rather than replaces manager judgment.",
+            "tags": [
+              "change-resistance",
+              "manager-relations",
+              "adoption",
+              "collaboration",
+              "scenario"
+            ]
+          },
+          {
+            "id": "SCS-HR-B-004",
+            "level": 2,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.41,
+            "discrimination": 1.12,
+            "bloomLevel": "Apply",
+            "question": "How should HR measure success of an AI implementation beyond just technical performance metrics?",
+            "options": [
+              "HR should rely solely on vendor-provided metrics since they have the technical expertise to evaluate system success.",
+              "HR should measure user adoption, satisfaction, impact on outcomes like hiring quality or attrition, and whether AI improved decision-making.",
+              "HR should measure success exclusively by the accuracy percentage of AI predictions compared to baseline performance.",
+              "HR should measure success by the number of employees who use the system regardless of whether it improves any outcomes."
+            ],
+            "correctAnswer": 1,
+            "rationale": "Comprehensive success measurement includes user adoption (do people use it?), satisfaction (does it help them?), outcome impact (did hiring quality improve? Did attrition decrease?), and decision quality (are better decisions being made?). Measuring only prediction accuracy misses whether the AI creates value in practice, counting users without measuring outcomes misses the goal, and relying only on vendor metrics lacks independent validation of actual organizational benefit. Success should be measured by value delivered, not just technical performance or usage numbers.",
+            "tags": [
+              "success-measurement",
+              "outcomes",
+              "value-realization",
+              "comprehensive-metrics"
+            ]
+          },
+          {
+            "id": "SCS-HR-B-005",
+            "level": 2,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.38,
+            "discrimination": 1.11,
+            "bloomLevel": "Understand",
+            "question": "Why is phased rollout important when implementing HR AI tools?",
+            "options": [
+              "Phased rollout is only necessary for very large organizations and can be skipped by smaller companies without risk.",
+              "Phased rollout delays value realization and should be avoided since rapid full deployment is always more beneficial.",
+              "Phased rollout is primarily a vendor recommendation designed to increase their consulting fees and implementation timeline.",
+              "Phased rollout allows HR to test, learn, fix issues, and build confidence before full deployment rather than risking organization-wide problems."
+            ],
+            "correctAnswer": 3,
+            "rationale": "Phased rollout enables testing in limited scope, learning from early adoption, fixing issues before they affect everyone, and building confidence and adoption momentum. It's valuable for organizations of all sizes (not just large ones), and while it may delay full deployment, it reduces risk of organization-wide problems from untested tools. Phased rollout is a risk management strategy, not a vendor scheme\u2014it allows evidence-based refinement before full commitment. The trade-off between speed and risk management typically favors phased approaches for consequential systems.",
+            "tags": [
+              "phased-rollout",
+              "implementation-strategy",
+              "risk-management",
+              "testing"
+            ]
+          },
+          {
+            "id": "SCS-HR-B-006",
+            "level": 2,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.45,
+            "discrimination": 1.14,
+            "bloomLevel": "Understand",
+            "question": "How should HR work with IT and legal teams when implementing AI systems?",
+            "options": [
+              "HR should complete all planning independently and only involve IT and Legal at the end for final technical setup.",
+              "HR should let IT make all decisions since AI implementation is fundamentally a technical project requiring technology expertise.",
+              "HR should minimize IT and Legal involvement to accelerate implementation and avoid bureaucratic obstacles to deployment.",
+              "HR should collaborate throughout the process, with HR leading on use cases and outcomes, IT on technical requirements, and Legal on compliance."
+            ],
+            "correctAnswer": 3,
+            "rationale": "Successful AI implementation requires collaboration: HR leads on use cases and desired outcomes (they understand the problems), IT ensures technical feasibility and integration (they understand systems), Legal ensures compliance (they understand regulations). No single function should dominate\u2014AI isn't purely technical (HR domain expertise is essential), excluding IT and Legal creates risks, and late involvement leads to rework when issues are discovered. Cross-functional collaboration throughout the process, with clear role definition, produces the best outcomes.",
+            "tags": [
+              "cross-functional",
+              "collaboration",
+              "stakeholder-management",
+              "roles"
+            ]
+          },
+          {
+            "id": "SCS-HR-B-007",
+            "level": 3,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.49,
+            "discrimination": 1.16,
+            "bloomLevel": "Apply",
+            "question": "How should HR build executive support for AI investments when executives are skeptical about AI in HR?",
+            "options": [
+              "HR should emphasize that all competitors are using AI extensively so the organization must invest immediately or fall behind.",
+              "HR should focus on describing sophisticated AI capabilities and technical features to impress executives with innovation.",
+              "HR should implement AI systems without executive approval using existing budget to prove value after the fact through results.",
+              "HR should present concrete examples of improved outcomes, start with low-risk pilots to demonstrate value, and connect AI to business priorities."
+            ],
+            "correctAnswer": 3,
+            "rationale": "Building executive support requires demonstrating concrete value: show examples of improved outcomes (better hires, reduced attrition), propose low-risk pilots that can demonstrate value with limited investment, and explicitly connect AI capabilities to existing business priorities and challenges. Competitor pressure isn't compelling without demonstrated value, implementing without approval violates governance and can backfire, and technical features don't resonate with business-focused executives. The path to buy-in is through business value demonstration, not fear, fait accompli, or technical sophistication.",
+            "tags": [
+              "executive-support",
+              "stakeholder-management",
+              "business-case",
+              "value-demonstration"
+            ]
+          }
+        ]
+      },
+      {
+        "dimensionCode": "VTO",
+        "dimensionName": "Vendor Selection & Technology Operations",
+        "description": "Selecting, implementing, and operating HR AI technology",
+        "weight": 0.125,
+        "totalPoints": 75,
+        "items": [
+          {
+            "id": "VTO-HR-B-001",
+            "level": 1,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.3,
+            "discrimination": 1.08,
+            "bloomLevel": "Remember",
+            "question": "What's the most important factor when selecting an HR AI vendor?",
+            "options": [
+              "The most important factor is the vendor's transparency about how their AI works, their bias testing, and their ability to explain decisions.",
+              "The most important factor is selecting the largest vendor with the most customers to ensure long-term product stability.",
+              "The most important factor is choosing the lowest-cost provider to maximize return on investment for the organization.",
+              "The most important factor is selecting the vendor with the most advanced AI technology and sophisticated algorithms available."
+            ],
+            "correctAnswer": 0,
+            "rationale": "Transparency is critical: vendors should explain how their AI works (at least conceptually), demonstrate bias testing and fairness validation, and enable HR to explain decisions to employees. Advanced technology doesn't ensure appropriateness or transparency, low cost doesn't matter if the tool doesn't work properly or creates compliance risks, and vendor size doesn't guarantee transparency or quality. For responsible AI deployment, understanding how the system works and whether it's been validated for fairness is paramount.",
+            "tags": [
+              "vendor-selection",
+              "transparency",
+              "evaluation-criteria",
+              "due-diligence"
+            ]
+          },
+          {
+            "id": "VTO-HR-B-002",
+            "level": 1,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.37,
+            "discrimination": 1.11,
+            "bloomLevel": "Understand",
+            "question": "When should HR consider building custom AI solutions versus buying vendor products?",
+            "options": [
+              "HR should consider building custom solutions when needs are highly unique, internal expertise exists, and vendor solutions don't adequately address requirements.",
+              "HR should never build custom solutions since vendors will always have more AI expertise than internal teams can develop.",
+              "HR should build custom solutions primarily to avoid recurring licensing costs associated with vendor products over time.",
+              "HR should always build custom AI solutions since they will be better tailored than any generic vendor product could provide."
+            ],
+            "correctAnswer": 0,
+            "rationale": "Custom builds make sense when needs are truly unique (standard vendor solutions don't fit), the organization has or can acquire necessary technical expertise, and the value justifies the investment. Building isn't always better (vendor solutions leverage broader experience and R&D), vendors don't always have better expertise (some organizations have strong capabilities), and cost avoidance alone doesn't justify the risks and effort of custom development. The build vs. buy decision should be based on fit, capability, and strategic value, not absolute rules.",
+            "tags": [
+              "build-vs-buy",
+              "custom-solutions",
+              "vendor-products",
+              "decision-framework"
+            ]
+          },
+          {
+            "id": "VTO-HR-B-003",
+            "level": 2,
+            "type": "scenario-based",
+            "points": 10,
+            "difficulty": 0.44,
+            "discrimination": 1.14,
+            "bloomLevel": "Apply",
+            "question": "A vendor claims their AI hiring tool has '95% accuracy.' What should HR ask before selecting this vendor?",
+            "options": [
+              "HR should request that the vendor guarantee the same 95% accuracy rate when implemented in HR's specific environment.",
+              "HR should ask how accuracy is measured, what dataset was used, whether the tool was tested for bias across protected groups, and if it predicts actual job success.",
+              "HR should only ask about the technical algorithms used to achieve the 95% accuracy rate and validate vendor expertise.",
+              "HR should accept the 95% accuracy claim since it's higher than most competitors and indicates superior technology performance."
+            ],
+            "correctAnswer": 1,
+            "rationale": "HR should ask critical questions: What does '95% accuracy' mean? (agreement with who? predicting what?), What data was used for testing? (is it representative?), Was it tested for bias across protected groups? (is it fair?), and Does it predict actual job success? (is it valid?). High accuracy numbers are meaningless without context\u201495% might sound good but could hide serious biases or predict the wrong outcome. Simply accepting vendor claims, focusing only on technical algorithms, or asking for guarantees (which vendors can't provide for different environments) all miss the critical need for validation of meaningful, fair, valid measures.",
+            "tags": [
+              "vendor-claims",
+              "accuracy-validation",
+              "due-diligence",
+              "critical-questions",
+              "scenario"
+            ]
+          },
+          {
+            "id": "VTO-HR-B-004",
+            "level": 2,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.42,
+            "discrimination": 1.13,
+            "bloomLevel": "Apply",
+            "question": "What's the most important aspect of integrating AI tools with existing HR systems?",
+            "options": [
+              "The most important aspect is ensuring data flows accurately between systems and maintains consistency across the HR technology ecosystem.",
+              "The most important aspect is keeping AI tools completely separate from other systems to avoid any integration complexity.",
+              "The most important aspect is completing integration as quickly as possible regardless of data quality or accuracy concerns.",
+              "The most important aspect is selecting AI tools from the same vendor as existing HR systems to guarantee perfect integration."
+            ],
+            "correctAnswer": 0,
+            "rationale": "Integration success depends on accurate data flow and consistency\u2014if employee data is incorrect or inconsistent across systems, AI tools will produce flawed results. Speed without accuracy is counterproductive, same-vendor tools don't guarantee integration quality (and limits choices), and keeping systems completely separate creates data silos and manual work. Proper integration requires ensuring data accuracy, consistency, and appropriate synchronization across the HR technology ecosystem.",
+            "tags": [
+              "integration",
+              "data-flow",
+              "system-consistency",
+              "hr-technology"
+            ]
+          },
+          {
+            "id": "VTO-HR-B-005",
+            "level": 2,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.4,
+            "discrimination": 1.12,
+            "bloomLevel": "Understand",
+            "question": "Why is ongoing monitoring of AI system performance critical after implementation?",
+            "options": [
+              "Ongoing monitoring detects model drift, identifies emerging biases, ensures continued accuracy, and validates that the system remains appropriate as conditions change.",
+              "Ongoing monitoring is unnecessary once the system is implemented and validated since AI performance remains constant over time.",
+              "Ongoing monitoring is only needed if users report problems or complaints rather than being conducted proactively.",
+              "Ongoing monitoring is primarily a vendor responsibility and requires minimal involvement from the organization's HR team."
+            ],
+            "correctAnswer": 0,
+            "rationale": "Ongoing monitoring is essential because AI performance can degrade over time (model drift), new biases can emerge as data changes, and business conditions evolve. AI performance isn't constant\u2014what worked initially may become less accurate or less appropriate. Monitoring should be proactive, not reactive to complaints, and while vendors may provide tools, the organization is responsible for monitoring (vendors don't know your specific context). Continuous monitoring enables detection and correction of issues before they cause significant harm.",
+            "tags": [
+              "monitoring",
+              "model-drift",
+              "ongoing-validation",
+              "performance-management"
+            ]
+          },
+          {
+            "id": "VTO-HR-B-006",
+            "level": 2,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.48,
+            "discrimination": 1.16,
+            "bloomLevel": "Apply",
+            "question": "What should HR include in service level agreements (SLAs) with AI vendors beyond typical uptime requirements?",
+            "options": [
+              "HR should focus exclusively on system uptime and response time since other considerations are internal HR responsibilities.",
+              "HR should include penalties for any employee complaints about the AI system regardless of whether complaints are valid.",
+              "HR should require vendors to guarantee specific business outcomes like reduced attrition or improved hiring quality.",
+              "HR should include requirements for bias auditing, explainability support, model retraining frequency, and support for compliance requirements."
+            ],
+            "correctAnswer": 3,
+            "rationale": "Beyond basic uptime, AI SLAs should address bias auditing commitments, support for explainability (helping HR explain decisions), model retraining frequency (to address drift), and compliance support (helping meet regulatory requirements). Focusing only on uptime misses AI-specific needs, penalizing any complaint is unreasonable (some complaints won't be valid), and vendors cannot guarantee business outcomes (which depend on many factors beyond the tool). AI SLAs should address the unique aspects of AI systems: fairness, explainability, maintenance, and compliance support.",
+            "tags": [
+              "slas",
+              "vendor-agreements",
+              "contract-requirements",
+              "ai-specific-needs"
+            ]
+          },
+          {
+            "id": "VTO-HR-B-007",
+            "level": 3,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.46,
+            "discrimination": 1.15,
+            "bloomLevel": "Apply",
+            "question": "How should HR approach training employees to use new AI-powered HR tools effectively?",
+            "options": [
+              "HR should train only HR staff on AI tools and have them answer all employee questions to centralize AI expertise.",
+              "HR should require employees to complete general AI literacy courses before receiving access to any HR AI tools.",
+              "HR should provide only technical documentation since AI tools should be intuitive enough that dedicated training is unnecessary.",
+              "HR should provide role-specific training that explains what AI does, how to interpret outputs, when to apply judgment, and how to provide feedback."
+            ],
+            "correctAnswer": 3,
+            "rationale": "Effective training should be role-specific (what recruiters need differs from what managers need), explain what AI does and doesn't do, teach how to interpret AI outputs, clarify when human judgment is needed, and show how to provide feedback to improve systems. Relying only on documentation assumes too much, centralizing everything through HR staff creates bottlenecks, and requiring general AI courses before tool access is overly burdensome and delays adoption. The goal is enabling effective, confident, appropriate use of AI tools in context\u2014not just technical understanding or gating access.",
+            "tags": [
+              "training",
+              "adoption",
+              "employee-enablement",
+              "role-specific"
+            ]
+          },
+          {
+            "id": "VTO-HR-B-008",
+            "level": 3,
+            "type": "scenario-based",
+            "points": 10,
+            "difficulty": 0.53,
+            "discrimination": 1.2,
+            "bloomLevel": "Apply",
+            "question": "Your AI vendor was acquired by a larger company. What should HR evaluate to determine if you should continue with this vendor?",
+            "options": [
+              "HR should negotiate a discount on the contract since the acquisition represents a risk that deserves compensation.",
+              "HR should evaluate whether the new ownership will maintain product development, support commitments, data security practices, and alignment with your needs.",
+              "HR should wait to see if problems emerge over the next year before evaluating whether vendor change is necessary.",
+              "HR should immediately switch to a different vendor since acquisitions always result in product neglect and declining service quality."
+            ],
+            "correctAnswer": 1,
+            "rationale": "An acquisition requires evaluation: Will the product continue development? Will support quality be maintained? Will data security practices continue? Does the new company's direction align with your needs? Acquisitions don't automatically mean problems (some improve products), but they introduce uncertainty requiring evaluation. Immediately switching is premature (the acquisition might be positive), waiting a year is risky (problems could affect employees), and seeking discounts doesn't address the fundamental question of whether continuing is appropriate. Thoughtful evaluation of likely impacts should drive the decision.",
+            "tags": [
+              "vendor-evaluation",
+              "acquisition-impact",
+              "risk-assessment",
+              "continuity",
+              "scenario"
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

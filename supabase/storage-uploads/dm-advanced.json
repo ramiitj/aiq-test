@@ -1,0 +1,3796 @@
+{
+  "assessmentMetadata": {
+    "assessmentId": "AIQ_DM_Advanced_v1",
+    "title": "AIQ Digital Marketer Advanced Assessment",
+    "version": "1.0",
+    "releaseDate": "2025-11-10",
+    "targetAudience": "Senior Digital Marketers, Marketing Directors, CMOs, Growth Marketing Leads",
+    "description": "Advanced AI literacy assessment for senior digital marketing professionals. 160 expert-level questions evaluating sophisticated AI strategy, execution, and leadership in marketing contexts.",
+    "estimatedTime": "150 minutes",
+    "difficulty": "Advanced",
+    "language": "en-US",
+    "authors": [
+      "AIQ Assessment Team"
+    ],
+    "copyright": "2025 AIQ Framework"
+  },
+  "assessmentConfiguration": {
+    "totalQuestions": 160,
+    "dimensionCount": 8,
+    "questionsPerDimension": 20,
+    "assessmentType": "adaptive-sequential",
+    "randomizeQuestions": false,
+    "randomizeOptions": false,
+    "allowReview": true,
+    "showFeedback": false,
+    "passingScore": 0.8,
+    "timeLimit": 9000,
+    "attemptsAllowed": 1
+  },
+  "scoringConfiguration": {
+    "scoringMethod": "IRT-weighted",
+    "totalPoints": 1600,
+    "pointsPerDimension": 200,
+    "minimumPassingPoints": 1280,
+    "partialCredit": false,
+    "penaltyForIncorrect": 0,
+    "scalingFactor": 10,
+    "irtModel": "2PL"
+  },
+  "itemBank": {
+    "dimensions": [
+      {
+        "dimensionCode": "MSI",
+        "dimensionName": "Marketing Strategy & Innovation",
+        "description": "Advanced strategic planning, innovation leadership, and AI-driven marketing transformation",
+        "weight": 0.125,
+        "targetedDifficulty": 0.69,
+        "items": [
+          {
+            "id": "MSI-DM-A-001",
+            "difficulty": 0.71,
+            "discrimination": 1.37,
+            "bloomLevel": "Evaluate",
+            "points": 13,
+            "estimatedTime": 55,
+            "question": "[Advanced Marketing Strategy & Innovation question 1 - Expert-level scenario requiring evaluate skills]",
+            "options": [
+              "Option A for MSI-001",
+              "Option B for MSI-001",
+              "Option C for MSI-001",
+              "Option D for MSI-001"
+            ],
+            "correctAnswer": 2,
+            "rationale": "Rationale for MSI-DM-A-001: This answer demonstrates expert understanding of marketing strategy & innovation principles.",
+            "tags": [
+              "msi",
+              "advanced",
+              "strategic",
+              "ai-marketing"
+            ]
+          },
+          {
+            "id": "MSI-DM-A-002",
+            "difficulty": 0.65,
+            "discrimination": 1.45,
+            "bloomLevel": "Analyze",
+            "points": 12,
+            "estimatedTime": 58,
+            "question": "[Advanced Marketing Strategy & Innovation question 2 - Expert-level scenario requiring analyze skills]",
+            "options": [
+              "Option A for MSI-002",
+              "Option B for MSI-002",
+              "Option C for MSI-002",
+              "Option D for MSI-002"
+            ],
+            "correctAnswer": 0,
+            "rationale": "Rationale for MSI-DM-A-002: This answer demonstrates expert understanding of marketing strategy & innovation principles.",
+            "tags": [
+              "msi",
+              "advanced",
+              "strategic",
+              "ai-marketing"
+            ]
+          },
+          {
+            "id": "MSI-DM-A-003",
+            "difficulty": 0.68,
+            "discrimination": 1.37,
+            "bloomLevel": "Create",
+            "points": 14,
+            "estimatedTime": 55,
+            "question": "[Advanced Marketing Strategy & Innovation question 3 - Expert-level scenario requiring create skills]",
+            "options": [
+              "Option A for MSI-003",
+              "Option B for MSI-003",
+              "Option C for MSI-003",
+              "Option D for MSI-003"
+            ],
+            "correctAnswer": 1,
+            "rationale": "Rationale for MSI-DM-A-003: This answer demonstrates expert understanding of marketing strategy & innovation principles.",
+            "tags": [
+              "msi",
+              "advanced",
+              "strategic",
+              "ai-marketing"
+            ]
+          },
+          {
+            "id": "MSI-DM-A-004",
+            "difficulty": 0.69,
+            "discrimination": 1.37,
+            "bloomLevel": "Evaluate",
+            "points": 13,
+            "estimatedTime": 59,
+            "question": "[Advanced Marketing Strategy & Innovation question 4 - Expert-level scenario requiring evaluate skills]",
+            "options": [
+              "Option A for MSI-004",
+              "Option B for MSI-004",
+              "Option C for MSI-004",
+              "Option D for MSI-004"
+            ],
+            "correctAnswer": 1,
+            "rationale": "Rationale for MSI-DM-A-004: This answer demonstrates expert understanding of marketing strategy & innovation principles.",
+            "tags": [
+              "msi",
+              "advanced",
+              "strategic",
+              "ai-marketing"
+            ]
+          },
+          {
+            "id": "MSI-DM-A-005",
+            "difficulty": 0.71,
+            "discrimination": 1.43,
+            "bloomLevel": "Analyze",
+            "points": 12,
+            "estimatedTime": 57,
+            "question": "[Advanced Marketing Strategy & Innovation question 5 - Expert-level scenario requiring analyze skills]",
+            "options": [
+              "Option A for MSI-005",
+              "Option B for MSI-005",
+              "Option C for MSI-005",
+              "Option D for MSI-005"
+            ],
+            "correctAnswer": 1,
+            "rationale": "Rationale for MSI-DM-A-005: This answer demonstrates expert understanding of marketing strategy & innovation principles.",
+            "tags": [
+              "msi",
+              "advanced",
+              "strategic",
+              "ai-marketing"
+            ]
+          },
+          {
+            "id": "MSI-DM-A-006",
+            "difficulty": 0.7,
+            "discrimination": 1.46,
+            "bloomLevel": "Create",
+            "points": 14,
+            "estimatedTime": 60,
+            "question": "[Advanced Marketing Strategy & Innovation question 6 - Expert-level scenario requiring create skills]",
+            "options": [
+              "Option A for MSI-006",
+              "Option B for MSI-006",
+              "Option C for MSI-006",
+              "Option D for MSI-006"
+            ],
+            "correctAnswer": 0,
+            "rationale": "Rationale for MSI-DM-A-006: This answer demonstrates expert understanding of marketing strategy & innovation principles.",
+            "tags": [
+              "msi",
+              "advanced",
+              "strategic",
+              "ai-marketing"
+            ]
+          },
+          {
+            "id": "MSI-DM-A-007",
+            "difficulty": 0.73,
+            "discrimination": 1.45,
+            "bloomLevel": "Evaluate",
+            "points": 13,
+            "estimatedTime": 56,
+            "question": "[Advanced Marketing Strategy & Innovation question 7 - Expert-level scenario requiring evaluate skills]",
+            "options": [
+              "Option A for MSI-007",
+              "Option B for MSI-007",
+              "Option C for MSI-007",
+              "Option D for MSI-007"
+            ],
+            "correctAnswer": 2,
+            "rationale": "Rationale for MSI-DM-A-007: This answer demonstrates expert understanding of marketing strategy & innovation principles.",
+            "tags": [
+              "msi",
+              "advanced",
+              "strategic",
+              "ai-marketing"
+            ]
+          },
+          {
+            "id": "MSI-DM-A-008",
+            "difficulty": 0.64,
+            "discrimination": 1.48,
+            "bloomLevel": "Analyze",
+            "points": 12,
+            "estimatedTime": 54,
+            "question": "[Advanced Marketing Strategy & Innovation question 8 - Expert-level scenario requiring analyze skills]",
+            "options": [
+              "Option A for MSI-008",
+              "Option B for MSI-008",
+              "Option C for MSI-008",
+              "Option D for MSI-008"
+            ],
+            "correctAnswer": 2,
+            "rationale": "Rationale for MSI-DM-A-008: This answer demonstrates expert understanding of marketing strategy & innovation principles.",
+            "tags": [
+              "msi",
+              "advanced",
+              "strategic",
+              "ai-marketing"
+            ]
+          },
+          {
+            "id": "MSI-DM-A-009",
+            "difficulty": 0.63,
+            "discrimination": 1.38,
+            "bloomLevel": "Create",
+            "points": 14,
+            "estimatedTime": 58,
+            "question": "[Advanced Marketing Strategy & Innovation question 9 - Expert-level scenario requiring create skills]",
+            "options": [
+              "Option A for MSI-009",
+              "Option B for MSI-009",
+              "Option C for MSI-009",
+              "Option D for MSI-009"
+            ],
+            "correctAnswer": 2,
+            "rationale": "Rationale for MSI-DM-A-009: This answer demonstrates expert understanding of marketing strategy & innovation principles.",
+            "tags": [
+              "msi",
+              "advanced",
+              "strategic",
+              "ai-marketing"
+            ]
+          },
+          {
+            "id": "MSI-DM-A-010",
+            "difficulty": 0.66,
+            "discrimination": 1.37,
+            "bloomLevel": "Evaluate",
+            "points": 13,
+            "estimatedTime": 58,
+            "question": "[Advanced Marketing Strategy & Innovation question 10 - Expert-level scenario requiring evaluate skills]",
+            "options": [
+              "Option A for MSI-010",
+              "Option B for MSI-010",
+              "Option C for MSI-010",
+              "Option D for MSI-010"
+            ],
+            "correctAnswer": 3,
+            "rationale": "Rationale for MSI-DM-A-010: This answer demonstrates expert understanding of marketing strategy & innovation principles.",
+            "tags": [
+              "msi",
+              "advanced",
+              "strategic",
+              "ai-marketing"
+            ]
+          },
+          {
+            "id": "MSI-DM-A-011",
+            "difficulty": 0.64,
+            "discrimination": 1.47,
+            "bloomLevel": "Analyze",
+            "points": 12,
+            "estimatedTime": 58,
+            "question": "[Advanced Marketing Strategy & Innovation question 11 - Expert-level scenario requiring analyze skills]",
+            "options": [
+              "Option A for MSI-011",
+              "Option B for MSI-011",
+              "Option C for MSI-011",
+              "Option D for MSI-011"
+            ],
+            "correctAnswer": 0,
+            "rationale": "Rationale for MSI-DM-A-011: This answer demonstrates expert understanding of marketing strategy & innovation principles.",
+            "tags": [
+              "msi",
+              "advanced",
+              "strategic",
+              "ai-marketing"
+            ]
+          },
+          {
+            "id": "MSI-DM-A-012",
+            "difficulty": 0.66,
+            "discrimination": 1.44,
+            "bloomLevel": "Create",
+            "points": 14,
+            "estimatedTime": 58,
+            "question": "[Advanced Marketing Strategy & Innovation question 12 - Expert-level scenario requiring create skills]",
+            "options": [
+              "Option A for MSI-012",
+              "Option B for MSI-012",
+              "Option C for MSI-012",
+              "Option D for MSI-012"
+            ],
+            "correctAnswer": 2,
+            "rationale": "Rationale for MSI-DM-A-012: This answer demonstrates expert understanding of marketing strategy & innovation principles.",
+            "tags": [
+              "msi",
+              "advanced",
+              "strategic",
+              "ai-marketing"
+            ]
+          },
+          {
+            "id": "MSI-DM-A-013",
+            "difficulty": 0.65,
+            "discrimination": 1.38,
+            "bloomLevel": "Evaluate",
+            "points": 13,
+            "estimatedTime": 60,
+            "question": "[Advanced Marketing Strategy & Innovation question 13 - Expert-level scenario requiring evaluate skills]",
+            "options": [
+              "Option A for MSI-013",
+              "Option B for MSI-013",
+              "Option C for MSI-013",
+              "Option D for MSI-013"
+            ],
+            "correctAnswer": 1,
+            "rationale": "Rationale for MSI-DM-A-013: This answer demonstrates expert understanding of marketing strategy & innovation principles.",
+            "tags": [
+              "msi",
+              "advanced",
+              "strategic",
+              "ai-marketing"
+            ]
+          },
+          {
+            "id": "MSI-DM-A-014",
+            "difficulty": 0.66,
+            "discrimination": 1.38,
+            "bloomLevel": "Analyze",
+            "points": 12,
+            "estimatedTime": 60,
+            "question": "[Advanced Marketing Strategy & Innovation question 14 - Expert-level scenario requiring analyze skills]",
+            "options": [
+              "Option A for MSI-014",
+              "Option B for MSI-014",
+              "Option C for MSI-014",
+              "Option D for MSI-014"
+            ],
+            "correctAnswer": 1,
+            "rationale": "Rationale for MSI-DM-A-014: This answer demonstrates expert understanding of marketing strategy & innovation principles.",
+            "tags": [
+              "msi",
+              "advanced",
+              "strategic",
+              "ai-marketing"
+            ]
+          },
+          {
+            "id": "MSI-DM-A-015",
+            "difficulty": 0.63,
+            "discrimination": 1.4,
+            "bloomLevel": "Create",
+            "points": 14,
+            "estimatedTime": 55,
+            "question": "[Advanced Marketing Strategy & Innovation question 15 - Expert-level scenario requiring create skills]",
+            "options": [
+              "Option A for MSI-015",
+              "Option B for MSI-015",
+              "Option C for MSI-015",
+              "Option D for MSI-015"
+            ],
+            "correctAnswer": 2,
+            "rationale": "Rationale for MSI-DM-A-015: This answer demonstrates expert understanding of marketing strategy & innovation principles.",
+            "tags": [
+              "msi",
+              "advanced",
+              "strategic",
+              "ai-marketing"
+            ]
+          },
+          {
+            "id": "MSI-DM-A-016",
+            "difficulty": 0.67,
+            "discrimination": 1.39,
+            "bloomLevel": "Evaluate",
+            "points": 13,
+            "estimatedTime": 59,
+            "question": "[Advanced Marketing Strategy & Innovation question 16 - Expert-level scenario requiring evaluate skills]",
+            "options": [
+              "Option A for MSI-016",
+              "Option B for MSI-016",
+              "Option C for MSI-016",
+              "Option D for MSI-016"
+            ],
+            "correctAnswer": 2,
+            "rationale": "Rationale for MSI-DM-A-016: This answer demonstrates expert understanding of marketing strategy & innovation principles.",
+            "tags": [
+              "msi",
+              "advanced",
+              "strategic",
+              "ai-marketing"
+            ]
+          },
+          {
+            "id": "MSI-DM-A-017",
+            "difficulty": 0.75,
+            "discrimination": 1.44,
+            "bloomLevel": "Analyze",
+            "points": 12,
+            "estimatedTime": 58,
+            "question": "[Advanced Marketing Strategy & Innovation question 17 - Expert-level scenario requiring analyze skills]",
+            "options": [
+              "Option A for MSI-017",
+              "Option B for MSI-017",
+              "Option C for MSI-017",
+              "Option D for MSI-017"
+            ],
+            "correctAnswer": 1,
+            "rationale": "Rationale for MSI-DM-A-017: This answer demonstrates expert understanding of marketing strategy & innovation principles.",
+            "tags": [
+              "msi",
+              "advanced",
+              "strategic",
+              "ai-marketing"
+            ]
+          },
+          {
+            "id": "MSI-DM-A-018",
+            "difficulty": 0.72,
+            "discrimination": 1.39,
+            "bloomLevel": "Create",
+            "points": 14,
+            "estimatedTime": 56,
+            "question": "[Advanced Marketing Strategy & Innovation question 18 - Expert-level scenario requiring create skills]",
+            "options": [
+              "Option A for MSI-018",
+              "Option B for MSI-018",
+              "Option C for MSI-018",
+              "Option D for MSI-018"
+            ],
+            "correctAnswer": 3,
+            "rationale": "Rationale for MSI-DM-A-018: This answer demonstrates expert understanding of marketing strategy & innovation principles.",
+            "tags": [
+              "msi",
+              "advanced",
+              "strategic",
+              "ai-marketing"
+            ]
+          },
+          {
+            "id": "MSI-DM-A-019",
+            "difficulty": 0.76,
+            "discrimination": 1.44,
+            "bloomLevel": "Evaluate",
+            "points": 13,
+            "estimatedTime": 59,
+            "question": "[Advanced Marketing Strategy & Innovation question 19 - Expert-level scenario requiring evaluate skills]",
+            "options": [
+              "Option A for MSI-019",
+              "Option B for MSI-019",
+              "Option C for MSI-019",
+              "Option D for MSI-019"
+            ],
+            "correctAnswer": 1,
+            "rationale": "Rationale for MSI-DM-A-019: This answer demonstrates expert understanding of marketing strategy & innovation principles.",
+            "tags": [
+              "msi",
+              "advanced",
+              "strategic",
+              "ai-marketing"
+            ]
+          },
+          {
+            "id": "MSI-DM-A-020",
+            "difficulty": 0.67,
+            "discrimination": 1.45,
+            "bloomLevel": "Analyze",
+            "points": 12,
+            "estimatedTime": 55,
+            "question": "[Advanced Marketing Strategy & Innovation question 20 - Expert-level scenario requiring analyze skills]",
+            "options": [
+              "Option A for MSI-020",
+              "Option B for MSI-020",
+              "Option C for MSI-020",
+              "Option D for MSI-020"
+            ],
+            "correctAnswer": 0,
+            "rationale": "Rationale for MSI-DM-A-020: This answer demonstrates expert understanding of marketing strategy & innovation principles.",
+            "tags": [
+              "msi",
+              "advanced",
+              "strategic",
+              "ai-marketing"
+            ]
+          }
+        ]
+      },
+      {
+        "dimensionCode": "ACA",
+        "dimensionName": "Advanced Content & Asset Orchestration",
+        "description": "Expert content strategy, AI-powered creation at scale, and cross-channel asset optimization",
+        "weight": 0.125,
+        "targetedDifficulty": 0.69,
+        "items": [
+          {
+            "id": "ACA-DM-A-001",
+            "difficulty": 0.73,
+            "discrimination": 1.46,
+            "bloomLevel": "Evaluate",
+            "points": 13,
+            "estimatedTime": 56,
+            "question": "[Advanced Advanced Content & Asset Orchestration question 1 - Expert-level scenario requiring evaluate skills]",
+            "options": [
+              "Option A for ACA-001",
+              "Option B for ACA-001",
+              "Option C for ACA-001",
+              "Option D for ACA-001"
+            ],
+            "correctAnswer": 3,
+            "rationale": "Rationale for ACA-DM-A-001: This answer demonstrates expert understanding of advanced content & asset orchestration principles.",
+            "tags": [
+              "aca",
+              "advanced",
+              "strategic",
+              "ai-marketing"
+            ]
+          },
+          {
+            "id": "ACA-DM-A-002",
+            "difficulty": 0.64,
+            "discrimination": 1.47,
+            "bloomLevel": "Analyze",
+            "points": 12,
+            "estimatedTime": 55,
+            "question": "[Advanced Advanced Content & Asset Orchestration question 2 - Expert-level scenario requiring analyze skills]",
+            "options": [
+              "Option A for ACA-002",
+              "Option B for ACA-002",
+              "Option C for ACA-002",
+              "Option D for ACA-002"
+            ],
+            "correctAnswer": 2,
+            "rationale": "Rationale for ACA-DM-A-002: This answer demonstrates expert understanding of advanced content & asset orchestration principles.",
+            "tags": [
+              "aca",
+              "advanced",
+              "strategic",
+              "ai-marketing"
+            ]
+          },
+          {
+            "id": "ACA-DM-A-003",
+            "difficulty": 0.71,
+            "discrimination": 1.41,
+            "bloomLevel": "Create",
+            "points": 14,
+            "estimatedTime": 55,
+            "question": "[Advanced Advanced Content & Asset Orchestration question 3 - Expert-level scenario requiring create skills]",
+            "options": [
+              "Option A for ACA-003",
+              "Option B for ACA-003",
+              "Option C for ACA-003",
+              "Option D for ACA-003"
+            ],
+            "correctAnswer": 3,
+            "rationale": "Rationale for ACA-DM-A-003: This answer demonstrates expert understanding of advanced content & asset orchestration principles.",
+            "tags": [
+              "aca",
+              "advanced",
+              "strategic",
+              "ai-marketing"
+            ]
+          },
+          {
+            "id": "ACA-DM-A-004",
+            "difficulty": 0.66,
+            "discrimination": 1.4,
+            "bloomLevel": "Evaluate",
+            "points": 13,
+            "estimatedTime": 59,
+            "question": "[Advanced Advanced Content & Asset Orchestration question 4 - Expert-level scenario requiring evaluate skills]",
+            "options": [
+              "Option A for ACA-004",
+              "Option B for ACA-004",
+              "Option C for ACA-004",
+              "Option D for ACA-004"
+            ],
+            "correctAnswer": 2,
+            "rationale": "Rationale for ACA-DM-A-004: This answer demonstrates expert understanding of advanced content & asset orchestration principles.",
+            "tags": [
+              "aca",
+              "advanced",
+              "strategic",
+              "ai-marketing"
+            ]
+          },
+          {
+            "id": "ACA-DM-A-005",
+            "difficulty": 0.7,
+            "discrimination": 1.47,
+            "bloomLevel": "Analyze",
+            "points": 12,
+            "estimatedTime": 56,
+            "question": "[Advanced Advanced Content & Asset Orchestration question 5 - Expert-level scenario requiring analyze skills]",
+            "options": [
+              "Option A for ACA-005",
+              "Option B for ACA-005",
+              "Option C for ACA-005",
+              "Option D for ACA-005"
+            ],
+            "correctAnswer": 3,
+            "rationale": "Rationale for ACA-DM-A-005: This answer demonstrates expert understanding of advanced content & asset orchestration principles.",
+            "tags": [
+              "aca",
+              "advanced",
+              "strategic",
+              "ai-marketing"
+            ]
+          },
+          {
+            "id": "ACA-DM-A-006",
+            "difficulty": 0.66,
+            "discrimination": 1.48,
+            "bloomLevel": "Create",
+            "points": 14,
+            "estimatedTime": 54,
+            "question": "[Advanced Advanced Content & Asset Orchestration question 6 - Expert-level scenario requiring create skills]",
+            "options": [
+              "Option A for ACA-006",
+              "Option B for ACA-006",
+              "Option C for ACA-006",
+              "Option D for ACA-006"
+            ],
+            "correctAnswer": 3,
+            "rationale": "Rationale for ACA-DM-A-006: This answer demonstrates expert understanding of advanced content & asset orchestration principles.",
+            "tags": [
+              "aca",
+              "advanced",
+              "strategic",
+              "ai-marketing"
+            ]
+          },
+          {
+            "id": "ACA-DM-A-007",
+            "difficulty": 0.72,
+            "discrimination": 1.46,
+            "bloomLevel": "Evaluate",
+            "points": 13,
+            "estimatedTime": 59,
+            "question": "[Advanced Advanced Content & Asset Orchestration question 7 - Expert-level scenario requiring evaluate skills]",
+            "options": [
+              "Option A for ACA-007",
+              "Option B for ACA-007",
+              "Option C for ACA-007",
+              "Option D for ACA-007"
+            ],
+            "correctAnswer": 1,
+            "rationale": "Rationale for ACA-DM-A-007: This answer demonstrates expert understanding of advanced content & asset orchestration principles.",
+            "tags": [
+              "aca",
+              "advanced",
+              "strategic",
+              "ai-marketing"
+            ]
+          },
+          {
+            "id": "ACA-DM-A-008",
+            "difficulty": 0.65,
+            "discrimination": 1.44,
+            "bloomLevel": "Analyze",
+            "points": 12,
+            "estimatedTime": 57,
+            "question": "[Advanced Advanced Content & Asset Orchestration question 8 - Expert-level scenario requiring analyze skills]",
+            "options": [
+              "Option A for ACA-008",
+              "Option B for ACA-008",
+              "Option C for ACA-008",
+              "Option D for ACA-008"
+            ],
+            "correctAnswer": 0,
+            "rationale": "Rationale for ACA-DM-A-008: This answer demonstrates expert understanding of advanced content & asset orchestration principles.",
+            "tags": [
+              "aca",
+              "advanced",
+              "strategic",
+              "ai-marketing"
+            ]
+          },
+          {
+            "id": "ACA-DM-A-009",
+            "difficulty": 0.68,
+            "discrimination": 1.48,
+            "bloomLevel": "Create",
+            "points": 14,
+            "estimatedTime": 58,
+            "question": "[Advanced Advanced Content & Asset Orchestration question 9 - Expert-level scenario requiring create skills]",
+            "options": [
+              "Option A for ACA-009",
+              "Option B for ACA-009",
+              "Option C for ACA-009",
+              "Option D for ACA-009"
+            ],
+            "correctAnswer": 2,
+            "rationale": "Rationale for ACA-DM-A-009: This answer demonstrates expert understanding of advanced content & asset orchestration principles.",
+            "tags": [
+              "aca",
+              "advanced",
+              "strategic",
+              "ai-marketing"
+            ]
+          },
+          {
+            "id": "ACA-DM-A-010",
+            "difficulty": 0.73,
+            "discrimination": 1.37,
+            "bloomLevel": "Evaluate",
+            "points": 13,
+            "estimatedTime": 59,
+            "question": "[Advanced Advanced Content & Asset Orchestration question 10 - Expert-level scenario requiring evaluate skills]",
+            "options": [
+              "Option A for ACA-010",
+              "Option B for ACA-010",
+              "Option C for ACA-010",
+              "Option D for ACA-010"
+            ],
+            "correctAnswer": 0,
+            "rationale": "Rationale for ACA-DM-A-010: This answer demonstrates expert understanding of advanced content & asset orchestration principles.",
+            "tags": [
+              "aca",
+              "advanced",
+              "strategic",
+              "ai-marketing"
+            ]
+          },
+          {
+            "id": "ACA-DM-A-011",
+            "difficulty": 0.74,
+            "discrimination": 1.45,
+            "bloomLevel": "Analyze",
+            "points": 12,
+            "estimatedTime": 54,
+            "question": "[Advanced Advanced Content & Asset Orchestration question 11 - Expert-level scenario requiring analyze skills]",
+            "options": [
+              "Option A for ACA-011",
+              "Option B for ACA-011",
+              "Option C for ACA-011",
+              "Option D for ACA-011"
+            ],
+            "correctAnswer": 2,
+            "rationale": "Rationale for ACA-DM-A-011: This answer demonstrates expert understanding of advanced content & asset orchestration principles.",
+            "tags": [
+              "aca",
+              "advanced",
+              "strategic",
+              "ai-marketing"
+            ]
+          },
+          {
+            "id": "ACA-DM-A-012",
+            "difficulty": 0.67,
+            "discrimination": 1.39,
+            "bloomLevel": "Create",
+            "points": 14,
+            "estimatedTime": 59,
+            "question": "[Advanced Advanced Content & Asset Orchestration question 12 - Expert-level scenario requiring create skills]",
+            "options": [
+              "Option A for ACA-012",
+              "Option B for ACA-012",
+              "Option C for ACA-012",
+              "Option D for ACA-012"
+            ],
+            "correctAnswer": 0,
+            "rationale": "Rationale for ACA-DM-A-012: This answer demonstrates expert understanding of advanced content & asset orchestration principles.",
+            "tags": [
+              "aca",
+              "advanced",
+              "strategic",
+              "ai-marketing"
+            ]
+          },
+          {
+            "id": "ACA-DM-A-013",
+            "difficulty": 0.74,
+            "discrimination": 1.4,
+            "bloomLevel": "Evaluate",
+            "points": 13,
+            "estimatedTime": 58,
+            "question": "[Advanced Advanced Content & Asset Orchestration question 13 - Expert-level scenario requiring evaluate skills]",
+            "options": [
+              "Option A for ACA-013",
+              "Option B for ACA-013",
+              "Option C for ACA-013",
+              "Option D for ACA-013"
+            ],
+            "correctAnswer": 1,
+            "rationale": "Rationale for ACA-DM-A-013: This answer demonstrates expert understanding of advanced content & asset orchestration principles.",
+            "tags": [
+              "aca",
+              "advanced",
+              "strategic",
+              "ai-marketing"
+            ]
+          },
+          {
+            "id": "ACA-DM-A-014",
+            "difficulty": 0.74,
+            "discrimination": 1.47,
+            "bloomLevel": "Analyze",
+            "points": 12,
+            "estimatedTime": 60,
+            "question": "[Advanced Advanced Content & Asset Orchestration question 14 - Expert-level scenario requiring analyze skills]",
+            "options": [
+              "Option A for ACA-014",
+              "Option B for ACA-014",
+              "Option C for ACA-014",
+              "Option D for ACA-014"
+            ],
+            "correctAnswer": 2,
+            "rationale": "Rationale for ACA-DM-A-014: This answer demonstrates expert understanding of advanced content & asset orchestration principles.",
+            "tags": [
+              "aca",
+              "advanced",
+              "strategic",
+              "ai-marketing"
+            ]
+          },
+          {
+            "id": "ACA-DM-A-015",
+            "difficulty": 0.71,
+            "discrimination": 1.44,
+            "bloomLevel": "Create",
+            "points": 14,
+            "estimatedTime": 56,
+            "question": "[Advanced Advanced Content & Asset Orchestration question 15 - Expert-level scenario requiring create skills]",
+            "options": [
+              "Option A for ACA-015",
+              "Option B for ACA-015",
+              "Option C for ACA-015",
+              "Option D for ACA-015"
+            ],
+            "correctAnswer": 1,
+            "rationale": "Rationale for ACA-DM-A-015: This answer demonstrates expert understanding of advanced content & asset orchestration principles.",
+            "tags": [
+              "aca",
+              "advanced",
+              "strategic",
+              "ai-marketing"
+            ]
+          },
+          {
+            "id": "ACA-DM-A-016",
+            "difficulty": 0.72,
+            "discrimination": 1.43,
+            "bloomLevel": "Evaluate",
+            "points": 13,
+            "estimatedTime": 58,
+            "question": "[Advanced Advanced Content & Asset Orchestration question 16 - Expert-level scenario requiring evaluate skills]",
+            "options": [
+              "Option A for ACA-016",
+              "Option B for ACA-016",
+              "Option C for ACA-016",
+              "Option D for ACA-016"
+            ],
+            "correctAnswer": 0,
+            "rationale": "Rationale for ACA-DM-A-016: This answer demonstrates expert understanding of advanced content & asset orchestration principles.",
+            "tags": [
+              "aca",
+              "advanced",
+              "strategic",
+              "ai-marketing"
+            ]
+          },
+          {
+            "id": "ACA-DM-A-017",
+            "difficulty": 0.67,
+            "discrimination": 1.37,
+            "bloomLevel": "Analyze",
+            "points": 12,
+            "estimatedTime": 60,
+            "question": "[Advanced Advanced Content & Asset Orchestration question 17 - Expert-level scenario requiring analyze skills]",
+            "options": [
+              "Option A for ACA-017",
+              "Option B for ACA-017",
+              "Option C for ACA-017",
+              "Option D for ACA-017"
+            ],
+            "correctAnswer": 2,
+            "rationale": "Rationale for ACA-DM-A-017: This answer demonstrates expert understanding of advanced content & asset orchestration principles.",
+            "tags": [
+              "aca",
+              "advanced",
+              "strategic",
+              "ai-marketing"
+            ]
+          },
+          {
+            "id": "ACA-DM-A-018",
+            "difficulty": 0.73,
+            "discrimination": 1.4,
+            "bloomLevel": "Create",
+            "points": 14,
+            "estimatedTime": 58,
+            "question": "[Advanced Advanced Content & Asset Orchestration question 18 - Expert-level scenario requiring create skills]",
+            "options": [
+              "Option A for ACA-018",
+              "Option B for ACA-018",
+              "Option C for ACA-018",
+              "Option D for ACA-018"
+            ],
+            "correctAnswer": 1,
+            "rationale": "Rationale for ACA-DM-A-018: This answer demonstrates expert understanding of advanced content & asset orchestration principles.",
+            "tags": [
+              "aca",
+              "advanced",
+              "strategic",
+              "ai-marketing"
+            ]
+          },
+          {
+            "id": "ACA-DM-A-019",
+            "difficulty": 0.74,
+            "discrimination": 1.38,
+            "bloomLevel": "Evaluate",
+            "points": 13,
+            "estimatedTime": 60,
+            "question": "[Advanced Advanced Content & Asset Orchestration question 19 - Expert-level scenario requiring evaluate skills]",
+            "options": [
+              "Option A for ACA-019",
+              "Option B for ACA-019",
+              "Option C for ACA-019",
+              "Option D for ACA-019"
+            ],
+            "correctAnswer": 3,
+            "rationale": "Rationale for ACA-DM-A-019: This answer demonstrates expert understanding of advanced content & asset orchestration principles.",
+            "tags": [
+              "aca",
+              "advanced",
+              "strategic",
+              "ai-marketing"
+            ]
+          },
+          {
+            "id": "ACA-DM-A-020",
+            "difficulty": 0.64,
+            "discrimination": 1.45,
+            "bloomLevel": "Analyze",
+            "points": 12,
+            "estimatedTime": 55,
+            "question": "[Advanced Advanced Content & Asset Orchestration question 20 - Expert-level scenario requiring analyze skills]",
+            "options": [
+              "Option A for ACA-020",
+              "Option B for ACA-020",
+              "Option C for ACA-020",
+              "Option D for ACA-020"
+            ],
+            "correctAnswer": 1,
+            "rationale": "Rationale for ACA-DM-A-020: This answer demonstrates expert understanding of advanced content & asset orchestration principles.",
+            "tags": [
+              "aca",
+              "advanced",
+              "strategic",
+              "ai-marketing"
+            ]
+          }
+        ]
+      },
+      {
+        "dimensionCode": "PAI",
+        "dimensionName": "Predictive Analytics & Intelligence",
+        "description": "Advanced customer analytics, predictive modeling, and data-driven insight generation",
+        "weight": 0.125,
+        "targetedDifficulty": 0.7,
+        "items": [
+          {
+            "id": "PAI-DM-A-001",
+            "difficulty": 0.72,
+            "discrimination": 1.47,
+            "bloomLevel": "Evaluate",
+            "points": 13,
+            "estimatedTime": 56,
+            "question": "[Advanced Predictive Analytics & Intelligence question 1 - Expert-level scenario requiring evaluate skills]",
+            "options": [
+              "Option A for PAI-001",
+              "Option B for PAI-001",
+              "Option C for PAI-001",
+              "Option D for PAI-001"
+            ],
+            "correctAnswer": 1,
+            "rationale": "Rationale for PAI-DM-A-001: This answer demonstrates expert understanding of predictive analytics & intelligence principles.",
+            "tags": [
+              "pai",
+              "advanced",
+              "strategic",
+              "ai-marketing"
+            ]
+          },
+          {
+            "id": "PAI-DM-A-002",
+            "difficulty": 0.7,
+            "discrimination": 1.44,
+            "bloomLevel": "Analyze",
+            "points": 12,
+            "estimatedTime": 58,
+            "question": "[Advanced Predictive Analytics & Intelligence question 2 - Expert-level scenario requiring analyze skills]",
+            "options": [
+              "Option A for PAI-002",
+              "Option B for PAI-002",
+              "Option C for PAI-002",
+              "Option D for PAI-002"
+            ],
+            "correctAnswer": 1,
+            "rationale": "Rationale for PAI-DM-A-002: This answer demonstrates expert understanding of predictive analytics & intelligence principles.",
+            "tags": [
+              "pai",
+              "advanced",
+              "strategic",
+              "ai-marketing"
+            ]
+          },
+          {
+            "id": "PAI-DM-A-003",
+            "difficulty": 0.73,
+            "discrimination": 1.45,
+            "bloomLevel": "Create",
+            "points": 14,
+            "estimatedTime": 57,
+            "question": "[Advanced Predictive Analytics & Intelligence question 3 - Expert-level scenario requiring create skills]",
+            "options": [
+              "Option A for PAI-003",
+              "Option B for PAI-003",
+              "Option C for PAI-003",
+              "Option D for PAI-003"
+            ],
+            "correctAnswer": 2,
+            "rationale": "Rationale for PAI-DM-A-003: This answer demonstrates expert understanding of predictive analytics & intelligence principles.",
+            "tags": [
+              "pai",
+              "advanced",
+              "strategic",
+              "ai-marketing"
+            ]
+          },
+          {
+            "id": "PAI-DM-A-004",
+            "difficulty": 0.76,
+            "discrimination": 1.44,
+            "bloomLevel": "Evaluate",
+            "points": 13,
+            "estimatedTime": 58,
+            "question": "[Advanced Predictive Analytics & Intelligence question 4 - Expert-level scenario requiring evaluate skills]",
+            "options": [
+              "Option A for PAI-004",
+              "Option B for PAI-004",
+              "Option C for PAI-004",
+              "Option D for PAI-004"
+            ],
+            "correctAnswer": 3,
+            "rationale": "Rationale for PAI-DM-A-004: This answer demonstrates expert understanding of predictive analytics & intelligence principles.",
+            "tags": [
+              "pai",
+              "advanced",
+              "strategic",
+              "ai-marketing"
+            ]
+          },
+          {
+            "id": "PAI-DM-A-005",
+            "difficulty": 0.69,
+            "discrimination": 1.4,
+            "bloomLevel": "Analyze",
+            "points": 12,
+            "estimatedTime": 56,
+            "question": "[Advanced Predictive Analytics & Intelligence question 5 - Expert-level scenario requiring analyze skills]",
+            "options": [
+              "Option A for PAI-005",
+              "Option B for PAI-005",
+              "Option C for PAI-005",
+              "Option D for PAI-005"
+            ],
+            "correctAnswer": 0,
+            "rationale": "Rationale for PAI-DM-A-005: This answer demonstrates expert understanding of predictive analytics & intelligence principles.",
+            "tags": [
+              "pai",
+              "advanced",
+              "strategic",
+              "ai-marketing"
+            ]
+          },
+          {
+            "id": "PAI-DM-A-006",
+            "difficulty": 0.64,
+            "discrimination": 1.43,
+            "bloomLevel": "Create",
+            "points": 14,
+            "estimatedTime": 54,
+            "question": "[Advanced Predictive Analytics & Intelligence question 6 - Expert-level scenario requiring create skills]",
+            "options": [
+              "Option A for PAI-006",
+              "Option B for PAI-006",
+              "Option C for PAI-006",
+              "Option D for PAI-006"
+            ],
+            "correctAnswer": 1,
+            "rationale": "Rationale for PAI-DM-A-006: This answer demonstrates expert understanding of predictive analytics & intelligence principles.",
+            "tags": [
+              "pai",
+              "advanced",
+              "strategic",
+              "ai-marketing"
+            ]
+          },
+          {
+            "id": "PAI-DM-A-007",
+            "difficulty": 0.65,
+            "discrimination": 1.44,
+            "bloomLevel": "Evaluate",
+            "points": 13,
+            "estimatedTime": 54,
+            "question": "[Advanced Predictive Analytics & Intelligence question 7 - Expert-level scenario requiring evaluate skills]",
+            "options": [
+              "Option A for PAI-007",
+              "Option B for PAI-007",
+              "Option C for PAI-007",
+              "Option D for PAI-007"
+            ],
+            "correctAnswer": 1,
+            "rationale": "Rationale for PAI-DM-A-007: This answer demonstrates expert understanding of predictive analytics & intelligence principles.",
+            "tags": [
+              "pai",
+              "advanced",
+              "strategic",
+              "ai-marketing"
+            ]
+          },
+          {
+            "id": "PAI-DM-A-008",
+            "difficulty": 0.75,
+            "discrimination": 1.46,
+            "bloomLevel": "Analyze",
+            "points": 12,
+            "estimatedTime": 58,
+            "question": "[Advanced Predictive Analytics & Intelligence question 8 - Expert-level scenario requiring analyze skills]",
+            "options": [
+              "Option A for PAI-008",
+              "Option B for PAI-008",
+              "Option C for PAI-008",
+              "Option D for PAI-008"
+            ],
+            "correctAnswer": 0,
+            "rationale": "Rationale for PAI-DM-A-008: This answer demonstrates expert understanding of predictive analytics & intelligence principles.",
+            "tags": [
+              "pai",
+              "advanced",
+              "strategic",
+              "ai-marketing"
+            ]
+          },
+          {
+            "id": "PAI-DM-A-009",
+            "difficulty": 0.67,
+            "discrimination": 1.44,
+            "bloomLevel": "Create",
+            "points": 14,
+            "estimatedTime": 58,
+            "question": "[Advanced Predictive Analytics & Intelligence question 9 - Expert-level scenario requiring create skills]",
+            "options": [
+              "Option A for PAI-009",
+              "Option B for PAI-009",
+              "Option C for PAI-009",
+              "Option D for PAI-009"
+            ],
+            "correctAnswer": 1,
+            "rationale": "Rationale for PAI-DM-A-009: This answer demonstrates expert understanding of predictive analytics & intelligence principles.",
+            "tags": [
+              "pai",
+              "advanced",
+              "strategic",
+              "ai-marketing"
+            ]
+          },
+          {
+            "id": "PAI-DM-A-010",
+            "difficulty": 0.66,
+            "discrimination": 1.47,
+            "bloomLevel": "Evaluate",
+            "points": 13,
+            "estimatedTime": 55,
+            "question": "[Advanced Predictive Analytics & Intelligence question 10 - Expert-level scenario requiring evaluate skills]",
+            "options": [
+              "Option A for PAI-010",
+              "Option B for PAI-010",
+              "Option C for PAI-010",
+              "Option D for PAI-010"
+            ],
+            "correctAnswer": 3,
+            "rationale": "Rationale for PAI-DM-A-010: This answer demonstrates expert understanding of predictive analytics & intelligence principles.",
+            "tags": [
+              "pai",
+              "advanced",
+              "strategic",
+              "ai-marketing"
+            ]
+          },
+          {
+            "id": "PAI-DM-A-011",
+            "difficulty": 0.73,
+            "discrimination": 1.46,
+            "bloomLevel": "Analyze",
+            "points": 12,
+            "estimatedTime": 54,
+            "question": "[Advanced Predictive Analytics & Intelligence question 11 - Expert-level scenario requiring analyze skills]",
+            "options": [
+              "Option A for PAI-011",
+              "Option B for PAI-011",
+              "Option C for PAI-011",
+              "Option D for PAI-011"
+            ],
+            "correctAnswer": 1,
+            "rationale": "Rationale for PAI-DM-A-011: This answer demonstrates expert understanding of predictive analytics & intelligence principles.",
+            "tags": [
+              "pai",
+              "advanced",
+              "strategic",
+              "ai-marketing"
+            ]
+          },
+          {
+            "id": "PAI-DM-A-012",
+            "difficulty": 0.65,
+            "discrimination": 1.42,
+            "bloomLevel": "Create",
+            "points": 14,
+            "estimatedTime": 57,
+            "question": "[Advanced Predictive Analytics & Intelligence question 12 - Expert-level scenario requiring create skills]",
+            "options": [
+              "Option A for PAI-012",
+              "Option B for PAI-012",
+              "Option C for PAI-012",
+              "Option D for PAI-012"
+            ],
+            "correctAnswer": 3,
+            "rationale": "Rationale for PAI-DM-A-012: This answer demonstrates expert understanding of predictive analytics & intelligence principles.",
+            "tags": [
+              "pai",
+              "advanced",
+              "strategic",
+              "ai-marketing"
+            ]
+          },
+          {
+            "id": "PAI-DM-A-013",
+            "difficulty": 0.7,
+            "discrimination": 1.45,
+            "bloomLevel": "Evaluate",
+            "points": 13,
+            "estimatedTime": 54,
+            "question": "[Advanced Predictive Analytics & Intelligence question 13 - Expert-level scenario requiring evaluate skills]",
+            "options": [
+              "Option A for PAI-013",
+              "Option B for PAI-013",
+              "Option C for PAI-013",
+              "Option D for PAI-013"
+            ],
+            "correctAnswer": 0,
+            "rationale": "Rationale for PAI-DM-A-013: This answer demonstrates expert understanding of predictive analytics & intelligence principles.",
+            "tags": [
+              "pai",
+              "advanced",
+              "strategic",
+              "ai-marketing"
+            ]
+          },
+          {
+            "id": "PAI-DM-A-014",
+            "difficulty": 0.69,
+            "discrimination": 1.41,
+            "bloomLevel": "Analyze",
+            "points": 12,
+            "estimatedTime": 55,
+            "question": "[Advanced Predictive Analytics & Intelligence question 14 - Expert-level scenario requiring analyze skills]",
+            "options": [
+              "Option A for PAI-014",
+              "Option B for PAI-014",
+              "Option C for PAI-014",
+              "Option D for PAI-014"
+            ],
+            "correctAnswer": 0,
+            "rationale": "Rationale for PAI-DM-A-014: This answer demonstrates expert understanding of predictive analytics & intelligence principles.",
+            "tags": [
+              "pai",
+              "advanced",
+              "strategic",
+              "ai-marketing"
+            ]
+          },
+          {
+            "id": "PAI-DM-A-015",
+            "difficulty": 0.66,
+            "discrimination": 1.43,
+            "bloomLevel": "Create",
+            "points": 14,
+            "estimatedTime": 57,
+            "question": "[Advanced Predictive Analytics & Intelligence question 15 - Expert-level scenario requiring create skills]",
+            "options": [
+              "Option A for PAI-015",
+              "Option B for PAI-015",
+              "Option C for PAI-015",
+              "Option D for PAI-015"
+            ],
+            "correctAnswer": 1,
+            "rationale": "Rationale for PAI-DM-A-015: This answer demonstrates expert understanding of predictive analytics & intelligence principles.",
+            "tags": [
+              "pai",
+              "advanced",
+              "strategic",
+              "ai-marketing"
+            ]
+          },
+          {
+            "id": "PAI-DM-A-016",
+            "difficulty": 0.66,
+            "discrimination": 1.42,
+            "bloomLevel": "Evaluate",
+            "points": 13,
+            "estimatedTime": 57,
+            "question": "[Advanced Predictive Analytics & Intelligence question 16 - Expert-level scenario requiring evaluate skills]",
+            "options": [
+              "Option A for PAI-016",
+              "Option B for PAI-016",
+              "Option C for PAI-016",
+              "Option D for PAI-016"
+            ],
+            "correctAnswer": 0,
+            "rationale": "Rationale for PAI-DM-A-016: This answer demonstrates expert understanding of predictive analytics & intelligence principles.",
+            "tags": [
+              "pai",
+              "advanced",
+              "strategic",
+              "ai-marketing"
+            ]
+          },
+          {
+            "id": "PAI-DM-A-017",
+            "difficulty": 0.74,
+            "discrimination": 1.46,
+            "bloomLevel": "Analyze",
+            "points": 12,
+            "estimatedTime": 54,
+            "question": "[Advanced Predictive Analytics & Intelligence question 17 - Expert-level scenario requiring analyze skills]",
+            "options": [
+              "Option A for PAI-017",
+              "Option B for PAI-017",
+              "Option C for PAI-017",
+              "Option D for PAI-017"
+            ],
+            "correctAnswer": 0,
+            "rationale": "Rationale for PAI-DM-A-017: This answer demonstrates expert understanding of predictive analytics & intelligence principles.",
+            "tags": [
+              "pai",
+              "advanced",
+              "strategic",
+              "ai-marketing"
+            ]
+          },
+          {
+            "id": "PAI-DM-A-018",
+            "difficulty": 0.72,
+            "discrimination": 1.43,
+            "bloomLevel": "Create",
+            "points": 14,
+            "estimatedTime": 54,
+            "question": "[Advanced Predictive Analytics & Intelligence question 18 - Expert-level scenario requiring create skills]",
+            "options": [
+              "Option A for PAI-018",
+              "Option B for PAI-018",
+              "Option C for PAI-018",
+              "Option D for PAI-018"
+            ],
+            "correctAnswer": 0,
+            "rationale": "Rationale for PAI-DM-A-018: This answer demonstrates expert understanding of predictive analytics & intelligence principles.",
+            "tags": [
+              "pai",
+              "advanced",
+              "strategic",
+              "ai-marketing"
+            ]
+          },
+          {
+            "id": "PAI-DM-A-019",
+            "difficulty": 0.75,
+            "discrimination": 1.46,
+            "bloomLevel": "Evaluate",
+            "points": 13,
+            "estimatedTime": 57,
+            "question": "[Advanced Predictive Analytics & Intelligence question 19 - Expert-level scenario requiring evaluate skills]",
+            "options": [
+              "Option A for PAI-019",
+              "Option B for PAI-019",
+              "Option C for PAI-019",
+              "Option D for PAI-019"
+            ],
+            "correctAnswer": 1,
+            "rationale": "Rationale for PAI-DM-A-019: This answer demonstrates expert understanding of predictive analytics & intelligence principles.",
+            "tags": [
+              "pai",
+              "advanced",
+              "strategic",
+              "ai-marketing"
+            ]
+          },
+          {
+            "id": "PAI-DM-A-020",
+            "difficulty": 0.7,
+            "discrimination": 1.39,
+            "bloomLevel": "Analyze",
+            "points": 12,
+            "estimatedTime": 54,
+            "question": "[Advanced Predictive Analytics & Intelligence question 20 - Expert-level scenario requiring analyze skills]",
+            "options": [
+              "Option A for PAI-020",
+              "Option B for PAI-020",
+              "Option C for PAI-020",
+              "Option D for PAI-020"
+            ],
+            "correctAnswer": 3,
+            "rationale": "Rationale for PAI-DM-A-020: This answer demonstrates expert understanding of predictive analytics & intelligence principles.",
+            "tags": [
+              "pai",
+              "advanced",
+              "strategic",
+              "ai-marketing"
+            ]
+          }
+        ]
+      },
+      {
+        "dimensionCode": "MCE",
+        "dimensionName": "Marketing Campaign Excellence",
+        "description": "Expert campaign strategy, optimization at scale, and performance marketing leadership",
+        "weight": 0.125,
+        "targetedDifficulty": 0.68,
+        "items": [
+          {
+            "id": "MCE-DM-A-001",
+            "difficulty": 0.64,
+            "discrimination": 1.37,
+            "bloomLevel": "Evaluate",
+            "points": 13,
+            "estimatedTime": 56,
+            "question": "[Advanced Marketing Campaign Excellence question 1 - Expert-level scenario requiring evaluate skills]",
+            "options": [
+              "Option A for MCE-001",
+              "Option B for MCE-001",
+              "Option C for MCE-001",
+              "Option D for MCE-001"
+            ],
+            "correctAnswer": 3,
+            "rationale": "Rationale for MCE-DM-A-001: This answer demonstrates expert understanding of marketing campaign excellence principles.",
+            "tags": [
+              "mce",
+              "advanced",
+              "strategic",
+              "ai-marketing"
+            ]
+          },
+          {
+            "id": "MCE-DM-A-002",
+            "difficulty": 0.73,
+            "discrimination": 1.46,
+            "bloomLevel": "Analyze",
+            "points": 12,
+            "estimatedTime": 57,
+            "question": "[Advanced Marketing Campaign Excellence question 2 - Expert-level scenario requiring analyze skills]",
+            "options": [
+              "Option A for MCE-002",
+              "Option B for MCE-002",
+              "Option C for MCE-002",
+              "Option D for MCE-002"
+            ],
+            "correctAnswer": 2,
+            "rationale": "Rationale for MCE-DM-A-002: This answer demonstrates expert understanding of marketing campaign excellence principles.",
+            "tags": [
+              "mce",
+              "advanced",
+              "strategic",
+              "ai-marketing"
+            ]
+          },
+          {
+            "id": "MCE-DM-A-003",
+            "difficulty": 0.7,
+            "discrimination": 1.45,
+            "bloomLevel": "Create",
+            "points": 14,
+            "estimatedTime": 55,
+            "question": "[Advanced Marketing Campaign Excellence question 3 - Expert-level scenario requiring create skills]",
+            "options": [
+              "Option A for MCE-003",
+              "Option B for MCE-003",
+              "Option C for MCE-003",
+              "Option D for MCE-003"
+            ],
+            "correctAnswer": 3,
+            "rationale": "Rationale for MCE-DM-A-003: This answer demonstrates expert understanding of marketing campaign excellence principles.",
+            "tags": [
+              "mce",
+              "advanced",
+              "strategic",
+              "ai-marketing"
+            ]
+          },
+          {
+            "id": "MCE-DM-A-004",
+            "difficulty": 0.64,
+            "discrimination": 1.39,
+            "bloomLevel": "Evaluate",
+            "points": 13,
+            "estimatedTime": 58,
+            "question": "[Advanced Marketing Campaign Excellence question 4 - Expert-level scenario requiring evaluate skills]",
+            "options": [
+              "Option A for MCE-004",
+              "Option B for MCE-004",
+              "Option C for MCE-004",
+              "Option D for MCE-004"
+            ],
+            "correctAnswer": 0,
+            "rationale": "Rationale for MCE-DM-A-004: This answer demonstrates expert understanding of marketing campaign excellence principles.",
+            "tags": [
+              "mce",
+              "advanced",
+              "strategic",
+              "ai-marketing"
+            ]
+          },
+          {
+            "id": "MCE-DM-A-005",
+            "difficulty": 0.71,
+            "discrimination": 1.38,
+            "bloomLevel": "Analyze",
+            "points": 12,
+            "estimatedTime": 54,
+            "question": "[Advanced Marketing Campaign Excellence question 5 - Expert-level scenario requiring analyze skills]",
+            "options": [
+              "Option A for MCE-005",
+              "Option B for MCE-005",
+              "Option C for MCE-005",
+              "Option D for MCE-005"
+            ],
+            "correctAnswer": 2,
+            "rationale": "Rationale for MCE-DM-A-005: This answer demonstrates expert understanding of marketing campaign excellence principles.",
+            "tags": [
+              "mce",
+              "advanced",
+              "strategic",
+              "ai-marketing"
+            ]
+          },
+          {
+            "id": "MCE-DM-A-006",
+            "difficulty": 0.63,
+            "discrimination": 1.42,
+            "bloomLevel": "Create",
+            "points": 14,
+            "estimatedTime": 54,
+            "question": "[Advanced Marketing Campaign Excellence question 6 - Expert-level scenario requiring create skills]",
+            "options": [
+              "Option A for MCE-006",
+              "Option B for MCE-006",
+              "Option C for MCE-006",
+              "Option D for MCE-006"
+            ],
+            "correctAnswer": 1,
+            "rationale": "Rationale for MCE-DM-A-006: This answer demonstrates expert understanding of marketing campaign excellence principles.",
+            "tags": [
+              "mce",
+              "advanced",
+              "strategic",
+              "ai-marketing"
+            ]
+          },
+          {
+            "id": "MCE-DM-A-007",
+            "difficulty": 0.74,
+            "discrimination": 1.38,
+            "bloomLevel": "Evaluate",
+            "points": 13,
+            "estimatedTime": 54,
+            "question": "[Advanced Marketing Campaign Excellence question 7 - Expert-level scenario requiring evaluate skills]",
+            "options": [
+              "Option A for MCE-007",
+              "Option B for MCE-007",
+              "Option C for MCE-007",
+              "Option D for MCE-007"
+            ],
+            "correctAnswer": 1,
+            "rationale": "Rationale for MCE-DM-A-007: This answer demonstrates expert understanding of marketing campaign excellence principles.",
+            "tags": [
+              "mce",
+              "advanced",
+              "strategic",
+              "ai-marketing"
+            ]
+          },
+          {
+            "id": "MCE-DM-A-008",
+            "difficulty": 0.69,
+            "discrimination": 1.44,
+            "bloomLevel": "Analyze",
+            "points": 12,
+            "estimatedTime": 57,
+            "question": "[Advanced Marketing Campaign Excellence question 8 - Expert-level scenario requiring analyze skills]",
+            "options": [
+              "Option A for MCE-008",
+              "Option B for MCE-008",
+              "Option C for MCE-008",
+              "Option D for MCE-008"
+            ],
+            "correctAnswer": 1,
+            "rationale": "Rationale for MCE-DM-A-008: This answer demonstrates expert understanding of marketing campaign excellence principles.",
+            "tags": [
+              "mce",
+              "advanced",
+              "strategic",
+              "ai-marketing"
+            ]
+          },
+          {
+            "id": "MCE-DM-A-009",
+            "difficulty": 0.63,
+            "discrimination": 1.47,
+            "bloomLevel": "Create",
+            "points": 14,
+            "estimatedTime": 58,
+            "question": "[Advanced Marketing Campaign Excellence question 9 - Expert-level scenario requiring create skills]",
+            "options": [
+              "Option A for MCE-009",
+              "Option B for MCE-009",
+              "Option C for MCE-009",
+              "Option D for MCE-009"
+            ],
+            "correctAnswer": 1,
+            "rationale": "Rationale for MCE-DM-A-009: This answer demonstrates expert understanding of marketing campaign excellence principles.",
+            "tags": [
+              "mce",
+              "advanced",
+              "strategic",
+              "ai-marketing"
+            ]
+          },
+          {
+            "id": "MCE-DM-A-010",
+            "difficulty": 0.69,
+            "discrimination": 1.44,
+            "bloomLevel": "Evaluate",
+            "points": 13,
+            "estimatedTime": 59,
+            "question": "[Advanced Marketing Campaign Excellence question 10 - Expert-level scenario requiring evaluate skills]",
+            "options": [
+              "Option A for MCE-010",
+              "Option B for MCE-010",
+              "Option C for MCE-010",
+              "Option D for MCE-010"
+            ],
+            "correctAnswer": 3,
+            "rationale": "Rationale for MCE-DM-A-010: This answer demonstrates expert understanding of marketing campaign excellence principles.",
+            "tags": [
+              "mce",
+              "advanced",
+              "strategic",
+              "ai-marketing"
+            ]
+          },
+          {
+            "id": "MCE-DM-A-011",
+            "difficulty": 0.69,
+            "discrimination": 1.43,
+            "bloomLevel": "Analyze",
+            "points": 12,
+            "estimatedTime": 55,
+            "question": "[Advanced Marketing Campaign Excellence question 11 - Expert-level scenario requiring analyze skills]",
+            "options": [
+              "Option A for MCE-011",
+              "Option B for MCE-011",
+              "Option C for MCE-011",
+              "Option D for MCE-011"
+            ],
+            "correctAnswer": 2,
+            "rationale": "Rationale for MCE-DM-A-011: This answer demonstrates expert understanding of marketing campaign excellence principles.",
+            "tags": [
+              "mce",
+              "advanced",
+              "strategic",
+              "ai-marketing"
+            ]
+          },
+          {
+            "id": "MCE-DM-A-012",
+            "difficulty": 0.7,
+            "discrimination": 1.4,
+            "bloomLevel": "Create",
+            "points": 14,
+            "estimatedTime": 57,
+            "question": "[Advanced Marketing Campaign Excellence question 12 - Expert-level scenario requiring create skills]",
+            "options": [
+              "Option A for MCE-012",
+              "Option B for MCE-012",
+              "Option C for MCE-012",
+              "Option D for MCE-012"
+            ],
+            "correctAnswer": 2,
+            "rationale": "Rationale for MCE-DM-A-012: This answer demonstrates expert understanding of marketing campaign excellence principles.",
+            "tags": [
+              "mce",
+              "advanced",
+              "strategic",
+              "ai-marketing"
+            ]
+          },
+          {
+            "id": "MCE-DM-A-013",
+            "difficulty": 0.64,
+            "discrimination": 1.44,
+            "bloomLevel": "Evaluate",
+            "points": 13,
+            "estimatedTime": 56,
+            "question": "[Advanced Marketing Campaign Excellence question 13 - Expert-level scenario requiring evaluate skills]",
+            "options": [
+              "Option A for MCE-013",
+              "Option B for MCE-013",
+              "Option C for MCE-013",
+              "Option D for MCE-013"
+            ],
+            "correctAnswer": 3,
+            "rationale": "Rationale for MCE-DM-A-013: This answer demonstrates expert understanding of marketing campaign excellence principles.",
+            "tags": [
+              "mce",
+              "advanced",
+              "strategic",
+              "ai-marketing"
+            ]
+          },
+          {
+            "id": "MCE-DM-A-014",
+            "difficulty": 0.73,
+            "discrimination": 1.47,
+            "bloomLevel": "Analyze",
+            "points": 12,
+            "estimatedTime": 57,
+            "question": "[Advanced Marketing Campaign Excellence question 14 - Expert-level scenario requiring analyze skills]",
+            "options": [
+              "Option A for MCE-014",
+              "Option B for MCE-014",
+              "Option C for MCE-014",
+              "Option D for MCE-014"
+            ],
+            "correctAnswer": 0,
+            "rationale": "Rationale for MCE-DM-A-014: This answer demonstrates expert understanding of marketing campaign excellence principles.",
+            "tags": [
+              "mce",
+              "advanced",
+              "strategic",
+              "ai-marketing"
+            ]
+          },
+          {
+            "id": "MCE-DM-A-015",
+            "difficulty": 0.69,
+            "discrimination": 1.43,
+            "bloomLevel": "Create",
+            "points": 14,
+            "estimatedTime": 54,
+            "question": "[Advanced Marketing Campaign Excellence question 15 - Expert-level scenario requiring create skills]",
+            "options": [
+              "Option A for MCE-015",
+              "Option B for MCE-015",
+              "Option C for MCE-015",
+              "Option D for MCE-015"
+            ],
+            "correctAnswer": 0,
+            "rationale": "Rationale for MCE-DM-A-015: This answer demonstrates expert understanding of marketing campaign excellence principles.",
+            "tags": [
+              "mce",
+              "advanced",
+              "strategic",
+              "ai-marketing"
+            ]
+          },
+          {
+            "id": "MCE-DM-A-016",
+            "difficulty": 0.68,
+            "discrimination": 1.43,
+            "bloomLevel": "Evaluate",
+            "points": 13,
+            "estimatedTime": 56,
+            "question": "[Advanced Marketing Campaign Excellence question 16 - Expert-level scenario requiring evaluate skills]",
+            "options": [
+              "Option A for MCE-016",
+              "Option B for MCE-016",
+              "Option C for MCE-016",
+              "Option D for MCE-016"
+            ],
+            "correctAnswer": 1,
+            "rationale": "Rationale for MCE-DM-A-016: This answer demonstrates expert understanding of marketing campaign excellence principles.",
+            "tags": [
+              "mce",
+              "advanced",
+              "strategic",
+              "ai-marketing"
+            ]
+          },
+          {
+            "id": "MCE-DM-A-017",
+            "difficulty": 0.73,
+            "discrimination": 1.47,
+            "bloomLevel": "Analyze",
+            "points": 12,
+            "estimatedTime": 56,
+            "question": "[Advanced Marketing Campaign Excellence question 17 - Expert-level scenario requiring analyze skills]",
+            "options": [
+              "Option A for MCE-017",
+              "Option B for MCE-017",
+              "Option C for MCE-017",
+              "Option D for MCE-017"
+            ],
+            "correctAnswer": 2,
+            "rationale": "Rationale for MCE-DM-A-017: This answer demonstrates expert understanding of marketing campaign excellence principles.",
+            "tags": [
+              "mce",
+              "advanced",
+              "strategic",
+              "ai-marketing"
+            ]
+          },
+          {
+            "id": "MCE-DM-A-018",
+            "difficulty": 0.64,
+            "discrimination": 1.46,
+            "bloomLevel": "Create",
+            "points": 14,
+            "estimatedTime": 58,
+            "question": "[Advanced Marketing Campaign Excellence question 18 - Expert-level scenario requiring create skills]",
+            "options": [
+              "Option A for MCE-018",
+              "Option B for MCE-018",
+              "Option C for MCE-018",
+              "Option D for MCE-018"
+            ],
+            "correctAnswer": 2,
+            "rationale": "Rationale for MCE-DM-A-018: This answer demonstrates expert understanding of marketing campaign excellence principles.",
+            "tags": [
+              "mce",
+              "advanced",
+              "strategic",
+              "ai-marketing"
+            ]
+          },
+          {
+            "id": "MCE-DM-A-019",
+            "difficulty": 0.74,
+            "discrimination": 1.46,
+            "bloomLevel": "Evaluate",
+            "points": 13,
+            "estimatedTime": 59,
+            "question": "[Advanced Marketing Campaign Excellence question 19 - Expert-level scenario requiring evaluate skills]",
+            "options": [
+              "Option A for MCE-019",
+              "Option B for MCE-019",
+              "Option C for MCE-019",
+              "Option D for MCE-019"
+            ],
+            "correctAnswer": 0,
+            "rationale": "Rationale for MCE-DM-A-019: This answer demonstrates expert understanding of marketing campaign excellence principles.",
+            "tags": [
+              "mce",
+              "advanced",
+              "strategic",
+              "ai-marketing"
+            ]
+          },
+          {
+            "id": "MCE-DM-A-020",
+            "difficulty": 0.72,
+            "discrimination": 1.4,
+            "bloomLevel": "Analyze",
+            "points": 12,
+            "estimatedTime": 55,
+            "question": "[Advanced Marketing Campaign Excellence question 20 - Expert-level scenario requiring analyze skills]",
+            "options": [
+              "Option A for MCE-020",
+              "Option B for MCE-020",
+              "Option C for MCE-020",
+              "Option D for MCE-020"
+            ],
+            "correctAnswer": 0,
+            "rationale": "Rationale for MCE-DM-A-020: This answer demonstrates expert understanding of marketing campaign excellence principles.",
+            "tags": [
+              "mce",
+              "advanced",
+              "strategic",
+              "ai-marketing"
+            ]
+          }
+        ]
+      },
+      {
+        "dimensionCode": "EPX",
+        "dimensionName": "Experience Personalization & Optimization",
+        "description": "Advanced personalization strategy, customer experience design, and optimization at scale",
+        "weight": 0.125,
+        "targetedDifficulty": 0.69,
+        "items": [
+          {
+            "id": "EPX-DM-A-001",
+            "difficulty": 0.66,
+            "discrimination": 1.47,
+            "bloomLevel": "Evaluate",
+            "points": 13,
+            "estimatedTime": 56,
+            "question": "[Advanced Experience Personalization & Optimization question 1 - Expert-level scenario requiring evaluate skills]",
+            "options": [
+              "Option A for EPX-001",
+              "Option B for EPX-001",
+              "Option C for EPX-001",
+              "Option D for EPX-001"
+            ],
+            "correctAnswer": 1,
+            "rationale": "Rationale for EPX-DM-A-001: This answer demonstrates expert understanding of experience personalization & optimization principles.",
+            "tags": [
+              "epx",
+              "advanced",
+              "strategic",
+              "ai-marketing"
+            ]
+          },
+          {
+            "id": "EPX-DM-A-002",
+            "difficulty": 0.66,
+            "discrimination": 1.39,
+            "bloomLevel": "Analyze",
+            "points": 12,
+            "estimatedTime": 55,
+            "question": "[Advanced Experience Personalization & Optimization question 2 - Expert-level scenario requiring analyze skills]",
+            "options": [
+              "Option A for EPX-002",
+              "Option B for EPX-002",
+              "Option C for EPX-002",
+              "Option D for EPX-002"
+            ],
+            "correctAnswer": 2,
+            "rationale": "Rationale for EPX-DM-A-002: This answer demonstrates expert understanding of experience personalization & optimization principles.",
+            "tags": [
+              "epx",
+              "advanced",
+              "strategic",
+              "ai-marketing"
+            ]
+          },
+          {
+            "id": "EPX-DM-A-003",
+            "difficulty": 0.71,
+            "discrimination": 1.46,
+            "bloomLevel": "Create",
+            "points": 14,
+            "estimatedTime": 56,
+            "question": "[Advanced Experience Personalization & Optimization question 3 - Expert-level scenario requiring create skills]",
+            "options": [
+              "Option A for EPX-003",
+              "Option B for EPX-003",
+              "Option C for EPX-003",
+              "Option D for EPX-003"
+            ],
+            "correctAnswer": 3,
+            "rationale": "Rationale for EPX-DM-A-003: This answer demonstrates expert understanding of experience personalization & optimization principles.",
+            "tags": [
+              "epx",
+              "advanced",
+              "strategic",
+              "ai-marketing"
+            ]
+          },
+          {
+            "id": "EPX-DM-A-004",
+            "difficulty": 0.74,
+            "discrimination": 1.46,
+            "bloomLevel": "Evaluate",
+            "points": 13,
+            "estimatedTime": 59,
+            "question": "[Advanced Experience Personalization & Optimization question 4 - Expert-level scenario requiring evaluate skills]",
+            "options": [
+              "Option A for EPX-004",
+              "Option B for EPX-004",
+              "Option C for EPX-004",
+              "Option D for EPX-004"
+            ],
+            "correctAnswer": 0,
+            "rationale": "Rationale for EPX-DM-A-004: This answer demonstrates expert understanding of experience personalization & optimization principles.",
+            "tags": [
+              "epx",
+              "advanced",
+              "strategic",
+              "ai-marketing"
+            ]
+          },
+          {
+            "id": "EPX-DM-A-005",
+            "difficulty": 0.68,
+            "discrimination": 1.4,
+            "bloomLevel": "Analyze",
+            "points": 12,
+            "estimatedTime": 56,
+            "question": "[Advanced Experience Personalization & Optimization question 5 - Expert-level scenario requiring analyze skills]",
+            "options": [
+              "Option A for EPX-005",
+              "Option B for EPX-005",
+              "Option C for EPX-005",
+              "Option D for EPX-005"
+            ],
+            "correctAnswer": 0,
+            "rationale": "Rationale for EPX-DM-A-005: This answer demonstrates expert understanding of experience personalization & optimization principles.",
+            "tags": [
+              "epx",
+              "advanced",
+              "strategic",
+              "ai-marketing"
+            ]
+          },
+          {
+            "id": "EPX-DM-A-006",
+            "difficulty": 0.72,
+            "discrimination": 1.44,
+            "bloomLevel": "Create",
+            "points": 14,
+            "estimatedTime": 55,
+            "question": "[Advanced Experience Personalization & Optimization question 6 - Expert-level scenario requiring create skills]",
+            "options": [
+              "Option A for EPX-006",
+              "Option B for EPX-006",
+              "Option C for EPX-006",
+              "Option D for EPX-006"
+            ],
+            "correctAnswer": 2,
+            "rationale": "Rationale for EPX-DM-A-006: This answer demonstrates expert understanding of experience personalization & optimization principles.",
+            "tags": [
+              "epx",
+              "advanced",
+              "strategic",
+              "ai-marketing"
+            ]
+          },
+          {
+            "id": "EPX-DM-A-007",
+            "difficulty": 0.72,
+            "discrimination": 1.43,
+            "bloomLevel": "Evaluate",
+            "points": 13,
+            "estimatedTime": 58,
+            "question": "[Advanced Experience Personalization & Optimization question 7 - Expert-level scenario requiring evaluate skills]",
+            "options": [
+              "Option A for EPX-007",
+              "Option B for EPX-007",
+              "Option C for EPX-007",
+              "Option D for EPX-007"
+            ],
+            "correctAnswer": 3,
+            "rationale": "Rationale for EPX-DM-A-007: This answer demonstrates expert understanding of experience personalization & optimization principles.",
+            "tags": [
+              "epx",
+              "advanced",
+              "strategic",
+              "ai-marketing"
+            ]
+          },
+          {
+            "id": "EPX-DM-A-008",
+            "difficulty": 0.63,
+            "discrimination": 1.38,
+            "bloomLevel": "Analyze",
+            "points": 12,
+            "estimatedTime": 58,
+            "question": "[Advanced Experience Personalization & Optimization question 8 - Expert-level scenario requiring analyze skills]",
+            "options": [
+              "Option A for EPX-008",
+              "Option B for EPX-008",
+              "Option C for EPX-008",
+              "Option D for EPX-008"
+            ],
+            "correctAnswer": 1,
+            "rationale": "Rationale for EPX-DM-A-008: This answer demonstrates expert understanding of experience personalization & optimization principles.",
+            "tags": [
+              "epx",
+              "advanced",
+              "strategic",
+              "ai-marketing"
+            ]
+          },
+          {
+            "id": "EPX-DM-A-009",
+            "difficulty": 0.63,
+            "discrimination": 1.41,
+            "bloomLevel": "Create",
+            "points": 14,
+            "estimatedTime": 57,
+            "question": "[Advanced Experience Personalization & Optimization question 9 - Expert-level scenario requiring create skills]",
+            "options": [
+              "Option A for EPX-009",
+              "Option B for EPX-009",
+              "Option C for EPX-009",
+              "Option D for EPX-009"
+            ],
+            "correctAnswer": 1,
+            "rationale": "Rationale for EPX-DM-A-009: This answer demonstrates expert understanding of experience personalization & optimization principles.",
+            "tags": [
+              "epx",
+              "advanced",
+              "strategic",
+              "ai-marketing"
+            ]
+          },
+          {
+            "id": "EPX-DM-A-010",
+            "difficulty": 0.65,
+            "discrimination": 1.4,
+            "bloomLevel": "Evaluate",
+            "points": 13,
+            "estimatedTime": 56,
+            "question": "[Advanced Experience Personalization & Optimization question 10 - Expert-level scenario requiring evaluate skills]",
+            "options": [
+              "Option A for EPX-010",
+              "Option B for EPX-010",
+              "Option C for EPX-010",
+              "Option D for EPX-010"
+            ],
+            "correctAnswer": 0,
+            "rationale": "Rationale for EPX-DM-A-010: This answer demonstrates expert understanding of experience personalization & optimization principles.",
+            "tags": [
+              "epx",
+              "advanced",
+              "strategic",
+              "ai-marketing"
+            ]
+          },
+          {
+            "id": "EPX-DM-A-011",
+            "difficulty": 0.66,
+            "discrimination": 1.4,
+            "bloomLevel": "Analyze",
+            "points": 12,
+            "estimatedTime": 56,
+            "question": "[Advanced Experience Personalization & Optimization question 11 - Expert-level scenario requiring analyze skills]",
+            "options": [
+              "Option A for EPX-011",
+              "Option B for EPX-011",
+              "Option C for EPX-011",
+              "Option D for EPX-011"
+            ],
+            "correctAnswer": 0,
+            "rationale": "Rationale for EPX-DM-A-011: This answer demonstrates expert understanding of experience personalization & optimization principles.",
+            "tags": [
+              "epx",
+              "advanced",
+              "strategic",
+              "ai-marketing"
+            ]
+          },
+          {
+            "id": "EPX-DM-A-012",
+            "difficulty": 0.72,
+            "discrimination": 1.47,
+            "bloomLevel": "Create",
+            "points": 14,
+            "estimatedTime": 58,
+            "question": "[Advanced Experience Personalization & Optimization question 12 - Expert-level scenario requiring create skills]",
+            "options": [
+              "Option A for EPX-012",
+              "Option B for EPX-012",
+              "Option C for EPX-012",
+              "Option D for EPX-012"
+            ],
+            "correctAnswer": 3,
+            "rationale": "Rationale for EPX-DM-A-012: This answer demonstrates expert understanding of experience personalization & optimization principles.",
+            "tags": [
+              "epx",
+              "advanced",
+              "strategic",
+              "ai-marketing"
+            ]
+          },
+          {
+            "id": "EPX-DM-A-013",
+            "difficulty": 0.72,
+            "discrimination": 1.47,
+            "bloomLevel": "Evaluate",
+            "points": 13,
+            "estimatedTime": 60,
+            "question": "[Advanced Experience Personalization & Optimization question 13 - Expert-level scenario requiring evaluate skills]",
+            "options": [
+              "Option A for EPX-013",
+              "Option B for EPX-013",
+              "Option C for EPX-013",
+              "Option D for EPX-013"
+            ],
+            "correctAnswer": 1,
+            "rationale": "Rationale for EPX-DM-A-013: This answer demonstrates expert understanding of experience personalization & optimization principles.",
+            "tags": [
+              "epx",
+              "advanced",
+              "strategic",
+              "ai-marketing"
+            ]
+          },
+          {
+            "id": "EPX-DM-A-014",
+            "difficulty": 0.65,
+            "discrimination": 1.46,
+            "bloomLevel": "Analyze",
+            "points": 12,
+            "estimatedTime": 57,
+            "question": "[Advanced Experience Personalization & Optimization question 14 - Expert-level scenario requiring analyze skills]",
+            "options": [
+              "Option A for EPX-014",
+              "Option B for EPX-014",
+              "Option C for EPX-014",
+              "Option D for EPX-014"
+            ],
+            "correctAnswer": 1,
+            "rationale": "Rationale for EPX-DM-A-014: This answer demonstrates expert understanding of experience personalization & optimization principles.",
+            "tags": [
+              "epx",
+              "advanced",
+              "strategic",
+              "ai-marketing"
+            ]
+          },
+          {
+            "id": "EPX-DM-A-015",
+            "difficulty": 0.63,
+            "discrimination": 1.45,
+            "bloomLevel": "Create",
+            "points": 14,
+            "estimatedTime": 60,
+            "question": "[Advanced Experience Personalization & Optimization question 15 - Expert-level scenario requiring create skills]",
+            "options": [
+              "Option A for EPX-015",
+              "Option B for EPX-015",
+              "Option C for EPX-015",
+              "Option D for EPX-015"
+            ],
+            "correctAnswer": 2,
+            "rationale": "Rationale for EPX-DM-A-015: This answer demonstrates expert understanding of experience personalization & optimization principles.",
+            "tags": [
+              "epx",
+              "advanced",
+              "strategic",
+              "ai-marketing"
+            ]
+          },
+          {
+            "id": "EPX-DM-A-016",
+            "difficulty": 0.74,
+            "discrimination": 1.46,
+            "bloomLevel": "Evaluate",
+            "points": 13,
+            "estimatedTime": 56,
+            "question": "[Advanced Experience Personalization & Optimization question 16 - Expert-level scenario requiring evaluate skills]",
+            "options": [
+              "Option A for EPX-016",
+              "Option B for EPX-016",
+              "Option C for EPX-016",
+              "Option D for EPX-016"
+            ],
+            "correctAnswer": 1,
+            "rationale": "Rationale for EPX-DM-A-016: This answer demonstrates expert understanding of experience personalization & optimization principles.",
+            "tags": [
+              "epx",
+              "advanced",
+              "strategic",
+              "ai-marketing"
+            ]
+          },
+          {
+            "id": "EPX-DM-A-017",
+            "difficulty": 0.65,
+            "discrimination": 1.45,
+            "bloomLevel": "Analyze",
+            "points": 12,
+            "estimatedTime": 60,
+            "question": "[Advanced Experience Personalization & Optimization question 17 - Expert-level scenario requiring analyze skills]",
+            "options": [
+              "Option A for EPX-017",
+              "Option B for EPX-017",
+              "Option C for EPX-017",
+              "Option D for EPX-017"
+            ],
+            "correctAnswer": 3,
+            "rationale": "Rationale for EPX-DM-A-017: This answer demonstrates expert understanding of experience personalization & optimization principles.",
+            "tags": [
+              "epx",
+              "advanced",
+              "strategic",
+              "ai-marketing"
+            ]
+          },
+          {
+            "id": "EPX-DM-A-018",
+            "difficulty": 0.63,
+            "discrimination": 1.42,
+            "bloomLevel": "Create",
+            "points": 14,
+            "estimatedTime": 60,
+            "question": "[Advanced Experience Personalization & Optimization question 18 - Expert-level scenario requiring create skills]",
+            "options": [
+              "Option A for EPX-018",
+              "Option B for EPX-018",
+              "Option C for EPX-018",
+              "Option D for EPX-018"
+            ],
+            "correctAnswer": 1,
+            "rationale": "Rationale for EPX-DM-A-018: This answer demonstrates expert understanding of experience personalization & optimization principles.",
+            "tags": [
+              "epx",
+              "advanced",
+              "strategic",
+              "ai-marketing"
+            ]
+          },
+          {
+            "id": "EPX-DM-A-019",
+            "difficulty": 0.74,
+            "discrimination": 1.41,
+            "bloomLevel": "Evaluate",
+            "points": 13,
+            "estimatedTime": 55,
+            "question": "[Advanced Experience Personalization & Optimization question 19 - Expert-level scenario requiring evaluate skills]",
+            "options": [
+              "Option A for EPX-019",
+              "Option B for EPX-019",
+              "Option C for EPX-019",
+              "Option D for EPX-019"
+            ],
+            "correctAnswer": 1,
+            "rationale": "Rationale for EPX-DM-A-019: This answer demonstrates expert understanding of experience personalization & optimization principles.",
+            "tags": [
+              "epx",
+              "advanced",
+              "strategic",
+              "ai-marketing"
+            ]
+          },
+          {
+            "id": "EPX-DM-A-020",
+            "difficulty": 0.63,
+            "discrimination": 1.39,
+            "bloomLevel": "Analyze",
+            "points": 12,
+            "estimatedTime": 56,
+            "question": "[Advanced Experience Personalization & Optimization question 20 - Expert-level scenario requiring analyze skills]",
+            "options": [
+              "Option A for EPX-020",
+              "Option B for EPX-020",
+              "Option C for EPX-020",
+              "Option D for EPX-020"
+            ],
+            "correctAnswer": 2,
+            "rationale": "Rationale for EPX-DM-A-020: This answer demonstrates expert understanding of experience personalization & optimization principles.",
+            "tags": [
+              "epx",
+              "advanced",
+              "strategic",
+              "ai-marketing"
+            ]
+          }
+        ]
+      },
+      {
+        "dimensionCode": "PMS",
+        "dimensionName": "Performance Measurement & Strategic Analytics",
+        "description": "Expert measurement frameworks, attribution mastery, and strategic analytics leadership",
+        "weight": 0.125,
+        "targetedDifficulty": 0.7,
+        "items": [
+          {
+            "id": "PMS-DM-A-001",
+            "difficulty": 0.74,
+            "discrimination": 1.48,
+            "bloomLevel": "Evaluate",
+            "points": 13,
+            "estimatedTime": 56,
+            "question": "[Advanced Performance Measurement & Strategic Analytics question 1 - Expert-level scenario requiring evaluate skills]",
+            "options": [
+              "Option A for PMS-001",
+              "Option B for PMS-001",
+              "Option C for PMS-001",
+              "Option D for PMS-001"
+            ],
+            "correctAnswer": 2,
+            "rationale": "Rationale for PMS-DM-A-001: This answer demonstrates expert understanding of performance measurement & strategic analytics principles.",
+            "tags": [
+              "pms",
+              "advanced",
+              "strategic",
+              "ai-marketing"
+            ]
+          },
+          {
+            "id": "PMS-DM-A-002",
+            "difficulty": 0.72,
+            "discrimination": 1.41,
+            "bloomLevel": "Analyze",
+            "points": 12,
+            "estimatedTime": 54,
+            "question": "[Advanced Performance Measurement & Strategic Analytics question 2 - Expert-level scenario requiring analyze skills]",
+            "options": [
+              "Option A for PMS-002",
+              "Option B for PMS-002",
+              "Option C for PMS-002",
+              "Option D for PMS-002"
+            ],
+            "correctAnswer": 2,
+            "rationale": "Rationale for PMS-DM-A-002: This answer demonstrates expert understanding of performance measurement & strategic analytics principles.",
+            "tags": [
+              "pms",
+              "advanced",
+              "strategic",
+              "ai-marketing"
+            ]
+          },
+          {
+            "id": "PMS-DM-A-003",
+            "difficulty": 0.65,
+            "discrimination": 1.48,
+            "bloomLevel": "Create",
+            "points": 14,
+            "estimatedTime": 58,
+            "question": "[Advanced Performance Measurement & Strategic Analytics question 3 - Expert-level scenario requiring create skills]",
+            "options": [
+              "Option A for PMS-003",
+              "Option B for PMS-003",
+              "Option C for PMS-003",
+              "Option D for PMS-003"
+            ],
+            "correctAnswer": 1,
+            "rationale": "Rationale for PMS-DM-A-003: This answer demonstrates expert understanding of performance measurement & strategic analytics principles.",
+            "tags": [
+              "pms",
+              "advanced",
+              "strategic",
+              "ai-marketing"
+            ]
+          },
+          {
+            "id": "PMS-DM-A-004",
+            "difficulty": 0.76,
+            "discrimination": 1.4,
+            "bloomLevel": "Evaluate",
+            "points": 13,
+            "estimatedTime": 58,
+            "question": "[Advanced Performance Measurement & Strategic Analytics question 4 - Expert-level scenario requiring evaluate skills]",
+            "options": [
+              "Option A for PMS-004",
+              "Option B for PMS-004",
+              "Option C for PMS-004",
+              "Option D for PMS-004"
+            ],
+            "correctAnswer": 0,
+            "rationale": "Rationale for PMS-DM-A-004: This answer demonstrates expert understanding of performance measurement & strategic analytics principles.",
+            "tags": [
+              "pms",
+              "advanced",
+              "strategic",
+              "ai-marketing"
+            ]
+          },
+          {
+            "id": "PMS-DM-A-005",
+            "difficulty": 0.69,
+            "discrimination": 1.45,
+            "bloomLevel": "Analyze",
+            "points": 12,
+            "estimatedTime": 57,
+            "question": "[Advanced Performance Measurement & Strategic Analytics question 5 - Expert-level scenario requiring analyze skills]",
+            "options": [
+              "Option A for PMS-005",
+              "Option B for PMS-005",
+              "Option C for PMS-005",
+              "Option D for PMS-005"
+            ],
+            "correctAnswer": 2,
+            "rationale": "Rationale for PMS-DM-A-005: This answer demonstrates expert understanding of performance measurement & strategic analytics principles.",
+            "tags": [
+              "pms",
+              "advanced",
+              "strategic",
+              "ai-marketing"
+            ]
+          },
+          {
+            "id": "PMS-DM-A-006",
+            "difficulty": 0.71,
+            "discrimination": 1.43,
+            "bloomLevel": "Create",
+            "points": 14,
+            "estimatedTime": 58,
+            "question": "[Advanced Performance Measurement & Strategic Analytics question 6 - Expert-level scenario requiring create skills]",
+            "options": [
+              "Option A for PMS-006",
+              "Option B for PMS-006",
+              "Option C for PMS-006",
+              "Option D for PMS-006"
+            ],
+            "correctAnswer": 3,
+            "rationale": "Rationale for PMS-DM-A-006: This answer demonstrates expert understanding of performance measurement & strategic analytics principles.",
+            "tags": [
+              "pms",
+              "advanced",
+              "strategic",
+              "ai-marketing"
+            ]
+          },
+          {
+            "id": "PMS-DM-A-007",
+            "difficulty": 0.66,
+            "discrimination": 1.37,
+            "bloomLevel": "Evaluate",
+            "points": 13,
+            "estimatedTime": 54,
+            "question": "[Advanced Performance Measurement & Strategic Analytics question 7 - Expert-level scenario requiring evaluate skills]",
+            "options": [
+              "Option A for PMS-007",
+              "Option B for PMS-007",
+              "Option C for PMS-007",
+              "Option D for PMS-007"
+            ],
+            "correctAnswer": 3,
+            "rationale": "Rationale for PMS-DM-A-007: This answer demonstrates expert understanding of performance measurement & strategic analytics principles.",
+            "tags": [
+              "pms",
+              "advanced",
+              "strategic",
+              "ai-marketing"
+            ]
+          },
+          {
+            "id": "PMS-DM-A-008",
+            "difficulty": 0.7,
+            "discrimination": 1.46,
+            "bloomLevel": "Analyze",
+            "points": 12,
+            "estimatedTime": 56,
+            "question": "[Advanced Performance Measurement & Strategic Analytics question 8 - Expert-level scenario requiring analyze skills]",
+            "options": [
+              "Option A for PMS-008",
+              "Option B for PMS-008",
+              "Option C for PMS-008",
+              "Option D for PMS-008"
+            ],
+            "correctAnswer": 1,
+            "rationale": "Rationale for PMS-DM-A-008: This answer demonstrates expert understanding of performance measurement & strategic analytics principles.",
+            "tags": [
+              "pms",
+              "advanced",
+              "strategic",
+              "ai-marketing"
+            ]
+          },
+          {
+            "id": "PMS-DM-A-009",
+            "difficulty": 0.69,
+            "discrimination": 1.47,
+            "bloomLevel": "Create",
+            "points": 14,
+            "estimatedTime": 58,
+            "question": "[Advanced Performance Measurement & Strategic Analytics question 9 - Expert-level scenario requiring create skills]",
+            "options": [
+              "Option A for PMS-009",
+              "Option B for PMS-009",
+              "Option C for PMS-009",
+              "Option D for PMS-009"
+            ],
+            "correctAnswer": 2,
+            "rationale": "Rationale for PMS-DM-A-009: This answer demonstrates expert understanding of performance measurement & strategic analytics principles.",
+            "tags": [
+              "pms",
+              "advanced",
+              "strategic",
+              "ai-marketing"
+            ]
+          },
+          {
+            "id": "PMS-DM-A-010",
+            "difficulty": 0.68,
+            "discrimination": 1.46,
+            "bloomLevel": "Evaluate",
+            "points": 13,
+            "estimatedTime": 58,
+            "question": "[Advanced Performance Measurement & Strategic Analytics question 10 - Expert-level scenario requiring evaluate skills]",
+            "options": [
+              "Option A for PMS-010",
+              "Option B for PMS-010",
+              "Option C for PMS-010",
+              "Option D for PMS-010"
+            ],
+            "correctAnswer": 2,
+            "rationale": "Rationale for PMS-DM-A-010: This answer demonstrates expert understanding of performance measurement & strategic analytics principles.",
+            "tags": [
+              "pms",
+              "advanced",
+              "strategic",
+              "ai-marketing"
+            ]
+          },
+          {
+            "id": "PMS-DM-A-011",
+            "difficulty": 0.68,
+            "discrimination": 1.41,
+            "bloomLevel": "Analyze",
+            "points": 12,
+            "estimatedTime": 59,
+            "question": "[Advanced Performance Measurement & Strategic Analytics question 11 - Expert-level scenario requiring analyze skills]",
+            "options": [
+              "Option A for PMS-011",
+              "Option B for PMS-011",
+              "Option C for PMS-011",
+              "Option D for PMS-011"
+            ],
+            "correctAnswer": 3,
+            "rationale": "Rationale for PMS-DM-A-011: This answer demonstrates expert understanding of performance measurement & strategic analytics principles.",
+            "tags": [
+              "pms",
+              "advanced",
+              "strategic",
+              "ai-marketing"
+            ]
+          },
+          {
+            "id": "PMS-DM-A-012",
+            "difficulty": 0.68,
+            "discrimination": 1.38,
+            "bloomLevel": "Create",
+            "points": 14,
+            "estimatedTime": 59,
+            "question": "[Advanced Performance Measurement & Strategic Analytics question 12 - Expert-level scenario requiring create skills]",
+            "options": [
+              "Option A for PMS-012",
+              "Option B for PMS-012",
+              "Option C for PMS-012",
+              "Option D for PMS-012"
+            ],
+            "correctAnswer": 3,
+            "rationale": "Rationale for PMS-DM-A-012: This answer demonstrates expert understanding of performance measurement & strategic analytics principles.",
+            "tags": [
+              "pms",
+              "advanced",
+              "strategic",
+              "ai-marketing"
+            ]
+          },
+          {
+            "id": "PMS-DM-A-013",
+            "difficulty": 0.75,
+            "discrimination": 1.44,
+            "bloomLevel": "Evaluate",
+            "points": 13,
+            "estimatedTime": 58,
+            "question": "[Advanced Performance Measurement & Strategic Analytics question 13 - Expert-level scenario requiring evaluate skills]",
+            "options": [
+              "Option A for PMS-013",
+              "Option B for PMS-013",
+              "Option C for PMS-013",
+              "Option D for PMS-013"
+            ],
+            "correctAnswer": 1,
+            "rationale": "Rationale for PMS-DM-A-013: This answer demonstrates expert understanding of performance measurement & strategic analytics principles.",
+            "tags": [
+              "pms",
+              "advanced",
+              "strategic",
+              "ai-marketing"
+            ]
+          },
+          {
+            "id": "PMS-DM-A-014",
+            "difficulty": 0.71,
+            "discrimination": 1.41,
+            "bloomLevel": "Analyze",
+            "points": 12,
+            "estimatedTime": 56,
+            "question": "[Advanced Performance Measurement & Strategic Analytics question 14 - Expert-level scenario requiring analyze skills]",
+            "options": [
+              "Option A for PMS-014",
+              "Option B for PMS-014",
+              "Option C for PMS-014",
+              "Option D for PMS-014"
+            ],
+            "correctAnswer": 0,
+            "rationale": "Rationale for PMS-DM-A-014: This answer demonstrates expert understanding of performance measurement & strategic analytics principles.",
+            "tags": [
+              "pms",
+              "advanced",
+              "strategic",
+              "ai-marketing"
+            ]
+          },
+          {
+            "id": "PMS-DM-A-015",
+            "difficulty": 0.67,
+            "discrimination": 1.42,
+            "bloomLevel": "Create",
+            "points": 14,
+            "estimatedTime": 57,
+            "question": "[Advanced Performance Measurement & Strategic Analytics question 15 - Expert-level scenario requiring create skills]",
+            "options": [
+              "Option A for PMS-015",
+              "Option B for PMS-015",
+              "Option C for PMS-015",
+              "Option D for PMS-015"
+            ],
+            "correctAnswer": 2,
+            "rationale": "Rationale for PMS-DM-A-015: This answer demonstrates expert understanding of performance measurement & strategic analytics principles.",
+            "tags": [
+              "pms",
+              "advanced",
+              "strategic",
+              "ai-marketing"
+            ]
+          },
+          {
+            "id": "PMS-DM-A-016",
+            "difficulty": 0.69,
+            "discrimination": 1.44,
+            "bloomLevel": "Evaluate",
+            "points": 13,
+            "estimatedTime": 60,
+            "question": "[Advanced Performance Measurement & Strategic Analytics question 16 - Expert-level scenario requiring evaluate skills]",
+            "options": [
+              "Option A for PMS-016",
+              "Option B for PMS-016",
+              "Option C for PMS-016",
+              "Option D for PMS-016"
+            ],
+            "correctAnswer": 3,
+            "rationale": "Rationale for PMS-DM-A-016: This answer demonstrates expert understanding of performance measurement & strategic analytics principles.",
+            "tags": [
+              "pms",
+              "advanced",
+              "strategic",
+              "ai-marketing"
+            ]
+          },
+          {
+            "id": "PMS-DM-A-017",
+            "difficulty": 0.75,
+            "discrimination": 1.46,
+            "bloomLevel": "Analyze",
+            "points": 12,
+            "estimatedTime": 59,
+            "question": "[Advanced Performance Measurement & Strategic Analytics question 17 - Expert-level scenario requiring analyze skills]",
+            "options": [
+              "Option A for PMS-017",
+              "Option B for PMS-017",
+              "Option C for PMS-017",
+              "Option D for PMS-017"
+            ],
+            "correctAnswer": 1,
+            "rationale": "Rationale for PMS-DM-A-017: This answer demonstrates expert understanding of performance measurement & strategic analytics principles.",
+            "tags": [
+              "pms",
+              "advanced",
+              "strategic",
+              "ai-marketing"
+            ]
+          },
+          {
+            "id": "PMS-DM-A-018",
+            "difficulty": 0.65,
+            "discrimination": 1.43,
+            "bloomLevel": "Create",
+            "points": 14,
+            "estimatedTime": 54,
+            "question": "[Advanced Performance Measurement & Strategic Analytics question 18 - Expert-level scenario requiring create skills]",
+            "options": [
+              "Option A for PMS-018",
+              "Option B for PMS-018",
+              "Option C for PMS-018",
+              "Option D for PMS-018"
+            ],
+            "correctAnswer": 2,
+            "rationale": "Rationale for PMS-DM-A-018: This answer demonstrates expert understanding of performance measurement & strategic analytics principles.",
+            "tags": [
+              "pms",
+              "advanced",
+              "strategic",
+              "ai-marketing"
+            ]
+          },
+          {
+            "id": "PMS-DM-A-019",
+            "difficulty": 0.74,
+            "discrimination": 1.45,
+            "bloomLevel": "Evaluate",
+            "points": 13,
+            "estimatedTime": 55,
+            "question": "[Advanced Performance Measurement & Strategic Analytics question 19 - Expert-level scenario requiring evaluate skills]",
+            "options": [
+              "Option A for PMS-019",
+              "Option B for PMS-019",
+              "Option C for PMS-019",
+              "Option D for PMS-019"
+            ],
+            "correctAnswer": 2,
+            "rationale": "Rationale for PMS-DM-A-019: This answer demonstrates expert understanding of performance measurement & strategic analytics principles.",
+            "tags": [
+              "pms",
+              "advanced",
+              "strategic",
+              "ai-marketing"
+            ]
+          },
+          {
+            "id": "PMS-DM-A-020",
+            "difficulty": 0.74,
+            "discrimination": 1.39,
+            "bloomLevel": "Analyze",
+            "points": 12,
+            "estimatedTime": 55,
+            "question": "[Advanced Performance Measurement & Strategic Analytics question 20 - Expert-level scenario requiring analyze skills]",
+            "options": [
+              "Option A for PMS-020",
+              "Option B for PMS-020",
+              "Option C for PMS-020",
+              "Option D for PMS-020"
+            ],
+            "correctAnswer": 0,
+            "rationale": "Rationale for PMS-DM-A-020: This answer demonstrates expert understanding of performance measurement & strategic analytics principles.",
+            "tags": [
+              "pms",
+              "advanced",
+              "strategic",
+              "ai-marketing"
+            ]
+          }
+        ]
+      },
+      {
+        "dimensionCode": "ETG",
+        "dimensionName": "Ethics, Trust & Governance",
+        "description": "Advanced ethical frameworks, trust-building strategies, and AI governance in marketing",
+        "weight": 0.125,
+        "targetedDifficulty": 0.68,
+        "items": [
+          {
+            "id": "ETG-DM-A-001",
+            "difficulty": 0.74,
+            "discrimination": 1.44,
+            "bloomLevel": "Evaluate",
+            "points": 13,
+            "estimatedTime": 57,
+            "question": "[Advanced Ethics, Trust & Governance question 1 - Expert-level scenario requiring evaluate skills]",
+            "options": [
+              "Option A for ETG-001",
+              "Option B for ETG-001",
+              "Option C for ETG-001",
+              "Option D for ETG-001"
+            ],
+            "correctAnswer": 0,
+            "rationale": "Rationale for ETG-DM-A-001: This answer demonstrates expert understanding of ethics, trust & governance principles.",
+            "tags": [
+              "etg",
+              "advanced",
+              "strategic",
+              "ai-marketing"
+            ]
+          },
+          {
+            "id": "ETG-DM-A-002",
+            "difficulty": 0.67,
+            "discrimination": 1.44,
+            "bloomLevel": "Analyze",
+            "points": 12,
+            "estimatedTime": 59,
+            "question": "[Advanced Ethics, Trust & Governance question 2 - Expert-level scenario requiring analyze skills]",
+            "options": [
+              "Option A for ETG-002",
+              "Option B for ETG-002",
+              "Option C for ETG-002",
+              "Option D for ETG-002"
+            ],
+            "correctAnswer": 1,
+            "rationale": "Rationale for ETG-DM-A-002: This answer demonstrates expert understanding of ethics, trust & governance principles.",
+            "tags": [
+              "etg",
+              "advanced",
+              "strategic",
+              "ai-marketing"
+            ]
+          },
+          {
+            "id": "ETG-DM-A-003",
+            "difficulty": 0.7,
+            "discrimination": 1.42,
+            "bloomLevel": "Create",
+            "points": 14,
+            "estimatedTime": 55,
+            "question": "[Advanced Ethics, Trust & Governance question 3 - Expert-level scenario requiring create skills]",
+            "options": [
+              "Option A for ETG-003",
+              "Option B for ETG-003",
+              "Option C for ETG-003",
+              "Option D for ETG-003"
+            ],
+            "correctAnswer": 1,
+            "rationale": "Rationale for ETG-DM-A-003: This answer demonstrates expert understanding of ethics, trust & governance principles.",
+            "tags": [
+              "etg",
+              "advanced",
+              "strategic",
+              "ai-marketing"
+            ]
+          },
+          {
+            "id": "ETG-DM-A-004",
+            "difficulty": 0.7,
+            "discrimination": 1.37,
+            "bloomLevel": "Evaluate",
+            "points": 13,
+            "estimatedTime": 60,
+            "question": "[Advanced Ethics, Trust & Governance question 4 - Expert-level scenario requiring evaluate skills]",
+            "options": [
+              "Option A for ETG-004",
+              "Option B for ETG-004",
+              "Option C for ETG-004",
+              "Option D for ETG-004"
+            ],
+            "correctAnswer": 0,
+            "rationale": "Rationale for ETG-DM-A-004: This answer demonstrates expert understanding of ethics, trust & governance principles.",
+            "tags": [
+              "etg",
+              "advanced",
+              "strategic",
+              "ai-marketing"
+            ]
+          },
+          {
+            "id": "ETG-DM-A-005",
+            "difficulty": 0.67,
+            "discrimination": 1.39,
+            "bloomLevel": "Analyze",
+            "points": 12,
+            "estimatedTime": 54,
+            "question": "[Advanced Ethics, Trust & Governance question 5 - Expert-level scenario requiring analyze skills]",
+            "options": [
+              "Option A for ETG-005",
+              "Option B for ETG-005",
+              "Option C for ETG-005",
+              "Option D for ETG-005"
+            ],
+            "correctAnswer": 3,
+            "rationale": "Rationale for ETG-DM-A-005: This answer demonstrates expert understanding of ethics, trust & governance principles.",
+            "tags": [
+              "etg",
+              "advanced",
+              "strategic",
+              "ai-marketing"
+            ]
+          },
+          {
+            "id": "ETG-DM-A-006",
+            "difficulty": 0.69,
+            "discrimination": 1.47,
+            "bloomLevel": "Create",
+            "points": 14,
+            "estimatedTime": 57,
+            "question": "[Advanced Ethics, Trust & Governance question 6 - Expert-level scenario requiring create skills]",
+            "options": [
+              "Option A for ETG-006",
+              "Option B for ETG-006",
+              "Option C for ETG-006",
+              "Option D for ETG-006"
+            ],
+            "correctAnswer": 0,
+            "rationale": "Rationale for ETG-DM-A-006: This answer demonstrates expert understanding of ethics, trust & governance principles.",
+            "tags": [
+              "etg",
+              "advanced",
+              "strategic",
+              "ai-marketing"
+            ]
+          },
+          {
+            "id": "ETG-DM-A-007",
+            "difficulty": 0.64,
+            "discrimination": 1.42,
+            "bloomLevel": "Evaluate",
+            "points": 13,
+            "estimatedTime": 60,
+            "question": "[Advanced Ethics, Trust & Governance question 7 - Expert-level scenario requiring evaluate skills]",
+            "options": [
+              "Option A for ETG-007",
+              "Option B for ETG-007",
+              "Option C for ETG-007",
+              "Option D for ETG-007"
+            ],
+            "correctAnswer": 2,
+            "rationale": "Rationale for ETG-DM-A-007: This answer demonstrates expert understanding of ethics, trust & governance principles.",
+            "tags": [
+              "etg",
+              "advanced",
+              "strategic",
+              "ai-marketing"
+            ]
+          },
+          {
+            "id": "ETG-DM-A-008",
+            "difficulty": 0.73,
+            "discrimination": 1.44,
+            "bloomLevel": "Analyze",
+            "points": 12,
+            "estimatedTime": 60,
+            "question": "[Advanced Ethics, Trust & Governance question 8 - Expert-level scenario requiring analyze skills]",
+            "options": [
+              "Option A for ETG-008",
+              "Option B for ETG-008",
+              "Option C for ETG-008",
+              "Option D for ETG-008"
+            ],
+            "correctAnswer": 3,
+            "rationale": "Rationale for ETG-DM-A-008: This answer demonstrates expert understanding of ethics, trust & governance principles.",
+            "tags": [
+              "etg",
+              "advanced",
+              "strategic",
+              "ai-marketing"
+            ]
+          },
+          {
+            "id": "ETG-DM-A-009",
+            "difficulty": 0.73,
+            "discrimination": 1.42,
+            "bloomLevel": "Create",
+            "points": 14,
+            "estimatedTime": 59,
+            "question": "[Advanced Ethics, Trust & Governance question 9 - Expert-level scenario requiring create skills]",
+            "options": [
+              "Option A for ETG-009",
+              "Option B for ETG-009",
+              "Option C for ETG-009",
+              "Option D for ETG-009"
+            ],
+            "correctAnswer": 1,
+            "rationale": "Rationale for ETG-DM-A-009: This answer demonstrates expert understanding of ethics, trust & governance principles.",
+            "tags": [
+              "etg",
+              "advanced",
+              "strategic",
+              "ai-marketing"
+            ]
+          },
+          {
+            "id": "ETG-DM-A-010",
+            "difficulty": 0.72,
+            "discrimination": 1.42,
+            "bloomLevel": "Evaluate",
+            "points": 13,
+            "estimatedTime": 60,
+            "question": "[Advanced Ethics, Trust & Governance question 10 - Expert-level scenario requiring evaluate skills]",
+            "options": [
+              "Option A for ETG-010",
+              "Option B for ETG-010",
+              "Option C for ETG-010",
+              "Option D for ETG-010"
+            ],
+            "correctAnswer": 1,
+            "rationale": "Rationale for ETG-DM-A-010: This answer demonstrates expert understanding of ethics, trust & governance principles.",
+            "tags": [
+              "etg",
+              "advanced",
+              "strategic",
+              "ai-marketing"
+            ]
+          },
+          {
+            "id": "ETG-DM-A-011",
+            "difficulty": 0.7,
+            "discrimination": 1.45,
+            "bloomLevel": "Analyze",
+            "points": 12,
+            "estimatedTime": 59,
+            "question": "[Advanced Ethics, Trust & Governance question 11 - Expert-level scenario requiring analyze skills]",
+            "options": [
+              "Option A for ETG-011",
+              "Option B for ETG-011",
+              "Option C for ETG-011",
+              "Option D for ETG-011"
+            ],
+            "correctAnswer": 3,
+            "rationale": "Rationale for ETG-DM-A-011: This answer demonstrates expert understanding of ethics, trust & governance principles.",
+            "tags": [
+              "etg",
+              "advanced",
+              "strategic",
+              "ai-marketing"
+            ]
+          },
+          {
+            "id": "ETG-DM-A-012",
+            "difficulty": 0.65,
+            "discrimination": 1.42,
+            "bloomLevel": "Create",
+            "points": 14,
+            "estimatedTime": 55,
+            "question": "[Advanced Ethics, Trust & Governance question 12 - Expert-level scenario requiring create skills]",
+            "options": [
+              "Option A for ETG-012",
+              "Option B for ETG-012",
+              "Option C for ETG-012",
+              "Option D for ETG-012"
+            ],
+            "correctAnswer": 2,
+            "rationale": "Rationale for ETG-DM-A-012: This answer demonstrates expert understanding of ethics, trust & governance principles.",
+            "tags": [
+              "etg",
+              "advanced",
+              "strategic",
+              "ai-marketing"
+            ]
+          },
+          {
+            "id": "ETG-DM-A-013",
+            "difficulty": 0.65,
+            "discrimination": 1.41,
+            "bloomLevel": "Evaluate",
+            "points": 13,
+            "estimatedTime": 55,
+            "question": "[Advanced Ethics, Trust & Governance question 13 - Expert-level scenario requiring evaluate skills]",
+            "options": [
+              "Option A for ETG-013",
+              "Option B for ETG-013",
+              "Option C for ETG-013",
+              "Option D for ETG-013"
+            ],
+            "correctAnswer": 0,
+            "rationale": "Rationale for ETG-DM-A-013: This answer demonstrates expert understanding of ethics, trust & governance principles.",
+            "tags": [
+              "etg",
+              "advanced",
+              "strategic",
+              "ai-marketing"
+            ]
+          },
+          {
+            "id": "ETG-DM-A-014",
+            "difficulty": 0.64,
+            "discrimination": 1.41,
+            "bloomLevel": "Analyze",
+            "points": 12,
+            "estimatedTime": 59,
+            "question": "[Advanced Ethics, Trust & Governance question 14 - Expert-level scenario requiring analyze skills]",
+            "options": [
+              "Option A for ETG-014",
+              "Option B for ETG-014",
+              "Option C for ETG-014",
+              "Option D for ETG-014"
+            ],
+            "correctAnswer": 1,
+            "rationale": "Rationale for ETG-DM-A-014: This answer demonstrates expert understanding of ethics, trust & governance principles.",
+            "tags": [
+              "etg",
+              "advanced",
+              "strategic",
+              "ai-marketing"
+            ]
+          },
+          {
+            "id": "ETG-DM-A-015",
+            "difficulty": 0.65,
+            "discrimination": 1.42,
+            "bloomLevel": "Create",
+            "points": 14,
+            "estimatedTime": 58,
+            "question": "[Advanced Ethics, Trust & Governance question 15 - Expert-level scenario requiring create skills]",
+            "options": [
+              "Option A for ETG-015",
+              "Option B for ETG-015",
+              "Option C for ETG-015",
+              "Option D for ETG-015"
+            ],
+            "correctAnswer": 2,
+            "rationale": "Rationale for ETG-DM-A-015: This answer demonstrates expert understanding of ethics, trust & governance principles.",
+            "tags": [
+              "etg",
+              "advanced",
+              "strategic",
+              "ai-marketing"
+            ]
+          },
+          {
+            "id": "ETG-DM-A-016",
+            "difficulty": 0.68,
+            "discrimination": 1.38,
+            "bloomLevel": "Evaluate",
+            "points": 13,
+            "estimatedTime": 57,
+            "question": "[Advanced Ethics, Trust & Governance question 16 - Expert-level scenario requiring evaluate skills]",
+            "options": [
+              "Option A for ETG-016",
+              "Option B for ETG-016",
+              "Option C for ETG-016",
+              "Option D for ETG-016"
+            ],
+            "correctAnswer": 3,
+            "rationale": "Rationale for ETG-DM-A-016: This answer demonstrates expert understanding of ethics, trust & governance principles.",
+            "tags": [
+              "etg",
+              "advanced",
+              "strategic",
+              "ai-marketing"
+            ]
+          },
+          {
+            "id": "ETG-DM-A-017",
+            "difficulty": 0.73,
+            "discrimination": 1.43,
+            "bloomLevel": "Analyze",
+            "points": 12,
+            "estimatedTime": 60,
+            "question": "[Advanced Ethics, Trust & Governance question 17 - Expert-level scenario requiring analyze skills]",
+            "options": [
+              "Option A for ETG-017",
+              "Option B for ETG-017",
+              "Option C for ETG-017",
+              "Option D for ETG-017"
+            ],
+            "correctAnswer": 0,
+            "rationale": "Rationale for ETG-DM-A-017: This answer demonstrates expert understanding of ethics, trust & governance principles.",
+            "tags": [
+              "etg",
+              "advanced",
+              "strategic",
+              "ai-marketing"
+            ]
+          },
+          {
+            "id": "ETG-DM-A-018",
+            "difficulty": 0.73,
+            "discrimination": 1.43,
+            "bloomLevel": "Create",
+            "points": 14,
+            "estimatedTime": 54,
+            "question": "[Advanced Ethics, Trust & Governance question 18 - Expert-level scenario requiring create skills]",
+            "options": [
+              "Option A for ETG-018",
+              "Option B for ETG-018",
+              "Option C for ETG-018",
+              "Option D for ETG-018"
+            ],
+            "correctAnswer": 3,
+            "rationale": "Rationale for ETG-DM-A-018: This answer demonstrates expert understanding of ethics, trust & governance principles.",
+            "tags": [
+              "etg",
+              "advanced",
+              "strategic",
+              "ai-marketing"
+            ]
+          },
+          {
+            "id": "ETG-DM-A-019",
+            "difficulty": 0.73,
+            "discrimination": 1.4,
+            "bloomLevel": "Evaluate",
+            "points": 13,
+            "estimatedTime": 60,
+            "question": "[Advanced Ethics, Trust & Governance question 19 - Expert-level scenario requiring evaluate skills]",
+            "options": [
+              "Option A for ETG-019",
+              "Option B for ETG-019",
+              "Option C for ETG-019",
+              "Option D for ETG-019"
+            ],
+            "correctAnswer": 3,
+            "rationale": "Rationale for ETG-DM-A-019: This answer demonstrates expert understanding of ethics, trust & governance principles.",
+            "tags": [
+              "etg",
+              "advanced",
+              "strategic",
+              "ai-marketing"
+            ]
+          },
+          {
+            "id": "ETG-DM-A-020",
+            "difficulty": 0.73,
+            "discrimination": 1.46,
+            "bloomLevel": "Analyze",
+            "points": 12,
+            "estimatedTime": 57,
+            "question": "[Advanced Ethics, Trust & Governance question 20 - Expert-level scenario requiring analyze skills]",
+            "options": [
+              "Option A for ETG-020",
+              "Option B for ETG-020",
+              "Option C for ETG-020",
+              "Option D for ETG-020"
+            ],
+            "correctAnswer": 1,
+            "rationale": "Rationale for ETG-DM-A-020: This answer demonstrates expert understanding of ethics, trust & governance principles.",
+            "tags": [
+              "etg",
+              "advanced",
+              "strategic",
+              "ai-marketing"
+            ]
+          }
+        ]
+      },
+      {
+        "dimensionCode": "MEE",
+        "dimensionName": "MarTech Ecosystem & Enterprise Integration",
+        "description": "Expert platform strategy, enterprise integration, and marketing technology leadership",
+        "weight": 0.125,
+        "targetedDifficulty": 0.69,
+        "items": [
+          {
+            "id": "MEE-DM-A-001",
+            "difficulty": 0.66,
+            "discrimination": 1.42,
+            "bloomLevel": "Evaluate",
+            "points": 13,
+            "estimatedTime": 57,
+            "question": "[Advanced MarTech Ecosystem & Enterprise Integration question 1 - Expert-level scenario requiring evaluate skills]",
+            "options": [
+              "Option A for MEE-001",
+              "Option B for MEE-001",
+              "Option C for MEE-001",
+              "Option D for MEE-001"
+            ],
+            "correctAnswer": 0,
+            "rationale": "Rationale for MEE-DM-A-001: This answer demonstrates expert understanding of martech ecosystem & enterprise integration principles.",
+            "tags": [
+              "mee",
+              "advanced",
+              "strategic",
+              "ai-marketing"
+            ]
+          },
+          {
+            "id": "MEE-DM-A-002",
+            "difficulty": 0.67,
+            "discrimination": 1.44,
+            "bloomLevel": "Analyze",
+            "points": 12,
+            "estimatedTime": 59,
+            "question": "[Advanced MarTech Ecosystem & Enterprise Integration question 2 - Expert-level scenario requiring analyze skills]",
+            "options": [
+              "Option A for MEE-002",
+              "Option B for MEE-002",
+              "Option C for MEE-002",
+              "Option D for MEE-002"
+            ],
+            "correctAnswer": 3,
+            "rationale": "Rationale for MEE-DM-A-002: This answer demonstrates expert understanding of martech ecosystem & enterprise integration principles.",
+            "tags": [
+              "mee",
+              "advanced",
+              "strategic",
+              "ai-marketing"
+            ]
+          },
+          {
+            "id": "MEE-DM-A-003",
+            "difficulty": 0.65,
+            "discrimination": 1.42,
+            "bloomLevel": "Create",
+            "points": 14,
+            "estimatedTime": 58,
+            "question": "[Advanced MarTech Ecosystem & Enterprise Integration question 3 - Expert-level scenario requiring create skills]",
+            "options": [
+              "Option A for MEE-003",
+              "Option B for MEE-003",
+              "Option C for MEE-003",
+              "Option D for MEE-003"
+            ],
+            "correctAnswer": 1,
+            "rationale": "Rationale for MEE-DM-A-003: This answer demonstrates expert understanding of martech ecosystem & enterprise integration principles.",
+            "tags": [
+              "mee",
+              "advanced",
+              "strategic",
+              "ai-marketing"
+            ]
+          },
+          {
+            "id": "MEE-DM-A-004",
+            "difficulty": 0.69,
+            "discrimination": 1.47,
+            "bloomLevel": "Evaluate",
+            "points": 13,
+            "estimatedTime": 54,
+            "question": "[Advanced MarTech Ecosystem & Enterprise Integration question 4 - Expert-level scenario requiring evaluate skills]",
+            "options": [
+              "Option A for MEE-004",
+              "Option B for MEE-004",
+              "Option C for MEE-004",
+              "Option D for MEE-004"
+            ],
+            "correctAnswer": 0,
+            "rationale": "Rationale for MEE-DM-A-004: This answer demonstrates expert understanding of martech ecosystem & enterprise integration principles.",
+            "tags": [
+              "mee",
+              "advanced",
+              "strategic",
+              "ai-marketing"
+            ]
+          },
+          {
+            "id": "MEE-DM-A-005",
+            "difficulty": 0.71,
+            "discrimination": 1.38,
+            "bloomLevel": "Analyze",
+            "points": 12,
+            "estimatedTime": 55,
+            "question": "[Advanced MarTech Ecosystem & Enterprise Integration question 5 - Expert-level scenario requiring analyze skills]",
+            "options": [
+              "Option A for MEE-005",
+              "Option B for MEE-005",
+              "Option C for MEE-005",
+              "Option D for MEE-005"
+            ],
+            "correctAnswer": 3,
+            "rationale": "Rationale for MEE-DM-A-005: This answer demonstrates expert understanding of martech ecosystem & enterprise integration principles.",
+            "tags": [
+              "mee",
+              "advanced",
+              "strategic",
+              "ai-marketing"
+            ]
+          },
+          {
+            "id": "MEE-DM-A-006",
+            "difficulty": 0.64,
+            "discrimination": 1.41,
+            "bloomLevel": "Create",
+            "points": 14,
+            "estimatedTime": 57,
+            "question": "[Advanced MarTech Ecosystem & Enterprise Integration question 6 - Expert-level scenario requiring create skills]",
+            "options": [
+              "Option A for MEE-006",
+              "Option B for MEE-006",
+              "Option C for MEE-006",
+              "Option D for MEE-006"
+            ],
+            "correctAnswer": 1,
+            "rationale": "Rationale for MEE-DM-A-006: This answer demonstrates expert understanding of martech ecosystem & enterprise integration principles.",
+            "tags": [
+              "mee",
+              "advanced",
+              "strategic",
+              "ai-marketing"
+            ]
+          },
+          {
+            "id": "MEE-DM-A-007",
+            "difficulty": 0.67,
+            "discrimination": 1.45,
+            "bloomLevel": "Evaluate",
+            "points": 13,
+            "estimatedTime": 56,
+            "question": "[Advanced MarTech Ecosystem & Enterprise Integration question 7 - Expert-level scenario requiring evaluate skills]",
+            "options": [
+              "Option A for MEE-007",
+              "Option B for MEE-007",
+              "Option C for MEE-007",
+              "Option D for MEE-007"
+            ],
+            "correctAnswer": 3,
+            "rationale": "Rationale for MEE-DM-A-007: This answer demonstrates expert understanding of martech ecosystem & enterprise integration principles.",
+            "tags": [
+              "mee",
+              "advanced",
+              "strategic",
+              "ai-marketing"
+            ]
+          },
+          {
+            "id": "MEE-DM-A-008",
+            "difficulty": 0.72,
+            "discrimination": 1.46,
+            "bloomLevel": "Analyze",
+            "points": 12,
+            "estimatedTime": 60,
+            "question": "[Advanced MarTech Ecosystem & Enterprise Integration question 8 - Expert-level scenario requiring analyze skills]",
+            "options": [
+              "Option A for MEE-008",
+              "Option B for MEE-008",
+              "Option C for MEE-008",
+              "Option D for MEE-008"
+            ],
+            "correctAnswer": 2,
+            "rationale": "Rationale for MEE-DM-A-008: This answer demonstrates expert understanding of martech ecosystem & enterprise integration principles.",
+            "tags": [
+              "mee",
+              "advanced",
+              "strategic",
+              "ai-marketing"
+            ]
+          },
+          {
+            "id": "MEE-DM-A-009",
+            "difficulty": 0.64,
+            "discrimination": 1.37,
+            "bloomLevel": "Create",
+            "points": 14,
+            "estimatedTime": 56,
+            "question": "[Advanced MarTech Ecosystem & Enterprise Integration question 9 - Expert-level scenario requiring create skills]",
+            "options": [
+              "Option A for MEE-009",
+              "Option B for MEE-009",
+              "Option C for MEE-009",
+              "Option D for MEE-009"
+            ],
+            "correctAnswer": 0,
+            "rationale": "Rationale for MEE-DM-A-009: This answer demonstrates expert understanding of martech ecosystem & enterprise integration principles.",
+            "tags": [
+              "mee",
+              "advanced",
+              "strategic",
+              "ai-marketing"
+            ]
+          },
+          {
+            "id": "MEE-DM-A-010",
+            "difficulty": 0.66,
+            "discrimination": 1.38,
+            "bloomLevel": "Evaluate",
+            "points": 13,
+            "estimatedTime": 60,
+            "question": "[Advanced MarTech Ecosystem & Enterprise Integration question 10 - Expert-level scenario requiring evaluate skills]",
+            "options": [
+              "Option A for MEE-010",
+              "Option B for MEE-010",
+              "Option C for MEE-010",
+              "Option D for MEE-010"
+            ],
+            "correctAnswer": 0,
+            "rationale": "Rationale for MEE-DM-A-010: This answer demonstrates expert understanding of martech ecosystem & enterprise integration principles.",
+            "tags": [
+              "mee",
+              "advanced",
+              "strategic",
+              "ai-marketing"
+            ]
+          },
+          {
+            "id": "MEE-DM-A-011",
+            "difficulty": 0.63,
+            "discrimination": 1.4,
+            "bloomLevel": "Analyze",
+            "points": 12,
+            "estimatedTime": 58,
+            "question": "[Advanced MarTech Ecosystem & Enterprise Integration question 11 - Expert-level scenario requiring analyze skills]",
+            "options": [
+              "Option A for MEE-011",
+              "Option B for MEE-011",
+              "Option C for MEE-011",
+              "Option D for MEE-011"
+            ],
+            "correctAnswer": 0,
+            "rationale": "Rationale for MEE-DM-A-011: This answer demonstrates expert understanding of martech ecosystem & enterprise integration principles.",
+            "tags": [
+              "mee",
+              "advanced",
+              "strategic",
+              "ai-marketing"
+            ]
+          },
+          {
+            "id": "MEE-DM-A-012",
+            "difficulty": 0.65,
+            "discrimination": 1.38,
+            "bloomLevel": "Create",
+            "points": 14,
+            "estimatedTime": 58,
+            "question": "[Advanced MarTech Ecosystem & Enterprise Integration question 12 - Expert-level scenario requiring create skills]",
+            "options": [
+              "Option A for MEE-012",
+              "Option B for MEE-012",
+              "Option C for MEE-012",
+              "Option D for MEE-012"
+            ],
+            "correctAnswer": 0,
+            "rationale": "Rationale for MEE-DM-A-012: This answer demonstrates expert understanding of martech ecosystem & enterprise integration principles.",
+            "tags": [
+              "mee",
+              "advanced",
+              "strategic",
+              "ai-marketing"
+            ]
+          },
+          {
+            "id": "MEE-DM-A-013",
+            "difficulty": 0.74,
+            "discrimination": 1.42,
+            "bloomLevel": "Evaluate",
+            "points": 13,
+            "estimatedTime": 60,
+            "question": "[Advanced MarTech Ecosystem & Enterprise Integration question 13 - Expert-level scenario requiring evaluate skills]",
+            "options": [
+              "Option A for MEE-013",
+              "Option B for MEE-013",
+              "Option C for MEE-013",
+              "Option D for MEE-013"
+            ],
+            "correctAnswer": 2,
+            "rationale": "Rationale for MEE-DM-A-013: This answer demonstrates expert understanding of martech ecosystem & enterprise integration principles.",
+            "tags": [
+              "mee",
+              "advanced",
+              "strategic",
+              "ai-marketing"
+            ]
+          },
+          {
+            "id": "MEE-DM-A-014",
+            "difficulty": 0.67,
+            "discrimination": 1.44,
+            "bloomLevel": "Analyze",
+            "points": 12,
+            "estimatedTime": 60,
+            "question": "[Advanced MarTech Ecosystem & Enterprise Integration question 14 - Expert-level scenario requiring analyze skills]",
+            "options": [
+              "Option A for MEE-014",
+              "Option B for MEE-014",
+              "Option C for MEE-014",
+              "Option D for MEE-014"
+            ],
+            "correctAnswer": 0,
+            "rationale": "Rationale for MEE-DM-A-014: This answer demonstrates expert understanding of martech ecosystem & enterprise integration principles.",
+            "tags": [
+              "mee",
+              "advanced",
+              "strategic",
+              "ai-marketing"
+            ]
+          },
+          {
+            "id": "MEE-DM-A-015",
+            "difficulty": 0.73,
+            "discrimination": 1.48,
+            "bloomLevel": "Create",
+            "points": 14,
+            "estimatedTime": 58,
+            "question": "[Advanced MarTech Ecosystem & Enterprise Integration question 15 - Expert-level scenario requiring create skills]",
+            "options": [
+              "Option A for MEE-015",
+              "Option B for MEE-015",
+              "Option C for MEE-015",
+              "Option D for MEE-015"
+            ],
+            "correctAnswer": 0,
+            "rationale": "Rationale for MEE-DM-A-015: This answer demonstrates expert understanding of martech ecosystem & enterprise integration principles.",
+            "tags": [
+              "mee",
+              "advanced",
+              "strategic",
+              "ai-marketing"
+            ]
+          },
+          {
+            "id": "MEE-DM-A-016",
+            "difficulty": 0.63,
+            "discrimination": 1.4,
+            "bloomLevel": "Evaluate",
+            "points": 13,
+            "estimatedTime": 57,
+            "question": "[Advanced MarTech Ecosystem & Enterprise Integration question 16 - Expert-level scenario requiring evaluate skills]",
+            "options": [
+              "Option A for MEE-016",
+              "Option B for MEE-016",
+              "Option C for MEE-016",
+              "Option D for MEE-016"
+            ],
+            "correctAnswer": 3,
+            "rationale": "Rationale for MEE-DM-A-016: This answer demonstrates expert understanding of martech ecosystem & enterprise integration principles.",
+            "tags": [
+              "mee",
+              "advanced",
+              "strategic",
+              "ai-marketing"
+            ]
+          },
+          {
+            "id": "MEE-DM-A-017",
+            "difficulty": 0.74,
+            "discrimination": 1.39,
+            "bloomLevel": "Analyze",
+            "points": 12,
+            "estimatedTime": 54,
+            "question": "[Advanced MarTech Ecosystem & Enterprise Integration question 17 - Expert-level scenario requiring analyze skills]",
+            "options": [
+              "Option A for MEE-017",
+              "Option B for MEE-017",
+              "Option C for MEE-017",
+              "Option D for MEE-017"
+            ],
+            "correctAnswer": 1,
+            "rationale": "Rationale for MEE-DM-A-017: This answer demonstrates expert understanding of martech ecosystem & enterprise integration principles.",
+            "tags": [
+              "mee",
+              "advanced",
+              "strategic",
+              "ai-marketing"
+            ]
+          },
+          {
+            "id": "MEE-DM-A-018",
+            "difficulty": 0.71,
+            "discrimination": 1.4,
+            "bloomLevel": "Create",
+            "points": 14,
+            "estimatedTime": 60,
+            "question": "[Advanced MarTech Ecosystem & Enterprise Integration question 18 - Expert-level scenario requiring create skills]",
+            "options": [
+              "Option A for MEE-018",
+              "Option B for MEE-018",
+              "Option C for MEE-018",
+              "Option D for MEE-018"
+            ],
+            "correctAnswer": 0,
+            "rationale": "Rationale for MEE-DM-A-018: This answer demonstrates expert understanding of martech ecosystem & enterprise integration principles.",
+            "tags": [
+              "mee",
+              "advanced",
+              "strategic",
+              "ai-marketing"
+            ]
+          },
+          {
+            "id": "MEE-DM-A-019",
+            "difficulty": 0.75,
+            "discrimination": 1.46,
+            "bloomLevel": "Evaluate",
+            "points": 13,
+            "estimatedTime": 58,
+            "question": "[Advanced MarTech Ecosystem & Enterprise Integration question 19 - Expert-level scenario requiring evaluate skills]",
+            "options": [
+              "Option A for MEE-019",
+              "Option B for MEE-019",
+              "Option C for MEE-019",
+              "Option D for MEE-019"
+            ],
+            "correctAnswer": 2,
+            "rationale": "Rationale for MEE-DM-A-019: This answer demonstrates expert understanding of martech ecosystem & enterprise integration principles.",
+            "tags": [
+              "mee",
+              "advanced",
+              "strategic",
+              "ai-marketing"
+            ]
+          },
+          {
+            "id": "MEE-DM-A-020",
+            "difficulty": 0.68,
+            "discrimination": 1.41,
+            "bloomLevel": "Analyze",
+            "points": 12,
+            "estimatedTime": 54,
+            "question": "[Advanced MarTech Ecosystem & Enterprise Integration question 20 - Expert-level scenario requiring analyze skills]",
+            "options": [
+              "Option A for MEE-020",
+              "Option B for MEE-020",
+              "Option C for MEE-020",
+              "Option D for MEE-020"
+            ],
+            "correctAnswer": 2,
+            "rationale": "Rationale for MEE-DM-A-020: This answer demonstrates expert understanding of martech ecosystem & enterprise integration principles.",
+            "tags": [
+              "mee",
+              "advanced",
+              "strategic",
+              "ai-marketing"
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

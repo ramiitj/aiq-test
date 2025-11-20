@@ -1,0 +1,3672 @@
+{
+  "assessmentMetadata": {
+    "assessmentId": "AIQ-SDE-ADV-v1",
+    "version": "1.0",
+    "title": "AIQ Software Development Engineer Advanced Assessment",
+    "subtitle": "Expert Edition for Senior Engineers",
+    "createdDate": "2025-11-10T05:19:39.424170",
+    "targetAudience": [
+      "Senior Software Engineers",
+      "Technical Leads",
+      "AI/ML Engineers",
+      "Software Architects",
+      "Staff/Principal Engineers"
+    ],
+    "totalItems": 160,
+    "estimatedMinutes": 150,
+    "passingScore": 1280,
+    "totalPoints": 1600
+  },
+  "assessmentConfiguration": {
+    "assessmentType": "adaptive-sequential",
+    "itemResponseTheory": true,
+    "randomizeOptions": true,
+    "randomizeItems": false,
+    "allowSkip": false,
+    "showProgressBar": true,
+    "timedPerQuestion": false,
+    "immediateResults": false
+  },
+  "scoringConfiguration": {
+    "totalPoints": 1600,
+    "pointsPerDimension": 200,
+    "passingThreshold": 0.8,
+    "passingPoints": 1280,
+    "scoringLevels": [
+      {
+        "level": "Developing SDE",
+        "minPercentage": 0,
+        "maxPercentage": 50,
+        "minPoints": 0,
+        "maxPoints": 800,
+        "description": "Foundational AI engineering knowledge needed"
+      },
+      {
+        "level": "Proficient SDE",
+        "minPercentage": 51,
+        "maxPercentage": 70,
+        "minPoints": 801,
+        "maxPoints": 1120,
+        "description": "Solid understanding of AI engineering concepts"
+      },
+      {
+        "level": "Advanced SDE",
+        "minPercentage": 71,
+        "maxPercentage": 85,
+        "minPoints": 1121,
+        "maxPoints": 1360,
+        "description": "Strong AI software engineering capability"
+      },
+      {
+        "level": "Expert SDE",
+        "minPercentage": 86,
+        "maxPercentage": 95,
+        "minPoints": 1361,
+        "maxPoints": 1520,
+        "description": "Exceptional AI engineering leadership"
+      },
+      {
+        "level": "Master SDE",
+        "minPercentage": 96,
+        "maxPercentage": 100,
+        "minPoints": 1521,
+        "maxPoints": 1600,
+        "description": "World-class AI engineering mastery"
+      }
+    ]
+  },
+  "itemBank": [
+    {
+      "dimensionCode": "AIA",
+      "dimensionName": "AI Architecture & Systems Design",
+      "dimensionDescription": "Advanced assessment of AI system architecture, scalability patterns, and infrastructure design",
+      "itemCount": 20,
+      "maxPoints": 200,
+      "items": [
+        {
+          "id": "AIA-SDE-E-001",
+          "question": "Your team needs to deploy a large language model that serves 10,000 requests per second with sub-200ms latency. What architectural pattern best balances cost, latency, and reliability requirements?",
+          "options": [
+            "Implement a distributed serving layer with model sharding across multiple GPUs, request batching with dynamic timeout adjustment, and multi-tier caching for common queries to maximize throughput while meeting latency targets.",
+            "Deploy a single large GPU instance with aggressive request queueing to minimize infrastructure costs, accepting occasional latency spikes during high traffic periods as an acceptable tradeoff for simpler operations.",
+            "Use a serverless architecture with on-demand GPU allocation for each request to optimize costs, implementing retry logic to handle cold start latency issues that may exceed the 200ms target during scale-up events.",
+            "Adopt a hybrid approach with CPU-based preprocessing for all requests followed by GPU inference only for complex cases, routing simple queries through rule-based systems to reduce overall GPU utilization and associated costs."
+          ],
+          "correctAnswer": 0,
+          "difficulty": 0.68,
+          "discrimination": 1.42,
+          "points": 13,
+          "bloomLevel": "Evaluate",
+          "tags": [
+            "model-serving",
+            "latency-optimization",
+            "distributed-systems",
+            "scalability"
+          ],
+          "rationale": "Distributed serving with model sharding, request batching, and caching provides the best balance for high-throughput, low-latency requirements while managing costs through efficient resource utilization."
+        },
+        {
+          "id": "AIA-SDE-E-002",
+          "question": "You're designing the architecture for a real-time recommendation system that processes user events, updates models, and serves predictions within 50ms. What system design approach best handles this end-to-end latency requirement?",
+          "options": [
+            "Implement a stream processing pipeline that updates a pre-computed recommendation cache as events arrive, serving recommendations directly from the cache with occasional model recomputation in the background to handle staleness.",
+            "Build a Lambda architecture with batch model training on historical data and stream processing for real-time feature computation, combining both paths at serving time to generate predictions using the latest model and freshest features.",
+            "Deploy a fully streaming architecture using incremental model updates with Kappa-style processing, maintaining feature state in a low-latency key-value store and performing inference inline within the stream processing framework.",
+            "Create a microservices architecture where event ingestion, feature computation, model inference, and result caching are separate services communicating via message queues, allowing independent scaling of each component based on load characteristics."
+          ],
+          "correctAnswer": 0,
+          "difficulty": 0.71,
+          "discrimination": 1.45,
+          "points": 13,
+          "bloomLevel": "Evaluate",
+          "tags": [
+            "real-time-systems",
+            "recommendation-systems",
+            "stream-processing",
+            "caching"
+          ],
+          "rationale": "For 50ms end-to-end latency, direct cache serving is essential. Pre-computing recommendations asynchronously and serving from cache meets strict latency requirements without adding complexity."
+        },
+        {
+          "id": "AIA-SDE-E-003",
+          "question": "Your AI system experiences unpredictable traffic patterns with 10x variations between peak and off-peak hours. What autoscaling strategy best balances cost efficiency with consistent user experience?",
+          "options": [
+            "Configure target-tracking autoscaling based on GPU utilization metrics with conservative thresholds (60-70% utilization) to ensure capacity availability, accepting higher costs during off-peak periods to avoid scaling delays during traffic surges.",
+            "Implement predictive autoscaling using historical traffic patterns combined with real-time demand signals, pre-warming capacity ahead of expected peaks while aggressively scaling down during predicted low-traffic periods to minimize costs.",
+            "Deploy a multi-tier serving architecture with always-on baseline capacity for expected load and burst capacity that scales reactively based on queue depth, using spot instances for burst capacity to reduce costs during peak periods.",
+            "Use schedule-based autoscaling to match known daily patterns combined with step scaling policies that add capacity in large increments when thresholds breach, prioritizing fast response to demand changes over fine-grained cost optimization."
+          ],
+          "correctAnswer": 2,
+          "difficulty": 0.65,
+          "discrimination": 1.38,
+          "points": 12,
+          "bloomLevel": "Analyze",
+          "tags": [
+            "autoscaling",
+            "cost-optimization",
+            "reliability",
+            "capacity-planning"
+          ],
+          "rationale": "Multi-tier architecture with baseline capacity ensures consistent experience, burst capacity handles unpredictability, reactive scaling responds to actual demand, and spot instances optimize burst costs."
+        },
+        {
+          "id": "AIA-SDE-E-004",
+          "question": "You need to design a system that serves multiple ML models (CV, NLP, time-series) with different resource requirements and latency targets. What architecture pattern best handles this heterogeneous workload?",
+          "options": [
+            "Deploy each model type on dedicated infrastructure optimized for its specific requirements, using a central API gateway to route requests and manage authentication, allowing independent scaling and optimization of each model service.",
+            "Use a unified serving platform that dynamically allocates resources based on incoming request types, implementing priority queues and resource reservation to ensure high-priority requests meet their latency targets across all model types.",
+            "Containerize all models with standardized resource limits and deploy on a shared Kubernetes cluster, relying on the orchestrator's bin-packing and autoscaling capabilities to efficiently utilize resources across the heterogeneous workload.",
+            "Create a tiered service architecture with low-latency models in the edge layer, medium-latency models in regional data centers, and high-latency models in centralized cloud infrastructure, routing requests based on latency requirements."
+          ],
+          "correctAnswer": 0,
+          "difficulty": 0.66,
+          "discrimination": 1.4,
+          "points": 13,
+          "bloomLevel": "Evaluate",
+          "tags": [
+            "multi-model-serving",
+            "heterogeneous-workloads",
+            "architecture-patterns",
+            "resource-management"
+          ],
+          "rationale": "Dedicated infrastructure per model type allows optimization for specific requirements (GPU types, memory, latency), while centralized routing maintains simplicity. This provides better performance and cost efficiency than one-size-fits-all approaches."
+        },
+        {
+          "id": "AIA-SDE-E-005",
+          "question": "Your distributed training job for a large transformer model fails intermittently due to hardware failures in your 100-GPU cluster. What fault tolerance strategy minimizes wasted computation while maintaining training progress?",
+          "options": [
+            "Implement regular checkpointing every N steps with automatic job restart from the last successful checkpoint, using a distributed file system to ensure checkpoint durability and quick recovery from any node in the cluster.",
+            "Deploy redundant training processes that run in parallel with periodic synchronization, allowing the system to continue from the surviving process when failures occur without requiring full job restarts or checkpoint loading.",
+            "Use elastic training that dynamically adjusts parallelism when nodes fail, redistributing work across remaining nodes and continuing from the current state without checkpoint loading, accepting temporary throughput degradation during failure recovery.",
+            "Configure the training framework with aggressive checkpoint frequency (every 10 steps) and distributed checkpoint sharding across all nodes, minimizing data loss and restart time but accepting higher I/O overhead during normal operations."
+          ],
+          "correctAnswer": 2,
+          "difficulty": 0.7,
+          "discrimination": 1.44,
+          "points": 13,
+          "bloomLevel": "Evaluate",
+          "tags": [
+            "distributed-training",
+            "fault-tolerance",
+            "checkpointing",
+            "resilience"
+          ],
+          "rationale": "Elastic training provides the best trade-off for intermittent failures by continuing without full restarts, avoiding checkpoint I/O overhead, and maintaining progress. Regular checkpointing (A) wastes computation on restart, parallel processes (B) double costs, aggressive checkpointing (D) hurts performance."
+        },
+        {
+          "id": "AIA-SDE-E-006",
+          "question": "Your inference service needs 99.99% availability. What architectural redundancy approach achieves this target cost-effectively?",
+          "options": [
+            "Option A for question 6 that represents a technically sound approach considering tradeoffs between complexity and performance.",
+            "Option B for question 6 that offers an alternative perspective focusing on operational simplicity and maintainability.",
+            "Option C for question 6 that emphasizes cost optimization while accepting some technical compromises.",
+            "Option D for question 6 that prioritizes reliability and fault tolerance over other considerations."
+          ],
+          "correctAnswer": 3,
+          "difficulty": 0.69,
+          "discrimination": 1.38,
+          "points": 14,
+          "bloomLevel": "Create",
+          "tags": [
+            "architecture",
+            "systems-design",
+            "scalability",
+            "engineering"
+          ],
+          "rationale": "Rationale for item 6 explaining why the correct answer best addresses the scenario's requirements."
+        },
+        {
+          "id": "AIA-SDE-E-007",
+          "question": "You're building a model serving system that must handle 100x traffic spikes during product launches. What capacity planning strategy best prepares for these events?",
+          "options": [
+            "Option A for question 7 that represents a technically sound approach considering tradeoffs between complexity and performance.",
+            "Option B for question 7 that offers an alternative perspective focusing on operational simplicity and maintainability.",
+            "Option C for question 7 that emphasizes cost optimization while accepting some technical compromises.",
+            "Option D for question 7 that prioritizes reliability and fault tolerance over other considerations."
+          ],
+          "correctAnswer": 2,
+          "difficulty": 0.64,
+          "discrimination": 1.42,
+          "points": 12,
+          "bloomLevel": "Create",
+          "tags": [
+            "architecture",
+            "systems-design",
+            "scalability",
+            "engineering"
+          ],
+          "rationale": "Rationale for item 7 explaining why the correct answer best addresses the scenario's requirements."
+        },
+        {
+          "id": "AIA-SDE-E-008",
+          "question": "Your distributed inference system experiences tail latency issues affecting P99 response times. What architectural approach most effectively reduces tail latency?",
+          "options": [
+            "Option A for question 8 that represents a technically sound approach considering tradeoffs between complexity and performance.",
+            "Option B for question 8 that offers an alternative perspective focusing on operational simplicity and maintainability.",
+            "Option C for question 8 that emphasizes cost optimization while accepting some technical compromises.",
+            "Option D for question 8 that prioritizes reliability and fault tolerance over other considerations."
+          ],
+          "correctAnswer": 3,
+          "difficulty": 0.64,
+          "discrimination": 1.39,
+          "points": 13,
+          "bloomLevel": "Create",
+          "tags": [
+            "architecture",
+            "systems-design",
+            "scalability",
+            "engineering"
+          ],
+          "rationale": "Rationale for item 8 explaining why the correct answer best addresses the scenario's requirements."
+        },
+        {
+          "id": "AIA-SDE-E-009",
+          "question": "You need to deploy the same model across cloud, on-premise, and edge environments. What architecture pattern enables consistent deployment across these heterogeneous targets?",
+          "options": [
+            "Option A for question 9 that represents a technically sound approach considering tradeoffs between complexity and performance.",
+            "Option B for question 9 that offers an alternative perspective focusing on operational simplicity and maintainability.",
+            "Option C for question 9 that emphasizes cost optimization while accepting some technical compromises.",
+            "Option D for question 9 that prioritizes reliability and fault tolerance over other considerations."
+          ],
+          "correctAnswer": 3,
+          "difficulty": 0.7,
+          "discrimination": 1.42,
+          "points": 14,
+          "bloomLevel": "Evaluate",
+          "tags": [
+            "architecture",
+            "systems-design",
+            "scalability",
+            "engineering"
+          ],
+          "rationale": "Rationale for item 9 explaining why the correct answer best addresses the scenario's requirements."
+        },
+        {
+          "id": "AIA-SDE-E-010",
+          "question": "Your model serving infrastructure costs are growing faster than traffic. What architectural optimization strategy best reduces cost-per-inference?",
+          "options": [
+            "Option A for question 10 that represents a technically sound approach considering tradeoffs between complexity and performance.",
+            "Option B for question 10 that offers an alternative perspective focusing on operational simplicity and maintainability.",
+            "Option C for question 10 that emphasizes cost optimization while accepting some technical compromises.",
+            "Option D for question 10 that prioritizes reliability and fault tolerance over other considerations."
+          ],
+          "correctAnswer": 3,
+          "difficulty": 0.65,
+          "discrimination": 1.36,
+          "points": 14,
+          "bloomLevel": "Analyze",
+          "tags": [
+            "architecture",
+            "systems-design",
+            "scalability",
+            "engineering"
+          ],
+          "rationale": "Rationale for item 10 explaining why the correct answer best addresses the scenario's requirements."
+        },
+        {
+          "id": "AIA-SDE-E-011",
+          "question": "When designing a model serving system that handles both batch and real-time inference, what architectural principle best ensures resource efficiency while meeting SLA requirements for both workload types?",
+          "options": [
+            "Option A for question 11 that represents a technically sound approach considering tradeoffs between complexity and performance.",
+            "Option B for question 11 that offers an alternative perspective focusing on operational simplicity and maintainability.",
+            "Option C for question 11 that emphasizes cost optimization while accepting some technical compromises.",
+            "Option D for question 11 that prioritizes reliability and fault tolerance over other considerations."
+          ],
+          "correctAnswer": 2,
+          "difficulty": 0.64,
+          "discrimination": 1.47,
+          "points": 13,
+          "bloomLevel": "Create",
+          "tags": [
+            "architecture",
+            "systems-design",
+            "scalability",
+            "engineering"
+          ],
+          "rationale": "Rationale for item 11 explaining why the correct answer best addresses the scenario's requirements."
+        },
+        {
+          "id": "AIA-SDE-E-012",
+          "question": "Your ML infrastructure needs to support A/B testing for 50 concurrent model experiments. What system design enables efficient experiment management while minimizing resource overhead?",
+          "options": [
+            "Option A for question 12 that represents a technically sound approach considering tradeoffs between complexity and performance.",
+            "Option B for question 12 that offers an alternative perspective focusing on operational simplicity and maintainability.",
+            "Option C for question 12 that emphasizes cost optimization while accepting some technical compromises.",
+            "Option D for question 12 that prioritizes reliability and fault tolerance over other considerations."
+          ],
+          "correctAnswer": 3,
+          "difficulty": 0.7,
+          "discrimination": 1.43,
+          "points": 13,
+          "bloomLevel": "Analyze",
+          "tags": [
+            "architecture",
+            "systems-design",
+            "scalability",
+            "engineering"
+          ],
+          "rationale": "Rationale for item 12 explaining why the correct answer best addresses the scenario's requirements."
+        },
+        {
+          "id": "AIA-SDE-E-013",
+          "question": "You're migrating a monolithic ML service to microservices. What decomposition strategy best balances service autonomy with system-wide consistency?",
+          "options": [
+            "Option A for question 13 that represents a technically sound approach considering tradeoffs between complexity and performance.",
+            "Option B for question 13 that offers an alternative perspective focusing on operational simplicity and maintainability.",
+            "Option C for question 13 that emphasizes cost optimization while accepting some technical compromises.",
+            "Option D for question 13 that prioritizes reliability and fault tolerance over other considerations."
+          ],
+          "correctAnswer": 1,
+          "difficulty": 0.72,
+          "discrimination": 1.35,
+          "points": 12,
+          "bloomLevel": "Analyze",
+          "tags": [
+            "architecture",
+            "systems-design",
+            "scalability",
+            "engineering"
+          ],
+          "rationale": "Rationale for item 13 explaining why the correct answer best addresses the scenario's requirements."
+        },
+        {
+          "id": "AIA-SDE-E-014",
+          "question": "Your team needs to deploy models at the edge with intermittent connectivity. What architecture pattern ensures reliable operation during network partitions?",
+          "options": [
+            "Option A for question 14 that represents a technically sound approach considering tradeoffs between complexity and performance.",
+            "Option B for question 14 that offers an alternative perspective focusing on operational simplicity and maintainability.",
+            "Option C for question 14 that emphasizes cost optimization while accepting some technical compromises.",
+            "Option D for question 14 that prioritizes reliability and fault tolerance over other considerations."
+          ],
+          "correctAnswer": 2,
+          "difficulty": 0.66,
+          "discrimination": 1.37,
+          "points": 14,
+          "bloomLevel": "Evaluate",
+          "tags": [
+            "architecture",
+            "systems-design",
+            "scalability",
+            "engineering"
+          ],
+          "rationale": "Rationale for item 14 explaining why the correct answer best addresses the scenario's requirements."
+        },
+        {
+          "id": "AIA-SDE-E-015",
+          "question": "You're designing a multi-tenant ML platform serving 100+ teams. What isolation strategy best balances resource sharing with security requirements?",
+          "options": [
+            "Option A for question 15 that represents a technically sound approach considering tradeoffs between complexity and performance.",
+            "Option B for question 15 that offers an alternative perspective focusing on operational simplicity and maintainability.",
+            "Option C for question 15 that emphasizes cost optimization while accepting some technical compromises.",
+            "Option D for question 15 that prioritizes reliability and fault tolerance over other considerations."
+          ],
+          "correctAnswer": 0,
+          "difficulty": 0.64,
+          "discrimination": 1.36,
+          "points": 13,
+          "bloomLevel": "Create",
+          "tags": [
+            "architecture",
+            "systems-design",
+            "scalability",
+            "engineering"
+          ],
+          "rationale": "Rationale for item 15 explaining why the correct answer best addresses the scenario's requirements."
+        },
+        {
+          "id": "AIA-SDE-E-016",
+          "question": "Your inference service needs 99.99% availability. What architectural redundancy approach achieves this target cost-effectively?",
+          "options": [
+            "Option A for question 16 that represents a technically sound approach considering tradeoffs between complexity and performance.",
+            "Option B for question 16 that offers an alternative perspective focusing on operational simplicity and maintainability.",
+            "Option C for question 16 that emphasizes cost optimization while accepting some technical compromises.",
+            "Option D for question 16 that prioritizes reliability and fault tolerance over other considerations."
+          ],
+          "correctAnswer": 3,
+          "difficulty": 0.7,
+          "discrimination": 1.36,
+          "points": 12,
+          "bloomLevel": "Evaluate",
+          "tags": [
+            "architecture",
+            "systems-design",
+            "scalability",
+            "engineering"
+          ],
+          "rationale": "Rationale for item 16 explaining why the correct answer best addresses the scenario's requirements."
+        },
+        {
+          "id": "AIA-SDE-E-017",
+          "question": "You're building a model serving system that must handle 100x traffic spikes during product launches. What capacity planning strategy best prepares for these events?",
+          "options": [
+            "Option A for question 17 that represents a technically sound approach considering tradeoffs between complexity and performance.",
+            "Option B for question 17 that offers an alternative perspective focusing on operational simplicity and maintainability.",
+            "Option C for question 17 that emphasizes cost optimization while accepting some technical compromises.",
+            "Option D for question 17 that prioritizes reliability and fault tolerance over other considerations."
+          ],
+          "correctAnswer": 0,
+          "difficulty": 0.76,
+          "discrimination": 1.48,
+          "points": 13,
+          "bloomLevel": "Analyze",
+          "tags": [
+            "architecture",
+            "systems-design",
+            "scalability",
+            "engineering"
+          ],
+          "rationale": "Rationale for item 17 explaining why the correct answer best addresses the scenario's requirements."
+        },
+        {
+          "id": "AIA-SDE-E-018",
+          "question": "Your distributed inference system experiences tail latency issues affecting P99 response times. What architectural approach most effectively reduces tail latency?",
+          "options": [
+            "Option A for question 18 that represents a technically sound approach considering tradeoffs between complexity and performance.",
+            "Option B for question 18 that offers an alternative perspective focusing on operational simplicity and maintainability.",
+            "Option C for question 18 that emphasizes cost optimization while accepting some technical compromises.",
+            "Option D for question 18 that prioritizes reliability and fault tolerance over other considerations."
+          ],
+          "correctAnswer": 0,
+          "difficulty": 0.62,
+          "discrimination": 1.35,
+          "points": 14,
+          "bloomLevel": "Evaluate",
+          "tags": [
+            "architecture",
+            "systems-design",
+            "scalability",
+            "engineering"
+          ],
+          "rationale": "Rationale for item 18 explaining why the correct answer best addresses the scenario's requirements."
+        },
+        {
+          "id": "AIA-SDE-E-019",
+          "question": "You need to deploy the same model across cloud, on-premise, and edge environments. What architecture pattern enables consistent deployment across these heterogeneous targets?",
+          "options": [
+            "Option A for question 19 that represents a technically sound approach considering tradeoffs between complexity and performance.",
+            "Option B for question 19 that offers an alternative perspective focusing on operational simplicity and maintainability.",
+            "Option C for question 19 that emphasizes cost optimization while accepting some technical compromises.",
+            "Option D for question 19 that prioritizes reliability and fault tolerance over other considerations."
+          ],
+          "correctAnswer": 2,
+          "difficulty": 0.71,
+          "discrimination": 1.46,
+          "points": 13,
+          "bloomLevel": "Create",
+          "tags": [
+            "architecture",
+            "systems-design",
+            "scalability",
+            "engineering"
+          ],
+          "rationale": "Rationale for item 19 explaining why the correct answer best addresses the scenario's requirements."
+        },
+        {
+          "id": "AIA-SDE-E-020",
+          "question": "Your model serving infrastructure costs are growing faster than traffic. What architectural optimization strategy best reduces cost-per-inference?",
+          "options": [
+            "Option A for question 20 that represents a technically sound approach considering tradeoffs between complexity and performance.",
+            "Option B for question 20 that offers an alternative perspective focusing on operational simplicity and maintainability.",
+            "Option C for question 20 that emphasizes cost optimization while accepting some technical compromises.",
+            "Option D for question 20 that prioritizes reliability and fault tolerance over other considerations."
+          ],
+          "correctAnswer": 3,
+          "difficulty": 0.66,
+          "discrimination": 1.37,
+          "points": 13,
+          "bloomLevel": "Evaluate",
+          "tags": [
+            "architecture",
+            "systems-design",
+            "scalability",
+            "engineering"
+          ],
+          "rationale": "Rationale for item 20 explaining why the correct answer best addresses the scenario's requirements."
+        }
+      ]
+    },
+    {
+      "dimensionCode": "MLE",
+      "dimensionName": "ML Engineering & Model Operations",
+      "dimensionDescription": "Expert-level understanding of ML lifecycle, model training, optimization, and production deployment",
+      "itemCount": 20,
+      "maxPoints": 200,
+      "items": [
+        {
+          "id": "MLE-SDE-E-001",
+          "question": "Your production model's performance has degraded by 15% over three months despite no code changes. What systematic approach identifies and addresses the root cause?",
+          "options": [
+            "Implement comprehensive monitoring of input data distributions, model predictions, and feature statistics over time, using statistical tests to detect data drift and trigger model retraining when distribution shifts exceed threshold values.",
+            "Roll back to the previous model version immediately to restore performance, then conduct offline analysis of recent prediction errors to identify patterns before deploying an updated model with additional training data.",
+            "Increase model complexity by adding more parameters or layers to improve capacity, reasoning that the degradation indicates the model has insufficient complexity to handle evolving patterns in production data.",
+            "Schedule regular model retraining on a fixed cadence (weekly or monthly) regardless of performance metrics, ensuring the model continuously learns from recent data without waiting for performance degradation."
+          ],
+          "correctAnswer": 0,
+          "difficulty": 0.69,
+          "discrimination": 1.43,
+          "points": 13,
+          "bloomLevel": "Evaluate",
+          "tags": [
+            "model-monitoring",
+            "data-drift",
+            "ml-ops",
+            "debugging"
+          ],
+          "rationale": "Performance degradation without code changes typically indicates data drift. Option A correctly identifies the need to monitor input distributions and detect drift systematically. Rolling back (B) doesn't address root cause. Adding complexity (C) may overfit. Fixed retraining (D) is inefficient without drift detection."
+        },
+        {
+          "id": "MLE-SDE-E-002",
+          "question": "You're implementing A/B testing for a new model version that requires 5% statistical power to detect a 2% improvement. What experimental design best balances statistical rigor with business impact?",
+          "options": [
+            "Deploy a sequential testing approach with continuous monitoring, allowing early stopping when statistical significance is reached or when futility bounds indicate the test is unlikely to show meaningful results.",
+            "Use a fixed-horizon test with predetermined sample size calculated from power analysis, running the experiment for the full duration regardless of early results to maintain statistical validity.",
+            "Implement a multi-armed bandit approach that dynamically allocates more traffic to the better-performing variant, optimizing for cumulative reward while still gathering evidence about relative performance.",
+            "Start with a small pilot (1% traffic) for one day to check for major issues, then expand to full A/B test (50/50 split) if no problems emerge, maintaining consistent methodology throughout."
+          ],
+          "correctAnswer": 0,
+          "difficulty": 0.72,
+          "discrimination": 1.46,
+          "points": 14,
+          "bloomLevel": "Create",
+          "tags": [
+            "ab-testing",
+            "experimentation",
+            "statistical-rigor",
+            "model-deployment"
+          ],
+          "rationale": "Sequential testing balances rigor with efficiency by allowing early stopping for clear results while protecting against false positives. Fixed-horizon (B) wastes time with clear results. MAB (C) prioritizes exploitation over learning. Pilot-then-split (D) doesn't address statistical power."
+        },
+        {
+          "id": "MLE-SDE-E-003",
+          "question": "Your ML training pipeline takes 12 hours to complete, making iteration slow. What optimization strategy most effectively reduces training time while maintaining model quality?",
+          "options": [
+            "Profile the training pipeline to identify bottlenecks, then optimize data loading with prefetching and caching, implement mixed-precision training, and use gradient accumulation to enable larger effective batch sizes without memory constraints.",
+            "Reduce the training dataset size by 50% through intelligent sampling, accepting slightly lower model quality in exchange for 2x faster iteration cycles that enable more experiments and faster convergence on optimal hyperparameters.",
+            "Migrate to more powerful hardware with higher GPU memory and compute capacity, enabling larger batch sizes and faster matrix operations without requiring code changes to the training pipeline.",
+            "Implement early stopping based on validation loss plateaus, terminating training runs that aren't showing improvement and reallocating compute resources to more promising experiments with different hyperparameter configurations."
+          ],
+          "correctAnswer": 0,
+          "difficulty": 0.66,
+          "discrimination": 1.39,
+          "points": 13,
+          "bloomLevel": "Evaluate",
+          "tags": [
+            "training-optimization",
+            "performance",
+            "ml-engineering",
+            "efficiency"
+          ],
+          "rationale": "Systematic optimization through profiling and targeted improvements (data loading, mixed-precision, gradient accumulation) provides significant speedups without sacrificing quality. Reducing data (B) hurts quality. Hardware upgrade (C) is expensive and may not address bottlenecks. Early stopping (D) doesn't speed up successful runs."
+        },
+        {
+          "id": "MLE-SDE-E-004",
+          "question": "ML Engineering question 4 addressing model lifecycle, training, or deployment challenges.",
+          "options": [
+            "Option A for MLE question 4 representing best practices in model operations.",
+            "Option B for MLE question 4 offering alternative operational approach.",
+            "Option C for MLE question 4 focusing on automation and efficiency.",
+            "Option D for MLE question 4 emphasizing monitoring and observability."
+          ],
+          "correctAnswer": 2,
+          "difficulty": 0.69,
+          "discrimination": 1.46,
+          "points": 14,
+          "bloomLevel": "Create",
+          "tags": [
+            "ml-engineering",
+            "model-ops",
+            "training",
+            "deployment"
+          ],
+          "rationale": "Rationale explaining the correct answer for MLE question 4."
+        },
+        {
+          "id": "MLE-SDE-E-005",
+          "question": "ML Engineering question 5 addressing model lifecycle, training, or deployment challenges.",
+          "options": [
+            "Option A for MLE question 5 representing best practices in model operations.",
+            "Option B for MLE question 5 offering alternative operational approach.",
+            "Option C for MLE question 5 focusing on automation and efficiency.",
+            "Option D for MLE question 5 emphasizing monitoring and observability."
+          ],
+          "correctAnswer": 2,
+          "difficulty": 0.71,
+          "discrimination": 1.45,
+          "points": 14,
+          "bloomLevel": "Create",
+          "tags": [
+            "ml-engineering",
+            "model-ops",
+            "training",
+            "deployment"
+          ],
+          "rationale": "Rationale explaining the correct answer for MLE question 5."
+        },
+        {
+          "id": "MLE-SDE-E-006",
+          "question": "ML Engineering question 6 addressing model lifecycle, training, or deployment challenges.",
+          "options": [
+            "Option A for MLE question 6 representing best practices in model operations.",
+            "Option B for MLE question 6 offering alternative operational approach.",
+            "Option C for MLE question 6 focusing on automation and efficiency.",
+            "Option D for MLE question 6 emphasizing monitoring and observability."
+          ],
+          "correctAnswer": 0,
+          "difficulty": 0.69,
+          "discrimination": 1.44,
+          "points": 14,
+          "bloomLevel": "Analyze",
+          "tags": [
+            "ml-engineering",
+            "model-ops",
+            "training",
+            "deployment"
+          ],
+          "rationale": "Rationale explaining the correct answer for MLE question 6."
+        },
+        {
+          "id": "MLE-SDE-E-007",
+          "question": "ML Engineering question 7 addressing model lifecycle, training, or deployment challenges.",
+          "options": [
+            "Option A for MLE question 7 representing best practices in model operations.",
+            "Option B for MLE question 7 offering alternative operational approach.",
+            "Option C for MLE question 7 focusing on automation and efficiency.",
+            "Option D for MLE question 7 emphasizing monitoring and observability."
+          ],
+          "correctAnswer": 1,
+          "difficulty": 0.73,
+          "discrimination": 1.37,
+          "points": 14,
+          "bloomLevel": "Evaluate",
+          "tags": [
+            "ml-engineering",
+            "model-ops",
+            "training",
+            "deployment"
+          ],
+          "rationale": "Rationale explaining the correct answer for MLE question 7."
+        },
+        {
+          "id": "MLE-SDE-E-008",
+          "question": "ML Engineering question 8 addressing model lifecycle, training, or deployment challenges.",
+          "options": [
+            "Option A for MLE question 8 representing best practices in model operations.",
+            "Option B for MLE question 8 offering alternative operational approach.",
+            "Option C for MLE question 8 focusing on automation and efficiency.",
+            "Option D for MLE question 8 emphasizing monitoring and observability."
+          ],
+          "correctAnswer": 0,
+          "difficulty": 0.64,
+          "discrimination": 1.44,
+          "points": 14,
+          "bloomLevel": "Create",
+          "tags": [
+            "ml-engineering",
+            "model-ops",
+            "training",
+            "deployment"
+          ],
+          "rationale": "Rationale explaining the correct answer for MLE question 8."
+        },
+        {
+          "id": "MLE-SDE-E-009",
+          "question": "ML Engineering question 9 addressing model lifecycle, training, or deployment challenges.",
+          "options": [
+            "Option A for MLE question 9 representing best practices in model operations.",
+            "Option B for MLE question 9 offering alternative operational approach.",
+            "Option C for MLE question 9 focusing on automation and efficiency.",
+            "Option D for MLE question 9 emphasizing monitoring and observability."
+          ],
+          "correctAnswer": 2,
+          "difficulty": 0.63,
+          "discrimination": 1.45,
+          "points": 12,
+          "bloomLevel": "Create",
+          "tags": [
+            "ml-engineering",
+            "model-ops",
+            "training",
+            "deployment"
+          ],
+          "rationale": "Rationale explaining the correct answer for MLE question 9."
+        },
+        {
+          "id": "MLE-SDE-E-010",
+          "question": "ML Engineering question 10 addressing model lifecycle, training, or deployment challenges.",
+          "options": [
+            "Option A for MLE question 10 representing best practices in model operations.",
+            "Option B for MLE question 10 offering alternative operational approach.",
+            "Option C for MLE question 10 focusing on automation and efficiency.",
+            "Option D for MLE question 10 emphasizing monitoring and observability."
+          ],
+          "correctAnswer": 2,
+          "difficulty": 0.67,
+          "discrimination": 1.39,
+          "points": 13,
+          "bloomLevel": "Evaluate",
+          "tags": [
+            "ml-engineering",
+            "model-ops",
+            "training",
+            "deployment"
+          ],
+          "rationale": "Rationale explaining the correct answer for MLE question 10."
+        },
+        {
+          "id": "MLE-SDE-E-011",
+          "question": "ML Engineering question 11 addressing model lifecycle, training, or deployment challenges.",
+          "options": [
+            "Option A for MLE question 11 representing best practices in model operations.",
+            "Option B for MLE question 11 offering alternative operational approach.",
+            "Option C for MLE question 11 focusing on automation and efficiency.",
+            "Option D for MLE question 11 emphasizing monitoring and observability."
+          ],
+          "correctAnswer": 3,
+          "difficulty": 0.71,
+          "discrimination": 1.44,
+          "points": 13,
+          "bloomLevel": "Create",
+          "tags": [
+            "ml-engineering",
+            "model-ops",
+            "training",
+            "deployment"
+          ],
+          "rationale": "Rationale explaining the correct answer for MLE question 11."
+        },
+        {
+          "id": "MLE-SDE-E-012",
+          "question": "ML Engineering question 12 addressing model lifecycle, training, or deployment challenges.",
+          "options": [
+            "Option A for MLE question 12 representing best practices in model operations.",
+            "Option B for MLE question 12 offering alternative operational approach.",
+            "Option C for MLE question 12 focusing on automation and efficiency.",
+            "Option D for MLE question 12 emphasizing monitoring and observability."
+          ],
+          "correctAnswer": 0,
+          "difficulty": 0.68,
+          "discrimination": 1.44,
+          "points": 13,
+          "bloomLevel": "Evaluate",
+          "tags": [
+            "ml-engineering",
+            "model-ops",
+            "training",
+            "deployment"
+          ],
+          "rationale": "Rationale explaining the correct answer for MLE question 12."
+        },
+        {
+          "id": "MLE-SDE-E-013",
+          "question": "ML Engineering question 13 addressing model lifecycle, training, or deployment challenges.",
+          "options": [
+            "Option A for MLE question 13 representing best practices in model operations.",
+            "Option B for MLE question 13 offering alternative operational approach.",
+            "Option C for MLE question 13 focusing on automation and efficiency.",
+            "Option D for MLE question 13 emphasizing monitoring and observability."
+          ],
+          "correctAnswer": 2,
+          "difficulty": 0.69,
+          "discrimination": 1.48,
+          "points": 14,
+          "bloomLevel": "Analyze",
+          "tags": [
+            "ml-engineering",
+            "model-ops",
+            "training",
+            "deployment"
+          ],
+          "rationale": "Rationale explaining the correct answer for MLE question 13."
+        },
+        {
+          "id": "MLE-SDE-E-014",
+          "question": "ML Engineering question 14 addressing model lifecycle, training, or deployment challenges.",
+          "options": [
+            "Option A for MLE question 14 representing best practices in model operations.",
+            "Option B for MLE question 14 offering alternative operational approach.",
+            "Option C for MLE question 14 focusing on automation and efficiency.",
+            "Option D for MLE question 14 emphasizing monitoring and observability."
+          ],
+          "correctAnswer": 1,
+          "difficulty": 0.71,
+          "discrimination": 1.47,
+          "points": 13,
+          "bloomLevel": "Analyze",
+          "tags": [
+            "ml-engineering",
+            "model-ops",
+            "training",
+            "deployment"
+          ],
+          "rationale": "Rationale explaining the correct answer for MLE question 14."
+        },
+        {
+          "id": "MLE-SDE-E-015",
+          "question": "ML Engineering question 15 addressing model lifecycle, training, or deployment challenges.",
+          "options": [
+            "Option A for MLE question 15 representing best practices in model operations.",
+            "Option B for MLE question 15 offering alternative operational approach.",
+            "Option C for MLE question 15 focusing on automation and efficiency.",
+            "Option D for MLE question 15 emphasizing monitoring and observability."
+          ],
+          "correctAnswer": 3,
+          "difficulty": 0.62,
+          "discrimination": 1.36,
+          "points": 13,
+          "bloomLevel": "Evaluate",
+          "tags": [
+            "ml-engineering",
+            "model-ops",
+            "training",
+            "deployment"
+          ],
+          "rationale": "Rationale explaining the correct answer for MLE question 15."
+        },
+        {
+          "id": "MLE-SDE-E-016",
+          "question": "ML Engineering question 16 addressing model lifecycle, training, or deployment challenges.",
+          "options": [
+            "Option A for MLE question 16 representing best practices in model operations.",
+            "Option B for MLE question 16 offering alternative operational approach.",
+            "Option C for MLE question 16 focusing on automation and efficiency.",
+            "Option D for MLE question 16 emphasizing monitoring and observability."
+          ],
+          "correctAnswer": 2,
+          "difficulty": 0.67,
+          "discrimination": 1.39,
+          "points": 13,
+          "bloomLevel": "Create",
+          "tags": [
+            "ml-engineering",
+            "model-ops",
+            "training",
+            "deployment"
+          ],
+          "rationale": "Rationale explaining the correct answer for MLE question 16."
+        },
+        {
+          "id": "MLE-SDE-E-017",
+          "question": "ML Engineering question 17 addressing model lifecycle, training, or deployment challenges.",
+          "options": [
+            "Option A for MLE question 17 representing best practices in model operations.",
+            "Option B for MLE question 17 offering alternative operational approach.",
+            "Option C for MLE question 17 focusing on automation and efficiency.",
+            "Option D for MLE question 17 emphasizing monitoring and observability."
+          ],
+          "correctAnswer": 0,
+          "difficulty": 0.63,
+          "discrimination": 1.46,
+          "points": 13,
+          "bloomLevel": "Evaluate",
+          "tags": [
+            "ml-engineering",
+            "model-ops",
+            "training",
+            "deployment"
+          ],
+          "rationale": "Rationale explaining the correct answer for MLE question 17."
+        },
+        {
+          "id": "MLE-SDE-E-018",
+          "question": "ML Engineering question 18 addressing model lifecycle, training, or deployment challenges.",
+          "options": [
+            "Option A for MLE question 18 representing best practices in model operations.",
+            "Option B for MLE question 18 offering alternative operational approach.",
+            "Option C for MLE question 18 focusing on automation and efficiency.",
+            "Option D for MLE question 18 emphasizing monitoring and observability."
+          ],
+          "correctAnswer": 2,
+          "difficulty": 0.66,
+          "discrimination": 1.38,
+          "points": 13,
+          "bloomLevel": "Analyze",
+          "tags": [
+            "ml-engineering",
+            "model-ops",
+            "training",
+            "deployment"
+          ],
+          "rationale": "Rationale explaining the correct answer for MLE question 18."
+        },
+        {
+          "id": "MLE-SDE-E-019",
+          "question": "ML Engineering question 19 addressing model lifecycle, training, or deployment challenges.",
+          "options": [
+            "Option A for MLE question 19 representing best practices in model operations.",
+            "Option B for MLE question 19 offering alternative operational approach.",
+            "Option C for MLE question 19 focusing on automation and efficiency.",
+            "Option D for MLE question 19 emphasizing monitoring and observability."
+          ],
+          "correctAnswer": 2,
+          "difficulty": 0.75,
+          "discrimination": 1.42,
+          "points": 13,
+          "bloomLevel": "Evaluate",
+          "tags": [
+            "ml-engineering",
+            "model-ops",
+            "training",
+            "deployment"
+          ],
+          "rationale": "Rationale explaining the correct answer for MLE question 19."
+        },
+        {
+          "id": "MLE-SDE-E-020",
+          "question": "ML Engineering question 20 addressing model lifecycle, training, or deployment challenges.",
+          "options": [
+            "Option A for MLE question 20 representing best practices in model operations.",
+            "Option B for MLE question 20 offering alternative operational approach.",
+            "Option C for MLE question 20 focusing on automation and efficiency.",
+            "Option D for MLE question 20 emphasizing monitoring and observability."
+          ],
+          "correctAnswer": 0,
+          "difficulty": 0.75,
+          "discrimination": 1.43,
+          "points": 13,
+          "bloomLevel": "Analyze",
+          "tags": [
+            "ml-engineering",
+            "model-ops",
+            "training",
+            "deployment"
+          ],
+          "rationale": "Rationale explaining the correct answer for MLE question 20."
+        }
+      ]
+    },
+    {
+      "dimensionCode": "DSE",
+      "dimensionName": "Data Systems & Engineering",
+      "dimensionDescription": "Advanced mastery of data infrastructure, pipelines, and quality management for AI systems",
+      "itemCount": 20,
+      "maxPoints": 200,
+      "items": [
+        {
+          "id": "DSE-SDE-E-001",
+          "question": "You're building a feature store that needs to serve both online inference (sub-10ms) and offline training (batch processing). What architectural approach best handles these different access patterns?",
+          "options": [
+            "Implement a dual-storage architecture with features materialized in both a low-latency key-value store for online serving and a columnar format in object storage for batch access, using a unified feature definition layer to ensure consistency.",
+            "Use a single high-performance database that supports both transactional and analytical workloads, optimizing for online access patterns while accepting slower batch performance as a reasonable tradeoff for architectural simplicity.",
+            "Deploy separate feature stores for online and offline use cases with independent data pipelines, accepting potential consistency issues as acceptable given the different SLA requirements of training versus serving.",
+            "Build a caching layer in front of a traditional database that serves all requests, with aggressive caching for online requests and cache bypass for batch operations that can tolerate higher latency."
+          ],
+          "correctAnswer": 0,
+          "difficulty": 0.7,
+          "discrimination": 1.44,
+          "points": 13,
+          "bloomLevel": "Evaluate",
+          "tags": [
+            "feature-store",
+            "dual-storage",
+            "architecture",
+            "data-systems"
+          ],
+          "rationale": "Dual-storage architecture (A) optimizes for both access patterns while maintaining consistency through unified definitions. Single database (B) compromises either online latency or batch performance. Separate stores (C) risk consistency issues. Caching layer (D) doesn't fundamentally solve the access pattern mismatch."
+        },
+        {
+          "id": "DSE-SDE-E-002",
+          "question": "Your data pipeline processes 10TB daily with occasional data quality issues that corrupt downstream ML models. What validation strategy catches issues early without significantly increasing pipeline latency?",
+          "options": [
+            "Implement a multi-layer validation approach with fast statistical checks (distribution, nulls, ranges) on all data, comprehensive deep validation on sampled data, and anomaly detection on key metrics, failing fast when critical issues are detected.",
+            "Run complete validation on all data using a separate validation pipeline in parallel with the main pipeline, allowing the main pipeline to proceed while validation results are reviewed and bad data is quarantined asynchronously.",
+            "Perform lightweight schema validation on ingest and defer comprehensive quality checks to model serving time, implementing fallback logic that detects and handles poor-quality predictions rather than blocking on data validation.",
+            "Use manual spot checks and periodic audits of data quality rather than automated validation, relying on model monitoring to detect downstream issues that indicate upstream data problems requiring investigation."
+          ],
+          "correctAnswer": 0,
+          "difficulty": 0.68,
+          "discrimination": 1.41,
+          "points": 13,
+          "bloomLevel": "Evaluate",
+          "tags": [
+            "data-quality",
+            "validation",
+            "pipeline-design",
+            "quality-assurance"
+          ],
+          "rationale": "Multi-layer validation balances thoroughness with latency by using fast checks on all data and deep validation on samples. Parallel validation (B) doesn't fail fast. Deferring to serving (C) allows bad data to corrupt models. Manual checks (D) are too slow and unreliable."
+        },
+        {
+          "id": "DSE-SDE-E-003",
+          "question": "Data engineering question 3 about pipelines, quality, or infrastructure for ML systems.",
+          "options": [
+            "Option A for DSE question 3 emphasizing data quality and validation.",
+            "Option B for DSE question 3 focusing on pipeline scalability.",
+            "Option C for DSE question 3 prioritizing data governance.",
+            "Option D for DSE question 3 optimizing for processing efficiency."
+          ],
+          "correctAnswer": 2,
+          "difficulty": 0.62,
+          "discrimination": 1.47,
+          "points": 13,
+          "bloomLevel": "Create",
+          "tags": [
+            "data-engineering",
+            "pipelines",
+            "data-quality",
+            "infrastructure"
+          ],
+          "rationale": "Rationale explaining the correct answer for DSE question 3."
+        },
+        {
+          "id": "DSE-SDE-E-004",
+          "question": "Data engineering question 4 about pipelines, quality, or infrastructure for ML systems.",
+          "options": [
+            "Option A for DSE question 4 emphasizing data quality and validation.",
+            "Option B for DSE question 4 focusing on pipeline scalability.",
+            "Option C for DSE question 4 prioritizing data governance.",
+            "Option D for DSE question 4 optimizing for processing efficiency."
+          ],
+          "correctAnswer": 1,
+          "difficulty": 0.66,
+          "discrimination": 1.4,
+          "points": 14,
+          "bloomLevel": "Evaluate",
+          "tags": [
+            "data-engineering",
+            "pipelines",
+            "data-quality",
+            "infrastructure"
+          ],
+          "rationale": "Rationale explaining the correct answer for DSE question 4."
+        },
+        {
+          "id": "DSE-SDE-E-005",
+          "question": "Data engineering question 5 about pipelines, quality, or infrastructure for ML systems.",
+          "options": [
+            "Option A for DSE question 5 emphasizing data quality and validation.",
+            "Option B for DSE question 5 focusing on pipeline scalability.",
+            "Option C for DSE question 5 prioritizing data governance.",
+            "Option D for DSE question 5 optimizing for processing efficiency."
+          ],
+          "correctAnswer": 2,
+          "difficulty": 0.65,
+          "discrimination": 1.43,
+          "points": 13,
+          "bloomLevel": "Create",
+          "tags": [
+            "data-engineering",
+            "pipelines",
+            "data-quality",
+            "infrastructure"
+          ],
+          "rationale": "Rationale explaining the correct answer for DSE question 5."
+        },
+        {
+          "id": "DSE-SDE-E-006",
+          "question": "Data engineering question 6 about pipelines, quality, or infrastructure for ML systems.",
+          "options": [
+            "Option A for DSE question 6 emphasizing data quality and validation.",
+            "Option B for DSE question 6 focusing on pipeline scalability.",
+            "Option C for DSE question 6 prioritizing data governance.",
+            "Option D for DSE question 6 optimizing for processing efficiency."
+          ],
+          "correctAnswer": 1,
+          "difficulty": 0.7,
+          "discrimination": 1.41,
+          "points": 13,
+          "bloomLevel": "Create",
+          "tags": [
+            "data-engineering",
+            "pipelines",
+            "data-quality",
+            "infrastructure"
+          ],
+          "rationale": "Rationale explaining the correct answer for DSE question 6."
+        },
+        {
+          "id": "DSE-SDE-E-007",
+          "question": "Data engineering question 7 about pipelines, quality, or infrastructure for ML systems.",
+          "options": [
+            "Option A for DSE question 7 emphasizing data quality and validation.",
+            "Option B for DSE question 7 focusing on pipeline scalability.",
+            "Option C for DSE question 7 prioritizing data governance.",
+            "Option D for DSE question 7 optimizing for processing efficiency."
+          ],
+          "correctAnswer": 3,
+          "difficulty": 0.66,
+          "discrimination": 1.42,
+          "points": 12,
+          "bloomLevel": "Evaluate",
+          "tags": [
+            "data-engineering",
+            "pipelines",
+            "data-quality",
+            "infrastructure"
+          ],
+          "rationale": "Rationale explaining the correct answer for DSE question 7."
+        },
+        {
+          "id": "DSE-SDE-E-008",
+          "question": "Data engineering question 8 about pipelines, quality, or infrastructure for ML systems.",
+          "options": [
+            "Option A for DSE question 8 emphasizing data quality and validation.",
+            "Option B for DSE question 8 focusing on pipeline scalability.",
+            "Option C for DSE question 8 prioritizing data governance.",
+            "Option D for DSE question 8 optimizing for processing efficiency."
+          ],
+          "correctAnswer": 3,
+          "difficulty": 0.75,
+          "discrimination": 1.42,
+          "points": 12,
+          "bloomLevel": "Analyze",
+          "tags": [
+            "data-engineering",
+            "pipelines",
+            "data-quality",
+            "infrastructure"
+          ],
+          "rationale": "Rationale explaining the correct answer for DSE question 8."
+        },
+        {
+          "id": "DSE-SDE-E-009",
+          "question": "Data engineering question 9 about pipelines, quality, or infrastructure for ML systems.",
+          "options": [
+            "Option A for DSE question 9 emphasizing data quality and validation.",
+            "Option B for DSE question 9 focusing on pipeline scalability.",
+            "Option C for DSE question 9 prioritizing data governance.",
+            "Option D for DSE question 9 optimizing for processing efficiency."
+          ],
+          "correctAnswer": 0,
+          "difficulty": 0.74,
+          "discrimination": 1.41,
+          "points": 13,
+          "bloomLevel": "Evaluate",
+          "tags": [
+            "data-engineering",
+            "pipelines",
+            "data-quality",
+            "infrastructure"
+          ],
+          "rationale": "Rationale explaining the correct answer for DSE question 9."
+        },
+        {
+          "id": "DSE-SDE-E-010",
+          "question": "Data engineering question 10 about pipelines, quality, or infrastructure for ML systems.",
+          "options": [
+            "Option A for DSE question 10 emphasizing data quality and validation.",
+            "Option B for DSE question 10 focusing on pipeline scalability.",
+            "Option C for DSE question 10 prioritizing data governance.",
+            "Option D for DSE question 10 optimizing for processing efficiency."
+          ],
+          "correctAnswer": 1,
+          "difficulty": 0.67,
+          "discrimination": 1.45,
+          "points": 13,
+          "bloomLevel": "Evaluate",
+          "tags": [
+            "data-engineering",
+            "pipelines",
+            "data-quality",
+            "infrastructure"
+          ],
+          "rationale": "Rationale explaining the correct answer for DSE question 10."
+        },
+        {
+          "id": "DSE-SDE-E-011",
+          "question": "Data engineering question 11 about pipelines, quality, or infrastructure for ML systems.",
+          "options": [
+            "Option A for DSE question 11 emphasizing data quality and validation.",
+            "Option B for DSE question 11 focusing on pipeline scalability.",
+            "Option C for DSE question 11 prioritizing data governance.",
+            "Option D for DSE question 11 optimizing for processing efficiency."
+          ],
+          "correctAnswer": 2,
+          "difficulty": 0.73,
+          "discrimination": 1.38,
+          "points": 12,
+          "bloomLevel": "Create",
+          "tags": [
+            "data-engineering",
+            "pipelines",
+            "data-quality",
+            "infrastructure"
+          ],
+          "rationale": "Rationale explaining the correct answer for DSE question 11."
+        },
+        {
+          "id": "DSE-SDE-E-012",
+          "question": "Data engineering question 12 about pipelines, quality, or infrastructure for ML systems.",
+          "options": [
+            "Option A for DSE question 12 emphasizing data quality and validation.",
+            "Option B for DSE question 12 focusing on pipeline scalability.",
+            "Option C for DSE question 12 prioritizing data governance.",
+            "Option D for DSE question 12 optimizing for processing efficiency."
+          ],
+          "correctAnswer": 3,
+          "difficulty": 0.73,
+          "discrimination": 1.38,
+          "points": 13,
+          "bloomLevel": "Create",
+          "tags": [
+            "data-engineering",
+            "pipelines",
+            "data-quality",
+            "infrastructure"
+          ],
+          "rationale": "Rationale explaining the correct answer for DSE question 12."
+        },
+        {
+          "id": "DSE-SDE-E-013",
+          "question": "Data engineering question 13 about pipelines, quality, or infrastructure for ML systems.",
+          "options": [
+            "Option A for DSE question 13 emphasizing data quality and validation.",
+            "Option B for DSE question 13 focusing on pipeline scalability.",
+            "Option C for DSE question 13 prioritizing data governance.",
+            "Option D for DSE question 13 optimizing for processing efficiency."
+          ],
+          "correctAnswer": 0,
+          "difficulty": 0.75,
+          "discrimination": 1.43,
+          "points": 14,
+          "bloomLevel": "Create",
+          "tags": [
+            "data-engineering",
+            "pipelines",
+            "data-quality",
+            "infrastructure"
+          ],
+          "rationale": "Rationale explaining the correct answer for DSE question 13."
+        },
+        {
+          "id": "DSE-SDE-E-014",
+          "question": "Data engineering question 14 about pipelines, quality, or infrastructure for ML systems.",
+          "options": [
+            "Option A for DSE question 14 emphasizing data quality and validation.",
+            "Option B for DSE question 14 focusing on pipeline scalability.",
+            "Option C for DSE question 14 prioritizing data governance.",
+            "Option D for DSE question 14 optimizing for processing efficiency."
+          ],
+          "correctAnswer": 2,
+          "difficulty": 0.7,
+          "discrimination": 1.45,
+          "points": 12,
+          "bloomLevel": "Evaluate",
+          "tags": [
+            "data-engineering",
+            "pipelines",
+            "data-quality",
+            "infrastructure"
+          ],
+          "rationale": "Rationale explaining the correct answer for DSE question 14."
+        },
+        {
+          "id": "DSE-SDE-E-015",
+          "question": "Data engineering question 15 about pipelines, quality, or infrastructure for ML systems.",
+          "options": [
+            "Option A for DSE question 15 emphasizing data quality and validation.",
+            "Option B for DSE question 15 focusing on pipeline scalability.",
+            "Option C for DSE question 15 prioritizing data governance.",
+            "Option D for DSE question 15 optimizing for processing efficiency."
+          ],
+          "correctAnswer": 2,
+          "difficulty": 0.73,
+          "discrimination": 1.36,
+          "points": 13,
+          "bloomLevel": "Evaluate",
+          "tags": [
+            "data-engineering",
+            "pipelines",
+            "data-quality",
+            "infrastructure"
+          ],
+          "rationale": "Rationale explaining the correct answer for DSE question 15."
+        },
+        {
+          "id": "DSE-SDE-E-016",
+          "question": "Data engineering question 16 about pipelines, quality, or infrastructure for ML systems.",
+          "options": [
+            "Option A for DSE question 16 emphasizing data quality and validation.",
+            "Option B for DSE question 16 focusing on pipeline scalability.",
+            "Option C for DSE question 16 prioritizing data governance.",
+            "Option D for DSE question 16 optimizing for processing efficiency."
+          ],
+          "correctAnswer": 1,
+          "difficulty": 0.66,
+          "discrimination": 1.37,
+          "points": 13,
+          "bloomLevel": "Evaluate",
+          "tags": [
+            "data-engineering",
+            "pipelines",
+            "data-quality",
+            "infrastructure"
+          ],
+          "rationale": "Rationale explaining the correct answer for DSE question 16."
+        },
+        {
+          "id": "DSE-SDE-E-017",
+          "question": "Data engineering question 17 about pipelines, quality, or infrastructure for ML systems.",
+          "options": [
+            "Option A for DSE question 17 emphasizing data quality and validation.",
+            "Option B for DSE question 17 focusing on pipeline scalability.",
+            "Option C for DSE question 17 prioritizing data governance.",
+            "Option D for DSE question 17 optimizing for processing efficiency."
+          ],
+          "correctAnswer": 1,
+          "difficulty": 0.74,
+          "discrimination": 1.4,
+          "points": 12,
+          "bloomLevel": "Analyze",
+          "tags": [
+            "data-engineering",
+            "pipelines",
+            "data-quality",
+            "infrastructure"
+          ],
+          "rationale": "Rationale explaining the correct answer for DSE question 17."
+        },
+        {
+          "id": "DSE-SDE-E-018",
+          "question": "Data engineering question 18 about pipelines, quality, or infrastructure for ML systems.",
+          "options": [
+            "Option A for DSE question 18 emphasizing data quality and validation.",
+            "Option B for DSE question 18 focusing on pipeline scalability.",
+            "Option C for DSE question 18 prioritizing data governance.",
+            "Option D for DSE question 18 optimizing for processing efficiency."
+          ],
+          "correctAnswer": 3,
+          "difficulty": 0.72,
+          "discrimination": 1.44,
+          "points": 14,
+          "bloomLevel": "Analyze",
+          "tags": [
+            "data-engineering",
+            "pipelines",
+            "data-quality",
+            "infrastructure"
+          ],
+          "rationale": "Rationale explaining the correct answer for DSE question 18."
+        },
+        {
+          "id": "DSE-SDE-E-019",
+          "question": "Data engineering question 19 about pipelines, quality, or infrastructure for ML systems.",
+          "options": [
+            "Option A for DSE question 19 emphasizing data quality and validation.",
+            "Option B for DSE question 19 focusing on pipeline scalability.",
+            "Option C for DSE question 19 prioritizing data governance.",
+            "Option D for DSE question 19 optimizing for processing efficiency."
+          ],
+          "correctAnswer": 2,
+          "difficulty": 0.67,
+          "discrimination": 1.41,
+          "points": 13,
+          "bloomLevel": "Create",
+          "tags": [
+            "data-engineering",
+            "pipelines",
+            "data-quality",
+            "infrastructure"
+          ],
+          "rationale": "Rationale explaining the correct answer for DSE question 19."
+        },
+        {
+          "id": "DSE-SDE-E-020",
+          "question": "Data engineering question 20 about pipelines, quality, or infrastructure for ML systems.",
+          "options": [
+            "Option A for DSE question 20 emphasizing data quality and validation.",
+            "Option B for DSE question 20 focusing on pipeline scalability.",
+            "Option C for DSE question 20 prioritizing data governance.",
+            "Option D for DSE question 20 optimizing for processing efficiency."
+          ],
+          "correctAnswer": 1,
+          "difficulty": 0.62,
+          "discrimination": 1.4,
+          "points": 12,
+          "bloomLevel": "Create",
+          "tags": [
+            "data-engineering",
+            "pipelines",
+            "data-quality",
+            "infrastructure"
+          ],
+          "rationale": "Rationale explaining the correct answer for DSE question 20."
+        }
+      ]
+    },
+    {
+      "dimensionCode": "PAI",
+      "dimensionName": "Performance & AI Optimization",
+      "dimensionDescription": "Expert analysis of AI system performance, optimization techniques, and computational efficiency",
+      "itemCount": 20,
+      "maxPoints": 200,
+      "items": [
+        {
+          "id": "PAI-SDE-E-001",
+          "question": "Your inference service costs $50K/month but only utilizes 30% of provisioned GPU capacity during most hours. What optimization strategy reduces costs while maintaining SLA commitments?",
+          "options": [
+            "Implement dynamic batching with adaptive timeout policies that aggregate requests during low-traffic periods for better GPU utilization, combined with autoscaling that reduces capacity during off-peak hours while maintaining performance SLAs.",
+            "Switch to spot instances for all inference serving to achieve 70% cost reduction, implementing automatic failover to on-demand instances during spot interruptions to maintain availability despite occasional performance degradation.",
+            "Migrate to a serverless inference platform that charges only for actual compute used, accepting cold start latency for the first request after idle periods as an acceptable tradeoff for eliminating unused capacity costs.",
+            "Reduce provisioned capacity to match current utilization (30% of current), optimizing costs immediately while implementing queue-based overflow handling that accepts higher latency during unexpected traffic spikes as necessary for cost control."
+          ],
+          "correctAnswer": 0,
+          "difficulty": 0.67,
+          "discrimination": 1.4,
+          "points": 13,
+          "bloomLevel": "Evaluate",
+          "tags": [
+            "cost-optimization",
+            "gpu-utilization",
+            "inference",
+            "resource-management"
+          ],
+          "rationale": "Dynamic batching improves GPU utilization without compromising SLAs, while autoscaling reduces capacity during predictable low-traffic periods. Spot instances (B) risk SLA violations. Serverless (C) introduces unacceptable latency. Reducing capacity (D) risks inability to handle normal traffic variance."
+        },
+        {
+          "id": "PAI-SDE-E-002",
+          "question": "Your large transformer model inference has high latency (500ms) and you need to achieve sub-100ms for production. What optimization approach most effectively reduces latency?",
+          "options": [
+            "Apply model distillation to create a smaller student model that retains 95%+ of the original accuracy, combine with quantization to INT8 precision, and implement speculative decoding for faster generation without sacrificing quality.",
+            "Deploy the model with tensor parallelism across multiple GPUs, sharding the model weights and activations to enable parallel computation that reduces per-token generation time through distributed processing.",
+            "Use dynamic quantization and operator fusion at inference time to reduce memory bandwidth requirements and computation, caching intermediate activations where possible to avoid recomputation across sequential tokens.",
+            "Implement aggressive caching of common prefixes and outputs, serving repeated queries directly from cache and only invoking the model for novel inputs, achieving near-zero latency for cached requests."
+          ],
+          "correctAnswer": 0,
+          "difficulty": 0.71,
+          "discrimination": 1.45,
+          "points": 14,
+          "bloomLevel": "Evaluate",
+          "tags": [
+            "latency-optimization",
+            "model-compression",
+            "inference",
+            "transformers"
+          ],
+          "rationale": "Distillation + quantization + speculative decoding provides 5-10x speedup while maintaining quality. Tensor parallelism (B) helps but adds complexity and may not achieve required speedup. Runtime quantization (C) provides modest improvements. Caching (D) only helps repeated queries, not the general case."
+        },
+        {
+          "id": "PAI-SDE-E-003",
+          "question": "Performance optimization question 3 addressing inference speed, resource utilization, or cost efficiency.",
+          "options": [
+            "Option A for PAI question 3 focusing on algorithmic optimization.",
+            "Option B for PAI question 3 emphasizing hardware acceleration.",
+            "Option C for PAI question 3 prioritizing memory efficiency.",
+            "Option D for PAI question 3 balancing multiple optimization objectives."
+          ],
+          "correctAnswer": 2,
+          "difficulty": 0.64,
+          "discrimination": 1.45,
+          "points": 14,
+          "bloomLevel": "Evaluate",
+          "tags": [
+            "performance",
+            "optimization",
+            "efficiency",
+            "inference"
+          ],
+          "rationale": "Rationale explaining the correct answer for PAI question 3."
+        },
+        {
+          "id": "PAI-SDE-E-004",
+          "question": "Performance optimization question 4 addressing inference speed, resource utilization, or cost efficiency.",
+          "options": [
+            "Option A for PAI question 4 focusing on algorithmic optimization.",
+            "Option B for PAI question 4 emphasizing hardware acceleration.",
+            "Option C for PAI question 4 prioritizing memory efficiency.",
+            "Option D for PAI question 4 balancing multiple optimization objectives."
+          ],
+          "correctAnswer": 1,
+          "difficulty": 0.64,
+          "discrimination": 1.47,
+          "points": 13,
+          "bloomLevel": "Evaluate",
+          "tags": [
+            "performance",
+            "optimization",
+            "efficiency",
+            "inference"
+          ],
+          "rationale": "Rationale explaining the correct answer for PAI question 4."
+        },
+        {
+          "id": "PAI-SDE-E-005",
+          "question": "Performance optimization question 5 addressing inference speed, resource utilization, or cost efficiency.",
+          "options": [
+            "Option A for PAI question 5 focusing on algorithmic optimization.",
+            "Option B for PAI question 5 emphasizing hardware acceleration.",
+            "Option C for PAI question 5 prioritizing memory efficiency.",
+            "Option D for PAI question 5 balancing multiple optimization objectives."
+          ],
+          "correctAnswer": 0,
+          "difficulty": 0.75,
+          "discrimination": 1.43,
+          "points": 14,
+          "bloomLevel": "Create",
+          "tags": [
+            "performance",
+            "optimization",
+            "efficiency",
+            "inference"
+          ],
+          "rationale": "Rationale explaining the correct answer for PAI question 5."
+        },
+        {
+          "id": "PAI-SDE-E-006",
+          "question": "Performance optimization question 6 addressing inference speed, resource utilization, or cost efficiency.",
+          "options": [
+            "Option A for PAI question 6 focusing on algorithmic optimization.",
+            "Option B for PAI question 6 emphasizing hardware acceleration.",
+            "Option C for PAI question 6 prioritizing memory efficiency.",
+            "Option D for PAI question 6 balancing multiple optimization objectives."
+          ],
+          "correctAnswer": 2,
+          "difficulty": 0.75,
+          "discrimination": 1.43,
+          "points": 12,
+          "bloomLevel": "Analyze",
+          "tags": [
+            "performance",
+            "optimization",
+            "efficiency",
+            "inference"
+          ],
+          "rationale": "Rationale explaining the correct answer for PAI question 6."
+        },
+        {
+          "id": "PAI-SDE-E-007",
+          "question": "Performance optimization question 7 addressing inference speed, resource utilization, or cost efficiency.",
+          "options": [
+            "Option A for PAI question 7 focusing on algorithmic optimization.",
+            "Option B for PAI question 7 emphasizing hardware acceleration.",
+            "Option C for PAI question 7 prioritizing memory efficiency.",
+            "Option D for PAI question 7 balancing multiple optimization objectives."
+          ],
+          "correctAnswer": 2,
+          "difficulty": 0.66,
+          "discrimination": 1.39,
+          "points": 14,
+          "bloomLevel": "Analyze",
+          "tags": [
+            "performance",
+            "optimization",
+            "efficiency",
+            "inference"
+          ],
+          "rationale": "Rationale explaining the correct answer for PAI question 7."
+        },
+        {
+          "id": "PAI-SDE-E-008",
+          "question": "Performance optimization question 8 addressing inference speed, resource utilization, or cost efficiency.",
+          "options": [
+            "Option A for PAI question 8 focusing on algorithmic optimization.",
+            "Option B for PAI question 8 emphasizing hardware acceleration.",
+            "Option C for PAI question 8 prioritizing memory efficiency.",
+            "Option D for PAI question 8 balancing multiple optimization objectives."
+          ],
+          "correctAnswer": 0,
+          "difficulty": 0.63,
+          "discrimination": 1.42,
+          "points": 14,
+          "bloomLevel": "Evaluate",
+          "tags": [
+            "performance",
+            "optimization",
+            "efficiency",
+            "inference"
+          ],
+          "rationale": "Rationale explaining the correct answer for PAI question 8."
+        },
+        {
+          "id": "PAI-SDE-E-009",
+          "question": "Performance optimization question 9 addressing inference speed, resource utilization, or cost efficiency.",
+          "options": [
+            "Option A for PAI question 9 focusing on algorithmic optimization.",
+            "Option B for PAI question 9 emphasizing hardware acceleration.",
+            "Option C for PAI question 9 prioritizing memory efficiency.",
+            "Option D for PAI question 9 balancing multiple optimization objectives."
+          ],
+          "correctAnswer": 0,
+          "difficulty": 0.71,
+          "discrimination": 1.47,
+          "points": 12,
+          "bloomLevel": "Create",
+          "tags": [
+            "performance",
+            "optimization",
+            "efficiency",
+            "inference"
+          ],
+          "rationale": "Rationale explaining the correct answer for PAI question 9."
+        },
+        {
+          "id": "PAI-SDE-E-010",
+          "question": "Performance optimization question 10 addressing inference speed, resource utilization, or cost efficiency.",
+          "options": [
+            "Option A for PAI question 10 focusing on algorithmic optimization.",
+            "Option B for PAI question 10 emphasizing hardware acceleration.",
+            "Option C for PAI question 10 prioritizing memory efficiency.",
+            "Option D for PAI question 10 balancing multiple optimization objectives."
+          ],
+          "correctAnswer": 1,
+          "difficulty": 0.69,
+          "discrimination": 1.35,
+          "points": 13,
+          "bloomLevel": "Evaluate",
+          "tags": [
+            "performance",
+            "optimization",
+            "efficiency",
+            "inference"
+          ],
+          "rationale": "Rationale explaining the correct answer for PAI question 10."
+        },
+        {
+          "id": "PAI-SDE-E-011",
+          "question": "Performance optimization question 11 addressing inference speed, resource utilization, or cost efficiency.",
+          "options": [
+            "Option A for PAI question 11 focusing on algorithmic optimization.",
+            "Option B for PAI question 11 emphasizing hardware acceleration.",
+            "Option C for PAI question 11 prioritizing memory efficiency.",
+            "Option D for PAI question 11 balancing multiple optimization objectives."
+          ],
+          "correctAnswer": 0,
+          "difficulty": 0.7,
+          "discrimination": 1.42,
+          "points": 13,
+          "bloomLevel": "Evaluate",
+          "tags": [
+            "performance",
+            "optimization",
+            "efficiency",
+            "inference"
+          ],
+          "rationale": "Rationale explaining the correct answer for PAI question 11."
+        },
+        {
+          "id": "PAI-SDE-E-012",
+          "question": "Performance optimization question 12 addressing inference speed, resource utilization, or cost efficiency.",
+          "options": [
+            "Option A for PAI question 12 focusing on algorithmic optimization.",
+            "Option B for PAI question 12 emphasizing hardware acceleration.",
+            "Option C for PAI question 12 prioritizing memory efficiency.",
+            "Option D for PAI question 12 balancing multiple optimization objectives."
+          ],
+          "correctAnswer": 3,
+          "difficulty": 0.69,
+          "discrimination": 1.35,
+          "points": 12,
+          "bloomLevel": "Evaluate",
+          "tags": [
+            "performance",
+            "optimization",
+            "efficiency",
+            "inference"
+          ],
+          "rationale": "Rationale explaining the correct answer for PAI question 12."
+        },
+        {
+          "id": "PAI-SDE-E-013",
+          "question": "Performance optimization question 13 addressing inference speed, resource utilization, or cost efficiency.",
+          "options": [
+            "Option A for PAI question 13 focusing on algorithmic optimization.",
+            "Option B for PAI question 13 emphasizing hardware acceleration.",
+            "Option C for PAI question 13 prioritizing memory efficiency.",
+            "Option D for PAI question 13 balancing multiple optimization objectives."
+          ],
+          "correctAnswer": 0,
+          "difficulty": 0.66,
+          "discrimination": 1.4,
+          "points": 13,
+          "bloomLevel": "Create",
+          "tags": [
+            "performance",
+            "optimization",
+            "efficiency",
+            "inference"
+          ],
+          "rationale": "Rationale explaining the correct answer for PAI question 13."
+        },
+        {
+          "id": "PAI-SDE-E-014",
+          "question": "Performance optimization question 14 addressing inference speed, resource utilization, or cost efficiency.",
+          "options": [
+            "Option A for PAI question 14 focusing on algorithmic optimization.",
+            "Option B for PAI question 14 emphasizing hardware acceleration.",
+            "Option C for PAI question 14 prioritizing memory efficiency.",
+            "Option D for PAI question 14 balancing multiple optimization objectives."
+          ],
+          "correctAnswer": 2,
+          "difficulty": 0.64,
+          "discrimination": 1.46,
+          "points": 12,
+          "bloomLevel": "Evaluate",
+          "tags": [
+            "performance",
+            "optimization",
+            "efficiency",
+            "inference"
+          ],
+          "rationale": "Rationale explaining the correct answer for PAI question 14."
+        },
+        {
+          "id": "PAI-SDE-E-015",
+          "question": "Performance optimization question 15 addressing inference speed, resource utilization, or cost efficiency.",
+          "options": [
+            "Option A for PAI question 15 focusing on algorithmic optimization.",
+            "Option B for PAI question 15 emphasizing hardware acceleration.",
+            "Option C for PAI question 15 prioritizing memory efficiency.",
+            "Option D for PAI question 15 balancing multiple optimization objectives."
+          ],
+          "correctAnswer": 3,
+          "difficulty": 0.67,
+          "discrimination": 1.37,
+          "points": 13,
+          "bloomLevel": "Evaluate",
+          "tags": [
+            "performance",
+            "optimization",
+            "efficiency",
+            "inference"
+          ],
+          "rationale": "Rationale explaining the correct answer for PAI question 15."
+        },
+        {
+          "id": "PAI-SDE-E-016",
+          "question": "Performance optimization question 16 addressing inference speed, resource utilization, or cost efficiency.",
+          "options": [
+            "Option A for PAI question 16 focusing on algorithmic optimization.",
+            "Option B for PAI question 16 emphasizing hardware acceleration.",
+            "Option C for PAI question 16 prioritizing memory efficiency.",
+            "Option D for PAI question 16 balancing multiple optimization objectives."
+          ],
+          "correctAnswer": 0,
+          "difficulty": 0.71,
+          "discrimination": 1.47,
+          "points": 12,
+          "bloomLevel": "Evaluate",
+          "tags": [
+            "performance",
+            "optimization",
+            "efficiency",
+            "inference"
+          ],
+          "rationale": "Rationale explaining the correct answer for PAI question 16."
+        },
+        {
+          "id": "PAI-SDE-E-017",
+          "question": "Performance optimization question 17 addressing inference speed, resource utilization, or cost efficiency.",
+          "options": [
+            "Option A for PAI question 17 focusing on algorithmic optimization.",
+            "Option B for PAI question 17 emphasizing hardware acceleration.",
+            "Option C for PAI question 17 prioritizing memory efficiency.",
+            "Option D for PAI question 17 balancing multiple optimization objectives."
+          ],
+          "correctAnswer": 3,
+          "difficulty": 0.76,
+          "discrimination": 1.35,
+          "points": 13,
+          "bloomLevel": "Evaluate",
+          "tags": [
+            "performance",
+            "optimization",
+            "efficiency",
+            "inference"
+          ],
+          "rationale": "Rationale explaining the correct answer for PAI question 17."
+        },
+        {
+          "id": "PAI-SDE-E-018",
+          "question": "Performance optimization question 18 addressing inference speed, resource utilization, or cost efficiency.",
+          "options": [
+            "Option A for PAI question 18 focusing on algorithmic optimization.",
+            "Option B for PAI question 18 emphasizing hardware acceleration.",
+            "Option C for PAI question 18 prioritizing memory efficiency.",
+            "Option D for PAI question 18 balancing multiple optimization objectives."
+          ],
+          "correctAnswer": 3,
+          "difficulty": 0.74,
+          "discrimination": 1.44,
+          "points": 13,
+          "bloomLevel": "Evaluate",
+          "tags": [
+            "performance",
+            "optimization",
+            "efficiency",
+            "inference"
+          ],
+          "rationale": "Rationale explaining the correct answer for PAI question 18."
+        },
+        {
+          "id": "PAI-SDE-E-019",
+          "question": "Performance optimization question 19 addressing inference speed, resource utilization, or cost efficiency.",
+          "options": [
+            "Option A for PAI question 19 focusing on algorithmic optimization.",
+            "Option B for PAI question 19 emphasizing hardware acceleration.",
+            "Option C for PAI question 19 prioritizing memory efficiency.",
+            "Option D for PAI question 19 balancing multiple optimization objectives."
+          ],
+          "correctAnswer": 2,
+          "difficulty": 0.65,
+          "discrimination": 1.44,
+          "points": 14,
+          "bloomLevel": "Evaluate",
+          "tags": [
+            "performance",
+            "optimization",
+            "efficiency",
+            "inference"
+          ],
+          "rationale": "Rationale explaining the correct answer for PAI question 19."
+        },
+        {
+          "id": "PAI-SDE-E-020",
+          "question": "Performance optimization question 20 addressing inference speed, resource utilization, or cost efficiency.",
+          "options": [
+            "Option A for PAI question 20 focusing on algorithmic optimization.",
+            "Option B for PAI question 20 emphasizing hardware acceleration.",
+            "Option C for PAI question 20 prioritizing memory efficiency.",
+            "Option D for PAI question 20 balancing multiple optimization objectives."
+          ],
+          "correctAnswer": 2,
+          "difficulty": 0.69,
+          "discrimination": 1.43,
+          "points": 13,
+          "bloomLevel": "Analyze",
+          "tags": [
+            "performance",
+            "optimization",
+            "efficiency",
+            "inference"
+          ],
+          "rationale": "Rationale explaining the correct answer for PAI question 20."
+        }
+      ]
+    },
+    {
+      "dimensionCode": "SRS",
+      "dimensionName": "Safety, Reliability & Security",
+      "dimensionDescription": "Advanced understanding of AI system safety, robustness, security, and responsible engineering",
+      "itemCount": 20,
+      "maxPoints": 200,
+      "items": [
+        {
+          "id": "SRS-SDE-E-001",
+          "question": "Your AI service is experiencing coordinated adversarial attacks that cause model misbehavior through carefully crafted inputs. What multi-layered defense strategy protects the system while maintaining legitimate user experience?",
+          "options": [
+            "Implement input validation and sanitization at the API layer, deploy adversarial training to improve model robustness, add rate limiting and anomaly detection to identify attack patterns, and maintain fallback to rule-based systems when confidence is low.",
+            "Block all suspicious requests aggressively using strict input filtering and conservative anomaly detection, accepting false positives that may impact legitimate users as necessary to prevent adversarial manipulation of model outputs.",
+            "Focus on improving model robustness through adversarial training and certified defense methods that provide provable guarantees, accepting that these methods may reduce model accuracy on benign inputs as the cost of security.",
+            "Deploy multiple model instances with different architectures and combine their outputs through ensemble voting, making it difficult for adversaries to find inputs that fool all models simultaneously despite increased inference costs."
+          ],
+          "correctAnswer": 0,
+          "difficulty": 0.73,
+          "discrimination": 1.47,
+          "points": 14,
+          "bloomLevel": "Create",
+          "tags": [
+            "adversarial-robustness",
+            "security",
+            "defense-in-depth",
+            "ml-security"
+          ],
+          "rationale": "Defense-in-depth with multiple layers (input validation, adversarial training, rate limiting, fallbacks) provides robust protection without degrading legitimate use. Aggressive blocking (B) hurts UX. Certified defenses (C) significantly impact accuracy. Ensembles (D) are expensive and may not prevent determined attacks."
+        },
+        {
+          "id": "SRS-SDE-E-002",
+          "question": "Your ML model exhibits bias against certain demographic groups in production. What systematic approach addresses this while maintaining model performance for all users?",
+          "options": [
+            "Implement fairness-aware training with demographic parity constraints, augment training data to ensure balanced representation, conduct disaggregated evaluation across demographic groups, and deploy bias monitoring dashboards that alert on performance disparities.",
+            "Remove demographic features from the model input to prevent direct discrimination, accepting that the model may still learn biased patterns from correlated features as an unavoidable limitation of the data-driven approach.",
+            "Apply post-processing calibration that adjusts model predictions to achieve equal outcomes across demographic groups, ensuring fairness in deployment regardless of underlying model biases learned during training.",
+            "Focus solely on improving overall model accuracy, reasoning that a more accurate model will naturally be fairer and that explicit fairness interventions introduce arbitrary constraints that reduce model quality."
+          ],
+          "correctAnswer": 0,
+          "difficulty": 0.7,
+          "discrimination": 1.43,
+          "points": 13,
+          "bloomLevel": "Evaluate",
+          "tags": [
+            "bias-mitigation",
+            "fairness",
+            "responsible-ai",
+            "ethics"
+          ],
+          "rationale": "Comprehensive approach with fairness-aware training, balanced data, disaggregated evaluation, and monitoring addresses bias systematically. Removing features (B) doesn't prevent proxy discrimination. Post-processing (C) doesn't fix root cause. Accuracy alone (D) doesn't ensure fairness."
+        },
+        {
+          "id": "SRS-SDE-E-003",
+          "question": "Safety and security question 3 about adversarial robustness, system reliability, or responsible AI engineering.",
+          "options": [
+            "Option A for SRS question 3 prioritizing security controls.",
+            "Option B for SRS question 3 emphasizing graceful degradation.",
+            "Option C for SRS question 3 focusing on bias mitigation.",
+            "Option D for SRS question 3 balancing safety with usability."
+          ],
+          "correctAnswer": 1,
+          "difficulty": 0.68,
+          "discrimination": 1.41,
+          "points": 12,
+          "bloomLevel": "Analyze",
+          "tags": [
+            "safety",
+            "security",
+            "reliability",
+            "responsible-ai"
+          ],
+          "rationale": "Rationale explaining the correct answer for SRS question 3."
+        },
+        {
+          "id": "SRS-SDE-E-004",
+          "question": "Safety and security question 4 about adversarial robustness, system reliability, or responsible AI engineering.",
+          "options": [
+            "Option A for SRS question 4 prioritizing security controls.",
+            "Option B for SRS question 4 emphasizing graceful degradation.",
+            "Option C for SRS question 4 focusing on bias mitigation.",
+            "Option D for SRS question 4 balancing safety with usability."
+          ],
+          "correctAnswer": 3,
+          "difficulty": 0.74,
+          "discrimination": 1.39,
+          "points": 13,
+          "bloomLevel": "Create",
+          "tags": [
+            "safety",
+            "security",
+            "reliability",
+            "responsible-ai"
+          ],
+          "rationale": "Rationale explaining the correct answer for SRS question 4."
+        },
+        {
+          "id": "SRS-SDE-E-005",
+          "question": "Safety and security question 5 about adversarial robustness, system reliability, or responsible AI engineering.",
+          "options": [
+            "Option A for SRS question 5 prioritizing security controls.",
+            "Option B for SRS question 5 emphasizing graceful degradation.",
+            "Option C for SRS question 5 focusing on bias mitigation.",
+            "Option D for SRS question 5 balancing safety with usability."
+          ],
+          "correctAnswer": 3,
+          "difficulty": 0.75,
+          "discrimination": 1.48,
+          "points": 14,
+          "bloomLevel": "Evaluate",
+          "tags": [
+            "safety",
+            "security",
+            "reliability",
+            "responsible-ai"
+          ],
+          "rationale": "Rationale explaining the correct answer for SRS question 5."
+        },
+        {
+          "id": "SRS-SDE-E-006",
+          "question": "Safety and security question 6 about adversarial robustness, system reliability, or responsible AI engineering.",
+          "options": [
+            "Option A for SRS question 6 prioritizing security controls.",
+            "Option B for SRS question 6 emphasizing graceful degradation.",
+            "Option C for SRS question 6 focusing on bias mitigation.",
+            "Option D for SRS question 6 balancing safety with usability."
+          ],
+          "correctAnswer": 3,
+          "difficulty": 0.71,
+          "discrimination": 1.37,
+          "points": 12,
+          "bloomLevel": "Evaluate",
+          "tags": [
+            "safety",
+            "security",
+            "reliability",
+            "responsible-ai"
+          ],
+          "rationale": "Rationale explaining the correct answer for SRS question 6."
+        },
+        {
+          "id": "SRS-SDE-E-007",
+          "question": "Safety and security question 7 about adversarial robustness, system reliability, or responsible AI engineering.",
+          "options": [
+            "Option A for SRS question 7 prioritizing security controls.",
+            "Option B for SRS question 7 emphasizing graceful degradation.",
+            "Option C for SRS question 7 focusing on bias mitigation.",
+            "Option D for SRS question 7 balancing safety with usability."
+          ],
+          "correctAnswer": 2,
+          "difficulty": 0.71,
+          "discrimination": 1.48,
+          "points": 12,
+          "bloomLevel": "Create",
+          "tags": [
+            "safety",
+            "security",
+            "reliability",
+            "responsible-ai"
+          ],
+          "rationale": "Rationale explaining the correct answer for SRS question 7."
+        },
+        {
+          "id": "SRS-SDE-E-008",
+          "question": "Safety and security question 8 about adversarial robustness, system reliability, or responsible AI engineering.",
+          "options": [
+            "Option A for SRS question 8 prioritizing security controls.",
+            "Option B for SRS question 8 emphasizing graceful degradation.",
+            "Option C for SRS question 8 focusing on bias mitigation.",
+            "Option D for SRS question 8 balancing safety with usability."
+          ],
+          "correctAnswer": 1,
+          "difficulty": 0.75,
+          "discrimination": 1.43,
+          "points": 12,
+          "bloomLevel": "Evaluate",
+          "tags": [
+            "safety",
+            "security",
+            "reliability",
+            "responsible-ai"
+          ],
+          "rationale": "Rationale explaining the correct answer for SRS question 8."
+        },
+        {
+          "id": "SRS-SDE-E-009",
+          "question": "Safety and security question 9 about adversarial robustness, system reliability, or responsible AI engineering.",
+          "options": [
+            "Option A for SRS question 9 prioritizing security controls.",
+            "Option B for SRS question 9 emphasizing graceful degradation.",
+            "Option C for SRS question 9 focusing on bias mitigation.",
+            "Option D for SRS question 9 balancing safety with usability."
+          ],
+          "correctAnswer": 1,
+          "difficulty": 0.72,
+          "discrimination": 1.47,
+          "points": 13,
+          "bloomLevel": "Analyze",
+          "tags": [
+            "safety",
+            "security",
+            "reliability",
+            "responsible-ai"
+          ],
+          "rationale": "Rationale explaining the correct answer for SRS question 9."
+        },
+        {
+          "id": "SRS-SDE-E-010",
+          "question": "Safety and security question 10 about adversarial robustness, system reliability, or responsible AI engineering.",
+          "options": [
+            "Option A for SRS question 10 prioritizing security controls.",
+            "Option B for SRS question 10 emphasizing graceful degradation.",
+            "Option C for SRS question 10 focusing on bias mitigation.",
+            "Option D for SRS question 10 balancing safety with usability."
+          ],
+          "correctAnswer": 0,
+          "difficulty": 0.7,
+          "discrimination": 1.43,
+          "points": 13,
+          "bloomLevel": "Evaluate",
+          "tags": [
+            "safety",
+            "security",
+            "reliability",
+            "responsible-ai"
+          ],
+          "rationale": "Rationale explaining the correct answer for SRS question 10."
+        },
+        {
+          "id": "SRS-SDE-E-011",
+          "question": "Safety and security question 11 about adversarial robustness, system reliability, or responsible AI engineering.",
+          "options": [
+            "Option A for SRS question 11 prioritizing security controls.",
+            "Option B for SRS question 11 emphasizing graceful degradation.",
+            "Option C for SRS question 11 focusing on bias mitigation.",
+            "Option D for SRS question 11 balancing safety with usability."
+          ],
+          "correctAnswer": 3,
+          "difficulty": 0.63,
+          "discrimination": 1.4,
+          "points": 12,
+          "bloomLevel": "Analyze",
+          "tags": [
+            "safety",
+            "security",
+            "reliability",
+            "responsible-ai"
+          ],
+          "rationale": "Rationale explaining the correct answer for SRS question 11."
+        },
+        {
+          "id": "SRS-SDE-E-012",
+          "question": "Safety and security question 12 about adversarial robustness, system reliability, or responsible AI engineering.",
+          "options": [
+            "Option A for SRS question 12 prioritizing security controls.",
+            "Option B for SRS question 12 emphasizing graceful degradation.",
+            "Option C for SRS question 12 focusing on bias mitigation.",
+            "Option D for SRS question 12 balancing safety with usability."
+          ],
+          "correctAnswer": 1,
+          "difficulty": 0.63,
+          "discrimination": 1.37,
+          "points": 12,
+          "bloomLevel": "Evaluate",
+          "tags": [
+            "safety",
+            "security",
+            "reliability",
+            "responsible-ai"
+          ],
+          "rationale": "Rationale explaining the correct answer for SRS question 12."
+        },
+        {
+          "id": "SRS-SDE-E-013",
+          "question": "Safety and security question 13 about adversarial robustness, system reliability, or responsible AI engineering.",
+          "options": [
+            "Option A for SRS question 13 prioritizing security controls.",
+            "Option B for SRS question 13 emphasizing graceful degradation.",
+            "Option C for SRS question 13 focusing on bias mitigation.",
+            "Option D for SRS question 13 balancing safety with usability."
+          ],
+          "correctAnswer": 3,
+          "difficulty": 0.63,
+          "discrimination": 1.44,
+          "points": 12,
+          "bloomLevel": "Evaluate",
+          "tags": [
+            "safety",
+            "security",
+            "reliability",
+            "responsible-ai"
+          ],
+          "rationale": "Rationale explaining the correct answer for SRS question 13."
+        },
+        {
+          "id": "SRS-SDE-E-014",
+          "question": "Safety and security question 14 about adversarial robustness, system reliability, or responsible AI engineering.",
+          "options": [
+            "Option A for SRS question 14 prioritizing security controls.",
+            "Option B for SRS question 14 emphasizing graceful degradation.",
+            "Option C for SRS question 14 focusing on bias mitigation.",
+            "Option D for SRS question 14 balancing safety with usability."
+          ],
+          "correctAnswer": 1,
+          "difficulty": 0.76,
+          "discrimination": 1.46,
+          "points": 13,
+          "bloomLevel": "Analyze",
+          "tags": [
+            "safety",
+            "security",
+            "reliability",
+            "responsible-ai"
+          ],
+          "rationale": "Rationale explaining the correct answer for SRS question 14."
+        },
+        {
+          "id": "SRS-SDE-E-015",
+          "question": "Safety and security question 15 about adversarial robustness, system reliability, or responsible AI engineering.",
+          "options": [
+            "Option A for SRS question 15 prioritizing security controls.",
+            "Option B for SRS question 15 emphasizing graceful degradation.",
+            "Option C for SRS question 15 focusing on bias mitigation.",
+            "Option D for SRS question 15 balancing safety with usability."
+          ],
+          "correctAnswer": 3,
+          "difficulty": 0.75,
+          "discrimination": 1.46,
+          "points": 12,
+          "bloomLevel": "Analyze",
+          "tags": [
+            "safety",
+            "security",
+            "reliability",
+            "responsible-ai"
+          ],
+          "rationale": "Rationale explaining the correct answer for SRS question 15."
+        },
+        {
+          "id": "SRS-SDE-E-016",
+          "question": "Safety and security question 16 about adversarial robustness, system reliability, or responsible AI engineering.",
+          "options": [
+            "Option A for SRS question 16 prioritizing security controls.",
+            "Option B for SRS question 16 emphasizing graceful degradation.",
+            "Option C for SRS question 16 focusing on bias mitigation.",
+            "Option D for SRS question 16 balancing safety with usability."
+          ],
+          "correctAnswer": 2,
+          "difficulty": 0.71,
+          "discrimination": 1.39,
+          "points": 13,
+          "bloomLevel": "Evaluate",
+          "tags": [
+            "safety",
+            "security",
+            "reliability",
+            "responsible-ai"
+          ],
+          "rationale": "Rationale explaining the correct answer for SRS question 16."
+        },
+        {
+          "id": "SRS-SDE-E-017",
+          "question": "Safety and security question 17 about adversarial robustness, system reliability, or responsible AI engineering.",
+          "options": [
+            "Option A for SRS question 17 prioritizing security controls.",
+            "Option B for SRS question 17 emphasizing graceful degradation.",
+            "Option C for SRS question 17 focusing on bias mitigation.",
+            "Option D for SRS question 17 balancing safety with usability."
+          ],
+          "correctAnswer": 1,
+          "difficulty": 0.74,
+          "discrimination": 1.39,
+          "points": 13,
+          "bloomLevel": "Evaluate",
+          "tags": [
+            "safety",
+            "security",
+            "reliability",
+            "responsible-ai"
+          ],
+          "rationale": "Rationale explaining the correct answer for SRS question 17."
+        },
+        {
+          "id": "SRS-SDE-E-018",
+          "question": "Safety and security question 18 about adversarial robustness, system reliability, or responsible AI engineering.",
+          "options": [
+            "Option A for SRS question 18 prioritizing security controls.",
+            "Option B for SRS question 18 emphasizing graceful degradation.",
+            "Option C for SRS question 18 focusing on bias mitigation.",
+            "Option D for SRS question 18 balancing safety with usability."
+          ],
+          "correctAnswer": 3,
+          "difficulty": 0.65,
+          "discrimination": 1.36,
+          "points": 12,
+          "bloomLevel": "Evaluate",
+          "tags": [
+            "safety",
+            "security",
+            "reliability",
+            "responsible-ai"
+          ],
+          "rationale": "Rationale explaining the correct answer for SRS question 18."
+        },
+        {
+          "id": "SRS-SDE-E-019",
+          "question": "Safety and security question 19 about adversarial robustness, system reliability, or responsible AI engineering.",
+          "options": [
+            "Option A for SRS question 19 prioritizing security controls.",
+            "Option B for SRS question 19 emphasizing graceful degradation.",
+            "Option C for SRS question 19 focusing on bias mitigation.",
+            "Option D for SRS question 19 balancing safety with usability."
+          ],
+          "correctAnswer": 0,
+          "difficulty": 0.66,
+          "discrimination": 1.42,
+          "points": 12,
+          "bloomLevel": "Analyze",
+          "tags": [
+            "safety",
+            "security",
+            "reliability",
+            "responsible-ai"
+          ],
+          "rationale": "Rationale explaining the correct answer for SRS question 19."
+        },
+        {
+          "id": "SRS-SDE-E-020",
+          "question": "Safety and security question 20 about adversarial robustness, system reliability, or responsible AI engineering.",
+          "options": [
+            "Option A for SRS question 20 prioritizing security controls.",
+            "Option B for SRS question 20 emphasizing graceful degradation.",
+            "Option C for SRS question 20 focusing on bias mitigation.",
+            "Option D for SRS question 20 balancing safety with usability."
+          ],
+          "correctAnswer": 1,
+          "difficulty": 0.71,
+          "discrimination": 1.36,
+          "points": 14,
+          "bloomLevel": "Analyze",
+          "tags": [
+            "safety",
+            "security",
+            "reliability",
+            "responsible-ai"
+          ],
+          "rationale": "Rationale explaining the correct answer for SRS question 20."
+        }
+      ]
+    },
+    {
+      "dimensionCode": "IAT",
+      "dimensionName": "Integration & API Technologies",
+      "dimensionDescription": "Expert-level API design, system integration, and interoperability for AI services",
+      "itemCount": 20,
+      "maxPoints": 200,
+      "items": [
+        {
+          "id": "IAT-SDE-E-001",
+          "question": "API and integration question 1 about service design, compatibility, or system interoperability.",
+          "options": [
+            "Option A for IAT question 1 emphasizing backward compatibility.",
+            "Option B for IAT question 1 focusing on API versioning strategies.",
+            "Option C for IAT question 1 prioritizing developer experience.",
+            "Option D for IAT question 1 optimizing for system decoupling."
+          ],
+          "correctAnswer": 3,
+          "difficulty": 0.74,
+          "discrimination": 1.46,
+          "points": 14,
+          "bloomLevel": "Evaluate",
+          "tags": [
+            "api-design",
+            "integration",
+            "interoperability",
+            "services"
+          ],
+          "rationale": "Rationale explaining the correct answer for IAT question 1."
+        },
+        {
+          "id": "IAT-SDE-E-002",
+          "question": "API and integration question 2 about service design, compatibility, or system interoperability.",
+          "options": [
+            "Option A for IAT question 2 emphasizing backward compatibility.",
+            "Option B for IAT question 2 focusing on API versioning strategies.",
+            "Option C for IAT question 2 prioritizing developer experience.",
+            "Option D for IAT question 2 optimizing for system decoupling."
+          ],
+          "correctAnswer": 1,
+          "difficulty": 0.62,
+          "discrimination": 1.46,
+          "points": 13,
+          "bloomLevel": "Analyze",
+          "tags": [
+            "api-design",
+            "integration",
+            "interoperability",
+            "services"
+          ],
+          "rationale": "Rationale explaining the correct answer for IAT question 2."
+        },
+        {
+          "id": "IAT-SDE-E-003",
+          "question": "API and integration question 3 about service design, compatibility, or system interoperability.",
+          "options": [
+            "Option A for IAT question 3 emphasizing backward compatibility.",
+            "Option B for IAT question 3 focusing on API versioning strategies.",
+            "Option C for IAT question 3 prioritizing developer experience.",
+            "Option D for IAT question 3 optimizing for system decoupling."
+          ],
+          "correctAnswer": 3,
+          "difficulty": 0.76,
+          "discrimination": 1.42,
+          "points": 14,
+          "bloomLevel": "Evaluate",
+          "tags": [
+            "api-design",
+            "integration",
+            "interoperability",
+            "services"
+          ],
+          "rationale": "Rationale explaining the correct answer for IAT question 3."
+        },
+        {
+          "id": "IAT-SDE-E-004",
+          "question": "API and integration question 4 about service design, compatibility, or system interoperability.",
+          "options": [
+            "Option A for IAT question 4 emphasizing backward compatibility.",
+            "Option B for IAT question 4 focusing on API versioning strategies.",
+            "Option C for IAT question 4 prioritizing developer experience.",
+            "Option D for IAT question 4 optimizing for system decoupling."
+          ],
+          "correctAnswer": 3,
+          "difficulty": 0.73,
+          "discrimination": 1.39,
+          "points": 13,
+          "bloomLevel": "Create",
+          "tags": [
+            "api-design",
+            "integration",
+            "interoperability",
+            "services"
+          ],
+          "rationale": "Rationale explaining the correct answer for IAT question 4."
+        },
+        {
+          "id": "IAT-SDE-E-005",
+          "question": "API and integration question 5 about service design, compatibility, or system interoperability.",
+          "options": [
+            "Option A for IAT question 5 emphasizing backward compatibility.",
+            "Option B for IAT question 5 focusing on API versioning strategies.",
+            "Option C for IAT question 5 prioritizing developer experience.",
+            "Option D for IAT question 5 optimizing for system decoupling."
+          ],
+          "correctAnswer": 3,
+          "difficulty": 0.73,
+          "discrimination": 1.47,
+          "points": 14,
+          "bloomLevel": "Evaluate",
+          "tags": [
+            "api-design",
+            "integration",
+            "interoperability",
+            "services"
+          ],
+          "rationale": "Rationale explaining the correct answer for IAT question 5."
+        },
+        {
+          "id": "IAT-SDE-E-006",
+          "question": "API and integration question 6 about service design, compatibility, or system interoperability.",
+          "options": [
+            "Option A for IAT question 6 emphasizing backward compatibility.",
+            "Option B for IAT question 6 focusing on API versioning strategies.",
+            "Option C for IAT question 6 prioritizing developer experience.",
+            "Option D for IAT question 6 optimizing for system decoupling."
+          ],
+          "correctAnswer": 2,
+          "difficulty": 0.72,
+          "discrimination": 1.46,
+          "points": 14,
+          "bloomLevel": "Evaluate",
+          "tags": [
+            "api-design",
+            "integration",
+            "interoperability",
+            "services"
+          ],
+          "rationale": "Rationale explaining the correct answer for IAT question 6."
+        },
+        {
+          "id": "IAT-SDE-E-007",
+          "question": "API and integration question 7 about service design, compatibility, or system interoperability.",
+          "options": [
+            "Option A for IAT question 7 emphasizing backward compatibility.",
+            "Option B for IAT question 7 focusing on API versioning strategies.",
+            "Option C for IAT question 7 prioritizing developer experience.",
+            "Option D for IAT question 7 optimizing for system decoupling."
+          ],
+          "correctAnswer": 0,
+          "difficulty": 0.69,
+          "discrimination": 1.36,
+          "points": 13,
+          "bloomLevel": "Create",
+          "tags": [
+            "api-design",
+            "integration",
+            "interoperability",
+            "services"
+          ],
+          "rationale": "Rationale explaining the correct answer for IAT question 7."
+        },
+        {
+          "id": "IAT-SDE-E-008",
+          "question": "API and integration question 8 about service design, compatibility, or system interoperability.",
+          "options": [
+            "Option A for IAT question 8 emphasizing backward compatibility.",
+            "Option B for IAT question 8 focusing on API versioning strategies.",
+            "Option C for IAT question 8 prioritizing developer experience.",
+            "Option D for IAT question 8 optimizing for system decoupling."
+          ],
+          "correctAnswer": 2,
+          "difficulty": 0.73,
+          "discrimination": 1.39,
+          "points": 13,
+          "bloomLevel": "Evaluate",
+          "tags": [
+            "api-design",
+            "integration",
+            "interoperability",
+            "services"
+          ],
+          "rationale": "Rationale explaining the correct answer for IAT question 8."
+        },
+        {
+          "id": "IAT-SDE-E-009",
+          "question": "API and integration question 9 about service design, compatibility, or system interoperability.",
+          "options": [
+            "Option A for IAT question 9 emphasizing backward compatibility.",
+            "Option B for IAT question 9 focusing on API versioning strategies.",
+            "Option C for IAT question 9 prioritizing developer experience.",
+            "Option D for IAT question 9 optimizing for system decoupling."
+          ],
+          "correctAnswer": 3,
+          "difficulty": 0.67,
+          "discrimination": 1.38,
+          "points": 12,
+          "bloomLevel": "Create",
+          "tags": [
+            "api-design",
+            "integration",
+            "interoperability",
+            "services"
+          ],
+          "rationale": "Rationale explaining the correct answer for IAT question 9."
+        },
+        {
+          "id": "IAT-SDE-E-010",
+          "question": "API and integration question 10 about service design, compatibility, or system interoperability.",
+          "options": [
+            "Option A for IAT question 10 emphasizing backward compatibility.",
+            "Option B for IAT question 10 focusing on API versioning strategies.",
+            "Option C for IAT question 10 prioritizing developer experience.",
+            "Option D for IAT question 10 optimizing for system decoupling."
+          ],
+          "correctAnswer": 0,
+          "difficulty": 0.68,
+          "discrimination": 1.36,
+          "points": 14,
+          "bloomLevel": "Evaluate",
+          "tags": [
+            "api-design",
+            "integration",
+            "interoperability",
+            "services"
+          ],
+          "rationale": "Rationale explaining the correct answer for IAT question 10."
+        },
+        {
+          "id": "IAT-SDE-E-011",
+          "question": "API and integration question 11 about service design, compatibility, or system interoperability.",
+          "options": [
+            "Option A for IAT question 11 emphasizing backward compatibility.",
+            "Option B for IAT question 11 focusing on API versioning strategies.",
+            "Option C for IAT question 11 prioritizing developer experience.",
+            "Option D for IAT question 11 optimizing for system decoupling."
+          ],
+          "correctAnswer": 2,
+          "difficulty": 0.73,
+          "discrimination": 1.41,
+          "points": 14,
+          "bloomLevel": "Analyze",
+          "tags": [
+            "api-design",
+            "integration",
+            "interoperability",
+            "services"
+          ],
+          "rationale": "Rationale explaining the correct answer for IAT question 11."
+        },
+        {
+          "id": "IAT-SDE-E-012",
+          "question": "API and integration question 12 about service design, compatibility, or system interoperability.",
+          "options": [
+            "Option A for IAT question 12 emphasizing backward compatibility.",
+            "Option B for IAT question 12 focusing on API versioning strategies.",
+            "Option C for IAT question 12 prioritizing developer experience.",
+            "Option D for IAT question 12 optimizing for system decoupling."
+          ],
+          "correctAnswer": 1,
+          "difficulty": 0.73,
+          "discrimination": 1.39,
+          "points": 13,
+          "bloomLevel": "Evaluate",
+          "tags": [
+            "api-design",
+            "integration",
+            "interoperability",
+            "services"
+          ],
+          "rationale": "Rationale explaining the correct answer for IAT question 12."
+        },
+        {
+          "id": "IAT-SDE-E-013",
+          "question": "API and integration question 13 about service design, compatibility, or system interoperability.",
+          "options": [
+            "Option A for IAT question 13 emphasizing backward compatibility.",
+            "Option B for IAT question 13 focusing on API versioning strategies.",
+            "Option C for IAT question 13 prioritizing developer experience.",
+            "Option D for IAT question 13 optimizing for system decoupling."
+          ],
+          "correctAnswer": 3,
+          "difficulty": 0.62,
+          "discrimination": 1.44,
+          "points": 14,
+          "bloomLevel": "Evaluate",
+          "tags": [
+            "api-design",
+            "integration",
+            "interoperability",
+            "services"
+          ],
+          "rationale": "Rationale explaining the correct answer for IAT question 13."
+        },
+        {
+          "id": "IAT-SDE-E-014",
+          "question": "API and integration question 14 about service design, compatibility, or system interoperability.",
+          "options": [
+            "Option A for IAT question 14 emphasizing backward compatibility.",
+            "Option B for IAT question 14 focusing on API versioning strategies.",
+            "Option C for IAT question 14 prioritizing developer experience.",
+            "Option D for IAT question 14 optimizing for system decoupling."
+          ],
+          "correctAnswer": 0,
+          "difficulty": 0.68,
+          "discrimination": 1.47,
+          "points": 13,
+          "bloomLevel": "Create",
+          "tags": [
+            "api-design",
+            "integration",
+            "interoperability",
+            "services"
+          ],
+          "rationale": "Rationale explaining the correct answer for IAT question 14."
+        },
+        {
+          "id": "IAT-SDE-E-015",
+          "question": "API and integration question 15 about service design, compatibility, or system interoperability.",
+          "options": [
+            "Option A for IAT question 15 emphasizing backward compatibility.",
+            "Option B for IAT question 15 focusing on API versioning strategies.",
+            "Option C for IAT question 15 prioritizing developer experience.",
+            "Option D for IAT question 15 optimizing for system decoupling."
+          ],
+          "correctAnswer": 2,
+          "difficulty": 0.63,
+          "discrimination": 1.35,
+          "points": 12,
+          "bloomLevel": "Evaluate",
+          "tags": [
+            "api-design",
+            "integration",
+            "interoperability",
+            "services"
+          ],
+          "rationale": "Rationale explaining the correct answer for IAT question 15."
+        },
+        {
+          "id": "IAT-SDE-E-016",
+          "question": "API and integration question 16 about service design, compatibility, or system interoperability.",
+          "options": [
+            "Option A for IAT question 16 emphasizing backward compatibility.",
+            "Option B for IAT question 16 focusing on API versioning strategies.",
+            "Option C for IAT question 16 prioritizing developer experience.",
+            "Option D for IAT question 16 optimizing for system decoupling."
+          ],
+          "correctAnswer": 3,
+          "difficulty": 0.75,
+          "discrimination": 1.44,
+          "points": 12,
+          "bloomLevel": "Evaluate",
+          "tags": [
+            "api-design",
+            "integration",
+            "interoperability",
+            "services"
+          ],
+          "rationale": "Rationale explaining the correct answer for IAT question 16."
+        },
+        {
+          "id": "IAT-SDE-E-017",
+          "question": "API and integration question 17 about service design, compatibility, or system interoperability.",
+          "options": [
+            "Option A for IAT question 17 emphasizing backward compatibility.",
+            "Option B for IAT question 17 focusing on API versioning strategies.",
+            "Option C for IAT question 17 prioritizing developer experience.",
+            "Option D for IAT question 17 optimizing for system decoupling."
+          ],
+          "correctAnswer": 1,
+          "difficulty": 0.69,
+          "discrimination": 1.37,
+          "points": 12,
+          "bloomLevel": "Analyze",
+          "tags": [
+            "api-design",
+            "integration",
+            "interoperability",
+            "services"
+          ],
+          "rationale": "Rationale explaining the correct answer for IAT question 17."
+        },
+        {
+          "id": "IAT-SDE-E-018",
+          "question": "API and integration question 18 about service design, compatibility, or system interoperability.",
+          "options": [
+            "Option A for IAT question 18 emphasizing backward compatibility.",
+            "Option B for IAT question 18 focusing on API versioning strategies.",
+            "Option C for IAT question 18 prioritizing developer experience.",
+            "Option D for IAT question 18 optimizing for system decoupling."
+          ],
+          "correctAnswer": 0,
+          "difficulty": 0.7,
+          "discrimination": 1.36,
+          "points": 13,
+          "bloomLevel": "Analyze",
+          "tags": [
+            "api-design",
+            "integration",
+            "interoperability",
+            "services"
+          ],
+          "rationale": "Rationale explaining the correct answer for IAT question 18."
+        },
+        {
+          "id": "IAT-SDE-E-019",
+          "question": "API and integration question 19 about service design, compatibility, or system interoperability.",
+          "options": [
+            "Option A for IAT question 19 emphasizing backward compatibility.",
+            "Option B for IAT question 19 focusing on API versioning strategies.",
+            "Option C for IAT question 19 prioritizing developer experience.",
+            "Option D for IAT question 19 optimizing for system decoupling."
+          ],
+          "correctAnswer": 2,
+          "difficulty": 0.73,
+          "discrimination": 1.43,
+          "points": 14,
+          "bloomLevel": "Analyze",
+          "tags": [
+            "api-design",
+            "integration",
+            "interoperability",
+            "services"
+          ],
+          "rationale": "Rationale explaining the correct answer for IAT question 19."
+        },
+        {
+          "id": "IAT-SDE-E-020",
+          "question": "API and integration question 20 about service design, compatibility, or system interoperability.",
+          "options": [
+            "Option A for IAT question 20 emphasizing backward compatibility.",
+            "Option B for IAT question 20 focusing on API versioning strategies.",
+            "Option C for IAT question 20 prioritizing developer experience.",
+            "Option D for IAT question 20 optimizing for system decoupling."
+          ],
+          "correctAnswer": 3,
+          "difficulty": 0.75,
+          "discrimination": 1.47,
+          "points": 12,
+          "bloomLevel": "Evaluate",
+          "tags": [
+            "api-design",
+            "integration",
+            "interoperability",
+            "services"
+          ],
+          "rationale": "Rationale explaining the correct answer for IAT question 20."
+        }
+      ]
+    },
+    {
+      "dimensionCode": "TQA",
+      "dimensionName": "Testing & Quality Assurance",
+      "dimensionDescription": "Advanced planning and execution of testing strategies, quality metrics, and validation frameworks",
+      "itemCount": 20,
+      "maxPoints": 200,
+      "items": [
+        {
+          "id": "TQA-SDE-E-001",
+          "question": "Testing and QA question 1 about test strategies, quality metrics, or validation approaches for ML systems.",
+          "options": [
+            "Option A for TQA question 1 emphasizing comprehensive test coverage.",
+            "Option B for TQA question 1 focusing on automated testing.",
+            "Option C for TQA question 1 prioritizing production testing.",
+            "Option D for TQA question 1 balancing quality with velocity."
+          ],
+          "correctAnswer": 2,
+          "difficulty": 0.64,
+          "discrimination": 1.41,
+          "points": 12,
+          "bloomLevel": "Evaluate",
+          "tags": [
+            "testing",
+            "quality-assurance",
+            "validation",
+            "metrics"
+          ],
+          "rationale": "Rationale explaining the correct answer for TQA question 1."
+        },
+        {
+          "id": "TQA-SDE-E-002",
+          "question": "Testing and QA question 2 about test strategies, quality metrics, or validation approaches for ML systems.",
+          "options": [
+            "Option A for TQA question 2 emphasizing comprehensive test coverage.",
+            "Option B for TQA question 2 focusing on automated testing.",
+            "Option C for TQA question 2 prioritizing production testing.",
+            "Option D for TQA question 2 balancing quality with velocity."
+          ],
+          "correctAnswer": 0,
+          "difficulty": 0.71,
+          "discrimination": 1.42,
+          "points": 14,
+          "bloomLevel": "Analyze",
+          "tags": [
+            "testing",
+            "quality-assurance",
+            "validation",
+            "metrics"
+          ],
+          "rationale": "Rationale explaining the correct answer for TQA question 2."
+        },
+        {
+          "id": "TQA-SDE-E-003",
+          "question": "Testing and QA question 3 about test strategies, quality metrics, or validation approaches for ML systems.",
+          "options": [
+            "Option A for TQA question 3 emphasizing comprehensive test coverage.",
+            "Option B for TQA question 3 focusing on automated testing.",
+            "Option C for TQA question 3 prioritizing production testing.",
+            "Option D for TQA question 3 balancing quality with velocity."
+          ],
+          "correctAnswer": 0,
+          "difficulty": 0.71,
+          "discrimination": 1.43,
+          "points": 13,
+          "bloomLevel": "Analyze",
+          "tags": [
+            "testing",
+            "quality-assurance",
+            "validation",
+            "metrics"
+          ],
+          "rationale": "Rationale explaining the correct answer for TQA question 3."
+        },
+        {
+          "id": "TQA-SDE-E-004",
+          "question": "Testing and QA question 4 about test strategies, quality metrics, or validation approaches for ML systems.",
+          "options": [
+            "Option A for TQA question 4 emphasizing comprehensive test coverage.",
+            "Option B for TQA question 4 focusing on automated testing.",
+            "Option C for TQA question 4 prioritizing production testing.",
+            "Option D for TQA question 4 balancing quality with velocity."
+          ],
+          "correctAnswer": 2,
+          "difficulty": 0.67,
+          "discrimination": 1.37,
+          "points": 14,
+          "bloomLevel": "Analyze",
+          "tags": [
+            "testing",
+            "quality-assurance",
+            "validation",
+            "metrics"
+          ],
+          "rationale": "Rationale explaining the correct answer for TQA question 4."
+        },
+        {
+          "id": "TQA-SDE-E-005",
+          "question": "Testing and QA question 5 about test strategies, quality metrics, or validation approaches for ML systems.",
+          "options": [
+            "Option A for TQA question 5 emphasizing comprehensive test coverage.",
+            "Option B for TQA question 5 focusing on automated testing.",
+            "Option C for TQA question 5 prioritizing production testing.",
+            "Option D for TQA question 5 balancing quality with velocity."
+          ],
+          "correctAnswer": 1,
+          "difficulty": 0.65,
+          "discrimination": 1.39,
+          "points": 14,
+          "bloomLevel": "Evaluate",
+          "tags": [
+            "testing",
+            "quality-assurance",
+            "validation",
+            "metrics"
+          ],
+          "rationale": "Rationale explaining the correct answer for TQA question 5."
+        },
+        {
+          "id": "TQA-SDE-E-006",
+          "question": "Testing and QA question 6 about test strategies, quality metrics, or validation approaches for ML systems.",
+          "options": [
+            "Option A for TQA question 6 emphasizing comprehensive test coverage.",
+            "Option B for TQA question 6 focusing on automated testing.",
+            "Option C for TQA question 6 prioritizing production testing.",
+            "Option D for TQA question 6 balancing quality with velocity."
+          ],
+          "correctAnswer": 1,
+          "difficulty": 0.74,
+          "discrimination": 1.41,
+          "points": 12,
+          "bloomLevel": "Evaluate",
+          "tags": [
+            "testing",
+            "quality-assurance",
+            "validation",
+            "metrics"
+          ],
+          "rationale": "Rationale explaining the correct answer for TQA question 6."
+        },
+        {
+          "id": "TQA-SDE-E-007",
+          "question": "Testing and QA question 7 about test strategies, quality metrics, or validation approaches for ML systems.",
+          "options": [
+            "Option A for TQA question 7 emphasizing comprehensive test coverage.",
+            "Option B for TQA question 7 focusing on automated testing.",
+            "Option C for TQA question 7 prioritizing production testing.",
+            "Option D for TQA question 7 balancing quality with velocity."
+          ],
+          "correctAnswer": 0,
+          "difficulty": 0.71,
+          "discrimination": 1.42,
+          "points": 12,
+          "bloomLevel": "Analyze",
+          "tags": [
+            "testing",
+            "quality-assurance",
+            "validation",
+            "metrics"
+          ],
+          "rationale": "Rationale explaining the correct answer for TQA question 7."
+        },
+        {
+          "id": "TQA-SDE-E-008",
+          "question": "Testing and QA question 8 about test strategies, quality metrics, or validation approaches for ML systems.",
+          "options": [
+            "Option A for TQA question 8 emphasizing comprehensive test coverage.",
+            "Option B for TQA question 8 focusing on automated testing.",
+            "Option C for TQA question 8 prioritizing production testing.",
+            "Option D for TQA question 8 balancing quality with velocity."
+          ],
+          "correctAnswer": 2,
+          "difficulty": 0.68,
+          "discrimination": 1.37,
+          "points": 12,
+          "bloomLevel": "Create",
+          "tags": [
+            "testing",
+            "quality-assurance",
+            "validation",
+            "metrics"
+          ],
+          "rationale": "Rationale explaining the correct answer for TQA question 8."
+        },
+        {
+          "id": "TQA-SDE-E-009",
+          "question": "Testing and QA question 9 about test strategies, quality metrics, or validation approaches for ML systems.",
+          "options": [
+            "Option A for TQA question 9 emphasizing comprehensive test coverage.",
+            "Option B for TQA question 9 focusing on automated testing.",
+            "Option C for TQA question 9 prioritizing production testing.",
+            "Option D for TQA question 9 balancing quality with velocity."
+          ],
+          "correctAnswer": 0,
+          "difficulty": 0.68,
+          "discrimination": 1.37,
+          "points": 13,
+          "bloomLevel": "Analyze",
+          "tags": [
+            "testing",
+            "quality-assurance",
+            "validation",
+            "metrics"
+          ],
+          "rationale": "Rationale explaining the correct answer for TQA question 9."
+        },
+        {
+          "id": "TQA-SDE-E-010",
+          "question": "Testing and QA question 10 about test strategies, quality metrics, or validation approaches for ML systems.",
+          "options": [
+            "Option A for TQA question 10 emphasizing comprehensive test coverage.",
+            "Option B for TQA question 10 focusing on automated testing.",
+            "Option C for TQA question 10 prioritizing production testing.",
+            "Option D for TQA question 10 balancing quality with velocity."
+          ],
+          "correctAnswer": 2,
+          "difficulty": 0.63,
+          "discrimination": 1.44,
+          "points": 13,
+          "bloomLevel": "Evaluate",
+          "tags": [
+            "testing",
+            "quality-assurance",
+            "validation",
+            "metrics"
+          ],
+          "rationale": "Rationale explaining the correct answer for TQA question 10."
+        },
+        {
+          "id": "TQA-SDE-E-011",
+          "question": "Testing and QA question 11 about test strategies, quality metrics, or validation approaches for ML systems.",
+          "options": [
+            "Option A for TQA question 11 emphasizing comprehensive test coverage.",
+            "Option B for TQA question 11 focusing on automated testing.",
+            "Option C for TQA question 11 prioritizing production testing.",
+            "Option D for TQA question 11 balancing quality with velocity."
+          ],
+          "correctAnswer": 3,
+          "difficulty": 0.75,
+          "discrimination": 1.43,
+          "points": 13,
+          "bloomLevel": "Create",
+          "tags": [
+            "testing",
+            "quality-assurance",
+            "validation",
+            "metrics"
+          ],
+          "rationale": "Rationale explaining the correct answer for TQA question 11."
+        },
+        {
+          "id": "TQA-SDE-E-012",
+          "question": "Testing and QA question 12 about test strategies, quality metrics, or validation approaches for ML systems.",
+          "options": [
+            "Option A for TQA question 12 emphasizing comprehensive test coverage.",
+            "Option B for TQA question 12 focusing on automated testing.",
+            "Option C for TQA question 12 prioritizing production testing.",
+            "Option D for TQA question 12 balancing quality with velocity."
+          ],
+          "correctAnswer": 0,
+          "difficulty": 0.66,
+          "discrimination": 1.41,
+          "points": 14,
+          "bloomLevel": "Create",
+          "tags": [
+            "testing",
+            "quality-assurance",
+            "validation",
+            "metrics"
+          ],
+          "rationale": "Rationale explaining the correct answer for TQA question 12."
+        },
+        {
+          "id": "TQA-SDE-E-013",
+          "question": "Testing and QA question 13 about test strategies, quality metrics, or validation approaches for ML systems.",
+          "options": [
+            "Option A for TQA question 13 emphasizing comprehensive test coverage.",
+            "Option B for TQA question 13 focusing on automated testing.",
+            "Option C for TQA question 13 prioritizing production testing.",
+            "Option D for TQA question 13 balancing quality with velocity."
+          ],
+          "correctAnswer": 0,
+          "difficulty": 0.74,
+          "discrimination": 1.43,
+          "points": 12,
+          "bloomLevel": "Analyze",
+          "tags": [
+            "testing",
+            "quality-assurance",
+            "validation",
+            "metrics"
+          ],
+          "rationale": "Rationale explaining the correct answer for TQA question 13."
+        },
+        {
+          "id": "TQA-SDE-E-014",
+          "question": "Testing and QA question 14 about test strategies, quality metrics, or validation approaches for ML systems.",
+          "options": [
+            "Option A for TQA question 14 emphasizing comprehensive test coverage.",
+            "Option B for TQA question 14 focusing on automated testing.",
+            "Option C for TQA question 14 prioritizing production testing.",
+            "Option D for TQA question 14 balancing quality with velocity."
+          ],
+          "correctAnswer": 1,
+          "difficulty": 0.76,
+          "discrimination": 1.45,
+          "points": 13,
+          "bloomLevel": "Analyze",
+          "tags": [
+            "testing",
+            "quality-assurance",
+            "validation",
+            "metrics"
+          ],
+          "rationale": "Rationale explaining the correct answer for TQA question 14."
+        },
+        {
+          "id": "TQA-SDE-E-015",
+          "question": "Testing and QA question 15 about test strategies, quality metrics, or validation approaches for ML systems.",
+          "options": [
+            "Option A for TQA question 15 emphasizing comprehensive test coverage.",
+            "Option B for TQA question 15 focusing on automated testing.",
+            "Option C for TQA question 15 prioritizing production testing.",
+            "Option D for TQA question 15 balancing quality with velocity."
+          ],
+          "correctAnswer": 2,
+          "difficulty": 0.72,
+          "discrimination": 1.43,
+          "points": 13,
+          "bloomLevel": "Analyze",
+          "tags": [
+            "testing",
+            "quality-assurance",
+            "validation",
+            "metrics"
+          ],
+          "rationale": "Rationale explaining the correct answer for TQA question 15."
+        },
+        {
+          "id": "TQA-SDE-E-016",
+          "question": "Testing and QA question 16 about test strategies, quality metrics, or validation approaches for ML systems.",
+          "options": [
+            "Option A for TQA question 16 emphasizing comprehensive test coverage.",
+            "Option B for TQA question 16 focusing on automated testing.",
+            "Option C for TQA question 16 prioritizing production testing.",
+            "Option D for TQA question 16 balancing quality with velocity."
+          ],
+          "correctAnswer": 0,
+          "difficulty": 0.65,
+          "discrimination": 1.46,
+          "points": 14,
+          "bloomLevel": "Evaluate",
+          "tags": [
+            "testing",
+            "quality-assurance",
+            "validation",
+            "metrics"
+          ],
+          "rationale": "Rationale explaining the correct answer for TQA question 16."
+        },
+        {
+          "id": "TQA-SDE-E-017",
+          "question": "Testing and QA question 17 about test strategies, quality metrics, or validation approaches for ML systems.",
+          "options": [
+            "Option A for TQA question 17 emphasizing comprehensive test coverage.",
+            "Option B for TQA question 17 focusing on automated testing.",
+            "Option C for TQA question 17 prioritizing production testing.",
+            "Option D for TQA question 17 balancing quality with velocity."
+          ],
+          "correctAnswer": 1,
+          "difficulty": 0.62,
+          "discrimination": 1.37,
+          "points": 14,
+          "bloomLevel": "Evaluate",
+          "tags": [
+            "testing",
+            "quality-assurance",
+            "validation",
+            "metrics"
+          ],
+          "rationale": "Rationale explaining the correct answer for TQA question 17."
+        },
+        {
+          "id": "TQA-SDE-E-018",
+          "question": "Testing and QA question 18 about test strategies, quality metrics, or validation approaches for ML systems.",
+          "options": [
+            "Option A for TQA question 18 emphasizing comprehensive test coverage.",
+            "Option B for TQA question 18 focusing on automated testing.",
+            "Option C for TQA question 18 prioritizing production testing.",
+            "Option D for TQA question 18 balancing quality with velocity."
+          ],
+          "correctAnswer": 2,
+          "difficulty": 0.74,
+          "discrimination": 1.37,
+          "points": 13,
+          "bloomLevel": "Evaluate",
+          "tags": [
+            "testing",
+            "quality-assurance",
+            "validation",
+            "metrics"
+          ],
+          "rationale": "Rationale explaining the correct answer for TQA question 18."
+        },
+        {
+          "id": "TQA-SDE-E-019",
+          "question": "Testing and QA question 19 about test strategies, quality metrics, or validation approaches for ML systems.",
+          "options": [
+            "Option A for TQA question 19 emphasizing comprehensive test coverage.",
+            "Option B for TQA question 19 focusing on automated testing.",
+            "Option C for TQA question 19 prioritizing production testing.",
+            "Option D for TQA question 19 balancing quality with velocity."
+          ],
+          "correctAnswer": 0,
+          "difficulty": 0.66,
+          "discrimination": 1.36,
+          "points": 14,
+          "bloomLevel": "Create",
+          "tags": [
+            "testing",
+            "quality-assurance",
+            "validation",
+            "metrics"
+          ],
+          "rationale": "Rationale explaining the correct answer for TQA question 19."
+        },
+        {
+          "id": "TQA-SDE-E-020",
+          "question": "Testing and QA question 20 about test strategies, quality metrics, or validation approaches for ML systems.",
+          "options": [
+            "Option A for TQA question 20 emphasizing comprehensive test coverage.",
+            "Option B for TQA question 20 focusing on automated testing.",
+            "Option C for TQA question 20 prioritizing production testing.",
+            "Option D for TQA question 20 balancing quality with velocity."
+          ],
+          "correctAnswer": 2,
+          "difficulty": 0.71,
+          "discrimination": 1.45,
+          "points": 14,
+          "bloomLevel": "Evaluate",
+          "tags": [
+            "testing",
+            "quality-assurance",
+            "validation",
+            "metrics"
+          ],
+          "rationale": "Rationale explaining the correct answer for TQA question 20."
+        }
+      ]
+    },
+    {
+      "dimensionCode": "DAE",
+      "dimensionName": "Development & AI Engineering Tools",
+      "dimensionDescription": "Expert mastery of development workflows, tooling, and engineering practices for AI systems",
+      "itemCount": 20,
+      "maxPoints": 200,
+      "items": [
+        {
+          "id": "DAE-SDE-E-001",
+          "question": "Development tooling question 1 about frameworks, debugging, reproducibility, or CI/CD for ML.",
+          "options": [
+            "Option A for DAE question 1 emphasizing tool integration.",
+            "Option B for DAE question 1 focusing on reproducibility.",
+            "Option C for DAE question 1 prioritizing developer productivity.",
+            "Option D for DAE question 1 optimizing for collaboration."
+          ],
+          "correctAnswer": 1,
+          "difficulty": 0.65,
+          "discrimination": 1.39,
+          "points": 14,
+          "bloomLevel": "Evaluate",
+          "tags": [
+            "development",
+            "tooling",
+            "cicd",
+            "engineering-practices"
+          ],
+          "rationale": "Rationale explaining the correct answer for DAE question 1."
+        },
+        {
+          "id": "DAE-SDE-E-002",
+          "question": "Development tooling question 2 about frameworks, debugging, reproducibility, or CI/CD for ML.",
+          "options": [
+            "Option A for DAE question 2 emphasizing tool integration.",
+            "Option B for DAE question 2 focusing on reproducibility.",
+            "Option C for DAE question 2 prioritizing developer productivity.",
+            "Option D for DAE question 2 optimizing for collaboration."
+          ],
+          "correctAnswer": 1,
+          "difficulty": 0.73,
+          "discrimination": 1.41,
+          "points": 14,
+          "bloomLevel": "Analyze",
+          "tags": [
+            "development",
+            "tooling",
+            "cicd",
+            "engineering-practices"
+          ],
+          "rationale": "Rationale explaining the correct answer for DAE question 2."
+        },
+        {
+          "id": "DAE-SDE-E-003",
+          "question": "Development tooling question 3 about frameworks, debugging, reproducibility, or CI/CD for ML.",
+          "options": [
+            "Option A for DAE question 3 emphasizing tool integration.",
+            "Option B for DAE question 3 focusing on reproducibility.",
+            "Option C for DAE question 3 prioritizing developer productivity.",
+            "Option D for DAE question 3 optimizing for collaboration."
+          ],
+          "correctAnswer": 1,
+          "difficulty": 0.63,
+          "discrimination": 1.38,
+          "points": 13,
+          "bloomLevel": "Create",
+          "tags": [
+            "development",
+            "tooling",
+            "cicd",
+            "engineering-practices"
+          ],
+          "rationale": "Rationale explaining the correct answer for DAE question 3."
+        },
+        {
+          "id": "DAE-SDE-E-004",
+          "question": "Development tooling question 4 about frameworks, debugging, reproducibility, or CI/CD for ML.",
+          "options": [
+            "Option A for DAE question 4 emphasizing tool integration.",
+            "Option B for DAE question 4 focusing on reproducibility.",
+            "Option C for DAE question 4 prioritizing developer productivity.",
+            "Option D for DAE question 4 optimizing for collaboration."
+          ],
+          "correctAnswer": 1,
+          "difficulty": 0.74,
+          "discrimination": 1.36,
+          "points": 12,
+          "bloomLevel": "Evaluate",
+          "tags": [
+            "development",
+            "tooling",
+            "cicd",
+            "engineering-practices"
+          ],
+          "rationale": "Rationale explaining the correct answer for DAE question 4."
+        },
+        {
+          "id": "DAE-SDE-E-005",
+          "question": "Development tooling question 5 about frameworks, debugging, reproducibility, or CI/CD for ML.",
+          "options": [
+            "Option A for DAE question 5 emphasizing tool integration.",
+            "Option B for DAE question 5 focusing on reproducibility.",
+            "Option C for DAE question 5 prioritizing developer productivity.",
+            "Option D for DAE question 5 optimizing for collaboration."
+          ],
+          "correctAnswer": 0,
+          "difficulty": 0.71,
+          "discrimination": 1.4,
+          "points": 12,
+          "bloomLevel": "Evaluate",
+          "tags": [
+            "development",
+            "tooling",
+            "cicd",
+            "engineering-practices"
+          ],
+          "rationale": "Rationale explaining the correct answer for DAE question 5."
+        },
+        {
+          "id": "DAE-SDE-E-006",
+          "question": "Development tooling question 6 about frameworks, debugging, reproducibility, or CI/CD for ML.",
+          "options": [
+            "Option A for DAE question 6 emphasizing tool integration.",
+            "Option B for DAE question 6 focusing on reproducibility.",
+            "Option C for DAE question 6 prioritizing developer productivity.",
+            "Option D for DAE question 6 optimizing for collaboration."
+          ],
+          "correctAnswer": 1,
+          "difficulty": 0.63,
+          "discrimination": 1.45,
+          "points": 14,
+          "bloomLevel": "Analyze",
+          "tags": [
+            "development",
+            "tooling",
+            "cicd",
+            "engineering-practices"
+          ],
+          "rationale": "Rationale explaining the correct answer for DAE question 6."
+        },
+        {
+          "id": "DAE-SDE-E-007",
+          "question": "Development tooling question 7 about frameworks, debugging, reproducibility, or CI/CD for ML.",
+          "options": [
+            "Option A for DAE question 7 emphasizing tool integration.",
+            "Option B for DAE question 7 focusing on reproducibility.",
+            "Option C for DAE question 7 prioritizing developer productivity.",
+            "Option D for DAE question 7 optimizing for collaboration."
+          ],
+          "correctAnswer": 0,
+          "difficulty": 0.64,
+          "discrimination": 1.37,
+          "points": 12,
+          "bloomLevel": "Create",
+          "tags": [
+            "development",
+            "tooling",
+            "cicd",
+            "engineering-practices"
+          ],
+          "rationale": "Rationale explaining the correct answer for DAE question 7."
+        },
+        {
+          "id": "DAE-SDE-E-008",
+          "question": "Development tooling question 8 about frameworks, debugging, reproducibility, or CI/CD for ML.",
+          "options": [
+            "Option A for DAE question 8 emphasizing tool integration.",
+            "Option B for DAE question 8 focusing on reproducibility.",
+            "Option C for DAE question 8 prioritizing developer productivity.",
+            "Option D for DAE question 8 optimizing for collaboration."
+          ],
+          "correctAnswer": 3,
+          "difficulty": 0.64,
+          "discrimination": 1.43,
+          "points": 13,
+          "bloomLevel": "Analyze",
+          "tags": [
+            "development",
+            "tooling",
+            "cicd",
+            "engineering-practices"
+          ],
+          "rationale": "Rationale explaining the correct answer for DAE question 8."
+        },
+        {
+          "id": "DAE-SDE-E-009",
+          "question": "Development tooling question 9 about frameworks, debugging, reproducibility, or CI/CD for ML.",
+          "options": [
+            "Option A for DAE question 9 emphasizing tool integration.",
+            "Option B for DAE question 9 focusing on reproducibility.",
+            "Option C for DAE question 9 prioritizing developer productivity.",
+            "Option D for DAE question 9 optimizing for collaboration."
+          ],
+          "correctAnswer": 3,
+          "difficulty": 0.65,
+          "discrimination": 1.43,
+          "points": 14,
+          "bloomLevel": "Evaluate",
+          "tags": [
+            "development",
+            "tooling",
+            "cicd",
+            "engineering-practices"
+          ],
+          "rationale": "Rationale explaining the correct answer for DAE question 9."
+        },
+        {
+          "id": "DAE-SDE-E-010",
+          "question": "Development tooling question 10 about frameworks, debugging, reproducibility, or CI/CD for ML.",
+          "options": [
+            "Option A for DAE question 10 emphasizing tool integration.",
+            "Option B for DAE question 10 focusing on reproducibility.",
+            "Option C for DAE question 10 prioritizing developer productivity.",
+            "Option D for DAE question 10 optimizing for collaboration."
+          ],
+          "correctAnswer": 1,
+          "difficulty": 0.75,
+          "discrimination": 1.48,
+          "points": 13,
+          "bloomLevel": "Evaluate",
+          "tags": [
+            "development",
+            "tooling",
+            "cicd",
+            "engineering-practices"
+          ],
+          "rationale": "Rationale explaining the correct answer for DAE question 10."
+        },
+        {
+          "id": "DAE-SDE-E-011",
+          "question": "Development tooling question 11 about frameworks, debugging, reproducibility, or CI/CD for ML.",
+          "options": [
+            "Option A for DAE question 11 emphasizing tool integration.",
+            "Option B for DAE question 11 focusing on reproducibility.",
+            "Option C for DAE question 11 prioritizing developer productivity.",
+            "Option D for DAE question 11 optimizing for collaboration."
+          ],
+          "correctAnswer": 0,
+          "difficulty": 0.75,
+          "discrimination": 1.44,
+          "points": 14,
+          "bloomLevel": "Create",
+          "tags": [
+            "development",
+            "tooling",
+            "cicd",
+            "engineering-practices"
+          ],
+          "rationale": "Rationale explaining the correct answer for DAE question 11."
+        },
+        {
+          "id": "DAE-SDE-E-012",
+          "question": "Development tooling question 12 about frameworks, debugging, reproducibility, or CI/CD for ML.",
+          "options": [
+            "Option A for DAE question 12 emphasizing tool integration.",
+            "Option B for DAE question 12 focusing on reproducibility.",
+            "Option C for DAE question 12 prioritizing developer productivity.",
+            "Option D for DAE question 12 optimizing for collaboration."
+          ],
+          "correctAnswer": 3,
+          "difficulty": 0.73,
+          "discrimination": 1.46,
+          "points": 14,
+          "bloomLevel": "Evaluate",
+          "tags": [
+            "development",
+            "tooling",
+            "cicd",
+            "engineering-practices"
+          ],
+          "rationale": "Rationale explaining the correct answer for DAE question 12."
+        },
+        {
+          "id": "DAE-SDE-E-013",
+          "question": "Development tooling question 13 about frameworks, debugging, reproducibility, or CI/CD for ML.",
+          "options": [
+            "Option A for DAE question 13 emphasizing tool integration.",
+            "Option B for DAE question 13 focusing on reproducibility.",
+            "Option C for DAE question 13 prioritizing developer productivity.",
+            "Option D for DAE question 13 optimizing for collaboration."
+          ],
+          "correctAnswer": 2,
+          "difficulty": 0.72,
+          "discrimination": 1.38,
+          "points": 13,
+          "bloomLevel": "Evaluate",
+          "tags": [
+            "development",
+            "tooling",
+            "cicd",
+            "engineering-practices"
+          ],
+          "rationale": "Rationale explaining the correct answer for DAE question 13."
+        },
+        {
+          "id": "DAE-SDE-E-014",
+          "question": "Development tooling question 14 about frameworks, debugging, reproducibility, or CI/CD for ML.",
+          "options": [
+            "Option A for DAE question 14 emphasizing tool integration.",
+            "Option B for DAE question 14 focusing on reproducibility.",
+            "Option C for DAE question 14 prioritizing developer productivity.",
+            "Option D for DAE question 14 optimizing for collaboration."
+          ],
+          "correctAnswer": 1,
+          "difficulty": 0.73,
+          "discrimination": 1.48,
+          "points": 12,
+          "bloomLevel": "Evaluate",
+          "tags": [
+            "development",
+            "tooling",
+            "cicd",
+            "engineering-practices"
+          ],
+          "rationale": "Rationale explaining the correct answer for DAE question 14."
+        },
+        {
+          "id": "DAE-SDE-E-015",
+          "question": "Development tooling question 15 about frameworks, debugging, reproducibility, or CI/CD for ML.",
+          "options": [
+            "Option A for DAE question 15 emphasizing tool integration.",
+            "Option B for DAE question 15 focusing on reproducibility.",
+            "Option C for DAE question 15 prioritizing developer productivity.",
+            "Option D for DAE question 15 optimizing for collaboration."
+          ],
+          "correctAnswer": 0,
+          "difficulty": 0.63,
+          "discrimination": 1.38,
+          "points": 13,
+          "bloomLevel": "Evaluate",
+          "tags": [
+            "development",
+            "tooling",
+            "cicd",
+            "engineering-practices"
+          ],
+          "rationale": "Rationale explaining the correct answer for DAE question 15."
+        },
+        {
+          "id": "DAE-SDE-E-016",
+          "question": "Development tooling question 16 about frameworks, debugging, reproducibility, or CI/CD for ML.",
+          "options": [
+            "Option A for DAE question 16 emphasizing tool integration.",
+            "Option B for DAE question 16 focusing on reproducibility.",
+            "Option C for DAE question 16 prioritizing developer productivity.",
+            "Option D for DAE question 16 optimizing for collaboration."
+          ],
+          "correctAnswer": 2,
+          "difficulty": 0.72,
+          "discrimination": 1.43,
+          "points": 13,
+          "bloomLevel": "Analyze",
+          "tags": [
+            "development",
+            "tooling",
+            "cicd",
+            "engineering-practices"
+          ],
+          "rationale": "Rationale explaining the correct answer for DAE question 16."
+        },
+        {
+          "id": "DAE-SDE-E-017",
+          "question": "Development tooling question 17 about frameworks, debugging, reproducibility, or CI/CD for ML.",
+          "options": [
+            "Option A for DAE question 17 emphasizing tool integration.",
+            "Option B for DAE question 17 focusing on reproducibility.",
+            "Option C for DAE question 17 prioritizing developer productivity.",
+            "Option D for DAE question 17 optimizing for collaboration."
+          ],
+          "correctAnswer": 2,
+          "difficulty": 0.71,
+          "discrimination": 1.37,
+          "points": 12,
+          "bloomLevel": "Evaluate",
+          "tags": [
+            "development",
+            "tooling",
+            "cicd",
+            "engineering-practices"
+          ],
+          "rationale": "Rationale explaining the correct answer for DAE question 17."
+        },
+        {
+          "id": "DAE-SDE-E-018",
+          "question": "Development tooling question 18 about frameworks, debugging, reproducibility, or CI/CD for ML.",
+          "options": [
+            "Option A for DAE question 18 emphasizing tool integration.",
+            "Option B for DAE question 18 focusing on reproducibility.",
+            "Option C for DAE question 18 prioritizing developer productivity.",
+            "Option D for DAE question 18 optimizing for collaboration."
+          ],
+          "correctAnswer": 1,
+          "difficulty": 0.75,
+          "discrimination": 1.4,
+          "points": 13,
+          "bloomLevel": "Create",
+          "tags": [
+            "development",
+            "tooling",
+            "cicd",
+            "engineering-practices"
+          ],
+          "rationale": "Rationale explaining the correct answer for DAE question 18."
+        },
+        {
+          "id": "DAE-SDE-E-019",
+          "question": "Development tooling question 19 about frameworks, debugging, reproducibility, or CI/CD for ML.",
+          "options": [
+            "Option A for DAE question 19 emphasizing tool integration.",
+            "Option B for DAE question 19 focusing on reproducibility.",
+            "Option C for DAE question 19 prioritizing developer productivity.",
+            "Option D for DAE question 19 optimizing for collaboration."
+          ],
+          "correctAnswer": 1,
+          "difficulty": 0.74,
+          "discrimination": 1.47,
+          "points": 12,
+          "bloomLevel": "Evaluate",
+          "tags": [
+            "development",
+            "tooling",
+            "cicd",
+            "engineering-practices"
+          ],
+          "rationale": "Rationale explaining the correct answer for DAE question 19."
+        },
+        {
+          "id": "DAE-SDE-E-020",
+          "question": "Development tooling question 20 about frameworks, debugging, reproducibility, or CI/CD for ML.",
+          "options": [
+            "Option A for DAE question 20 emphasizing tool integration.",
+            "Option B for DAE question 20 focusing on reproducibility.",
+            "Option C for DAE question 20 prioritizing developer productivity.",
+            "Option D for DAE question 20 optimizing for collaboration."
+          ],
+          "correctAnswer": 0,
+          "difficulty": 0.63,
+          "discrimination": 1.42,
+          "points": 13,
+          "bloomLevel": "Evaluate",
+          "tags": [
+            "development",
+            "tooling",
+            "cicd",
+            "engineering-practices"
+          ],
+          "rationale": "Rationale explaining the correct answer for DAE question 20."
+        }
+      ]
+    }
+  ]
+}

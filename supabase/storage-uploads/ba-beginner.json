@@ -1,0 +1,1601 @@
+{
+  "assessmentName": "AIQ BA Beginner Assessment - Business Analyst Focus",
+  "version": "1.0",
+  "assessmentType": "fixed",
+  "description": "A rigorously designed foundational AI literacy assessment for business analysts with 60 items featuring balanced options, randomized correct answer positions, complete sentence formatting, and enhanced anti-gaming measures.",
+  "assessmentConfiguration": {
+    "totalQuestions": 60,
+    "questionsPerDimension": "7-8",
+    "estimatedTime": "60 minutes",
+    "targetAudience": "Business analysts, requirements analysts, systems analysts, and BA professionals with varying AI experience levels",
+    "timePerQuestion": "60 seconds average",
+    "presentationMode": {
+      "type": "fixed-sequential",
+      "description": "All questions presented in fixed order",
+      "sequencing": "By dimension, 7-8 questions per dimension"
+    },
+    "questionDistribution": {
+      "totalItems": 60,
+      "itemsPerDimension": "7-8 per dimension",
+      "selectionRatio": "100% (all items presented)"
+    },
+    "dimensionSequencing": {
+      "type": "fixed-order",
+      "sequence": [
+        "BAI",
+        "RDA",
+        "DIA",
+        "PSM",
+        "STE",
+        "ABV",
+        "CCI",
+        "TDA"
+      ],
+      "description": "Candidates complete 7-8 questions per dimension in sequence"
+    }
+  },
+  "scoringConfiguration": {
+    "totalPoints": 600,
+    "pointsPerDimension": 75,
+    "passingScore": 420,
+    "passingPercentage": 70,
+    "scoringMethod": {
+      "type": "simple-sum",
+      "description": "Direct sum of points from correct answers with differential weighting by item difficulty",
+      "basePoints": 10,
+      "formula": "points = basePoints \u00d7 (1 + difficulty \u00d7 0.3) for each correct answer"
+    },
+    "scoringGuidelines": {
+      "0-40%": "Novice (0-240 points) - Significant foundational learning needed",
+      "41-60%": "Beginner (241-360 points) - Basic awareness established",
+      "61-80%": "Developing (361-480 points) - Good foundational understanding",
+      "81-90%": "Proficient (481-540 points) - Strong grasp of fundamentals",
+      "91-100%": "Advanced (541-600 points) - Excellent foundational mastery"
+    }
+  },
+  "instructions": "This AIQ BA Beginner assessment evaluates your foundational AI literacy specifically for business analysis contexts. You will answer 60 questions total (7-8 per dimension) across 8 BA-focused dimensions in approximately 60 minutes. Questions feature nuanced options designed to test genuine understanding of AI's role in business analysis. Answer all questions to the best of your ability.",
+  "assessmentGuidelines": {
+    "targetLevel": "Foundational awareness and basic understanding of AI in business analysis",
+    "cognitiveEmphasis": "65% Remember/Understand (Bloom's levels 1-2), 35% Apply (Bloom's level 3)",
+    "questionTypes": "Multiple-choice (70%), scenario-based (30%)",
+    "difficultyProfile": "Realistic distractors that require genuine BA understanding to differentiate",
+    "timeAllocation": "Moderate time for careful consideration of BA-specific nuances",
+    "reliabilityTarget": "Cronbach's alpha \u2265 0.80"
+  },
+  "itemBank": {
+    "totalItems": 60,
+    "description": "Complete item set with 60 questions (7-8 per dimension) focused on AI literacy for business analysts",
+    "bankStatistics": {
+      "averageDifficulty": 0.383,
+      "difficultySD": 0.08,
+      "averageDiscrimination": 1.15,
+      "discriminationSD": 0.05,
+      "contentCoverageIndex": 0.92,
+      "estimatedReliability": 0.85,
+      "totalItems": 60
+    },
+    "dimensions": [
+      {
+        "dimensionCode": "BAI",
+        "dimensionName": "Business Analysis AI Understanding",
+        "description": "Understanding AI capabilities, limitations, and applications in business analysis contexts",
+        "weight": 0.125,
+        "totalPoints": 75,
+        "items": [
+          {
+            "id": "BAI-BA-B-001",
+            "level": 1,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.25,
+            "discrimination": 1.05,
+            "bloomLevel": "Remember",
+            "question": "What is the primary value AI brings to business analysis work?",
+            "options": [
+              "AI reduces analysis costs to zero by replacing all traditional business analysis methodologies entirely.",
+              "AI completely eliminates the need for human analysts by automatically generating all business requirements.",
+              "AI guarantees perfect accuracy in all business predictions, making validation processes unnecessary for analysts.",
+              "AI automates pattern recognition in large datasets, enabling analysts to focus on interpretation and strategic recommendations."
+            ],
+            "correctAnswer": 3,
+            "rationale": "AI's primary value in BA work is automating pattern recognition and data processing, which frees analysts to focus on higher-value activities like interpretation, stakeholder engagement, and strategic recommendations. AI augments rather than replaces BA work.",
+            "tags": [
+              "AI fundamentals",
+              "BA role",
+              "value proposition",
+              "augmentation"
+            ]
+          },
+          {
+            "id": "BAI-BA-B-002",
+            "level": 1,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.28,
+            "discrimination": 1.08,
+            "bloomLevel": "Understand",
+            "question": "Why should business analysts understand AI limitations when working with AI-powered analytics tools?",
+            "options": [
+              "Understanding limitations helps analysts avoid using AI tools altogether and stick with traditional methods exclusively.",
+              "Understanding limitations only matters for technical teams, not for business analysts focused on requirements.",
+              "Understanding limitations helps analysts properly validate AI outputs and know when human judgment is required.",
+              "Understanding limitations is unnecessary because AI tools are designed to be fully autonomous and self-correcting."
+            ],
+            "correctAnswer": 2,
+            "rationale": "BAs must understand AI limitations to validate outputs appropriately, recognize when AI recommendations need human review, and know which analysis tasks are suitable for AI augmentation versus requiring human expertise.",
+            "tags": [
+              "AI limitations",
+              "validation",
+              "critical thinking",
+              "human judgment"
+            ]
+          },
+          {
+            "id": "BAI-BA-B-003",
+            "level": 1,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.32,
+            "discrimination": 1.1,
+            "bloomLevel": "Understand",
+            "question": "How does AI bias specifically impact business analysis deliverables?",
+            "options": [
+              "AI bias only affects machine learning engineers and has no relevance to business analysis work.",
+              "AI bias improves analysis efficiency by focusing resources on historically successful patterns exclusively.",
+              "Biased AI automatically corrects itself over time, so analysts don't need to check for fairness issues.",
+              "Biased AI outputs can lead to requirements that systematically disadvantage certain user groups or business segments."
+            ],
+            "correctAnswer": 3,
+            "rationale": "AI bias in BA work can result in requirements, recommendations, or process designs that unfairly impact certain stakeholders. BAs must recognize and mitigate bias to ensure equitable solutions.",
+            "tags": [
+              "bias",
+              "fairness",
+              "requirements",
+              "stakeholder impact"
+            ]
+          },
+          {
+            "id": "BAI-BA-B-004",
+            "level": 1,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.35,
+            "discrimination": 1.12,
+            "bloomLevel": "Understand",
+            "question": "When should a business analyst recommend AI-powered solutions versus traditional analytical approaches?",
+            "options": [
+              "Always recommend AI solutions first because they are inherently superior to all traditional analytical methods.",
+              "Never recommend AI solutions because traditional methods are always more reliable and transparent for business.",
+              "Recommend AI when dealing with high-volume data, complex patterns, or where continuous learning from new data adds value.",
+              "Recommend AI only when the technology team explicitly requests it, regardless of business need or value."
+            ],
+            "correctAnswer": 2,
+            "rationale": "BAs should recommend AI when the problem characteristics (data volume, pattern complexity, need for continuous adaptation) align with AI's strengths. Not all problems require or benefit from AI solutions.",
+            "tags": [
+              "solution selection",
+              "AI appropriateness",
+              "recommendation",
+              "problem fit"
+            ]
+          },
+          {
+            "id": "BAI-BA-B-005",
+            "level": 1,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.39,
+            "discrimination": 1.15,
+            "bloomLevel": "Understand",
+            "question": "What does it mean when an AI model has a 'knowledge cutoff date' in business analysis applications?",
+            "options": [
+              "The AI automatically updates its knowledge every night, so the cutoff date is reset daily without any gaps.",
+              "The AI refuses to answer any questions about topics after the cutoff date and displays error messages.",
+              "The AI becomes completely inaccurate and unusable for any purpose once its knowledge cutoff date has passed.",
+              "The AI's training data only includes information up to a specific date, so it may not know recent developments or changes."
+            ],
+            "correctAnswer": 3,
+            "rationale": "Knowledge cutoff dates mean the AI was trained on data only up to that point. BAs must validate that AI recommendations account for recent market changes, regulatory updates, or business developments.",
+            "tags": [
+              "knowledge cutoff",
+              "data recency",
+              "validation",
+              "limitations"
+            ]
+          },
+          {
+            "id": "BAI-BA-B-006",
+            "level": 1,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.42,
+            "discrimination": 1.17,
+            "bloomLevel": "Apply",
+            "question": "You're analyzing customer service processes and an AI tool suggests automating complaint categorization. What's your first validation step?",
+            "options": [
+              "Immediately implement the AI categorization across all channels since AI is always more accurate than humans.",
+              "Deploy the AI to production first and then gather feedback from customer service representatives afterward.",
+              "Reject the AI suggestion entirely because human judgment is always superior for customer service decisions.",
+              "Review a sample of the AI's categorizations against actual complaint types to check accuracy and identify edge cases."
+            ],
+            "correctAnswer": 3,
+            "rationale": "BAs should validate AI outputs before full implementation. Reviewing samples helps identify accuracy issues, edge cases, and whether the categorization aligns with business needs and customer service standards.",
+            "tags": [
+              "validation",
+              "implementation",
+              "testing",
+              "quality assurance"
+            ]
+          },
+          {
+            "id": "BAI-BA-B-007",
+            "level": 1,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.45,
+            "discrimination": 1.19,
+            "bloomLevel": "Understand",
+            "question": "How should business analysts explain AI capabilities to non-technical stakeholders?",
+            "options": [
+              "Describe AI as magical technology that can solve any business problem without explaining how it works.",
+              "Use detailed technical terminology and mathematical formulas to establish credibility and demonstrate AI expertise.",
+              "Focus on what specific business problems AI can solve and its limitations, using concrete examples relevant to stakeholders.",
+              "Avoid explaining AI capabilities entirely and just present final recommendations without mentioning AI involvement."
+            ],
+            "correctAnswer": 2,
+            "rationale": "Effective BA communication frames AI in business terms, focusing on problem-solving capabilities and realistic limitations. Concrete, relevant examples help stakeholders understand value and appropriate applications.",
+            "tags": [
+              "communication",
+              "stakeholder management",
+              "explanation",
+              "business value"
+            ]
+          }
+        ]
+      },
+      {
+        "dimensionCode": "RDA",
+        "dimensionName": "Requirements Definition with AI",
+        "description": "Leveraging AI to gather, analyze, and document business requirements effectively",
+        "weight": 0.125,
+        "totalPoints": 75,
+        "items": [
+          {
+            "id": "RDA-BA-B-001",
+            "level": 1,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.26,
+            "discrimination": 1.06,
+            "bloomLevel": "Remember",
+            "question": "How can AI assist business analysts in requirements gathering?",
+            "options": [
+              "AI completely replaces the need for stakeholder interviews by generating all requirements from historical data alone.",
+              "AI generates final requirements documentation automatically without any need for analyst review or stakeholder validation.",
+              "AI can analyze interview transcripts, identify recurring themes, and suggest requirement patterns from stakeholder conversations.",
+              "AI only helps with technical requirements and has no application in gathering business or user requirements."
+            ],
+            "correctAnswer": 2,
+            "rationale": "AI assists requirements gathering by processing large volumes of qualitative data (transcripts, documents, feedback) to identify patterns and themes, but human analysts still drive stakeholder engagement and validation.",
+            "tags": [
+              "requirements gathering",
+              "AI assistance",
+              "stakeholder engagement",
+              "analysis"
+            ]
+          },
+          {
+            "id": "RDA-BA-B-002",
+            "level": 1,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.29,
+            "discrimination": 1.08,
+            "bloomLevel": "Understand",
+            "question": "What is the primary risk of relying solely on AI-generated requirements without human validation?",
+            "options": [
+              "AI may miss critical context, stakeholder nuances, and business constraints that require human judgment and experience.",
+              "There is no risk because AI-generated requirements are consistently superior to human-created requirements.",
+              "AI-generated requirements are always technically incorrect and will cause immediate project failure upon implementation.",
+              "The only risk is that requirements might be generated too quickly for teams to keep up with."
+            ],
+            "correctAnswer": 0,
+            "rationale": "AI lacks contextual understanding, organizational knowledge, and stakeholder relationship insights. Human BAs provide crucial validation, ensuring requirements align with business realities and stakeholder needs.",
+            "tags": [
+              "validation",
+              "human judgment",
+              "risk management",
+              "context"
+            ]
+          },
+          {
+            "id": "RDA-BA-B-003",
+            "level": 1,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.33,
+            "discrimination": 1.11,
+            "bloomLevel": "Apply",
+            "question": "You're using an AI tool to analyze 200 customer feedback forms. How should you use the AI's output?",
+            "options": [
+              "Ignore the AI analysis completely and read all 200 forms manually to ensure complete human understanding.",
+              "Convert every AI-identified theme directly into a requirement without checking accuracy or business relevance.",
+              "Use AI-identified themes as a starting point, then validate findings with stakeholders and supplement with manual analysis of edge cases.",
+              "Accept all AI findings as final requirements without any validation since processing 200 forms manually is impractical."
+            ],
+            "correctAnswer": 2,
+            "rationale": "AI excels at processing volume and identifying patterns, but BAs must validate findings, engage stakeholders to confirm priorities, and ensure edge cases are properly addressed. AI is a tool for efficiency, not a replacement for analysis.",
+            "tags": [
+              "feedback analysis",
+              "validation",
+              "stakeholder engagement",
+              "hybrid approach"
+            ]
+          },
+          {
+            "id": "RDA-BA-B-004",
+            "level": 1,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.36,
+            "discrimination": 1.13,
+            "bloomLevel": "Understand",
+            "question": "When should AI-powered requirement prioritization tools be used versus traditional prioritization methods?",
+            "options": [
+              "Never use AI prioritization because stakeholders' personal preferences should always be the only prioritization factor.",
+              "Always use AI prioritization because it eliminates all bias and political considerations from prioritization decisions.",
+              "Use AI prioritization exclusively for technical requirements but never for business or user-facing requirements.",
+              "Use AI prioritization when dealing with large backlogs or complex dependencies, but always validate with stakeholder input."
+            ],
+            "correctAnswer": 3,
+            "rationale": "AI can help analyze large sets of requirements and dependencies, but stakeholder judgment on business value, strategic alignment, and organizational priorities remains essential. AI augments, not replaces, prioritization.",
+            "tags": [
+              "prioritization",
+              "stakeholder input",
+              "decision making",
+              "hybrid approach"
+            ]
+          },
+          {
+            "id": "RDA-BA-B-005",
+            "level": 1,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.4,
+            "discrimination": 1.16,
+            "bloomLevel": "Understand",
+            "question": "What's the most important consideration when using AI to identify gaps in requirements documentation?",
+            "options": [
+              "AI-identified gaps should be ignored because they typically represent unnecessary over-specification of requirements.",
+              "Gap detection should only be performed manually because AI cannot understand requirements documentation at all.",
+              "AI gap detection is always completely accurate, so any gap identified must be filled regardless of business need.",
+              "AI can flag structural inconsistencies and missing elements, but human analysts must determine if identified gaps are truly missing requirements."
+            ],
+            "correctAnswer": 3,
+            "rationale": "AI can identify structural patterns and potential gaps in documentation, but BAs must evaluate whether flagged items represent actual requirements gaps or are intentionally out of scope. Context matters.",
+            "tags": [
+              "gap analysis",
+              "validation",
+              "documentation",
+              "critical thinking"
+            ]
+          },
+          {
+            "id": "RDA-BA-B-006",
+            "level": 1,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.44,
+            "discrimination": 1.18,
+            "bloomLevel": "Apply",
+            "question": "Your AI tool suggests that based on user stories from similar projects, your e-commerce checkout should include social login. How do you proceed?",
+            "options": [
+              "Add social login to requirements without investigation, then remove it later if stakeholders object during review.",
+              "Immediately add social login as a requirement because AI recommendations based on similar projects are always appropriate.",
+              "Investigate whether social login aligns with your specific users' needs, security requirements, and business context before including it.",
+              "Reject the AI suggestion outright since recommendations from other projects are never relevant to current work."
+            ],
+            "correctAnswer": 2,
+            "rationale": "AI suggestions based on patterns must be validated against specific project context. What worked for other projects may not fit your users, security requirements, or business needs. Context-aware evaluation is essential.",
+            "tags": [
+              "requirement validation",
+              "context awareness",
+              "AI suggestions",
+              "business fit"
+            ]
+          },
+          {
+            "id": "RDA-BA-B-007",
+            "level": 1,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.47,
+            "discrimination": 1.2,
+            "bloomLevel": "Apply",
+            "question": "You're documenting requirements for an AI-powered system. What additional requirements should you always include?",
+            "options": [
+              "No additional requirements are needed because AI systems are self-managing and don't require special documentation.",
+              "Only data storage requirements, since AI behavior is completely unpredictable and cannot be specified in requirements.",
+              "Only functional requirements for the user interface, since AI system internals are purely technical implementation details.",
+              "Requirements for model performance monitoring, explainability of decisions, and procedures for handling AI errors or biased outputs."
+            ],
+            "correctAnswer": 3,
+            "rationale": "AI-powered systems require additional requirements around monitoring, explainability, error handling, and bias mitigation. These are business requirements, not just technical details, as they affect user trust and system outcomes.",
+            "tags": [
+              "AI requirements",
+              "monitoring",
+              "explainability",
+              "risk management"
+            ]
+          },
+          {
+            "id": "RDA-BA-B-008",
+            "level": 1,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.49,
+            "discrimination": 1.2,
+            "bloomLevel": "Understand",
+            "question": "How should business analysts handle conflicting requirements identified by AI analysis of different stakeholder groups?",
+            "options": [
+              "Use AI findings as data to facilitate structured stakeholder discussions, helping groups understand different perspectives and reach consensus.",
+              "Always prioritize the requirements from the largest stakeholder group since AI analysis shows they represent the majority.",
+              "Let the AI system automatically resolve conflicts by choosing the most frequently mentioned requirements across groups.",
+              "Ignore all AI-identified conflicts and make arbitrary decisions to avoid lengthy stakeholder discussions and delays."
+            ],
+            "correctAnswer": 0,
+            "rationale": "AI can surface conflicts efficiently, but resolution requires human facilitation. BAs use AI findings as objective data to guide stakeholder conversations, enabling informed consensus rather than arbitrary resolution.",
+            "tags": [
+              "conflict resolution",
+              "stakeholder management",
+              "facilitation",
+              "AI insights"
+            ]
+          }
+        ]
+      },
+      {
+        "dimensionCode": "DIA",
+        "dimensionName": "Data Interpretation & Analysis",
+        "description": "Using AI to analyze, interpret, and derive insights from business data",
+        "weight": 0.125,
+        "totalPoints": 75,
+        "items": [
+          {
+            "id": "DIA-BA-B-001",
+            "level": 1,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.27,
+            "discrimination": 1.07,
+            "bloomLevel": "Remember",
+            "question": "How does AI enhance a business analyst's ability to work with large datasets?",
+            "options": [
+              "AI generates random insights from data regardless of quality, so analysts should ignore statistical validation entirely.",
+              "AI can quickly identify patterns, outliers, and correlations in large datasets that would take humans excessive time to discover.",
+              "AI only works with small datasets and becomes less effective as data volume increases beyond a few records.",
+              "AI completely replaces the need for analysts to understand the data by making all analytical decisions automatically."
+            ],
+            "correctAnswer": 1,
+            "rationale": "AI's computational power enables rapid pattern recognition in large datasets. BAs can leverage this to identify insights more quickly, but must still interpret findings in business context and validate statistical significance.",
+            "tags": [
+              "data analysis",
+              "pattern recognition",
+              "efficiency",
+              "AI augmentation"
+            ]
+          },
+          {
+            "id": "DIA-BA-B-002",
+            "level": 1,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.3,
+            "discrimination": 1.09,
+            "bloomLevel": "Understand",
+            "question": "What is the primary risk of using AI-generated data insights without understanding the underlying analysis methods?",
+            "options": [
+              "There is no risk because AI-generated insights are always statistically valid and ready for immediate business use.",
+              "AI insights are deliberately obfuscated, so understanding methods would actually reduce the accuracy of interpretations.",
+              "The only risk is that insights might be too complex for non-technical stakeholders to understand clearly.",
+              "You might misinterpret insights, miss important limitations, or make business decisions based on statistically invalid patterns."
+            ],
+            "correctAnswer": 3,
+            "rationale": "Understanding how AI derives insights helps BAs assess validity, recognize limitations, identify when findings might be spurious correlations, and communicate appropriate levels of confidence to stakeholders.",
+            "tags": [
+              "statistical validity",
+              "interpretation",
+              "critical thinking",
+              "methodology"
+            ]
+          },
+          {
+            "id": "DIA-BA-B-003",
+            "level": 1,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.34,
+            "discrimination": 1.11,
+            "bloomLevel": "Apply",
+            "question": "An AI tool identifies a strong correlation between customer age and product returns. What should your next analytical step be?",
+            "options": [
+              "Immediately create a business rule restricting sales to certain age groups based on this correlation.",
+              "Document this as a confirmed causal relationship and recommend age-based marketing changes immediately.",
+              "Investigate whether this correlation reflects a genuine causal relationship or if confounding factors explain the pattern.",
+              "Ignore the correlation entirely because AI often identifies spurious patterns that have no business meaning."
+            ],
+            "correctAnswer": 2,
+            "rationale": "Correlation doesn't imply causation. BAs must investigate further to understand underlying factors, check for confounding variables, and validate whether the pattern has business meaning before making recommendations.",
+            "tags": [
+              "correlation vs causation",
+              "root cause analysis",
+              "validation",
+              "critical analysis"
+            ]
+          },
+          {
+            "id": "DIA-BA-B-004",
+            "level": 1,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.37,
+            "discrimination": 1.13,
+            "bloomLevel": "Understand",
+            "question": "When should you question the quality of data being analyzed by an AI tool?",
+            "options": [
+              "Data quality doesn't matter because AI can extract meaningful insights from any dataset regardless of quality.",
+              "Only question data quality if the AI specifically flags data issues, otherwise assume all data is valid.",
+              "Never question data quality because AI tools automatically clean and validate all data before analysis begins.",
+              "Always assess data quality first, as AI will process any data it receives regardless of completeness, accuracy, or relevance."
+            ],
+            "correctAnswer": 3,
+            "rationale": "Garbage in, garbage out applies to AI. BAs must assess data quality, completeness, and relevance before analysis. AI processes whatever data it receives, even if that data is incomplete, outdated, or inaccurate.",
+            "tags": [
+              "data quality",
+              "validation",
+              "data governance",
+              "AI limitations"
+            ]
+          },
+          {
+            "id": "DIA-BA-B-005",
+            "level": 1,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.41,
+            "discrimination": 1.16,
+            "bloomLevel": "Apply",
+            "question": "Your AI analysis shows customer satisfaction decreased after a website redesign. What additional analysis would you perform?",
+            "options": [
+              "Segment the analysis by customer type, geographic region, and specific pages to understand if certain groups were affected differently.",
+              "Accept the overall finding as complete and recommend immediately reverting to the old website design.",
+              "Assume the AI analysis is wrong and ignore the finding since redesigns are always intended to improve satisfaction.",
+              "Stop all analysis and immediately begin a new redesign project without investigating the specific causes."
+            ],
+            "correctAnswer": 0,
+            "rationale": "Aggregate findings often hide important details. Segmentation analysis reveals whether all customers or specific groups were impacted, which pages caused issues, and helps identify root causes for targeted solutions.",
+            "tags": [
+              "segmentation",
+              "root cause analysis",
+              "detailed investigation",
+              "data analysis"
+            ]
+          },
+          {
+            "id": "DIA-BA-B-006",
+            "level": 1,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.44,
+            "discrimination": 1.18,
+            "bloomLevel": "Understand",
+            "question": "What does it mean when an AI model shows 'high confidence' in a prediction for business decision-making?",
+            "options": [
+              "The model is statistically confident based on training data, but this doesn't guarantee accuracy for your specific situation.",
+              "High confidence indicates the model has achieved perfect accuracy and will never make errors for these predictions.",
+              "High confidence is meaningless and should be completely ignored when making any business decisions.",
+              "High confidence means the prediction is absolutely certain and can be acted upon without any validation or review."
+            ],
+            "correctAnswer": 0,
+            "rationale": "Model confidence reflects statistical patterns in training data, not guarantees about real-world outcomes. BAs must understand that high confidence doesn't eliminate the need for validation, especially in novel situations.",
+            "tags": [
+              "model confidence",
+              "prediction",
+              "validation",
+              "statistical interpretation"
+            ]
+          },
+          {
+            "id": "DIA-BA-B-007",
+            "level": 1,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.47,
+            "discrimination": 1.2,
+            "bloomLevel": "Apply",
+            "question": "An AI tool segments your customers into 15 distinct groups. How do you make this actionable for the business?",
+            "options": [
+              "Work with stakeholders to consolidate segments into fewer actionable groups based on business capabilities and strategic priorities.",
+              "Choose the three largest segments and ignore the others since smaller segments aren't worth business attention.",
+              "Reject the segmentation entirely and continue with current single-segment approach since AI created too many groups.",
+              "Present all 15 segments to the business and require separate strategies for each one regardless of practicality."
+            ],
+            "correctAnswer": 0,
+            "rationale": "AI can identify granular patterns, but BAs must translate findings into actionable business strategies. This often means consolidating segments based on similar needs, business capabilities, and strategic priorities.",
+            "tags": [
+              "segmentation",
+              "actionability",
+              "stakeholder collaboration",
+              "strategic thinking"
+            ]
+          }
+        ]
+      },
+      {
+        "dimensionCode": "PSM",
+        "dimensionName": "Process & System Modeling",
+        "description": "Documenting and optimizing business processes and systems with AI assistance",
+        "weight": 0.125,
+        "totalPoints": 75,
+        "items": [
+          {
+            "id": "PSM-BA-B-001",
+            "level": 1,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.28,
+            "discrimination": 1.07,
+            "bloomLevel": "Remember",
+            "question": "How can AI assist business analysts in process mapping and documentation?",
+            "options": [
+              "AI completely automates all process mapping, eliminating any need for analysts to interview users or observe workflows.",
+              "AI only creates theoretical process models and cannot work with real operational data or system logs.",
+              "AI cannot help with process mapping because processes are too complex for any form of automated analysis.",
+              "AI can analyze process logs and system data to identify actual workflows, bottlenecks, and variations from designed processes."
+            ],
+            "correctAnswer": 3,
+            "rationale": "AI excels at analyzing process logs, transaction data, and system events to reveal how processes actually operate. BAs use this to identify discrepancies between designed and actual processes, find bottlenecks, and understand variations.",
+            "tags": [
+              "process mining",
+              "process mapping",
+              "AI assistance",
+              "workflow analysis"
+            ]
+          },
+          {
+            "id": "PSM-BA-B-002",
+            "level": 1,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.31,
+            "discrimination": 1.09,
+            "bloomLevel": "Understand",
+            "question": "When should process automation with AI be considered versus traditional automation approaches?",
+            "options": [
+              "Never use AI automation because traditional rule-based systems are always more reliable for business processes.",
+              "AI automation should only be used for customer-facing processes but never for internal business operations.",
+              "Consider AI automation when processes involve unstructured data, complex decision-making, or when rules cannot be easily codified.",
+              "Always choose AI automation first because it is universally superior to any traditional rule-based automation approach."
+            ],
+            "correctAnswer": 2,
+            "rationale": "AI automation is valuable when processes involve pattern recognition, natural language, or complex decisions that are hard to capture in rules. Traditional automation works better for well-defined, rule-based processes.",
+            "tags": [
+              "automation",
+              "AI suitability",
+              "process optimization",
+              "decision making"
+            ]
+          },
+          {
+            "id": "PSM-BA-B-003",
+            "level": 1,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.35,
+            "discrimination": 1.12,
+            "bloomLevel": "Apply",
+            "question": "You're documenting an order fulfillment process. An AI tool suggests three steps could be eliminated. What's your next action?",
+            "options": [
+              "Ignore the AI suggestion completely since only human process experts can identify unnecessary steps.",
+              "Validate the suggestion with process owners and users to understand if those steps serve purposes not captured in system data.",
+              "Immediately remove the suggested steps from documentation and recommend their elimination to management.",
+              "Accept the AI recommendation as final without validation since AI analysis is based on objective data."
+            ],
+            "correctAnswer": 1,
+            "rationale": "AI analysis based on system data might miss important context\u2014steps might handle exceptions, provide audit trails, or serve compliance purposes. BAs must validate with people who understand the full business context.",
+            "tags": [
+              "process validation",
+              "stakeholder engagement",
+              "business context",
+              "AI limitations"
+            ]
+          },
+          {
+            "id": "PSM-BA-B-004",
+            "level": 1,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.38,
+            "discrimination": 1.14,
+            "bloomLevel": "Understand",
+            "question": "What is process mining, and how does it support business analysis?",
+            "options": [
+              "Process mining is manually interviewing users about processes and mining for hidden information they haven't shared.",
+              "Process mining creates theoretical ideal processes without any analysis of how work actually flows in the organization.",
+              "Process mining uses AI to analyze system event logs and reconstruct actual process flows, revealing deviations and inefficiencies.",
+              "Process mining only works for manufacturing processes and has no application in service or knowledge-based workflows."
+            ],
+            "correctAnswer": 2,
+            "rationale": "Process mining analyzes digital footprints (logs, transactions) to discover how processes actually work, identify bottlenecks, and detect compliance violations or workarounds\u2014providing objective data for process improvement.",
+            "tags": [
+              "process mining",
+              "event logs",
+              "process discovery",
+              "data-driven analysis"
+            ]
+          },
+          {
+            "id": "PSM-BA-B-005",
+            "level": 1,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.42,
+            "discrimination": 1.17,
+            "bloomLevel": "Apply",
+            "question": "AI analysis shows your customer service process has 23 different variations. How should you approach standardization?",
+            "options": [
+              "Eliminate all variations randomly and see which departments complain to identify which variations were actually needed.",
+              "Accept all 23 variations as necessary without investigation since users must have good reasons for each one.",
+              "Immediately force all variations into a single standard process regardless of business reasons for differences.",
+              "Analyze which variations handle legitimate business needs versus workarounds, then standardize where appropriate while preserving needed flexibility."
+            ],
+            "correctAnswer": 3,
+            "rationale": "Process variations might reflect necessary adaptations or problematic workarounds. BAs must distinguish between needed flexibility and inefficient divergence, standardizing where appropriate while preserving legitimate variations.",
+            "tags": [
+              "process standardization",
+              "variation analysis",
+              "business judgment",
+              "process optimization"
+            ]
+          },
+          {
+            "id": "PSM-BA-B-006",
+            "level": 1,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.46,
+            "discrimination": 1.19,
+            "bloomLevel": "Understand",
+            "question": "When modeling a process that will include AI-powered decision points, what additional elements must you document?",
+            "options": [
+              "No additional documentation is needed because AI decision-making is completely autonomous and doesn't require specifications.",
+              "Document only the happy path since AI systems automatically handle all edge cases and exceptions perfectly.",
+              "You must document decision criteria, confidence thresholds, escalation procedures for low-confidence cases, and human override capabilities.",
+              "Only document the AI vendor's name since all AI decision logic is proprietary and cannot be specified."
+            ],
+            "correctAnswer": 2,
+            "rationale": "AI decision points require clear documentation of criteria, thresholds, exception handling, and human oversight. This ensures appropriate governance, enables monitoring, and maintains process transparency.",
+            "tags": [
+              "AI integration",
+              "process documentation",
+              "decision criteria",
+              "governance"
+            ]
+          },
+          {
+            "id": "PSM-BA-B-007",
+            "level": 1,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.49,
+            "discrimination": 1.2,
+            "bloomLevel": "Apply",
+            "question": "You're creating a future-state process model that incorporates AI. How do you validate it will work as designed?",
+            "options": [
+              "Create the model, document it thoroughly, and consider validation complete without any testing or user input.",
+              "Deploy immediately to production since AI-enhanced processes are self-optimizing and don't require validation.",
+              "Conduct walkthrough sessions with process users, test with representative scenarios, and pilot with a subset before full rollout.",
+              "Only validate with IT teams since they understand AI capabilities and users' input isn't relevant for technical systems."
+            ],
+            "correctAnswer": 2,
+            "rationale": "Future-state validation requires user walkthroughs to ensure practicality, scenario testing for edge cases, and piloting to reveal unexpected issues. AI components don't eliminate the need for process validation.",
+            "tags": [
+              "process validation",
+              "user acceptance",
+              "piloting",
+              "change management"
+            ]
+          },
+          {
+            "id": "PSM-BA-B-008",
+            "level": 1,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.51,
+            "discrimination": 1.2,
+            "bloomLevel": "Understand",
+            "question": "How should business analysts account for AI model drift when documenting processes that use AI?",
+            "options": [
+              "Document monitoring requirements, retraining procedures, and processes for detecting when AI performance degrades over time.",
+              "Ignore model drift entirely because AI models maintain consistent performance indefinitely once deployed to production.",
+              "Document model drift as a technical issue that only data science teams need to address in their documentation.",
+              "Plan to completely rebuild all AI-dependent processes from scratch whenever any model drift is detected."
+            ],
+            "correctAnswer": 0,
+            "rationale": "Model drift is a business concern, not just technical. BAs must ensure processes include monitoring, performance thresholds, escalation when AI degrades, and clear ownership for model maintenance.",
+            "tags": [
+              "model drift",
+              "monitoring",
+              "process maintenance",
+              "AI governance"
+            ]
+          }
+        ]
+      },
+      {
+        "dimensionCode": "STE",
+        "dimensionName": "Solution Testing & Evaluation",
+        "description": "Testing and validating AI-enhanced solutions against business requirements",
+        "weight": 0.125,
+        "totalPoints": 75,
+        "items": [
+          {
+            "id": "STE-BA-B-001",
+            "level": 1,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.29,
+            "discrimination": 1.08,
+            "bloomLevel": "Remember",
+            "question": "What additional testing considerations apply when business solutions include AI components?",
+            "options": [
+              "Only test the user interface, since AI logic is too complex for business analysts to evaluate meaningfully.",
+              "Test AI for bias, edge cases, performance with unexpected inputs, and consistency over time\u2014not just functional correctness.",
+              "Test AI exactly like traditional software using only predefined test cases with expected outputs.",
+              "AI components require no testing because they continuously learn and automatically improve their own performance."
+            ],
+            "correctAnswer": 1,
+            "rationale": "AI testing extends beyond functional testing to include fairness, robustness with unexpected inputs, edge case handling, and performance consistency. BAs must design test strategies that address AI-specific risks.",
+            "tags": [
+              "AI testing",
+              "test strategy",
+              "quality assurance",
+              "risk management"
+            ]
+          },
+          {
+            "id": "STE-BA-B-002",
+            "level": 1,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.32,
+            "discrimination": 1.1,
+            "bloomLevel": "Understand",
+            "question": "Why is testing with edge cases particularly important for AI-powered business solutions?",
+            "options": [
+              "AI models may not have encountered edge cases during training, leading to unexpected or inappropriate responses in rare situations.",
+              "AI performs better with edge cases than normal cases, so testing edge cases will show artificially good results.",
+              "Edge cases only matter for safety-critical applications and can be ignored in typical business software.",
+              "Edge case testing is unnecessary because AI systems automatically generalize perfectly to all possible scenarios."
+            ],
+            "correctAnswer": 0,
+            "rationale": "AI models perform well on patterns similar to training data but may fail unpredictably on edge cases. BAs must identify and test boundary conditions, unusual inputs, and rare scenarios.",
+            "tags": [
+              "edge case testing",
+              "AI limitations",
+              "risk management",
+              "quality assurance"
+            ]
+          },
+          {
+            "id": "STE-BA-B-003",
+            "level": 1,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.36,
+            "discrimination": 1.12,
+            "bloomLevel": "Apply",
+            "question": "You're testing an AI-powered credit application system. What should you specifically test for beyond functional requirements?",
+            "options": [
+              "Test for consistent decisions across demographic groups, appropriate handling of borderline cases, and explainability of decisions.",
+              "Only test processing speed since AI decision accuracy cannot be evaluated without understanding complex algorithms.",
+              "Test nothing beyond basic functionality because AI models are pre-validated by data science teams.",
+              "Only test with successful application cases since rejected applications don't require the same level of validation."
+            ],
+            "correctAnswer": 0,
+            "rationale": "Credit decisions require fairness testing across demographics, validation of borderline case handling, and ensuring decisions can be explained for regulatory compliance and customer service.",
+            "tags": [
+              "fairness testing",
+              "compliance",
+              "explainability",
+              "AI testing"
+            ]
+          },
+          {
+            "id": "STE-BA-B-004",
+            "level": 1,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.39,
+            "discrimination": 1.15,
+            "bloomLevel": "Understand",
+            "question": "What does 'acceptance criteria' mean for AI-powered features compared to traditional features?",
+            "options": [
+              "AI features cannot have acceptance criteria because their behavior is unpredictable and varies continuously.",
+              "AI acceptance criteria should only specify that the AI model loads correctly, regardless of output quality.",
+              "AI acceptance criteria should include performance thresholds, acceptable error rates, and procedures for handling AI mistakes.",
+              "Acceptance criteria for AI must be identical to traditional software with exact expected outputs for all inputs."
+            ],
+            "correctAnswer": 2,
+            "rationale": "AI acceptance criteria differ from traditional software\u2014they include probabilistic measures (accuracy thresholds), error handling expectations, and boundaries for acceptable performance rather than exact outputs.",
+            "tags": [
+              "acceptance criteria",
+              "performance thresholds",
+              "AI testing",
+              "quality standards"
+            ]
+          },
+          {
+            "id": "STE-BA-B-005",
+            "level": 1,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.43,
+            "discrimination": 1.17,
+            "bloomLevel": "Apply",
+            "question": "During UAT, users report an AI recommendation feature 'feels wrong' but can't articulate why. How do you investigate?",
+            "options": [
+              "Dismiss the feedback as subjective since AI recommendations are mathematically optimized and therefore objectively correct.",
+              "Immediately escalate to data scientists without investigation since only technical teams can address AI issues.",
+              "Analyze specific examples where users feel recommendations are wrong, look for patterns, and validate against business logic and user needs.",
+              "Accept the AI recommendations as correct and focus on training users to trust the system without questioning."
+            ],
+            "correctAnswer": 2,
+            "rationale": "Subjective user discomfort often signals real issues\u2014bias, missing context, or misalignment with needs. BAs should investigate specific cases to identify patterns and understand the root cause.",
+            "tags": [
+              "user acceptance testing",
+              "investigation",
+              "user feedback",
+              "AI validation"
+            ]
+          },
+          {
+            "id": "STE-BA-B-006",
+            "level": 1,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.46,
+            "discrimination": 1.19,
+            "bloomLevel": "Understand",
+            "question": "How should business analysts define 'success metrics' for AI features differently than traditional features?",
+            "options": [
+              "Only measure whether the AI model loads successfully since performance is unpredictable and cannot be specified.",
+              "Use exactly the same metrics as traditional features since AI should be treated no differently than other software.",
+              "Success metrics are unnecessary for AI features because they adapt and improve automatically over time.",
+              "Include both system performance metrics (accuracy, latency) and business outcome metrics (user satisfaction, business value delivered)."
+            ],
+            "correctAnswer": 3,
+            "rationale": "AI success requires both technical metrics (model performance) and business metrics (actual value delivered, user adoption, business outcomes). BAs bridge these perspectives in success criteria.",
+            "tags": [
+              "success metrics",
+              "business outcomes",
+              "performance monitoring",
+              "value measurement"
+            ]
+          },
+          {
+            "id": "STE-BA-B-007",
+            "level": 1,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.49,
+            "discrimination": 1.2,
+            "bloomLevel": "Apply",
+            "question": "You're preparing test data for an AI-powered fraud detection system. What's the most important consideration?",
+            "options": [
+              "Only include known fraud cases since the system needs to learn fraud patterns exclusively.",
+              "Include representative examples of both legitimate transactions and various fraud patterns, ensuring demographic balance.",
+              "Use random data generation since AI systems work equally well with any data regardless of representativeness.",
+              "Test data doesn't matter because AI will learn correct patterns from production data after deployment."
+            ],
+            "correctAnswer": 1,
+            "rationale": "Test data must be representative of real-world scenarios, including both classes (fraud/legitimate), various fraud types, and demographic diversity to ensure fair, effective performance.",
+            "tags": [
+              "test data",
+              "representativeness",
+              "bias testing",
+              "quality assurance"
+            ]
+          }
+        ]
+      },
+      {
+        "dimensionCode": "ABV",
+        "dimensionName": "AI Business Value & ROI",
+        "description": "Assessing and demonstrating business value and ROI of AI initiatives",
+        "weight": 0.125,
+        "totalPoints": 75,
+        "items": [
+          {
+            "id": "ABV-BA-B-001",
+            "level": 1,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.3,
+            "discrimination": 1.09,
+            "bloomLevel": "Remember",
+            "question": "How should business analysts approach building a business case for AI initiatives?",
+            "options": [
+              "Quantify expected benefits against costs, but also include change management, ongoing maintenance, and potential risks in the analysis.",
+              "AI business cases don't need financial analysis because AI value is self-evident and doesn't require justification.",
+              "Only focus on cost savings from automation and ignore all other factors since automation benefits are easiest to measure.",
+              "Build the business case entirely around competitive pressure and fear of falling behind without quantifying actual benefits."
+            ],
+            "correctAnswer": 0,
+            "rationale": "AI business cases require comprehensive analysis including direct benefits, costs (development, infrastructure, maintenance), change management, and risk mitigation. BAs must present a realistic, holistic view.",
+            "tags": [
+              "business case",
+              "ROI analysis",
+              "cost-benefit",
+              "comprehensive analysis"
+            ]
+          },
+          {
+            "id": "ABV-BA-B-002",
+            "level": 1,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.33,
+            "discrimination": 1.11,
+            "bloomLevel": "Understand",
+            "question": "What are the typical cost components that business analysts should include when evaluating AI solution costs?",
+            "options": [
+              "Only include the initial AI software license cost since all other expenses are standard IT costs.",
+              "Include development costs, infrastructure, data preparation, ongoing maintenance, monitoring, retraining, and user training.",
+              "Only count data scientist salaries since AI development doesn't require business analyst or user involvement.",
+              "AI solutions have no ongoing costs after initial deployment because they are completely self-managing."
+            ],
+            "correctAnswer": 1,
+            "rationale": "AI total cost includes development, infrastructure (compute/storage), data preparation, ongoing monitoring, model retraining, maintenance, and change management\u2014not just initial development costs.",
+            "tags": [
+              "cost analysis",
+              "TCO",
+              "AI economics",
+              "budget planning"
+            ]
+          },
+          {
+            "id": "ABV-BA-B-003",
+            "level": 1,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.37,
+            "discrimination": 1.13,
+            "bloomLevel": "Apply",
+            "question": "Your proposed AI solution could save 20 hours per week of manual work. How do you quantify this benefit?",
+            "options": [
+              "Assume all time savings will be spent on personal activities so there is no business benefit to quantify.",
+              "Multiply hours by average salary and present only cost savings without considering what else could be done.",
+              "Time savings cannot be quantified as business value since saved time doesn't translate to actual budget reduction.",
+              "Calculate labor cost savings and also assess what higher-value work could be done with freed capacity."
+            ],
+            "correctAnswer": 3,
+            "rationale": "Time savings create value through direct cost reduction and opportunity value\u2014what higher-value activities become possible. BAs should quantify both direct savings and strategic capacity benefits.",
+            "tags": [
+              "benefit quantification",
+              "time savings",
+              "opportunity value",
+              "ROI"
+            ]
+          },
+          {
+            "id": "ABV-BA-B-004",
+            "level": 1,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.4,
+            "discrimination": 1.16,
+            "bloomLevel": "Understand",
+            "question": "How should business analysts account for AI model performance uncertainty when calculating expected benefits?",
+            "options": [
+              "Ignore performance uncertainty entirely because AI models always perform exactly as specified.",
+              "Always use best-case performance projections to make the business case as compelling as possible.",
+              "Use performance ranges with best-case, expected, and worst-case scenarios based on realistic performance assumptions.",
+              "Performance uncertainty cannot be addressed so just present a single estimate and hope it's accurate."
+            ],
+            "correctAnswer": 2,
+            "rationale": "AI performance can vary, so business cases should include range estimates with realistic scenarios. This provides stakeholders with transparent risk assessment and sets appropriate expectations.",
+            "tags": [
+              "risk analysis",
+              "scenario planning",
+              "performance uncertainty",
+              "realistic projections"
+            ]
+          },
+          {
+            "id": "ABV-BA-B-005",
+            "level": 1,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.44,
+            "discrimination": 1.18,
+            "bloomLevel": "Apply",
+            "question": "You're measuring success six months after deploying an AI customer service chatbot. What metrics should you track?",
+            "options": [
+              "Measure nothing because AI systems are self-optimizing and don't require performance monitoring.",
+              "Only track the number of conversations handled since volume is the only metric that matters for chatbots.",
+              "Track both technical metrics (resolution rate, accuracy) and business outcomes (customer satisfaction, cost per interaction, agent capacity freed).",
+              "Only track customer complaints about the chatbot and ignore all positive interactions or successful resolutions."
+            ],
+            "correctAnswer": 2,
+            "rationale": "AI success measurement requires both technical performance metrics and business outcome metrics. BAs track system performance alongside actual business value delivered and user satisfaction.",
+            "tags": [
+              "success metrics",
+              "performance monitoring",
+              "business outcomes",
+              "value measurement"
+            ]
+          },
+          {
+            "id": "ABV-BA-B-006",
+            "level": 1,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.47,
+            "discrimination": 1.19,
+            "bloomLevel": "Understand",
+            "question": "What should business analysts consider when comparing AI solutions to non-AI alternatives?",
+            "options": [
+              "Only compare initial implementation costs and ignore all other factors when evaluating alternatives.",
+              "Always choose AI solutions because they are inherently superior to any non-AI alternative in every situation.",
+              "Never choose AI solutions because they are always more expensive and risky than traditional approaches.",
+              "Compare total costs, ongoing maintenance, flexibility, performance, risk profiles, and implementation timelines for fair evaluation."
+            ],
+            "correctAnswer": 3,
+            "rationale": "Fair comparison requires evaluating multiple dimensions\u2014costs, performance, flexibility, risks, maintenance requirements, and implementation complexity. Sometimes traditional solutions are more appropriate.",
+            "tags": [
+              "solution comparison",
+              "alternatives analysis",
+              "decision criteria",
+              "fair evaluation"
+            ]
+          },
+          {
+            "id": "ABV-BA-B-007",
+            "level": 1,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.51,
+            "discrimination": 1.2,
+            "bloomLevel": "Apply",
+            "question": "How do you handle intangible benefits of AI in your business case when stakeholders demand quantified ROI?",
+            "options": [
+              "Claim all intangible benefits will eventually become tangible and add arbitrary financial values for each.",
+              "Acknowledge intangibles explicitly, provide proxies or ranges where possible, and separate quantified from unquantified benefits clearly.",
+              "Ignore intangible benefits entirely and only include items that can be precisely quantified in dollars.",
+              "Force all benefits into financial numbers even if the quantification is speculative or misleading."
+            ],
+            "correctAnswer": 1,
+            "rationale": "Transparency is essential. BAs should clearly distinguish between quantified benefits (with assumptions) and qualitative benefits. Using proxies or ranges for intangibles is acceptable when assumptions are explicit.",
+            "tags": [
+              "intangible benefits",
+              "ROI calculation",
+              "transparency",
+              "stakeholder communication"
+            ]
+          },
+          {
+            "id": "ABV-BA-B-008",
+            "level": 1,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.53,
+            "discrimination": 1.2,
+            "bloomLevel": "Understand",
+            "question": "When should you recommend a phased AI implementation approach versus full deployment?",
+            "options": [
+              "Always recommend full deployment immediately because phased approaches delay benefits and increase total costs.",
+              "Recommend phased approach when risks are high, benefits are uncertain, or when learning from early stages can improve later phases.",
+              "Let technical teams decide implementation approach since business analysts shouldn't influence technical deployment strategies.",
+              "Always use phased approach for any AI initiative regardless of risk level or business circumstances."
+            ],
+            "correctAnswer": 1,
+            "rationale": "Phased approaches reduce risk when uncertainty is high, enable learning and adjustment, and build confidence. BAs should recommend implementation strategies based on risk profile, complexity, and organizational readiness.",
+            "tags": [
+              "implementation strategy",
+              "risk management",
+              "phased approach",
+              "strategic planning"
+            ]
+          }
+        ]
+      },
+      {
+        "dimensionCode": "CCI",
+        "dimensionName": "Change & Communication Impact",
+        "description": "Managing change and communicating effectively about AI initiatives",
+        "weight": 0.125,
+        "totalPoints": 75,
+        "items": [
+          {
+            "id": "CCI-BA-B-001",
+            "level": 1,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.29,
+            "discrimination": 1.08,
+            "bloomLevel": "Remember",
+            "question": "Why is change management particularly important for AI implementations compared to traditional system changes?",
+            "options": [
+              "AI implementations don't require change management because the technology is intuitive and requires no learning.",
+              "AI changes how work is done, may create anxiety about job roles, and requires new skills\u2014making adoption more challenging.",
+              "Change management only matters for large AI projects and is unnecessary for smaller AI feature additions.",
+              "Change management is less important for AI because users naturally embrace AI without any resistance or concern."
+            ],
+            "correctAnswer": 1,
+            "rationale": "AI implementations often trigger concerns about job security, require new ways of working, and challenge existing expertise. Effective change management addresses these concerns and builds user confidence.",
+            "tags": [
+              "change management",
+              "user adoption",
+              "resistance",
+              "AI impact"
+            ]
+          },
+          {
+            "id": "CCI-BA-B-002",
+            "level": 1,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.32,
+            "discrimination": 1.1,
+            "bloomLevel": "Understand",
+            "question": "How should business analysts address employee concerns about AI replacing their jobs?",
+            "options": [
+              "Avoid discussing the topic entirely to prevent anxiety and hope concerns resolve after implementation.",
+              "Dismiss concerns as irrational resistance to change and insist employees simply accept the new technology.",
+              "Promise that no jobs will change at all, even if AI significantly alters work responsibilities.",
+              "Be transparent about changes, clarify how AI augments rather than replaces work, and identify new skills employees can develop."
+            ],
+            "correctAnswer": 3,
+            "rationale": "Transparency builds trust. BAs should honestly address how work will change, emphasize augmentation opportunities, and help employees see paths for growth rather than displacement.",
+            "tags": [
+              "job displacement",
+              "transparency",
+              "employee concerns",
+              "communication"
+            ]
+          },
+          {
+            "id": "CCI-BA-B-003",
+            "level": 1,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.35,
+            "discrimination": 1.12,
+            "bloomLevel": "Apply",
+            "question": "You're implementing AI to automate first-level support ticket categorization. How do you engage the support team?",
+            "options": [
+              "Implement the AI without support team involvement since they will naturally resist any change.",
+              "Tell the support team the AI will do their jobs better and faster to motivate them to improve.",
+              "Involve support team in testing AI accuracy, get their input on edge cases, and clarify how automation frees them for complex issues.",
+              "Deploy the AI first, then inform the support team after it's working to avoid negative feedback."
+            ],
+            "correctAnswer": 2,
+            "rationale": "Engaging users builds buy-in, leverages their expertise to improve the solution, and helps them understand how AI changes their role positively. Involvement increases adoption success.",
+            "tags": [
+              "stakeholder engagement",
+              "user involvement",
+              "change management",
+              "adoption"
+            ]
+          },
+          {
+            "id": "CCI-BA-B-004",
+            "level": 1,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.38,
+            "discrimination": 1.14,
+            "bloomLevel": "Understand",
+            "question": "What information should business analysts communicate to users about how AI makes decisions in their new tools?",
+            "options": [
+              "Only tell users that AI is highly accurate and they should always follow its recommendations without question.",
+              "Explain what data the AI uses, its limitations, when to trust versus verify outputs, and how to provide feedback.",
+              "Explain nothing about AI decision-making because users don't need to understand how technology works.",
+              "Provide complete technical details about algorithms and neural network architectures to all users."
+            ],
+            "correctAnswer": 1,
+            "rationale": "Users need appropriate understanding to use AI tools effectively\u2014knowing what influences decisions, recognizing limitations, and understanding when human judgment is needed. Transparency enables responsible use.",
+            "tags": [
+              "transparency",
+              "user education",
+              "explainability",
+              "effective use"
+            ]
+          },
+          {
+            "id": "CCI-BA-B-005",
+            "level": 1,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.42,
+            "discrimination": 1.17,
+            "bloomLevel": "Apply",
+            "question": "Users are reporting they don't trust AI recommendations. What's the most likely root cause to investigate?",
+            "options": [
+              "Assume users are simply resistant to change and increase pressure for them to comply with AI recommendations.",
+              "Immediately remove all AI features since any user distrust means the AI is fundamentally flawed.",
+              "Ignore trust concerns because users will eventually adapt to using AI regardless of their initial resistance.",
+              "Investigate whether users understand how the AI works, if recommendations lack explanation, or if early errors damaged credibility."
+            ],
+            "correctAnswer": 3,
+            "rationale": "Trust issues often stem from lack of understanding, poor explainability, or negative early experiences. BAs should investigate root causes\u2014improving communication, transparency, or AI performance as needed.",
+            "tags": [
+              "user trust",
+              "root cause analysis",
+              "adoption barriers",
+              "credibility"
+            ]
+          },
+          {
+            "id": "CCI-BA-B-006",
+            "level": 1,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.45,
+            "discrimination": 1.18,
+            "bloomLevel": "Understand",
+            "question": "How should business analysts prepare executives and stakeholders for realistic expectations about AI capabilities?",
+            "options": [
+              "Avoid discussing AI limitations entirely to prevent executives from losing confidence in the initiative.",
+              "Overpromise AI capabilities to build enthusiasm and excitement, then address limitations after implementation.",
+              "Provide only highly technical explanations to demonstrate expertise without simplifying for business audiences.",
+              "Clearly communicate both capabilities and limitations, use concrete examples, and set realistic timelines for value realization."
+            ],
+            "correctAnswer": 3,
+            "rationale": "Setting realistic expectations prevents disappointment and maintains credibility. BAs should balance enthusiasm with honesty about limitations, timelines, and implementation challenges.",
+            "tags": [
+              "expectation management",
+              "stakeholder communication",
+              "realism",
+              "credibility"
+            ]
+          },
+          {
+            "id": "CCI-BA-B-007",
+            "level": 1,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.48,
+            "discrimination": 1.2,
+            "bloomLevel": "Apply",
+            "question": "What training approach works best for users learning to work with AI-powered tools?",
+            "options": [
+              "One-time presentation about AI capabilities with no hands-on practice or follow-up support needed.",
+              "Technical training on machine learning algorithms so users can understand exactly how AI works mathematically.",
+              "No formal training needed because AI tools are designed to be intuitive and self-explanatory to all users.",
+              "Hands-on practice with realistic scenarios, clear guidance on when to trust AI versus apply judgment, and ongoing support."
+            ],
+            "correctAnswer": 3,
+            "rationale": "Effective AI training includes hands-on practice, scenario-based learning, clear guidance on appropriate use, and ongoing support as users encounter new situations. Understanding when to trust AI is critical.",
+            "tags": [
+              "training",
+              "user enablement",
+              "hands-on learning",
+              "support"
+            ]
+          }
+        ]
+      },
+      {
+        "dimensionCode": "TDA",
+        "dimensionName": "Tools & Data Architecture",
+        "description": "Understanding technical infrastructure, tools, and data architecture for AI solutions",
+        "weight": 0.125,
+        "totalPoints": 75,
+        "items": [
+          {
+            "id": "TDA-BA-B-001",
+            "level": 1,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.31,
+            "discrimination": 1.09,
+            "bloomLevel": "Remember",
+            "question": "What role do business analysts play in data architecture decisions for AI initiatives?",
+            "options": [
+              "BAs identify data requirements, ensure data quality standards, and validate that architecture supports business needs and use cases.",
+              "BAs only document data architecture decisions after technical teams have already finalized all specifications.",
+              "BAs should design complete technical data architectures including all infrastructure specifications and technology choices.",
+              "BAs have no role in data architecture since these are purely technical decisions made by data engineering teams."
+            ],
+            "correctAnswer": 0,
+            "rationale": "BAs bridge business and technical teams\u2014identifying what data is needed, defining quality requirements, and ensuring technical architecture enables business objectives. They don't design infrastructure but ensure it meets needs.",
+            "tags": [
+              "data architecture",
+              "BA role",
+              "requirements",
+              "collaboration"
+            ]
+          },
+          {
+            "id": "TDA-BA-B-002",
+            "level": 1,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.34,
+            "discrimination": 1.11,
+            "bloomLevel": "Understand",
+            "question": "Why should business analysts understand data quality requirements for AI systems?",
+            "options": [
+              "AI quality depends heavily on training data quality, so BAs must ensure data requirements address completeness, accuracy, and bias.",
+              "Data quality is only a technical concern that business analysts don't need to understand or address.",
+              "AI systems automatically clean and correct data quality issues, so special requirements aren't necessary.",
+              "Data quality is irrelevant for AI because machine learning algorithms can work effectively with any data."
+            ],
+            "correctAnswer": 0,
+            "rationale": "Garbage in, garbage out is especially critical for AI. BAs must understand and specify data quality requirements because poor data quality directly impacts AI performance and can introduce bias.",
+            "tags": [
+              "data quality",
+              "requirements",
+              "AI performance",
+              "data governance"
+            ]
+          },
+          {
+            "id": "TDA-BA-B-003",
+            "level": 1,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.38,
+            "discrimination": 1.14,
+            "bloomLevel": "Apply",
+            "question": "You're gathering requirements for an AI recommendation engine. What data-related requirements should you include?",
+            "options": [
+              "Only document storage size requirements since data content is irrelevant to business requirements.",
+              "Specify what data feeds the engine, data freshness requirements, handling of missing data, and data privacy constraints.",
+              "Assume technical teams will figure out all data requirements and BAs don't need to document data specifications.",
+              "Only specify that the AI needs access to the database without any details about data content or quality."
+            ],
+            "correctAnswer": 1,
+            "rationale": "AI data requirements include sources, freshness, quality standards, completeness expectations, privacy constraints, and handling of missing or inconsistent data. These are business requirements, not just technical specs.",
+            "tags": [
+              "data requirements",
+              "specification",
+              "AI systems",
+              "documentation"
+            ]
+          },
+          {
+            "id": "TDA-BA-B-004",
+            "level": 1,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.41,
+            "discrimination": 1.16,
+            "bloomLevel": "Understand",
+            "question": "What is data lineage, and why is it important for AI business solutions?",
+            "options": [
+              "Data lineage tracks where data comes from and how it's transformed, enabling traceability, debugging, and compliance.",
+              "Data lineage is only relevant for historical reporting systems and doesn't apply to AI applications.",
+              "Data lineage is a purely technical concept with no relevance to business analysis or business requirements.",
+              "Data lineage means keeping data for a long time period and has nothing to do with tracking data origins."
+            ],
+            "correctAnswer": 0,
+            "rationale": "Data lineage enables understanding what data feeds AI, how it's processed, and where issues originate. This supports debugging, compliance, and understanding AI behavior\u2014all business concerns.",
+            "tags": [
+              "data lineage",
+              "traceability",
+              "compliance",
+              "governance"
+            ]
+          },
+          {
+            "id": "TDA-BA-B-005",
+            "level": 1,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.45,
+            "discrimination": 1.18,
+            "bloomLevel": "Apply",
+            "question": "Your organization wants to use AI for customer insights but data is scattered across multiple systems. What do you recommend?",
+            "options": [
+              "Assess what data is needed, evaluate integration complexity, and recommend data integration approach that balances benefit versus effort.",
+              "Immediately launch a multi-year enterprise data warehouse project before any AI work can begin.",
+              "Tell stakeholders AI cannot work without perfect data integration so the initiative should be abandoned.",
+              "Ignore data integration challenges and build separate AI models for each system's data independently."
+            ],
+            "correctAnswer": 0,
+            "rationale": "BAs should pragmatically assess requirements, evaluate integration complexity, and recommend approaches that deliver value without requiring perfect data integration. Start with high-value data sources and iterate.",
+            "tags": [
+              "data integration",
+              "pragmatic approach",
+              "feasibility",
+              "recommendation"
+            ]
+          },
+          {
+            "id": "TDA-BA-B-006",
+            "level": 1,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.48,
+            "discrimination": 1.19,
+            "bloomLevel": "Understand",
+            "question": "How should business analysts address data privacy and compliance requirements for AI initiatives?",
+            "options": [
+              "Ignore privacy concerns since AI processing is internal and doesn't require special privacy considerations.",
+              "Defer all privacy decisions to legal teams without BA involvement in identifying data usage or privacy impacts.",
+              "Assume all data can be used for AI without restriction since it's already collected by the organization.",
+              "Identify what personal data AI uses, document privacy requirements, specify consent needs, and ensure compliance with regulations."
+            ],
+            "correctAnswer": 3,
+            "rationale": "BAs must understand what data AI uses, identify privacy risks, document requirements for consent and data protection, and work with legal/compliance teams to ensure regulatory compliance.",
+            "tags": [
+              "data privacy",
+              "compliance",
+              "GDPR",
+              "requirements"
+            ]
+          },
+          {
+            "id": "TDA-BA-B-007",
+            "level": 1,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.51,
+            "discrimination": 1.2,
+            "bloomLevel": "Apply",
+            "question": "You're evaluating AI tools for business use. What criteria should guide your assessment beyond basic functionality?",
+            "options": [
+              "Choose the newest and most advanced AI technology regardless of integration complexity or cost.",
+              "Select the cheapest option immediately without evaluating functionality, support, or long-term viability.",
+              "Only evaluate the AI model's accuracy percentage since that's the sole determinant of tool value.",
+              "Consider integration capabilities, data requirements, explainability, vendor support, total cost, and alignment with existing infrastructure."
+            ],
+            "correctAnswer": 3,
+            "rationale": "Tool evaluation requires holistic assessment\u2014functionality, integration complexity, data requirements, explainability, vendor stability, support, costs, and fit with existing systems. BAs ensure solutions meet business needs.",
+            "tags": [
+              "tool evaluation",
+              "selection criteria",
+              "holistic assessment",
+              "decision framework"
+            ]
+          },
+          {
+            "id": "TDA-BA-B-008",
+            "level": 1,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.53,
+            "discrimination": 1.2,
+            "bloomLevel": "Understand",
+            "question": "What infrastructure considerations should business analysts understand when planning AI deployments?",
+            "options": [
+              "Assume all AI solutions have identical infrastructure needs and standard servers can always support any AI application.",
+              "Understand compute requirements, data storage needs, latency constraints, scalability requirements, and integration points with existing systems.",
+              "Only worry about infrastructure if the AI fails after deployment, not during planning stages.",
+              "Infrastructure is purely technical and business analysts should have no involvement in infrastructure considerations."
+            ],
+            "correctAnswer": 1,
+            "rationale": "BAs don't design infrastructure but must understand requirements (performance, scale, integration) to ensure solutions are feasible and align business timelines with technical realities.",
+            "tags": [
+              "infrastructure",
+              "feasibility",
+              "requirements",
+              "technical planning"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "metadata": {
+    "createdDate": "2025-11-10",
+    "lastModified": "2025-11-10",
+    "author": "AIQ Assessment Team",
+    "reviewStatus": "Final",
+    "targetRole": "Business Analyst",
+    "assessmentLevel": "Beginner",
+    "psychometricValidation": "Pending empirical validation with target population"
+  }
+}

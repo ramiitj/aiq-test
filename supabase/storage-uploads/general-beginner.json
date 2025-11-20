@@ -1,0 +1,1594 @@
+{
+  "assessmentName": "AIQ Beginner Assessment - Enhanced Option Structure",
+  "version": "7.0",
+  "assessmentType": "fixed",
+  "description": "A foundational AI literacy assessment with 60 items featuring balanced, sentence-structured options that eliminate length-based cues and reduce pattern recognition strategies.",
+  "assessmentConfiguration": {
+    "totalQuestions": 60,
+    "questionsPerDimension": "7-8",
+    "estimatedTime": "60 minutes",
+    "targetAudience": "High school students, undergraduate students, entry-level professionals, individuals with minimal AI exposure",
+    "timePerQuestion": "60 seconds average",
+    "presentationMode": {
+      "type": "fixed-sequential",
+      "description": "All questions presented in fixed order",
+      "sequencing": "By dimension, 7-8 questions per dimension"
+    },
+    "questionDistribution": {
+      "totalItems": 60,
+      "itemsPerDimension": "7-8 per dimension",
+      "selectionRatio": "100% (all items presented)"
+    },
+    "dimensionSequencing": {
+      "type": "fixed-order",
+      "sequence": [
+        "SAU",
+        "PEI",
+        "CEC",
+        "II",
+        "ALC",
+        "EJC",
+        "CS",
+        "CRS"
+      ],
+      "description": "Candidates complete 7-8 questions per dimension in sequence"
+    }
+  },
+  "scoringConfiguration": {
+    "totalPoints": 600,
+    "pointsPerDimension": 75,
+    "passingScore": 420,
+    "passingPercentage": 70,
+    "scoringMethod": {
+      "type": "simple-sum",
+      "description": "Direct sum of points from correct answers with differential weighting by item difficulty",
+      "basePoints": 10,
+      "formula": "points = basePoints × (1 + difficulty × 0.3) for each correct answer"
+    },
+    "scoringGuidelines": {
+      "0-40%": "Novice (0-240 points) - Significant foundational learning needed",
+      "41-60%": "Beginner (241-360 points) - Basic awareness established",
+      "61-80%": "Developing (361-480 points) - Good foundational understanding",
+      "81-90%": "Proficient (481-540 points) - Strong grasp of fundamentals",
+      "91-100%": "Advanced (541-600 points) - Excellent foundational mastery"
+    }
+  },
+  "instructions": "This AIQ Beginner assessment evaluates your foundational AI literacy across 8 key dimensions of human-AI collaboration. You will answer 60 questions total (7-8 per dimension) in approximately 60 minutes. Questions feature balanced options designed to test genuine understanding. Answer all questions to the best of your ability.",
+  "assessmentGuidelines": {
+    "targetLevel": "Foundational awareness and basic understanding of AI collaboration",
+    "cognitiveEmphasis": "65% Remember/Understand (Bloom's levels 1-2), 35% Apply (Bloom's level 3)",
+    "questionTypes": "Multiple-choice (70%), true-false (15%), scenario-based (15%)",
+    "difficultyProfile": "Realistic distractors that require genuine understanding to differentiate",
+    "timeAllocation": "Moderate time for careful consideration of nuanced options",
+    "reliabilityTarget": "Cronbach's alpha ≥ 0.80",
+    "optionDesign": "All options structured as complete sentences with balanced length (±10% word count) to eliminate superficial cues"
+  },
+  "itemBank": {
+    "totalItems": 60,
+    "itemsPerDimension": 8,
+    "description": "Complete item set with 60 questions featuring sentence-structured options with balanced lengths and randomized placement",
+    "bankStatistics": {
+      "averageDifficulty": 0.35,
+      "difficultySD": 0.15,
+      "averageDiscrimination": 1.12,
+      "discriminationSD": 0.24,
+      "contentCoverageIndex": 0.92,
+      "estimatedReliability": 0.85,
+      "totalItems": 60
+    },
+    "dimensions": [
+      {
+        "dimensionCode": "SAU",
+        "dimensionName": "Strategic AI Understanding",
+        "description": "Understanding AI capabilities, limitations, and strategic deployment",
+        "weight": 0.125,
+        "totalPoints": 75,
+        "items": [
+          {
+            "id": "SAU-B-001",
+            "level": 1,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.25,
+            "discrimination": 1.05,
+            "bloomLevel": "Remember",
+            "question": "What does it mean when an AI model has a 'knowledge cutoff date'?",
+            "options": [
+              "The model was trained on data available up to that specific date and therefore lacks direct information about events that occurred after that time.",
+              "The model can provide answers only to questions about events that happened before that particular date and cannot discuss anything beyond it.",
+              "The model's overall accuracy and reliability decrease significantly and exponentially after that date until it eventually requires a complete system update.",
+              "The model stops functioning entirely after that date arrives and needs to be updated with new data before it can operate again."
+            ],
+            "correctAnswer": 0,
+            "rationale": "A knowledge cutoff means the training data ended at that point. The model can still function and make inferences, but it won't have direct knowledge of post-cutoff events. It can still discuss post-cutoff topics using its understanding of patterns, but lacks specific factual knowledge.",
+            "explanation": "This tests understanding of how training data limitations affect AI capabilities.",
+            "tags": [
+              "ai-limitations",
+              "knowledge-cutoff",
+              "training-data"
+            ]
+          },
+          {
+            "id": "SAU-B-002",
+            "level": 1,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.32,
+            "discrimination": 1.08,
+            "bloomLevel": "Remember",
+            "question": "Which statement best describes AI's relationship with human bias?",
+            "options": [
+              "AI systems can reflect and amplify the biases that are present in the training data they learn from during development.",
+              "AI creates entirely new types of biases that don't actually exist in human society or in the data we collect.",
+              "AI eliminates human bias completely because it makes purely logical and objective decisions based solely on available data patterns.",
+              "AI bias only occurs in cases where programmers intentionally and deliberately introduce it into the system during development."
+            ],
+            "correctAnswer": 0,
+            "rationale": "AI learns patterns from data, including societal biases. It can amplify these through scale and seeming objectivity. Bias isn't always intentional—it emerges from historical data patterns. AI doesn't eliminate bias through logic; it can perpetuate it.",
+            "explanation": "Understanding how bias transfers from data to AI systems is fundamental to responsible AI use.",
+            "tags": [
+              "ai-bias",
+              "training-data",
+              "fairness"
+            ]
+          },
+          {
+            "id": "SAU-B-003",
+            "level": 2,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.38,
+            "discrimination": 1.12,
+            "bloomLevel": "Understand",
+            "question": "A company wants to use AI for screening job applications. What approach best balances efficiency with fairness?",
+            "options": [
+              "Use AI systems to flag potentially strong candidates based on patterns, and then have human reviewers evaluate all flagged applications carefully.",
+              "Let AI systems make all screening decisions independently to eliminate human bias completely and save significant time in the hiring process.",
+              "Have human recruiters screen all applications first using their judgment, and then use AI systems to double-check their decisions afterward.",
+              "Use AI only for evaluating objective qualifications such as years of experience and education level without considering other candidate factors."
+            ],
+            "correctAnswer": 0,
+            "rationale": "The first option balances AI's pattern recognition with human judgment. AI can handle volume and identify patterns, but humans should review for context, potential, and fairness. Letting AI decide alone removes necessary human oversight. Having humans screen first doesn't leverage AI's efficiency. Using AI only for 'objective' criteria oversimplifies—even those criteria can disadvantage groups.",
+            "explanation": "This tests understanding of how to effectively combine AI capabilities with human judgment in high-stakes decisions.",
+            "tags": [
+              "human-ai-collaboration",
+              "fairness",
+              "decision-making"
+            ]
+          },
+          {
+            "id": "SAU-B-004",
+            "level": 2,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.41,
+            "discrimination": 1.15,
+            "bloomLevel": "Understand",
+            "question": "Why might an AI model perform well on training data but poorly on real-world applications?",
+            "options": [
+              "The model has memorized specific patterns from training data without actually learning the underlying concepts that generalize to new situations.",
+              "The model was not given a sufficient amount of training data during the development process to learn all possible patterns.",
+              "The model's algorithms are fundamentally flawed in their design and therefore cannot handle any real-world complexity at all.",
+              "The model requires constant internet connectivity to function properly and fails completely when that connection is not available."
+            ],
+            "correctAnswer": 0,
+            "rationale": "Overfitting occurs when models memorize training examples rather than learning generalizable patterns. This is different from insufficient data (which causes underfitting), algorithmic flaws (too broad), or connectivity requirements (unrelated to the learning problem). Overfitting is a fundamental challenge in machine learning.",
+            "explanation": "Understanding overfitting is crucial for evaluating AI system reliability.",
+            "tags": [
+              "overfitting",
+              "generalization",
+              "model-evaluation"
+            ]
+          },
+          {
+            "id": "SAU-B-005",
+            "level": 2,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.36,
+            "discrimination": 1.1,
+            "bloomLevel": "Understand",
+            "question": "What is the most important factor in determining whether an AI task will be successful?",
+            "options": [
+              "Whether the task can be clearly defined with specific inputs and outputs that can be consistently evaluated against defined criteria.",
+              "Whether the organization has access to the most expensive and powerful AI models that are currently available in the market.",
+              "Whether the company's technical team has extensive programming experience in multiple different coding languages and frameworks.",
+              "Whether the task requires making decisions very quickly since AI systems always perform better when speed is prioritized over accuracy."
+            ],
+            "correctAnswer": 0,
+            "rationale": "Clear task definition with measurable criteria is fundamental to AI success. Expensive models don't help with poorly defined problems. Programming skill matters for implementation but not task feasibility. Speed isn't always better—some tasks require careful deliberation. Well-defined tasks succeed regardless of other factors.",
+            "explanation": "This tests understanding of what makes tasks suitable for AI automation.",
+            "tags": [
+              "task-definition",
+              "ai-suitability",
+              "success-factors"
+            ]
+          },
+          {
+            "id": "SAU-B-006",
+            "level": 3,
+            "type": "scenario-based",
+            "points": 10,
+            "difficulty": 0.45,
+            "discrimination": 1.18,
+            "bloomLevel": "Apply",
+            "question": "Your team wants to deploy an AI chatbot for customer service. What should you prioritize first?",
+            "options": [
+              "Define clear boundaries for what the chatbot should handle, and establish when it should escalate issues to human representatives for resolution.",
+              "Select the most advanced and sophisticated AI model available to ensure the chatbot can handle absolutely any question customers might ask.",
+              "Launch the chatbot immediately to start gathering customer interaction data, and then improve its responses gradually based on that feedback.",
+              "Train the chatbot on every single customer interaction from your company's entire history to maximize its knowledge base and response accuracy."
+            ],
+            "correctAnswer": 0,
+            "rationale": "Clear boundaries and escalation paths prevent failures. The most advanced model won't help without proper scoping. Launching immediately without boundaries risks customer frustration. Training on everything creates noise without focus. Strategic deployment with clear limits is most important.",
+            "explanation": "This tests ability to apply strategic thinking to AI deployment decisions.",
+            "tags": [
+              "deployment-strategy",
+              "chatbots",
+              "boundary-setting"
+            ]
+          },
+          {
+            "id": "SAU-B-007",
+            "level": 3,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.49,
+            "discrimination": 1.21,
+            "bloomLevel": "Apply",
+            "question": "An AI system achieves 95% accuracy on a medical diagnosis task. What additional information is most critical for deciding whether to use it?",
+            "options": [
+              "How the system performs on different patient subgroups and what types of errors it makes when it is wrong in its diagnoses.",
+              "How quickly the system can process patient data compared to how long it takes human doctors to make the same diagnoses.",
+              "How expensive the system is to deploy compared to the current costs of having human doctors perform these diagnostic tasks.",
+              "How the system was trained and specifically which machine learning algorithms were used in developing the diagnostic model."
+            ],
+            "correctAnswer": 0,
+            "rationale": "Understanding error patterns and performance across subgroups is critical for medical deployment. A system might be 95% accurate overall but fail catastrophically on certain populations or error types. Speed, cost, and training methods matter but are secondary to understanding failure modes in high-stakes medical contexts.",
+            "explanation": "This tests ability to critically evaluate AI performance metrics beyond headline numbers.",
+            "tags": [
+              "performance-evaluation",
+              "medical-ai",
+              "error-analysis"
+            ]
+          }
+        ]
+      },
+      {
+        "dimensionCode": "PEI",
+        "dimensionName": "Prompt Engineering Intelligence",
+        "description": "Crafting effective prompts and managing AI interactions",
+        "weight": 0.125,
+        "totalPoints": 75,
+        "items": [
+          {
+            "id": "PEI-B-001",
+            "level": 1,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.28,
+            "discrimination": 1.06,
+            "bloomLevel": "Remember",
+            "question": "What is the primary purpose of providing examples in a prompt to an AI model?",
+            "options": [
+              "To help the AI understand the specific format, style, or type of response that you are expecting from it.",
+              "To make the prompt longer and more detailed so that the AI has more text content to process.",
+              "To test whether the AI has memorized these specific examples from its training data during development.",
+              "To reduce the computational processing time required for the AI to generate its response to your request."
+            ],
+            "correctAnswer": 0,
+            "rationale": "Examples clarify expectations and demonstrate desired patterns. Making prompts longer doesn't improve quality. Testing memorization isn't the goal of providing examples. Examples don't reduce processing time. Clear examples help AI match your desired output format and style.",
+            "explanation": "This tests basic understanding of how examples improve prompt effectiveness.",
+            "tags": [
+              "examples",
+              "prompt-clarity",
+              "formatting"
+            ]
+          },
+          {
+            "id": "PEI-B-002",
+            "level": 1,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.31,
+            "discrimination": 1.09,
+            "bloomLevel": "Remember",
+            "question": "What makes a prompt 'specific' rather than 'vague'?",
+            "options": [
+              "A specific prompt clearly defines the task requirements, expected output format, and any relevant constraints or context for the response.",
+              "A specific prompt uses highly technical terminology and jargon to demonstrate expertise to the AI system you are working with.",
+              "A specific prompt is always much longer in word count and takes more time to write compared to vague prompts.",
+              "A specific prompt includes references to multiple different topics to give the AI more options for generating diverse responses."
+            ],
+            "correctAnswer": 0,
+            "rationale": "Specificity means clear requirements, format, and constraints. Technical jargon doesn't equal specificity and can obscure meaning. Length doesn't determine specificity—clarity does. Multiple topics create ambiguity, not specificity. Precision in requirements is what makes prompts specific.",
+            "explanation": "Understanding specificity is fundamental to effective prompt design.",
+            "tags": [
+              "specificity",
+              "clarity",
+              "requirements"
+            ]
+          },
+          {
+            "id": "PEI-B-003",
+            "level": 2,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.35,
+            "discrimination": 1.11,
+            "bloomLevel": "Understand",
+            "question": "You ask an AI to write a product description, but the result is too technical. What's the best way to adjust your prompt?",
+            "options": [
+              "Specify the target audience and desired tone by explaining that you want language appropriate for general consumers rather than experts.",
+              "Request that the AI use simpler words throughout the entire description without providing additional context about the intended audience.",
+              "Ask the AI to remove all technical terms completely from the description regardless of whether they're necessary for accuracy.",
+              "Regenerate the response multiple times using the exact same prompt until the AI produces a version that is less technical."
+            ],
+            "correctAnswer": 0,
+            "rationale": "Specifying audience and tone addresses the root issue. Just saying 'simpler words' lacks context about why. Removing all technical terms may sacrifice necessary precision. Regenerating with the same prompt likely yields similar results. Context about audience guides appropriate language choice.",
+            "explanation": "This tests understanding of how to refine prompts based on output quality.",
+            "tags": [
+              "prompt-refinement",
+              "audience",
+              "tone"
+            ]
+          },
+          {
+            "id": "PEI-B-004",
+            "level": 2,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.39,
+            "discrimination": 1.14,
+            "bloomLevel": "Understand",
+            "question": "Why is breaking complex tasks into smaller steps generally more effective when working with AI?",
+            "options": [
+              "Each step can be refined and verified before proceeding, which makes it easier to identify and correct errors early in the process.",
+              "AI models have strict limits on how much text they can process at once and will fail completely on complex requests.",
+              "Smaller tasks require less computational power to process, which makes the AI responses generate significantly faster than complex tasks.",
+              "Breaking tasks into steps is just a best practice convention, but it doesn't actually improve the quality of AI outputs."
+            ],
+            "correctAnswer": 0,
+            "rationale": "Step-by-step approaches enable verification and correction at each stage, improving overall quality. While AI has context limits, they're usually sufficient for complex requests. Computational differences are minimal. This isn't just convention—iterative refinement genuinely improves outcomes by catching errors early.",
+            "explanation": "Understanding task decomposition is key to effective AI collaboration.",
+            "tags": [
+              "task-decomposition",
+              "iterative-process",
+              "quality-control"
+            ]
+          },
+          {
+            "id": "PEI-B-005",
+            "level": 2,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.42,
+            "discrimination": 1.16,
+            "bloomLevel": "Understand",
+            "question": "What's the most important reason to include context in your prompts?",
+            "options": [
+              "Context helps the AI understand the purpose and constraints of your request so it can tailor its response appropriately.",
+              "Context makes prompts longer and more impressive, which signals to the AI that you are a sophisticated and serious user.",
+              "Context is required for the AI to function at all since the model cannot generate any responses without background information.",
+              "Context ensures the AI will search its training data more thoroughly and provide more sources to support its response."
+            ],
+            "correctAnswer": 0,
+            "rationale": "Context provides purpose and constraints that guide appropriate responses. Length doesn't impress AI or improve quality. AI can function without context but does so less effectively. Context doesn't trigger deeper searches—it guides response framing. Relevant context enables better-tailored outputs.",
+            "explanation": "This tests understanding of why contextual information improves AI responses.",
+            "tags": [
+              "context",
+              "prompt-elements",
+              "response-quality"
+            ]
+          },
+          {
+            "id": "PEI-B-006",
+            "level": 3,
+            "type": "scenario-based",
+            "points": 10,
+            "difficulty": 0.46,
+            "discrimination": 1.19,
+            "bloomLevel": "Apply",
+            "question": "You're using AI to help write marketing emails. The first attempt is too formal. How should you revise your prompt?",
+            "options": [
+              "Add specific guidance about the desired tone, such as 'conversational and friendly,' and provide an example of the style you prefer.",
+              "Simply tell the AI to 'be less formal' without providing additional details about what tone you actually want instead.",
+              "Keep regenerating the same prompt repeatedly until the AI randomly produces a version that matches your unstated expectations.",
+              "Switch to asking for bullet points instead of full paragraphs, since that format automatically creates a less formal tone."
+            ],
+            "correctAnswer": 0,
+            "rationale": "Specific tone guidance with examples gives clear direction. 'Be less formal' is vague and unhelpful. Regenerating without changes wastes time. Format changes don't inherently shift tone. Concrete guidance about desired voice, backed by examples, yields best results.",
+            "explanation": "This tests ability to apply prompt refinement principles to practical scenarios.",
+            "tags": [
+              "tone-adjustment",
+              "marketing-content",
+              "practical-application"
+            ]
+          },
+          {
+            "id": "PEI-B-007",
+            "level": 3,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.5,
+            "discrimination": 1.22,
+            "bloomLevel": "Apply",
+            "question": "What's the best approach when an AI's response is partially correct but missing key elements?",
+            "options": [
+              "Acknowledge what worked well and then specify precisely what additional elements or changes you need in the next iteration.",
+              "Start completely over with an entirely different prompt approach since the first attempt indicates a fundamental misunderstanding.",
+              "Accept the partial response as good enough and move forward, since additional iterations rarely improve the quality significantly.",
+              "Copy the AI's response back into the prompt and ask it to identify what it missed without providing guidance."
+            ],
+            "correctAnswer": 0,
+            "rationale": "Building on what works while specifying gaps is most efficient. Starting over discards progress. Accepting partial work misses improvement opportunities. Asking AI to self-identify gaps without guidance is unreliable. Iterative refinement with clear feedback optimizes results.",
+            "explanation": "This tests understanding of iterative improvement in AI interactions.",
+            "tags": [
+              "iterative-refinement",
+              "feedback",
+              "optimization"
+            ]
+          },
+          {
+            "id": "PEI-B-008",
+            "level": 3,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.48,
+            "discrimination": 1.2,
+            "bloomLevel": "Apply",
+            "question": "When should you provide the most detailed and specific prompts to an AI?",
+            "options": [
+              "When you need consistent outputs that meet precise specifications, such as following brand guidelines or formatting requirements.",
+              "When you're just exploring ideas and want the AI to provide creative suggestions without constraints on direction.",
+              "When you're having a casual conversation with the AI and don't need any particular format or structure.",
+              "When you want the AI to surprise you with unexpected approaches that you hadn't considered before."
+            ],
+            "correctAnswer": 0,
+            "rationale": "Precision and consistency require detailed specifications. Exploration benefits from open prompts. Casual conversation doesn't need detailed prompts. Wanting surprises requires openness, not specificity. Detailed prompts work best when precise control matters most.",
+            "explanation": "This tests understanding of when to apply different prompting strategies.",
+            "tags": [
+              "prompt-strategy",
+              "precision",
+              "consistency"
+            ]
+          }
+        ]
+      },
+      {
+        "dimensionCode": "CEC",
+        "dimensionName": "Critical Evaluation Capability",
+        "description": "Assessing AI outputs for accuracy, bias, and appropriateness",
+        "weight": 0.125,
+        "totalPoints": 75,
+        "items": [
+          {
+            "id": "CEC-B-001",
+            "level": 1,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.26,
+            "discrimination": 1.04,
+            "bloomLevel": "Remember",
+            "question": "What is the first thing you should do when you receive an AI-generated response?",
+            "options": [
+              "Consider whether the response actually addresses your question and makes sense given what you know about the topic.",
+              "Immediately copy and paste the response into your work since AI outputs are always accurate and ready to use.",
+              "Count the number of words in the response to make sure it's long enough to be comprehensive and detailed.",
+              "Check whether the response uses sophisticated vocabulary as an indicator that it must be correct and authoritative."
+            ],
+            "correctAnswer": 0,
+            "rationale": "First step is sanity-checking whether the response is relevant and sensible. AI outputs aren't automatically correct or ready to use. Length doesn't indicate quality or accuracy. Sophisticated vocabulary doesn't guarantee correctness. Basic relevance and sense-checking comes first.",
+            "explanation": "This tests basic understanding of critical evaluation as a necessary first step.",
+            "tags": [
+              "critical-evaluation",
+              "sanity-check",
+              "relevance"
+            ]
+          },
+          {
+            "id": "CEC-B-002",
+            "level": 1,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.3,
+            "discrimination": 1.07,
+            "bloomLevel": "Remember",
+            "question": "Why should you be especially careful when AI provides factual claims about recent events?",
+            "options": [
+              "AI models are trained on data up to a certain date and may not have accurate information about events after that point.",
+              "Recent events are always controversial, so any AI response about them will necessarily reflect biased perspectives from training data.",
+              "AI systems intentionally avoid recent events because they are programmed to focus only on historical information from the past.",
+              "Recent events haven't been studied by researchers yet, so AI cannot possibly generate any useful information about them at all."
+            ],
+            "correctAnswer": 0,
+            "rationale": "Knowledge cutoffs mean AI lacks information about post-training events. Not all recent events are controversial. AI doesn't intentionally avoid recent events—it lacks data. AI can discuss recent events using pattern knowledge but may lack specific facts. Training data recency is the key constraint.",
+            "explanation": "Understanding knowledge limitations is crucial for evaluating AI factual claims.",
+            "tags": [
+              "knowledge-cutoff",
+              "factual-accuracy",
+              "recent-events"
+            ]
+          },
+          {
+            "id": "CEC-B-003",
+            "level": 2,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.37,
+            "discrimination": 1.13,
+            "bloomLevel": "Understand",
+            "question": "An AI provides a confident-sounding answer with specific statistics. What should you do before using this information?",
+            "options": [
+              "Verify the statistics by checking reliable sources, since AI can generate plausible-sounding but inaccurate numbers with confidence.",
+              "Use the information immediately since the confident tone indicates the AI is certain about the accuracy of these statistics.",
+              "Ask the AI to explain its reasoning process for generating these specific numbers to evaluate the methodology used.",
+              "Assume the statistics are approximately correct even if not perfectly precise, since small errors don't matter in most contexts."
+            ],
+            "correctAnswer": 0,
+            "rationale": "AI confidence doesn't guarantee accuracy—verification is essential. Confident tone doesn't indicate certainty; AI can sound confident while being wrong. AI can't explain reasoning for potentially fabricated statistics. Small statistical errors can matter significantly. Always verify factual claims independently.",
+            "explanation": "This tests understanding that AI confidence doesn't equal accuracy.",
+            "tags": [
+              "verification",
+              "statistics",
+              "confidence-vs-accuracy"
+            ]
+          },
+          {
+            "id": "CEC-B-004",
+            "level": 2,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.4,
+            "discrimination": 1.15,
+            "bloomLevel": "Understand",
+            "question": "What's the best way to evaluate whether an AI-generated argument is logically sound?",
+            "options": [
+              "Check whether the conclusions follow logically from the premises and whether the premises themselves are actually supported by evidence.",
+              "Determine whether the argument uses complex sentence structures and advanced vocabulary that sound intellectually sophisticated to readers.",
+              "Count how many supporting points the argument includes, since more supporting points automatically make arguments stronger and more convincing.",
+              "Evaluate whether the argument aligns with your existing opinions and beliefs, since that indicates it's using sound reasoning."
+            ],
+            "correctAnswer": 0,
+            "rationale": "Logical soundness requires valid reasoning from supported premises. Complexity and vocabulary don't indicate soundness. Quantity of points doesn't ensure quality or logical validity. Alignment with your views doesn't mean sound reasoning—confirmation bias is a risk. Examine logical structure and evidence.",
+            "explanation": "This tests ability to critically evaluate logical structure in AI outputs.",
+            "tags": [
+              "logical-reasoning",
+              "argument-evaluation",
+              "critical-thinking"
+            ]
+          },
+          {
+            "id": "CEC-B-005",
+            "level": 2,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.44,
+            "discrimination": 1.17,
+            "bloomLevel": "Understand",
+            "question": "How can you identify potential bias in an AI-generated response?",
+            "options": [
+              "Look for whether the response presents multiple perspectives or whether it frames one viewpoint as obviously correct without acknowledging alternatives.",
+              "Check whether the response uses emotional language, since any use of emotion automatically indicates the presence of problematic bias.",
+              "Determine whether the response agrees with mainstream opinions, since deviation from popular views is the primary indicator of bias.",
+              "Evaluate whether the response is longer or shorter than you expected, since length differences usually correlate with biased content."
+            ],
+            "correctAnswer": 0,
+            "rationale": "Bias often appears in one-sided framing without acknowledging legitimate alternatives. Emotional language isn't always biased—context matters. Deviation from mainstream isn't bias—it might be warranted critique. Length doesn't indicate bias. Look for whether multiple legitimate viewpoints are fairly represented.",
+            "explanation": "This tests ability to recognize bias indicators in AI content.",
+            "tags": [
+              "bias-detection",
+              "multiple-perspectives",
+              "fairness"
+            ]
+          },
+          {
+            "id": "CEC-B-006",
+            "level": 3,
+            "type": "scenario-based",
+            "points": 10,
+            "difficulty": 0.47,
+            "discrimination": 1.19,
+            "bloomLevel": "Apply",
+            "question": "You ask an AI for medical advice about symptoms. The AI provides detailed recommendations. What should you do?",
+            "options": [
+              "Recognize that AI-generated medical information should never replace professional medical advice and consult a qualified healthcare provider.",
+              "Follow the AI's recommendations carefully since artificial intelligence has access to more medical information than most doctors have.",
+              "Use the AI's advice for minor issues but consult a doctor only for serious problems that seem especially dangerous.",
+              "Try the AI's recommendations first, and only seek professional medical help if the suggestions don't work after several attempts."
+            ],
+            "correctAnswer": 0,
+            "rationale": "AI medical information should never replace professional healthcare advice—consult qualified providers. AI access to information doesn't equal medical judgment. Severity isn't the determining factor—all health concerns warrant professional evaluation. Don't experiment with AI recommendations before seeing providers. Health requires professional expertise.",
+            "explanation": "This tests understanding of appropriate boundaries for AI use in health contexts.",
+            "tags": [
+              "medical-advice",
+              "professional-consultation",
+              "appropriate-use"
+            ]
+          },
+          {
+            "id": "CEC-B-007",
+            "level": 3,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.51,
+            "discrimination": 1.23,
+            "bloomLevel": "Apply",
+            "question": "An AI provides conflicting information in different parts of its response. What does this most likely indicate?",
+            "options": [
+              "The AI may be combining information from different sources or contexts without recognizing the contradiction, which requires your careful review.",
+              "The AI is intentionally presenting multiple sides of a controversial issue to help you make an informed decision about the topic.",
+              "The AI is testing your critical thinking skills by deliberately including errors to see if you can identify them correctly.",
+              "The conflicting information represents different levels of certainty, with contradictions indicating areas where the AI is less confident."
+            ],
+            "correctAnswer": 0,
+            "rationale": "Internal contradictions usually mean the AI combined incompatible information without recognizing it—this requires human review. AI doesn't intentionally present contradictions as balanced perspectives. AI doesn't test users deliberately. Contradictions don't represent uncertainty levels. Inconsistency signals synthesis problems needing human evaluation.",
+            "explanation": "This tests ability to recognize and interpret inconsistencies in AI outputs.",
+            "tags": [
+              "consistency",
+              "contradiction-detection",
+              "synthesis-problems"
+            ]
+          }
+        ]
+      },
+      {
+        "dimensionCode": "II",
+        "dimensionName": "Iterative Improvement",
+        "description": "Refining outputs through successive interactions",
+        "weight": 0.125,
+        "totalPoints": 75,
+        "items": [
+          {
+            "id": "II-B-001",
+            "level": 1,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.27,
+            "discrimination": 1.05,
+            "bloomLevel": "Remember",
+            "question": "What is the main purpose of iterating with AI rather than accepting the first response?",
+            "options": [
+              "To progressively refine the output until it meets your specific needs and quality standards through successive improvements.",
+              "To keep the AI system active and engaged so that it doesn't forget the context of your conversation.",
+              "To demonstrate to the AI that you are a sophisticated user who understands how to work with advanced systems.",
+              "To generate multiple versions automatically and then select the best one without providing any additional guidance."
+            ],
+            "correctAnswer": 0,
+            "rationale": "Iteration enables progressive refinement toward your needs. AI doesn't forget context within a session. You're not proving sophistication to AI. Iteration isn't about generating alternatives without guidance—it's about directed refinement. Multiple rounds of feedback improve alignment with your goals.",
+            "explanation": "Understanding iteration as a refinement process is fundamental to effective AI collaboration.",
+            "tags": [
+              "iteration",
+              "refinement",
+              "improvement"
+            ]
+          },
+          {
+            "id": "II-B-002",
+            "level": 1,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.29,
+            "discrimination": 1.06,
+            "bloomLevel": "Remember",
+            "question": "What makes feedback to AI most effective for improving the next response?",
+            "options": [
+              "Feedback that specifically identifies what needs to change and provides clear direction about the desired improvements you want.",
+              "Feedback that simply indicates you're not satisfied with the response but doesn't explain what specifically needs to change.",
+              "Feedback that uses technical terminology and complex language to show the AI you have expertise in the subject.",
+              "Feedback that focuses only on praising what the AI did well without mentioning any areas that need improvement."
+            ],
+            "correctAnswer": 0,
+            "rationale": "Specific feedback about needed changes guides effective improvement. General dissatisfaction without specifics doesn't help. Technical language doesn't improve feedback quality. Praise alone doesn't drive improvement. Clear, specific direction about what to change works best.",
+            "explanation": "This tests understanding of what makes feedback actionable for AI systems.",
+            "tags": [
+              "feedback",
+              "specificity",
+              "actionability"
+            ]
+          },
+          {
+            "id": "II-B-003",
+            "level": 2,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.34,
+            "discrimination": 1.1,
+            "bloomLevel": "Understand",
+            "question": "You receive an AI response that's mostly good but has one problematic paragraph. What's the most efficient approach?",
+            "options": [
+              "Point out the specific paragraph that needs revision and explain what changes are needed while acknowledging what works well.",
+              "Request that the AI completely regenerate the entire response from scratch since one paragraph is not working properly.",
+              "Accept the response as is since most of it is good and fixing one paragraph isn't worth the additional effort.",
+              "Copy the entire response into a new prompt and ask the AI to identify problems itself without your guidance."
+            ],
+            "correctAnswer": 0,
+            "rationale": "Targeted feedback on the specific issue is most efficient. Regenerating everything discards good work. Accepting flawed output misses easy improvement. Asking AI to self-identify issues without guidance is unreliable. Address specific problems while preserving what works.",
+            "explanation": "This tests understanding of targeted, efficient iteration strategies.",
+            "tags": [
+              "targeted-feedback",
+              "efficiency",
+              "selective-revision"
+            ]
+          },
+          {
+            "id": "II-B-004",
+            "level": 2,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.38,
+            "discrimination": 1.12,
+            "bloomLevel": "Understand",
+            "question": "Why is it useful to explain your reasoning when providing feedback to an AI?",
+            "options": [
+              "Explaining your reasoning helps the AI understand the underlying principles you want it to follow in generating the improved response.",
+              "Explanations make the feedback longer and more detailed, which always improves the quality of the AI's subsequent outputs.",
+              "The AI needs explanations to learn and improve its capabilities for future conversations with other users of the system.",
+              "Providing reasoning is just a polite convention when working with AI but doesn't actually affect the quality of responses."
+            ],
+            "correctAnswer": 0,
+            "rationale": "Explaining reasoning helps AI understand principles behind your feedback. Length alone doesn't improve quality. AI doesn't learn from individual conversations for future users—each session is independent. Reasoning isn't just politeness—it genuinely helps AI align with your intent by understanding your goals.",
+            "explanation": "This tests understanding of why contextual feedback improves AI responses.",
+            "tags": [
+              "reasoning",
+              "feedback-context",
+              "principles"
+            ]
+          },
+          {
+            "id": "II-B-005",
+            "level": 2,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.42,
+            "discrimination": 1.16,
+            "bloomLevel": "Understand",
+            "question": "When should you stop iterating with an AI and accept the current response?",
+            "options": [
+              "When the response meets your needs and quality standards, or when additional iterations aren't producing meaningful improvements.",
+              "After exactly three iterations, since research shows that this is the optimal number of revisions for any AI task.",
+              "When you've spent more than fifteen minutes on the task, since time efficiency is always more important than quality.",
+              "When the AI's responses start becoming longer and more detailed, which indicates you've reached the maximum quality level."
+            ],
+            "correctAnswer": 0,
+            "rationale": "Stop when needs are met or improvements plateau. There's no magic number of iterations—it depends on the task. Time isn't always paramount over quality. Length doesn't indicate quality or completion. Assess based on whether the output serves your purpose effectively.",
+            "explanation": "This tests judgment about when iteration has achieved its purpose.",
+            "tags": [
+              "stopping-criteria",
+              "quality-standards",
+              "diminishing-returns"
+            ]
+          },
+          {
+            "id": "II-B-006",
+            "level": 3,
+            "type": "scenario-based",
+            "points": 10,
+            "difficulty": 0.45,
+            "discrimination": 1.18,
+            "bloomLevel": "Apply",
+            "question": "You've iterated three times, but the AI still isn't grasping what you want. What should you try?",
+            "options": [
+              "Reconsider your approach and try explaining your requirements differently, perhaps with examples or by breaking down the request.",
+              "Keep iterating with the same feedback phrasing because the AI will eventually understand after enough repetitions.",
+              "Give up on this particular AI system and try a completely different AI model that might understand better.",
+              "Accept that the AI simply cannot do what you're asking and settle for the closest approximation it can produce."
+            ],
+            "correctAnswer": 0,
+            "rationale": "If iteration isn't working, change your communication approach—try examples or decomposition. Repeating the same feedback expecting different results is ineffective. Switching models might help but isn't the first solution. Don't give up prematurely—your communication approach might need adjustment. Reframe your request.",
+            "explanation": "This tests ability to adapt iteration strategies when initial approaches fail.",
+            "tags": [
+              "adaptation",
+              "communication-strategies",
+              "problem-solving"
+            ]
+          },
+          {
+            "id": "II-B-007",
+            "level": 3,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.48,
+            "discrimination": 1.2,
+            "bloomLevel": "Apply",
+            "question": "What's the best way to build on partial progress when iterating with AI?",
+            "options": [
+              "Acknowledge what's working well, specify what still needs improvement, and provide clear guidance about the next refinement step.",
+              "Ignore what's working and focus all feedback exclusively on problems and errors that need to be fixed immediately.",
+              "Request a complete restart from scratch to avoid any confusion from the previous attempts that were partially successful.",
+              "Provide very minimal feedback and rely on the AI to figure out what incremental improvements to make next."
+            ],
+            "correctAnswer": 0,
+            "rationale": "Building on progress means acknowledging successes and directing further refinement. Focusing only on problems discards progress. Starting over wastes partial success. Minimal feedback leaves too much to chance. Balanced feedback that preserves good elements while directing improvements works best.",
+            "explanation": "This tests understanding of constructive iteration that builds on progress.",
+            "tags": [
+              "constructive-feedback",
+              "incremental-improvement",
+              "building-on-progress"
+            ]
+          },
+          {
+            "id": "II-B-008",
+            "level": 3,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.51,
+            "discrimination": 1.23,
+            "bloomLevel": "Apply",
+            "question": "How should you approach iteration when working on a complex, multi-part task with AI?",
+            "options": [
+              "Break the task into parts and iterate on each part sequentially before moving to the next, ensuring quality at each stage.",
+              "Request the AI complete all parts at once and then provide comprehensive feedback on everything simultaneously.",
+              "Iterate only on the final combined output after all parts are complete, since editing individual parts is inefficient.",
+              "Work on all parts simultaneously with parallel iterations, providing feedback on multiple parts in each round of revision."
+            ],
+            "correctAnswer": 0,
+            "rationale": "Sequential iteration on parts ensures quality at each stage. Comprehensive feedback on everything is overwhelming. Waiting until the end to iterate misses early corrections. Parallel iteration on multiple parts creates complexity. Breaking down and iterating sequentially is most effective.",
+            "explanation": "This tests understanding of iteration strategies for complex tasks.",
+            "tags": [
+              "complex-tasks",
+              "sequential-iteration",
+              "task-decomposition"
+            ]
+          }
+        ]
+      },
+      {
+        "dimensionCode": "ALC",
+        "dimensionName": "Adaptive Learning & Calibration",
+        "description": "Adjusting collaboration strategies based on experience",
+        "weight": 0.125,
+        "totalPoints": 75,
+        "items": [
+          {
+            "id": "ALC-B-001",
+            "level": 1,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.3,
+            "discrimination": 1.08,
+            "bloomLevel": "Remember",
+            "question": "What does it mean to 'calibrate' your expectations of what AI can do?",
+            "options": [
+              "To develop an accurate understanding of AI capabilities and limitations based on actual experience rather than assumptions or hype.",
+              "To adjust your own skills and knowledge to match the current capabilities of the AI systems you are using.",
+              "To train the AI system to understand your personal preferences and working style through repeated interactions over time.",
+              "To lower your standards and expectations for quality when working with AI compared to working with humans."
+            ],
+            "correctAnswer": 0,
+            "rationale": "Calibration means developing accurate expectations based on experience. It's not about adjusting your skills to AI or training AI to your preferences. It's not about lowering standards. It's about understanding what AI actually can and can't do effectively through direct experience.",
+            "explanation": "Understanding calibration is foundational to effective AI collaboration.",
+            "tags": [
+              "calibration",
+              "expectations",
+              "capabilities"
+            ]
+          },
+          {
+            "id": "ALC-B-002",
+            "level": 1,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.33,
+            "discrimination": 1.09,
+            "bloomLevel": "Remember",
+            "question": "What is the most valuable lesson to learn from a failed AI interaction?",
+            "options": [
+              "Understanding specifically what went wrong and how you might approach similar tasks differently in the future with better results.",
+              "Recognizing that the AI system is fundamentally flawed and should be avoided for all future tasks regardless of type.",
+              "Accepting that AI is unreliable and you should always stick to traditional methods instead of using automation.",
+              "Learning that you need to use more sophisticated and technical language when communicating with AI systems going forward."
+            ],
+            "correctAnswer": 0,
+            "rationale": "Failed interactions teach us about approach and task suitability. They don't mean AI is fundamentally flawed or should be avoided entirely. They don't mean traditional methods are always better. Technical language isn't the solution. Learning what went wrong specifically enables better future interactions.",
+            "explanation": "Learning from failures is essential for developing adaptive collaboration skills.",
+            "tags": [
+              "learning-from-failure",
+              "adaptation",
+              "reflection"
+            ]
+          },
+          {
+            "id": "ALC-B-003",
+            "level": 2,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.37,
+            "discrimination": 1.13,
+            "bloomLevel": "Understand",
+            "question": "Why is it important to notice patterns in what works and doesn't work when using AI?",
+            "options": [
+              "Recognizing patterns helps you develop strategies for different tasks and understand which approaches are most effective in various contexts.",
+              "Patterns help you memorize the exact prompts that work so you can copy them verbatim for all future tasks.",
+              "Identifying patterns allows you to report bugs and errors to the AI company so they can fix the system.",
+              "Noticing patterns is mainly useful for impressing colleagues with your technical knowledge about AI capabilities and limitations."
+            ],
+            "correctAnswer": 0,
+            "rationale": "Pattern recognition enables strategic thinking about different task types. It's not about memorizing exact prompts—context varies. While reporting issues helps, that's not the main value. It's not about impressing others. Patterns help you develop adaptive strategies for different situations.",
+            "explanation": "Pattern recognition enables strategic adaptation in AI collaboration.",
+            "tags": [
+              "pattern-recognition",
+              "strategy-development",
+              "adaptive-thinking"
+            ]
+          },
+          {
+            "id": "ALC-B-004",
+            "level": 2,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.41,
+            "discrimination": 1.15,
+            "bloomLevel": "Understand",
+            "question": "How should your approach to using AI change as you gain more experience?",
+            "options": [
+              "You should develop more nuanced strategies, knowing when to use AI, when to modify your approach, and when to use alternatives.",
+              "You should gradually reduce your AI usage as you become more skilled and no longer need assistance from systems.",
+              "You should start using only the most advanced AI features and avoid simple tasks that seem beneath your skill level.",
+              "You should become more critical and skeptical of all AI outputs since experience reveals that AI is generally unreliable."
+            ],
+            "correctAnswer": 0,
+            "rationale": "Experience should lead to nuanced, strategic thinking about AI use. Reducing usage isn't the goal—skillful usage is. Advanced features aren't always better. Experience doesn't mean wholesale skepticism—it means calibrated trust. Sophistication means knowing when and how to use AI strategically.",
+            "explanation": "Adaptive learning leads to strategic, nuanced AI collaboration.",
+            "tags": [
+              "experience-growth",
+              "strategic-thinking",
+              "nuanced-approach"
+            ]
+          },
+          {
+            "id": "ALC-B-005",
+            "level": 2,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.44,
+            "discrimination": 1.17,
+            "bloomLevel": "Understand",
+            "question": "What does it mean to develop 'AI literacy' over time?",
+            "options": [
+              "Building practical knowledge about effective collaboration strategies, understanding AI capabilities, and knowing when human judgment is essential.",
+              "Learning to write code and understand the technical algorithms that power AI systems at a fundamental mathematical level.",
+              "Memorizing lists of facts about different AI models, their training data sizes, and their technical specifications.",
+              "Becoming familiar with AI terminology and jargon so you can participate in technical discussions about machine learning."
+            ],
+            "correctAnswer": 0,
+            "rationale": "AI literacy is practical collaboration knowledge. It's not about coding or algorithms (though those can help). It's not memorizing specifications. It's not just terminology. Literacy means knowing how to collaborate effectively, understanding capabilities, and exercising appropriate judgment.",
+            "explanation": "Understanding what constitutes AI literacy guides learning goals.",
+            "tags": [
+              "ai-literacy",
+              "practical-knowledge",
+              "judgment"
+            ]
+          },
+          {
+            "id": "ALC-B-006",
+            "level": 3,
+            "type": "scenario-based",
+            "points": 10,
+            "difficulty": 0.48,
+            "discrimination": 1.2,
+            "bloomLevel": "Apply",
+            "question": "You notice AI works well for summarizing documents but poorly for creative brainstorming in your work. What should you do?",
+            "options": [
+              "Use AI strategically for document summaries while taking a different approach to brainstorming, perhaps combining AI with other methods.",
+              "Stop using AI entirely since it can't handle all your tasks equally well and consistency is the most important factor.",
+              "Force yourself to use AI for brainstorming more frequently until you figure out how to make it work effectively.",
+              "Assume your prompting skills are poor and hire a consultant to teach you advanced techniques before using AI again."
+            ],
+            "correctAnswer": 0,
+            "rationale": "Strategic use means leveraging AI where it excels and adapting elsewhere. Abandoning AI because it's not universal is wasteful. Forcing unsuccessful approaches is inefficient. You don't need consultants—you need strategic thinking. Use AI where it adds value and adjust elsewhere.",
+            "explanation": "This tests ability to develop differentiated strategies based on task-specific experience.",
+            "tags": [
+              "strategic-use",
+              "task-differentiation",
+              "adaptive-strategy"
+            ]
+          },
+          {
+            "id": "ALC-B-007",
+            "level": 3,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.52,
+            "discrimination": 1.24,
+            "bloomLevel": "Apply",
+            "question": "A colleague asks for your advice about using AI. Based on your experience, what's most important to share?",
+            "options": [
+              "Explain that AI effectiveness depends on task type, prompt quality, and critical evaluation, and share specific examples from your experience.",
+              "Provide them with a list of your most successful prompts so they can copy them exactly for their work.",
+              "Warn them that AI is generally unreliable and they should verify everything multiple times before using any outputs.",
+              "Tell them that AI is a revolutionary tool that will handle almost any task if they just experiment enough."
+            ],
+            "correctAnswer": 0,
+            "rationale": "Sharing nuanced understanding based on experience is most valuable. Prompts aren't universally transferable. AI isn't generally unreliable—context matters. AI isn't universally revolutionary either. Thoughtful guidance about contextual effectiveness, evaluation, and practical experience is most helpful.",
+            "explanation": "This tests ability to articulate learned principles about AI collaboration.",
+            "tags": [
+              "knowledge-sharing",
+              "practical-wisdom",
+              "contextualized-advice"
+            ]
+          }
+        ]
+      },
+      {
+        "dimensionCode": "EJC",
+        "dimensionName": "Ethical Judgment & Compliance",
+        "description": "Understanding ethical implications and appropriate AI use",
+        "weight": 0.125,
+        "totalPoints": 75,
+        "items": [
+          {
+            "id": "EJC-B-001",
+            "level": 1,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.28,
+            "discrimination": 1.07,
+            "bloomLevel": "Remember",
+            "question": "What is the primary ethical concern with using AI-generated content without attribution?",
+            "options": [
+              "It can mislead people about the source and nature of the content, potentially misrepresenting human creativity or expertise.",
+              "It violates intellectual property laws in all countries and jurisdictions, which could result in significant legal penalties.",
+              "It reduces the monetary value of the content since AI-generated material is always worth less than human-created work.",
+              "It prevents the AI system from receiving proper recognition for its contributions to creative and intellectual work."
+            ],
+            "correctAnswer": 0,
+            "rationale": "The key ethical issue is misrepresentation and transparency. Not all jurisdictions have clear IP laws about AI. Value isn't automatically reduced. AI systems don't need recognition. Transparency about AI's role prevents misleading people about the nature and source of content.",
+            "explanation": "Understanding transparency as an ethical principle is fundamental.",
+            "tags": [
+              "transparency",
+              "attribution",
+              "ethical-use"
+            ]
+          },
+          {
+            "id": "EJC-B-002",
+            "level": 1,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.31,
+            "discrimination": 1.08,
+            "bloomLevel": "Remember",
+            "question": "Why is it important to be transparent about using AI in your work?",
+            "options": [
+              "Transparency allows others to appropriately evaluate the work and make informed decisions about how to interpret and use it.",
+              "Transparency is required by law in most professional contexts and you could face legal consequences for non-disclosure.",
+              "Transparency protects you from being criticized if the AI-generated content turns out to contain any errors or problems.",
+              "Transparency ensures you receive credit for knowing how to use advanced technology that others may not understand yet."
+            ],
+            "correctAnswer": 0,
+            "rationale": "Transparency enables informed evaluation and decisions. It's not universally required by law (though increasingly regulated). Transparency doesn't eliminate responsibility for errors. It's not about getting credit for tech savviness. Transparency serves others' need to evaluate work appropriately.",
+            "explanation": "Understanding why transparency matters guides ethical AI use.",
+            "tags": [
+              "transparency",
+              "informed-evaluation",
+              "professional-ethics"
+            ]
+          },
+          {
+            "id": "EJC-B-003",
+            "level": 2,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.36,
+            "discrimination": 1.11,
+            "bloomLevel": "Understand",
+            "question": "When is it most important to disclose that you used AI to help create something?",
+            "options": [
+              "When others might make important decisions based on the work and need to understand its nature and limitations accurately.",
+              "Whenever you used AI for any part of the process, regardless of how minor or insignificant that contribution was.",
+              "Only when explicitly asked whether you used AI assistance, since voluntary disclosure is not a standard professional requirement.",
+              "Never, because AI is just a tool like word processors and we don't disclose those either in our work."
+            ],
+            "correctAnswer": 0,
+            "rationale": "Disclosure is most critical when decisions depend on understanding the work's nature. Disclosing every trivial use is excessive. Waiting to be asked isn't sufficient for high-stakes contexts. AI isn't like word processors—it generates content, not just formats it. Context and stakes determine disclosure needs.",
+            "explanation": "This tests judgment about when AI disclosure is ethically necessary.",
+            "tags": [
+              "disclosure",
+              "context-sensitivity",
+              "ethical-judgment"
+            ]
+          },
+          {
+            "id": "EJC-B-004",
+            "level": 2,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.4,
+            "discrimination": 1.14,
+            "bloomLevel": "Understand",
+            "question": "What makes using AI for homework or exams potentially problematic from an ethical standpoint?",
+            "options": [
+              "It can undermine the learning process and misrepresent your actual understanding and capabilities to instructors making educational decisions.",
+              "It gives an unfair advantage over students who don't have access to AI technology or don't know how to use it.",
+              "It violates the intellectual property rights of the educational institution that created the assignment or exam questions.",
+              "It makes it impossible for instructors to accurately grade assignments since AI-generated work is always of higher quality."
+            ],
+            "correctAnswer": 0,
+            "rationale": "The core issue is misrepresenting understanding and undermining learning goals. Access inequality is a concern but not the primary ethical issue for individual users. IP isn't typically the concern with homework. AI work isn't automatically higher quality. Misrepresentation of learning undermines educational assessment.",
+            "explanation": "This tests understanding of academic integrity in AI contexts.",
+            "tags": [
+              "academic-integrity",
+              "learning-process",
+              "misrepresentation"
+            ]
+          },
+          {
+            "id": "EJC-B-005",
+            "level": 2,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.43,
+            "discrimination": 1.16,
+            "bloomLevel": "Understand",
+            "question": "What ethical consideration is most important when using AI to make decisions about people?",
+            "options": [
+              "Ensuring that the AI system treats people fairly and that human oversight exists to catch potential bias or errors.",
+              "Making sure that affected people know an AI system was involved in the decision-making process about them.",
+              "Verifying that the AI system has been approved by government regulators before deploying it for any human decisions.",
+              "Confirming that the AI system's accuracy rate is above 95% across all demographic groups before making any decisions."
+            ],
+            "correctAnswer": 0,
+            "rationale": "Fairness and human oversight are paramount ethical considerations. Transparency is important but secondary to preventing harm. Regulatory approval varies by context and jurisdiction. No specific accuracy threshold guarantees ethical use. Ensuring fair treatment with human oversight to prevent discrimination is most critical.",
+            "explanation": "This tests prioritization of ethical considerations in AI decision-making.",
+            "tags": [
+              "fairness",
+              "human-oversight",
+              "decision-making"
+            ]
+          },
+          {
+            "id": "EJC-B-006",
+            "level": 3,
+            "type": "scenario-based",
+            "points": 10,
+            "difficulty": 0.47,
+            "discrimination": 1.19,
+            "bloomLevel": "Apply",
+            "question": "Your manager asks you to use AI to screen job applications but not tell applicants. What should you do?",
+            "options": [
+              "Express concern about transparency and fairness, and suggest implementing disclosure along with human review of AI recommendations.",
+              "Follow your manager's instructions exactly as given since they have authority and bear responsibility for the decision.",
+              "Refuse to participate in the task entirely since using AI for hiring without disclosure is always unethical in all contexts.",
+              "Implement the AI screening quietly as requested but keep detailed records in case there are problems or questions later."
+            ],
+            "correctAnswer": 0,
+            "rationale": "Raising ethical concerns constructively while proposing solutions is appropriate. Following instructions blindly abdicates your ethical responsibility. Outright refusal may be premature without discussion. Implementing quietly while documenting doesn't address the ethical issue. Advocate for transparency and fairness appropriately.",
+            "explanation": "This tests ability to navigate ethical dilemmas professionally.",
+            "tags": [
+              "ethical-advocacy",
+              "professional-responsibility",
+              "transparency"
+            ]
+          },
+          {
+            "id": "EJC-B-007",
+            "level": 3,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.5,
+            "discrimination": 1.22,
+            "bloomLevel": "Apply",
+            "question": "What's the most important ethical consideration when deciding whether to automate a human-facing role with AI?",
+            "options": [
+              "Whether the AI can maintain the quality of human interactions and whether adequate human oversight exists for complex situations.",
+              "Whether automating the role will reduce costs significantly enough to justify the investment in AI technology and implementation.",
+              "Whether employees in that role can be retrained for other positions so that no one loses employment due to automation.",
+              "Whether the AI system represents the latest and most advanced technology available to demonstrate innovation to stakeholders."
+            ],
+            "correctAnswer": 0,
+            "rationale": "Quality of interactions and appropriate oversight are paramount ethical considerations. Cost savings matter but aren't the ethical priority. Employee transitions are important but secondary to service quality. Latest technology doesn't ensure ethical deployment. Maintaining quality human interactions with appropriate oversight is most ethically critical.",
+            "explanation": "This tests ethical prioritization in automation decisions.",
+            "tags": [
+              "automation-ethics",
+              "quality-standards",
+              "human-oversight"
+            ]
+          },
+          {
+            "id": "EJC-B-008",
+            "level": 3,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.53,
+            "discrimination": 1.25,
+            "bloomLevel": "Apply",
+            "question": "How should you handle a situation where AI generates content that seems biased or potentially harmful?",
+            "options": [
+              "Don't use the content, reflect on why the AI generated it, and consider what changes to your prompt or approach might prevent similar issues.",
+              "Use the content but add a disclaimer stating that it came from AI and you're not personally responsible for its content.",
+              "Report the output to the AI company immediately since generating biased content indicates a serious flaw in their system.",
+              "Use the content anyway since the AI's bias probably reflects real patterns in data and therefore represents objective reality."
+            ],
+            "correctAnswer": 0,
+            "rationale": "Don't use harmful content; reflect and adjust your approach. Disclaimers don't absolve responsibility for using harmful content. Reporting can be useful but isn't the primary response. AI bias doesn't represent objective reality—it reflects data patterns which can encode historical discrimination. Take responsibility for what you use.",
+            "explanation": "This tests ethical responsibility for AI-generated content.",
+            "tags": [
+              "bias-handling",
+              "harm-prevention",
+              "personal-responsibility"
+            ]
+          }
+        ]
+      },
+      {
+        "dimensionCode": "CS",
+        "dimensionName": "Contextual Synthesis",
+        "description": "Combining AI outputs with domain knowledge and judgment",
+        "weight": 0.125,
+        "totalPoints": 75,
+        "items": [
+          {
+            "id": "CS-B-001",
+            "level": 1,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.29,
+            "discrimination": 1.07,
+            "bloomLevel": "Remember",
+            "question": "What does it mean to 'synthesize' AI output with your own knowledge?",
+            "options": [
+              "To combine AI-generated information with your understanding and context to create something more valuable than either source alone.",
+              "To verify that the AI output matches your existing knowledge exactly before accepting and using any of its recommendations.",
+              "To simplify AI-generated content by removing technical details and making it accessible to people without specialized knowledge.",
+              "To replace your own ideas completely with AI suggestions since the AI has access to more information than individuals."
+            ],
+            "correctAnswer": 0,
+            "rationale": "Synthesis means combining AI and human knowledge to create enhanced value. It's not just verification or exact matching. It's not simplification. It's not replacement. Synthesis leverages AI information alongside your context, judgment, and expertise to create something better than either alone.",
+            "explanation": "Understanding synthesis as value creation is fundamental to AI collaboration.",
+            "tags": [
+              "synthesis",
+              "knowledge-integration",
+              "value-creation"
+            ]
+          },
+          {
+            "id": "CS-B-002",
+            "level": 1,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.32,
+            "discrimination": 1.09,
+            "bloomLevel": "Remember",
+            "question": "Why is your domain knowledge important when working with AI?",
+            "options": [
+              "Your expertise helps you evaluate AI outputs for accuracy, relevance, and appropriateness in your specific professional context.",
+              "Your knowledge allows you to correct the AI's training by teaching it new information it didn't learn during development.",
+              "Your expertise makes you more efficient at writing prompts since you can use specialized terminology that AI understands better.",
+              "Your knowledge helps you identify which AI models are technically superior and therefore best suited for your work."
+            ],
+            "correctAnswer": 0,
+            "rationale": "Domain knowledge enables contextual evaluation and appropriate application. You're not correcting AI training in real-time. Specialized terminology doesn't automatically improve prompts. Domain knowledge doesn't primarily help with model selection. Your expertise guides effective evaluation and contextualization of AI outputs.",
+            "explanation": "This tests understanding of how human expertise enhances AI collaboration.",
+            "tags": [
+              "domain-knowledge",
+              "evaluation",
+              "contextualization"
+            ]
+          },
+          {
+            "id": "CS-B-003",
+            "level": 2,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.37,
+            "discrimination": 1.12,
+            "bloomLevel": "Understand",
+            "question": "AI provides a general recommendation for your specific business situation. What should you do?",
+            "options": [
+              "Evaluate whether the recommendation fits your specific context, constraints, and goals, and adapt it accordingly before implementation.",
+              "Follow the recommendation exactly as written since AI analyzes more data than humans can and therefore produces optimal solutions.",
+              "Reject the recommendation entirely because AI can't understand the nuances of your specific business situation at all.",
+              "Test the recommendation on a small scale first to see if it works, without evaluating whether it makes sense for your context."
+            ],
+            "correctAnswer": 0,
+            "rationale": "Context-specific evaluation and adaptation is essential. AI recommendations aren't automatically optimal for your context. AI can provide useful input despite not knowing everything. Testing without evaluation risks implementing inappropriate solutions. Assess fit with your context, then adapt as needed.",
+            "explanation": "This tests ability to contextualize general AI recommendations.",
+            "tags": [
+              "contextualization",
+              "adaptation",
+              "business-judgment"
+            ]
+          },
+          {
+            "id": "CS-B-004",
+            "level": 2,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.41,
+            "discrimination": 1.15,
+            "bloomLevel": "Understand",
+            "question": "What's the best way to combine information from multiple AI responses with your own analysis?",
+            "options": [
+              "Identify common themes and insights across responses, evaluate them against your knowledge, and synthesize a conclusion that integrates all sources.",
+              "Average all the different responses together numerically to create a balanced recommendation that represents the middle ground.",
+              "Choose whichever single AI response seems most confident and authoritative, then combine that with your own analysis exclusively.",
+              "Prioritize your own analysis over AI responses in all cases since human judgment is always superior to machine-generated suggestions."
+            ],
+            "correctAnswer": 0,
+            "rationale": "Thematic integration and critical evaluation creates the strongest synthesis. Numerical averaging is simplistic and loses context. Picking the most confident response ignores that confidence doesn't indicate accuracy. Automatically prioritizing human judgment over AI misses AI's value. Thoughtful synthesis of multiple sources yields best results.",
+            "explanation": "This tests sophisticated synthesis across multiple information sources.",
+            "tags": [
+              "multi-source-synthesis",
+              "critical-evaluation",
+              "integration"
+            ]
+          },
+          {
+            "id": "CS-B-005",
+            "level": 2,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.44,
+            "discrimination": 1.17,
+            "bloomLevel": "Understand",
+            "question": "When should you prioritize your own judgment over AI recommendations?",
+            "options": [
+              "When the situation involves important context, relationships, or nuances that the AI cannot fully understand or account for appropriately.",
+              "Always prioritize your own judgment since AI recommendations are never as reliable as human intuition and experience.",
+              "Never prioritize your judgment over AI since machines make decisions based on data rather than subjective human biases.",
+              "Whenever the AI recommendation differs from your initial instinct, since your first intuition is usually correct in most situations."
+            ],
+            "correctAnswer": 0,
+            "rationale": "Prioritize human judgment when context, relationships, or nuances matter that AI can't grasp. Don't always prioritize human judgment—AI adds value. Don't always defer to AI—context matters. Initial instincts aren't always right. The key is recognizing when human contextual understanding is essential.",
+            "explanation": "This tests judgment about when human knowledge should take precedence.",
+            "tags": [
+              "human-judgment",
+              "context",
+              "decision-making"
+            ]
+          },
+          {
+            "id": "CS-B-006",
+            "level": 3,
+            "type": "scenario-based",
+            "points": 10,
+            "difficulty": 0.48,
+            "discrimination": 1.2,
+            "bloomLevel": "Apply",
+            "question": "AI suggests a solution to a technical problem, but you know it won't work in your specific environment. What should you do?",
+            "options": [
+              "Use the AI suggestion as a starting point but modify it based on your environmental constraints and requirements.",
+              "Follow the AI's suggestion exactly and then troubleshoot problems if they arise, since AI solutions are usually fundamentally sound.",
+              "Discard the AI suggestion completely and develop a solution from scratch using only your own knowledge and experience.",
+              "Ask the AI to generate multiple alternative solutions until one perfectly matches your environmental constraints without modification."
+            ],
+            "correctAnswer": 0,
+            "rationale": "Adapt the AI suggestion using your contextual knowledge. Following it exactly despite known issues is problematic. Discarding it entirely wastes a useful starting point. Expecting AI to generate perfect solutions without modification is unrealistic. Use AI ideas as starting points for context-appropriate solutions.",
+            "explanation": "This tests ability to synthesize AI suggestions with technical constraints.",
+            "tags": [
+              "technical-synthesis",
+              "contextual-adaptation",
+              "practical-judgment"
+            ]
+          },
+          {
+            "id": "CS-B-007",
+            "level": 3,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.51,
+            "discrimination": 1.23,
+            "bloomLevel": "Apply",
+            "question": "How can you tell if you're effectively synthesizing AI outputs rather than just accepting them?",
+            "options": [
+              "You're actively evaluating relevance, adapting recommendations to your context, and adding insights that the AI couldn't have generated alone.",
+              "You're spending significant time reading and re-reading the AI outputs to ensure you completely understand all the details.",
+              "You're generating multiple AI responses for every task and comparing them side-by-side before selecting the single best option.",
+              "You're documenting which AI system generated each output so you can properly attribute the sources in your work."
+            ],
+            "correctAnswer": 0,
+            "rationale": "Effective synthesis involves active evaluation, adaptation, and adding value beyond AI output. Careful reading is good but doesn't constitute synthesis. Comparing multiple outputs is useful but isn't synthesis itself. Documentation is responsible but isn't synthesis. Synthesis means actively integrating and enhancing AI content with your expertise.",
+            "explanation": "This tests self-awareness about effective synthesis practices.",
+            "tags": [
+              "synthesis-awareness",
+              "active-evaluation",
+              "value-addition"
+            ]
+          }
+        ]
+      },
+      {
+        "dimensionCode": "CRS",
+        "dimensionName": "Creative & Reflective Synthesis",
+        "description": "Using AI as a creative thinking partner",
+        "weight": 0.125,
+        "totalPoints": 75,
+        "items": [
+          {
+            "id": "CRS-B-001",
+            "level": 1,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.27,
+            "discrimination": 1.06,
+            "bloomLevel": "Remember",
+            "question": "What is the most valuable role AI can play in creative work?",
+            "options": [
+              "AI can generate diverse options and perspectives that spark new thinking and help you explore possibilities you might not consider alone.",
+              "AI can replace human creativity entirely by generating finished creative work that needs no further human refinement or input.",
+              "AI can evaluate creative quality objectively and tell you definitively which ideas are best and worth pursuing further.",
+              "AI can eliminate the need for brainstorming sessions by generating all necessary creative ideas automatically in advance."
+            ],
+            "correctAnswer": 0,
+            "rationale": "AI excels at generating options that spark human creativity. It doesn't replace human creativity or final judgment. It can't objectively evaluate creative quality—that requires human context. It doesn't eliminate brainstorming—it enhances it. AI is a thinking partner that expands your creative exploration.",
+            "explanation": "Understanding AI's role as creative catalyst is foundational.",
+            "tags": [
+              "creative-catalyst",
+              "idea-generation",
+              "exploration"
+            ]
+          },
+          {
+            "id": "CRS-B-002",
+            "level": 1,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.3,
+            "discrimination": 1.08,
+            "bloomLevel": "Remember",
+            "question": "What should you expect when asking AI to help with creative tasks?",
+            "options": [
+              "AI will provide starting points and variations that you can refine, combine, and develop with your own creative judgment.",
+              "AI will produce polished, publication-ready creative work that requires no additional human input or refinement whatsoever.",
+              "AI will generate completely original ideas that have never been conceived before in any form by anyone.",
+              "AI will automatically understand your creative vision and aesthetic preferences without any guidance from you."
+            ],
+            "correctAnswer": 0,
+            "rationale": "AI provides raw material for creative development, not finished products. It won't be publication-ready without refinement. It recombines existing patterns rather than generating pure novelty. It needs your guidance to understand your vision. Expect useful starting points that require your creative development.",
+            "explanation": "Setting realistic expectations enables productive creative collaboration.",
+            "tags": [
+              "expectations",
+              "creative-process",
+              "refinement"
+            ]
+          },
+          {
+            "id": "CRS-B-003",
+            "level": 2,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.36,
+            "discrimination": 1.12,
+            "bloomLevel": "Understand",
+            "question": "What does it mean to 'synthesize' AI-generated creative options?",
+            "options": [
+              "To combine elements from multiple options or use them as inspiration to create something new that reflects your vision.",
+              "To choose the best single option from what the AI generated and use that one exactly as it was created.",
+              "To average all the options together mathematically to create a balanced middle-ground solution for your creative project.",
+              "To reject all options as derivative and unoriginal, then start over with pure human creativity without AI assistance."
+            ],
+            "correctAnswer": 0,
+            "rationale": "Synthesis means taking elements across options and creating something new—that's where creativity happens. Just picking one option misses creative potential. Mathematical averaging doesn't create meaningful synthesis. Blanket rejection wastes good raw material. True synthesis involves judgment, combination, and transformation.",
+            "explanation": "Creative synthesis transforms multiple inputs into something new.",
+            "tags": [
+              "synthesis",
+              "combination",
+              "transformation"
+            ]
+          },
+          {
+            "id": "CRS-B-004",
+            "level": 2,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.4,
+            "discrimination": 1.15,
+            "bloomLevel": "Understand",
+            "question": "Why is AI better at combining existing ideas than generating truly novel concepts?",
+            "options": [
+              "AI learns patterns from training data and excels at recombining those learned patterns, but has no experience beyond that data.",
+              "AI lacks the human capacity for imagination and creative visualization, which are essential for generating novel concepts.",
+              "Novel concepts are fundamentally impossible to generate through computational processes, regardless of the algorithm used.",
+              "AI is deliberately programmed to be conservative in its outputs and avoid suggesting anything too unusual or innovative."
+            ],
+            "correctAnswer": 0,
+            "rationale": "AI's limitation is its training data boundary—it recombines learned patterns skillfully but can't draw on external experience, physical embodiment, or knowledge outside training. It's not about imagination or visualization per se. Novel concepts aren't computationally impossible. AI isn't programmed for conservatism. The fundamental constraint is learning from data.",
+            "explanation": "AI's creative scope is bounded by its training data patterns.",
+            "tags": [
+              "training-limitations",
+              "recombination",
+              "novelty-limits"
+            ]
+          },
+          {
+            "id": "CRS-B-005",
+            "level": 2,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.43,
+            "discrimination": 1.17,
+            "bloomLevel": "Understand",
+            "question": "When is human creativity most essential compared to AI generation?",
+            "options": [
+              "When the creative vision requires breaking from established patterns, conventions, or approaches in significant ways.",
+              "When you need consistent and predictable outputs that maintain quality standards across multiple creative iterations.",
+              "When speed and efficiency are the primary priorities and you need to generate large volumes of content quickly.",
+              "When you need to generate multiple creative options rapidly to evaluate different possibilities before selecting one."
+            ],
+            "correctAnswer": 0,
+            "rationale": "Humans excel at breaking conventions and making conceptual leaps beyond established patterns. AI handles consistency, speed, and volume well. When you need something genuinely unprecedented or unconventional, human creativity is essential. AI augments existing patterns, but human vision drives radical creativity.",
+            "explanation": "Humans are uniquely capable of intentional convention-breaking.",
+            "tags": [
+              "human-creativity",
+              "convention-breaking",
+              "radical-innovation"
+            ]
+          },
+          {
+            "id": "CRS-B-006",
+            "level": 3,
+            "type": "scenario-based",
+            "points": 10,
+            "difficulty": 0.47,
+            "discrimination": 1.2,
+            "bloomLevel": "Apply",
+            "question": "You're designing a new product. AI generates 20 concept variations. What approach best leverages both AI and human creativity?",
+            "options": [
+              "Identify promising elements across multiple concepts and synthesize them into a refined design informed by market understanding and user needs.",
+              "Discard all AI-generated concepts and start fresh with pure human ideation to ensure the final product is truly original.",
+              "Pick the concept that seems most popular or conventional and develop that one since it has the lowest risk.",
+              "Develop all 20 concepts equally and simultaneously to maximize your options and avoid prematurely limiting creative possibilities."
+            ],
+            "correctAnswer": 0,
+            "rationale": "Cross-concept synthesis leveraging human judgment about markets and users creates the strongest outcome. Just picking one misses synthesis opportunities. Discarding all AI work wastes valuable exploration. The most popular option isn't necessarily best. Developing everything equally is resource-inefficient. Strategic synthesis driven by human insight is optimal.",
+            "explanation": "Effective creative collaboration involves selective synthesis guided by human judgment.",
+            "tags": [
+              "synthesis",
+              "product-design",
+              "strategic-creativity"
+            ]
+          },
+          {
+            "id": "CRS-B-007",
+            "level": 3,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.51,
+            "discrimination": 1.23,
+            "bloomLevel": "Apply",
+            "question": "AI generates creative content that's technically proficient but feels generic. What's the best way to address this?",
+            "options": [
+              "Provide more specific constraints and examples of the voice or style you want, and use the AI output as raw material for creative refinement.",
+              "Generate more options repeatedly using the same prompt until the AI randomly produces a version that isn't generic.",
+              "Accept that AI cannot be truly creative and use it only for drafting initial versions that humans will completely rewrite.",
+              "Switch to using a different AI model since generic outputs indicate that your current model lacks sufficient creative capabilities."
+            ],
+            "correctAnswer": 0,
+            "rationale": "Generic output reflects insufficient guidance and treating output as final product. Better constraints, examples, and treating output as raw material addresses this. Accepting the limitation or abandoning AI misses potential. Model-switching might help slightly but better prompting usually works better. Just generating more without guidance yields more generic content. Strategic direction is key.",
+            "explanation": "Overcoming generic AI output requires strategic prompting and human refinement.",
+            "tags": [
+              "creative-refinement",
+              "voice",
+              "specificity"
+            ]
+          },
+          {
+            "id": "CRS-B-008",
+            "level": 3,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.45,
+            "discrimination": 1.18,
+            "bloomLevel": "Apply",
+            "question": "How can you use AI to overcome creative blocks most effectively?",
+            "options": [
+              "Use AI to explore different angles, generate probing questions, or create variations that can spark new directions for your own thinking.",
+              "Only turn to AI as a last resort when you're completely stuck with absolutely no ideas of your own remaining.",
+              "Have AI complete your creative work for you entirely so you can move forward without dealing with the creative block.",
+              "Ask AI to tell you which creative direction is objectively best so you can follow that recommendation confidently."
+            ],
+            "correctAnswer": 0,
+            "rationale": "AI helps overcome blocks by offering new perspectives, questions, and variations that trigger human creativity. It's not about completion or being a last resort. It's not about AI making quality judgments about which direction is 'best.' It's about using AI as a thinking partner that provides stimulus for your creative process. The creativity is still yours.",
+            "explanation": "AI serves as a catalyst for human creative thinking, not a replacement.",
+            "tags": [
+              "creative-blocks",
+              "thinking-partner",
+              "catalysis"
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

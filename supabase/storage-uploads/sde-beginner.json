@@ -1,0 +1,1427 @@
+{
+  "assessmentMetadata": {
+    "assessmentId": "AIQ_SDE_BEGINNER_V1",
+    "version": "1.0",
+    "title": "AIQ Software Development Engineer Beginner Assessment",
+    "description": "Foundational AI literacy evaluation for software development engineers",
+    "targetAudience": [
+      "Software Development Engineers (all levels)",
+      "Backend Engineers",
+      "Full-Stack Engineers",
+      "Frontend Engineers working with AI features",
+      "Engineering Leads",
+      "Anyone in software roles working with AI/ML systems"
+    ],
+    "createdDate": "2025-11-10",
+    "lastModified": "2025-11-10"
+  },
+  "assessmentConfiguration": {
+    "totalQuestions": 60,
+    "questionsPerDimension": "7-8",
+    "estimatedTime": "60 minutes",
+    "timePerQuestion": "60 seconds",
+    "assessmentType": "fixed-sequential",
+    "totalPoints": 600,
+    "pointsPerDimension": 75,
+    "passingScore": 420,
+    "passingPercentage": 70,
+    "scoringMethod": {
+      "type": "simple-sum-with-difficulty-weighting",
+      "basePoints": 10,
+      "formula": "points = basePoints \u00d7 (1 + difficulty \u00d7 0.3)",
+      "example": "Question with 0.30 difficulty = 10 \u00d7 (1 + 0.30 \u00d7 0.3) = 10.9 points"
+    }
+  },
+  "itemBank": {
+    "dimensions": [
+      {
+        "dimensionCode": "AIC",
+        "dimensionName": "AI Coding & Implementation",
+        "description": "Practical implementation of AI features in software applications",
+        "weight": 0.125,
+        "itemCount": 8,
+        "difficultyRange": {
+          "min": 0.26,
+          "max": 0.49,
+          "average": 0.38
+        },
+        "items": [
+          {
+            "id": "AIC-SDE-B-001",
+            "question": "What's the first step you should take when integrating an AI API into your application?",
+            "options": [
+              "You should review the API documentation to understand rate limits, authentication requirements, and response formats.",
+              "You should immediately start writing code to make API calls and handle responses.",
+              "You should build a complex caching layer to optimize API usage before testing basic functionality.",
+              "You should design the entire application architecture around the AI service before understanding its capabilities."
+            ],
+            "correctAnswer": 0,
+            "difficulty": 0.26,
+            "discrimination": 1.1,
+            "bloomLevel": "Remember",
+            "rationale": "Understanding API documentation is the foundational first step before integration. This ensures you understand constraints, requirements, and capabilities before writing code.",
+            "tags": [
+              "api-integration",
+              "best-practices",
+              "development-workflow"
+            ]
+          },
+          {
+            "id": "AIC-SDE-B-002",
+            "question": "When calling an AI model API that might take several seconds to respond, how should you handle the request in your application?",
+            "options": [
+              "You should implement asynchronous processing with appropriate timeout handling and user feedback mechanisms.",
+              "You should block the main thread until the response arrives to ensure data consistency.",
+              "You should make repeated synchronous calls until you get a response.",
+              "You should cache the first response and never call the API again for similar requests."
+            ],
+            "correctAnswer": 0,
+            "difficulty": 0.35,
+            "discrimination": 1.15,
+            "bloomLevel": "Remember",
+            "rationale": "Long-running AI operations require asynchronous handling to maintain application responsiveness. This includes proper timeout handling and keeping users informed of progress.",
+            "tags": [
+              "asynchronous-programming",
+              "user-experience",
+              "api-handling"
+            ]
+          },
+          {
+            "id": "AIC-SDE-B-003",
+            "question": "What's the most important consideration when handling AI model responses that might contain errors or unexpected formats?",
+            "options": [
+              "You should display raw API responses directly to users without any processing.",
+              "You should assume the AI will always return perfectly formatted responses and skip validation.",
+              "You should implement robust error handling and validation before using the response data in your application.",
+              "You should retry the request indefinitely until you get a correctly formatted response."
+            ],
+            "correctAnswer": 2,
+            "difficulty": 0.3,
+            "discrimination": 1.12,
+            "bloomLevel": "Understand",
+            "rationale": "AI models can produce unexpected outputs or errors. Robust error handling and validation protect your application and users from malformed or problematic responses.",
+            "tags": [
+              "error-handling",
+              "validation",
+              "defensive-programming"
+            ]
+          },
+          {
+            "id": "AIC-SDE-B-004",
+            "question": "When implementing a feature that uses an AI model for text generation, how should you handle potential inappropriate or harmful content in the model's output?",
+            "options": [
+              "You should trust that the AI model will never generate inappropriate content and display everything directly.",
+              "You should implement content filtering and moderation checks before displaying generated text to users.",
+              "You should only check for inappropriate content if users complain about it.",
+              "You should disable all AI-generated content features to avoid any potential issues."
+            ],
+            "correctAnswer": 1,
+            "difficulty": 0.4,
+            "discrimination": 1.15,
+            "bloomLevel": "Understand",
+            "rationale": "Even well-designed AI models can occasionally produce inappropriate content. Implementing content moderation is essential for protecting users and maintaining application safety.",
+            "tags": [
+              "content-moderation",
+              "safety",
+              "responsible-ai"
+            ]
+          },
+          {
+            "id": "AIC-SDE-B-005",
+            "question": "What's the primary reason to implement caching for AI model API calls?",
+            "options": [
+              "Caching is only necessary when the AI service is completely unavailable.",
+              "Caching reduces API costs, improves response times, and decreases load on AI services for repeated identical requests.",
+              "Caching should store all possible AI responses to eliminate the need for API calls entirely.",
+              "Caching prevents users from seeing any AI-generated content more than once."
+            ],
+            "correctAnswer": 1,
+            "difficulty": 0.32,
+            "discrimination": 1.12,
+            "bloomLevel": "Understand",
+            "rationale": "Caching AI responses for identical inputs provides multiple benefits including cost reduction, faster response times, and reduced server load, while maintaining fresh results for new queries.",
+            "tags": [
+              "caching",
+              "performance",
+              "cost-optimization"
+            ]
+          },
+          {
+            "id": "AIC-SDE-B-006",
+            "question": "When implementing AI-powered search functionality, what's the most important consideration for handling user queries?",
+            "options": [
+              "You should send all user inputs directly to the AI service without any preprocessing or validation.",
+              "You should sanitize user inputs, implement rate limiting, and validate queries before sending them to the AI service.",
+              "You should only allow pre-defined queries to prevent any potential security issues.",
+              "You should store all user queries indefinitely without considering privacy implications."
+            ],
+            "correctAnswer": 1,
+            "difficulty": 0.38,
+            "discrimination": 1.14,
+            "bloomLevel": "Apply",
+            "rationale": "User input handling requires multiple safety measures including sanitization for security, rate limiting for abuse prevention, and validation to ensure meaningful queries reach the AI service.",
+            "tags": [
+              "input-validation",
+              "security",
+              "rate-limiting"
+            ]
+          },
+          {
+            "id": "AIC-SDE-B-007",
+            "question": "How should you structure your code when integrating multiple AI services (e.g., translation, sentiment analysis, image recognition) into your application?",
+            "options": [
+              "You should use abstraction layers and interfaces to decouple AI service implementations from your application logic.",
+              "You should hard-code each AI service integration directly into your business logic throughout the application.",
+              "You should use global variables to share AI service clients across your entire codebase.",
+              "You should create a single monolithic function that handles all AI services in one place."
+            ],
+            "correctAnswer": 0,
+            "difficulty": 0.43,
+            "discrimination": 1.16,
+            "bloomLevel": "Apply",
+            "rationale": "Using abstraction layers and interfaces promotes maintainability, testability, and flexibility. This allows you to swap AI services or modify implementations without affecting your core application logic.",
+            "tags": [
+              "software-architecture",
+              "abstraction",
+              "best-practices"
+            ]
+          },
+          {
+            "id": "AIC-SDE-B-008",
+            "question": "What's the most effective way to test code that integrates with AI model APIs during development?",
+            "options": [
+              "You should use mocks or stubs for AI API responses to enable fast, deterministic testing without API costs or dependencies.",
+              "You should make real API calls in every test run to ensure accuracy regardless of cost or speed.",
+              "You should skip testing AI integration code entirely since AI outputs are non-deterministic.",
+              "You should only test AI integrations in production after deployment to real users."
+            ],
+            "correctAnswer": 0,
+            "difficulty": 0.49,
+            "discrimination": 1.18,
+            "bloomLevel": "Apply",
+            "rationale": "Mocking AI API responses enables fast, reliable testing without external dependencies or costs, while still validating your integration logic. Real API tests can be reserved for integration testing.",
+            "tags": [
+              "testing",
+              "mocking",
+              "test-automation"
+            ]
+          }
+        ]
+      },
+      {
+        "dimensionCode": "MIA",
+        "dimensionName": "Model Integration & APIs",
+        "description": "Understanding and effectively using AI model APIs and services",
+        "weight": 0.125,
+        "itemCount": 7,
+        "difficultyRange": {
+          "min": 0.25,
+          "max": 0.45,
+          "average": 0.35
+        },
+        "items": [
+          {
+            "id": "MIA-SDE-B-001",
+            "question": "What does it mean when an AI model API has a 'knowledge cutoff date'?",
+            "options": [
+              "The model will only respond to queries about that specific date.",
+              "The API will stop working completely after that date and requires a new version.",
+              "Users cannot ask questions about any topics from before that date.",
+              "The model was trained on data only up to that date and doesn't have information about events after it."
+            ],
+            "correctAnswer": 3,
+            "difficulty": 0.25,
+            "discrimination": 1.05,
+            "bloomLevel": "Remember",
+            "rationale": "Knowledge cutoff refers to the last date of training data. The model cannot have direct knowledge of events occurring after this date, which is important for developers to understand when building applications.",
+            "tags": [
+              "model-limitations",
+              "knowledge-cutoff",
+              "api-fundamentals"
+            ]
+          },
+          {
+            "id": "MIA-SDE-B-002",
+            "question": "When an AI API documentation mentions 'tokens' for pricing, what does this typically refer to?",
+            "options": [
+              "Tokens are pieces of text (words or parts of words) used to measure the input and output processed by the model.",
+              "Tokens are physical hardware devices required to authenticate API requests.",
+              "Tokens are the number of API calls you can make per month.",
+              "Tokens are special formatting characters that must be included in every request."
+            ],
+            "correctAnswer": 0,
+            "difficulty": 0.28,
+            "discrimination": 1.08,
+            "bloomLevel": "Remember",
+            "rationale": "Tokens are text units used by language models for processing. Understanding tokens is essential for estimating API costs and managing request/response sizes effectively.",
+            "tags": [
+              "tokens",
+              "pricing",
+              "api-fundamentals"
+            ]
+          },
+          {
+            "id": "MIA-SDE-B-003",
+            "question": "What's the primary purpose of the 'temperature' parameter in many generative AI model APIs?",
+            "options": [
+              "Temperature controls the randomness of the model's outputs, with higher values producing more creative and varied responses.",
+              "Temperature determines how fast the model processes requests and returns responses.",
+              "Temperature sets the maximum length of the generated response in characters.",
+              "Temperature controls the CPU usage of the server running the model."
+            ],
+            "correctAnswer": 0,
+            "difficulty": 0.35,
+            "discrimination": 1.12,
+            "bloomLevel": "Understand",
+            "rationale": "Temperature is a key parameter controlling output randomness. Lower values (near 0) produce more deterministic outputs, while higher values increase creativity and variability.",
+            "tags": [
+              "model-parameters",
+              "temperature",
+              "output-control"
+            ]
+          },
+          {
+            "id": "MIA-SDE-B-004",
+            "question": "When should you use streaming responses versus waiting for complete responses from an AI model API?",
+            "options": [
+              "You should use streaming for long-form content generation to provide progressive user feedback and improve perceived responsiveness.",
+              "You should always wait for complete responses to ensure you never miss any content.",
+              "You should only use streaming when the API is experiencing high latency or errors.",
+              "You should use streaming exclusively for debugging purposes and never in production."
+            ],
+            "correctAnswer": 0,
+            "difficulty": 0.38,
+            "discrimination": 1.14,
+            "bloomLevel": "Understand",
+            "rationale": "Streaming provides incremental output, improving user experience for lengthy generations by showing progress. This is particularly valuable for text generation where users can start reading before completion.",
+            "tags": [
+              "streaming",
+              "user-experience",
+              "api-patterns"
+            ]
+          },
+          {
+            "id": "MIA-SDE-B-005",
+            "question": "What's the most important consideration when choosing between different AI model APIs for your application?",
+            "options": [
+              "You should always choose the model with the most parameters regardless of other factors.",
+              "You should evaluate the tradeoffs between model capabilities, latency, cost, and reliability for your specific use case.",
+              "You should select whichever model is cheapest without considering performance or capabilities.",
+              "You should avoid using any external AI APIs and always build your own models from scratch."
+            ],
+            "correctAnswer": 1,
+            "difficulty": 0.4,
+            "discrimination": 1.15,
+            "bloomLevel": "Understand",
+            "rationale": "Model selection requires balancing multiple factors based on your application's specific needs. There's no universally 'best' model\u2014the optimal choice depends on your requirements and constraints.",
+            "tags": [
+              "model-selection",
+              "tradeoffs",
+              "decision-making"
+            ]
+          },
+          {
+            "id": "MIA-SDE-B-006",
+            "question": "What does 'context window' mean in the context of language model APIs?",
+            "options": [
+              "Context window refers to the physical window of time during which the API is available each day.",
+              "Context window is the maximum amount of text (input plus output) the model can process in a single request.",
+              "Context window is the number of concurrent requests your application can make to the API.",
+              "Context window is the amount of historical data the model was trained on."
+            ],
+            "correctAnswer": 1,
+            "difficulty": 0.32,
+            "discrimination": 1.12,
+            "bloomLevel": "Understand",
+            "rationale": "Context window defines the token limit for combined input and output in one request. Understanding this helps developers manage large documents and design appropriate chunking strategies.",
+            "tags": [
+              "context-window",
+              "model-limitations",
+              "api-fundamentals"
+            ]
+          },
+          {
+            "id": "MIA-SDE-B-007",
+            "question": "When integrating a vision AI API for image analysis, what's the most important preprocessing step?",
+            "options": [
+              "You should validate image formats, sizes, and content to meet API requirements and avoid unnecessary API calls or errors.",
+              "You should convert all images to black and white to reduce processing complexity.",
+              "You should always scale images to the maximum allowed size to get the best results.",
+              "You should remove all metadata from images to prevent privacy issues, even if the API doesn't access it."
+            ],
+            "correctAnswer": 0,
+            "difficulty": 0.45,
+            "discrimination": 1.16,
+            "bloomLevel": "Apply",
+            "rationale": "Proper image validation ensures compatibility with API requirements, prevents wasted API calls on invalid inputs, and optimizes for both quality and cost considerations.",
+            "tags": [
+              "image-processing",
+              "validation",
+              "preprocessing"
+            ]
+          }
+        ]
+      },
+      {
+        "dimensionCode": "DPM",
+        "dimensionName": "Data & Prompt Management",
+        "description": "Handling data flow and prompt engineering in AI-powered applications",
+        "weight": 0.125,
+        "itemCount": 8,
+        "difficultyRange": {
+          "min": 0.27,
+          "max": 0.5,
+          "average": 0.39
+        },
+        "items": [
+          {
+            "id": "DPM-SDE-B-001",
+            "question": "What's the primary purpose of 'prompt engineering' when working with language models?",
+            "options": [
+              "Prompt engineering is the process of training new AI models from scratch.",
+              "Prompt engineering is crafting clear, specific instructions to guide the model toward producing desired outputs.",
+              "Prompt engineering is optimizing the hardware infrastructure that runs AI models.",
+              "Prompt engineering is securing API keys and authentication credentials for model access."
+            ],
+            "correctAnswer": 1,
+            "difficulty": 0.27,
+            "discrimination": 1.1,
+            "bloomLevel": "Remember",
+            "rationale": "Prompt engineering is the practice of designing effective inputs to language models. Well-crafted prompts significantly improve output quality and consistency.",
+            "tags": [
+              "prompt-engineering",
+              "fundamentals",
+              "best-practices"
+            ]
+          },
+          {
+            "id": "DPM-SDE-B-002",
+            "question": "When passing user-generated content to an AI model, what's the most critical security consideration?",
+            "options": [
+              "You should only worry about security for paid API tiers, not for free tiers.",
+              "You should encrypt all user inputs using military-grade encryption before sending to the AI service.",
+              "You should never allow users to provide any input that goes to an AI model.",
+              "You should sanitize inputs to prevent prompt injection attacks where malicious users try to manipulate model behavior."
+            ],
+            "correctAnswer": 3,
+            "difficulty": 0.42,
+            "discrimination": 1.16,
+            "bloomLevel": "Remember",
+            "rationale": "Prompt injection is a real security threat where attackers craft inputs to manipulate AI behavior. Input sanitization and careful prompt design help protect against these attacks.",
+            "tags": [
+              "security",
+              "prompt-injection",
+              "input-sanitization"
+            ]
+          },
+          {
+            "id": "DPM-SDE-B-003",
+            "question": "What's the most effective way to handle large documents that exceed an AI model's context window?",
+            "options": [
+              "You should always truncate documents to fit the context window, removing the least important parts.",
+              "You should chunk the document into smaller segments, process each separately, and intelligently combine or summarize the results.",
+              "You should refuse to process any documents that exceed the context window.",
+              "You should compress all documents using zip files before sending them to the API."
+            ],
+            "correctAnswer": 1,
+            "difficulty": 0.45,
+            "discrimination": 1.17,
+            "bloomLevel": "Understand",
+            "rationale": "Intelligent chunking strategies allow processing of large documents while respecting context window limits. This often involves creating overlapping chunks and combining results thoughtfully.",
+            "tags": [
+              "chunking",
+              "context-management",
+              "document-processing"
+            ]
+          },
+          {
+            "id": "DPM-SDE-B-004",
+            "question": "When should you include examples in your prompts to an AI model?",
+            "options": [
+              "You should always include at least 50 examples in every prompt for maximum accuracy.",
+              "You should never include examples because they waste tokens and slow down processing.",
+              "You should only include examples when the model explicitly fails without them.",
+              "You should include examples when you need the model to follow a specific format or style that's easier to show than describe."
+            ],
+            "correctAnswer": 3,
+            "difficulty": 0.35,
+            "discrimination": 1.13,
+            "bloomLevel": "Understand",
+            "rationale": "Few-shot learning (providing examples) is highly effective for teaching models specific formats or styles. However, examples should be used judiciously as they consume tokens.",
+            "tags": [
+              "few-shot-learning",
+              "prompt-design",
+              "examples"
+            ]
+          },
+          {
+            "id": "DPM-SDE-B-005",
+            "question": "What's the best practice for storing prompts in your application code?",
+            "options": [
+              "You should store prompts in environment variables alongside API keys and secrets.",
+              "You should hard-code all prompts directly into your source code files where they're used.",
+              "You should externalize prompts into configuration files or databases to enable updates without code changes and version control.",
+              "You should generate new random prompts for every request to maximize variety in responses."
+            ],
+            "correctAnswer": 2,
+            "difficulty": 0.4,
+            "discrimination": 1.15,
+            "bloomLevel": "Understand",
+            "rationale": "Externalizing prompts improves maintainability, enables A/B testing, allows non-developers to refine prompts, and facilitates version control and rollbacks.",
+            "tags": [
+              "prompt-management",
+              "configuration",
+              "maintainability"
+            ]
+          },
+          {
+            "id": "DPM-SDE-B-006",
+            "question": "When working with structured data outputs from AI models (like JSON), what's the most reliable approach?",
+            "options": [
+              "You should explicitly request the format in your prompt, validate the output structure, and implement fallback parsing strategies.",
+              "You should trust that the AI will always return perfectly formatted JSON without any validation.",
+              "You should use regular expressions to force any response into JSON format.",
+              "You should avoid requesting structured data from AI models entirely."
+            ],
+            "correctAnswer": 0,
+            "difficulty": 0.48,
+            "discrimination": 1.18,
+            "bloomLevel": "Apply",
+            "rationale": "While modern models can generate structured data reliably, validation and fallback strategies are essential. Clear format specifications in prompts improve consistency.",
+            "tags": [
+              "structured-output",
+              "validation",
+              "json-parsing"
+            ]
+          },
+          {
+            "id": "DPM-SDE-B-007",
+            "question": "What's the primary benefit of using 'system messages' versus regular prompts in AI APIs that support them?",
+            "options": [
+              "System messages make the API process requests faster by using special priority queues.",
+              "System messages set persistent behavior and context that applies across the conversation without being repeated in each request.",
+              "System messages are only visible to system administrators and not to the AI model.",
+              "System messages are used exclusively for error handling and debugging purposes."
+            ],
+            "correctAnswer": 1,
+            "difficulty": 0.38,
+            "discrimination": 1.14,
+            "bloomLevel": "Apply",
+            "rationale": "System messages establish persistent instructions that guide model behavior throughout a conversation, saving tokens and ensuring consistent behavior without repeating instructions.",
+            "tags": [
+              "system-messages",
+              "conversation-management",
+              "api-features"
+            ]
+          },
+          {
+            "id": "DPM-SDE-B-008",
+            "question": "How should you handle personally identifiable information (PII) when sending data to AI model APIs?",
+            "options": [
+              "You should encrypt PII before sending it and expect the AI model to decrypt and process it.",
+              "You should freely send all PII to AI APIs since they are trusted third-party services.",
+              "You should never use AI APIs in any application that handles any user data whatsoever.",
+              "You should review the API's data privacy policies, minimize PII in prompts, and consider PII redaction or anonymization where appropriate."
+            ],
+            "correctAnswer": 3,
+            "difficulty": 0.5,
+            "discrimination": 1.2,
+            "bloomLevel": "Apply",
+            "rationale": "PII handling requires careful consideration of privacy policies, legal requirements (like GDPR), and data minimization principles. Developers should assess and mitigate privacy risks.",
+            "tags": [
+              "privacy",
+              "pii",
+              "data-protection"
+            ]
+          }
+        ]
+      },
+      {
+        "dimensionCode": "PAO",
+        "dimensionName": "Performance & Optimization",
+        "description": "Optimizing AI feature performance, costs, and resource usage",
+        "weight": 0.125,
+        "itemCount": 7,
+        "difficultyRange": {
+          "min": 0.3,
+          "max": 0.52,
+          "average": 0.41
+        },
+        "items": [
+          {
+            "id": "PAO-SDE-B-001",
+            "question": "What's the primary reason to implement request batching for AI API calls?",
+            "options": [
+              "Batching ensures that all users see exactly identical AI-generated content.",
+              "Batching is only useful when the AI service is experiencing downtime or errors.",
+              "Batching reduces the total number of API requests, lowering costs and network overhead while improving overall throughput.",
+              "Batching makes individual requests slower but improves the visual appearance of your application."
+            ],
+            "correctAnswer": 2,
+            "difficulty": 0.35,
+            "discrimination": 1.13,
+            "bloomLevel": "Remember",
+            "rationale": "Request batching combines multiple operations into single API calls when supported, reducing overhead costs and network latency while improving throughput for bulk operations.",
+            "tags": [
+              "batching",
+              "optimization",
+              "cost-reduction"
+            ]
+          },
+          {
+            "id": "PAO-SDE-B-002",
+            "question": "When should you consider using a smaller, faster AI model instead of a larger, more capable one?",
+            "options": [
+              "You should only use smaller models when you've exhausted your API budget for larger models.",
+              "You should always use the largest available model to ensure the best possible results.",
+              "You should use smaller models when latency requirements are strict and the task doesn't require the advanced capabilities of larger models.",
+              "You should alternate between small and large models randomly to balance performance and cost."
+            ],
+            "correctAnswer": 2,
+            "difficulty": 0.4,
+            "discrimination": 1.15,
+            "bloomLevel": "Remember",
+            "rationale": "Model selection involves tradeoffs between capability, speed, and cost. Smaller models often provide faster responses at lower cost and may be sufficient for simpler tasks.",
+            "tags": [
+              "model-selection",
+              "latency",
+              "tradeoffs"
+            ]
+          },
+          {
+            "id": "PAO-SDE-B-003",
+            "question": "What's the most effective caching strategy for AI-generated content?",
+            "options": [
+              "You should cache every AI response forever to maximize cost savings regardless of freshness.",
+              "You should cache based on normalized input hashes with appropriate TTLs, considering the balance between freshness and cost savings.",
+              "You should never cache AI responses because they should always be regenerated fresh.",
+              "You should only cache responses that users explicitly save or bookmark."
+            ],
+            "correctAnswer": 1,
+            "difficulty": 0.45,
+            "discrimination": 1.17,
+            "bloomLevel": "Understand",
+            "rationale": "Effective caching for AI requires balancing cost savings with content freshness. Input normalization ensures cache hits for equivalent queries, while TTLs manage staleness.",
+            "tags": [
+              "caching-strategy",
+              "cache-keys",
+              "ttl"
+            ]
+          },
+          {
+            "id": "PAO-SDE-B-004",
+            "question": "How should you handle AI API rate limits in your application?",
+            "options": [
+              "You should ignore rate limits and keep making requests until they succeed.",
+              "You should implement exponential backoff, request queuing, and clear user feedback when approaching or hitting rate limits.",
+              "You should immediately show an error to users as soon as you hit any rate limit.",
+              "You should create multiple API accounts to bypass rate limits entirely."
+            ],
+            "correctAnswer": 1,
+            "difficulty": 0.38,
+            "discrimination": 1.14,
+            "bloomLevel": "Understand",
+            "rationale": "Proper rate limit handling includes implementing retry logic with exponential backoff, queuing requests when needed, and providing users with clear status updates during delays.",
+            "tags": [
+              "rate-limiting",
+              "retry-logic",
+              "error-handling"
+            ]
+          },
+          {
+            "id": "PAO-SDE-B-005",
+            "question": "What's the most important metric to monitor for AI API usage in production?",
+            "options": [
+              "You should exclusively track the total number of API calls made per day.",
+              "You should only monitor whether the API is returning any response at all.",
+              "You should monitor request latency, error rates, token usage, and cost per request to identify issues and optimization opportunities.",
+              "You should monitor only the accuracy of AI responses without considering performance metrics."
+            ],
+            "correctAnswer": 2,
+            "difficulty": 0.42,
+            "discrimination": 1.16,
+            "bloomLevel": "Understand",
+            "rationale": "Comprehensive monitoring includes multiple metrics to understand performance, costs, reliability, and opportunities for optimization. No single metric tells the complete story.",
+            "tags": [
+              "monitoring",
+              "metrics",
+              "observability"
+            ]
+          },
+          {
+            "id": "PAO-SDE-B-006",
+            "question": "When optimizing prompt length to reduce costs, what's the best approach?",
+            "options": [
+              "You should remove unnecessary context while preserving essential information, and test that shorter prompts maintain acceptable output quality.",
+              "You should make prompts as short as possible even if it significantly degrades output quality.",
+              "You should never modify prompts for cost reasons since length doesn't affect pricing.",
+              "You should use complex abbreviations and codes that humans can't read but AI can understand."
+            ],
+            "correctAnswer": 0,
+            "difficulty": 0.48,
+            "discrimination": 1.18,
+            "bloomLevel": "Apply",
+            "rationale": "Prompt optimization requires balancing token count with output quality. Effective optimization removes redundancy while maintaining the necessary context for good results.",
+            "tags": [
+              "prompt-optimization",
+              "cost-reduction",
+              "quality-balance"
+            ]
+          },
+          {
+            "id": "PAO-SDE-B-007",
+            "question": "What's the primary benefit of implementing client-side caching for AI-powered features?",
+            "options": [
+              "Client-side caching reduces server load, decreases latency for repeated requests, and works even when the server is temporarily unavailable.",
+              "Client-side caching is only useful for mobile applications with limited network connectivity.",
+              "Client-side caching eliminates all server costs by storing everything locally forever.",
+              "Client-side caching makes your application more secure by preventing server communication."
+            ],
+            "correctAnswer": 0,
+            "difficulty": 0.52,
+            "discrimination": 1.2,
+            "bloomLevel": "Apply",
+            "rationale": "Client-side caching provides benefits beyond server-side caching, including improved offline capabilities, reduced latency for frequently accessed content, and decreased server load.",
+            "tags": [
+              "client-side-caching",
+              "performance",
+              "offline-support"
+            ]
+          }
+        ]
+      },
+      {
+        "dimensionCode": "TDE",
+        "dimensionName": "Testing & Debugging",
+        "description": "Testing methodologies and debugging strategies for AI-integrated systems",
+        "weight": 0.125,
+        "itemCount": 8,
+        "difficultyRange": {
+          "min": 0.28,
+          "max": 0.51,
+          "average": 0.4
+        },
+        "items": [
+          {
+            "id": "TDE-SDE-B-001",
+            "question": "What's the primary challenge when writing unit tests for code that integrates with AI APIs?",
+            "options": [
+              "AI APIs always return exactly the same output for the same input, making testing unnecessary.",
+              "AI APIs are too fast to test properly using standard testing frameworks.",
+              "Unit tests cannot be written for any code that uses external APIs.",
+              "AI outputs are non-deterministic, requiring tests that focus on output format and validity rather than exact content matching."
+            ],
+            "correctAnswer": 3,
+            "difficulty": 0.35,
+            "discrimination": 1.13,
+            "bloomLevel": "Remember",
+            "rationale": "The non-deterministic nature of AI outputs requires testing strategies that validate structure, format, and reasonableness rather than expecting exact string matches.",
+            "tags": [
+              "unit-testing",
+              "non-determinism",
+              "testing-strategy"
+            ]
+          },
+          {
+            "id": "TDE-SDE-B-002",
+            "question": "What's the most effective way to test error handling for AI API failures?",
+            "options": [
+              "You should use test mocks or stubs to simulate various failure scenarios including timeouts, rate limits, and malformed responses.",
+              "You should deliberately overload the production AI service to trigger errors during testing.",
+              "You should wait for real errors to occur in production and fix them only after users report them.",
+              "You should skip testing error handling since AI APIs rarely fail."
+            ],
+            "correctAnswer": 0,
+            "difficulty": 0.38,
+            "discrimination": 1.14,
+            "bloomLevel": "Remember",
+            "rationale": "Mocking or stubbing allows testing various failure scenarios without depending on actual API failures. This ensures robust error handling before production deployment.",
+            "tags": [
+              "error-testing",
+              "mocking",
+              "failure-scenarios"
+            ]
+          },
+          {
+            "id": "TDE-SDE-B-003",
+            "question": "When debugging issues with AI-generated outputs, what should be your first troubleshooting step?",
+            "options": [
+              "You should increase the temperature parameter to maximum to see if outputs improve.",
+              "You should immediately change the AI model to a different version or provider.",
+              "You should log and examine the exact prompts sent to the AI and the full responses received to identify patterns or issues.",
+              "You should assume the AI service is broken and stop using it entirely."
+            ],
+            "correctAnswer": 2,
+            "difficulty": 0.3,
+            "discrimination": 1.12,
+            "bloomLevel": "Understand",
+            "rationale": "Understanding the exact inputs and outputs is fundamental to debugging AI integration issues. Logging provides the data needed to identify whether problems are in prompt construction, response parsing, or model behavior.",
+            "tags": [
+              "debugging",
+              "logging",
+              "troubleshooting"
+            ]
+          },
+          {
+            "id": "TDE-SDE-B-004",
+            "question": "How should you test that your application properly handles AI responses that exceed expected lengths?",
+            "options": [
+              "You should only test with average-length responses since extreme cases rarely occur.",
+              "You should assume AI responses will always fit within normal lengths and skip this testing.",
+              "You should create test cases with maximum-length mock responses to verify your UI and data handling work correctly with edge cases.",
+              "You should set response length limits so small that length issues never occur."
+            ],
+            "correctAnswer": 2,
+            "difficulty": 0.42,
+            "discrimination": 1.16,
+            "bloomLevel": "Understand",
+            "rationale": "Testing edge cases including maximum-length responses ensures your application gracefully handles all scenarios. AI models can produce unexpectedly long outputs.",
+            "tags": [
+              "edge-case-testing",
+              "length-handling",
+              "ui-testing"
+            ]
+          },
+          {
+            "id": "TDE-SDE-B-005",
+            "question": "What's the best approach for testing prompt changes before deploying them to production?",
+            "options": [
+              "You should only test prompts with a single example input before deployment.",
+              "You should deploy all prompt changes directly to production without testing.",
+              "You should test prompts with diverse representative inputs, compare outputs against baselines, and conduct A/B testing when possible.",
+              "You should rely exclusively on automated testing without any human evaluation of outputs."
+            ],
+            "correctAnswer": 2,
+            "difficulty": 0.45,
+            "discrimination": 1.17,
+            "bloomLevel": "Understand",
+            "rationale": "Comprehensive prompt testing includes diverse inputs, baseline comparisons, and ideally A/B testing. This ensures changes improve rather than degrade output quality.",
+            "tags": [
+              "prompt-testing",
+              "ab-testing",
+              "quality-assurance"
+            ]
+          },
+          {
+            "id": "TDE-SDE-B-006",
+            "question": "When should you log AI API requests and responses in production?",
+            "options": [
+              "You should log selectively based on privacy policies, compliance requirements, and debugging needs, with appropriate PII redaction.",
+              "You should log every single request and response with full detail for maximum observability.",
+              "You should never log any AI interactions to protect user privacy completely.",
+              "You should only log requests that result in errors or exceptions."
+            ],
+            "correctAnswer": 0,
+            "difficulty": 0.48,
+            "discrimination": 1.18,
+            "bloomLevel": "Apply",
+            "rationale": "Production logging requires balancing observability with privacy and compliance. Selective logging with PII redaction provides debugging capability while respecting user privacy.",
+            "tags": [
+              "production-logging",
+              "privacy",
+              "observability"
+            ]
+          },
+          {
+            "id": "TDE-SDE-B-007",
+            "question": "How should you test for potential prompt injection vulnerabilities in your AI-powered features?",
+            "options": [
+              "You should assume that prompt injection is impossible if you use authenticated API keys.",
+              "You should trust that AI models are inherently secure and skip security testing.",
+              "You should only test for prompt injection after a security breach has occurred.",
+              "You should create test cases with adversarial inputs attempting to manipulate model behavior and verify your sanitization prevents them."
+            ],
+            "correctAnswer": 3,
+            "difficulty": 0.51,
+            "discrimination": 1.2,
+            "bloomLevel": "Apply",
+            "rationale": "Proactive security testing with adversarial inputs helps identify and fix prompt injection vulnerabilities before they can be exploited in production.",
+            "tags": [
+              "security-testing",
+              "prompt-injection",
+              "adversarial-testing"
+            ]
+          },
+          {
+            "id": "TDE-SDE-B-008",
+            "question": "What's the most important consideration when debugging intermittent failures in AI API calls?",
+            "options": [
+              "You should collect detailed logs over time to identify patterns in failures, including timestamps, inputs, rate limit status, and error types.",
+              "You should assume intermittent failures are always caused by the AI service and cannot be fixed on your end.",
+              "You should immediately switch to a different AI provider at the first sign of any intermittent issues.",
+              "You should retry failed requests infinitely until they succeed regardless of the error type."
+            ],
+            "correctAnswer": 0,
+            "difficulty": 0.28,
+            "discrimination": 1.1,
+            "bloomLevel": "Apply",
+            "rationale": "Intermittent issues require pattern analysis over time. Detailed logging helps identify whether problems stem from rate limiting, specific input patterns, network issues, or service problems.",
+            "tags": [
+              "intermittent-failures",
+              "pattern-analysis",
+              "debugging"
+            ]
+          }
+        ]
+      },
+      {
+        "dimensionCode": "SRC",
+        "dimensionName": "Security, Risk & Compliance",
+        "description": "Security considerations and responsible AI practices in development",
+        "weight": 0.125,
+        "itemCount": 8,
+        "difficultyRange": {
+          "min": 0.3,
+          "max": 0.54,
+          "average": 0.42
+        },
+        "items": [
+          {
+            "id": "SRC-SDE-B-001",
+            "question": "Where should you store AI API keys in your application?",
+            "options": [
+              "You should embed API keys in client-side JavaScript where they're needed.",
+              "You should hard-code API keys directly in your source code files for convenience.",
+              "You should store API keys in a text file in your project repository.",
+              "You should store API keys in secure environment variables or secrets management systems, never in source code or client-side code."
+            ],
+            "correctAnswer": 3,
+            "difficulty": 0.3,
+            "discrimination": 1.12,
+            "bloomLevel": "Remember",
+            "rationale": "API keys are sensitive credentials that must be protected using environment variables or secrets management. Never commit them to source control or expose them client-side.",
+            "tags": [
+              "api-keys",
+              "secrets-management",
+              "security-basics"
+            ]
+          },
+          {
+            "id": "SRC-SDE-B-002",
+            "question": "What's the primary security risk of allowing unrestricted user input to be sent directly to AI models?",
+            "options": [
+              "Users can craft malicious inputs (prompt injections) that manipulate the AI to produce harmful outputs or bypass intended restrictions.",
+              "Unrestricted input will cause the AI service to charge you extra fees.",
+              "The AI model will learn from bad user inputs and become permanently corrupted.",
+              "There are no security risks since AI models cannot be manipulated by user input."
+            ],
+            "correctAnswer": 0,
+            "difficulty": 0.4,
+            "discrimination": 1.15,
+            "bloomLevel": "Remember",
+            "rationale": "Prompt injection is a real attack vector where adversarial inputs manipulate AI behavior. Input validation and careful prompt design are essential security measures.",
+            "tags": [
+              "prompt-injection",
+              "input-validation",
+              "security-risks"
+            ]
+          },
+          {
+            "id": "SRC-SDE-B-003",
+            "question": "When your application handles sensitive user data, what should you consider before sending it to an AI API?",
+            "options": [
+              "You should never use AI APIs in applications that handle any sensitive data.",
+              "You should freely send all data since AI providers are always trustworthy.",
+              "You should review the API provider's data privacy policies, consider data minimization, and evaluate whether data is retained or used for training.",
+              "You should encrypt sensitive data before sending it and assume the AI will decrypt it correctly."
+            ],
+            "correctAnswer": 2,
+            "difficulty": 0.46,
+            "discrimination": 1.17,
+            "bloomLevel": "Understand",
+            "rationale": "Data privacy requires understanding how AI providers handle data, whether it's used for training, how long it's retained, and what compliance measures are in place.",
+            "tags": [
+              "data-privacy",
+              "sensitive-data",
+              "compliance"
+            ]
+          },
+          {
+            "id": "SRC-SDE-B-004",
+            "question": "What's the most important consideration when implementing content moderation for AI-generated outputs?",
+            "options": [
+              "You should only implement content moderation if users complain about problematic outputs.",
+              "You should trust that AI models will never generate inappropriate content and skip moderation entirely.",
+              "You should implement multiple layers of filtering including keyword filtering, sentiment analysis, and potentially human review for high-risk content.",
+              "You should use a single keyword blacklist as your only moderation strategy."
+            ],
+            "correctAnswer": 2,
+            "difficulty": 0.48,
+            "discrimination": 1.18,
+            "bloomLevel": "Understand",
+            "rationale": "Effective content moderation uses multiple techniques in layers, as no single method catches everything. The specific approach depends on your application's risk profile.",
+            "tags": [
+              "content-moderation",
+              "safety",
+              "multi-layered-defense"
+            ]
+          },
+          {
+            "id": "SRC-SDE-B-005",
+            "question": "How should you handle situations where AI-generated content might include copyrighted material?",
+            "options": [
+              "You should assume all AI-generated content is automatically copyright-free and requires no consideration.",
+              "You should implement checks and disclaimers, understand your AI provider's policies on generated content, and consider legal guidance for your use case.",
+              "You should never use AI-generated content in any commercial application to avoid all risk.",
+              "You should claim copyright on all AI-generated content immediately upon generation."
+            ],
+            "correctAnswer": 1,
+            "difficulty": 0.52,
+            "discrimination": 1.2,
+            "bloomLevel": "Understand",
+            "rationale": "Copyright implications of AI-generated content remain complex and evolving. Developers should understand their provider's terms, implement appropriate safeguards, and seek legal guidance as needed.",
+            "tags": [
+              "copyright",
+              "legal-compliance",
+              "generated-content"
+            ]
+          },
+          {
+            "id": "SRC-SDE-B-006",
+            "question": "What's the primary purpose of implementing rate limiting on your application's AI features?",
+            "options": [
+              "Rate limiting prevents abuse, controls costs, ensures fair resource allocation, and protects against both malicious and accidental overuse.",
+              "Rate limiting is only necessary to comply with AI provider's rate limits.",
+              "Rate limiting intentionally makes your application slower to reduce server costs.",
+              "Rate limiting is used exclusively to prevent DDoS attacks on the AI service."
+            ],
+            "correctAnswer": 0,
+            "difficulty": 0.38,
+            "discrimination": 1.14,
+            "bloomLevel": "Apply",
+            "rationale": "Application-level rate limiting serves multiple purposes including cost control, abuse prevention, and fair resource allocation, beyond just respecting external API limits.",
+            "tags": [
+              "rate-limiting",
+              "abuse-prevention",
+              "cost-control"
+            ]
+          },
+          {
+            "id": "SRC-SDE-B-007",
+            "question": "When implementing AI features that make decisions affecting users, what's the most important ethical consideration?",
+            "options": [
+              "You should ensure transparency about AI involvement, provide mechanisms for users to understand or appeal decisions, and avoid discriminatory outcomes.",
+              "You should hide all AI involvement to make the system seem more trustworthy.",
+              "You should use AI for all decisions without human oversight to ensure consistency.",
+              "You should only worry about ethics if your application is in a regulated industry."
+            ],
+            "correctAnswer": 0,
+            "difficulty": 0.54,
+            "discrimination": 1.2,
+            "bloomLevel": "Apply",
+            "rationale": "Ethical AI implementation requires transparency, accountability, fairness considerations, and providing users with agency over decisions that affect them.",
+            "tags": [
+              "ethics",
+              "transparency",
+              "accountability"
+            ]
+          },
+          {
+            "id": "SRC-SDE-B-008",
+            "question": "What's the best practice for handling AI-generated content that might be factually incorrect or misleading?",
+            "options": [
+              "You should present all AI-generated content as absolutely factual and trustworthy.",
+              "You should implement disclaimers about potential inaccuracy, provide source citations when possible, and design UIs that encourage verification of important information.",
+              "You should never use AI for any application where factual accuracy matters.",
+              "You should manually verify every piece of AI-generated content before showing it to users."
+            ],
+            "correctAnswer": 1,
+            "difficulty": 0.44,
+            "discrimination": 1.16,
+            "bloomLevel": "Apply",
+            "rationale": "AI models can generate plausible but incorrect information. Responsible implementation includes appropriate disclaimers, source attribution when available, and UI design that encourages critical evaluation.",
+            "tags": [
+              "accuracy",
+              "misinformation",
+              "responsible-ai"
+            ]
+          }
+        ]
+      },
+      {
+        "dimensionCode": "UIF",
+        "dimensionName": "UI/UX for AI Features",
+        "description": "Designing intuitive user interfaces for AI-powered functionality",
+        "weight": 0.125,
+        "itemCount": 7,
+        "difficultyRange": {
+          "min": 0.28,
+          "max": 0.47,
+          "average": 0.38
+        },
+        "items": [
+          {
+            "id": "UIF-SDE-B-001",
+            "question": "What's the most important UX consideration when implementing AI features with potentially long processing times?",
+            "options": [
+              "You should hide all indication of processing time to avoid making users anxious.",
+              "You should block all user interaction until the AI processing completes.",
+              "You should provide clear progress indicators, loading states, and time estimates to set appropriate user expectations and maintain engagement.",
+              "You should always make AI features synchronous regardless of processing time."
+            ],
+            "correctAnswer": 2,
+            "difficulty": 0.32,
+            "discrimination": 1.12,
+            "bloomLevel": "Remember",
+            "rationale": "Long-running AI operations require thoughtful UX including progress indicators, estimated completion times, and maintaining user engagement during waits.",
+            "tags": [
+              "loading-states",
+              "user-expectations",
+              "progress-indicators"
+            ]
+          },
+          {
+            "id": "UIF-SDE-B-002",
+            "question": "How should you present AI-generated content to users?",
+            "options": [
+              "You should clearly indicate when content is AI-generated, provide options for regeneration or editing, and enable users to provide feedback.",
+              "You should present AI-generated content as if it were created by humans to increase trust.",
+              "You should never tell users when content comes from AI to avoid bias.",
+              "You should disable all user interaction with AI-generated content once it's displayed."
+            ],
+            "correctAnswer": 0,
+            "difficulty": 0.35,
+            "discrimination": 1.13,
+            "bloomLevel": "Remember",
+            "rationale": "Transparency about AI-generated content builds trust and sets appropriate expectations. Providing regeneration options and feedback mechanisms improves user experience and content quality.",
+            "tags": [
+              "transparency",
+              "ai-disclosure",
+              "user-control"
+            ]
+          },
+          {
+            "id": "UIF-SDE-B-003",
+            "question": "What's the best way to handle errors when AI API calls fail?",
+            "options": [
+              "You should display the raw API error messages directly to users.",
+              "You should provide clear, user-friendly error messages that explain the issue and offer actionable next steps without exposing technical details.",
+              "You should silently fail and show nothing to users when AI features don't work.",
+              "You should show a generic \"Something went wrong\" message without any additional information or options."
+            ],
+            "correctAnswer": 1,
+            "difficulty": 0.38,
+            "discrimination": 1.14,
+            "bloomLevel": "Understand",
+            "rationale": "Good error UX translates technical errors into user-friendly language, provides context, and offers actionable solutions while maintaining security by not exposing implementation details.",
+            "tags": [
+              "error-handling",
+              "error-messages",
+              "user-communication"
+            ]
+          },
+          {
+            "id": "UIF-SDE-B-004",
+            "question": "When should you use streaming responses for AI-generated content in your UI?",
+            "options": [
+              "You should use streaming for longer content generation to provide progressive feedback and improve perceived responsiveness, especially for text generation.",
+              "You should always wait for complete responses regardless of content length to ensure quality.",
+              "You should only use streaming when the AI service forces you to, not as a UX choice.",
+              "You should use streaming randomly to add variety to the user experience."
+            ],
+            "correctAnswer": 0,
+            "difficulty": 0.4,
+            "discrimination": 1.15,
+            "bloomLevel": "Understand",
+            "rationale": "Streaming significantly improves perceived performance for longer generations by showing progressive output. Users can start reading content before generation completes, improving the experience.",
+            "tags": [
+              "streaming",
+              "progressive-display",
+              "perceived-performance"
+            ]
+          },
+          {
+            "id": "UIF-SDE-B-005",
+            "question": "How should you design UI controls for adjusting AI parameters like temperature or creativity?",
+            "options": [
+              "You should require users to adjust every AI parameter before generating any content.",
+              "You should expose all technical AI parameters with their exact API names in the UI.",
+              "You should hide all AI parameters completely and never let users adjust them.",
+              "You should use clear, non-technical labels with helpful descriptions, and provide sensible defaults so users don't need to adjust them unless desired."
+            ],
+            "correctAnswer": 3,
+            "difficulty": 0.42,
+            "discrimination": 1.16,
+            "bloomLevel": "Understand",
+            "rationale": "Good UX translates technical parameters into user-understandable concepts, provides helpful defaults, and makes advanced controls optional for users who want them.",
+            "tags": [
+              "parameter-controls",
+              "user-friendly-design",
+              "defaults"
+            ]
+          },
+          {
+            "id": "UIF-SDE-B-006",
+            "question": "What's the most important consideration when designing UI for AI features that require user input?",
+            "options": [
+              "You should provide so many restrictions that users can barely enter anything.",
+              "You should accept any user input without guidance and let the AI handle everything.",
+              "You should provide clear input guidance, examples, and constraints to help users get good results while preventing problematic inputs.",
+              "You should only allow users to select from pre-defined options and never enter free text."
+            ],
+            "correctAnswer": 2,
+            "difficulty": 0.28,
+            "discrimination": 1.1,
+            "bloomLevel": "Apply",
+            "rationale": "Effective input UI balances flexibility with guidance, helping users understand what inputs work well while preventing problematic or malicious inputs.",
+            "tags": [
+              "input-design",
+              "user-guidance",
+              "examples"
+            ]
+          },
+          {
+            "id": "UIF-SDE-B-007",
+            "question": "How should you implement feedback mechanisms for AI-generated content?",
+            "options": [
+              "You should assume AI-generated content is always perfect and doesn't need user feedback.",
+              "You should require users to write detailed essays explaining their feedback on every AI response.",
+              "You should collect feedback but never use it to improve anything.",
+              "You should provide simple, low-friction feedback options like thumbs up/down and optional detailed feedback, clearly acting on user input to improve future results."
+            ],
+            "correctAnswer": 3,
+            "difficulty": 0.47,
+            "discrimination": 1.17,
+            "bloomLevel": "Apply",
+            "rationale": "Good feedback systems make it easy for users to provide input, offer progressive disclosure for detailed feedback, and visibly use feedback to improve experiences.",
+            "tags": [
+              "feedback-mechanisms",
+              "user-input",
+              "continuous-improvement"
+            ]
+          }
+        ]
+      },
+      {
+        "dimensionCode": "ADE",
+        "dimensionName": "Architecture & Design",
+        "description": "System architecture and design patterns for AI-integrated applications",
+        "weight": 0.125,
+        "itemCount": 7,
+        "difficultyRange": {
+          "min": 0.35,
+          "max": 0.55,
+          "average": 0.45
+        },
+        "items": [
+          {
+            "id": "ADE-SDE-B-001",
+            "question": "What's the most important architectural consideration when integrating AI services into your application?",
+            "options": [
+              "You should build your own AI models from scratch to avoid any external dependencies.",
+              "You should make your entire application completely dependent on the AI service functioning perfectly.",
+              "You should design for failure with fallback strategies, timeouts, circuit breakers, and graceful degradation when AI services are unavailable.",
+              "You should assume AI services will never fail and design accordingly."
+            ],
+            "correctAnswer": 2,
+            "difficulty": 0.42,
+            "discrimination": 1.16,
+            "bloomLevel": "Remember",
+            "rationale": "Resilient architecture treats external AI services as potentially unreliable, implementing patterns like circuit breakers, fallbacks, and timeouts to maintain application stability.",
+            "tags": [
+              "resilience",
+              "failure-handling",
+              "architecture-patterns"
+            ]
+          },
+          {
+            "id": "ADE-SDE-B-002",
+            "question": "How should you structure your application to support using different AI model providers?",
+            "options": [
+              "You should hard-code a specific AI provider throughout your application and rewrite everything if you need to switch.",
+              "You should use abstraction layers or adapters that define a common interface, making it easy to swap providers without changing application logic.",
+              "You should call multiple AI providers for every request and compare their results.",
+              "You should build separate versions of your entire application for each AI provider you might use."
+            ],
+            "correctAnswer": 1,
+            "difficulty": 0.48,
+            "discrimination": 1.18,
+            "bloomLevel": "Remember",
+            "rationale": "Using abstraction patterns like adapter or strategy allows provider flexibility without coupling your application logic to specific AI services, improving maintainability and testability.",
+            "tags": [
+              "abstraction",
+              "adapter-pattern",
+              "provider-flexibility"
+            ]
+          },
+          {
+            "id": "ADE-SDE-B-003",
+            "question": "Where should AI API calls be made in a typical three-tier web application architecture?",
+            "options": [
+              "AI API calls should be made from the database layer using stored procedures.",
+              "AI API calls should always be made directly from the frontend/client to reduce server load.",
+              "AI API calls should be made from the backend/server layer to protect API keys, enable caching, and control access properly.",
+              "AI API calls should be distributed randomly across all three tiers for load balancing."
+            ],
+            "correctAnswer": 2,
+            "difficulty": 0.35,
+            "discrimination": 1.13,
+            "bloomLevel": "Understand",
+            "rationale": "Backend API calls protect credentials, enable server-side caching, provide rate limiting, and prevent client-side manipulation. Frontend calls expose API keys and create security risks.",
+            "tags": [
+              "architecture-layers",
+              "api-placement",
+              "security"
+            ]
+          },
+          {
+            "id": "ADE-SDE-B-004",
+            "question": "What's the best pattern for handling AI operations that take longer than typical HTTP request timeouts?",
+            "options": [
+              "You should split long operations into many tiny synchronous requests to stay under timeout limits.",
+              "You should increase HTTP timeouts to several minutes and block users while waiting.",
+              "You should implement asynchronous job processing with queue systems, allowing users to initiate tasks and check back for results later.",
+              "You should give up on any AI operation that can't complete in under 5 seconds."
+            ],
+            "correctAnswer": 2,
+            "difficulty": 0.5,
+            "discrimination": 1.19,
+            "bloomLevel": "Understand",
+            "rationale": "Long-running AI operations require asynchronous patterns with job queues, allowing the application to remain responsive while providing status updates and results when ready.",
+            "tags": [
+              "async-processing",
+              "job-queues",
+              "long-running-operations"
+            ]
+          },
+          {
+            "id": "ADE-SDE-B-005",
+            "question": "How should you design your system to handle spikes in AI feature usage?",
+            "options": [
+              "You should size your infrastructure for peak load at all times regardless of cost.",
+              "You should implement request queuing, rate limiting, and auto-scaling capabilities to handle variable load without service degradation.",
+              "You should reject all requests during usage spikes and show errors to users.",
+              "You should disable AI features completely whenever usage increases beyond normal levels."
+            ],
+            "correctAnswer": 1,
+            "difficulty": 0.52,
+            "discrimination": 1.2,
+            "bloomLevel": "Understand",
+            "rationale": "Scalable AI feature design includes queuing systems for burst handling, rate limiting for protection, and auto-scaling to match capacity with demand efficiently.",
+            "tags": [
+              "scalability",
+              "load-handling",
+              "queuing"
+            ]
+          },
+          {
+            "id": "ADE-SDE-B-006",
+            "question": "What's the primary benefit of implementing an event-driven architecture for AI feature workflows?",
+            "options": [
+              "Event-driven architecture eliminates the need for any error handling or monitoring.",
+              "Event-driven architecture makes all AI operations complete faster than synchronous approaches.",
+              "Event-driven architecture enables loose coupling, asynchronous processing, and easier integration of multiple AI services in complex workflows.",
+              "Event-driven architecture is only useful for applications with millions of users."
+            ],
+            "correctAnswer": 2,
+            "difficulty": 0.55,
+            "discrimination": 1.2,
+            "bloomLevel": "Apply",
+            "rationale": "Event-driven patterns enable complex AI workflows with loose coupling between services, support for asynchronous processing, and easier composition of multiple AI operations.",
+            "tags": [
+              "event-driven",
+              "loose-coupling",
+              "workflow-orchestration"
+            ]
+          },
+          {
+            "id": "ADE-SDE-B-007",
+            "question": "How should you architect data flow for features that require both retrieval of relevant information and AI processing?",
+            "options": [
+              "You should implement a pipeline pattern where retrieval and AI processing are separate, composable stages with clear interfaces between them.",
+              "You should combine all retrieval and AI processing into a single monolithic function.",
+              "You should always retrieve all possible data before any AI processing begins.",
+              "You should let the AI model handle all data retrieval internally without any application logic."
+            ],
+            "correctAnswer": 0,
+            "difficulty": 0.45,
+            "discrimination": 1.17,
+            "bloomLevel": "Apply",
+            "rationale": "Pipeline patterns separate concerns, enable testing of individual stages, allow composition of different retrieval and processing strategies, and improve maintainability.",
+            "tags": [
+              "pipeline-pattern",
+              "data-flow",
+              "separation-of-concerns"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "psychometricProperties": {
+    "overallStatistics": {
+      "totalItems": 60,
+      "averageDifficulty": 0.39,
+      "difficultyRange": {
+        "min": 0.25,
+        "max": 0.55
+      },
+      "difficultySD": 0.08,
+      "averageDiscrimination": 1.15,
+      "discriminationRange": {
+        "min": 1.05,
+        "max": 1.2
+      },
+      "discriminationSD": 0.05,
+      "contentCoverageIndex": 0.92,
+      "estimatedReliability": 0.85
+    },
+    "bloomsTaxonomy": {
+      "remember": {
+        "count": 16,
+        "percentage": 26.7,
+        "description": "Recall foundational AI/ML knowledge"
+      },
+      "understand": {
+        "count": 24,
+        "percentage": 40.0,
+        "description": "Comprehend concepts and relationships"
+      },
+      "apply": {
+        "count": 20,
+        "percentage": 33.3,
+        "description": "Use knowledge in development contexts"
+      },
+      "cognitiveEmphasis": "65% Remember/Understand, 35% Apply (appropriate for beginner level)"
+    }
+  },
+  "scoringInterpretation": {
+    "levels": [
+      {
+        "range": "0-40%",
+        "level": "Novice",
+        "points": "0-240",
+        "description": "Significant foundational learning needed",
+        "recommendation": "Structured AI fundamentals training required"
+      },
+      {
+        "range": "41-60%",
+        "level": "Beginner",
+        "points": "241-360",
+        "description": "Basic awareness established",
+        "recommendation": "Continue learning with guided projects"
+      },
+      {
+        "range": "61-80%",
+        "level": "Developing",
+        "points": "361-480",
+        "description": "Good foundational understanding",
+        "recommendation": "Ready for supervised AI implementation work"
+      },
+      {
+        "range": "81-90%",
+        "level": "Proficient",
+        "points": "481-540",
+        "description": "Strong grasp of fundamentals",
+        "recommendation": "Can work independently on AI features"
+      },
+      {
+        "range": "91-100%",
+        "level": "Advanced",
+        "points": "541-600",
+        "description": "Excellent foundational mastery",
+        "recommendation": "Consider advanced assessment or mentoring others"
+      }
+    ]
+  }
+}
