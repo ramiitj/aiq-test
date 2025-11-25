@@ -20,6 +20,8 @@ import NotFound from "./pages/NotFound";
 import AssessmentsGeneral from "./pages/AssessmentsGeneral";
 import AssessmentsAdolescent from "./pages/AssessmentsAdolescent";
 import AssessmentsProfessional from "./pages/AssessmentsProfessional";
+import ProfessionalRoles from "./pages/ProfessionalRoles";
+import RoleLanding from "./pages/assessments/RoleLanding";
 
 const queryClient = new QueryClient();
 
@@ -47,6 +49,10 @@ const App = () => (
           <Route path="/assessments/general" element={<AssessmentsGeneral />} />
           <Route path="/assessments/adolescent" element={<AssessmentsAdolescent />} />
           <Route path="/assessments/professional" element={<AssessmentsProfessional />} />
+          <Route path="/assessments/professional/roles" element={<ProfessionalRoles />} />
+          
+          {/* Role-Specific Landing Pages */}
+          <Route path="/assessments/:roleSlug" element={<RoleLanding />} />
           
           {/* Legacy URL redirects for SEO */}
           <Route path="/auth" element={<Auth />} />

@@ -265,7 +265,7 @@ const About = () => {
                 </div>
                 <h3 className="font-bold text-xl mb-3 text-center">Professional Track</h3>
                 <p className="text-sm text-muted-foreground mb-4">
-                  Role-specific assessments tailored to the unique AI needs of 16 professional specializations.
+                  Role-specific assessments tailored to the unique AI needs of 15 professional specializations.
                 </p>
                 <ul className="space-y-2 text-sm text-muted-foreground">
                   <li className="flex items-start gap-2">

@@ -4,6 +4,8 @@ import AssessmentSelector from "@/components/AssessmentSelector";
 import { useState, useEffect } from "react";
 import { supabase } from "@/integrations/supabase/client";
 import { Briefcase } from "lucide-react";
+import { Link } from "react-router-dom";
+import { Button } from "@/components/ui/button";
 
 export default function ProfessionalAssessments() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -30,9 +32,14 @@ export default function ProfessionalAssessments() {
               <Briefcase className="h-8 w-8 text-primary" />
             </div>
             <h1 className="text-4xl font-bold mb-3">Professional Track Assessments</h1>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Role-specific AI collaboration assessments for working professionals across 8 specialized roles
+            <p className="text-lg text-muted-foreground max-w-2xl mx-auto mb-4">
+              Role-specific AI collaboration assessments for working professionals across 15 specialized roles
             </p>
+            <Link to="/assessments/professional/roles">
+              <Button variant="outline" size="lg">
+                View All 15 Professional Roles
+              </Button>
+            </Link>
           </div>
           
           {/* Filter to show only role-based track */}

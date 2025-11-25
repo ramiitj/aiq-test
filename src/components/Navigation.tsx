@@ -65,6 +65,11 @@ export const Navigation = ({ isAuthenticated, isAdmin }: NavigationProps) => {
                     Professional Track
                   </Link>
                 </DropdownMenuItem>
+                <DropdownMenuItem asChild>
+                  <Link to="/assessments/professional/roles" className="cursor-pointer">
+                    All Professional Roles
+                  </Link>
+                </DropdownMenuItem>
               </DropdownMenuContent>
             </DropdownMenu>
 
