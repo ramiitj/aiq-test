@@ -4133,7 +4133,7 @@ export const tieredRecommendations: TieredRecommendations = {
 
   // Teachers - Beginner and Advanced dimensions
   TEA: {
-    "beginner": {
+    "teachers-beginner": {
       low: [
         "Focus on understanding basic AI concepts and how they relate to teaching and learning",
         "Explore introductory resources about AI tools designed for educational settings",
@@ -4170,7 +4170,7 @@ export const tieredRecommendations: TieredRecommendations = {
   },
 
   PLD: {
-    "beginner": {
+    "teachers-beginner": {
       low: [
         "Focus on understanding how AI can assist with basic lesson planning tasks",
         "Explore AI tools that help create learning materials and resources",
@@ -4207,7 +4207,7 @@ export const tieredRecommendations: TieredRecommendations = {
   },
 
   ASE: {
-    "beginner": {
+    "teachers-beginner": {
       low: [
         "Focus on understanding how AI can support basic assessment creation and grading",
         "Explore AI tools that help generate quiz questions and rubrics",
@@ -4244,7 +4244,7 @@ export const tieredRecommendations: TieredRecommendations = {
   },
 
   EAI: {
-    "beginner": {
+    "teachers-beginner": {
       low: [
         "Focus on understanding ethical considerations when using AI in education",
         "Explore guidelines for protecting student privacy and data when using AI tools",
@@ -4281,7 +4281,7 @@ export const tieredRecommendations: TieredRecommendations = {
   },
 
   ACI: {
-    "beginner": {
+    "teachers-beginner": {
       low: [
         "Focus on understanding how AI can support collaborative teaching and learning",
         "Explore AI tools that facilitate teamwork and co-creation among students",
