@@ -41,7 +41,7 @@ export const SecurityConsentDialog = ({ open, onAccept, onDecline }: SecurityCon
   };
 
   return (
-    <Dialog open={open}>
+    <Dialog open={open} onOpenChange={() => {}}>
       <DialogContent className="sm:max-w-2xl max-h-[90vh] overflow-y-auto">
         <DialogHeader>
           <DialogTitle className="flex items-center gap-2 text-2xl">
