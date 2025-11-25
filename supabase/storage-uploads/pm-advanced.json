@@ -1,22 +1,28 @@
 {
   "assessmentName": "AIQ PM Advanced Assessment - Product Manager Expert Edition",
-  "version": "1.0",
-  "assessmentType": "adaptive",
-  "description": "Advanced-level AI literacy assessment for product managers with 160 unique professional questions covering expert product strategy, AI feature development, and market positioning",
+  "version": "2.0",
+  "assessmentType": "adaptive-irt",
+  "description": "Advanced-level AI literacy assessment for product managers with 160 unique items. IRT-based adaptive testing selects 80 items (10 per dimension) based on examinee ability",
   "assessmentConfiguration": {
-    "totalQuestions": 160,
-    "questionsPerDimension": 20,
-    "estimatedTime": "150 minutes",
+    "itemBankSize": 160,
+    "itemsPerDimensionInBank": 20,
+    "administeredQuestions": 80,
+    "administeredPerDimension": 10,
+    "estimatedTime": "80 minutes",
     "targetAudience": "Senior product managers, VP/CPO-level leaders, AI product strategists, product executives leading AI transformation",
     "timePerQuestion": "60 seconds average",
     "presentationMode": {
-      "type": "adaptive-sequential",
-      "description": "Adaptive difficulty with IRT-based progression"
+      "type": "computerized-adaptive-testing",
+      "description": "IRT-based CAT algorithm selects optimal items based on current ability estimate",
+      "algorithm": "Maximum Fisher Information",
+      "stoppingRule": "Fixed length (10 items per dimension)"
     },
     "questionDistribution": {
-      "totalItems": 160,
-      "itemsPerDimension": 20,
-      "selectionRatio": "100%"
+      "totalItemBank": 160,
+      "itemsPerDimensionBank": 20,
+      "administeredTotal": 80,
+      "administeredPerDimension": 10,
+      "selectionRatio": "50% of item bank"
     },
     "dimensionSequencing": {
       "type": "fixed-order",
@@ -33,24 +39,24 @@
     }
   },
   "scoringConfiguration": {
-    "totalPoints": 1600,
-    "pointsPerDimension": 200,
-    "passingScore": 1280,
+    "totalPoints": 800,
+    "pointsPerDimension": 100,
+    "passingScore": 640,
     "passingPercentage": 80,
     "scoringMethod": {
-      "type": "IRT-weighted-expert",
-      "basePoints": 10,
-      "formula": "points = basePoints \u00d7 (1 + difficulty \u00d7 0.5 + discrimination \u00d7 0.25)"
+      "type": "IRT-ability-estimation",
+      "method": "Maximum Likelihood Estimation",
+      "formula": "Ability (\u03b8) estimated via 2PL IRT model"
     },
     "scoringGuidelines": {
-      "0-50%": "Developing PM (0-800 points)",
-      "51-70%": "Proficient PM (801-1120 points)",
-      "71-85%": "Advanced PM (1121-1360 points)",
-      "86-95%": "Expert PM (1361-1520 points)",
-      "96-100%": "Master PM (1521-1600 points)"
+      "\u03b8 < -1.0": "Developing PM",
+      "-1.0 \u2264 \u03b8 < 0.0": "Proficient PM",
+      "0.0 \u2264 \u03b8 < 1.0": "Advanced PM",
+      "1.0 \u2264 \u03b8 < 2.0": "Expert PM",
+      "\u03b8 \u2265 2.0": "Master PM"
     }
   },
-  "instructions": "Expert-level assessment evaluating world-class AI product management literacy across 8 dimensions. 160 questions designed for senior product leaders. Complete all questions thoughtfully.",
+  "instructions": "Expert-level adaptive assessment evaluating AI product management literacy across 8 dimensions. 80 questions selected from 160-item bank based on your performance. Complete all questions thoughtfully.",
   "itemBank": [
     {
       "dimensionCode": "PAI",
