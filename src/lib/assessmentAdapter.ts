@@ -76,7 +76,12 @@ function detectFormatType(data: any): FormatType {
  * Extract metadata from various format locations
  */
 function extractMetadata(data: any, format: FormatType): any {
-  const assessmentType = data.assessmentType || data.assessmentConfiguration?.assessmentType || 'fixed';
+  let assessmentType = data.assessmentType || data.assessmentConfiguration?.assessmentType || 'fixed';
+  
+  // Normalize all adaptive type variants to 'adaptive'
+  if (assessmentType === 'adaptive-sequential' || assessmentType === 'adaptive-irt' || assessmentType === 'computerized-adaptive-testing') {
+    assessmentType = 'adaptive';
+  }
   
   switch (format) {
     case 'sde-metadata':
@@ -86,7 +91,7 @@ function extractMetadata(data: any, format: FormatType): any {
         name: metadata.name || metadata.title || 'Unknown Assessment',
         description: metadata.description || '',
         assessmentTier: metadata.assessmentTier || metadata.tier || 'beginner',
-        assessmentType: assessmentType === 'adaptive-sequential' ? 'adaptive' : assessmentType,
+        assessmentType,
         totalTime: extractDuration(data, format),
         scoring: {
           ...metadata.scoring,
@@ -102,7 +107,7 @@ function extractMetadata(data: any, format: FormatType): any {
         name: data.assessmentName || data.name || 'Unknown Assessment',
         description: data.description || '',
         assessmentTier: data.assessmentTier || data.tier || extractTierFromName(data.assessmentName || data.name),
-        assessmentType: assessmentType === 'adaptive-sequential' ? 'adaptive' : assessmentType,
+        assessmentType,
         totalTime: extractDuration(data, format),
         scoring: {
           ...data.scoringConfiguration,
@@ -279,6 +284,7 @@ export function normalizeAssessmentData(rawData: any): NormalizedAssessment {
   let questionCount = totalAvailableItems;
   if (metadata.assessmentType === 'adaptive') {
     const configuredCount = rawData.assessmentConfiguration?.totalQuestions || 
+                           rawData.assessmentConfiguration?.administeredQuestions ||
                            rawData.assessmentMetadata?.totalItems;
     if (configuredCount && configuredCount < totalAvailableItems) {
       questionCount = configuredCount;
