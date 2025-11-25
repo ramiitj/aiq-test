@@ -345,6 +345,8 @@ const Test = () => {
       
       if (sessionError || !session) {
         const returnUrl = encodeURIComponent(window.location.pathname + window.location.search);
+        // Ensure we clear auth checking state even if navigation fails
+        setIsAuthChecking(false);
         navigate(`/auth?returnTo=${returnUrl}`);
         return;
       }
