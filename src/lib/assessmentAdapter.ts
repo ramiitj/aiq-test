@@ -182,17 +182,41 @@ function extractDimensions(data: any, format: FormatType): any[] {
       return data.assessmentMetadata?.dimensions || data.itemBank?.dimensions || [];
 
     case 'hybrid-metadata':
-      // Hybrid: itemBank is direct array, need to group into dimensions
-      // For now, treat entire array as one dimension
-      return data.itemBank ? [{ items: data.itemBank }] : [];
+      // Hybrid: itemBank is direct array of dimensions
+      if (Array.isArray(data.itemBank)) {
+        // Check if array items are dimension objects (have dimensionCode/dimensionName)
+        const firstItem = data.itemBank[0];
+        if (firstItem && (firstItem.dimensionCode || firstItem.dimensionName)) {
+          return data.itemBank; // Direct array of dimension objects
+        }
+        // Otherwise, treat as single dimension
+        return [{ items: data.itemBank }];
+      }
+      return data.itemBank?.dimensions || [];
 
     case 'direct-array':
-      // Direct array: itemBank[] without dimensions wrapper
-      return data.itemBank ? [{ items: data.itemBank }] : [];
+      // Direct array: Check if itemBank[] is dimensions or items
+      if (Array.isArray(data.itemBank)) {
+        const firstItem = data.itemBank[0];
+        // If array contains dimension objects (have dimensionCode/items)
+        if (firstItem && (firstItem.dimensionCode || firstItem.dimensionName) && Array.isArray(firstItem.items)) {
+          return data.itemBank; // Array of dimension objects
+        }
+        // Otherwise single dimension with all items
+        return [{ items: data.itemBank }];
+      }
+      return [];
 
     case 'standard':
     default:
       // Standard format: itemBank.dimensions[]
+      // Also handle case where itemBank itself is an array of dimensions
+      if (Array.isArray(data.itemBank)) {
+        const firstItem = data.itemBank[0];
+        if (firstItem && (firstItem.dimensionCode || firstItem.dimensionName) && Array.isArray(firstItem.items)) {
+          return data.itemBank; // Direct array of dimensions
+        }
+      }
       return data.itemBank?.dimensions || [];
   }
 }

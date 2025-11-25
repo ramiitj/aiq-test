@@ -343,14 +343,16 @@ export async function loadTestItems(
         ? Math.floor(normalized.scoring.totalPoints / dimensions.length)
         : Math.floor((finalTotalItems * 10) / dimensions.length),
       passingScore: normalized.scoring?.passingScore || Math.floor(finalTotalItems * 10 * 0.7),
-      passingPercentage: 70,
+      passingPercentage: (normalized.scoring as any)?.passingPercentage || 70,
       scoringMethod: {
         type: 'simple-sum',
         description: 'Points-based scoring with difficulty weighting',
         basePoints: 10,
-        formula: 'points = basePoints × (1 + difficulty × 0.3)'
+        formula: normalized.assessmentType === 'adaptive' 
+          ? 'points = basePoints × (1 + difficulty × 0.5 + discrimination × 0.25)'
+          : 'points = basePoints × (1 + difficulty × 0.3)'
       },
-      scoringGuidelines: {
+      scoringGuidelines: normalized.scoring?.scoringGuidelines || {
         '0-40%': 'Novice',
         '41-60%': 'Beginner',
         '61-80%': 'Developing',
