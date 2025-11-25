@@ -47,7 +47,9 @@ const dimensionSchema = z.object({
     'HAI', 'OPM', 'FRM', 'QPS', 'WFM',
     'TAA', 'PDA', 'HRA', 'EEC', 'CEG', 'SCS', 'VTO',
     'LAI', 'PEL', 'CER', 'IAV', 'LLC', 'CSL', 'TLS',
-    'CAI', 'STA', 'CDA', 'PIA', 'CMA', 'DDA', 'EIS', 'CIT'
+    'CAI', 'STA', 'CDA', 'PIA', 'CMA', 'DDA', 'EIS', 'CIT',
+    'OAI', 'PAW', 'PFO', 'QDM', 'SCL', 'RCO', 'CIO', 'TCI',
+    'RDC', 'SMI', 'PRL', 'CPE'
   ]),
   dimensionName: z.string().min(1).max(200),
   description: z.string().max(1000).optional(),
