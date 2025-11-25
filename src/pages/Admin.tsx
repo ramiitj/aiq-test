@@ -49,7 +49,13 @@ const dimensionSchema = z.object({
     'LAI', 'PEL', 'CER', 'IAV', 'LLC', 'CSL', 'TLS',
     'CAI', 'STA', 'CDA', 'PIA', 'CMA', 'DDA', 'EIS', 'CIT',
     'OAI', 'PAW', 'PFO', 'QDM', 'SCL', 'RCO', 'CIO', 'TCI',
-    'RDC', 'SMI', 'PRL', 'CPE'
+    'RDC', 'SMI', 'PRL', 'CPE',
+    // Sales Professional dimensions
+    'SAI', 'LPO', 'CII', 'SFP', 'CAE', 'PWO', 'TSI',
+    'FOA', 'PER', 'STR',
+    // Software Development Engineer dimensions  
+    'AIC', 'MIA', 'PAO', 'TDE', 'SRC', 'UIF', 'ADE',
+    'AIA', 'MLE', 'DSE', 'SRS', 'IAT', 'TQA', 'DAE'
   ]),
   dimensionName: z.string().min(1).max(200),
   description: z.string().max(1000).optional(),

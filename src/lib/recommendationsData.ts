@@ -142,6 +142,35 @@ export const dimensionNames: { [key: string]: string } = {
   SMI: "Strategy & Market Intelligence",
   PRL: "Product Risk & Lifecycle",
   CPE: "Competitive Positioning & Ethics",
+  
+  // Sales Professional Dimensions (SAI redefined for sales context)
+  // SAI: "Sales AI Understanding" - handled contextually
+  LPO: "Lead Prioritization & Opportunity Scoring",
+  CII: "Customer Intelligence & Insights",
+  SFP: "Sales Forecasting & Pipeline Management",
+  CAE: "Communication & Engagement Automation",
+  PWO: "Productivity & Workflow Optimization",
+  TSI: "Tools, Systems & Integration",
+  // CAC: "Customer Acquisition & Conversion" - conflicts with Digital Marketer
+  FOA: "Forecasting & Opportunity Analysis",
+  PER: "Performance & Execution",
+  STR: "Strategy & Revenue",
+  
+  // Software Development Engineer Dimensions
+  AIC: "AI Coding & Implementation",
+  MIA: "Model Integration & APIs",
+  PAO: "Performance & Optimization",
+  TDE: "Testing & Debugging",
+  SRC: "Security, Risk & Compliance",
+  UIF: "UI/UX for AI Features",
+  ADE: "Architecture & Design",
+  AIA: "AI Architecture & Systems Design",
+  MLE: "Machine Learning Engineering",
+  DSE: "Data & Systems Engineering",
+  SRS: "Security, Risk & Systems",
+  IAT: "Infrastructure & AI Tools",
+  TQA: "Testing & Quality Assurance",
+  DAE: "Deployment & AI Engineering",
 };
 
 // Performance-Tiered Recommendations Structure
