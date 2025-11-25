@@ -19,8 +19,9 @@ Deno.serve(async (req) => {
     // Authenticate the user
     const authHeader = req.headers.get('Authorization');
     if (!authHeader) {
+      console.error('Missing authorization header');
       return new Response(
-        JSON.stringify({ error: 'Missing authorization header' }),
+        JSON.stringify({ error: 'Request failed', code: 'AUTH_001' }),
         { status: 401, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
       );
     }
@@ -29,8 +30,9 @@ Deno.serve(async (req) => {
     const { data: { user }, error: authError } = await supabaseClient.auth.getUser(token);
 
     if (authError || !user) {
+      console.error('Authentication failed:', authError?.message);
       return new Response(
-        JSON.stringify({ error: 'Unauthorized' }),
+        JSON.stringify({ error: 'Request failed', code: 'AUTH_002' }),
         { status: 401, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
       );
     }
@@ -47,22 +49,25 @@ Deno.serve(async (req) => {
       .single();
 
     if (testError || !test) {
+      console.error('Test lookup failed:', testError?.message);
       return new Response(
-        JSON.stringify({ error: 'Test not found' }),
+        JSON.stringify({ error: 'Request failed', code: 'TEST_001' }),
         { status: 404, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
       );
     }
 
     if (test.user_id !== user.id) {
+      console.error('Unauthorized test access attempt');
       return new Response(
-        JSON.stringify({ error: 'Unauthorized access to test' }),
+        JSON.stringify({ error: 'Request failed', code: 'TEST_002' }),
         { status: 403, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
       );
     }
 
     if (test.completed || test.security_terminated) {
+      console.error('Test already completed or terminated');
       return new Response(
-        JSON.stringify({ error: 'Test already completed or terminated' }),
+        JSON.stringify({ error: 'Request failed', code: 'TEST_003' }),
         { status: 400, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
       );
     }
@@ -76,13 +81,9 @@ Deno.serve(async (req) => {
       .download(fileName);
 
     if (downloadError || !fileData) {
-      console.error(`Failed to load assessment file: ${fileName}`, downloadError);
+      console.error(`Failed to load assessment file: ${fileName}`, downloadError?.message);
       return new Response(
-        JSON.stringify({ 
-          error: 'Assessment file not found',
-          fileName: fileName,
-          details: downloadError?.message || 'File does not exist in storage bucket'
-        }),
+        JSON.stringify({ error: 'Request failed', code: 'ASSESS_001' }),
         { status: 404, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
       );
     }
