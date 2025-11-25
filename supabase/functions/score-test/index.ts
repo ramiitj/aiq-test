@@ -81,10 +81,15 @@ Deno.serve(async (req) => {
     const assessmentText = await fileData.text();
     const assessment = JSON.parse(assessmentText);
 
+    // Handle both JSON formats: itemBank.dimensions[] or itemBank[]
+    const dimensions = Array.isArray(assessment.itemBank) 
+      ? assessment.itemBank 
+      : assessment.itemBank.dimensions;
+
     // Server-side scoring logic
     const scores = calculateTestScores(
       answers,
-      assessment.itemBank.dimensions,
+      dimensions,
       assessment.scoringConfiguration,
       test.test_version
     );
@@ -172,7 +177,14 @@ function calculateTestScores(
     ? (totalWeightedPoints / maxPossibleWeighted) * 100 
     : 0;
 
-  const passed = overallPercentage >= (scoringConfig.passingScore || 70);
+  // Use passing percentage from config, default to 70%
+  const passingPercentage = scoringConfig.passingPercentage || 70;
+  const passed = overallPercentage >= passingPercentage;
+
+  // Use scoringGuidelines for proficiency level if available
+  const performanceLevel = scoringConfig.scoringGuidelines
+    ? determinePerformanceLevel(overallPercentage, scoringConfig.scoringGuidelines)
+    : determinePerformanceLevel(overallPercentage);
 
   return {
     dimensionScores,
@@ -180,7 +192,9 @@ function calculateTestScores(
     maxScore: maxPossibleWeighted,
     percentageScore: overallPercentage,
     passed,
-    performanceLevel: determinePerformanceLevel(overallPercentage),
+    performanceLevel,
+    passingScore: Math.floor(maxPossibleWeighted * (passingPercentage / 100)),
+    totalPossiblePoints: maxPossibleWeighted,
   };
 }
 
@@ -200,21 +214,38 @@ function checkAnswer(item: any, userAnswer: string): boolean {
 function calculateItemPoints(item: any, isCorrect: boolean, assessmentLevel: string): number {
   if (!isCorrect) return 0;
   
-  const basePoints = item.points || 1;
+  const basePoints = item.points || 10;
   const difficulty = item.difficulty || 0.5;
   const discrimination = item.discrimination || 1;
   
-  let levelMultiplier = 1.0;
-  if (assessmentLevel.includes('advanced') || assessmentLevel === 'professional') {
-    levelMultiplier = 1.3;
-  } else if (assessmentLevel === 'expert') {
-    levelMultiplier = 1.5;
+  // Advanced uses stronger weighting for difficulty and discrimination
+  if (assessmentLevel.includes('advanced') || assessmentLevel === 'professional' || assessmentLevel === 'expert') {
+    return basePoints * (1 + difficulty * 0.5 + discrimination * 0.25);
   }
   
-  return basePoints * (0.5 + difficulty * 0.5) * discrimination * levelMultiplier;
+  // Beginner uses lighter weighting
+  return basePoints * (1 + difficulty * 0.3);
 }
 
-function determinePerformanceLevel(percentage: number): string {
+function determinePerformanceLevel(percentage: number, scoringGuidelines?: any): string {
+  // Use scoringGuidelines if provided
+  if (scoringGuidelines) {
+    const ranges = Object.entries(scoringGuidelines).sort((a: any, b: any) => {
+      const aMin = parseInt(a[0].split('-')[0]);
+      const bMin = parseInt(b[0].split('-')[0]);
+      return bMin - aMin; // Sort descending
+    });
+    
+    for (const [range, level] of ranges) {
+      const [min, max] = (range as string).split('-').map(s => parseInt(s.replace('%', '')));
+      if (percentage >= min && percentage <= max) {
+        // Extract just the level name
+        return (level as string).split('(')[0].trim();
+      }
+    }
+  }
+  
+  // Default proficiency levels
   if (percentage >= 90) return 'Advanced';
   if (percentage >= 80) return 'Proficient';
   if (percentage >= 70) return 'Developing';

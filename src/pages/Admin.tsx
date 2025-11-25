@@ -41,21 +41,39 @@ const dimensionSchema = z.object({
   totalPoints: z.number().positive().optional(),
 });
 
+// Support both JSON structures: fixed-sequential and adaptive IRT
 const assessmentUploadSchema = z.object({
   assessmentName: z.string().min(1).max(200),
   version: z.string().min(1).max(50),
   tier: z.string().optional(),
   type: z.string().optional(),
   description: z.string().max(2000).optional(),
-  itemBank: z.object({
-    dimensions: z.array(dimensionSchema).min(1).max(20),
-  }),
+  // Support both formats: itemBank.dimensions[] (beginner) OR itemBank[] (advanced)
+  itemBank: z.union([
+    z.object({
+      dimensions: z.array(dimensionSchema).min(1).max(20),
+    }),
+    z.array(dimensionSchema).min(1).max(20), // Direct array for advanced format
+  ]),
+  presentationMode: z.object({
+    type: z.enum(['fixed-sequential', 'adaptive-sequential']),
+    description: z.string().optional(),
+  }).optional(),
+  questionDistribution: z.object({
+    totalItems: z.number().optional(),
+    itemsPerDimension: z.union([z.number(), z.string()]).optional(),
+    selectionRatio: z.string().optional(),
+  }).optional(),
   scoringConfiguration: z.object({
     totalPoints: z.number().positive(),
     pointsPerDimension: z.number().positive().optional(),
     passingScore: z.number().min(0),
     passingPercentage: z.number().min(0).max(100).optional(),
     scoringMethod: z.union([z.string(), z.object({}).passthrough()]).optional(),
+    scoringGuidelines: z.union([
+      z.record(z.string()), // Simple format: "0-50%": "Developing"
+      z.object({}).passthrough(), // Complex nested format
+    ]).optional(),
   }),
   assessmentConfiguration: z.object({
     totalQuestions: z.number().positive().optional(),
@@ -214,15 +232,35 @@ const Admin = () => {
       jsonData = validationResult.data;
 
       // Additional business logic validation
-      const totalItemPoints = jsonData.itemBank.dimensions.reduce(
+      const dimensions = Array.isArray(jsonData.itemBank) 
+        ? jsonData.itemBank 
+        : jsonData.itemBank.dimensions;
+      
+      const totalItemPoints = dimensions.reduce(
         (sum: number, dim: any) => sum + dim.items.reduce((s: number, item: any) => s + item.points, 0),
         0
       );
       
-      if (Math.abs(totalItemPoints - jsonData.scoringConfiguration.totalPoints) > 1) {
+      // For IRT assessments, validate bank size vs selected items
+      if (jsonData.presentationMode?.type === 'adaptive-sequential') {
+        const totalBankItems = dimensions.reduce((sum: number, dim: any) => sum + dim.items.length, 0);
+        const targetItems = jsonData.questionDistribution?.totalItems || jsonData.assessmentConfiguration?.totalQuestions || 0;
+        
+        if (targetItems && totalBankItems < targetItems) {
+          toast({
+            title: "Validation Failed",
+            description: `IRT assessment requires item bank (${totalBankItems}) >= target items (${targetItems})`,
+            variant: "destructive",
+          });
+          setUploading(prev => ({ ...prev, [product.slug]: false }));
+          return;
+        }
+      }
+      
+      if (Math.abs(totalItemPoints - jsonData.scoringConfiguration.totalPoints) > 50) {
         toast({
           title: "Validation Warning",
-          description: `Total item points (${totalItemPoints}) doesn't match scoring config (${jsonData.scoringConfiguration.totalPoints})`,
+          description: `Total item points (${totalItemPoints}) differs from scoring config (${jsonData.scoringConfiguration.totalPoints})`,
           variant: "destructive",
         });
       }

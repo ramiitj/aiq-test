@@ -13,6 +13,8 @@ interface AIBlockerProps {
 export const AIBlocker = ({ isActive, testId, onViolation, enableFullscreen = false }: AIBlockerProps) => {
   const [violations, setViolations] = useState<string[]>([]);
   const [isBlocking, setIsBlocking] = useState(false);
+  const [isFullscreenTransitioning, setIsFullscreenTransitioning] = useState(false);
+  const [fullscreenInitialized, setFullscreenInitialized] = useState(false);
 
   useEffect(() => {
     if (!isActive) return;
@@ -69,8 +71,11 @@ export const AIBlocker = ({ isActive, testId, onViolation, enableFullscreen = fa
     const detectTabSwitch = () => {
       // ignore first 3s after activation to avoid false positives from extensions
       if (Date.now() - activatedAt < 3000) return;
+      // Ignore during fullscreen transition
+      if (isFullscreenTransitioning) return;
       handleViolation('Tab/Window Switch Detected');
     };
+    
     // 5. Detect DevTools Opening
     const detectDevTools = () => {
       const threshold = 160;
@@ -190,6 +195,11 @@ export const AIBlocker = ({ isActive, testId, onViolation, enableFullscreen = fa
 
     // 8b. Visibility change detection
     const detectVisibilityChange = () => {
+      // Ignore during fullscreen transition
+      if (isFullscreenTransitioning) return;
+      // Ignore until fullscreen is initialized (2 second grace period)
+      if (!fullscreenInitialized) return;
+      
       if (document.hidden) {
         handleViolation('Page Hidden / Backgrounded');
       }
@@ -209,8 +219,21 @@ export const AIBlocker = ({ isActive, testId, onViolation, enableFullscreen = fa
     const enforceFullscreen = () => {
       if (!enableFullscreen) return;
       if (!document.fullscreenElement && window.innerWidth > 768) {
-        handleViolation('Exited Fullscreen Mode');
+        // Mark as transitioning
+        setIsFullscreenTransitioning(true);
+        setTimeout(() => setIsFullscreenTransitioning(false), 1000);
+        
+        // Request to re-enter fullscreen instead of logging violation immediately
+        document.documentElement.requestFullscreen?.().catch(() => {
+          handleViolation('Exited Fullscreen Mode');
+        });
       }
+    };
+    
+    // Track fullscreen transitions to avoid false positives
+    const handleFullscreenChange = () => {
+      setIsFullscreenTransitioning(true);
+      setTimeout(() => setIsFullscreenTransitioning(false), 500);
     };
 
     const reported = new Set<string>();
@@ -280,7 +303,10 @@ export const AIBlocker = ({ isActive, testId, onViolation, enableFullscreen = fa
     window.addEventListener('blur', detectTabSwitch);
     document.addEventListener('visibilitychange', detectVisibilityChange);
     window.addEventListener('message', messageListener);
-    if (enableFullscreen) document.addEventListener('fullscreenchange', enforceFullscreen);
+    if (enableFullscreen) {
+      document.addEventListener('fullscreenchange', handleFullscreenChange);
+      document.addEventListener('fullscreenchange', enforceFullscreen);
+    }
 
     // Run detections
     detectExtensions();
@@ -307,7 +333,12 @@ export const AIBlocker = ({ isActive, testId, onViolation, enableFullscreen = fa
         document.documentElement.requestFullscreen?.().catch(() => {
           handleViolation('Fullscreen Request Denied');
         });
+        // Set fullscreen initialized after grace period
+        setTimeout(() => setFullscreenInitialized(true), 2000);
       }, 500);
+    } else if (!enableFullscreen) {
+      // If fullscreen not enabled, immediately mark as initialized
+      setFullscreenInitialized(true);
     }
 
     // Cleanup
@@ -323,7 +354,10 @@ export const AIBlocker = ({ isActive, testId, onViolation, enableFullscreen = fa
       window.removeEventListener('blur', detectTabSwitch);
       document.removeEventListener('visibilitychange', detectVisibilityChange);
       window.removeEventListener('message', messageListener);
-      if (enableFullscreen) document.removeEventListener('fullscreenchange', enforceFullscreen);
+      if (enableFullscreen) {
+        document.removeEventListener('fullscreenchange', handleFullscreenChange);
+        document.removeEventListener('fullscreenchange', enforceFullscreen);
+      }
       clearInterval(detectionInterval);
       try { uiObserver.disconnect(); } catch {}
       

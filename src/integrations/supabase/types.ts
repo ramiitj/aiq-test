@@ -16,6 +16,7 @@ export type Database = {
     Tables: {
       assessment_products: {
         Row: {
+          adaptive_selection: boolean | null
           age_group: string | null
           created_at: string | null
           description: string
@@ -24,19 +25,23 @@ export type Database = {
           display_order: number | null
           duration_minutes: number
           id: string
+          irt_enabled: boolean | null
           is_active: boolean | null
           json_file_path: string
           name: string
           passing_score: number | null
+          presentation_mode: string | null
           question_count: number
           role: string | null
           slug: string
           target_audience: string
+          total_bank_items: number | null
           total_points: number
           track: string
           updated_at: string | null
         }
         Insert: {
+          adaptive_selection?: boolean | null
           age_group?: string | null
           created_at?: string | null
           description: string
@@ -45,19 +50,23 @@ export type Database = {
           display_order?: number | null
           duration_minutes: number
           id?: string
+          irt_enabled?: boolean | null
           is_active?: boolean | null
           json_file_path: string
           name: string
           passing_score?: number | null
+          presentation_mode?: string | null
           question_count: number
           role?: string | null
           slug: string
           target_audience: string
+          total_bank_items?: number | null
           total_points: number
           track: string
           updated_at?: string | null
         }
         Update: {
+          adaptive_selection?: boolean | null
           age_group?: string | null
           created_at?: string | null
           description?: string
@@ -66,14 +75,17 @@ export type Database = {
           display_order?: number | null
           duration_minutes?: number
           id?: string
+          irt_enabled?: boolean | null
           is_active?: boolean | null
           json_file_path?: string
           name?: string
           passing_score?: number | null
+          presentation_mode?: string | null
           question_count?: number
           role?: string | null
           slug?: string
           target_audience?: string
+          total_bank_items?: number | null
           total_points?: number
           track?: string
           updated_at?: string | null
