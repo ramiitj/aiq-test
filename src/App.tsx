@@ -18,9 +18,8 @@ import Privacy from "./pages/Privacy";
 import Sitemap from "./pages/Sitemap";
 import NotFound from "./pages/NotFound";
 import AssessmentsGeneral from "./pages/AssessmentsGeneral";
-import AssessmentsAdolescent from "./pages/AssessmentsAdolescent";
+import AssessmentsStudent from "./pages/AssessmentsStudent";
 import AssessmentsProfessional from "./pages/AssessmentsProfessional";
-import ProfessionalRoles from "./pages/ProfessionalRoles";
 import RoleLanding from "./pages/assessments/RoleLanding";
 
 const queryClient = new QueryClient();
@@ -47,9 +46,11 @@ const App = () => (
           
           {/* Assessment Track Routes */}
           <Route path="/assessments/general" element={<AssessmentsGeneral />} />
-          <Route path="/assessments/adolescent" element={<AssessmentsAdolescent />} />
+          <Route path="/assessments/student" element={<AssessmentsStudent />} />
           <Route path="/assessments/professional" element={<AssessmentsProfessional />} />
-          <Route path="/assessments/professional/roles" element={<ProfessionalRoles />} />
+          
+          {/* Legacy redirect for adolescent -> student */}
+          <Route path="/assessments/adolescent" element={<AssessmentsStudent />} />
           
           {/* Role-Specific Landing Pages */}
           <Route path="/assessments/:roleSlug" element={<RoleLanding />} />

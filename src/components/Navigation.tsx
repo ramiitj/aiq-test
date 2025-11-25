@@ -52,22 +52,17 @@ export const Navigation = ({ isAuthenticated, isAdmin }: NavigationProps) => {
               <DropdownMenuContent align="end" className="w-56">
                 <DropdownMenuItem asChild>
                   <Link to="/assessments/general" className="cursor-pointer">
-                    General Track
+                    General
                   </Link>
                 </DropdownMenuItem>
                 <DropdownMenuItem asChild>
-                  <Link to="/assessments/adolescent" className="cursor-pointer">
-                    Student Track
+                  <Link to="/assessments/student" className="cursor-pointer">
+                    Students
                   </Link>
                 </DropdownMenuItem>
                 <DropdownMenuItem asChild>
                   <Link to="/assessments/professional" className="cursor-pointer">
-                    Professional Track
-                  </Link>
-                </DropdownMenuItem>
-                <DropdownMenuItem asChild>
-                  <Link to="/assessments/professional/roles" className="cursor-pointer">
-                    All Professional Roles
+                    Professionals
                   </Link>
                 </DropdownMenuItem>
               </DropdownMenuContent>
