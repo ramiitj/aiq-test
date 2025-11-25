@@ -646,7 +646,23 @@ const Test = () => {
         .select()
         .single();
 
-      if (error) throw error;
+      if (error) {
+        // Check if it's a rate limit error
+        if (error.message?.includes('Rate limit exceeded')) {
+          // Delete all incomplete tests for this user
+          await supabase
+            .from("tests")
+            .delete()
+            .eq("user_id", session.user.id)
+            .eq("completed", false);
+          
+          sonnerToast.error("Rate Limit Exceeded", {
+            description: "All incomplete tests have been deleted. Please try again in a few minutes.",
+            duration: 8000,
+          });
+        }
+        throw error;
+      }
 
       // Insert demographics data
       const { error: demographicsError } = await supabase
@@ -708,8 +724,23 @@ const Test = () => {
         .eq("id", newTest.id);
       
       if (startError) {
-        // Rate limit error - delete the test we just created
-        await supabase.from("tests").delete().eq("id", newTest.id);
+        // Check if it's a rate limit error
+        if (startError.message?.includes('Rate limit exceeded')) {
+          // Delete all incomplete tests for this user (including the one just created)
+          await supabase
+            .from("tests")
+            .delete()
+            .eq("user_id", session.user.id)
+            .eq("completed", false);
+          
+          sonnerToast.error("Rate Limit Exceeded", {
+            description: "All incomplete tests have been deleted. Please try again in a few minutes.",
+            duration: 8000,
+          });
+        } else {
+          // Other error - just delete the test we just created
+          await supabase.from("tests").delete().eq("id", newTest.id);
+        }
         throw startError;
       }
       
