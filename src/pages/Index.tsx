@@ -395,70 +395,70 @@ const Index = () => {
           </div>
         </section>
 
-        {/* Three Assessment Tracks Overview */}
+        {/* Choose Your Assessment Track - Simplified */}
         <section className="container py-16 max-w-6xl">
-          <h2 className="text-4xl font-extrabold text-center mb-3 tracking-tight">Three Assessment Pathways</h2>
-          <p className="text-center text-muted-foreground mb-10 max-w-2xl mx-auto">
-            Choose the track that best fits your needs - from general assessments to role-specific evaluations
+          <h2 className="text-4xl font-extrabold text-center mb-3 tracking-tight">Choose Your Assessment Track</h2>
+          <p className="text-center text-muted-foreground mb-12 max-w-2xl mx-auto">
+            Select the track that best matches your background and goals
           </p>
-          <div className="grid md:grid-cols-3 gap-6">
-            <Card className="shadow-sm border hover:shadow-lg transition-shadow">
+          
+          <div className="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto">
+            {/* General Track */}
+            <Card className="hover:shadow-lg transition-all border-2">
               <CardContent className="pt-8 pb-8 text-center">
-                <div className="inline-flex items-center justify-center w-16 h-16 bg-primary/10 rounded-full mb-4">
-                  <Brain className="h-8 w-8 text-primary" />
+                <div className="inline-flex items-center justify-center w-16 h-16 bg-blue-900/10 rounded-full mb-4">
+                  <Brain className="h-8 w-8 text-blue-900" />
                 </div>
-                <h3 className="text-2xl font-extrabold mb-2">General Track</h3>
-                <p className="text-sm text-muted-foreground mb-4">
-                  Universal AI collaboration intelligence for all professionals
+                <h3 className="text-2xl font-bold mb-2">General</h3>
+                <p className="text-sm text-muted-foreground mb-6">
+                  Universal AI assessment for all backgrounds and experience levels
                 </p>
-                <div className="text-3xl font-bold text-primary mb-4">2 Assessments</div>
-                <p className="text-xs text-muted-foreground mb-6">Beginner & Advanced levels</p>
                 <Link to="/assessments/general">
-                  <Button className="w-full">Explore General Track</Button>
+                  <Button size="lg" className="w-full bg-blue-900 hover:bg-blue-800">
+                    Explore General Track
+                    <ArrowRight className="ml-2 h-4 w-4" />
+                  </Button>
                 </Link>
               </CardContent>
             </Card>
 
-            <Card className="shadow-sm border hover:shadow-lg transition-shadow">
+            {/* Student Track */}
+            <Card className="hover:shadow-lg transition-all border-2">
               <CardContent className="pt-8 pb-8 text-center">
-                <div className="inline-flex items-center justify-center w-16 h-16 bg-primary/10 rounded-full mb-4">
-                  <GraduationCap className="h-8 w-8 text-primary" />
+                <div className="inline-flex items-center justify-center w-16 h-16 bg-blue-900/10 rounded-full mb-4">
+                  <GraduationCap className="h-8 w-8 text-blue-900" />
                 </div>
-                <h3 className="text-2xl font-extrabold mb-2">Student Track</h3>
-                <p className="text-sm text-muted-foreground mb-4">
-                  Age-appropriate AI literacy for high school students
+                <h3 className="text-2xl font-bold mb-2">Students</h3>
+                <p className="text-sm text-muted-foreground mb-6">
+                  Age-appropriate AI assessment designed for students aged 14-17
                 </p>
-                <div className="text-3xl font-bold text-primary mb-4">2 Age Groups</div>
-                <p className="text-xs text-muted-foreground mb-6">Ages 14-15 & 16-17 years</p>
-                <Link to="/assessments/adolescent">
-                  <Button className="w-full">Explore Student Track</Button>
+                <Link to="/assessments/student">
+                  <Button size="lg" className="w-full bg-blue-900 hover:bg-blue-800">
+                    Explore Student Track
+                    <ArrowRight className="ml-2 h-4 w-4" />
+                  </Button>
                 </Link>
               </CardContent>
             </Card>
 
-            <Card className="shadow-sm border hover:shadow-lg transition-shadow">
+            {/* Professional Track */}
+            <Card className="hover:shadow-lg transition-all border-2">
               <CardContent className="pt-8 pb-8 text-center">
-                <div className="inline-flex items-center justify-center w-16 h-16 bg-primary/10 rounded-full mb-4">
-                  <Briefcase className="h-8 w-8 text-primary" />
+                <div className="inline-flex items-center justify-center w-16 h-16 bg-blue-900/10 rounded-full mb-4">
+                  <Briefcase className="h-8 w-8 text-blue-900" />
                 </div>
-                <h3 className="text-2xl font-extrabold mb-2">Professional Track</h3>
-                <p className="text-sm text-muted-foreground mb-4">
-                  15 professional roles with tailored AI assessments
+                <h3 className="text-2xl font-bold mb-2">Professionals</h3>
+                <p className="text-sm text-muted-foreground mb-6">
+                  Role-specific AI assessments across 15 specialized careers
                 </p>
-                <div className="text-3xl font-bold text-primary mb-4">30 Assessments</div>
-                <p className="text-xs text-muted-foreground mb-6">Beginner & Advanced for each role</p>
                 <Link to="/assessments/professional">
-                  <Button className="w-full">Explore Professional Track</Button>
+                  <Button size="lg" className="w-full bg-blue-900 hover:bg-blue-800">
+                    Explore Professional Roles
+                    <ArrowRight className="ml-2 h-4 w-4" />
+                  </Button>
                 </Link>
               </CardContent>
             </Card>
-          </div>
-        </section>
-
-        {/* Assessment Selector Section */}
-        <section className="bg-secondary/30 py-16">
-          <div className="container max-w-7xl">
-            <AssessmentSelector />
           </div>
         </section>
 
