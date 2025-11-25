@@ -102,15 +102,35 @@ Deno.serve(async (req) => {
       return sanitized;
     };
 
+    // Handle both itemBank formats:
+    // 1. Direct array: itemBank: [{dimensionCode, items: [...]}]
+    // 2. Nested object: itemBank: {dimensions: [{dimensionCode, items: [...]}]}
+    let dimensions: any[];
+    
+    if (Array.isArray(assessment.itemBank)) {
+      // Format 1: Direct array
+      dimensions = assessment.itemBank;
+    } else if (assessment.itemBank?.dimensions && Array.isArray(assessment.itemBank.dimensions)) {
+      // Format 2: Nested object
+      dimensions = assessment.itemBank.dimensions;
+    } else {
+      console.error('Invalid itemBank structure in assessment file');
+      return new Response(
+        JSON.stringify({ error: 'Request failed', code: 'ASSESS_002' }),
+        { status: 500, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
+      );
+    }
+
+    const sanitizedDimensions = dimensions.map((dim: any) => ({
+      ...dim,
+      items: dim.items.map(sanitizeItem),
+    }));
+
     const sanitizedAssessment = {
       ...assessment,
-      itemBank: {
-        ...assessment.itemBank,
-        dimensions: assessment.itemBank.dimensions.map((dim: any) => ({
-          ...dim,
-          items: dim.items.map(sanitizeItem),
-        })),
-      },
+      itemBank: Array.isArray(assessment.itemBank) 
+        ? sanitizedDimensions  // Direct array format
+        : { ...assessment.itemBank, dimensions: sanitizedDimensions }  // Nested format
     };
 
     console.log(`Assessment loaded for test ${testId.substring(0, 8)}...`);
