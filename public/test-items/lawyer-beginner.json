@@ -1,0 +1,1689 @@
+{
+  "assessmentName": "AIQ Lawyers Beginner Assessment - Legal Practice Focus",
+  "version": "1.0",
+  "assessmentType": "fixed",
+  "description": "A rigorously designed foundational AI literacy assessment for legal professionals with 60 items featuring balanced options, randomized correct answer positions, complete sentence formatting, and enhanced anti-gaming measures.",
+  "assessmentConfiguration": {
+    "totalQuestions": 60,
+    "questionsPerDimension": "7-8",
+    "estimatedTime": "60 minutes",
+    "targetAudience": "Lawyers, paralegals, legal researchers, corporate counsel, litigation attorneys, and legal professionals with varying AI experience levels",
+    "timePerQuestion": "60 seconds average",
+    "presentationMode": {
+      "type": "fixed-sequential",
+      "description": "All questions presented in fixed order",
+      "sequencing": "By dimension, 7-8 questions per dimension"
+    },
+    "questionDistribution": {
+      "totalItems": 60,
+      "itemsPerDimension": "7-8 per dimension",
+      "selectionRatio": "100% (all items presented)"
+    },
+    "dimensionSequencing": {
+      "type": "fixed-order",
+      "sequence": [
+        "LAI",
+        "PEL",
+        "CER",
+        "IAV",
+        "LLC",
+        "EGC",
+        "CSL",
+        "TLS"
+      ],
+      "description": "Candidates complete 7-8 questions per dimension in sequence"
+    }
+  },
+  "scoringConfiguration": {
+    "totalPoints": 600,
+    "pointsPerDimension": 75,
+    "passingScore": 420,
+    "passingPercentage": 70,
+    "scoringMethod": {
+      "type": "simple-sum",
+      "description": "Direct sum of points from correct answers with differential weighting by item difficulty",
+      "basePoints": 10,
+      "formula": "points = basePoints × (1 + difficulty × 0.3) for each correct answer"
+    },
+    "scoringGuidelines": {
+      "0-40%": "Novice (0-240 points) - Significant foundational learning needed",
+      "41-60%": "Beginner (241-360 points) - Basic awareness established",
+      "61-80%": "Developing (361-480 points) - Good foundational understanding",
+      "81-90%": "Proficient (481-540 points) - Strong grasp of fundamentals",
+      "91-100%": "Advanced (541-600 points) - Excellent foundational mastery"
+    }
+  },
+  "instructions": "This AIQ Lawyers Beginner assessment evaluates your foundational AI literacy specifically for legal practice contexts. You will answer 60 questions total (7-8 per dimension) across 8 legal-focused dimensions in approximately 60 minutes. Questions feature nuanced options designed to test genuine understanding of AI applications in law. Answer all questions to the best of your ability.",
+  "assessmentGuidelines": {
+    "targetLevel": "Foundational awareness and basic understanding of AI in legal practice",
+    "cognitiveEmphasis": "65% Remember/Understand (Bloom's levels 1-2), 35% Apply (Bloom's level 3)",
+    "questionTypes": "Multiple-choice (70%), scenario-based (30%)",
+    "difficultyProfile": "Realistic distractors that require genuine AI/legal understanding to differentiate",
+    "timeAllocation": "Moderate time for careful consideration of legal-specific nuances",
+    "reliabilityTarget": "Cronbach's alpha ≥ 0.80"
+  },
+  "itemBank": {
+    "totalItems": 60,
+    "itemsPerDimension": 8,
+    "description": "Complete item set with 60 questions (7-8 per dimension) focused on AI literacy for legal professionals",
+    "bankStatistics": {
+      "averageDifficulty": 0.383,
+      "difficultySD": 0.08,
+      "averageDiscrimination": 1.15,
+      "discriminationSD": 0.05,
+      "contentCoverageIndex": 0.92,
+      "estimatedReliability": 0.85,
+      "totalItems": 60
+    },
+    "dimensions": [
+      {
+        "dimensionCode": "LAI",
+        "dimensionName": "Legal AI Understanding",
+        "description": "Understanding AI capabilities, limitations, and strategic applications in legal practice contexts",
+        "weight": 0.125,
+        "totalPoints": 75,
+        "items": [
+          {
+            "id": "LAI-LW-B-001",
+            "level": 1,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.25,
+            "discrimination": 1.05,
+            "bloomLevel": "Remember",
+            "question": "What is the primary strategic advantage of using AI in legal practice?",
+            "options": [
+              "AI completely replaces the need for lawyers by autonomously handling all legal matters from research to courtroom advocacy.",
+              "AI reduces legal costs by eliminating expensive attorney services and replacing them with automated software solutions.",
+              "AI enables lawyers to process high-volume document review and research efficiently while freeing time for strategic counsel and advocacy.",
+              "AI guarantees perfectly accurate legal advice by eliminating all human error and professional judgment from legal work."
+            ],
+            "correctAnswer": 2,
+            "rationale": "The primary strategic advantage of AI in legal practice is augmentation rather than replacement. AI excels at high-volume tasks like document review, legal research, and initial analysis, freeing lawyers to focus on strategic counseling, negotiation, advocacy, and complex judgment requiring professional expertise. The other options incorrectly suggest AI replaces lawyers entirely, guarantees perfection, or is primarily about cost reduction rather than strategic value enhancement.",
+            "tags": [
+              "strategic-value",
+              "ai-augmentation",
+              "legal-fundamentals",
+              "human-ai-collaboration"
+            ]
+          },
+          {
+            "id": "LAI-LW-B-002",
+            "level": 1,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.3,
+            "discrimination": 1.08,
+            "bloomLevel": "Understand",
+            "question": "Why is understanding AI limitations critical for legal professionals using AI research tools?",
+            "options": [
+              "Understanding limitations allows lawyers to completely avoid AI tools that have any weaknesses or constraints in their capabilities.",
+              "Understanding limitations helps lawyers maintain appropriate professional judgment and verify AI outputs for critical legal decisions.",
+              "Understanding limitations proves that AI should never be used for any legal research or client advisory work.",
+              "Understanding limitations is only important for IT staff but not for practicing attorneys using the tools daily."
+            ],
+            "correctAnswer": 1,
+            "rationale": "Understanding AI limitations is critical because it allows legal professionals to maintain appropriate professional judgment and implement necessary verification processes for material legal work. All AI systems have limitations, but this doesn't mean they shouldn't be used—it means they should be used thoughtfully with attorney oversight for consequential matters. The other options incorrectly suggest avoiding AI entirely, delegating understanding to IT, or using limitations to reject AI completely.",
+            "tags": [
+              "ai-limitations",
+              "professional-judgment",
+              "responsible-ai",
+              "verification"
+            ]
+          },
+          {
+            "id": "LAI-LW-B-003",
+            "level": 1,
+            "type": "scenario-based",
+            "points": 10,
+            "difficulty": 0.32,
+            "discrimination": 1.09,
+            "bloomLevel": "Understand",
+            "question": "A litigation firm considering AI for discovery review wants to understand the technology's role. What represents the most accurate characterization?",
+            "options": [
+              "AI discovery tools make attorney review completely unnecessary since algorithms can identify all relevant documents autonomously.",
+              "AI discovery tools assist attorneys by prioritizing potentially relevant documents but require attorney oversight for privilege and strategy decisions.",
+              "AI discovery tools should be avoided entirely in litigation because they cannot understand legal concepts or relevance.",
+              "AI discovery tools can independently make final decisions about privilege, relevance, and production without attorney involvement."
+            ],
+            "correctAnswer": 1,
+            "rationale": "AI discovery tools assist by efficiently processing large document volumes and prioritizing potentially relevant materials, but attorneys must oversee privilege determinations, strategic decisions, and final relevance calls. AI assists rather than replaces attorney judgment on critical legal decisions. The other options incorrectly suggest complete autonomy without oversight or that AI should be entirely avoided in discovery.",
+            "tags": [
+              "e-discovery",
+              "attorney-oversight",
+              "document-review",
+              "ai-role"
+            ]
+          },
+          {
+            "id": "LAI-LW-B-004",
+            "level": 2,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.35,
+            "discrimination": 1.1,
+            "bloomLevel": "Understand",
+            "question": "How does AI's approach to legal research differ fundamentally from traditional manual research methods?",
+            "options": [
+              "AI can analyze patterns across thousands of cases simultaneously while human researchers typically work through cases sequentially.",
+              "AI completely understands legal reasoning and context better than human lawyers who have studied law for years.",
+              "AI research is always more accurate than manual research since computers never make mistakes or overlook relevant cases.",
+              "AI eliminates the need for understanding legal principles since it automatically applies correct law to every situation."
+            ],
+            "correctAnswer": 0,
+            "rationale": "AI's fundamental difference is its ability to analyze patterns and connections across vast numbers of cases simultaneously, while humans work more sequentially. However, AI doesn't inherently understand legal reasoning better than trained lawyers, isn't infallible, and doesn't eliminate the need for legal expertise. The first option correctly identifies AI's computational strength while acknowledging human expertise remains essential.",
+            "tags": [
+              "legal-research",
+              "ai-capabilities",
+              "pattern-analysis",
+              "comparative-advantage"
+            ]
+          },
+          {
+            "id": "LAI-LW-B-005",
+            "level": 2,
+            "type": "scenario-based",
+            "points": 10,
+            "difficulty": 0.38,
+            "discrimination": 1.12,
+            "bloomLevel": "Apply",
+            "question": "Your firm is evaluating AI contract review software that claims 98% accuracy. What should be your primary consideration before implementation?",
+            "options": [
+              "Immediately implement since 98% accuracy is sufficiently high for all contract review without any validation needed.",
+              "Understand how accuracy is measured, what it covers, and test the tool with your specific contract types before relying on it.",
+              "Reject the tool entirely since no AI can achieve 98% accuracy and the vendor must be misrepresenting capabilities.",
+              "Focus solely on cost savings from reduced attorney hours without considering accuracy measurement or validation needs."
+            ],
+            "correctAnswer": 1,
+            "rationale": "Before implementing any AI legal tool, understanding accuracy measurement methodology, testing with firm-specific documents, and validating performance is critical. Vendor-reported accuracy may be measured under different conditions than your use case. The other options either trust claims without verification, reject possibilities without investigation, or prioritize cost over quality.",
+            "tags": [
+              "vendor-evaluation",
+              "accuracy-validation",
+              "due-diligence",
+              "contract-review"
+            ]
+          },
+          {
+            "id": "LAI-LW-B-006",
+            "level": 2,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.4,
+            "discrimination": 1.13,
+            "bloomLevel": "Apply",
+            "question": "What represents the most appropriate use of AI in legal brief preparation?",
+            "options": [
+              "Having AI write the entire brief from start to finish and filing it directly without attorney review or editing.",
+              "Using AI to identify relevant cases and draft initial argument outlines, then having attorneys refine, verify, and finalize the work.",
+              "Avoiding AI entirely in brief writing since legal writing requires creativity that only humans can provide effectively.",
+              "Letting AI draft briefs but only for non-critical motions where losing the argument would not significantly harm the client."
+            ],
+            "correctAnswer": 1,
+            "rationale": "The appropriate use of AI in brief preparation is as an assistant for research, initial drafting, and outline generation, followed by attorney refinement, verification of citations, and strategic finalization. Filing AI-generated content without review creates professional responsibility risks, while avoiding AI entirely misses efficiency benefits. The distinction between critical and non-critical matters for AI use is a false dichotomy that still requires oversight.",
+            "tags": [
+              "brief-writing",
+              "attorney-supervision",
+              "legal-writing",
+              "appropriate-use"
+            ]
+          },
+          {
+            "id": "LAI-LW-B-007",
+            "level": 3,
+            "type": "scenario-based",
+            "points": 10,
+            "difficulty": 0.43,
+            "discrimination": 1.14,
+            "bloomLevel": "Apply",
+            "question": "Your corporate legal department wants to use AI for contract generation. How should AI capabilities be positioned to stakeholders?",
+            "options": [
+              "AI will eliminate the need for in-house counsel by autonomously drafting and negotiating all company contracts.",
+              "AI will accelerate standard contract creation and clause library management while attorneys focus on negotiation and risk analysis.",
+              "AI should be described as experimental technology that may or may not work, setting very low expectations for results.",
+              "AI will guarantee perfect contracts with zero errors, eliminating all legal risk from contract management processes."
+            ],
+            "correctAnswer": 1,
+            "rationale": "AI should be positioned realistically as accelerating standard drafting tasks and improving consistency while attorneys focus on higher-value work like negotiation and risk analysis. The other options either overstate capabilities (elimination of counsel, zero errors), understate value (experimental with low expectations), or misrepresent AI's role. Realistic expectations enable successful adoption.",
+            "tags": [
+              "stakeholder-management",
+              "realistic-expectations",
+              "contract-automation",
+              "change-management"
+            ]
+          },
+          {
+            "id": "LAI-LW-B-008",
+            "level": 3,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.45,
+            "discrimination": 1.15,
+            "bloomLevel": "Apply",
+            "question": "When implementing AI legal research tools, what factor most determines whether the technology delivers promised value?",
+            "options": [
+              "The tool's sophistication level and technical features since more advanced AI always produces better legal research results.",
+              "The vendor's reputation and market position since established vendors always provide superior AI capabilities than newcomers.",
+              "Attorney training on effective tool use and integration into existing legal research workflows and quality control processes.",
+              "The tool's subscription cost since expensive AI tools necessarily provide better accuracy and more comprehensive legal coverage."
+            ],
+            "correctAnswer": 2,
+            "rationale": "The determining factor for AI tool value is attorney training and workflow integration, not just technical features, vendor reputation, or cost. Even sophisticated tools fail without proper training and integration into quality control processes. The other options incorrectly assume technology alone, vendor credentials, or price guarantee results without considering the human factors essential for successful adoption.",
+            "tags": [
+              "implementation-success",
+              "user-training",
+              "workflow-integration",
+              "value-realization"
+            ]
+          }
+        ]
+      },
+      {
+        "dimensionCode": "PEL",
+        "dimensionName": "Prompt Engineering for Legal",
+        "description": "Crafting effective prompts and queries for AI tools in legal research, analysis, and document generation contexts",
+        "weight": 0.125,
+        "totalPoints": 75,
+        "items": [
+          {
+            "id": "PEL-LW-B-001",
+            "level": 1,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.28,
+            "discrimination": 1.06,
+            "bloomLevel": "Remember",
+            "question": "What is the most critical element to include when prompting an AI legal research tool?",
+            "options": [
+              "Using complex legal jargon and Latin phrases to demonstrate expertise and get more sophisticated responses from the AI system.",
+              "Providing clear context about jurisdiction, relevant time period, and specific legal issues you need addressed in the research.",
+              "Keeping prompts extremely brief with minimal detail since AI tools work best with short, simple queries without context.",
+              "Using casual conversational language rather than legal terminology since AI systems cannot understand legal vocabulary properly."
+            ],
+            "correctAnswer": 1,
+            "rationale": "The most critical element is providing clear context including jurisdiction, time period, and specific legal issues. This helps AI narrow its search and provide relevant results. Excessive jargon isn't helpful, overly brief prompts lack necessary context, and AI can understand legal terminology when used appropriately. The second option correctly emphasizes essential contextual elements.",
+            "tags": [
+              "prompt-context",
+              "legal-specificity",
+              "jurisdiction",
+              "research-queries"
+            ]
+          },
+          {
+            "id": "PEL-LW-B-002",
+            "level": 1,
+            "type": "scenario-based",
+            "points": 10,
+            "difficulty": 0.3,
+            "discrimination": 1.07,
+            "bloomLevel": "Understand",
+            "question": "You need AI to draft a confidentiality provision for an employment agreement. Which prompt approach is most effective?",
+            "options": [
+              "Draft confidentiality provision for employment agreement immediately without any specific parameters or guidance provided.",
+              "Draft a confidentiality provision for a California senior executive employment agreement covering trade secrets and client information with 2-year post-termination duration.",
+              "Create the absolute best and most perfect confidentiality clause that has ever been written in legal history.",
+              "Make me a thing about not sharing stuff for a job contract that looks professional and legal."
+            ],
+            "correctAnswer": 1,
+            "rationale": "The effective prompt provides specific context: jurisdiction (California), position level (senior executive), scope (trade secrets and client information), and duration (2 years). The first option lacks parameters, the third uses superlatives without substance, and the fourth is too vague. The second option demonstrates clear, specific guidance that enables useful output.",
+            "tags": [
+              "contract-drafting",
+              "specificity",
+              "contextual-prompting",
+              "employment-law"
+            ]
+          },
+          {
+            "id": "PEL-LW-B-003",
+            "level": 2,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.33,
+            "discrimination": 1.09,
+            "bloomLevel": "Apply",
+            "question": "When prompting AI for case law analysis, what information hierarchy produces the most relevant results?",
+            "options": [
+              "Start with specific facts and desired outcome, then specify jurisdiction, relevant legal area, and key issues to analyze.",
+              "Provide only the citation to one case you found and ask AI to find similar cases without any other context.",
+              "Give AI complete freedom by providing no parameters so it can creatively explore all possible legal theories.",
+              "List every single fact from your case in exhaustive detail before mentioning any legal issues or jurisdiction."
+            ],
+            "correctAnswer": 0,
+            "rationale": "The effective hierarchy starts with specific facts and desired outcome, then narrows with jurisdiction and legal area, followed by key issues. This structure helps AI understand context before specific parameters. The other options either provide too little direction, no structure, or bury important information under excessive detail. The first option demonstrates optimal information sequencing.",
+            "tags": [
+              "case-analysis",
+              "information-hierarchy",
+              "prompt-structure",
+              "legal-research"
+            ]
+          },
+          {
+            "id": "PEL-LW-B-004",
+            "level": 2,
+            "type": "scenario-based",
+            "points": 10,
+            "difficulty": 0.36,
+            "discrimination": 1.1,
+            "bloomLevel": "Apply",
+            "question": "You receive inadequate results from your initial AI legal research query. What prompt refinement strategy is most effective?",
+            "options": [
+              "Repeat the exact same prompt multiple times since AI tools sometimes need several identical attempts to understand queries.",
+              "Abandon AI research entirely and switch to manual research since one failed attempt proves the tool is not useful.",
+              "Add more specific parameters about jurisdiction, time period, or legal standards while narrowing the scope of your query.",
+              "Make the prompt much longer by adding every possible detail even if not directly relevant to improve AI comprehension."
+            ],
+            "correctAnswer": 2,
+            "rationale": "When initial results are inadequate, adding specific parameters (jurisdiction, time period, standards) and narrowing scope typically improves results. Repeating identical prompts doesn't help, abandoning the tool after one attempt is premature, and adding irrelevant detail creates noise. The third option demonstrates effective iterative refinement based on initial results.",
+            "tags": [
+              "prompt-refinement",
+              "iterative-improvement",
+              "query-optimization",
+              "research-strategy"
+            ]
+          },
+          {
+            "id": "PEL-LW-B-005",
+            "level": 2,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.38,
+            "discrimination": 1.11,
+            "bloomLevel": "Apply",
+            "question": "What represents best practice when prompting AI to summarize a complex legal document?",
+            "options": [
+              "Request a summary of the entire document without specifying focus areas, length limits, or intended audience for the summary.",
+              "Ask AI to summarize the document for a specific audience with desired length and focus on particular provisions or risk areas.",
+              "Demand that AI create the shortest possible summary since brief summaries are always better regardless of purpose.",
+              "Instruct AI to include every detail from the original document in the summary to ensure nothing important is missed."
+            ],
+            "correctAnswer": 1,
+            "rationale": "Best practice includes specifying audience (client, senior partner, opposing counsel), desired length, and focus areas (key terms, risks, obligations). General summaries without parameters may miss important details for your purpose, extremely brief summaries may omit critical information, and comprehensive summaries defeat the purpose of summarization. The second option balances specificity with purpose.",
+            "tags": [
+              "document-summary",
+              "audience-specification",
+              "purpose-driven",
+              "targeted-analysis"
+            ]
+          },
+          {
+            "id": "PEL-LW-B-006",
+            "level": 3,
+            "type": "scenario-based",
+            "points": 10,
+            "difficulty": 0.4,
+            "discrimination": 1.12,
+            "bloomLevel": "Apply",
+            "question": "You need AI assistance comparing your client's proposed contract terms with industry standards. How should you structure this prompt?",
+            "options": [
+              "Simply ask AI to review the contract and tell you if it is good or bad without providing comparison criteria.",
+              "Specify the industry, identify key terms to compare, provide examples of standard terms if available, and request specific gap analysis.",
+              "Upload the contract and ask for a complete rewrite to match industry standards without identifying which terms concern you.",
+              "Request AI to guarantee that all terms match industry standards and certify the contract is fully compliant with best practices."
+            ],
+            "correctAnswer": 1,
+            "rationale": "Effective comparison prompts specify industry context, identify specific terms for comparison, may provide standard examples, and request targeted gap analysis rather than subjective judgment. The other options either lack direction, request overreach (complete rewrite), or ask for guarantees AI cannot provide. The second option demonstrates structured comparative analysis prompting.",
+            "tags": [
+              "contract-comparison",
+              "industry-standards",
+              "gap-analysis",
+              "structured-analysis"
+            ]
+          },
+          {
+            "id": "PEL-LW-B-007",
+            "level": 3,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.42,
+            "discrimination": 1.13,
+            "bloomLevel": "Apply",
+            "question": "When using AI to generate alternative contract language, what prompt element most improves output quality?",
+            "options": [
+              "Including your concerns with existing language, desired legal effect, jurisdiction requirements, and any mandatory terms to incorporate.",
+              "Asking AI to make the language as complex and sophisticated as possible regardless of the contract's business purpose.",
+              "Requesting that AI copy language from similar contracts without consideration of your specific client needs or context.",
+              "Instructing AI to use the simplest possible language even if it fails to adequately protect your client's legal interests."
+            ],
+            "correctAnswer": 0,
+            "rationale": "Quality output requires explaining concerns with current language, desired legal effect, jurisdictional requirements, and mandatory terms. This gives AI direction while allowing appropriate drafting. The other options either prioritize form over function (complexity/simplicity) or generic copying over tailored drafting. The first option balances guidance with flexibility for effective drafting.",
+            "tags": [
+              "language-generation",
+              "drafting-guidance",
+              "legal-effect",
+              "client-specific"
+            ]
+          },
+          {
+            "id": "PEL-LW-B-008",
+            "level": 3,
+            "type": "scenario-based",
+            "points": 10,
+            "difficulty": 0.45,
+            "discrimination": 1.14,
+            "bloomLevel": "Apply",
+            "question": "You need AI to identify potential issues in a merger agreement. What prompt strategy yields the most comprehensive issue-spotting?",
+            "options": [
+              "Break the request into specific categories: regulatory, financial, operational, and IP concerns, prompting separately for each area with relevant context.",
+              "Ask one general question about whether there are any problems with the agreement without specifying issue types or priorities.",
+              "Request AI to identify only the single most important issue since addressing multiple concerns would be too overwhelming.",
+              "Instruct AI to flag everything that could theoretically be an issue, including minor formatting and stylistic preferences."
+            ],
+            "correctAnswer": 0,
+            "rationale": "Comprehensive issue-spotting benefits from category-specific prompts (regulatory, financial, operational, IP) with relevant context for each area. This structured approach is more thorough than general queries, avoids artificial limitation to single issues, and maintains focus on substantive rather than minor matters. The first option demonstrates systematic issue identification through targeted prompting.",
+            "tags": [
+              "issue-spotting",
+              "structured-analysis",
+              "category-based",
+              "m&a-review"
+            ]
+          }
+        ]
+      },
+      {
+        "dimensionCode": "CER",
+        "dimensionName": "Critical Evaluation & Research",
+        "description": "Evaluating AI-generated legal content for accuracy, relevance, completeness, and appropriate application to specific matters",
+        "weight": 0.125,
+        "totalPoints": 75,
+        "items": [
+          {
+            "id": "CER-LW-B-001",
+            "level": 1,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.27,
+            "discrimination": 1.06,
+            "bloomLevel": "Remember",
+            "question": "What is the first verification step attorneys should take with AI-generated case citations?",
+            "options": [
+              "Cite the cases directly in briefs since AI legal research tools always provide accurate citations that require no verification.",
+              "Verify that each cited case actually exists and is correctly cited by checking the cases in official legal databases.",
+              "Use the AI's description of the case holdings without reading the actual cases since AI summaries are always accurate.",
+              "Skip verification for cases from well-known courts since AI tools rarely make errors with prominent jurisdictions."
+            ],
+            "correctAnswer": 1,
+            "rationale": "The essential first step is verifying that cited cases exist and are correctly cited by checking official databases. AI can generate plausible but non-existent citations (hallucinations) or misquote actual cases. Attorneys have professional responsibility to verify all citations regardless of source. The other options create professional liability risks by skipping critical verification steps.",
+            "tags": [
+              "citation-verification",
+              "case-checking",
+              "professional-responsibility",
+              "hallucination-risk"
+            ]
+          },
+          {
+            "id": "CER-LW-B-002",
+            "level": 1,
+            "type": "scenario-based",
+            "points": 10,
+            "difficulty": 0.29,
+            "discrimination": 1.07,
+            "bloomLevel": "Understand",
+            "question": "AI provides a case summary stating that a court held employers are strictly liable for independent contractor discrimination. What should you do?",
+            "options": [
+              "Read the actual case opinion to verify the holding since AI may have misinterpreted the court's reasoning or application of law.",
+              "Use this summary immediately in client advice since AI legal research tools accurately capture all case holdings and reasoning.",
+              "Assume the summary is wrong and ignore this case entirely without verification since AI often generates incorrect legal analysis.",
+              "Search for other AI-generated summaries of the same case to see if multiple AI tools agree on the holding."
+            ],
+            "correctAnswer": 0,
+            "rationale": "When AI provides significant legal holdings, reading the actual opinion is essential to verify accuracy and context. AI may misinterpret reasoning, miss important limitations, or incorrectly summarize holdings. Relying on summaries without verification creates malpractice risks, while dismissing without checking misses potentially relevant authority. Comparing AI summaries doesn't replace reading the original source.",
+            "tags": [
+              "case-verification",
+              "holding-accuracy",
+              "primary-sources",
+              "misinterpretation-risk"
+            ]
+          },
+          {
+            "id": "CER-LW-B-003",
+            "level": 2,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.32,
+            "discrimination": 1.08,
+            "bloomLevel": "Apply",
+            "question": "When evaluating AI-generated contract language, which factor requires the most critical attorney review?",
+            "options": [
+              "Grammatical correctness and professional formatting since these elements determine whether contract language is legally enforceable.",
+              "Whether the language achieves the intended legal and business objectives while addressing jurisdiction-specific requirements and risks.",
+              "The sophistication level and complexity of vocabulary used since more complex language always provides better legal protection.",
+              "How quickly the AI generated the language since faster generation indicates more reliable and accurate contract provisions."
+            ],
+            "correctAnswer": 1,
+            "rationale": "The critical evaluation factor is whether language achieves intended legal/business objectives and addresses jurisdiction-specific requirements. Grammar and formatting matter but don't determine legal effect, complexity doesn't equal quality, and generation speed doesn't correlate with accuracy. The second option focuses on substantive legal adequacy rather than superficial features.",
+            "tags": [
+              "contract-evaluation",
+              "legal-objectives",
+              "substantive-review",
+              "jurisdictional-compliance"
+            ]
+          },
+          {
+            "id": "CER-LW-B-004",
+            "level": 2,
+            "type": "scenario-based",
+            "points": 10,
+            "difficulty": 0.35,
+            "discrimination": 1.09,
+            "bloomLevel": "Apply",
+            "question": "AI generates a legal memo analyzing your client's liability exposure. What evaluation approach is most thorough?",
+            "options": [
+              "Accept the analysis if it is well-written and appears professionally formatted without verifying the underlying legal authorities cited.",
+              "Check citation accuracy, verify the legal standards applied, assess whether all relevant factors are considered, and evaluate reasoning logic.",
+              "Focus exclusively on spelling and grammar since these are the only elements that matter for determining memo quality.",
+              "Compare length to typical legal memos since longer memos necessarily contain more thorough analysis than shorter ones."
+            ],
+            "correctAnswer": 1,
+            "rationale": "Thorough evaluation requires checking citation accuracy, verifying applied legal standards, assessing factor coverage, and evaluating reasoning logic. Professional appearance doesn't guarantee substantive accuracy, and memo length doesn't correlate with analytical quality. The second option demonstrates comprehensive evaluation covering both sources and reasoning rather than superficial features.",
+            "tags": [
+              "memo-evaluation",
+              "comprehensive-review",
+              "analytical-rigor",
+              "multi-factor-assessment"
+            ]
+          },
+          {
+            "id": "CER-LW-B-005",
+            "level": 2,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.37,
+            "discrimination": 1.1,
+            "bloomLevel": "Apply",
+            "question": "How should attorneys evaluate AI-generated answers to jurisdiction-specific legal questions?",
+            "options": [
+              "Verify the answer against current statutes and case law in the specific jurisdiction since AI may conflate different jurisdictions or use outdated law.",
+              "Trust AI answers for all jurisdictions equally since AI legal tools have comprehensive coverage of every state and federal law.",
+              "Assume AI is most accurate for federal questions and least accurate for state questions in all circumstances.",
+              "Use AI answers without verification for common law jurisdictions but always verify for civil law jurisdictions."
+            ],
+            "correctAnswer": 0,
+            "rationale": "Jurisdiction-specific answers must be verified against current law in that jurisdiction because AI may conflate jurisdictions, miss recent changes, or lack comprehensive coverage for certain areas. AI accuracy doesn't vary predictably by jurisdiction type or common/civil law distinction. The first option emphasizes essential verification regardless of jurisdiction while recognizing specific conflation risks.",
+            "tags": [
+              "jurisdictional-accuracy",
+              "current-law",
+              "conflation-risk",
+              "verification-requirement"
+            ]
+          },
+          {
+            "id": "CER-LW-B-006",
+            "level": 3,
+            "type": "scenario-based",
+            "points": 10,
+            "difficulty": 0.4,
+            "discrimination": 1.12,
+            "bloomLevel": "Apply",
+            "question": "AI provides research showing favorable precedent for your motion, but you recall seeing contrary authority. What is the appropriate response?",
+            "options": [
+              "File the motion relying on AI research since you are not certain about the contrary authority you vaguely remember seeing.",
+              "Conduct independent research to locate the contrary authority, assess both lines of cases, and address potential counterarguments in your motion.",
+              "Ignore your memory and rely entirely on AI research since your recollection is probably wrong if AI did not find that case.",
+              "Mention the contrary authority to opposing counsel privately but omit it from your brief since AI research suggests favorable precedent exists."
+            ],
+            "correctAnswer": 1,
+            "rationale": "Professional responsibility requires conducting independent research to locate contrary authority, analyze both favorable and adverse precedent, and address counterarguments appropriately. Ignoring potentially adverse authority based solely on AI failing to locate it creates ethical and strategic risks. The second option demonstrates thoroughness and candor obligations while maintaining zealous advocacy.",
+            "tags": [
+              "independent-research",
+              "contrary-authority",
+              "professional-responsibility",
+              "candor-obligation"
+            ]
+          },
+          {
+            "id": "CER-LW-B-007",
+            "level": 3,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.43,
+            "discrimination": 1.13,
+            "bloomLevel": "Apply",
+            "question": "When AI generates statutory interpretation analysis, what factor most often requires attorney correction or supplementation?",
+            "options": [
+              "AI frequently misses relevant legislative history, agency interpretations, or recent amendments that affect statutory meaning and application.",
+              "AI always uses incorrect grammatical structure when explaining statutes requiring attorneys to completely rewrite for clarity.",
+              "AI consistently provides overly conservative interpretations requiring attorneys to argue for more aggressive positions in all cases.",
+              "AI cannot read or understand statutory text requiring attorneys to provide all substantive interpretation from scratch."
+            ],
+            "correctAnswer": 0,
+            "rationale": "AI's most common limitation in statutory interpretation is missing legislative history, agency guidance, or recent amendments that affect application. AI can read statutes but may lack comprehensive access to interpretive materials or recent developments. The other options incorrectly suggest AI cannot interpret text, consistently takes conservative positions, or has primarily formatting issues.",
+            "tags": [
+              "statutory-interpretation",
+              "legislative-history",
+              "agency-guidance",
+              "supplementation-needs"
+            ]
+          },
+          {
+            "id": "CER-LW-B-008",
+            "level": 3,
+            "type": "scenario-based",
+            "points": 10,
+            "difficulty": 0.45,
+            "discrimination": 1.14,
+            "bloomLevel": "Apply",
+            "question": "AI produces a privilege log for document production. What evaluation step is most critical before production?",
+            "options": [
+              "Verify that AI correctly identified privileged communications, properly applied privilege doctrines, and that descriptions adequately support claims without waiving privilege.",
+              "Check only that the log formatting matches court requirements since AI privilege determinations are typically more accurate than attorney review.",
+              "Produce the log immediately without review since privilege determinations are routine matters that AI handles reliably without oversight.",
+              "Have AI regenerate the log multiple times and pick the version with the most privileged documents to maximize protection."
+            ],
+            "correctAnswer": 0,
+            "rationale": "Critical evaluation requires verifying privilege application accuracy, doctrine appropriateness, and description adequacy without waiver. Privilege determinations involve complex legal judgment that requires attorney oversight despite AI assistance. The other options either skip necessary review, over-rely on AI, or misunderstand how privilege protection works.",
+            "tags": [
+              "privilege-review",
+              "document-production",
+              "waiver-risk",
+              "attorney-oversight"
+            ]
+          }
+        ]
+      },
+      {
+        "dimensionCode": "IAV",
+        "dimensionName": "Identifying Inaccuracies & Verification",
+        "description": "Detecting errors, hallucinations, outdated information, and inappropriate legal conclusions in AI outputs",
+        "weight": 0.125,
+        "totalPoints": 75,
+        "items": [
+          {
+            "id": "IAV-LW-B-001",
+            "level": 1,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.26,
+            "discrimination": 1.05,
+            "bloomLevel": "Remember",
+            "question": "What is a hallucination in the context of AI legal research tools?",
+            "options": [
+              "When AI tools take an unreasonably long time to generate results, causing users to imagine the results before they appear.",
+              "When users incorrectly remember legal rules and input wrong information into AI systems, leading to confused research results.",
+              "When AI generates plausible-sounding but non-existent case citations, statutes, or legal principles that appear authentic but are fabricated.",
+              "When AI systems display visual artifacts or glitches on screen that distort the appearance of legal documents and research."
+            ],
+            "correctAnswer": 2,
+            "rationale": "A hallucination occurs when AI generates convincing but fabricated information like non-existent cases, statutes, or legal principles. These outputs appear authentic but have no basis in actual legal sources. The other options confuse system performance issues, user errors, or display problems with the specific phenomenon of AI fabricating plausible but false content.",
+            "tags": [
+              "hallucination-definition",
+              "fabricated-content",
+              "false-citations",
+              "ai-limitations"
+            ]
+          },
+          {
+            "id": "IAV-LW-B-002",
+            "level": 1,
+            "type": "scenario-based",
+            "points": 10,
+            "difficulty": 0.28,
+            "discrimination": 1.06,
+            "bloomLevel": "Understand",
+            "question": "AI cites a 2018 Supreme Court case for a proposition, but you cannot find this case in legal databases. What is the most likely explanation?",
+            "options": [
+              "The case exists but has been sealed or classified by the government and is therefore unavailable in public legal databases.",
+              "Your legal database subscription is outdated or limited and does not include recent Supreme Court cases from 2018 onward.",
+              "The AI hallucinated a non-existent case citation that sounds plausible but does not actually exist in legal records.",
+              "The Supreme Court decided the case but has not yet published the opinion, so it appears only in AI systems, not databases."
+            ],
+            "correctAnswer": 2,
+            "rationale": "When a cited case cannot be found in legal databases, the most likely explanation is AI hallucination—fabrication of a plausible but non-existent citation. Supreme Court cases are comprehensively covered in legal databases, are not classified, and published opinions appear in databases before they would appear in AI training data. The third option correctly identifies hallucination as the probable cause.",
+            "tags": [
+              "citation-verification",
+              "hallucination-detection",
+              "non-existent-cases",
+              "database-checking"
+            ]
+          },
+          {
+            "id": "IAV-LW-B-003",
+            "level": 2,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.31,
+            "discrimination": 1.07,
+            "bloomLevel": "Apply",
+            "question": "What pattern should alert attorneys that AI-generated legal analysis may contain inaccuracies?",
+            "options": [
+              "The analysis is well-organized and professionally written, which indicates AI is operating at peak accuracy and reliability.",
+              "The analysis cites cases but provides only vague descriptions of holdings without specific page numbers or detailed legal reasoning.",
+              "The analysis includes citations to multiple courts and jurisdictions, which demonstrates comprehensive and thorough legal research.",
+              "The analysis arrives at favorable conclusions for your client, suggesting the AI correctly understood your legal position."
+            ],
+            "correctAnswer": 1,
+            "rationale": "Vague case descriptions without specific pages or detailed reasoning may indicate AI lacks access to the full case or is generalizing/hallucinating. Professional formatting, multiple citations, and favorable conclusions don't indicate accuracy—they can coexist with fabricated or misinterpreted content. The second option identifies a red flag suggesting superficial or potentially fabricated analysis.",
+            "tags": [
+              "inaccuracy-patterns",
+              "vague-citations",
+              "verification-triggers",
+              "quality-indicators"
+            ]
+          },
+          {
+            "id": "IAV-LW-B-004",
+            "level": 2,
+            "type": "scenario-based",
+            "points": 10,
+            "difficulty": 0.34,
+            "discrimination": 1.08,
+            "bloomLevel": "Apply",
+            "question": "AI provides analysis of a statute that contradicts your understanding of the law. How should you resolve this discrepancy?",
+            "options": [
+              "Defer to AI analysis since machine learning algorithms process more legal data than individual attorneys can review manually.",
+              "Read the statute directly, check recent case law interpreting it, and consult secondary sources to verify which interpretation is correct.",
+              "Assume your understanding is correct since you passed the bar exam and AI systems have not been admitted to practice law.",
+              "Split the difference by presenting both interpretations to clients as equally valid since AI and attorney disagree on the meaning."
+            ],
+            "correctAnswer": 1,
+            "rationale": "Discrepancies require returning to primary sources—reading the actual statute, checking interpretive case law, and consulting secondary sources to determine accuracy. Neither automatic deference to AI nor human expertise resolves the question without verification. Presenting contradictory interpretations as equally valid without resolution is inappropriate. The second option demonstrates proper verification methodology.",
+            "tags": [
+              "discrepancy-resolution",
+              "primary-sources",
+              "verification-methodology",
+              "statutory-analysis"
+            ]
+          },
+          {
+            "id": "IAV-LW-B-005",
+            "level": 2,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.36,
+            "discrimination": 1.09,
+            "bloomLevel": "Apply",
+            "question": "When should attorneys be most skeptical of AI-generated legal conclusions?",
+            "options": [
+              "When AI provides conclusions about well-established legal principles since these areas have the highest hallucination rates in all AI systems.",
+              "When AI addresses novel legal issues, rapidly evolving areas, or jurisdiction-specific nuances where training data may be limited or outdated.",
+              "When AI generates any legal content since all AI outputs are inherently unreliable and should be presumed incorrect until proven otherwise.",
+              "When AI produces results quickly since rapid generation indicates the system is not thoroughly analyzing the legal questions presented."
+            ],
+            "correctAnswer": 1,
+            "rationale": "Heightened skepticism is warranted for novel issues, evolving areas, and jurisdiction-specific nuances where AI training data may be limited or outdated. Established principles are typically more reliable, though still requiring verification. Blanket distrust of all AI content is excessive, and generation speed doesn't correlate with accuracy. The second option identifies appropriate risk-based skepticism.",
+            "tags": [
+              "appropriate-skepticism",
+              "novel-issues",
+              "evolving-law",
+              "limited-training-data"
+            ]
+          },
+          {
+            "id": "IAV-LW-B-006",
+            "level": 3,
+            "type": "scenario-based",
+            "points": 10,
+            "difficulty": 0.39,
+            "discrimination": 1.11,
+            "bloomLevel": "Apply",
+            "question": "You notice AI consistently provides similar analysis across different client matters with different facts. What does this pattern suggest?",
+            "options": [
+              "The AI is functioning optimally by recognizing common legal patterns and providing consistent analysis across similar practice areas.",
+              "The AI may be generating generic or templated responses without adequately analyzing fact-specific differences between matters.",
+              "This consistency proves AI analysis is more reliable than human attorney analysis which varies inappropriately between matters.",
+              "The pattern indicates your prompts are too similar and AI is responding appropriately to repetitive input from your firm."
+            ],
+            "correctAnswer": 1,
+            "rationale": "Overly similar analysis across different facts suggests AI may be generating generic responses without adequate fact-specific analysis. While patterns exist across matters, quality legal analysis requires distinguishing factual differences. The pattern doesn't prove reliability or necessarily reflect prompt similarity. The second option correctly identifies a potential quality concern requiring investigation.",
+            "tags": [
+              "generic-responses",
+              "fact-specific-analysis",
+              "pattern-recognition",
+              "quality-concerns"
+            ]
+          },
+          {
+            "id": "IAV-LW-B-007",
+            "level": 3,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.42,
+            "discrimination": 1.12,
+            "bloomLevel": "Apply",
+            "question": "What verification method is most reliable for confirming accuracy of AI-generated case law summaries?",
+            "options": [
+              "Comparing AI summaries from multiple different AI tools to see if they agree on case holdings and reasoning.",
+              "Reading the actual case opinions in full to verify holdings, reasoning, and relevant context rather than relying on AI or secondary summaries.",
+              "Checking whether the case citations match standard legal citation format since proper formatting indicates accurate content.",
+              "Reviewing the confidence score or reliability indicator that AI systems display alongside case summaries they generate."
+            ],
+            "correctAnswer": 1,
+            "rationale": "Reading actual opinions is the only truly reliable verification method since all AI tools can make similar errors or lack the same content. Comparing multiple AI summaries doesn't eliminate systematic errors, proper citation format doesn't guarantee accurate content, and AI confidence scores don't reliably indicate accuracy. The second option represents the gold standard for verification.",
+            "tags": [
+              "verification-methods",
+              "primary-sources",
+              "case-reading",
+              "reliability-standards"
+            ]
+          },
+          {
+            "id": "IAV-LW-B-008",
+            "level": 3,
+            "type": "scenario-based",
+            "points": 10,
+            "difficulty": 0.44,
+            "discrimination": 1.13,
+            "bloomLevel": "Apply",
+            "question": "AI cites a recent statute in its analysis, but the effective date is after your client's relevant conduct. What verification is needed?",
+            "options": [
+              "Verify the statute's effective date, determine the law in effect at the relevant time, and assess whether retroactive application might apply.",
+              "Rely on AI's citation since AI legal tools automatically account for effective dates when analyzing client situations and timeline.",
+              "Assume the statute applies retroactively since legislatures typically intend new laws to apply to all prior conduct in the area.",
+              "Ignore the timing issue since statutes generally apply to ongoing matters regardless of when the client conduct initially occurred."
+            ],
+            "correctAnswer": 0,
+            "rationale": "Effective dates are critical, and AI may cite recent law without properly considering timing relative to client facts. Attorneys must verify effective dates, identify governing law at the relevant time, and analyze retroactivity questions. AI doesn't automatically handle temporal issues, and retroactive application can't be assumed. The first option demonstrates essential temporal verification.",
+            "tags": [
+              "effective-dates",
+              "temporal-verification",
+              "retroactivity",
+              "governing-law"
+            ]
+          }
+        ]
+      },
+      {
+        "dimensionCode": "LLC",
+        "dimensionName": "Legal Limitations & Capabilities",
+        "description": "Understanding what AI can and cannot reliably do in legal practice, including technical and professional constraints",
+        "weight": 0.125,
+        "totalPoints": 75,
+        "items": [
+          {
+            "id": "LLC-LW-B-001",
+            "level": 1,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.27,
+            "discrimination": 1.06,
+            "bloomLevel": "Remember",
+            "question": "What is a fundamental limitation of AI in legal practice?",
+            "options": [
+              "AI cannot process legal documents faster than human attorneys since machine reading speed is limited by computational power.",
+              "AI cannot exercise professional judgment about strategy, ethics, risk tolerance, or client goals that require human understanding.",
+              "AI cannot read or analyze any foreign language legal documents, limiting its utility to English-language jurisdictions only.",
+              "AI cannot be used by law firms in any capacity since unauthorized practice of law regulations prohibit AI in legal work."
+            ],
+            "correctAnswer": 1,
+            "rationale": "A fundamental limitation is AI's inability to exercise professional judgment about strategy, ethics, risk tolerance, and client goals that require human understanding of context and values. AI can process documents quickly, handle multiple languages, and is permissible as a tool under attorney supervision. The second option correctly identifies AI's core limitation in judgment-dependent aspects of legal practice.",
+            "tags": [
+              "professional-judgment",
+              "fundamental-limitations",
+              "human-factors",
+              "strategic-decisions"
+            ]
+          },
+          {
+            "id": "LLC-LW-B-002",
+            "level": 1,
+            "type": "scenario-based",
+            "points": 10,
+            "difficulty": 0.29,
+            "discrimination": 1.07,
+            "bloomLevel": "Understand",
+            "question": "A client asks whether they should settle a case or proceed to trial. Can AI make this decision reliably?",
+            "options": [
+              "Yes, AI can reliably make settlement decisions by calculating expected value based on win probability and potential damages.",
+              "No, this decision requires attorney judgment considering client goals, risk tolerance, non-monetary factors, and strategic considerations that AI cannot adequately evaluate.",
+              "Yes, AI settlement decisions are more reliable than attorney advice since AI eliminates emotional bias from the analysis.",
+              "No, but only because current AI technology is insufficiently advanced; future AI will make these decisions better than attorneys."
+            ],
+            "correctAnswer": 1,
+            "rationale": "Settlement decisions require professional judgment considering client-specific factors like risk tolerance, personal goals, reputational concerns, and business strategy that AI cannot adequately evaluate. While AI can provide data analysis, the decision requires human judgment about values and priorities. The other options either overstate AI capabilities or incorrectly attribute the limitation to technological immaturity rather than the inherent nature of professional judgment.",
+            "tags": [
+              "settlement-decisions",
+              "client-counseling",
+              "judgment-requirements",
+              "strategic-advice"
+            ]
+          },
+          {
+            "id": "LLC-LW-B-003",
+            "level": 2,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.32,
+            "discrimination": 1.08,
+            "bloomLevel": "Apply",
+            "question": "For which legal task is AI assistance currently LEAST reliable?",
+            "options": [
+              "Reviewing 10,000 contracts to identify those containing specific indemnification language and generating a report of findings.",
+              "Determining whether a judge will likely grant a preliminary injunction based on the judge's personality, temperament, and unspoken biases.",
+              "Summarizing key terms from a 200-page merger agreement and comparing them to standard market terms for similar transactions.",
+              "Identifying relevant cases from the past five years involving similar fact patterns across multiple federal circuit courts."
+            ],
+            "correctAnswer": 1,
+            "rationale": "AI is least reliable at predicting judicial decisions based on personality, temperament, and unspoken biases—factors that involve human psychology, interpersonal dynamics, and implicit factors not captured in legal text. AI is more reliable at document review, term extraction, and pattern-based case identification involving explicit textual content. The second option identifies a task requiring human insight beyond textual analysis.",
+            "tags": [
+              "judicial-prediction",
+              "reliability-assessment",
+              "human-factors",
+              "implicit-factors"
+            ]
+          },
+          {
+            "id": "LLC-LW-B-004",
+            "level": 2,
+            "type": "scenario-based",
+            "points": 10,
+            "difficulty": 0.35,
+            "discrimination": 1.09,
+            "bloomLevel": "Apply",
+            "question": "Your firm considers using AI to predict litigation outcomes for case valuation. What limitation should inform this decision?",
+            "options": [
+              "AI outcome prediction is perfectly reliable for case valuation since algorithms eliminate human judgment errors from the process.",
+              "AI can identify patterns and provide probability estimates but cannot account for unique case factors, evolving law, or unpredictable human elements.",
+              "AI cannot be used for outcome prediction under any circumstances since algorithms cannot process legal information accurately.",
+              "AI outcome prediction works reliably only for simple cases but is completely useless for complex commercial litigation matters."
+            ],
+            "correctAnswer": 1,
+            "rationale": "AI can identify patterns in historical data and provide probability estimates, but cannot fully account for unique factors, developing law, or human unpredictability in judicial decisions. It's a tool for informing judgment, not replacing it. The other options either overstate reliability, completely reject utility, or apply artificial categorical distinctions. The second option appropriately balances capabilities and limitations.",
+            "tags": [
+              "outcome-prediction",
+              "case-valuation",
+              "probability-estimates",
+              "unique-factors"
+            ]
+          },
+          {
+            "id": "LLC-LW-B-005",
+            "level": 2,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.37,
+            "discrimination": 1.1,
+            "bloomLevel": "Apply",
+            "question": "What type of legal reasoning is most challenging for current AI systems?",
+            "options": [
+              "Identifying whether specific contract language matches standard form provisions since this requires only simple text comparison.",
+              "Applying established precedent to slightly different facts in routine matters following clear doctrinal rules and requirements.",
+              "Reasoning by analogy in novel situations requiring synthesis of multiple authorities and creative application to unprecedented facts.",
+              "Extracting specific data points from structured legal documents like corporate filings that follow consistent formatting conventions."
+            ],
+            "correctAnswer": 2,
+            "rationale": "Analogical reasoning in novel situations requiring synthesis and creative application to unprecedented facts is most challenging for AI. Text comparison, routine precedent application, and structured data extraction are more pattern-based and less dependent on creative legal reasoning. The third option identifies reasoning requiring human creativity and judgment that current AI handles less reliably.",
+            "tags": [
+              "analogical-reasoning",
+              "novel-situations",
+              "creative-application",
+              "ai-challenges"
+            ]
+          },
+          {
+            "id": "LLC-LW-B-006",
+            "level": 3,
+            "type": "scenario-based",
+            "points": 10,
+            "difficulty": 0.4,
+            "discrimination": 1.11,
+            "bloomLevel": "Apply",
+            "question": "A client wants AI to draft expert testimony for use at trial. What is the primary concern with this approach?",
+            "options": [
+              "Expert testimony requires credibility, specialized knowledge, and ability to withstand cross-examination that AI cannot provide as a testifying witness.",
+              "AI-drafted testimony is legally prohibited in all jurisdictions under rules of evidence that require live witness testimony exclusively.",
+              "The concern is primarily about testimony length since AI tends to generate excessively long expert reports that judges reject.",
+              "AI cannot draft expert testimony because it lacks access to the technical information that experts need to form opinions."
+            ],
+            "correctAnswer": 0,
+            "rationale": "Expert testimony requires a qualified human expert who can establish credibility, demonstrate specialized knowledge, and withstand cross-examination. AI can assist in drafting but cannot serve as the testifying expert. The issue isn't legal prohibition of AI-drafted content, testimony length, or access to technical information—it's that testimony requires a qualified human expert witness. The first option identifies the fundamental requirement for human expert witnesses.",
+            "tags": [
+              "expert-testimony",
+              "witness-requirements",
+              "credibility",
+              "cross-examination"
+            ]
+          },
+          {
+            "id": "LLC-LW-B-007",
+            "level": 3,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.42,
+            "discrimination": 1.12,
+            "bloomLevel": "Apply",
+            "question": "Under what circumstances can AI reliably replace attorney review of discovery documents?",
+            "options": [
+              "When documents are clearly irrelevant and outside the scope of requests, AI can reliably eliminate them without attorney review.",
+              "AI can replace attorney review entirely when the document volume exceeds 100,000 pages since human review is impractical at that scale.",
+              "AI assists in prioritization and initial screening but cannot reliably replace attorney review for relevance, privilege, and strategy decisions.",
+              "AI can replace attorney review for all documents except those marked confidential or containing sensitive client information."
+            ],
+            "correctAnswer": 2,
+            "rationale": "AI assists discovery review by prioritizing and screening but cannot reliably replace attorney judgment on relevance, privilege determinations, and strategic production decisions regardless of volume or document type. Even seemingly clear-cut determinations require attorney oversight because of privilege nuances and strategic considerations. The third option correctly positions AI as an assistant, not a replacement, for attorney review.",
+            "tags": [
+              "discovery-review",
+              "attorney-oversight",
+              "privilege-decisions",
+              "strategic-considerations"
+            ]
+          },
+          {
+            "id": "LLC-LW-B-008",
+            "level": 3,
+            "type": "scenario-based",
+            "points": 10,
+            "difficulty": 0.45,
+            "discrimination": 1.13,
+            "bloomLevel": "Apply",
+            "question": "What AI limitation is most important when using AI for cross-border transaction documentation?",
+            "options": [
+              "AI may lack comprehensive understanding of jurisdiction-specific requirements, cultural business norms, and local regulatory nuances affecting enforceability.",
+              "AI cannot translate between languages accurately enough for legal documents requiring all cross-border work to use human translators exclusively.",
+              "AI always prioritizes US legal standards over foreign law making it unsuitable for any international transaction work.",
+              "AI cannot access foreign legal databases so it cannot provide any useful assistance with cross-border legal matters."
+            ],
+            "correctAnswer": 0,
+            "rationale": "The key limitation is AI's potentially incomplete understanding of jurisdiction-specific legal requirements, cultural business norms, and regulatory nuances that affect enforceability and appropriateness. AI can translate and access some foreign law but may miss important local context. The other options overstate limitations about translation, database access, or claim bias. The first option identifies the genuine concern about local legal and cultural context.",
+            "tags": [
+              "cross-border-transactions",
+              "jurisdictional-requirements",
+              "cultural-norms",
+              "regulatory-nuances"
+            ]
+          }
+        ]
+      },
+      {
+        "dimensionCode": "EGC",
+        "dimensionName": "Ethics & Governance in Legal",
+        "description": "Understanding ethical obligations, professional responsibility, and governance requirements when using AI in legal practice",
+        "weight": 0.125,
+        "totalPoints": 75,
+        "items": [
+          {
+            "id": "EGC-LW-B-001",
+            "level": 1,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.26,
+            "discrimination": 1.05,
+            "bloomLevel": "Remember",
+            "question": "What is the attorney's primary ethical obligation when using AI tools in legal practice?",
+            "options": [
+              "Attorneys must disclose to clients every time they use AI assistance for any aspect of legal work on the client's matter.",
+              "Attorneys must maintain competence in understanding AI tools' capabilities and limitations, and supervise their use to ensure quality work product.",
+              "Attorneys must obtain advance approval from state bar associations before using any new AI tool in their legal practice.",
+              "Attorneys must avoid AI tools entirely since using them constitutes improper delegation of legal work to non-lawyers."
+            ],
+            "correctAnswer": 1,
+            "rationale": "The primary ethical obligation is maintaining competence regarding AI capabilities/limitations and supervising use to ensure quality. This parallels obligations for other tools and staff supervision. Detailed disclosure of every tool use isn't required, advance bar approval isn't necessary for tools used under supervision, and appropriate AI use doesn't constitute improper delegation. The second option correctly identifies core competence and supervision obligations.",
+            "tags": [
+              "professional-responsibility",
+              "competence-requirement",
+              "supervision-obligation",
+              "ethical-foundations"
+            ]
+          },
+          {
+            "id": "EGC-LW-B-002",
+            "level": 1,
+            "type": "scenario-based",
+            "points": 10,
+            "difficulty": 0.28,
+            "discrimination": 1.06,
+            "bloomLevel": "Understand",
+            "question": "You use AI to draft a motion, and the AI generates false case citations. Who is responsible for this error?",
+            "options": [
+              "The AI vendor is solely responsible since they provided defective software that generated incorrect legal citations.",
+              "The attorney is responsible since attorneys have a duty to verify all work product regardless of how it was generated.",
+              "Responsibility is shared equally between the attorney and AI vendor requiring both to correct the error filed with the court.",
+              "No one is responsible since AI errors are considered unforeseeable technological failures beyond anyone's control."
+            ],
+            "correctAnswer": 1,
+            "rationale": "The attorney is professionally responsible for all work product submitted to courts and clients, regardless of how it was generated. Attorneys must verify AI outputs before using them. Vendors have no professional responsibility to the court or client, and AI errors are foreseeable, requiring verification. The second option correctly places professional responsibility on the attorney consistent with ethical obligations.",
+            "tags": [
+              "attorney-responsibility",
+              "verification-duty",
+              "false-citations",
+              "professional-liability"
+            ]
+          },
+          {
+            "id": "EGC-LW-B-003",
+            "level": 2,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.31,
+            "discrimination": 1.07,
+            "bloomLevel": "Apply",
+            "question": "What ethical consideration is most important when using AI tools that charge by usage for client work?",
+            "options": [
+              "AI usage costs should never be passed through to clients since they are internal efficiency tools for the law firm.",
+              "Attorneys should ensure AI costs are reasonable and properly disclosed, and that AI use provides value to clients, not just firm efficiency.",
+              "All AI costs can be passed through to clients without disclosure since they are equivalent to other research expenses.",
+              "Attorneys must obtain client pre-approval and consent for each individual AI query or use to avoid billing disputes."
+            ],
+            "correctAnswer": 1,
+            "rationale": "The key consideration is ensuring AI costs are reasonable, appropriately disclosed, and provide client value consistent with billing ethics. Blanket prohibition or automatic pass-through without consideration are both inappropriate. Detailed per-query approval is impractical. The second option balances reasonable cost recovery with ethical billing obligations and client value considerations.",
+            "tags": [
+              "billing-ethics",
+              "cost-disclosure",
+              "client-value",
+              "reasonable-fees"
+            ]
+          },
+          {
+            "id": "EGC-LW-B-004",
+            "level": 2,
+            "type": "scenario-based",
+            "points": 10,
+            "difficulty": 0.34,
+            "discrimination": 1.08,
+            "bloomLevel": "Apply",
+            "question": "Your AI legal research tool allows you to complete research in 2 hours that would normally take 8 hours. How should you handle billing?",
+            "options": [
+              "Bill the client for 8 hours since that represents the fair market value of the legal research work performed.",
+              "Bill for 2 actual hours worked while ensuring the research quality meets professional standards, potentially adjusting rates to reflect value provided.",
+              "Bill for 5 hours as a compromise between actual time and traditional time to avoid questions about efficiency gains.",
+              "Do not use AI tools if they reduce billable hours since this decreases law firm revenue and profitability."
+            ],
+            "correctAnswer": 1,
+            "rationale": "Ethical billing requires charging for actual time worked (or value provided under appropriate arrangements), not inflating hours based on how long tasks used to take. The efficiency benefit can be reflected in rate discussions if appropriate. Billing phantom hours or deliberately reducing efficiency to preserve billing are ethically problematic. The second option reflects honest billing while acknowledging value considerations.",
+            "tags": [
+              "billable-hours",
+              "efficiency-gains",
+              "honest-billing",
+              "value-based-pricing"
+            ]
+          },
+          {
+            "id": "EGC-LW-B-005",
+            "level": 2,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.36,
+            "discrimination": 1.09,
+            "bloomLevel": "Apply",
+            "question": "When does attorney-client privilege apply to communications input into AI legal research tools?",
+            "options": [
+              "Privilege never applies to AI inputs since sharing information with third-party technology providers automatically waives all privilege protections.",
+              "Privilege applies to AI inputs but attorneys must take steps to protect confidentiality including vendor agreements and security measures.",
+              "Privilege applies automatically without any additional precautions needed since AI tools are considered part of the law firm.",
+              "Privilege questions do not apply to AI tools since they are not legal persons capable of receiving privileged communications."
+            ],
+            "correctAnswer": 1,
+            "rationale": "Privilege can apply to AI tool inputs, but attorneys must take reasonable steps to protect confidentiality through vendor agreements, security measures, and appropriate use. Simply using a third-party tool doesn't automatically waive privilege if properly managed, but protection also isn't automatic without precautions. The second option recognizes both the potential for privilege protection and the need for appropriate safeguards.",
+            "tags": [
+              "attorney-client-privilege",
+              "confidentiality-protection",
+              "vendor-agreements",
+              "security-measures"
+            ]
+          },
+          {
+            "id": "EGC-LW-B-006",
+            "level": 3,
+            "type": "scenario-based",
+            "points": 10,
+            "difficulty": 0.39,
+            "discrimination": 1.1,
+            "bloomLevel": "Apply",
+            "question": "An AI tool vendor requests permission to use your firm's queries and documents to improve their system. What should you consider?",
+            "options": [
+              "Accept immediately since improving AI systems benefits the entire legal community and advances technology for everyone's benefit.",
+              "Evaluate whether use would compromise client confidentiality, create conflicts, or violate privilege, and negotiate appropriate restrictions.",
+              "Reject automatically since any use of firm data by vendors necessarily violates client confidentiality regardless of anonymization.",
+              "Defer the decision to your IT department since these are technical rather than legal or ethical decisions about data use."
+            ],
+            "correctAnswer": 1,
+            "rationale": "This requires evaluating confidentiality, privilege, and conflict implications, then negotiating appropriate protections like anonymization, exclusions for sensitive matters, and security measures. Neither automatic acceptance nor rejection is appropriate without analysis. IT input is valuable but the decision involves professional responsibility considerations requiring attorney judgment. The second option demonstrates appropriate analysis and negotiation approach.",
+            "tags": [
+              "data-use",
+              "vendor-negotiations",
+              "confidentiality-analysis",
+              "professional-judgment"
+            ]
+          },
+          {
+            "id": "EGC-LW-B-007",
+            "level": 3,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.41,
+            "discrimination": 1.11,
+            "bloomLevel": "Apply",
+            "question": "What is an attorney's ethical obligation if they discover AI generated erroneous content they previously filed with a court?",
+            "options": [
+              "Promptly notify the court of the error and take appropriate corrective action as required by professional responsibility rules.",
+              "Stay silent about the error since admitting mistakes could harm the client's case and waive potential arguments on appeal.",
+              "Blame the AI vendor publicly to shift responsibility and avoid professional discipline for the mistaken filing.",
+              "Correct the error in future filings without specifically acknowledging the previous mistake to avoid drawing attention to it."
+            ],
+            "correctAnswer": 0,
+            "rationale": "Professional responsibility rules require promptly notifying the court of material errors and taking corrective action. Candor to the tribunal obligations apply regardless of how errors occurred. Staying silent, blaming vendors, or indirect correction without acknowledgment can violate ethical obligations and compound problems. The first option correctly identifies the duty of candor and prompt correction.",
+            "tags": [
+              "candor-to-tribunal",
+              "error-correction",
+              "professional-discipline",
+              "court-filings"
+            ]
+          },
+          {
+            "id": "EGC-LW-B-008",
+            "level": 3,
+            "type": "scenario-based",
+            "points": 10,
+            "difficulty": 0.44,
+            "discrimination": 1.12,
+            "bloomLevel": "Apply",
+            "question": "Your firm considers an AI tool that analyzes opposing counsel's litigation patterns to predict strategy. What ethical concerns should be evaluated?",
+            "options": [
+              "This type of strategic analysis using publicly available litigation data raises no ethical concerns since the information is public record.",
+              "Consider whether analysis methods could involve improper communications, use of confidential information, or create conflicts requiring evaluation.",
+              "This tool must be prohibited entirely as it provides an unfair advantage that undermines the adversarial system's integrity.",
+              "The only concern is cost-effectiveness since there are no ethical limitations on analyzing opponent behavior and litigation patterns."
+            ],
+            "correctAnswer": 1,
+            "rationale": "While analyzing public litigation records is generally permissible, attorneys should evaluate whether specific tool methods could involve improper communications, confidential information use, or conflicts. Public information doesn't eliminate all ethical considerations, but the tool isn't necessarily prohibited. Cost-effectiveness isn't the only consideration. The second option identifies appropriate due diligence on tool methods and data sources.",
+            "tags": [
+              "litigation-strategy",
+              "opponent-analysis",
+              "ethical-evaluation",
+              "conflict-checking"
+            ]
+          }
+        ]
+      },
+      {
+        "dimensionCode": "CSL",
+        "dimensionName": "Cybersecurity in Legal",
+        "description": "Understanding data security, confidentiality protection, and cybersecurity requirements when using AI in legal practice",
+        "weight": 0.125,
+        "totalPoints": 75,
+        "items": [
+          {
+            "id": "CSL-LW-B-001",
+            "level": 1,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.25,
+            "discrimination": 1.05,
+            "bloomLevel": "Remember",
+            "question": "What is the primary cybersecurity concern when using cloud-based AI legal research tools?",
+            "options": [
+              "Cloud-based tools are inherently insecure and should never be used for any client-related legal work under any circumstances.",
+              "Protecting client confidential information through appropriate security measures, encryption, and vendor security assessments before use.",
+              "The primary concern is internet speed since slow connections will reduce AI tool effectiveness and research efficiency.",
+              "Cloud-based AI tools cannot access legal databases properly so security is irrelevant compared to functionality limitations."
+            ],
+            "correctAnswer": 1,
+            "rationale": "The primary concern is protecting client confidential information through appropriate security measures, encryption, and vendor assessment. Cloud tools aren't inherently insecure but require evaluation. Internet speed and database access are operational rather than security concerns. The second option identifies core confidentiality protection obligations when using cloud-based tools.",
+            "tags": [
+              "cloud-security",
+              "confidentiality-protection",
+              "vendor-assessment",
+              "encryption"
+            ]
+          },
+          {
+            "id": "CSL-LW-B-002",
+            "level": 1,
+            "type": "scenario-based",
+            "points": 10,
+            "difficulty": 0.27,
+            "discrimination": 1.06,
+            "bloomLevel": "Understand",
+            "question": "Your firm evaluates an AI contract review tool. What security question is most critical to ask the vendor?",
+            "options": [
+              "What is the vendor's marketing budget since well-funded vendors necessarily have better security than underfunded competitors.",
+              "How does the vendor protect client data, including encryption methods, access controls, data retention policies, and security certifications?",
+              "How many other law firms use the tool since widespread adoption proves the security must be adequate for legal work.",
+              "What color scheme does the security dashboard use since user interface design indicates the quality of underlying security systems."
+            ],
+            "correctAnswer": 1,
+            "rationale": "Critical security questions concern data protection specifics: encryption methods, access controls, retention policies, and security certifications. Marketing budget, user adoption numbers, and interface design don't indicate actual security measures. The second option identifies substantive security elements requiring evaluation before handling client confidential information.",
+            "tags": [
+              "vendor-security",
+              "data-protection",
+              "security-assessment",
+              "due-diligence"
+            ]
+          },
+          {
+            "id": "CSL-LW-B-003",
+            "level": 2,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.3,
+            "discrimination": 1.07,
+            "bloomLevel": "Apply",
+            "question": "What represents appropriate data handling when using AI tools for sensitive legal matters?",
+            "options": [
+              "Input complete client information including names, social security numbers, and account details so AI can provide fully contextualized analysis.",
+              "Redact or anonymize personally identifiable information when possible while retaining information necessary for useful AI analysis of legal issues.",
+              "Never use AI tools for any matter involving personal information since data security can never be adequately guaranteed by any vendor.",
+              "Use free public AI tools for sensitive matters since they are more secure than commercial tools that might sell client data."
+            ],
+            "correctAnswer": 1,
+            "rationale": "Appropriate practice involves redacting or anonymizing PII when possible while retaining information needed for useful analysis. Complete information input creates unnecessary risk, avoiding all AI use for personal information is excessive, and free public tools typically have weaker (not stronger) security than commercial legal tools. The second option balances security with utility.",
+            "tags": [
+              "data-minimization",
+              "anonymization",
+              "pii-protection",
+              "sensitive-information"
+            ]
+          },
+          {
+            "id": "CSL-LW-B-004",
+            "level": 2,
+            "type": "scenario-based",
+            "points": 10,
+            "difficulty": 0.33,
+            "discrimination": 1.08,
+            "bloomLevel": "Apply",
+            "question": "An AI vendor experiences a data breach potentially exposing client information. What is your immediate ethical obligation?",
+            "options": [
+              "Wait for the vendor to investigate and determine the scope before taking any action or notifying anyone about the potential breach.",
+              "Assess whether client information was compromised and notify affected clients as required by professional responsibility rules and data breach laws.",
+              "Terminate the vendor relationship immediately but do not notify clients since this might create unnecessary alarm about security.",
+              "File a lawsuit against the vendor for breach of contract before addressing any client notification or other immediate response needs."
+            ],
+            "correctAnswer": 1,
+            "rationale": "Immediate obligations include assessing compromise extent and notifying affected clients as required by professional responsibility and data breach laws. Waiting for complete vendor investigation or avoiding notification can violate obligations. Litigation against vendors comes after addressing immediate client protection obligations. The second option prioritizes client notification consistent with professional and legal responsibilities.",
+            "tags": [
+              "data-breach",
+              "client-notification",
+              "incident-response",
+              "professional-obligations"
+            ]
+          },
+          {
+            "id": "CSL-LW-B-005",
+            "level": 2,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.35,
+            "discrimination": 1.09,
+            "bloomLevel": "Apply",
+            "question": "What security measure is most important when attorneys access AI tools on personal devices?",
+            "options": [
+              "Personal devices should never be used for AI legal tools under any circumstances regardless of security measures implemented.",
+              "Implementing appropriate security controls including encryption, strong authentication, device management, and secure network connections.",
+              "Security measures are unnecessary for personal devices since they are more secure than law firm computers and networks.",
+              "The only important measure is having expensive devices since premium hardware has better built-in security features than budget options."
+            ],
+            "correctAnswer": 1,
+            "rationale": "Appropriate security controls (encryption, strong authentication, device management, secure connections) enable safe personal device use for authorized legal work. Blanket prohibitions on personal devices are excessive if proper security exists, and personal devices aren't inherently more secure. Device cost doesn't determine security adequacy. The second option identifies essential security controls for any device accessing client data.",
+            "tags": [
+              "byod-security",
+              "device-management",
+              "access-controls",
+              "mobile-security"
+            ]
+          },
+          {
+            "id": "CSL-LW-B-006",
+            "level": 3,
+            "type": "scenario-based",
+            "points": 10,
+            "difficulty": 0.38,
+            "discrimination": 1.1,
+            "bloomLevel": "Apply",
+            "question": "Your firm's AI contract analysis tool is accessed by an unauthorized user who views client agreements. What factor determines breach severity?",
+            "options": [
+              "Severity depends on the unauthorized user's identity and intent rather than the nature or sensitivity of information accessed during the breach.",
+              "Severity depends on what information was accessed, how many clients affected, sensitivity of matters, and potential harm from exposure.",
+              "All unauthorized access incidents are equally severe since any security breach violates client confidentiality regardless of information viewed.",
+              "Severity is determined solely by how long unauthorized access continued before detection and termination of the access."
+            ],
+            "correctAnswer": 1,
+            "rationale": "Breach severity assessment requires evaluating what information was accessed, number of affected clients, matter sensitivity, and potential harm. While all unauthorized access is concerning, severity varies based on information exposure extent and sensitivity. User intent and access duration are factors but don't solely determine severity. The second option identifies comprehensive factors for appropriate severity assessment.",
+            "tags": [
+              "breach-assessment",
+              "unauthorized-access",
+              "severity-evaluation",
+              "harm-analysis"
+            ]
+          },
+          {
+            "id": "CSL-LW-B-007",
+            "level": 3,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.4,
+            "discrimination": 1.11,
+            "bloomLevel": "Apply",
+            "question": "What authentication approach provides best security for AI legal tools accessing confidential information?",
+            "options": [
+              "Simple username and password authentication is sufficient since additional security measures create user friction and reduce adoption.",
+              "Multi-factor authentication combining passwords with additional verification factors like biometrics or hardware tokens provides stronger security.",
+              "Biometric authentication alone without passwords since biometrics cannot be stolen or forgotten unlike traditional passwords.",
+              "No authentication is needed if AI tools are accessed only from firm computers on the internal network behind the firewall."
+            ],
+            "correctAnswer": 1,
+            "rationale": "Multi-factor authentication combining passwords with additional factors (biometrics, tokens, SMS codes) provides strongest security by requiring multiple verification methods. Simple passwords are insufficient for sensitive data, biometrics alone have vulnerabilities, and internal network access doesn't eliminate authentication needs. The second option identifies current best practice for protecting access to confidential information.",
+            "tags": [
+              "authentication",
+              "multi-factor",
+              "access-security",
+              "identity-verification"
+            ]
+          },
+          {
+            "id": "CSL-LW-B-008",
+            "level": 3,
+            "type": "scenario-based",
+            "points": 10,
+            "difficulty": 0.43,
+            "discrimination": 1.12,
+            "bloomLevel": "Apply",
+            "question": "Your firm considers an AI tool that retains queries and documents for 90 days for system improvement. How should you address this?",
+            "options": [
+              "Accept the 90-day retention since temporary storage for improvement is standard practice that creates no confidentiality concerns.",
+              "Negotiate for shorter retention, evaluate whether retention compromises confidentiality, and consider matter-specific restrictions for sensitive cases.",
+              "Reject the tool immediately since any data retention beyond immediate processing creates unacceptable confidentiality risks for all matters.",
+              "Retention duration is irrelevant to security since breaches can occur during initial processing regardless of how long data is stored."
+            ],
+            "correctAnswer": 1,
+            "rationale": "Extended retention warrants negotiating shorter periods, evaluating confidentiality implications, and considering restrictions for sensitive matters. Automatic acceptance ignores risk, blanket rejection eliminates potentially useful tools, and retention duration does matter for exposure risk. The second option demonstrates appropriate risk assessment and negotiation approach based on firm needs and matter sensitivity.",
+            "tags": [
+              "data-retention",
+              "vendor-negotiation",
+              "risk-assessment",
+              "sensitive-matters"
+            ]
+          }
+        ]
+      },
+      {
+        "dimensionCode": "TLS",
+        "dimensionName": "Technology & Legal Systems",
+        "description": "Understanding practical integration, deployment, maintenance, and system interactions of AI tools in legal practice environments",
+        "weight": 0.125,
+        "totalPoints": 75,
+        "items": [
+          {
+            "id": "TLS-LW-B-001",
+            "level": 1,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.28,
+            "discrimination": 1.06,
+            "bloomLevel": "Remember",
+            "question": "What is the primary benefit of integrating AI legal research tools with existing legal research platforms?",
+            "options": [
+              "Integration completely eliminates the need for traditional legal research databases since AI can replace all conventional research sources.",
+              "Integration enables seamless workflow between AI-assisted research and comprehensive legal databases providing unified access to multiple resources.",
+              "Integration is unnecessary because AI legal tools work best as standalone systems separate from conventional research platforms.",
+              "Integration reduces costs by allowing firms to cancel expensive database subscriptions and rely exclusively on AI research."
+            ],
+            "correctAnswer": 1,
+            "rationale": "Integration benefits include seamless workflow and unified access to both AI capabilities and comprehensive legal databases. AI complements rather than replaces traditional databases, standalone operation creates workflow friction, and firms still need comprehensive legal databases alongside AI tools. The second option correctly identifies integration value without overstating AI as a replacement for traditional resources.",
+            "tags": [
+              "system-integration",
+              "workflow-efficiency",
+              "research-platforms",
+              "unified-access"
+            ]
+          },
+          {
+            "id": "TLS-LW-B-002",
+            "level": 1,
+            "type": "scenario-based",
+            "points": 10,
+            "difficulty": 0.3,
+            "discrimination": 1.07,
+            "bloomLevel": "Understand",
+            "question": "Your firm implements AI contract review software. What integration consideration is most important for adoption success?",
+            "options": [
+              "Ensuring the AI tool integrates with existing document management systems so attorneys can access it within familiar workflows without disruption.",
+              "Requiring attorneys to use a completely separate system for AI review since this clearly distinguishes AI-reviewed from traditionally-reviewed documents.",
+              "Integration considerations are irrelevant since attorneys will use effective tools regardless of how well they fit into existing systems.",
+              "The AI tool should replace the document management system entirely since modern AI tools provide all document management functionality needed."
+            ],
+            "correctAnswer": 0,
+            "rationale": "Successful adoption requires integration with existing document management systems so attorneys access AI within familiar workflows. Separate systems create friction reducing adoption, attorneys do care about workflow integration, and AI contract review doesn't replace comprehensive document management. The first option identifies integration as critical for user adoption and effective use.",
+            "tags": [
+              "adoption-success",
+              "workflow-integration",
+              "document-management",
+              "user-acceptance"
+            ]
+          },
+          {
+            "id": "TLS-LW-B-003",
+            "level": 2,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.33,
+            "discrimination": 1.08,
+            "bloomLevel": "Apply",
+            "question": "What represents the most realistic timeline for fully implementing AI e-discovery tools in a litigation practice?",
+            "options": [
+              "Immediate implementation with full capability from day one since AI tools require no learning curve or process adjustment for users.",
+              "Phased implementation over several months including pilot testing, attorney training, process refinement, and gradual scaling to full deployment.",
+              "Implementation should be delayed indefinitely until AI technology becomes perfect and eliminates all need for human review and oversight.",
+              "One week maximum for complete implementation since longer timelines indicate the tool is too complex and should be rejected."
+            ],
+            "correctAnswer": 1,
+            "rationale": "Realistic implementation requires phased approach over several months with pilot testing, training, process refinement, and gradual scaling. Immediate full capability ignores necessary learning and process adjustment, indefinite delay awaiting perfection is impractical, and implementation timeline doesn't indicate tool quality. The second option describes practical change management for complex tool implementation.",
+            "tags": [
+              "implementation-timeline",
+              "phased-deployment",
+              "change-management",
+              "realistic-expectations"
+            ]
+          },
+          {
+            "id": "TLS-LW-B-004",
+            "level": 2,
+            "type": "scenario-based",
+            "points": 10,
+            "difficulty": 0.36,
+            "discrimination": 1.09,
+            "bloomLevel": "Apply",
+            "question": "Your AI legal research tool performance has degraded since implementation. What is the most likely cause requiring investigation?",
+            "options": [
+              "All AI systems naturally degrade over time and reduced performance should be accepted as inevitable technological limitation.",
+              "The tool needs retraining or updating to reflect changes in legal databases, new case law, or evolving firm-specific research patterns.",
+              "Performance degradation proves the tool was oversold during procurement and should be immediately replaced with a different vendor.",
+              "User error is always the cause of perceived performance issues since AI systems themselves do not experience performance changes."
+            ],
+            "correctAnswer": 1,
+            "rationale": "Performance degradation often indicates the tool needs retraining or updating to reflect database changes, new law, or evolved usage patterns (model drift). Degradation isn't inevitable and acceptable, doesn't necessarily indicate vendor overselling, and isn't always user error. The second option identifies common causes requiring investigation and remediation through updates or retraining.",
+            "tags": [
+              "performance-monitoring",
+              "model-drift",
+              "system-maintenance",
+              "updates-retraining"
+            ]
+          },
+          {
+            "id": "TLS-LW-B-005",
+            "level": 2,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.38,
+            "discrimination": 1.1,
+            "bloomLevel": "Apply",
+            "question": "How should law firms approach integration of multiple AI tools from different vendors?",
+            "options": [
+              "Select a single vendor for all AI needs even if individual capabilities are weaker to completely avoid any integration challenges.",
+              "Use multiple best-of-breed vendors but establish data standards, integration protocols, and unified authentication to enable interoperability.",
+              "Multiple vendor tools cannot interoperate under any circumstances requiring separate workflows and data silos for each tool.",
+              "Require all vendors to use identical technology platforms and architectures as a condition of procurement to ensure perfect compatibility."
+            ],
+            "correctAnswer": 1,
+            "rationale": "Best practice uses multiple vendors for best capabilities while establishing data standards, integration protocols, and unified authentication for interoperability. Single-vendor approaches sacrifice capabilities, multi-vendor environments can interoperate with planning, and requiring identical platforms is impractical. The second option balances best-of-breed selection with practical integration requirements.",
+            "tags": [
+              "multi-vendor-integration",
+              "interoperability",
+              "data-standards",
+              "best-of-breed"
+            ]
+          },
+          {
+            "id": "TLS-LW-B-006",
+            "level": 3,
+            "type": "scenario-based",
+            "points": 10,
+            "difficulty": 0.4,
+            "discrimination": 1.11,
+            "bloomLevel": "Apply",
+            "question": "Your firm's AI contract drafting tool is producing inconsistent outputs for similar requests. What troubleshooting approach is most effective?",
+            "options": [
+              "Review recent changes to templates, training data, or system configuration that might affect consistency, and test with controlled queries to isolate causes.",
+              "Immediately discontinue the tool since inconsistent outputs prove it is fundamentally unreliable and cannot be trusted for any legal work.",
+              "Ignore consistency issues since variation in AI outputs is expected and attempting to achieve consistency is futile with current technology.",
+              "Continue using the tool normally but add more detailed disclaimers to clients about potential inconsistency in AI-generated documents."
+            ],
+            "correctAnswer": 0,
+            "rationale": "Effective troubleshooting reviews recent changes (templates, data, configuration), tests systematically to isolate causes, and addresses root issues. Immediate discontinuation is premature without investigation, ignoring problems is inappropriate, and disclaimers don't address underlying issues. The first option demonstrates systematic troubleshooting to identify and resolve the root cause.",
+            "tags": [
+              "troubleshooting",
+              "consistency-issues",
+              "root-cause-analysis",
+              "systematic-testing"
+            ]
+          },
+          {
+            "id": "TLS-LW-B-007",
+            "level": 3,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.43,
+            "discrimination": 1.12,
+            "bloomLevel": "Apply",
+            "question": "What factor most determines successful long-term adoption of AI tools in legal practice?",
+            "options": [
+              "Continuous attorney training, workflow refinement based on user feedback, and visible support from firm leadership demonstrating tool value.",
+              "Expensive technology and premium vendors since higher costs guarantee better tools that attorneys will naturally prefer using consistently.",
+              "Mandatory usage policies with penalties for non-compliance since attorneys will not voluntarily adopt AI tools without enforcement.",
+              "The AI tool's sophistication level since more advanced artificial intelligence always leads to better adoption than simpler tools."
+            ],
+            "correctAnswer": 0,
+            "rationale": "Long-term adoption requires ongoing training, workflow refinement, and leadership support demonstrating value. Cost doesn't guarantee adoption, forced usage without support creates resistance, and sophistication doesn't ensure adoption without proper implementation support. The first option identifies human factors and change management elements critical for sustained successful use.",
+            "tags": [
+              "long-term-adoption",
+              "change-management",
+              "user-training",
+              "leadership-support"
+            ]
+          },
+          {
+            "id": "TLS-LW-B-008",
+            "level": 3,
+            "type": "scenario-based",
+            "points": 10,
+            "difficulty": 0.45,
+            "discrimination": 1.13,
+            "bloomLevel": "Apply",
+            "question": "Your firm plans to deploy AI across multiple practice groups with different needs. What deployment strategy balances customization and efficiency?",
+            "options": [
+              "Deploy identical AI configuration to all practice groups simultaneously to maximize efficiency regardless of varying practice needs or workflows.",
+              "Pilot with one practice group to refine the approach, then customize deployment for other groups based on practice-specific requirements while maintaining core standards.",
+              "Require each practice group to independently select and deploy their own AI tools without any firm-wide coordination or standards.",
+              "Deploy no AI tools until all practice groups unanimously agree on a single perfect solution meeting everyone's needs exactly."
+            ],
+            "correctAnswer": 1,
+            "rationale": "Effective deployment pilots with one group for learning, then customizes for other practices while maintaining core standards. Identical deployment ignores legitimate variation, independent group selection creates chaos, and waiting for unanimous agreement is impractical. The second option balances centralized learning and standards with appropriate practice-specific customization.",
+            "tags": [
+              "deployment-strategy",
+              "practice-customization",
+              "pilot-programs",
+              "scaled-rollout"
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

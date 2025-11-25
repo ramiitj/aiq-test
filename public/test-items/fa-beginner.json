@@ -1,0 +1,1689 @@
+{
+  "assessmentName": "AIQ Financial Advisors Beginner Assessment - Financial Advisory Focus",
+  "version": "1.0",
+  "assessmentType": "fixed",
+  "description": "A rigorously designed foundational AI literacy assessment for financial advisors with 60 items featuring balanced options, randomized correct answer positions, complete sentence formatting, and enhanced anti-gaming measures.",
+  "assessmentConfiguration": {
+    "totalQuestions": 60,
+    "questionsPerDimension": "7-8",
+    "estimatedTime": "60 minutes",
+    "targetAudience": "Financial advisors, wealth managers, investment advisors, retirement planners, and financial planning professionals with varying AI experience levels",
+    "timePerQuestion": "60 seconds average",
+    "presentationMode": {
+      "type": "fixed-sequential",
+      "description": "All questions presented in fixed order",
+      "sequencing": "By dimension, 7-8 questions per dimension"
+    },
+    "questionDistribution": {
+      "totalItems": 60,
+      "itemsPerDimension": "7-8 per dimension",
+      "selectionRatio": "100% (all items presented)"
+    },
+    "dimensionSequencing": {
+      "type": "fixed-order",
+      "sequence": [
+        "FAI",
+        "CPA",
+        "RIA",
+        "PFA",
+        "CRE",
+        "EGC",
+        "RAC",
+        "TAS"
+      ],
+      "description": "Candidates complete 7-8 questions per dimension in sequence"
+    }
+  },
+  "scoringConfiguration": {
+    "totalPoints": 600,
+    "pointsPerDimension": 75,
+    "passingScore": 420,
+    "passingPercentage": 70,
+    "scoringMethod": {
+      "type": "simple-sum",
+      "description": "Direct sum of points from correct answers with differential weighting by item difficulty",
+      "basePoints": 10,
+      "formula": "points = basePoints × (1 + difficulty × 0.3) for each correct answer"
+    },
+    "scoringGuidelines": {
+      "0-40%": "Novice (0-240 points) - Significant foundational learning needed",
+      "41-60%": "Beginner (241-360 points) - Basic awareness established",
+      "61-80%": "Developing (361-480 points) - Good foundational understanding",
+      "81-90%": "Proficient (481-540 points) - Strong grasp of fundamentals",
+      "91-100%": "Advanced (541-600 points) - Excellent foundational mastery"
+    }
+  },
+  "instructions": "This AIQ Financial Advisors Beginner assessment evaluates your foundational AI literacy specifically for financial advisory contexts. You will answer 60 questions total (7-8 per dimension) across 8 advisory-focused dimensions in approximately 60 minutes. Questions feature nuanced options designed to test genuine understanding of AI applications in financial planning and wealth management. Answer all questions to the best of your ability.",
+  "assessmentGuidelines": {
+    "targetLevel": "Foundational awareness and basic understanding of AI in financial advisory",
+    "cognitiveEmphasis": "65% Remember/Understand (Bloom's levels 1-2), 35% Apply (Bloom's level 3)",
+    "questionTypes": "Multiple-choice (70%), scenario-based (30%)",
+    "difficultyProfile": "Realistic distractors that require genuine AI/advisory understanding to differentiate",
+    "timeAllocation": "Moderate time for careful consideration of advisory-specific nuances",
+    "reliabilityTarget": "Cronbach's alpha ≥ 0.80"
+  },
+  "itemBank": {
+    "totalItems": 60,
+    "itemsPerDimension": 8,
+    "description": "Complete item set with 60 questions (7-8 per dimension) focused on AI literacy for financial advisors",
+    "bankStatistics": {
+      "averageDifficulty": 0.383,
+      "difficultySD": 0.08,
+      "averageDiscrimination": 1.15,
+      "discriminationSD": 0.05,
+      "contentCoverageIndex": 0.92,
+      "estimatedReliability": 0.85,
+      "totalItems": 60
+    },
+    "dimensions": [
+      {
+        "dimensionCode": "FAI",
+        "dimensionName": "Financial Advisory AI Understanding",
+        "description": "Understanding AI capabilities, limitations, and strategic applications in financial advisory contexts",
+        "weight": 0.125,
+        "totalPoints": 75,
+        "items": [
+          {
+            "id": "FAI-FA-B-001",
+            "level": 1,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.25,
+            "discrimination": 1.05,
+            "bloomLevel": "Remember",
+            "question": "What is the primary strategic value of AI for financial advisors in client relationship management?",
+            "options": [
+              "AI completely replaces human advisors by making all investment decisions and managing relationships autonomously.",
+              "AI eliminates the need for financial planning professionals by providing automated advice directly to clients.",
+              "AI automates routine tasks like data aggregation and basic analysis, allowing advisors more time for personalized client guidance.",
+              "AI guarantees investment performance by predicting market movements with complete accuracy for every client."
+            ],
+            "correctAnswer": 2,
+            "rationale": "AI's primary value in financial advisory is augmentation, not replacement. AI excels at automating routine data tasks, portfolio monitoring, and basic analysis, freeing advisors to focus on relationship building, complex planning, and personalized guidance that requires human judgment and empathy. The other options incorrectly suggest AI replaces human advisors, guarantees outcomes, or operates autonomously without advisor oversight.",
+            "tags": [
+              "strategic-value",
+              "ai-augmentation",
+              "advisory-fundamentals",
+              "human-ai-collaboration"
+            ]
+          },
+          {
+            "id": "FAI-FA-B-002",
+            "level": 1,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.3,
+            "discrimination": 1.08,
+            "bloomLevel": "Understand",
+            "question": "Why must financial advisors understand AI limitations when using robo-advisory tools?",
+            "options": [
+              "Understanding limitations helps advisors avoid AI tools entirely and rely exclusively on manual portfolio management.",
+              "Understanding limitations is only relevant for technology specialists, not for advisors working directly with clients.",
+              "Understanding limitations allows advisors to recognize when human judgment is needed for complex client situations.",
+              "Understanding limitations proves that AI should never be trusted for any aspect of financial planning work."
+            ],
+            "correctAnswer": 2,
+            "rationale": "Understanding AI limitations is crucial because it helps advisors recognize situations requiring human judgment, such as complex life transitions, behavioral challenges, or unique client circumstances. All AI tools have limitations, but this doesn't mean avoiding them—it means using them thoughtfully with appropriate professional oversight. The other options incorrectly suggest abandoning AI entirely, delegating understanding to specialists, or using limitations to reject AI wholesale.",
+            "tags": [
+              "ai-limitations",
+              "professional-judgment",
+              "responsible-ai",
+              "client-complexity"
+            ]
+          },
+          {
+            "id": "FAI-FA-B-003",
+            "level": 1,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.32,
+            "discrimination": 1.1,
+            "bloomLevel": "Understand",
+            "question": "How does AI bias specifically impact financial advisory recommendations?",
+            "options": [
+              "AI bias only affects machine learning engineers and has no relevance to financial advisors or their clients.",
+              "AI bias can cause recommendations to favor certain demographic groups or investment strategies based on historical patterns.",
+              "AI bias automatically self-corrects over time without any intervention from financial advisors or oversight.",
+              "AI bias improves advisory efficiency by focusing on historically successful patterns that always predict future results."
+            ],
+            "correctAnswer": 1,
+            "rationale": "AI bias in financial advisory can systematically favor or disfavor certain client demographics, investment approaches, or planning strategies based on historical training data patterns. Advisors must recognize and mitigate bias to ensure equitable advice. AI bias doesn't self-correct automatically, isn't irrelevant to advisors, and historical patterns that worked before don't guarantee future success, especially when biased.",
+            "tags": [
+              "ai-bias",
+              "fairness",
+              "equity",
+              "responsible-advisory"
+            ]
+          },
+          {
+            "id": "FAI-FA-B-004",
+            "level": 2,
+            "type": "scenario-based",
+            "points": 10,
+            "difficulty": 0.35,
+            "discrimination": 1.11,
+            "bloomLevel": "Apply",
+            "question": "Your AI portfolio optimization tool recommends a very aggressive allocation for a risk-averse client nearing retirement. What should you do?",
+            "options": [
+              "Implement the AI recommendation immediately since algorithms are always more accurate than human judgment.",
+              "Question the recommendation, review the client's risk profile data, and apply professional judgment before proceeding.",
+              "Ignore all AI recommendations permanently since this error proves AI cannot be trusted for any advisory work.",
+              "Accept the recommendation but reduce risk slightly without investigating why the AI made this suggestion."
+            ],
+            "correctAnswer": 1,
+            "rationale": "When AI recommendations conflict with client circumstances or advisor knowledge, the appropriate response is to investigate why the discrepancy exists, review input data for errors, and apply professional judgment. The AI may have incorrect client data, or there may be legitimate factors to consider. One error doesn't invalidate all AI recommendations, but unusual suggestions always warrant investigation before implementation.",
+            "tags": [
+              "professional-judgment",
+              "ai-validation",
+              "client-suitability",
+              "risk-assessment"
+            ]
+          },
+          {
+            "id": "FAI-FA-B-005",
+            "level": 2,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.38,
+            "discrimination": 1.12,
+            "bloomLevel": "Understand",
+            "question": "What distinguishes AI-driven portfolio rebalancing from traditional rule-based automatic rebalancing?",
+            "options": [
+              "AI rebalancing guarantees higher returns by predicting market movements, while traditional rebalancing cannot predict markets.",
+              "AI rebalancing can consider multiple dynamic factors simultaneously, while rule-based rebalancing follows predetermined thresholds.",
+              "AI rebalancing requires no human oversight once configured, while traditional rebalancing needs constant advisor monitoring.",
+              "AI rebalancing is always inferior to rule-based approaches because algorithms cannot understand financial markets."
+            ],
+            "correctAnswer": 1,
+            "rationale": "AI-driven rebalancing can analyze multiple dynamic factors simultaneously (market conditions, tax implications, correlation changes, volatility patterns) and adjust recommendations accordingly, while traditional rule-based rebalancing follows simple predetermined thresholds. Neither approach guarantees returns or predicts markets reliably, and both benefit from appropriate oversight. AI rebalancing offers more nuanced decision-making capability but doesn't eliminate the need for advisor review.",
+            "tags": [
+              "portfolio-management",
+              "rebalancing",
+              "ai-capabilities",
+              "dynamic-analysis"
+            ]
+          },
+          {
+            "id": "FAI-FA-B-006",
+            "level": 2,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.4,
+            "discrimination": 1.13,
+            "bloomLevel": "Understand",
+            "question": "How should advisors approach AI-generated retirement income projections for client planning?",
+            "options": [
+              "Accept AI projections without review since algorithms process more data than humans can manually analyze.",
+              "Use AI projections as one input among several, validating assumptions and applying judgment about client-specific factors.",
+              "Reject AI projections entirely since retirement planning is too complex and personal for algorithmic analysis.",
+              "Present AI projections to clients as guaranteed outcomes since the calculations are based on sophisticated models."
+            ],
+            "correctAnswer": 1,
+            "rationale": "AI retirement projections should be treated as valuable analytical inputs that process large datasets, but advisors must validate underlying assumptions, consider client-specific circumstances not captured by algorithms, and apply professional judgment. AI projections are not guarantees and should be presented with appropriate context about assumptions and limitations. Complete rejection ignores useful analytical capabilities, while blind acceptance or presenting projections as guarantees creates inappropriate client expectations.",
+            "tags": [
+              "retirement-planning",
+              "projections",
+              "client-communication",
+              "professional-judgment"
+            ]
+          },
+          {
+            "id": "FAI-FA-B-007",
+            "level": 3,
+            "type": "scenario-based",
+            "points": 10,
+            "difficulty": 0.42,
+            "discrimination": 1.14,
+            "bloomLevel": "Apply",
+            "question": "An AI tool suggests tax-loss harvesting opportunities in a client's portfolio, but you know the client has strong emotional attachments to certain holdings. How should you proceed?",
+            "options": [
+              "Implement the AI recommendations immediately since tax efficiency always takes priority over emotional considerations.",
+              "Balance tax optimization with client preferences by discussing options, explaining trade-offs, and respecting client values.",
+              "Completely ignore the AI suggestions since emotional factors make algorithmic recommendations irrelevant for this client.",
+              "Execute the trades without client discussion since advisors have fiduciary duty to maximize tax efficiency."
+            ],
+            "correctAnswer": 1,
+            "rationale": "Effective financial advisory integrates AI analytical capabilities with understanding of client values and preferences. The appropriate approach is discussing AI-identified opportunities with clients, explaining tax benefits and trade-offs, and making collaborative decisions that respect both financial efficiency and client emotional considerations. Neither pure tax optimization nor ignoring useful AI analysis serves the client's holistic interests best. Client communication and values alignment are essential to fiduciary advice.",
+            "tags": [
+              "client-values",
+              "behavioral-finance",
+              "tax-planning",
+              "holistic-planning"
+            ]
+          },
+          {
+            "id": "FAI-FA-B-008",
+            "level": 3,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.45,
+            "discrimination": 1.15,
+            "bloomLevel": "Apply",
+            "question": "When evaluating AI financial planning software for your practice, what capability should be the highest priority?",
+            "options": [
+              "The ability to operate completely autonomously without requiring any advisor review or oversight of recommendations.",
+              "Impressive marketing claims about proprietary algorithms that guarantee superior investment performance outcomes.",
+              "Transparency in how recommendations are generated, with clear explanations advisors can review and discuss with clients.",
+              "The lowest subscription cost available since all AI planning tools provide essentially identical functionality."
+            ],
+            "correctAnswer": 2,
+            "rationale": "Transparency and explainability should be the highest priority when selecting AI financial planning tools. Advisors need to understand how recommendations are generated to validate appropriateness, explain advice to clients, and maintain fiduciary responsibility. Autonomous operation without oversight is problematic, performance guarantees are unrealistic and potentially misleading, and cost alone ignores critical quality and functionality differences. Transparency enables professional judgment and client trust.",
+            "tags": [
+              "tool-selection",
+              "transparency",
+              "explainability",
+              "fiduciary-duty"
+            ]
+          }
+        ]
+      },
+      {
+        "dimensionCode": "CPA",
+        "dimensionName": "Client Profiling & Analysis",
+        "description": "Using AI to gather, analyze, and interpret client data for personalized financial planning",
+        "weight": 0.125,
+        "totalPoints": 75,
+        "items": [
+          {
+            "id": "CPA-FA-B-001",
+            "level": 1,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.28,
+            "discrimination": 1.08,
+            "bloomLevel": "Remember",
+            "question": "What is the primary benefit of using AI for client data aggregation in financial advisory?",
+            "options": [
+              "AI aggregation eliminates the need for advisors to ever meet with clients or discuss their financial situations.",
+              "AI can gather and consolidate client financial information from multiple sources more quickly and consistently than manual methods.",
+              "AI aggregation automatically makes all investment decisions based on collected data without requiring advisor input.",
+              "AI aggregation provides legally binding financial advice that advisors can implement without professional review."
+            ],
+            "correctAnswer": 1,
+            "rationale": "AI data aggregation excels at quickly and consistently gathering client information from multiple accounts and sources, creating a comprehensive financial picture more efficiently than manual data collection. This saves time and improves accuracy but doesn't replace client meetings, doesn't make investment decisions autonomously, and doesn't provide advice—it provides data that advisors use to develop personalized recommendations.",
+            "tags": [
+              "data-aggregation",
+              "efficiency",
+              "client-data",
+              "information-gathering"
+            ]
+          },
+          {
+            "id": "CPA-FA-B-002",
+            "level": 1,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.3,
+            "discrimination": 1.09,
+            "bloomLevel": "Understand",
+            "question": "How does AI-assisted client segmentation benefit financial advisory practices?",
+            "options": [
+              "AI segmentation identifies similar client characteristics and needs, enabling advisors to deliver more personalized service at scale.",
+              "AI segmentation replaces the need for individual client relationships by treating all clients in a segment identically.",
+              "AI segmentation is primarily a marketing tool with no relevance to actual financial planning or advisory services.",
+              "AI segmentation violates fiduciary duty by categorizing clients instead of treating each one as completely unique."
+            ],
+            "correctAnswer": 0,
+            "rationale": "AI client segmentation helps advisors identify patterns and common characteristics among clients, enabling more efficient personalization at scale. Advisors can develop targeted strategies, communications, and services for client segments while still customizing for individual circumstances. Segmentation doesn't replace individual relationships, is valuable for planning (not just marketing), and helps advisors serve clients better rather than violating fiduciary duty.",
+            "tags": [
+              "client-segmentation",
+              "personalization",
+              "practice-efficiency",
+              "service-delivery"
+            ]
+          },
+          {
+            "id": "CPA-FA-B-003",
+            "level": 1,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.33,
+            "discrimination": 1.1,
+            "bloomLevel": "Understand",
+            "question": "What role does AI play in assessing client risk tolerance for investment planning?",
+            "options": [
+              "AI risk assessment tools completely replace advisor judgment by providing definitive risk profiles that cannot be questioned.",
+              "AI cannot assess risk tolerance at all since risk preferences are purely subjective and require human understanding.",
+              "AI risk assessments are always less accurate than traditional questionnaires since algorithms lack emotional intelligence.",
+              "AI can analyze patterns in client responses and behaviors to provide risk profile insights that advisors should validate and refine."
+            ],
+            "correctAnswer": 3,
+            "rationale": "AI can enhance risk tolerance assessment by analyzing response patterns, detecting inconsistencies, comparing to behavioral patterns, and identifying potential mismatches between stated and revealed preferences. However, these insights should be validated and refined through advisor conversation and judgment, as risk tolerance involves psychological and contextual factors. AI assessment complements rather than replaces advisor expertise in understanding client risk preferences.",
+            "tags": [
+              "risk-assessment",
+              "client-profiling",
+              "behavioral-analysis",
+              "validation"
+            ]
+          },
+          {
+            "id": "CPA-FA-B-004",
+            "level": 2,
+            "type": "scenario-based",
+            "points": 10,
+            "difficulty": 0.36,
+            "discrimination": 1.11,
+            "bloomLevel": "Apply",
+            "question": "Your AI client analysis tool identifies that a long-term client's spending patterns have changed significantly in recent months. What should you do?",
+            "options": [
+              "Immediately adjust the client's financial plan based on the AI's analysis without discussing the spending changes.",
+              "Ignore the AI insight since spending pattern analysis is not relevant to investment management and financial planning.",
+              "Reach out to the client to understand the spending changes and assess whether plan adjustments are appropriate.",
+              "Automatically flag the account for increased monitoring without client communication since the AI detected an anomaly."
+            ],
+            "correctAnswer": 2,
+            "rationale": "When AI identifies significant changes in client behavior or circumstances, the appropriate response is proactive client communication. Spending changes may indicate life events, changing needs, or potential financial stress that require plan adjustments. Client conversation provides context that AI analysis alone cannot capture. Implementing changes without discussion, ignoring valuable insights, or only monitoring without engaging misses the opportunity for timely, personalized guidance.",
+            "tags": [
+              "behavioral-monitoring",
+              "client-communication",
+              "proactive-service",
+              "plan-adjustments"
+            ]
+          },
+          {
+            "id": "CPA-FA-B-005",
+            "level": 2,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.38,
+            "discrimination": 1.12,
+            "bloomLevel": "Understand",
+            "question": "How should advisors use AI-generated client health scores or financial wellness metrics?",
+            "options": [
+              "Use health scores as the sole determinant of client service priority and resource allocation across the practice.",
+              "Present health scores to clients as objective assessments that definitively measure their financial success or failure.",
+              "Ignore health scores entirely since they oversimplify complex financial situations into single numerical values.",
+              "Use health scores as conversation starters and diagnostic tools while recognizing they don't capture every aspect of client wellbeing."
+            ],
+            "correctAnswer": 3,
+            "rationale": "AI-generated wellness metrics and health scores can be valuable conversation starters and diagnostic tools that highlight areas needing attention. However, they should be used thoughtfully, recognizing they're simplified representations that don't capture every nuance of a client's situation. They shouldn't be the sole basis for service decisions, shouldn't be presented as definitive judgments about success, but also shouldn't be completely ignored as they can provide useful insights when properly contextualized.",
+            "tags": [
+              "financial-wellness",
+              "client-communication",
+              "diagnostic-tools",
+              "contextualization"
+            ]
+          },
+          {
+            "id": "CPA-FA-B-006",
+            "level": 2,
+            "type": "scenario-based",
+            "points": 10,
+            "difficulty": 0.4,
+            "discrimination": 1.13,
+            "bloomLevel": "Apply",
+            "question": "An AI tool analyzes a new client's financial data and suggests they are in a higher risk category than their stated risk tolerance indicates. How should you proceed?",
+            "options": [
+              "Override the AI assessment and use only the client's stated risk tolerance since clients know themselves best.",
+              "Use the AI assessment exclusively since behavioral data is more reliable than self-reported preferences.",
+              "Discuss both the stated preferences and behavioral patterns with the client to reach a shared understanding of appropriate risk.",
+              "Split the difference mathematically between stated preference and AI assessment without client discussion."
+            ],
+            "correctAnswer": 2,
+            "rationale": "When AI identifies discrepancies between stated risk tolerance and behavioral patterns, the best approach is transparent client discussion. This explores the gap, helps clients understand their revealed preferences versus stated intentions, and reaches collaborative decisions about appropriate risk levels. Neither pure self-reporting nor pure algorithmic assessment captures the full picture—effective advisory integrates both with open communication.",
+            "tags": [
+              "risk-tolerance",
+              "behavioral-finance",
+              "client-education",
+              "collaborative-planning"
+            ]
+          },
+          {
+            "id": "CPA-FA-B-007",
+            "level": 3,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.42,
+            "discrimination": 1.14,
+            "bloomLevel": "Apply",
+            "question": "What is the most important consideration when using AI to analyze client social media or alternative data sources for financial planning?",
+            "options": [
+              "Privacy rights, consent requirements, and ethical boundaries must be carefully respected before accessing any non-traditional data.",
+              "Social media analysis should be maximized since it provides the most accurate picture of client financial behavior.",
+              "Alternative data sources should be avoided entirely since traditional financial data is always sufficient for planning.",
+              "Legal compliance is the only consideration since any data that can be accessed legally may be used without limits."
+            ],
+            "correctAnswer": 0,
+            "rationale": "When considering alternative data sources, privacy rights, explicit client consent, and ethical boundaries are paramount. Even if data is technically accessible, advisors must respect privacy, obtain proper consent, and consider ethical implications. Legal compliance is necessary but not sufficient—ethical practice requires additional considerations. Alternative data can provide value but must be used responsibly, and traditional data alone may miss important insights in modern financial planning.",
+            "tags": [
+              "privacy",
+              "ethics",
+              "consent",
+              "alternative-data"
+            ]
+          },
+          {
+            "id": "CPA-FA-B-008",
+            "level": 3,
+            "type": "scenario-based",
+            "points": 10,
+            "difficulty": 0.45,
+            "discrimination": 1.15,
+            "bloomLevel": "Apply",
+            "question": "Your AI profiling tool shows that a client couple has significantly different financial behaviors and risk preferences from each other. How should you address this in planning?",
+            "options": [
+              "Average their preferences mathematically to create a single compromise profile for joint planning purposes.",
+              "Focus planning exclusively on the spouse with more assets since they have greater financial stake in decisions.",
+              "Acknowledge the differences explicitly, facilitate discussion between spouses, and develop plans respecting both perspectives.",
+              "Implement the more conservative spouse's preferences automatically since this minimizes risk for the household."
+            ],
+            "correctAnswer": 2,
+            "rationale": "When AI identifies different preferences or behaviors among joint clients, the best approach is acknowledging differences explicitly and facilitating productive client discussion. Good advisory helps couples navigate differences, find common ground, and develop plans both partners understand and support. Simple averaging, focusing on one spouse, or automatically choosing conservative options doesn't address underlying differences and may create implementation problems or dissatisfaction.",
+            "tags": [
+              "joint-clients",
+              "relationship-dynamics",
+              "facilitation",
+              "household-planning"
+            ]
+          }
+        ]
+      },
+      {
+        "dimensionCode": "RIA",
+        "dimensionName": "Risk & Investment Analysis",
+        "description": "Applying AI for portfolio analysis, risk assessment, and investment research",
+        "weight": 0.125,
+        "totalPoints": 75,
+        "items": [
+          {
+            "id": "RIA-FA-B-001",
+            "level": 1,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.27,
+            "discrimination": 1.07,
+            "bloomLevel": "Remember",
+            "question": "What is the primary advantage of using AI for portfolio risk analysis compared to traditional methods?",
+            "options": [
+              "AI guarantees that portfolios will never experience losses by predicting all market downturns before they occur.",
+              "AI completely eliminates the need for advisors to understand risk management or portfolio construction principles.",
+              "AI can analyze complex interactions among many risk factors simultaneously more efficiently than manual calculation.",
+              "AI makes portfolio risk analysis unnecessary since algorithms automatically prevent all investment risks."
+            ],
+            "correctAnswer": 2,
+            "rationale": "AI's advantage in risk analysis is the ability to efficiently process and analyze complex interactions among multiple risk factors, correlations, and scenarios simultaneously. This provides more comprehensive risk assessment than manual methods, but doesn't guarantee prevention of losses, doesn't eliminate the need for advisor understanding, and doesn't make risk analysis unnecessary—rather, it makes it more thorough and actionable.",
+            "tags": [
+              "risk-analysis",
+              "portfolio-management",
+              "computational-efficiency",
+              "complex-analysis"
+            ]
+          },
+          {
+            "id": "RIA-FA-B-002",
+            "level": 1,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.29,
+            "discrimination": 1.08,
+            "bloomLevel": "Understand",
+            "question": "How does AI-powered investment research differ from traditional analyst research?",
+            "options": [
+              "AI research analyzes broader datasets and identifies patterns faster, while human analysts provide judgment and context.",
+              "AI research is always inferior because machines cannot understand business fundamentals or competitive dynamics.",
+              "AI research has completely replaced human analysts since algorithms provide perfect investment recommendations.",
+              "AI research and human research are identical in capability, so choosing between them is purely a cost decision."
+            ],
+            "correctAnswer": 0,
+            "rationale": "AI investment research excels at analyzing large datasets, identifying statistical patterns, and processing information quickly. Human analysts contribute deep contextual understanding, strategic judgment, and qualitative assessment. The most effective research combines AI's data processing capabilities with human analytical judgment. AI hasn't replaced analysts, isn't inferior to human research, and offers different rather than identical capabilities.",
+            "tags": [
+              "investment-research",
+              "human-ai-collaboration",
+              "complementary-capabilities",
+              "analysis"
+            ]
+          },
+          {
+            "id": "RIA-FA-B-003",
+            "level": 1,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.31,
+            "discrimination": 1.09,
+            "bloomLevel": "Understand",
+            "question": "What limitation should advisors recognize when using AI for investment performance attribution analysis?",
+            "options": [
+              "AI attribution analysis is perfect and identifies every factor affecting performance with complete certainty.",
+              "AI can identify statistical correlations but may not distinguish true causal factors from coincidental patterns.",
+              "AI attribution is completely useless since only human judgment can understand what drives investment returns.",
+              "AI attribution always provides the same results as traditional methods, so it offers no analytical advantage."
+            ],
+            "correctAnswer": 1,
+            "rationale": "AI attribution analysis can identify statistical correlations and patterns in performance data, but distinguishing true causal factors from coincidental correlations requires human judgment and market understanding. AI analysis isn't perfect or completely certain, isn't useless (it provides valuable pattern identification), and often reveals insights traditional methods miss—but advisors must interpret findings thoughtfully.",
+            "tags": [
+              "performance-attribution",
+              "causation-correlation",
+              "analysis-limitations",
+              "interpretation"
+            ]
+          },
+          {
+            "id": "RIA-FA-B-004",
+            "level": 2,
+            "type": "scenario-based",
+            "points": 10,
+            "difficulty": 0.35,
+            "discrimination": 1.11,
+            "bloomLevel": "Apply",
+            "question": "Your AI portfolio analysis tool flags a client portfolio as having concentration risk in technology stocks. The client is a tech industry executive who understands this sector deeply. How should you proceed?",
+            "options": [
+              "Immediately diversify the portfolio based on the AI recommendation without considering the client's unique expertise.",
+              "Discuss the concentration risk with the client, acknowledging their expertise while explaining diversification principles and trade-offs.",
+              "Ignore the AI warning since the client's industry knowledge eliminates concentration risk for technology holdings.",
+              "Implement automatic rebalancing rules that gradually reduce tech exposure without client consultation or discussion."
+            ],
+            "correctAnswer": 1,
+            "rationale": "When AI identifies valid risk concerns but clients have special circumstances (industry expertise, company ownership, concentrated wealth source), the appropriate approach is thoughtful discussion balancing AI insights with client context. The concentration risk is real even with expertise, but clients deserve to make informed decisions about how to address it. Neither automatic implementation nor dismissing the concern serves the client well.",
+            "tags": [
+              "concentration-risk",
+              "client-circumstances",
+              "risk-communication",
+              "informed-decisions"
+            ]
+          },
+          {
+            "id": "RIA-FA-B-005",
+            "level": 2,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.37,
+            "discrimination": 1.12,
+            "bloomLevel": "Understand",
+            "question": "When using AI for scenario analysis and stress testing client portfolios, what is the most important caveat for advisors to understand?",
+            "options": [
+              "AI scenarios are always completely accurate predictions of how portfolios will actually perform in future crises.",
+              "AI scenario analysis is worthless since future conditions never match historical patterns that algorithms analyze.",
+              "AI scenarios provide useful what-if analysis based on historical patterns, but future conditions may differ from past.",
+              "AI scenario analysis should only be used for conservative portfolios since aggressive portfolios are too complex."
+            ],
+            "correctAnswer": 2,
+            "rationale": "AI scenario analysis provides valuable what-if modeling based on historical patterns and relationships, helping advisors and clients understand potential portfolio behavior under various conditions. However, the critical caveat is that future crises may unfold differently than historical ones, and correlations can shift unexpectedly. Scenarios are analytical tools, not perfect predictions, but they're valuable for planning despite this limitation. Complexity doesn't limit scenario analysis to conservative portfolios.",
+            "tags": [
+              "scenario-analysis",
+              "stress-testing",
+              "limitations",
+              "planning-tools"
+            ]
+          },
+          {
+            "id": "RIA-FA-B-006",
+            "level": 2,
+            "type": "scenario-based",
+            "points": 10,
+            "difficulty": 0.4,
+            "discrimination": 1.13,
+            "bloomLevel": "Apply",
+            "question": "An AI tool recommends increasing equity exposure for a client based on current market conditions and the client's long time horizon. Markets have recently risen significantly. What should you consider?",
+            "options": [
+              "Implement the recommendation immediately since AI market timing is more accurate than human judgment about valuations.",
+              "Reject the recommendation automatically since increasing equity exposure after market gains is always poor timing.",
+              "Evaluate the recommendation considering portfolio balance, client circumstances, and valuation concerns rather than recent returns alone.",
+              "Delay any decision until markets decline since buying after gains inevitably leads to poor investment results."
+            ],
+            "correctAnswer": 2,
+            "rationale": "AI recommendations should be evaluated based on comprehensive factors including portfolio alignment with client goals, overall asset allocation appropriateness, and current valuations—not based solely on recent market direction. Neither automatic implementation (market timing) nor automatic rejection serves clients well. Recent gains may or may not indicate poor timing depending on many factors, and good financial planning focuses on appropriate long-term positioning rather than short-term market direction.",
+            "tags": [
+              "asset-allocation",
+              "market-timing",
+              "holistic-evaluation",
+              "long-term-planning"
+            ]
+          },
+          {
+            "id": "RIA-FA-B-007",
+            "level": 3,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.43,
+            "discrimination": 1.14,
+            "bloomLevel": "Apply",
+            "question": "When using AI for factor analysis of portfolio returns, what represents the most thoughtful approach for advisors?",
+            "options": [
+              "Accept AI factor decomposition results without question since statistical analysis is objective and cannot be wrong.",
+              "Understand which factors the AI identifies, assess whether attribution makes practical sense, and explain findings to clients clearly.",
+              "Ignore AI factor analysis entirely since only traditional style box analysis provides useful portfolio insights.",
+              "Use AI factor analysis only for reporting to clients without actually reviewing or understanding the analytical results."
+            ],
+            "correctAnswer": 1,
+            "rationale": "Effective use of AI factor analysis requires advisors to understand what factors are identified, assess whether the attribution makes practical investment sense, and communicate findings clearly to clients. Statistical results should be sense-checked against market knowledge. Blind acceptance risks propagating errors, while ignoring valuable analytical tools or using them without understanding defeats their purpose. Thoughtful integration requires both statistical output and practical judgment.",
+            "tags": [
+              "factor-analysis",
+              "critical-review",
+              "client-communication",
+              "analytical-literacy"
+            ]
+          },
+          {
+            "id": "RIA-FA-B-008",
+            "level": 3,
+            "type": "scenario-based",
+            "points": 10,
+            "difficulty": 0.46,
+            "discrimination": 1.16,
+            "bloomLevel": "Apply",
+            "question": "Your AI research tool identifies an investment opportunity based on alternative data analysis that traditional analyst research hasn't recognized. How should you evaluate this?",
+            "options": [
+              "Invest immediately since AI insights provide trading advantages before traditional research catches up with opportunities.",
+              "Investigate the AI's reasoning, evaluate the alternative data quality and relevance, and assess investment thesis validity.",
+              "Ignore the AI suggestion since any investment opportunity that traditional analysts haven't identified must be flawed.",
+              "Allocate a small position automatically without analysis since diversification limits risk if the AI is wrong."
+            ],
+            "correctAnswer": 1,
+            "rationale": "AI-identified opportunities from alternative data deserve thoughtful evaluation, not automatic acceptance or rejection. Advisors should understand the AI's reasoning, assess data quality and relevance, evaluate whether the investment thesis makes sense, and consider why traditional research may have missed it. AI can identify genuine opportunities humans miss, but can also identify spurious patterns. Professional judgment requires investigation, not reflexive implementation or dismissal.",
+            "tags": [
+              "alternative-data",
+              "investment-evaluation",
+              "due-diligence",
+              "critical-thinking"
+            ]
+          }
+        ]
+      },
+      {
+        "dimensionCode": "PFA",
+        "dimensionName": "Planning & Forecasting Automation",
+        "description": "Using AI for financial planning, projections, and scenario modeling",
+        "weight": 0.125,
+        "totalPoints": 75,
+        "items": [
+          {
+            "id": "PFA-FA-B-001",
+            "level": 1,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.26,
+            "discrimination": 1.06,
+            "bloomLevel": "Remember",
+            "question": "What is the primary advantage of using AI for retirement income projections compared to traditional linear projections?",
+            "options": [
+              "AI projections guarantee retirement income sufficiency by accurately predicting all future market conditions.",
+              "AI can model thousands of potential scenarios with varying market conditions and longevity assumptions more efficiently.",
+              "AI projections eliminate the need for advisors to discuss assumptions or uncertainties with retiring clients.",
+              "AI retirement planning is always less accurate than simple average return projections over fixed time periods."
+            ],
+            "correctAnswer": 1,
+            "rationale": "AI excels at Monte Carlo simulation and scenario modeling, efficiently processing thousands of potential retirement outcome paths with varying assumptions about returns, inflation, spending, and longevity. This provides more robust planning than single linear projections. AI doesn't guarantee outcomes, doesn't eliminate the need for client discussion about assumptions, and generally provides more thorough analysis than simple averages.",
+            "tags": [
+              "retirement-planning",
+              "monte-carlo",
+              "scenario-modeling",
+              "projections"
+            ]
+          },
+          {
+            "id": "PFA-FA-B-002",
+            "level": 1,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.28,
+            "discrimination": 1.07,
+            "bloomLevel": "Understand",
+            "question": "How does AI-assisted tax planning differ from traditional tax planning approaches?",
+            "options": [
+              "AI tax planning provides legally binding tax advice that advisors can implement without CPA consultation.",
+              "AI can analyze multiple tax strategies simultaneously and model multi-year tax implications more comprehensively.",
+              "AI tax planning completely replaces the need for tax professionals since algorithms know all tax laws.",
+              "AI tax planning is identical to traditional approaches but faster, with no analytical advantages."
+            ],
+            "correctAnswer": 1,
+            "rationale": "AI tax planning can analyze multiple strategies simultaneously, model multi-year implications, optimize across various scenarios, and identify opportunities more comprehensively than manual analysis. However, AI doesn't provide legal advice, doesn't replace tax professionals (especially for complex situations), and offers analytical advantages beyond just speed. Tax planning often benefits from both AI analytical capabilities and professional tax expertise.",
+            "tags": [
+              "tax-planning",
+              "strategy-analysis",
+              "multi-year-modeling",
+              "optimization"
+            ]
+          },
+          {
+            "id": "PFA-FA-B-003",
+            "level": 1,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.3,
+            "discrimination": 1.08,
+            "bloomLevel": "Understand",
+            "question": "What is a key limitation of AI in estate planning that advisors must recognize?",
+            "options": [
+              "AI estate planning can optimize tax efficiency and asset distribution but cannot replace attorney guidance on legal documents.",
+              "AI has no role in estate planning since inheritance decisions are purely emotional and must be entirely human-driven.",
+              "AI estate planning always provides inferior recommendations compared to simple equal distribution among beneficiaries.",
+              "AI can draft legally binding wills and trusts without attorney review since algorithms understand estate law."
+            ],
+            "correctAnswer": 0,
+            "rationale": "AI can analyze estate planning scenarios, model tax implications, and optimize distribution strategies, but cannot replace attorney expertise for legal document drafting, jurisdiction-specific requirements, and complex family situations. Estate planning has both analytical components (where AI helps) and legal/relational components (where human professionals are essential). AI has valuable roles but within appropriate boundaries.",
+            "tags": [
+              "estate-planning",
+              "limitations",
+              "professional-collaboration",
+              "legal-requirements"
+            ]
+          },
+          {
+            "id": "PFA-FA-B-004",
+            "level": 2,
+            "type": "scenario-based",
+            "points": 10,
+            "difficulty": 0.34,
+            "discrimination": 1.1,
+            "bloomLevel": "Apply",
+            "question": "Your AI planning software projects a 95% probability of retirement success for a client, but you notice their discretionary spending assumptions seem optimistically low. What should you do?",
+            "options": [
+              "Present the 95% probability to the client without raising concerns since the AI analysis is mathematically correct.",
+              "Recalculate with more realistic spending assumptions and discuss how different lifestyle expectations affect retirement security.",
+              "Ignore the spending assumptions since the 95% success rate provides adequate safety margin for uncertainty.",
+              "Lower the probability arbitrarily to be conservative without actually adjusting the underlying planning assumptions."
+            ],
+            "correctAnswer": 1,
+            "rationale": "When AI outputs are based on questionable inputs (garbage in, garbage out), advisors must identify and correct the issues. Recalculating with realistic spending assumptions and discussing lifestyle expectations provides clients with meaningful analysis. Presenting technically correct but practically misleading projections, relying on safety margins to compensate for bad inputs, or arbitrarily adjusting outputs without fixing inputs all fail to serve clients well.",
+            "tags": [
+              "input-validation",
+              "realistic-assumptions",
+              "client-education",
+              "planning-accuracy"
+            ]
+          },
+          {
+            "id": "PFA-FA-B-005",
+            "level": 2,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.36,
+            "discrimination": 1.11,
+            "bloomLevel": "Understand",
+            "question": "When using AI to optimize Social Security claiming strategies, what factor requires particular advisor attention?",
+            "options": [
+              "Health status and longevity expectations that may differ from population averages used in AI optimization.",
+              "Mathematical optimization is perfect and requires no advisor review or consideration of individual circumstances.",
+              "Social Security claiming decisions are too simple for AI and should always use basic rules of thumb.",
+              "AI recommendations for Social Security should never be shared with clients since claiming decisions are personal."
+            ],
+            "correctAnswer": 0,
+            "rationale": "AI Social Security optimization typically uses population longevity data, but individual health status, family history, and other factors may suggest different life expectancies. Advisors must consider these personal factors when evaluating AI recommendations. Optimization isn't perfect and requires context, Social Security claiming is complex enough to benefit from AI analysis, and recommendations should definitely be discussed with clients with appropriate context.",
+            "tags": [
+              "social-security",
+              "personalization",
+              "health-factors",
+              "longevity-assumptions"
+            ]
+          },
+          {
+            "id": "PFA-FA-B-006",
+            "level": 2,
+            "type": "scenario-based",
+            "points": 10,
+            "difficulty": 0.39,
+            "discrimination": 1.12,
+            "bloomLevel": "Apply",
+            "question": "An AI tool recommends Roth conversions for a client over several years, but you know the client expects large bonuses that the AI doesn't account for. How should you proceed?",
+            "options": [
+              "Implement the AI Roth conversion strategy as designed since the recommendations are based on sophisticated tax modeling.",
+              "Adjust the conversion strategy to account for expected bonus income and reassess optimal conversion amounts and timing.",
+              "Abandon Roth conversions entirely since the AI recommendation didn't account for all income sources.",
+              "Proceed with conversions but in smaller amounts without actually recalculating the tax impact of bonus income."
+            ],
+            "correctAnswer": 1,
+            "rationale": "When advisors have information that wasn't included in AI analysis, they must incorporate that information and recalculate. Expected bonus income significantly affects optimal Roth conversion amounts and timing. Implementing strategies based on incomplete information, abandoning good strategies due to missing inputs, or making ad-hoc adjustments without recalculation all fail to optimize for client circumstances. Proper approach is updating inputs and reassessing.",
+            "tags": [
+              "roth-conversions",
+              "tax-optimization",
+              "complete-information",
+              "strategy-adjustment"
+            ]
+          },
+          {
+            "id": "PFA-FA-B-007",
+            "level": 3,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.41,
+            "discrimination": 1.13,
+            "bloomLevel": "Apply",
+            "question": "When presenting AI-generated financial plan projections to clients, what communication approach is most effective?",
+            "options": [
+              "Present projections as certain predictions since AI analysis is scientific and clients need confidence in their plans.",
+              "Explain the projections as ranges of possibilities based on assumptions, highlighting key sensitivities and uncertainties.",
+              "Avoid discussing AI involvement in projections since clients won't understand or trust algorithmic analysis.",
+              "Present only the most pessimistic scenarios to ensure clients are prepared for worst-case outcomes exclusively."
+            ],
+            "correctAnswer": 1,
+            "rationale": "Effective communication of AI projections involves presenting them as ranges of possibilities based on stated assumptions, explaining key sensitivities, and acknowledging uncertainties. This builds appropriate client expectations and understanding. Presenting projections as certainties creates false confidence, hiding AI involvement undermines transparency, and focusing only on pessimistic scenarios provides incomplete perspective. Balanced, transparent communication serves clients best.",
+            "tags": [
+              "client-communication",
+              "projection-presentation",
+              "transparency",
+              "expectation-management"
+            ]
+          },
+          {
+            "id": "PFA-FA-B-008",
+            "level": 3,
+            "type": "scenario-based",
+            "points": 10,
+            "difficulty": 0.44,
+            "discrimination": 1.14,
+            "bloomLevel": "Apply",
+            "question": "Your AI planning tool suggests a client can afford to retire three years earlier than their target date. The client is excited, but you notice the projection uses aggressive return assumptions. How do you proceed?",
+            "options": [
+              "Support early retirement since the AI analysis provides mathematical confidence in the feasibility.",
+              "Rerun projections with more conservative assumptions, discuss trade-offs, and help client make informed decision about timing.",
+              "Automatically recommend delaying retirement without explanation since any aggressive assumptions must be wrong.",
+              "Reduce the early retirement recommendation by half (1.5 years) without recalculating or discussing assumption implications."
+            ],
+            "correctAnswer": 1,
+            "rationale": "When AI projections use aggressive assumptions that may not materialize, advisors should rerun analysis with varied assumptions, show clients how different scenarios affect outcomes, and facilitate informed decision-making about timing and risk tolerance. Supporting decisions based on optimistic assumptions alone, arbitrarily overriding recommendations without explanation, or making ad-hoc adjustments without recalculation all fail to serve client interests in making thoughtful retirement timing decisions.",
+            "tags": [
+              "retirement-timing",
+              "assumption-sensitivity",
+              "informed-decisions",
+              "risk-communication"
+            ]
+          }
+        ]
+      },
+      {
+        "dimensionCode": "CRE",
+        "dimensionName": "Compliance & Regulatory Excellence",
+        "description": "Using AI for regulatory compliance, documentation, and fiduciary responsibility",
+        "weight": 0.125,
+        "totalPoints": 75,
+        "items": [
+          {
+            "id": "CRE-FA-B-001",
+            "level": 1,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.29,
+            "discrimination": 1.08,
+            "bloomLevel": "Remember",
+            "question": "What is the primary benefit of using AI for regulatory compliance monitoring in financial advisory practices?",
+            "options": [
+              "AI compliance monitoring completely eliminates the need for human compliance officers and regulatory expertise.",
+              "AI guarantees perfect compliance with all regulations by automatically fixing every regulatory violation instantly.",
+              "AI can continuously monitor activities and flag potential compliance issues more consistently than periodic manual reviews.",
+              "AI compliance tools provide legal protection from regulatory enforcement since algorithms ensure complete rule adherence."
+            ],
+            "correctAnswer": 2,
+            "rationale": "AI excels at continuous monitoring of activities, communications, and transactions, flagging potential compliance issues consistently for human review. This complements but doesn't replace human compliance expertise, doesn't guarantee perfect compliance or instant fixes, and doesn't provide legal protection from enforcement. AI is a tool that enhances compliance monitoring efficiency and consistency while human oversight remains essential.",
+            "tags": [
+              "compliance-monitoring",
+              "regulatory-oversight",
+              "continuous-monitoring",
+              "risk-management"
+            ]
+          },
+          {
+            "id": "CRE-FA-B-002",
+            "level": 1,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.31,
+            "discrimination": 1.09,
+            "bloomLevel": "Understand",
+            "question": "How does AI assist with maintaining fiduciary documentation requirements for financial advisors?",
+            "options": [
+              "AI documentation proves that advisors met fiduciary standards and prevents any client complaints or regulatory investigations.",
+              "AI can help organize, track, and maintain required documentation more systematically than manual filing systems.",
+              "AI-generated documentation completely replaces the need for advisors to personally review or approve client communications.",
+              "AI documentation is not admissible for regulatory purposes since only human-created records meet legal standards."
+            ],
+            "correctAnswer": 1,
+            "rationale": "AI can significantly improve documentation organization, tracking, and maintenance through systematic processes and reminders. However, AI documentation doesn't prevent complaints or investigations, doesn't replace advisor review and approval, and is admissible when properly implemented. Good documentation practices supported by AI help demonstrate fiduciary compliance but must include appropriate advisor oversight.",
+            "tags": [
+              "documentation",
+              "fiduciary-duty",
+              "record-keeping",
+              "systematic-processes"
+            ]
+          },
+          {
+            "id": "CRE-FA-B-003",
+            "level": 1,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.33,
+            "discrimination": 1.1,
+            "bloomLevel": "Understand",
+            "question": "What role should AI play in reviewing client communications for compliance issues?",
+            "options": [
+              "AI should automatically prevent any potentially problematic communications from being sent without human review.",
+              "AI communication review is unnecessary since advisors inherently understand what language meets compliance standards.",
+              "AI should flag potentially concerning communications for human compliance review and advisor education.",
+              "AI communication monitoring violates advisor privacy and should never be implemented in advisory practices."
+            ],
+            "correctAnswer": 2,
+            "rationale": "AI communication review should flag potentially problematic content for human compliance review, creating opportunities for education and prevention. Fully automatic blocking may prevent legitimate communications and create friction, while assuming advisors never make mistakes or viewing monitoring as inappropriate privacy violation ignores compliance responsibilities. Balanced approach uses AI for flagging with human review and judgment.",
+            "tags": [
+              "communication-compliance",
+              "supervision",
+              "education",
+              "balanced-oversight"
+            ]
+          },
+          {
+            "id": "CRE-FA-B-004",
+            "level": 2,
+            "type": "scenario-based",
+            "points": 10,
+            "difficulty": 0.36,
+            "discrimination": 1.11,
+            "bloomLevel": "Apply",
+            "question": "Your AI compliance tool flags an email you sent to a client about investment recommendations as potentially problematic. You believe the email is fine. What should you do?",
+            "options": [
+              "Ignore the AI flag since you're confident the email meets compliance standards and the algorithm is overly cautious.",
+              "Have a compliance professional review the flagged email to get a second opinion before dismissing the AI concern.",
+              "Immediately apologize to the client and retract the email since the AI identified a compliance violation.",
+              "Disable the AI compliance monitoring for your communications since it generates too many false positives."
+            ],
+            "correctAnswer": 1,
+            "rationale": "When AI flags potential issues, the appropriate response is having qualified humans review the concern. AI may identify problems advisors miss or may generate false positives, so human judgment is needed. Neither ignoring flags because you disagree nor automatically treating flags as definitive violations serves compliance well. If false positive rates are high, the issue is system calibration, not monitoring itself.",
+            "tags": [
+              "compliance-review",
+              "human-oversight",
+              "false-positives",
+              "process-improvement"
+            ]
+          },
+          {
+            "id": "CRE-FA-B-005",
+            "level": 2,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.38,
+            "discrimination": 1.12,
+            "bloomLevel": "Understand",
+            "question": "When using AI to automate Form ADV updates and regulatory filings, what is the most critical consideration?",
+            "options": [
+              "AI-generated regulatory filings are always accurate and require no advisor review before submission to regulators.",
+              "Automation of regulatory filings is illegal since regulators require that all filings be manually prepared by advisors.",
+              "Advisors remain personally responsible for filing accuracy and must review AI-prepared materials before submission.",
+              "AI regulatory filing automation eliminates compliance risk since machines don't make the same errors as humans."
+            ],
+            "correctAnswer": 2,
+            "rationale": "Regardless of AI assistance, advisors retain personal responsibility for accuracy of regulatory filings. AI can help prepare materials, but advisors must review and verify content before submission. Automation isn't illegal and can improve consistency, but doesn't guarantee accuracy or eliminate advisor responsibility. AI reduces some errors but may introduce others, so human review remains essential.",
+            "tags": [
+              "regulatory-filings",
+              "personal-responsibility",
+              "review-requirements",
+              "accountability"
+            ]
+          },
+          {
+            "id": "CRE-FA-B-006",
+            "level": 2,
+            "type": "scenario-based",
+            "points": 10,
+            "difficulty": 0.4,
+            "discrimination": 1.13,
+            "bloomLevel": "Apply",
+            "question": "Your AI system identifies a pattern of trades in client accounts that could indicate problematic activity. Investigation shows the trades were appropriate. What should you do?",
+            "options": [
+              "Disable the monitoring rule that flagged these trades since it generated a false positive and wastes time.",
+              "Document the investigation and findings while refining the AI parameters to reduce similar false positives going forward.",
+              "Take no action since the trades were appropriate and the AI alert was incorrect and can be ignored.",
+              "Report yourself to regulators since any AI compliance alert indicates a regulatory violation occurred."
+            ],
+            "correctAnswer": 1,
+            "rationale": "When AI generates false positives, the proper response is documenting the investigation and findings while working to refine system parameters. This maintains audit trail and improves system accuracy. Disabling monitoring after one false positive is excessive, ignoring alerts without documentation is poor practice, and false positives aren't regulatory violations. Continuous improvement of monitoring systems serves compliance best.",
+            "tags": [
+              "false-positives",
+              "documentation",
+              "system-refinement",
+              "continuous-improvement"
+            ]
+          },
+          {
+            "id": "CRE-FA-B-007",
+            "level": 3,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.42,
+            "discrimination": 1.14,
+            "bloomLevel": "Apply",
+            "question": "When implementing AI tools that make recommendations to clients, what is the most important compliance consideration?",
+            "options": [
+              "Ensuring AI recommendations meet the same fiduciary standards as human advisor recommendations and are appropriately supervised.",
+              "AI recommendations don't require compliance oversight since algorithms have no conflicts of interest or biases.",
+              "AI tools should only make recommendations that exactly match what the advisor would have recommended manually.",
+              "AI recommendation tools should be avoided entirely since regulators haven't explicitly approved their use."
+            ],
+            "correctAnswer": 0,
+            "rationale": "AI recommendations must meet the same fiduciary standards as human recommendations and require appropriate supervision and oversight. AI can have biases and issues requiring monitoring, shouldn't be limited to only replicating manual recommendations (which defeats their value), and regulatory framework applies to advice regardless of how it's generated. Advisors using AI tools must ensure recommendations are suitable, documented, and supervised properly.",
+            "tags": [
+              "fiduciary-standards",
+              "ai-recommendations",
+              "supervision",
+              "regulatory-framework"
+            ]
+          },
+          {
+            "id": "CRE-FA-B-008",
+            "level": 3,
+            "type": "scenario-based",
+            "points": 10,
+            "difficulty": 0.45,
+            "discrimination": 1.15,
+            "bloomLevel": "Apply",
+            "question": "A client asks how AI is being used in managing their account. Your firm uses multiple AI tools but you haven't explicitly disclosed this. How should you respond?",
+            "options": [
+              "Avoid discussing AI usage since clients won't understand the technology and disclosure might cause unnecessary concern.",
+              "Provide transparent explanation of how AI tools support your advisory process while emphasizing your oversight and judgment.",
+              "Claim AI isn't used since some clients might object to algorithmic involvement in their financial decisions.",
+              "Give highly technical details about AI algorithms to demonstrate sophistication even if clients won't understand."
+            ],
+            "correctAnswer": 1,
+            "rationale": "Transparency about AI usage is important for client trust and informed consent. Advisors should explain in accessible terms how AI supports their process while emphasizing human oversight and judgment. Avoiding discussion, being dishonest about usage, or providing incomprehensible technical detail all fail to serve client understanding and relationship trust. Clear, honest communication about technology usage demonstrates respect for clients.",
+            "tags": [
+              "disclosure",
+              "transparency",
+              "client-trust",
+              "informed-consent"
+            ]
+          }
+        ]
+      },
+      {
+        "dimensionCode": "EGC",
+        "dimensionName": "Ethics & Governance in Client Service",
+        "description": "Understanding ethical implications and governance requirements for AI use with clients",
+        "weight": 0.125,
+        "totalPoints": 75,
+        "items": [
+          {
+            "id": "EGC-FA-B-001",
+            "level": 1,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.3,
+            "discrimination": 1.09,
+            "bloomLevel": "Remember",
+            "question": "What is the primary ethical concern when using AI for client service in financial advisory?",
+            "options": [
+              "AI usage is inherently unethical in financial services and should be avoided regardless of implementation approach.",
+              "Ensuring AI tools are used in ways that genuinely serve client interests rather than just increasing firm efficiency.",
+              "AI has no ethical implications since technology is neutral and only human actions have ethical dimensions.",
+              "The main ethical concern is whether AI can generate more revenue for the firm than traditional methods."
+            ],
+            "correctAnswer": 1,
+            "rationale": "The primary ethical concern is ensuring AI serves genuine client interests, not just firm efficiency or profitability. While efficiency gains are valuable, they should translate to better client outcomes—more personalized service, better advice, or improved access. AI isn't inherently unethical or ethically neutral, and ethical evaluation must focus on client benefit, not just firm revenue.",
+            "tags": [
+              "client-interests",
+              "ethical-framework",
+              "fiduciary-duty",
+              "service-quality"
+            ]
+          },
+          {
+            "id": "EGC-FA-B-002",
+            "level": 1,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.32,
+            "discrimination": 1.1,
+            "bloomLevel": "Understand",
+            "question": "How should financial advisors approach the governance of AI tools used in their practice?",
+            "options": [
+              "AI governance is only necessary for large firms; small practices can implement AI tools without formal oversight.",
+              "AI tools should be governed with policies ensuring appropriate use, monitoring, and accountability regardless of practice size.",
+              "AI governance is the technology vendor's responsibility, not the financial advisor's concern.",
+              "Governance requirements only apply to AI that makes autonomous decisions without human review."
+            ],
+            "correctAnswer": 1,
+            "rationale": "Appropriate AI governance—including policies for use, monitoring, and accountability—is important for practices of all sizes. Advisors are responsible for tools they use, not just vendors. Governance applies to all AI tools, not just fully autonomous ones, because even AI-assisted decisions require appropriate oversight and controls. Thoughtful governance protects both clients and advisors.",
+            "tags": [
+              "ai-governance",
+              "oversight",
+              "accountability",
+              "policies"
+            ]
+          },
+          {
+            "id": "EGC-FA-B-003",
+            "level": 1,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.34,
+            "discrimination": 1.1,
+            "bloomLevel": "Understand",
+            "question": "What ethical consideration is most important when AI tools have access to sensitive client financial data?",
+            "options": [
+              "Data security and privacy protections are paramount to maintaining client trust and meeting ethical obligations.",
+              "Convenience of AI access to all client data always outweighs privacy concerns since advisors have fiduciary status.",
+              "Client financial data has no special privacy considerations since it's shared with multiple financial institutions.",
+              "Ethical obligations only require protecting data from external breaches, not from inappropriate internal access."
+            ],
+            "correctAnswer": 0,
+            "rationale": "Data security and privacy are fundamental ethical obligations when AI tools access sensitive client information. Fiduciary status doesn't eliminate privacy considerations, financial data does have special sensitivity, and ethical obligations include both external and internal data protection. Maintaining appropriate data access controls, security measures, and privacy protections is essential to client trust and ethical practice.",
+            "tags": [
+              "data-privacy",
+              "security",
+              "client-trust",
+              "ethical-obligations"
+            ]
+          },
+          {
+            "id": "EGC-FA-B-004",
+            "level": 2,
+            "type": "scenario-based",
+            "points": 10,
+            "difficulty": 0.37,
+            "discrimination": 1.11,
+            "bloomLevel": "Apply",
+            "question": "Your AI client segmentation tool identifies high-net-worth clients as more profitable and suggests prioritizing their service. Ethically, how should you respond?",
+            "options": [
+              "Implement the AI recommendation since business efficiency requires focusing resources on most profitable client relationships.",
+              "Ensure all clients receive appropriate service levels while using efficiency gains from AI to serve more clients well.",
+              "Reject the AI insight entirely and provide identical service to all clients regardless of relationship profitability.",
+              "Terminate relationships with less profitable clients since AI has identified they don't merit continued service."
+            ],
+            "correctAnswer": 1,
+            "rationale": "The ethical approach is ensuring all clients receive appropriate service for their needs while using AI efficiency gains to serve clients better overall. Prioritizing profitable clients at the expense of appropriate service to others violates fiduciary principles, but complete rejection of resource efficiency also fails to serve clients well. Terminating clients based solely on profitability is ethically problematic. The goal is better service across client base, not just to most profitable clients.",
+            "tags": [
+              "service-equity",
+              "client-prioritization",
+              "fiduciary-ethics",
+              "resource-allocation"
+            ]
+          },
+          {
+            "id": "EGC-FA-B-005",
+            "level": 2,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.39,
+            "discrimination": 1.12,
+            "bloomLevel": "Understand",
+            "question": "When AI recommendations favor products or strategies that generate higher fees for your firm, what ethical framework should guide your response?",
+            "options": [
+              "Fee considerations should always override AI recommendations since compensation creates potential conflicts of interest.",
+              "AI recommendations should be implemented regardless of fee impact since algorithms have no conflicts of interest.",
+              "Evaluate whether recommendations genuinely serve client interests independent of fee impact, disclosing conflicts appropriately.",
+              "Higher-fee recommendations are ethically acceptable as long as they're presented as AI-generated rather than advisor-initiated."
+            ],
+            "correctAnswer": 2,
+            "rationale": "The ethical framework is evaluating whether recommendations genuinely serve client interests regardless of fee impact, with appropriate conflict disclosure. AI can encode biases including revenue optimization, so advisors must critically evaluate recommendations. Neither automatically rejecting high-fee options nor implementing them without scrutiny serves clients well. Attribution to AI doesn't eliminate advisor responsibility for ensuring recommendations are appropriate.",
+            "tags": [
+              "conflicts-of-interest",
+              "fee-transparency",
+              "client-interests",
+              "critical-evaluation"
+            ]
+          },
+          {
+            "id": "EGC-FA-B-006",
+            "level": 2,
+            "type": "scenario-based",
+            "points": 10,
+            "difficulty": 0.41,
+            "discrimination": 1.13,
+            "bloomLevel": "Apply",
+            "question": "You discover your AI portfolio tool has been making suboptimal recommendations for clients in certain demographic groups. What is your ethical obligation?",
+            "options": [
+              "Continue using the tool since the AI vendor is responsible for algorithm performance, not the advisor.",
+              "Immediately stop using the tool entirely and revert to manual portfolio management for all clients.",
+              "Investigate the issue, work with the vendor on solutions, remediate affected clients, and implement monitoring to prevent recurrence.",
+              "Address the issue going forward but take no action for past recommendations since they were made in good faith."
+            ],
+            "correctAnswer": 2,
+            "rationale": "When discovering systematic AI bias or errors, ethical obligations include investigating the scope, working on solutions, remediating harm to affected clients, and preventing recurrence. Blaming vendors doesn't eliminate advisor responsibility, complete tool abandonment may be excessive if fixable, and ignoring past harm fails to meet ethical obligations. Comprehensive response addresses past, present, and future client interests.",
+            "tags": [
+              "bias-remediation",
+              "accountability",
+              "client-protection",
+              "systematic-review"
+            ]
+          },
+          {
+            "id": "EGC-FA-B-007",
+            "level": 3,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.43,
+            "discrimination": 1.14,
+            "bloomLevel": "Apply",
+            "question": "When using AI to automate routine client communications, what ethical principle should guide the level of personalization and disclosure?",
+            "options": [
+              "All AI-generated communications must be labeled as such even when that reduces their effectiveness or client engagement.",
+              "Clients should not know communications are AI-generated as long as content is accurate and appropriate for their situation.",
+              "Communications should be meaningfully personalized when possible, with transparency when clients ask about their creation.",
+              "Automated communications should be avoided entirely since authentic advisor-client relationships require human creation."
+            ],
+            "correctAnswer": 2,
+            "rationale": "Ethical approach balances meaningful personalization with appropriate transparency. Not every communication requires explicit AI labeling if content is accurate and appropriate, but advisors should be transparent when asked and ensure communications serve client needs. Complete opacity about AI use undermines trust if discovered, mandatory labeling may create unnecessary barriers, and avoiding all automation rejects valuable efficiency. Ethical practice emphasizes substance and transparency when relevant.",
+            "tags": [
+              "communication-ethics",
+              "transparency",
+              "personalization",
+              "authenticity"
+            ]
+          },
+          {
+            "id": "EGC-FA-B-008",
+            "level": 3,
+            "type": "scenario-based",
+            "points": 10,
+            "difficulty": 0.46,
+            "discrimination": 1.15,
+            "bloomLevel": "Apply",
+            "question": "Your firm is considering an AI tool that could significantly reduce the time needed for financial planning, potentially allowing you to serve more clients. What ethical considerations should guide this decision?",
+            "options": [
+              "Adopt the tool to maximize the number of clients served since broader access to financial advice benefits society.",
+              "Reject the tool to maintain current service levels since adding clients necessarily dilutes the attention each receives.",
+              "Evaluate whether the tool genuinely maintains service quality while increasing capacity, with honest assessment of trade-offs.",
+              "Implement the tool only if efficiency gains can be converted to higher revenue rather than serving more clients."
+            ],
+            "correctAnswer": 2,
+            "rationale": "Ethical evaluation requires honestly assessing whether AI efficiency genuinely maintains service quality while increasing capacity. If quality is maintained, serving more clients is valuable. If quality suffers, efficiency gains don't justify expansion. Automatically maximizing client count or rejecting capacity increases are both ethically incomplete positions. Revenue focus alone ignores broader service obligations. The key is honest assessment of whether expanded capacity serves all clients well.",
+            "tags": [
+              "service-quality",
+              "capacity-planning",
+              "trade-off-analysis",
+              "ethical-growth"
+            ]
+          }
+        ]
+      },
+      {
+        "dimensionCode": "RAC",
+        "dimensionName": "Responsible AI & Client Trust",
+        "description": "Building and maintaining client trust through responsible AI implementation and communication",
+        "weight": 0.125,
+        "totalPoints": 75,
+        "items": [
+          {
+            "id": "RAC-FA-B-001",
+            "level": 1,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.28,
+            "discrimination": 1.07,
+            "bloomLevel": "Remember",
+            "question": "What is the most important factor in maintaining client trust when implementing AI tools in financial advisory?",
+            "options": [
+              "Never mentioning AI usage to clients since transparency about technology might reduce their confidence in advice.",
+              "Focusing exclusively on demonstrating that AI tools are more sophisticated than competitors' traditional approaches.",
+              "Transparency about how AI is used while emphasizing continued advisor oversight and personalized judgment.",
+              "Guaranteeing that AI will improve investment returns and financial outcomes for all clients."
+            ],
+            "correctAnswer": 2,
+            "rationale": "Client trust is built through transparency about AI usage combined with clear communication about maintained advisor oversight and judgment. Hiding AI usage undermines trust if discovered, focusing only on sophistication misses relationship dimensions, and guaranteeing outcomes is both inaccurate and potentially misleading. Honest communication about AI's role as a tool supporting personalized advisor judgment maintains trust.",
+            "tags": [
+              "client-trust",
+              "transparency",
+              "advisor-oversight",
+              "relationship-building"
+            ]
+          },
+          {
+            "id": "RAC-FA-B-002",
+            "level": 1,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.3,
+            "discrimination": 1.08,
+            "bloomLevel": "Understand",
+            "question": "How should advisors explain AI's role in portfolio management to clients who are unfamiliar with the technology?",
+            "options": [
+              "Use highly technical explanations of algorithms and machine learning to demonstrate sophisticated implementation.",
+              "Avoid explaining AI's role at all since clients don't need to understand the tools advisors use professionally.",
+              "Use accessible analogies comparing AI to tools clients understand, focusing on benefits and advisor oversight.",
+              "Minimize AI's importance by suggesting it's just faster software that doesn't meaningfully change the advisory process."
+            ],
+            "correctAnswer": 2,
+            "rationale": "Effective client communication uses accessible analogies and focuses on benefits and oversight rather than technical details. Overly technical explanations confuse rather than inform, avoiding explanation undermines trust, and minimizing AI's role is dishonest. Good communication helps clients understand how AI supports better service while advisors maintain judgment and oversight.",
+            "tags": [
+              "client-education",
+              "accessible-communication",
+              "analogies",
+              "benefit-framing"
+            ]
+          },
+          {
+            "id": "RAC-FA-B-003",
+            "level": 1,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.32,
+            "discrimination": 1.09,
+            "bloomLevel": "Understand",
+            "question": "What responsibility do advisors have regarding AI-generated insights they don't fully understand?",
+            "options": [
+              "Advisors can present any AI insights to clients even if they don't understand how the insights were generated.",
+              "Advisors should either understand AI insights sufficiently to explain them or not present them to clients.",
+              "Understanding AI insights is the vendor's responsibility; advisors just need to communicate what AI outputs.",
+              "AI insights are self-explanatory and require no additional advisor understanding or interpretation before sharing."
+            ],
+            "correctAnswer": 1,
+            "rationale": "Advisors have professional responsibility to understand insights they present to clients sufficiently to explain reasoning and validate appropriateness. Presenting insights without understanding risks recommending inappropriate advice. Responsibility isn't delegated to vendors, and AI insights typically require interpretation and contextualization. Professional integrity requires understanding what you recommend, regardless of technology source.",
+            "tags": [
+              "professional-responsibility",
+              "understanding",
+              "explainability",
+              "integrity"
+            ]
+          },
+          {
+            "id": "RAC-FA-B-004",
+            "level": 2,
+            "type": "scenario-based",
+            "points": 10,
+            "difficulty": 0.35,
+            "discrimination": 1.1,
+            "bloomLevel": "Apply",
+            "question": "A client expresses concern that AI might be making decisions about their money without human judgment. How should you respond?",
+            "options": [
+              "Assure them AI operates completely autonomously but that its decisions are superior to human judgment.",
+              "Explain your oversight process, showing how AI supports your analysis while you make final recommendations considering their unique situation.",
+              "Dismiss their concerns by explaining they don't understand how modern financial technology works.",
+              "Offer to stop using AI for their account even though this means they receive different service than other clients."
+            ],
+            "correctAnswer": 1,
+            "rationale": "When clients express AI concerns, the appropriate response is explaining your actual process: how AI supports analysis while you maintain judgment and oversight for their unique circumstances. Claiming full autonomy, dismissing concerns, or offering different service levels don't build trust. Transparent explanation of the human-AI collaboration model addresses concerns constructively.",
+            "tags": [
+              "client-concerns",
+              "oversight-explanation",
+              "trust-building",
+              "process-transparency"
+            ]
+          },
+          {
+            "id": "RAC-FA-B-005",
+            "level": 2,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.37,
+            "discrimination": 1.11,
+            "bloomLevel": "Understand",
+            "question": "When AI tools make mistakes in client recommendations, what is the advisor's responsibility to clients?",
+            "options": [
+              "Advisors can blame the AI vendor since the error originated from their tool rather than advisor judgment.",
+              "Advisors should hide AI mistakes from clients to maintain confidence in their technology capabilities.",
+              "Advisors remain responsible for all recommendations and should promptly acknowledge and correct AI-based errors.",
+              "AI mistakes are acceptable as long as they occur less frequently than human errors would in similar situations."
+            ],
+            "correctAnswer": 2,
+            "rationale": "Advisors remain professionally responsible for recommendations regardless of AI involvement. When mistakes occur, prompt acknowledgment and correction maintains client trust. Blaming vendors, hiding errors, or comparing error rates to hypothetical human performance don't meet professional responsibility standards. Advisors who choose to use AI tools accept responsibility for properly supervising and correcting their outputs.",
+            "tags": [
+              "accountability",
+              "error-correction",
+              "professional-responsibility",
+              "transparency"
+            ]
+          },
+          {
+            "id": "RAC-FA-B-006",
+            "level": 2,
+            "type": "scenario-based",
+            "points": 10,
+            "difficulty": 0.4,
+            "discrimination": 1.12,
+            "bloomLevel": "Apply",
+            "question": "You want to use a new AI tool that could benefit clients, but it lacks transparency about how it generates recommendations. How should you proceed?",
+            "options": [
+              "Implement the tool since client benefits outweigh concerns about explainability and transparency.",
+              "Reject the tool entirely since any lack of transparency makes responsible use impossible regardless of benefits.",
+              "Evaluate whether you can validate outputs sufficiently without full transparency, and seek more explainable alternatives.",
+              "Use the tool but don't tell clients since transparency about your tools isn't required by regulations."
+            ],
+            "correctAnswer": 2,
+            "rationale": "When considering opaque AI tools, advisors should evaluate whether outputs can be validated sufficiently through alternative means and whether more explainable alternatives exist. Pure benefit focus ignores professional responsibility, but absolute rejection may be excessive if reasonable validation is possible. Not disclosing tool usage when asked violates client trust. The key is balancing practical benefits with sufficient understanding to meet professional obligations.",
+            "tags": [
+              "tool-evaluation",
+              "explainability",
+              "validation",
+              "informed-decisions"
+            ]
+          },
+          {
+            "id": "RAC-FA-B-007",
+            "level": 3,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.42,
+            "discrimination": 1.13,
+            "bloomLevel": "Apply",
+            "question": "What approach best balances AI efficiency with the personal touch clients expect from financial advisors?",
+            "options": [
+              "Use AI for all routine matters while reserving human interaction exclusively for major decisions and problems.",
+              "Minimize AI usage to preserve traditional personal service even when this reduces efficiency and analytical capability.",
+              "Integrate AI to handle data-intensive tasks while increasing time available for relationship building and personalized guidance.",
+              "Separate AI and personal service completely, with AI-only service for cost-conscious clients and human service for premium clients."
+            ],
+            "correctAnswer": 2,
+            "rationale": "The best balance integrates AI for data-intensive tasks, using efficiency gains to increase time for relationship building and personalized guidance. Limiting human interaction to major decisions, minimizing AI to preserve tradition, or separating AI and human service by client segment all fail to optimize the complementary strengths of technology and human advisors. Integration serves clients better than separation.",
+            "tags": [
+              "integration",
+              "relationship-building",
+              "efficiency",
+              "personalized-service"
+            ]
+          },
+          {
+            "id": "RAC-FA-B-008",
+            "level": 3,
+            "type": "scenario-based",
+            "points": 10,
+            "difficulty": 0.45,
+            "discrimination": 1.14,
+            "bloomLevel": "Apply",
+            "question": "A competitor is marketing their AI capabilities aggressively, claiming technology superiority. Clients are asking why you don't offer similar AI features. How should you respond?",
+            "options": [
+              "Immediately adopt similar AI tools regardless of fit with your practice to match competitor marketing claims.",
+              "Criticize the competitor's AI implementation to position your traditional approach as superior to technology.",
+              "Explain your thoughtful approach to AI integration, focusing on how you use technology to enhance personalized service.",
+              "Dismiss AI's importance entirely and emphasize that personal relationships alone are sufficient for good advice."
+            ],
+            "correctAnswer": 2,
+            "rationale": "When competitors emphasize technology, respond by explaining your own thoughtful AI integration and focus on how technology enhances rather than replaces personalized service. Rushing to adopt tools for marketing parity, criticizing competitors, or dismissing AI importance all fail to build client confidence. Authentic communication about your approach to combining technology and personal service addresses client questions constructively.",
+            "tags": [
+              "competitive-positioning",
+              "authentic-communication",
+              "technology-integration",
+              "value-proposition"
+            ]
+          }
+        ]
+      },
+      {
+        "dimensionCode": "TAS",
+        "dimensionName": "Technology Adoption & Systems",
+        "description": "Implementing, integrating, and managing AI technology in advisory practice",
+        "weight": 0.125,
+        "totalPoints": 75,
+        "items": [
+          {
+            "id": "TAS-FA-B-001",
+            "level": 1,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.27,
+            "discrimination": 1.07,
+            "bloomLevel": "Remember",
+            "question": "What is the most important first step when evaluating AI tools for financial advisory practice?",
+            "options": [
+              "Selecting the tool with the most impressive marketing materials and sophisticated-sounding technology descriptions.",
+              "Choosing the lowest-cost option since all AI tools provide essentially identical functionality for advisory work.",
+              "Clearly defining specific practice needs and workflows that AI should address before evaluating tool capabilities.",
+              "Implementing whatever AI tools competitors use since this guarantees they're appropriate for your practice."
+            ],
+            "correctAnswer": 2,
+            "rationale": "Before evaluating tools, practices should clearly define specific needs, pain points, and workflows to address. This ensures tool selection matches actual requirements rather than being driven by marketing, cost alone, or competitor actions. Understanding your needs first enables effective evaluation of whether tools actually solve your problems.",
+            "tags": [
+              "needs-assessment",
+              "tool-evaluation",
+              "workflow-analysis",
+              "strategic-planning"
+            ]
+          },
+          {
+            "id": "TAS-FA-B-002",
+            "level": 1,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.29,
+            "discrimination": 1.08,
+            "bloomLevel": "Understand",
+            "question": "What is a key consideration when integrating AI tools with existing client relationship management (CRM) systems?",
+            "options": [
+              "Integration is impossible since AI tools and CRM systems use completely incompatible data formats.",
+              "AI tools should operate independently from CRM systems to avoid contaminating client relationship data.",
+              "Effective integration enables seamless data flow between systems while maintaining data security and accuracy.",
+              "CRM systems must be completely replaced when implementing AI since legacy systems cannot support modern technology."
+            ],
+            "correctAnswer": 2,
+            "rationale": "Effective AI-CRM integration enables seamless data flow, reducing duplicate entry and improving efficiency while maintaining security and accuracy. Integration is technically feasible and valuable, AI benefits from CRM context rather than isolation, and CRM replacement isn't necessary for AI adoption. Thoughtful integration provides better data accessibility and client insights.",
+            "tags": [
+              "system-integration",
+              "crm-systems",
+              "data-flow",
+              "efficiency"
+            ]
+          },
+          {
+            "id": "TAS-FA-B-003",
+            "level": 1,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.31,
+            "discrimination": 1.09,
+            "bloomLevel": "Understand",
+            "question": "What role should vendor support and training play in AI tool selection for advisory practices?",
+            "options": [
+              "Vendor support is irrelevant since AI tools are designed to be completely self-explanatory and require no training.",
+              "Support quality should be a significant factor since effective implementation requires training and ongoing assistance.",
+              "Training is only necessary for technology staff, not for advisors who will actually use the tools daily.",
+              "Vendor support needs decrease over time, so ongoing support quality isn't important for tool selection."
+            ],
+            "correctAnswer": 1,
+            "rationale": "Vendor support quality and training should be significant selection factors because effective AI implementation requires initial training, ongoing support for issues, and assistance with practice optimization. AI tools aren't self-explanatory, advisors need training not just IT staff, and ongoing support remains valuable as practices evolve and encounter new situations. Good vendor support significantly impacts implementation success.",
+            "tags": [
+              "vendor-support",
+              "training",
+              "implementation-success",
+              "change-management"
+            ]
+          },
+          {
+            "id": "TAS-FA-B-004",
+            "level": 2,
+            "type": "scenario-based",
+            "points": 10,
+            "difficulty": 0.34,
+            "discrimination": 1.1,
+            "bloomLevel": "Apply",
+            "question": "Your practice is implementing an AI client profiling tool that requires historical client data for training. What should be your preparation priority?",
+            "options": [
+              "Immediately implement the tool using whatever historical data exists without reviewing data quality or completeness.",
+              "Skip historical data training entirely since setting up the tool without data is faster than preparation.",
+              "Review and clean historical data to ensure training quality, removing errors and standardizing formats before implementation.",
+              "Use synthetic or simulated client data for training since this is faster than preparing actual historical records."
+            ],
+            "correctAnswer": 2,
+            "rationale": "Before training AI on historical data, cleaning and standardizing that data ensures the model learns accurate patterns rather than perpetuating errors. Implementing with poor data quality, skipping training data, or using synthetic data that doesn't reflect actual client patterns all compromise AI effectiveness. Data preparation is essential for successful implementation.",
+            "tags": [
+              "data-preparation",
+              "training-data",
+              "implementation-planning",
+              "data-quality"
+            ]
+          },
+          {
+            "id": "TAS-FA-B-005",
+            "level": 2,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.36,
+            "discrimination": 1.11,
+            "bloomLevel": "Understand",
+            "question": "How should advisory practices approach the integration of AI tools with custodian platforms and portfolio management systems?",
+            "options": [
+              "Keep AI tools completely separate from custodian systems since they serve different purposes and shouldn't interact.",
+              "Integration is impossible because custodians and AI vendors use incompatible technologies and data standards.",
+              "Pursue integration for seamless data flow and reduced manual entry while ensuring security and accuracy.",
+              "Replace custodian platforms entirely with AI-native systems to avoid integration challenges and technical limitations."
+            ],
+            "correctAnswer": 2,
+            "rationale": "Integration between AI tools and custodian platforms enables seamless data flow, reduces errors from manual entry, and improves efficiency while maintaining security standards. Separation creates inefficiency, integration is technically feasible with proper implementation, and replacing custodian relationships solely for AI integration is excessive. Thoughtful integration provides significant operational benefits.",
+            "tags": [
+              "custodian-integration",
+              "data-flow",
+              "operational-efficiency",
+              "platform-integration"
+            ]
+          },
+          {
+            "id": "TAS-FA-B-006",
+            "level": 2,
+            "type": "scenario-based",
+            "points": 10,
+            "difficulty": 0.39,
+            "discrimination": 1.12,
+            "bloomLevel": "Apply",
+            "question": "Your AI portfolio analysis tool's accuracy has declined from 92% to 83% over eight months. What is the most likely cause and appropriate response?",
+            "options": [
+              "Client portfolios and market conditions have evolved, requiring model retraining with recent data to learn current patterns.",
+              "Accuracy decline is normal for AI systems and should be accepted since 83% accuracy is still useful.",
+              "The tool is fundamentally defective and must be immediately replaced with a different vendor's solution.",
+              "The problem is definitely poor data quality and improving source data will automatically restore 92% accuracy."
+            ],
+            "correctAnswer": 0,
+            "rationale": "Accuracy decline over time often indicates model drift—client portfolios, market conditions, or investment patterns have evolved and the model needs retraining with recent data. This is common and addressable through retraining. The system isn't fundamentally broken, accuracy decline shouldn't be simply accepted, and while data quality matters, business evolution is a common cause of model drift requiring retraining.",
+            "tags": [
+              "model-drift",
+              "retraining",
+              "performance-monitoring",
+              "maintenance"
+            ]
+          },
+          {
+            "id": "TAS-FA-B-007",
+            "level": 3,
+            "type": "scenario-based",
+            "points": 10,
+            "difficulty": 0.41,
+            "discrimination": 1.13,
+            "bloomLevel": "Apply",
+            "question": "Your practice wants to deploy multiple AI tools from different vendors for various advisory functions. What integration challenge should be prioritized?",
+            "options": [
+              "Selecting only one vendor for all AI needs even if their capabilities are weaker to completely avoid integration issues.",
+              "Allowing each vendor direct database access without coordination to maximize their individual tool flexibility.",
+              "Establishing consistent data standards and integration protocols to enable appropriate data flow between tools.",
+              "Ensuring each tool operates in complete isolation since integration between different vendor systems is impossible."
+            ],
+            "correctAnswer": 2,
+            "rationale": "With multiple AI tools, establishing consistent data standards, integration protocols, and appropriate data flow is critical to maintain integrity and enable tools to complement each other. Integration is possible and valuable, single-vendor approaches sacrifice best-of-breed capabilities, and uncoordinated database access creates security and integrity risks. Thoughtful multi-tool integration provides best functionality.",
+            "tags": [
+              "multi-tool-integration",
+              "data-standards",
+              "integration-architecture",
+              "best-of-breed"
+            ]
+          },
+          {
+            "id": "TAS-FA-B-008",
+            "level": 3,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.44,
+            "discrimination": 1.14,
+            "bloomLevel": "Apply",
+            "question": "When planning AI tool deployment to enhance client review meetings, what represents the most realistic approach?",
+            "options": [
+              "Implement all AI meeting enhancement tools simultaneously to achieve maximum impact in the first quarter.",
+              "Avoid AI in client meetings entirely since personal interaction is too important to involve technology.",
+              "Phase implementation starting with back-office preparation, then advisor dashboards, then selective client-facing features.",
+              "Deploy AI meeting tools only during non-review periods and disable them during actual client meetings."
+            ],
+            "correctAnswer": 2,
+            "rationale": "Phased implementation starting with back-office preparation (data aggregation, analysis), then advisor dashboards for internal use, then selective client-facing features represents realistic change management. Simultaneous implementation creates excessive risk, avoiding technology in meetings misses value opportunities, and disabling tools during meetings defeats their purpose. Thoughtful phasing enables learning and refinement while managing risk.",
+            "tags": [
+              "phased-implementation",
+              "change-management",
+              "meeting-enhancement",
+              "risk-management"
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}
