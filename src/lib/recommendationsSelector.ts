@@ -34,7 +34,9 @@ export function getRecommendations(
       'Data Scientist': 'ds',
       'HR Professional': 'hr',
       'Operations Manager': 'ops',
-      'Sales Professional': 'sales'
+      'Sales Professional': 'sales',
+      'Doctors': 'doc',
+      'Financial Advisors': 'fa'
     };
     
     const roleSlugPrefix = roleToSlugMap[assessmentContext.role] || assessmentContext.role.toLowerCase().replace(/\s+/g, '-');
