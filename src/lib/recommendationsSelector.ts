@@ -24,9 +24,22 @@ export function getRecommendations(
   }
   // Check for role-specific
   else if (assessmentContext?.type === 'role-specific' && assessmentContext.role) {
-    const roleSlug = assessmentContext.role.toLowerCase();
+    // Map role names to slug prefixes
+    const roleToSlugMap: Record<string, string> = {
+      'Accounting & Finance': 'ac',
+      'Business Analyst': 'ba',
+      'Software Engineer': 'sde',
+      'Product Manager': 'pm',
+      'Digital Marketer': 'dm',
+      'Data Scientist': 'ds',
+      'HR Professional': 'hr',
+      'Operations Manager': 'ops',
+      'Sales Professional': 'sales'
+    };
+    
+    const roleSlugPrefix = roleToSlugMap[assessmentContext.role] || assessmentContext.role.toLowerCase().replace(/\s+/g, '-');
     const proficiencyLevel = assessmentLevel.toLowerCase().includes('advanced') ? 'advanced' : 'beginner';
-    const roleSpecificKey = `${roleSlug}-${proficiencyLevel}`;
+    const roleSpecificKey = `${roleSlugPrefix}-${proficiencyLevel}`;
     
     // Check if role-specific recommendations exist
     const dimensionRecs = tieredRecommendations[dimensionCode];

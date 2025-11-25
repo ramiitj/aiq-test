@@ -161,6 +161,32 @@ const assessments: Assessment[] = [
     icon: Briefcase
   },
   
+  // Accounting & Finance
+  {
+    slug: "ac-beginner",
+    name: "Accounting & Finance - Beginner",
+    track: "role-based",
+    role: "Accounting & Finance",
+    difficulty: "beginner",
+    duration: 60,
+    questionCount: 60,
+    description: "Foundational AI literacy for accounting professionals",
+    targetAudience: "Accountants, financial analysts, auditors, tax professionals",
+    icon: Briefcase
+  },
+  {
+    slug: "ac-advanced",
+    name: "Accounting & Finance - Advanced",
+    track: "role-based",
+    role: "Accounting & Finance",
+    difficulty: "advanced",
+    duration: 80,
+    questionCount: 80,
+    description: "Expert-level AI literacy for finance leaders",
+    targetAudience: "CFO, VP Finance, Controller, Finance Transformation Leader",
+    icon: Briefcase
+  },
+  
   // Business Analyst
   {
     slug: "ba-beginner",
@@ -170,8 +196,8 @@ const assessments: Assessment[] = [
     difficulty: "beginner",
     duration: 60,
     questionCount: 60,
-    description: "Essential AI collaboration skills for business analysis",
-    targetAudience: "Business analysts exploring AI-enhanced workflows",
+    description: "Foundational AI literacy for business analysis",
+    targetAudience: "Business analysts, requirements analysts, systems analysts",
     icon: Briefcase
   },
   {
@@ -182,8 +208,8 @@ const assessments: Assessment[] = [
     difficulty: "advanced",
     duration: 80,
     questionCount: 80,
-    description: "Advanced AI-driven business intelligence and analysis",
-    targetAudience: "Senior analysts leveraging AI for strategic insights",
+    description: "Expert-level AI literacy for senior business analysts",
+    targetAudience: "Senior analysts, lead BAs, business analysis managers",
     icon: Briefcase
   },
   

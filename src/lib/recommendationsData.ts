@@ -7,6 +7,7 @@
 
 // Dimension Names - Aligned with Research Paper
 export const dimensionNames: { [key: string]: string } = {
+  // General Dimensions
   SAU: "Strategic AI Understanding",
   PEI: "Prompt Engineering Intelligence",
   CEC: "Critical Evaluation Capability",
@@ -15,6 +16,35 @@ export const dimensionNames: { [key: string]: string } = {
   EJC: "Ethical Judgment in AI Utilization",
   CS: "Context Sensitivity",
   CRS: "Creative Reasoning Synthesis",
+  
+  // Accounting & Finance Dimensions
+  AAI: "Accounting AI Understanding",
+  FAA: "Financial Analysis with AI",
+  ATP: "AI-Enhanced Tax Planning",
+  ADA: "Audit & Data Analysis Intelligence",
+  CRA: "Compliance & Risk Assessment",
+  EGC: "Ethical Governance & Control",
+  SAC: "Strategic Advisory Capability",
+  TAS: "Technology Adaptation Skills",
+  
+  // Business Analyst Dimensions (Beginner)
+  BAI: "Business Analysis AI Understanding",
+  RDA: "Requirements Definition for AI",
+  DIA: "Data-Informed Analysis",
+  PSM: "Process & Systems Modeling",
+  STE: "Stakeholder & Team Engagement",
+  ABV: "AI-Enhanced Business Value",
+  CCI: "Change & Communication Intelligence",
+  TDA: "Technical Documentation & Analysis",
+  
+  // Business Analyst Dimensions (Advanced)
+  PAM: "Portfolio & Agile Management",
+  DGA: "Data Governance & Analytics",
+  SIM: "Strategic Implementation",
+  VBC: "Value-Based Consulting",
+  RSC: "Risk & Solution Complexity",
+  SAV: "Strategic AI Visioning",
+  AAO: "Architecture & Optimization",
 };
 
 // Performance-Tiered Recommendations Structure
@@ -31,7 +61,8 @@ type AssessmentLevel =
   | "ds-beginner" | "ds-advanced"
   | "hr-beginner" | "hr-advanced"
   | "ops-beginner" | "ops-advanced"
-  | "sales-beginner" | "sales-advanced";
+  | "sales-beginner" | "sales-advanced"
+  | "ac-beginner" | "ac-advanced";
 
 interface TieredRecommendations {
   [dimensionCode: string]: {
@@ -600,6 +631,741 @@ export const tieredRecommendations: TieredRecommendations = {
         "Pioneer new paradigms for AI-enhanced creative synthesis with field-wide impact",
         "Shape industry understanding of how AI can amplify human creative capabilities",
         "Lead research on breakthrough applications of AI in creative problem-solving domains"
+      ]
+    }
+  },
+  
+  // ============= ACCOUNTING & FINANCE DIMENSIONS =============
+  AAI: {
+    "ac-beginner": {
+      low: [
+        "Start with foundational AI tools for accounting tasks like expense categorization and invoice processing",
+        "Learn how AI can assist with basic financial data entry and reconciliation tasks",
+        "Explore AI-powered bookkeeping tools to understand capabilities and limitations"
+      ],
+      medium: [
+        "Develop skills in using AI for financial forecasting and trend analysis",
+        "Practice integrating AI tools into monthly closing processes and reporting workflows",
+        "Build understanding of AI applications in accounts payable and receivable automation"
+      ],
+      high: [
+        "Master advanced AI applications for complex financial modeling and scenario analysis",
+        "Create workflows that optimize AI use across the full accounting cycle",
+        "Lead initiatives to implement AI-driven financial process improvements"
+      ]
+    },
+    "ac-advanced": {
+      low: [
+        "Study how AI is transforming strategic financial planning and decision-making at leadership levels",
+        "Develop frameworks for evaluating AI solutions for enterprise financial systems",
+        "Build expertise in AI governance and compliance for financial operations"
+      ],
+      medium: [
+        "Design comprehensive AI integration strategies for finance transformation initiatives",
+        "Create validation frameworks for AI-driven financial insights and predictions",
+        "Establish best practices for AI adoption across finance departments"
+      ],
+      high: [
+        "Pioneer innovative AI applications for strategic finance and treasury management",
+        "Shape organizational AI strategy for finance transformation and digital innovation",
+        "Lead industry thought leadership on AI in finance and accounting practices"
+      ]
+    }
+  },
+  
+  FAA: {
+    "ac-beginner": {
+      low: [
+        "Practice using AI tools for basic financial statement analysis and ratio calculations",
+        "Learn to leverage AI for variance analysis and budget-to-actual comparisons",
+        "Start automating routine financial analysis tasks with AI assistance"
+      ],
+      medium: [
+        "Develop skills in AI-powered financial modeling and predictive analytics",
+        "Use AI tools to identify patterns and anomalies in financial data",
+        "Build proficiency in AI-assisted cash flow forecasting and analysis"
+      ],
+      high: [
+        "Master advanced AI techniques for comprehensive financial performance analysis",
+        "Create sophisticated AI-driven financial dashboards and reporting systems",
+        "Lead implementation of AI analytics across financial planning and analysis"
+      ]
+    },
+    "ac-advanced": {
+      low: [
+        "Implement AI-driven financial analysis frameworks for strategic decision support",
+        "Develop expertise in using AI for complex financial scenario planning",
+        "Build capabilities in AI-powered risk assessment and sensitivity analysis"
+      ],
+      medium: [
+        "Design enterprise-wide AI analytics strategies for financial insights",
+        "Create advanced frameworks for AI-enhanced financial due diligence",
+        "Establish governance for AI-generated financial analysis and recommendations"
+      ],
+      high: [
+        "Pioneer breakthrough applications of AI in strategic financial analysis",
+        "Shape organizational strategy for AI-driven financial intelligence",
+        "Lead industry innovation in AI-powered financial decision support systems"
+      ]
+    }
+  },
+  
+  ATP: {
+    "ac-beginner": {
+      low: [
+        "Explore AI tools for basic tax calculation and compliance checking",
+        "Learn how AI can assist with tax data organization and preparation",
+        "Practice using AI for simple tax research and regulation updates"
+      ],
+      medium: [
+        "Develop skills in AI-powered tax planning and optimization strategies",
+        "Use AI tools to identify tax-saving opportunities and deductions",
+        "Build proficiency in AI-assisted tax compliance workflows"
+      ],
+      high: [
+        "Master advanced AI applications for complex tax planning scenarios",
+        "Create comprehensive AI-driven tax strategy frameworks",
+        "Lead initiatives for AI integration in tax advisory services"
+      ]
+    },
+    "ac-advanced": {
+      low: [
+        "Implement AI frameworks for strategic tax planning at enterprise scale",
+        "Develop expertise in using AI for global tax compliance and transfer pricing",
+        "Build capabilities in AI-powered tax risk assessment and mitigation"
+      ],
+      medium: [
+        "Design organization-wide AI strategies for tax optimization and compliance",
+        "Create advanced frameworks for AI-enhanced tax controversy management",
+        "Establish governance for AI use in high-stakes tax decisions"
+      ],
+      high: [
+        "Pioneer innovative AI applications in strategic tax planning and policy",
+        "Shape organizational approach to AI-driven tax transformation",
+        "Lead industry thought leadership on AI in taxation and regulatory compliance"
+      ]
+    }
+  },
+  
+  ADA: {
+    "ac-beginner": {
+      low: [
+        "Start using AI tools for basic audit data extraction and sampling",
+        "Learn how AI can assist with transaction testing and reconciliation",
+        "Practice AI-powered anomaly detection in financial records"
+      ],
+      medium: [
+        "Develop skills in using AI for audit risk assessment and planning",
+        "Build proficiency in AI-assisted substantive testing procedures",
+        "Use AI tools for comprehensive audit documentation and workpaper generation"
+      ],
+      high: [
+        "Master advanced AI techniques for continuous auditing and monitoring",
+        "Create AI-driven audit programs for complex financial systems",
+        "Lead implementation of AI analytics in audit methodology"
+      ]
+    },
+    "ac-advanced": {
+      low: [
+        "Implement AI frameworks for enterprise-wide audit and assurance strategies",
+        "Develop expertise in AI-powered forensic accounting and fraud detection",
+        "Build capabilities in AI-driven internal control evaluation"
+      ],
+      medium: [
+        "Design comprehensive AI audit strategies for large-scale operations",
+        "Create advanced frameworks for AI-enhanced audit quality and efficiency",
+        "Establish governance for AI use in audit evidence and professional judgment"
+      ],
+      high: [
+        "Pioneer breakthrough AI applications in audit methodology and practice",
+        "Shape organizational strategy for AI-driven audit transformation",
+        "Lead industry innovation in AI-powered assurance services"
+      ]
+    }
+  },
+  
+  CRA: {
+    "ac-beginner": {
+      low: [
+        "Learn AI tools for basic compliance monitoring and regulatory tracking",
+        "Practice using AI for risk identification in financial processes",
+        "Start automating compliance checks with AI assistance"
+      ],
+      medium: [
+        "Develop skills in AI-powered risk assessment and control testing",
+        "Build proficiency in using AI for regulatory compliance reporting",
+        "Use AI tools to monitor internal controls and identify weaknesses"
+      ],
+      high: [
+        "Master advanced AI applications for enterprise risk management",
+        "Create comprehensive AI-driven compliance frameworks",
+        "Lead initiatives for AI integration in risk and compliance functions"
+      ]
+    },
+    "ac-advanced": {
+      low: [
+        "Implement AI frameworks for strategic risk management across the organization",
+        "Develop expertise in AI-powered regulatory change management",
+        "Build capabilities in AI-driven compliance program optimization"
+      ],
+      medium: [
+        "Design enterprise-wide AI strategies for integrated risk management",
+        "Create advanced frameworks for AI-enhanced compliance monitoring",
+        "Establish governance for AI use in risk assessment and mitigation"
+      ],
+      high: [
+        "Pioneer innovative AI applications in strategic risk and compliance",
+        "Shape organizational approach to AI-driven risk intelligence",
+        "Lead industry thought leadership on AI in governance, risk, and compliance"
+      ]
+    }
+  },
+  
+  EGC: {
+    "ac-beginner": {
+      low: [
+        "Study ethical considerations when using AI for financial decisions",
+        "Learn about AI bias and fairness in accounting applications",
+        "Practice responsible AI use in financial reporting and analysis"
+      ],
+      medium: [
+        "Develop frameworks for ethical AI use in financial operations",
+        "Build expertise in AI transparency and explainability for stakeholders",
+        "Create guidelines for responsible AI adoption in accounting functions"
+      ],
+      high: [
+        "Master ethical governance frameworks for AI in finance",
+        "Lead development of AI ethics policies for accounting teams",
+        "Establish best practices for responsible AI use in financial services"
+      ]
+    },
+    "ac-advanced": {
+      low: [
+        "Implement comprehensive AI ethics frameworks for finance leadership",
+        "Develop expertise in AI governance for regulatory compliance",
+        "Build capabilities in AI risk management and ethical oversight"
+      ],
+      medium: [
+        "Design enterprise-wide AI governance strategies for finance",
+        "Create advanced frameworks for AI accountability and transparency",
+        "Establish organizational standards for ethical AI use in financial decisions"
+      ],
+      high: [
+        "Pioneer industry standards for AI ethics in finance and accounting",
+        "Shape regulatory approaches to AI governance in financial services",
+        "Lead thought leadership on responsible AI adoption in finance"
+      ]
+    }
+  },
+  
+  SAC: {
+    "ac-beginner": {
+      low: [
+        "Start using AI to enhance basic financial advisory and client communication",
+        "Learn how AI can support client needs analysis and recommendation development",
+        "Practice AI-assisted research for financial advisory services"
+      ],
+      medium: [
+        "Develop skills in using AI for strategic financial planning and advisory",
+        "Build proficiency in AI-powered client portfolio analysis",
+        "Use AI tools to create data-driven financial recommendations"
+      ],
+      high: [
+        "Master advanced AI applications for comprehensive financial advisory",
+        "Create AI-driven frameworks for client relationship management",
+        "Lead initiatives for AI integration in advisory service delivery"
+      ]
+    },
+    "ac-advanced": {
+      low: [
+        "Implement AI strategies for executive financial advisory services",
+        "Develop expertise in AI-powered strategic planning and decision support",
+        "Build capabilities in AI-driven business valuation and M&A advisory"
+      ],
+      medium: [
+        "Design comprehensive AI advisory frameworks for C-suite clients",
+        "Create advanced methodologies for AI-enhanced strategic consulting",
+        "Establish best practices for AI use in high-value advisory engagements"
+      ],
+      high: [
+        "Pioneer innovative AI applications in strategic financial advisory",
+        "Shape organizational approach to AI-driven advisory excellence",
+        "Lead industry thought leadership on AI in financial consulting"
+      ]
+    }
+  },
+  
+  TAS: {
+    "ac-beginner": {
+      low: [
+        "Start learning about emerging AI technologies in accounting and finance",
+        "Practice adapting to new AI tools as they become available",
+        "Build habit of continuous learning about AI developments"
+      ],
+      medium: [
+        "Develop skills in evaluating and adopting new AI accounting technologies",
+        "Create personal learning plans for AI skill development",
+        "Build proficiency in integrating new AI tools into workflows"
+      ],
+      high: [
+        "Master rapid adoption of emerging AI technologies",
+        "Lead team training on new AI accounting tools and platforms",
+        "Drive innovation through early adoption of cutting-edge AI solutions"
+      ]
+    },
+    "ac-advanced": {
+      low: [
+        "Implement organizational strategies for AI technology adoption",
+        "Develop expertise in evaluating emerging AI solutions for finance",
+        "Build capabilities in change management for AI transformation"
+      ],
+      medium: [
+        "Design comprehensive technology roadmaps for AI in finance",
+        "Create frameworks for continuous AI innovation and adoption",
+        "Establish governance for emerging technology evaluation and deployment"
+      ],
+      high: [
+        "Pioneer organizational strategies for AI technology leadership",
+        "Shape industry direction for AI innovation in finance",
+        "Lead thought leadership on future of AI in accounting and finance"
+      ]
+    }
+  },
+  
+  // ============= BUSINESS ANALYST DIMENSIONS =============
+  BAI: {
+    "ba-beginner": {
+      low: [
+        "Start with basic AI tools for requirements gathering and documentation",
+        "Learn how AI can assist with stakeholder interview analysis and note-taking",
+        "Explore AI-powered tools for basic business process documentation"
+      ],
+      medium: [
+        "Develop skills in using AI for requirements analysis and validation",
+        "Practice AI-assisted gap analysis and impact assessment",
+        "Build proficiency in AI-powered business capability mapping"
+      ],
+      high: [
+        "Master advanced AI applications for complex requirements engineering",
+        "Create AI-driven frameworks for comprehensive business analysis",
+        "Lead initiatives for AI integration in BA methodologies"
+      ]
+    },
+    "ba-advanced": {
+      low: [
+        "Study how AI is transforming strategic business analysis at enterprise level",
+        "Develop frameworks for AI-powered portfolio and program analysis",
+        "Build expertise in AI governance for business transformation initiatives"
+      ],
+      medium: [
+        "Design comprehensive AI strategies for enterprise business analysis",
+        "Create validation frameworks for AI-driven business insights",
+        "Establish best practices for AI adoption across BA practices"
+      ],
+      high: [
+        "Pioneer innovative AI applications for strategic business analysis",
+        "Shape organizational AI strategy for business transformation",
+        "Lead industry thought leadership on AI in business analysis"
+      ]
+    }
+  },
+  
+  RDA: {
+    "ba-beginner": {
+      low: [
+        "Practice using AI to organize and structure requirements documentation",
+        "Learn to leverage AI for requirements completeness checking",
+        "Start using AI tools for user story generation and refinement"
+      ],
+      medium: [
+        "Develop skills in AI-powered requirements traceability and management",
+        "Use AI to identify requirements conflicts and dependencies",
+        "Build proficiency in AI-assisted acceptance criteria development"
+      ],
+      high: [
+        "Master advanced AI techniques for requirements optimization",
+        "Create sophisticated AI-driven requirements management systems",
+        "Lead implementation of AI in requirements engineering processes"
+      ]
+    },
+    "ba-advanced": {
+      low: [
+        "Implement AI frameworks for strategic portfolio requirements management",
+        "Develop expertise in AI-powered requirements prioritization at scale",
+        "Build capabilities in AI-driven requirements governance"
+      ],
+      medium: [
+        "Design enterprise-wide AI strategies for requirements excellence",
+        "Create advanced frameworks for AI-enhanced requirements quality",
+        "Establish governance for AI-generated requirements insights"
+      ],
+      high: [
+        "Pioneer breakthrough applications of AI in requirements engineering",
+        "Shape organizational strategy for AI-driven requirements management",
+        "Lead industry innovation in AI-powered requirements practices"
+      ]
+    }
+  },
+  
+  DIA: {
+    "ba-beginner": {
+      low: [
+        "Learn AI tools for basic data analysis and visualization",
+        "Practice using AI for data quality assessment and cleansing",
+        "Start leveraging AI for simple trend and pattern identification"
+      ],
+      medium: [
+        "Develop skills in AI-powered business intelligence and reporting",
+        "Build proficiency in using AI for root cause analysis",
+        "Use AI tools for comprehensive data-driven decision support"
+      ],
+      high: [
+        "Master advanced AI applications for predictive business analytics",
+        "Create AI-driven analytical frameworks for complex business problems",
+        "Lead initiatives for AI integration in business data analysis"
+      ]
+    },
+    "ba-advanced": {
+      low: [
+        "Implement AI frameworks for enterprise data governance and analytics",
+        "Develop expertise in AI-powered advanced analytics and modeling",
+        "Build capabilities in AI-driven business intelligence strategy"
+      ],
+      medium: [
+        "Design comprehensive AI analytics strategies for business insights",
+        "Create advanced frameworks for AI-enhanced data governance",
+        "Establish best practices for AI use in strategic data analysis"
+      ],
+      high: [
+        "Pioneer innovative AI applications in enterprise business analytics",
+        "Shape organizational approach to AI-driven data intelligence",
+        "Lead industry thought leadership on AI in business data strategy"
+      ]
+    }
+  },
+  
+  PSM: {
+    "ba-beginner": {
+      low: [
+        "Start using AI tools for basic process mapping and documentation",
+        "Learn how AI can assist with workflow analysis and optimization",
+        "Practice AI-powered process gap identification"
+      ],
+      medium: [
+        "Develop skills in AI-assisted process modeling and simulation",
+        "Build proficiency in using AI for process efficiency analysis",
+        "Use AI tools for comprehensive process improvement recommendations"
+      ],
+      high: [
+        "Master advanced AI techniques for complex process optimization",
+        "Create AI-driven process transformation frameworks",
+        "Lead implementation of AI in business process management"
+      ]
+    },
+    "ba-advanced": {
+      low: [
+        "Implement AI frameworks for enterprise process architecture",
+        "Develop expertise in AI-powered process mining and discovery",
+        "Build capabilities in AI-driven process governance"
+      ],
+      medium: [
+        "Design comprehensive AI strategies for process excellence",
+        "Create advanced frameworks for AI-enhanced process innovation",
+        "Establish governance for AI use in process transformation"
+      ],
+      high: [
+        "Pioneer breakthrough applications of AI in process management",
+        "Shape organizational strategy for AI-driven process optimization",
+        "Lead industry innovation in AI-powered business process design"
+      ]
+    }
+  },
+  
+  STE: {
+    "ba-beginner": {
+      low: [
+        "Practice using AI to organize stakeholder information and feedback",
+        "Learn how AI can assist with meeting summaries and action items",
+        "Start using AI tools for stakeholder communication drafting"
+      ],
+      medium: [
+        "Develop skills in AI-powered stakeholder analysis and mapping",
+        "Build proficiency in using AI for conflict resolution insights",
+        "Use AI tools to enhance team collaboration and coordination"
+      ],
+      high: [
+        "Master advanced AI applications for stakeholder engagement",
+        "Create AI-driven frameworks for effective stakeholder management",
+        "Lead initiatives for AI integration in team collaboration"
+      ]
+    },
+    "ba-advanced": {
+      low: [
+        "Implement AI strategies for enterprise stakeholder engagement",
+        "Develop expertise in AI-powered change impact analysis",
+        "Build capabilities in AI-driven organizational alignment"
+      ],
+      medium: [
+        "Design comprehensive AI frameworks for stakeholder excellence",
+        "Create advanced methodologies for AI-enhanced engagement",
+        "Establish best practices for AI use in stakeholder management"
+      ],
+      high: [
+        "Pioneer innovative AI applications in stakeholder strategy",
+        "Shape organizational approach to AI-driven engagement",
+        "Lead industry thought leadership on AI in stakeholder relations"
+      ]
+    }
+  },
+  
+  ABV: {
+    "ba-beginner": {
+      low: [
+        "Learn to use AI for basic business case development and ROI analysis",
+        "Practice AI-assisted benefit identification and quantification",
+        "Start using AI tools for value stream mapping"
+      ],
+      medium: [
+        "Develop skills in AI-powered value proposition design",
+        "Build proficiency in using AI for comprehensive benefit realization",
+        "Use AI tools for business value assessment and tracking"
+      ],
+      high: [
+        "Master advanced AI techniques for strategic value creation",
+        "Create AI-driven value optimization frameworks",
+        "Lead initiatives for AI integration in value management"
+      ]
+    },
+    "ba-advanced": {
+      low: [
+        "Implement AI frameworks for enterprise value management",
+        "Develop expertise in AI-powered portfolio value optimization",
+        "Build capabilities in AI-driven business value governance"
+      ],
+      medium: [
+        "Design comprehensive AI strategies for value maximization",
+        "Create advanced frameworks for AI-enhanced value realization",
+        "Establish governance for AI use in strategic value decisions"
+      ],
+      high: [
+        "Pioneer breakthrough applications of AI in value creation",
+        "Shape organizational strategy for AI-driven value excellence",
+        "Lead industry innovation in AI-powered value management"
+      ]
+    }
+  },
+  
+  CCI: {
+    "ba-beginner": {
+      low: [
+        "Practice using AI to draft change communications and announcements",
+        "Learn how AI can assist with change impact documentation",
+        "Start using AI tools for stakeholder readiness assessment"
+      ],
+      medium: [
+        "Develop skills in AI-powered change management planning",
+        "Build proficiency in using AI for training content development",
+        "Use AI tools for comprehensive change adoption tracking"
+      ],
+      high: [
+        "Master advanced AI applications for organizational change",
+        "Create AI-driven change management frameworks",
+        "Lead initiatives for AI integration in change programs"
+      ]
+    },
+    "ba-advanced": {
+      low: [
+        "Implement AI strategies for enterprise change management",
+        "Develop expertise in AI-powered transformation communication",
+        "Build capabilities in AI-driven change governance"
+      ],
+      medium: [
+        "Design comprehensive AI frameworks for change excellence",
+        "Create advanced methodologies for AI-enhanced change adoption",
+        "Establish best practices for AI use in transformation programs"
+      ],
+      high: [
+        "Pioneer innovative AI applications in change management",
+        "Shape organizational approach to AI-driven transformation",
+        "Lead industry thought leadership on AI in organizational change"
+      ]
+    }
+  },
+  
+  TDA: {
+    "ba-beginner": {
+      low: [
+        "Start using AI for basic technical documentation and diagram creation",
+        "Learn how AI can assist with system requirements documentation",
+        "Practice AI-powered technical analysis and validation"
+      ],
+      medium: [
+        "Develop skills in AI-assisted technical specification writing",
+        "Build proficiency in using AI for solution design documentation",
+        "Use AI tools for comprehensive technical analysis"
+      ],
+      high: [
+        "Master advanced AI techniques for complex technical documentation",
+        "Create AI-driven frameworks for technical analysis excellence",
+        "Lead implementation of AI in technical BA practices"
+      ]
+    },
+    "ba-advanced": {
+      low: [
+        "Implement AI frameworks for enterprise technical documentation",
+        "Develop expertise in AI-powered architecture analysis",
+        "Build capabilities in AI-driven technical governance"
+      ],
+      medium: [
+        "Design comprehensive AI strategies for technical excellence",
+        "Create advanced frameworks for AI-enhanced technical analysis",
+        "Establish governance for AI use in technical decisions"
+      ],
+      high: [
+        "Pioneer breakthrough applications of AI in technical analysis",
+        "Shape organizational strategy for AI-driven technical practices",
+        "Lead industry innovation in AI-powered technical documentation"
+      ]
+    }
+  },
+  
+  // Business Analyst Advanced-Only Dimensions
+  PAM: {
+    "ba-advanced": {
+      low: [
+        "Implement AI frameworks for portfolio management and optimization",
+        "Develop expertise in AI-powered agile program management",
+        "Build capabilities in AI-driven portfolio governance"
+      ],
+      medium: [
+        "Design comprehensive AI strategies for portfolio excellence",
+        "Create advanced frameworks for AI-enhanced program delivery",
+        "Establish best practices for AI use in portfolio decisions"
+      ],
+      high: [
+        "Pioneer innovative AI applications in portfolio management",
+        "Shape organizational approach to AI-driven agile at scale",
+        "Lead industry thought leadership on AI in portfolio strategy"
+      ]
+    }
+  },
+  
+  DGA: {
+    "ba-advanced": {
+      low: [
+        "Implement AI frameworks for enterprise data governance",
+        "Develop expertise in AI-powered analytics strategy",
+        "Build capabilities in AI-driven data quality management"
+      ],
+      medium: [
+        "Design comprehensive AI strategies for data governance excellence",
+        "Create advanced frameworks for AI-enhanced analytics programs",
+        "Establish governance for AI use in data management"
+      ],
+      high: [
+        "Pioneer breakthrough applications of AI in data governance",
+        "Shape organizational strategy for AI-driven data intelligence",
+        "Lead industry innovation in AI-powered data analytics"
+      ]
+    }
+  },
+  
+  SIM: {
+    "ba-advanced": {
+      low: [
+        "Implement AI frameworks for strategic initiative management",
+        "Develop expertise in AI-powered implementation planning",
+        "Build capabilities in AI-driven delivery governance"
+      ],
+      medium: [
+        "Design comprehensive AI strategies for implementation excellence",
+        "Create advanced frameworks for AI-enhanced program delivery",
+        "Establish best practices for AI use in strategic execution"
+      ],
+      high: [
+        "Pioneer innovative AI applications in strategic implementation",
+        "Shape organizational approach to AI-driven program delivery",
+        "Lead industry thought leadership on AI in execution management"
+      ]
+    }
+  },
+  
+  VBC: {
+    "ba-advanced": {
+      low: [
+        "Implement AI frameworks for strategic consulting and advisory",
+        "Develop expertise in AI-powered value-based consulting",
+        "Build capabilities in AI-driven client engagement"
+      ],
+      medium: [
+        "Design comprehensive AI strategies for consulting excellence",
+        "Create advanced frameworks for AI-enhanced advisory services",
+        "Establish best practices for AI use in strategic consulting"
+      ],
+      high: [
+        "Pioneer innovative AI applications in value-based consulting",
+        "Shape organizational approach to AI-driven advisory services",
+        "Lead industry thought leadership on AI in strategic consulting"
+      ]
+    }
+  },
+  
+  RSC: {
+    "ba-advanced": {
+      low: [
+        "Implement AI frameworks for risk and complexity management",
+        "Develop expertise in AI-powered solution assessment",
+        "Build capabilities in AI-driven complexity analysis"
+      ],
+      medium: [
+        "Design comprehensive AI strategies for risk management",
+        "Create advanced frameworks for AI-enhanced solution design",
+        "Establish governance for AI use in complexity management"
+      ],
+      high: [
+        "Pioneer breakthrough applications of AI in risk management",
+        "Shape organizational strategy for AI-driven solution complexity",
+        "Lead industry innovation in AI-powered risk assessment"
+      ]
+    }
+  },
+  
+  SAV: {
+    "ba-advanced": {
+      low: [
+        "Implement AI frameworks for strategic AI visioning",
+        "Develop expertise in AI-powered strategic planning",
+        "Build capabilities in AI-driven innovation strategy"
+      ],
+      medium: [
+        "Design comprehensive AI strategies for organizational transformation",
+        "Create advanced frameworks for AI-enhanced strategic vision",
+        "Establish best practices for AI use in strategic planning"
+      ],
+      high: [
+        "Pioneer innovative AI applications in strategic visioning",
+        "Shape organizational approach to AI-driven transformation",
+        "Lead industry thought leadership on AI strategy and vision"
+      ]
+    }
+  },
+  
+  AAO: {
+    "ba-advanced": {
+      low: [
+        "Implement AI frameworks for architecture and optimization",
+        "Develop expertise in AI-powered solution architecture",
+        "Build capabilities in AI-driven optimization strategies"
+      ],
+      medium: [
+        "Design comprehensive AI strategies for architectural excellence",
+        "Create advanced frameworks for AI-enhanced optimization",
+        "Establish governance for AI use in architecture decisions"
+      ],
+      high: [
+        "Pioneer breakthrough applications of AI in architecture",
+        "Shape organizational strategy for AI-driven optimization",
+        "Lead industry innovation in AI-powered solution architecture"
       ]
     }
   }
