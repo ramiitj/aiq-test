@@ -1,0 +1,1689 @@
+{
+  "assessmentName": "AIQ Healthcare Administrators Beginner Assessment - Healthcare Management Focus",
+  "version": "1.0",
+  "assessmentType": "fixed",
+  "description": "A rigorously designed foundational AI literacy assessment for healthcare administrators with 60 items featuring balanced options, randomized correct answer positions, complete sentence formatting, and enhanced anti-gaming measures.",
+  "assessmentConfiguration": {
+    "totalQuestions": 60,
+    "questionsPerDimension": "7-8",
+    "estimatedTime": "60 minutes",
+    "targetAudience": "Healthcare administrators, hospital executives, health system managers, clinical operations leaders, and healthcare management professionals with varying AI experience levels",
+    "timePerQuestion": "60 seconds average",
+    "presentationMode": {
+      "type": "fixed-sequential",
+      "description": "All questions presented in fixed order",
+      "sequencing": "By dimension, 7-8 questions per dimension"
+    },
+    "questionDistribution": {
+      "totalItems": 60,
+      "itemsPerDimension": "7-8 per dimension",
+      "selectionRatio": "100% (all items presented)"
+    },
+    "dimensionSequencing": {
+      "type": "fixed-order",
+      "sequence": [
+        "HAI",
+        "OPM",
+        "FRM",
+        "QPS",
+        "WFM",
+        "EGC",
+        "SIM",
+        "TAS"
+      ],
+      "description": "Candidates complete 7-8 questions per dimension in sequence"
+    }
+  },
+  "scoringConfiguration": {
+    "totalPoints": 600,
+    "pointsPerDimension": 75,
+    "passingScore": 420,
+    "passingPercentage": 70,
+    "scoringMethod": {
+      "type": "simple-sum",
+      "description": "Direct sum of points from correct answers with differential weighting by item difficulty",
+      "basePoints": 10,
+      "formula": "points = basePoints × (1 + difficulty × 0.3) for each correct answer"
+    },
+    "scoringGuidelines": {
+      "0-40%": "Novice (0-240 points) - Significant foundational learning needed",
+      "41-60%": "Beginner (241-360 points) - Basic awareness established",
+      "61-80%": "Developing (361-480 points) - Good foundational understanding",
+      "81-90%": "Proficient (481-540 points) - Strong grasp of fundamentals",
+      "91-100%": "Advanced (541-600 points) - Excellent foundational mastery"
+    }
+  },
+  "instructions": "This AIQ Healthcare Administrators Beginner assessment evaluates your foundational AI literacy specifically for healthcare management contexts. You will answer 60 questions total (7-8 per dimension) across 8 healthcare administration-focused dimensions in approximately 60 minutes. Questions feature nuanced options designed to test genuine understanding of AI applications in healthcare management. Answer all questions to the best of your ability.",
+  "assessmentGuidelines": {
+    "targetLevel": "Foundational awareness and basic understanding of AI in healthcare administration",
+    "cognitiveEmphasis": "65% Remember/Understand (Bloom's levels 1-2), 35% Apply (Bloom's level 3)",
+    "questionTypes": "Multiple-choice (70%), scenario-based (30%)",
+    "difficultyProfile": "Realistic distractors that require genuine AI/healthcare management understanding to differentiate",
+    "timeAllocation": "Moderate time for careful consideration of healthcare administration-specific nuances",
+    "reliabilityTarget": "Cronbach's alpha ≥ 0.80"
+  },
+  "itemBank": {
+    "totalItems": 60,
+    "itemsPerDimension": 8,
+    "description": "Complete item set with 60 questions (7-8 per dimension) focused on AI literacy for healthcare administrators",
+    "bankStatistics": {
+      "averageDifficulty": 0.383,
+      "difficultySD": 0.08,
+      "averageDiscrimination": 1.15,
+      "discriminationSD": 0.05,
+      "contentCoverageIndex": 0.92,
+      "estimatedReliability": 0.85,
+      "totalItems": 60
+    },
+    "dimensions": [
+      {
+        "dimensionCode": "HAI",
+        "dimensionName": "Healthcare AI Understanding",
+        "description": "Understanding AI capabilities, limitations, and strategic applications in healthcare administration",
+        "weight": 0.125,
+        "totalPoints": 75,
+        "items": [
+          {
+            "id": "HAI-HA-B-001",
+            "level": 1,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.25,
+            "discrimination": 1.05,
+            "bloomLevel": "Remember",
+            "question": "What is the primary strategic advantage of using AI in healthcare administrative processes?",
+            "options": [
+              "AI enables administrators to automate routine operational tasks while dedicating more time to strategic planning and patient experience improvement.",
+              "AI completely replaces healthcare administrators by making all management decisions autonomously without human oversight.",
+              "AI guarantees perfect compliance with all healthcare regulations by eliminating human error from administrative processes.",
+              "AI reduces healthcare costs by eliminating expensive administrative staff and replacing them with inexpensive software."
+            ],
+            "correctAnswer": 0,
+            "rationale": "The primary strategic advantage of AI in healthcare administration is augmentation rather than replacement. AI excels at automating routine administrative tasks (scheduling, billing, data entry), freeing administrators to focus on strategic initiatives, quality improvement, and enhancing patient experience. The other options incorrectly suggest AI replaces humans entirely, guarantees perfect compliance, or is primarily about staff reduction rather than operational enhancement.",
+            "tags": [
+              "strategic-value",
+              "ai-augmentation",
+              "healthcare-operations",
+              "human-ai-collaboration"
+            ]
+          },
+          {
+            "id": "HAI-HA-B-002",
+            "level": 1,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.3,
+            "discrimination": 1.08,
+            "bloomLevel": "Understand",
+            "question": "Why is understanding AI limitations critical for healthcare administrators implementing AI systems?",
+            "options": [
+              "Understanding limitations allows administrators to completely avoid AI tools that have any constraints or require human oversight.",
+              "Understanding limitations helps administrators set realistic implementation expectations and maintain appropriate human oversight for critical decisions.",
+              "Understanding limitations is only important for IT departments and clinical staff, not for healthcare administrators.",
+              "Understanding limitations proves that AI should never be used for any healthcare administrative or operational functions."
+            ],
+            "correctAnswer": 1,
+            "rationale": "Understanding AI limitations is critical because it allows healthcare administrators to set realistic expectations with stakeholders, plan appropriate implementation strategies, and maintain necessary human oversight for high-stakes decisions. All AI systems have limitations, but this doesn't mean they shouldn't be used—it means they should be deployed thoughtfully with proper governance. The other options incorrectly suggest avoiding AI entirely, delegating understanding to other departments, or using limitations to reject AI adoption.",
+            "tags": [
+              "ai-limitations",
+              "implementation-planning",
+              "responsible-ai",
+              "governance"
+            ]
+          },
+          {
+            "id": "HAI-HA-B-003",
+            "level": 2,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.35,
+            "discrimination": 1.1,
+            "bloomLevel": "Understand",
+            "question": "How does AI predictive analytics differ from traditional healthcare reporting dashboards?",
+            "options": [
+              "AI predictive analytics identifies future trends and risks from historical patterns while traditional dashboards only display past performance metrics.",
+              "AI predictive analytics and traditional dashboards are essentially the same technology with different marketing terminology.",
+              "AI predictive analytics is always more accurate than traditional reporting because it completely eliminates uncertainty from forecasts.",
+              "AI predictive analytics completely replaces the need for historical data by generating future scenarios from current observations alone."
+            ],
+            "correctAnswer": 0,
+            "rationale": "AI predictive analytics fundamentally differs from traditional reporting dashboards by using machine learning to identify patterns in historical data and forecast future outcomes (patient readmissions, resource needs, operational bottlenecks), while dashboards typically only visualize past and current performance. However, predictive analytics still requires historical data, doesn't eliminate uncertainty, and represents different technology from standard reporting tools.",
+            "tags": [
+              "predictive-analytics",
+              "reporting",
+              "data-analysis",
+              "forecasting"
+            ]
+          },
+          {
+            "id": "HAI-HA-B-004",
+            "level": 2,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.4,
+            "discrimination": 1.12,
+            "bloomLevel": "Apply",
+            "question": "A hospital administrator is evaluating AI tools to reduce patient no-show rates. Which AI capability would be most directly relevant?",
+            "options": [
+              "Predictive modeling to identify high-risk patients and automated reminder systems with personalized timing based on individual patterns.",
+              "Natural language processing for transcribing physician notes into electronic health records after patient visits.",
+              "Computer vision for analyzing medical imaging results to improve diagnostic accuracy and reduce radiologist workload.",
+              "Robotic process automation for handling insurance claims submission and reimbursement processing workflows."
+            ],
+            "correctAnswer": 0,
+            "rationale": "For reducing no-show rates, predictive modeling to identify patients at high risk of missing appointments combined with automated, personalized reminder systems is most relevant. This directly addresses the problem by anticipating and preventing no-shows. The other AI capabilities (clinical NLP, medical imaging, claims automation) are valuable for healthcare operations but don't directly address patient attendance patterns.",
+            "tags": [
+              "predictive-modeling",
+              "patient-engagement",
+              "operational-efficiency",
+              "use-case-selection"
+            ]
+          },
+          {
+            "id": "HAI-HA-B-005",
+            "level": 2,
+            "type": "scenario",
+            "points": 10,
+            "difficulty": 0.42,
+            "discrimination": 1.15,
+            "bloomLevel": "Apply",
+            "question": "Your hospital is considering implementing an AI system to optimize emergency department patient flow. What should be your primary concern as a healthcare administrator?",
+            "options": [
+              "The AI system should completely automate all triage decisions without physician oversight to maximize efficiency gains.",
+              "The AI system must maintain human clinical oversight for triage decisions while optimizing operational aspects like bed assignment and resource allocation.",
+              "The AI system should only provide recommendations that are guaranteed to be 100% accurate in all clinical situations.",
+              "The AI system should replace emergency department nurses and physicians to reduce labor costs and improve margins."
+            ],
+            "correctAnswer": 1,
+            "rationale": "The appropriate approach balances AI optimization of operational elements (bed assignment, resource allocation, patient flow) with maintained human oversight for clinical decisions like triage acuity. Healthcare administrators must ensure AI augments rather than replaces clinical judgment for patient safety. The other options inappropriately suggest full automation of clinical decisions, demand impossible perfection, or prioritize cost reduction over patient safety.",
+            "tags": [
+              "clinical-oversight",
+              "patient-safety",
+              "operational-optimization",
+              "implementation-strategy"
+            ]
+          },
+          {
+            "id": "HAI-HA-B-006",
+            "level": 2,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.38,
+            "discrimination": 1.13,
+            "bloomLevel": "Understand",
+            "question": "What distinguishes generative AI from traditional predictive AI in healthcare administrative applications?",
+            "options": [
+              "Generative AI creates new content like patient communication drafts or policy documents, while predictive AI forecasts outcomes from existing data.",
+              "Generative AI is always more accurate than predictive AI because it can create unlimited training data for any situation.",
+              "Generative AI and predictive AI are identical technologies used interchangeably for all healthcare administrative functions.",
+              "Generative AI completely replaces human administrators by writing all documents autonomously without any review needed."
+            ],
+            "correctAnswer": 0,
+            "rationale": "Generative AI (like large language models) creates new content—drafting patient communications, generating reports, summarizing documents—while predictive AI forecasts outcomes like readmission risk or resource utilization from existing patterns. Both have distinct use cases in healthcare administration. Generative AI doesn't automatically have better accuracy, isn't the same as predictive AI, and still requires human review for healthcare contexts.",
+            "tags": [
+              "generative-ai",
+              "predictive-ai",
+              "ai-types",
+              "use-cases"
+            ]
+          },
+          {
+            "id": "HAI-HA-B-007",
+            "level": 3,
+            "type": "scenario",
+            "points": 10,
+            "difficulty": 0.45,
+            "discrimination": 1.18,
+            "bloomLevel": "Apply",
+            "question": "Your health system's leadership wants to use AI to improve patient satisfaction scores. Which approach demonstrates the most sophisticated understanding of AI capabilities?",
+            "options": [
+              "Deploy AI to analyze patient feedback patterns, predict dissatisfaction drivers, and generate personalized follow-up recommendations for care teams.",
+              "Install AI chatbots to respond to all patient complaints automatically without human staff involvement to reduce response times.",
+              "Use AI to manipulate satisfaction survey responses by identifying and removing negative feedback before calculating scores.",
+              "Implement AI only for back-office functions since patient satisfaction is too subjective for algorithmic analysis or prediction."
+            ],
+            "correctAnswer": 0,
+            "rationale": "Sophisticated AI application for patient satisfaction involves multi-faceted analysis: identifying patterns in feedback, predicting drivers of dissatisfaction, and generating actionable recommendations for human care teams. This augments human service recovery efforts with data-driven insights. The other options either inappropriately remove human judgment from sensitive interactions, suggest unethical manipulation of data, or unnecessarily limit AI to areas where it's less impactful.",
+            "tags": [
+              "patient-satisfaction",
+              "feedback-analysis",
+              "predictive-insights",
+              "human-ai-collaboration"
+            ]
+          },
+          {
+            "id": "HAI-HA-B-008",
+            "level": 3,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.4,
+            "discrimination": 1.14,
+            "bloomLevel": "Understand",
+            "question": "Why might an AI system that performed well in a large urban hospital struggle when deployed in a rural community hospital?",
+            "options": [
+              "AI systems trained on urban data may reflect different patient demographics, disease patterns, and resource availability than rural settings.",
+              "Rural hospitals lack the technical infrastructure to run any AI systems regardless of how well they perform elsewhere.",
+              "AI algorithms automatically adapt to any new environment without requiring validation or adjustment for local context.",
+              "Rural healthcare administrators are generally less educated and unable to understand AI system outputs or recommendations."
+            ],
+            "correctAnswer": 0,
+            "rationale": "AI systems can struggle in new contexts because they're trained on specific data distributions. Urban hospital AI may reflect different patient populations, disease prevalence, socioeconomic factors, and resource patterns than rural settings. This requires validation and potentially retraining for the new context. The other options incorrectly assume technical limitations, automatic adaptation without validation, or make inappropriate generalizations about administrators.",
+            "tags": [
+              "context-dependency",
+              "model-generalizability",
+              "deployment-challenges",
+              "data-distribution"
+            ]
+          }
+        ]
+      },
+      {
+        "dimensionCode": "OPM",
+        "dimensionName": "Operations and Process Management",
+        "description": "Understanding AI applications in healthcare operations, workflow optimization, and process improvement",
+        "weight": 0.125,
+        "totalPoints": 75,
+        "items": [
+          {
+            "id": "OPM-HA-B-001",
+            "level": 1,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.28,
+            "discrimination": 1.06,
+            "bloomLevel": "Remember",
+            "question": "What is the primary benefit of using AI for healthcare scheduling and capacity management?",
+            "options": [
+              "AI completely eliminates the need for scheduling staff by making all appointment decisions without human input or oversight.",
+              "AI optimizes appointment scheduling by predicting no-shows, procedure durations, and resource needs to maximize utilization and minimize wait times.",
+              "AI guarantees zero appointment conflicts or scheduling errors by perfectly predicting every patient's needs and preferences.",
+              "AI reduces scheduling costs by eliminating all patient choice in appointment timing to maximize operational efficiency."
+            ],
+            "correctAnswer": 1,
+            "rationale": "AI's primary benefit for healthcare scheduling is optimization through predictive analytics—forecasting no-shows, estimating actual procedure durations, and matching resources to demand patterns to improve both utilization and patient experience. It augments human schedulers rather than replacing them, doesn't guarantee perfection, and should enhance rather than eliminate patient preferences.",
+            "tags": [
+              "scheduling-optimization",
+              "capacity-management",
+              "predictive-analytics",
+              "resource-utilization"
+            ]
+          },
+          {
+            "id": "OPM-HA-B-002",
+            "level": 1,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.32,
+            "discrimination": 1.09,
+            "bloomLevel": "Understand",
+            "question": "How does AI-powered robotic process automation (RPA) differ from traditional workflow automation in healthcare?",
+            "options": [
+              "RPA is always more accurate than traditional automation because it uses artificial intelligence to make subjective judgments.",
+              "RPA automates repetitive tasks by mimicking human interactions with systems, while traditional automation requires direct system integration.",
+              "RPA and traditional automation are identical technologies marketed under different names to healthcare organizations.",
+              "RPA completely replaces the need for traditional automation by adapting automatically to any workflow changes."
+            ],
+            "correctAnswer": 1,
+            "rationale": "RPA differs from traditional automation by working at the user interface level, mimicking human interactions with systems (clicking, typing, copying data), rather than requiring backend system integration. This makes it easier to deploy for tasks spanning multiple systems. However, RPA isn't always more accurate, isn't identical to traditional automation, and doesn't eliminate the value of integrated systems.",
+            "tags": [
+              "robotic-process-automation",
+              "workflow-automation",
+              "system-integration",
+              "process-improvement"
+            ]
+          },
+          {
+            "id": "OPM-HA-B-003",
+            "level": 2,
+            "type": "scenario",
+            "points": 10,
+            "difficulty": 0.36,
+            "discrimination": 1.11,
+            "bloomLevel": "Apply",
+            "question": "Your hospital experiences frequent delays in patient discharge due to multiple approval requirements. Which AI application would most directly address this bottleneck?",
+            "options": [
+              "Computer vision AI to analyze medical imaging results and improve diagnostic accuracy for inpatients.",
+              "Workflow automation to coordinate discharge requirements, track approval status, and alert relevant staff when tasks are pending.",
+              "Natural language processing to transcribe physician notes and clinical documentation after discharge is complete.",
+              "Predictive analytics to forecast which patients will be readmitted within 30 days of their eventual discharge."
+            ],
+            "correctAnswer": 1,
+            "rationale": "For discharge delays caused by coordination challenges, workflow automation that tracks requirements, monitors progress, and alerts responsible parties directly addresses the bottleneck. While imaging AI, clinical NLP, and readmission prediction are valuable, they don't directly solve the operational coordination problem causing discharge delays.",
+            "tags": [
+              "workflow-optimization",
+              "discharge-management",
+              "process-automation",
+              "bottleneck-resolution"
+            ]
+          },
+          {
+            "id": "OPM-HA-B-004",
+            "level": 2,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.4,
+            "discrimination": 1.13,
+            "bloomLevel": "Understand",
+            "question": "What is a key operational risk when implementing AI for supply chain management in healthcare?",
+            "options": [
+              "AI supply chain systems are always more accurate than human judgment and never require monitoring or validation of recommendations.",
+              "AI predictions may fail during unusual circumstances like pandemics or supply disruptions not well-represented in training data.",
+              "AI completely eliminates the need for safety stock and backup suppliers by perfectly predicting all future needs.",
+              "AI supply chain management works identically across all healthcare organizations without requiring customization or local context."
+            ],
+            "correctAnswer": 1,
+            "rationale": "A key risk is that AI trained on historical data may not perform well during unprecedented events (pandemics, major disruptions) that differ significantly from training patterns. This requires human oversight, contingency planning, and recognition that AI predictions have limits. The other options incorrectly suggest AI is infallible, eliminates all risk management practices, or works universally without customization.",
+            "tags": [
+              "supply-chain",
+              "risk-management",
+              "prediction-limitations",
+              "contingency-planning"
+            ]
+          },
+          {
+            "id": "OPM-HA-B-005",
+            "level": 2,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.38,
+            "discrimination": 1.12,
+            "bloomLevel": "Apply",
+            "question": "Your facility wants to reduce emergency department wait times. Which combination of AI capabilities would be most effective?",
+            "options": [
+              "Predictive patient volume forecasting combined with dynamic staff scheduling and intelligent patient flow routing based on acuity and resource availability.",
+              "Automated triage decisions that bypass nursing assessment combined with AI diagnosis systems that eliminate physician involvement.",
+              "Computer vision for analyzing X-rays combined with natural language processing for transcribing physician notes during examination.",
+              "Chatbots to answer patient questions at registration combined with robotic systems to physically transport patients between departments."
+            ],
+            "correctAnswer": 0,
+            "rationale": "Reducing ED wait times requires addressing multiple bottlenecks: predicting volumes for staffing, optimizing staff schedules, and routing patients efficiently based on acuity and available resources. This comprehensive approach targets the root causes of delays. The other options either inappropriately remove clinical judgment, focus on capabilities that don't directly affect wait times, or suggest impractical robotic systems.",
+            "tags": [
+              "emergency-department",
+              "wait-time-reduction",
+              "patient-flow",
+              "capacity-planning"
+            ]
+          },
+          {
+            "id": "OPM-HA-B-006",
+            "level": 3,
+            "type": "scenario",
+            "points": 10,
+            "difficulty": 0.43,
+            "discrimination": 1.16,
+            "bloomLevel": "Apply",
+            "question": "Your operating rooms frequently experience delays between cases. An AI vendor claims their system can completely eliminate delays. How should you evaluate this claim?",
+            "options": [
+              "Recognize that while AI can optimize scheduling and predict case durations more accurately, some variability is inherent and delays can't be completely eliminated.",
+              "Immediately implement the system since AI guarantees perfect predictions and any skepticism reflects outdated thinking about technology.",
+              "Reject the system entirely because AI can never handle the complexity of surgical scheduling and should not be trusted.",
+              "Demand the vendor provide legally binding guarantees of zero delays before considering implementation of the system."
+            ],
+            "correctAnswer": 0,
+            "rationale": "The appropriate response is realistic assessment: AI can significantly improve OR scheduling through better predictions and optimization, but can't completely eliminate delays due to inherent variability in surgical complexity, patient factors, and emergencies. Understanding AI's capabilities while recognizing limitations enables effective evaluation. The other options reflect either uncritical acceptance, complete rejection, or unrealistic demands.",
+            "tags": [
+              "vendor-evaluation",
+              "realistic-expectations",
+              "or-scheduling",
+              "critical-thinking"
+            ]
+          },
+          {
+            "id": "OPM-HA-B-007",
+            "level": 2,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.37,
+            "discrimination": 1.11,
+            "bloomLevel": "Understand",
+            "question": "What is the most important factor in determining whether an administrative process is a good candidate for AI automation?",
+            "options": [
+              "The process involves high-volume, repetitive tasks with clear patterns and rules that can be learned from data.",
+              "The process requires complex human judgment and involves high-stakes decisions with significant variability and ethical considerations.",
+              "The process is currently performed by expensive staff members who could be replaced to reduce costs.",
+              "The process uses the latest technology systems since AI only works with modern, cloud-based applications."
+            ],
+            "correctAnswer": 0,
+            "rationale": "Good candidates for AI automation are high-volume, repetitive processes with identifiable patterns—these maximize AI's strengths in consistency and speed. Processes requiring significant human judgment, high-stakes decisions, or complex ethical considerations are less suitable for full automation. Cost reduction alone isn't a valid criterion, and AI can work with various system types, not just modern applications.",
+            "tags": [
+              "automation-readiness",
+              "process-selection",
+              "ai-suitability",
+              "implementation-planning"
+            ]
+          },
+          {
+            "id": "OPM-HA-B-008",
+            "level": 3,
+            "type": "scenario",
+            "points": 10,
+            "difficulty": 0.44,
+            "discrimination": 1.17,
+            "bloomLevel": "Apply",
+            "question": "Your hospital implemented an AI system to optimize bed assignments, but nurses are frequently overriding its recommendations. What is the most likely underlying issue?",
+            "options": [
+              "The AI may not account for important practical constraints that nurses understand from experience, such as patient mobility needs or family preferences.",
+              "The nurses are resistant to technology change and should be required to follow AI recommendations without exception to realize efficiency gains.",
+              "The AI system is definitely wrong and should be immediately removed since nurses always have better judgment than algorithms.",
+              "The nurses lack sufficient technical training to understand AI outputs and should be educated until they accept all recommendations."
+            ],
+            "correctAnswer": 0,
+            "rationale": "Frequent overrides often indicate the AI doesn't account for important factors that front-line staff understand—such as patient-specific needs, family dynamics, staffing constraints, or infection control considerations that may not be in the algorithm. This suggests the need to enhance the AI with additional inputs or adjust implementation strategy. The other options inappropriately blame staff, uncritically reject AI, or ignore valid professional judgment.",
+            "tags": [
+              "implementation-challenges",
+              "user-adoption",
+              "system-optimization",
+              "staff-feedback"
+            ]
+          }
+        ]
+      },
+      {
+        "dimensionCode": "FRM",
+        "dimensionName": "Financial and Revenue Management",
+        "description": "Understanding AI applications in healthcare finance, revenue cycle, billing, and reimbursement optimization",
+        "weight": 0.125,
+        "totalPoints": 75,
+        "items": [
+          {
+            "id": "FRM-HA-B-001",
+            "level": 1,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.3,
+            "discrimination": 1.08,
+            "bloomLevel": "Remember",
+            "question": "What is the primary application of AI in healthcare revenue cycle management?",
+            "options": [
+              "AI completely eliminates the need for human billing staff by making all coding and reimbursement decisions autonomously.",
+              "AI automates claims processing, identifies coding errors, predicts denials, and optimizes reimbursement while maintaining compliance.",
+              "AI guarantees 100% clean claim rates and zero denials by perfectly predicting payer responses to all claims.",
+              "AI replaces the need for compliance programs by automatically ensuring all billing practices meet legal requirements."
+            ],
+            "correctAnswer": 1,
+            "rationale": "AI's primary revenue cycle application is automating routine tasks (claims processing, charge capture), identifying potential coding errors before submission, predicting which claims are likely to be denied, and optimizing documentation for appropriate reimbursement—all while maintaining compliance oversight. It augments rather than replaces billing professionals, doesn't guarantee perfection, and doesn't eliminate the need for compliance programs.",
+            "tags": [
+              "revenue-cycle",
+              "claims-processing",
+              "coding-optimization",
+              "reimbursement"
+            ]
+          },
+          {
+            "id": "FRM-HA-B-002",
+            "level": 1,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.32,
+            "discrimination": 1.09,
+            "bloomLevel": "Understand",
+            "question": "How does AI-powered predictive analytics help with healthcare financial planning?",
+            "options": [
+              "AI eliminates uncertainty from financial forecasts by perfectly predicting future revenue and expenses with complete accuracy.",
+              "AI analyzes historical patterns to forecast patient volumes, payer mix, and resource utilization to inform budget planning.",
+              "AI replaces the need for financial expertise by making all budget allocation decisions automatically without administrator input.",
+              "AI financial predictions are always more accurate than human judgment and never require validation or scenario analysis."
+            ],
+            "correctAnswer": 1,
+            "rationale": "AI predictive analytics enhances financial planning by identifying patterns in historical data to forecast future trends in patient volumes, payer mix, service utilization, and costs. This provides data-driven insights to inform planning decisions. However, it doesn't eliminate uncertainty, replace financial expertise, or produce infallible forecasts—forecasts should be validated and used alongside scenario planning and human judgment.",
+            "tags": [
+              "financial-planning",
+              "predictive-analytics",
+              "budget-forecasting",
+              "revenue-projection"
+            ]
+          },
+          {
+            "id": "FRM-HA-B-003",
+            "level": 2,
+            "type": "scenario",
+            "points": 10,
+            "difficulty": 0.38,
+            "discrimination": 1.12,
+            "bloomLevel": "Apply",
+            "question": "Your hospital's denial rate has increased significantly. Which AI application would most directly help identify and address the root causes?",
+            "options": [
+              "AI analysis to identify denial patterns by payer, procedure, and documentation issues, combined with predictive models to flag high-risk claims before submission.",
+              "AI chatbots to automatically argue with insurance companies and overturn denials without human review of the clinical justification.",
+              "AI systems to manipulate clinical documentation to match payer requirements regardless of actual services provided to patients.",
+              "AI to eliminate all high-risk procedures and patient populations that typically generate claim denials to improve metrics."
+            ],
+            "correctAnswer": 0,
+            "rationale": "For addressing increased denials, AI pattern analysis identifying root causes (specific payers, procedures, documentation gaps) combined with predictive flagging of high-risk claims before submission directly targets the problem. This enables proactive intervention. The other options suggest inappropriate automation of appeals, unethical documentation practices, or harmful exclusion of needed services.",
+            "tags": [
+              "denial-management",
+              "root-cause-analysis",
+              "claims-optimization",
+              "predictive-intervention"
+            ]
+          },
+          {
+            "id": "FRM-HA-B-004",
+            "level": 2,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.4,
+            "discrimination": 1.13,
+            "bloomLevel": "Understand",
+            "question": "What is a key ethical consideration when using AI for patient payment collection and financial assistance determination?",
+            "options": [
+              "AI collection systems should maximize revenue by aggressively pursuing all debts regardless of patient financial circumstances or hardship.",
+              "AI should balance effective revenue collection with appropriate financial assistance screening and compassionate patient engagement.",
+              "AI algorithms should be trained to identify and deny financial assistance to patients who might technically qualify but could potentially pay.",
+              "AI collection systems should operate without transparency since patients don't need to understand how payment decisions are made."
+            ],
+            "correctAnswer": 1,
+            "rationale": "Ethical AI in collections balances legitimate revenue cycle needs with appropriate compassion and assistance programs—screening patients for financial assistance eligibility, enabling flexible payment plans, and maintaining respectful engagement. The other options inappropriately prioritize revenue over patient welfare, suggest denying legitimate assistance, or lack transparency in automated decisions affecting vulnerable populations.",
+            "tags": [
+              "patient-collections",
+              "financial-assistance",
+              "ethical-ai",
+              "patient-engagement"
+            ]
+          },
+          {
+            "id": "FRM-HA-B-005",
+            "level": 2,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.36,
+            "discrimination": 1.11,
+            "bloomLevel": "Apply",
+            "question": "Your organization wants to use AI to optimize coding for maximum reimbursement. What is the most appropriate approach?",
+            "options": [
+              "Train AI to suggest the highest-paying codes possible regardless of whether documentation fully supports them to maximize revenue.",
+              "Use AI to ensure coding accuracy by matching documented services to appropriate codes while flagging missing documentation for clarification.",
+              "Implement AI to automatically upcode all claims by one level since payers typically downcode anyway and this balances out.",
+              "Deploy AI to code services that were provided but not documented to capture revenue for all work actually performed."
+            ],
+            "correctAnswer": 1,
+            "rationale": "Appropriate AI coding optimization ensures accurate matching between documentation and codes, flags insufficient documentation for legitimate clarification, and maintains compliance. This differs fundamentally from upcoding, coding without documentation, or gaming payer processes—all of which create fraud and abuse risks. The goal is accurate reimbursement for documented services, not maximum revenue regardless of accuracy.",
+            "tags": [
+              "coding-accuracy",
+              "compliance",
+              "reimbursement-optimization",
+              "fraud-prevention"
+            ]
+          },
+          {
+            "id": "FRM-HA-B-006",
+            "level": 3,
+            "type": "scenario",
+            "points": 10,
+            "difficulty": 0.42,
+            "discrimination": 1.15,
+            "bloomLevel": "Apply",
+            "question": "An AI vendor promises their system will increase your hospital's revenue by 20% in six months. How should you evaluate this claim?",
+            "options": [
+              "Investigate the specific mechanisms for revenue increase, request evidence from similar organizations, and assess whether changes comply with regulations.",
+              "Immediately implement the system since any revenue increase is beneficial and vendor claims about AI are always accurate and conservative.",
+              "Reject the vendor entirely because significant revenue improvements from AI are impossible and any such claims are definitely fraudulent.",
+              "Accept the claim if it's based on AI technology since machine learning systems always outperform human judgment in revenue optimization."
+            ],
+            "correctAnswer": 0,
+            "rationale": "Appropriate vendor evaluation requires understanding specific mechanisms (better coding accuracy, reduced denials, improved charge capture), validating claims with evidence from comparable organizations, and ensuring compliance with regulations. Large revenue claims warrant careful scrutiny. The other options reflect uncritical acceptance, blanket rejection, or inappropriate deference to technology without verification.",
+            "tags": [
+              "vendor-evaluation",
+              "due-diligence",
+              "revenue-claims",
+              "critical-assessment"
+            ]
+          },
+          {
+            "id": "FRM-HA-B-007",
+            "level": 2,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.39,
+            "discrimination": 1.12,
+            "bloomLevel": "Understand",
+            "question": "What is the primary benefit of using AI for prior authorization management in healthcare?",
+            "options": [
+              "AI completely eliminates the need for prior authorization by automatically approving all clinical services without payer involvement.",
+              "AI streamlines authorization workflows by predicting approval likelihood, auto-completing routine requests, and tracking status to reduce delays.",
+              "AI guarantees 100% authorization approval rates by learning exactly what documentation language will satisfy every payer requirement.",
+              "AI removes physicians from the authorization process entirely since algorithms can make all medical necessity determinations independently."
+            ],
+            "correctAnswer": 1,
+            "rationale": "AI enhances prior authorization by streamlining workflows—predicting which requests are likely approved, auto-completing routine authorizations with standard criteria, tracking statuses, and reducing administrative burden. It doesn't eliminate payer requirements, guarantee approvals, or replace clinical judgment about medical necessity. The focus is on efficiency while maintaining appropriate clinical involvement.",
+            "tags": [
+              "prior-authorization",
+              "workflow-efficiency",
+              "administrative-burden",
+              "automation"
+            ]
+          },
+          {
+            "id": "FRM-HA-B-008",
+            "level": 3,
+            "type": "scenario",
+            "points": 10,
+            "difficulty": 0.44,
+            "discrimination": 1.16,
+            "bloomLevel": "Apply",
+            "question": "Your hospital implemented an AI system to predict patient payment likelihood, but it consistently rates patients from certain zip codes as high collection risk. What should you do?",
+            "options": [
+              "Investigate whether the model reflects discriminatory patterns based on demographics and audit for bias, adjusting or replacing if necessary to ensure fairness.",
+              "Continue using the system since it's based on objective data and any patterns must reflect legitimate payment behavior differences.",
+              "Immediately discontinue all AI use in collections since any algorithmic decision-making inevitably produces discriminatory outcomes.",
+              "Ignore the pattern since collection decisions don't have significant impact on patients and efficiency is the primary consideration."
+            ],
+            "correctAnswer": 0,
+            "rationale": "When AI systems show concerning patterns correlating with demographics, administrators must investigate for bias. Zip code-based predictions may encode historical discrimination or socioeconomic factors inappropriately. Proper response includes bias auditing, model adjustment or replacement if problematic, and ensuring fair treatment. The other options either ignore concerning patterns, reject all AI categorically, or minimize the impact on vulnerable patients.",
+            "tags": [
+              "algorithmic-bias",
+              "fairness",
+              "demographic-equity",
+              "responsible-ai"
+            ]
+          }
+        ]
+      },
+      {
+        "dimensionCode": "QPS",
+        "dimensionName": "Quality and Patient Safety",
+        "description": "Understanding AI applications in quality improvement, patient safety monitoring, and outcomes measurement",
+        "weight": 0.125,
+        "totalPoints": 75,
+        "items": [
+          {
+            "id": "QPS-HA-B-001",
+            "level": 1,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.28,
+            "discrimination": 1.07,
+            "bloomLevel": "Remember",
+            "question": "What is the primary application of AI in healthcare quality improvement initiatives?",
+            "options": [
+              "AI completely replaces quality improvement teams by automatically identifying and implementing all improvement opportunities without staff involvement.",
+              "AI analyzes large datasets to identify quality patterns, predict adverse events, and prioritize improvement opportunities for human teams.",
+              "AI guarantees zero adverse events by perfectly monitoring all patient data and preventing all possible quality issues.",
+              "AI eliminates the need for quality metrics and reporting by making all healthcare processes perfect automatically."
+            ],
+            "correctAnswer": 1,
+            "rationale": "AI enhances quality improvement by analyzing large volumes of data to identify patterns, predict potential adverse events before they occur, and help prioritize where human teams should focus improvement efforts. It augments rather than replaces quality teams, doesn't guarantee zero adverse events (which is impossible), and doesn't eliminate the need for measurement and reporting.",
+            "tags": [
+              "quality-improvement",
+              "adverse-event-prediction",
+              "data-analysis",
+              "risk-identification"
+            ]
+          },
+          {
+            "id": "QPS-HA-B-002",
+            "level": 1,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.32,
+            "discrimination": 1.09,
+            "bloomLevel": "Understand",
+            "question": "How does AI-powered patient deterioration prediction differ from traditional early warning scores?",
+            "options": [
+              "AI analyzes multiple data streams continuously to detect subtle deterioration patterns that fixed scoring systems might miss.",
+              "AI and traditional early warning scores are identical systems that produce exactly the same alerts at the same times.",
+              "AI is always less accurate than traditional scores because it cannot incorporate clinical judgment into predictions.",
+              "AI completely eliminates the need for nursing assessment by providing perfect predictions without bedside evaluation."
+            ],
+            "correctAnswer": 0,
+            "rationale": "AI deterioration prediction differs by analyzing multiple continuous data streams (vitals, labs, notes, trends) to detect subtle patterns that traditional fixed-threshold scoring systems might miss. This can provide earlier warnings. However, AI and traditional scores aren't identical, AI isn't inherently less accurate, and AI predictions should complement rather than replace bedside nursing assessment.",
+            "tags": [
+              "patient-deterioration",
+              "early-warning-systems",
+              "predictive-monitoring",
+              "clinical-surveillance"
+            ]
+          },
+          {
+            "id": "QPS-HA-B-003",
+            "level": 2,
+            "type": "scenario",
+            "points": 10,
+            "difficulty": 0.37,
+            "discrimination": 1.11,
+            "bloomLevel": "Apply",
+            "question": "Your hospital wants to reduce hospital-acquired infections. Which AI application would most directly support this goal?",
+            "options": [
+              "Predictive models to identify high-risk patients and environmental monitoring combined with staff hand hygiene compliance tracking.",
+              "Natural language processing to improve clinical documentation quality and completeness in the electronic health record.",
+              "Computer vision to analyze radiology images for better diagnostic accuracy of various infection-related complications.",
+              "Chatbots to answer patient questions about discharge instructions and medication management after they leave the hospital."
+            ],
+            "correctAnswer": 0,
+            "rationale": "For reducing hospital-acquired infections, AI that predicts high-risk patients for targeted prevention, monitors environmental conditions, and tracks hand hygiene compliance directly addresses infection prevention. While documentation quality, imaging, and patient education are valuable, they don't directly target the mechanisms of infection transmission and prevention as specifically.",
+            "tags": [
+              "infection-prevention",
+              "risk-stratification",
+              "compliance-monitoring",
+              "patient-safety"
+            ]
+          },
+          {
+            "id": "QPS-HA-B-004",
+            "level": 2,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.4,
+            "discrimination": 1.13,
+            "bloomLevel": "Understand",
+            "question": "What is an important limitation of AI sepsis prediction algorithms that administrators must understand?",
+            "options": [
+              "AI sepsis algorithms are perfectly accurate and never generate false alarms that could contribute to alert fatigue.",
+              "AI sepsis algorithms may have high false positive rates, requiring careful calibration to balance sensitivity with alert fatigue management.",
+              "AI sepsis algorithms completely replace the need for clinical judgment and should automatically trigger treatment protocols.",
+              "AI sepsis algorithms work identically across all patient populations without requiring validation for specific institutional contexts."
+            ],
+            "correctAnswer": 1,
+            "rationale": "A critical limitation of sepsis prediction algorithms is the trade-off between sensitivity (catching more cases) and specificity (avoiding false alarms). High false positive rates can lead to alert fatigue where staff begin ignoring alerts. Administrators must work with clinical teams to calibrate appropriately. The algorithms aren't perfect, don't replace clinical judgment, and may need adjustment for local patient populations.",
+            "tags": [
+              "sepsis-prediction",
+              "alert-fatigue",
+              "false-positives",
+              "system-calibration"
+            ]
+          },
+          {
+            "id": "QPS-HA-B-005",
+            "level": 2,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.38,
+            "discrimination": 1.12,
+            "bloomLevel": "Apply",
+            "question": "Your quality team wants to use AI to analyze patient safety event reports. What is the most appropriate application?",
+            "options": [
+              "Natural language processing to identify themes, trends, and contributing factors across reports to guide systematic improvement efforts.",
+              "AI systems to automatically determine fault and assign blame to specific staff members involved in each safety event.",
+              "Machine learning to predict which staff members are most likely to cause future errors and flag them for termination.",
+              "Automated systems to generate standardized responses to all safety reports without human review or investigation."
+            ],
+            "correctAnswer": 0,
+            "rationale": "Appropriate AI use for safety reports involves NLP to analyze themes, patterns, and systemic contributing factors across large volumes of reports—supporting a learning culture focused on system improvement rather than individual blame. The other options inappropriately focus on individual punishment, predict future errors in ways that undermine just culture, or eliminate human judgment from safety analysis.",
+            "tags": [
+              "safety-reporting",
+              "text-analysis",
+              "just-culture",
+              "system-improvement"
+            ]
+          },
+          {
+            "id": "QPS-HA-B-006",
+            "level": 3,
+            "type": "scenario",
+            "points": 10,
+            "difficulty": 0.43,
+            "discrimination": 1.15,
+            "bloomLevel": "Apply",
+            "question": "An AI early warning system generates an alert for a patient, but the nurse assesses the patient and finds them clinically stable. How should this situation be handled?",
+            "options": [
+              "The nurse's clinical assessment should be documented and the alert should be reviewed—the AI may detect subtle patterns or the patient may genuinely be stable.",
+              "The AI alert must always override clinical judgment and the patient should be escalated to intensive care regardless of assessment.",
+              "The AI system should be immediately disabled since any discordance with nursing assessment proves the algorithm is completely unreliable.",
+              "The nurse should be retrained since disagreement with AI recommendations indicates insufficient understanding of patient deterioration."
+            ],
+            "correctAnswer": 0,
+            "rationale": "When AI alerts conflict with clinical assessment, both should be taken seriously: document the clinical assessment while also considering whether AI might be detecting subtle patterns not yet clinically apparent (or whether it's a false alert). This requires ongoing monitoring and alert review. Neither AI nor clinical judgment should automatically override the other, and discordance doesn't warrant extreme responses like disabling systems or blaming staff.",
+            "tags": [
+              "clinical-judgment",
+              "ai-human-collaboration",
+              "alert-management",
+              "escalation-protocols"
+            ]
+          },
+          {
+            "id": "QPS-HA-B-007",
+            "level": 2,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.39,
+            "discrimination": 1.12,
+            "bloomLevel": "Understand",
+            "question": "What is the primary benefit of using AI for medication safety and adverse drug event prevention?",
+            "options": [
+              "AI completely eliminates all medication errors by making perfect predictions about every possible drug interaction.",
+              "AI analyzes patient data in real-time to flag potential interactions, dosing errors, and patient-specific risk factors to support safer prescribing.",
+              "AI replaces pharmacist review of medication orders by automatically approving or rejecting all prescriptions without human oversight.",
+              "AI guarantees no adverse drug events will occur since algorithms can predict every possible patient response to medications."
+            ],
+            "correctAnswer": 1,
+            "rationale": "AI enhances medication safety by continuously analyzing patient-specific data (allergies, current medications, lab values, conditions) to identify potential interactions, inappropriate dosing, and risk factors in real-time—providing decision support for prescribers and pharmacists. It doesn't eliminate all errors, replace pharmacist judgment, or guarantee prevention of all adverse events (which is impossible given patient variability).",
+            "tags": [
+              "medication-safety",
+              "adverse-drug-events",
+              "clinical-decision-support",
+              "drug-interactions"
+            ]
+          },
+          {
+            "id": "QPS-HA-B-008",
+            "level": 3,
+            "type": "scenario",
+            "points": 10,
+            "difficulty": 0.45,
+            "discrimination": 1.17,
+            "bloomLevel": "Apply",
+            "question": "Your hospital implemented an AI falls risk prediction model, but fall rates haven't decreased. What is the most likely explanation?",
+            "options": [
+              "Accurate prediction alone doesn't prevent falls—the organization must also implement effective prevention interventions when patients are flagged as high-risk.",
+              "The AI model is completely ineffective and should be immediately removed since any legitimate system would automatically reduce falls.",
+              "The staff are ignoring all AI recommendations and should be disciplined until they follow the algorithm's outputs exactly.",
+              "The AI system is perfect but fall prevention is impossible, so fall rates can never actually be reduced regardless of interventions."
+            ],
+            "correctAnswer": 0,
+            "rationale": "The most likely issue is the gap between prediction and intervention—identifying high-risk patients is only valuable if followed by effective prevention strategies (increased monitoring, environmental modifications, mobility aids). AI alone doesn't prevent falls; it enables targeted interventions. The other options either unfairly blame the technology or staff, or incorrectly suggest falls prevention is impossible.",
+            "tags": [
+              "falls-prevention",
+              "prediction-to-intervention",
+              "implementation-effectiveness",
+              "process-improvement"
+            ]
+          }
+        ]
+      },
+      {
+        "dimensionCode": "WFM",
+        "dimensionName": "Workforce and Talent Management",
+        "description": "Understanding AI applications in healthcare workforce planning, scheduling, performance, and professional development",
+        "weight": 0.125,
+        "totalPoints": 75,
+        "items": [
+          {
+            "id": "WFM-HA-B-001",
+            "level": 1,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.3,
+            "discrimination": 1.08,
+            "bloomLevel": "Remember",
+            "question": "What is the primary application of AI in healthcare workforce scheduling and optimization?",
+            "options": [
+              "AI creates schedules by predicting patient demand, matching staff skills to needs, and optimizing fairness while respecting preferences and regulations.",
+              "AI completely automates all scheduling decisions and eliminates the need for any human input or consideration of staff preferences.",
+              "AI guarantees perfect schedules with zero conflicts, exactly equal distribution of shifts, and complete staff satisfaction universally.",
+              "AI replaces workforce planners entirely by making all staffing decisions autonomously without administrator oversight or approval."
+            ],
+            "correctAnswer": 0,
+            "rationale": "AI enhances workforce scheduling by predicting patient volumes and acuity, matching staff skills and credentials to anticipated needs, optimizing for fairness and preferences, and ensuring regulatory compliance. It augments human schedulers rather than replacing them, doesn't guarantee perfect outcomes (which is impossible with competing constraints), and requires administrator oversight for final decisions.",
+            "tags": [
+              "workforce-scheduling",
+              "demand-forecasting",
+              "skill-matching",
+              "optimization"
+            ]
+          },
+          {
+            "id": "WFM-HA-B-002",
+            "level": 1,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.32,
+            "discrimination": 1.09,
+            "bloomLevel": "Understand",
+            "question": "How can AI support healthcare workforce retention and turnover reduction?",
+            "options": [
+              "AI completely eliminates turnover by perfectly predicting and preventing every resignation through automated interventions.",
+              "AI analyzes patterns to identify flight risk employees and predict turnover likelihood, enabling proactive engagement and targeted retention efforts.",
+              "AI workforce retention systems guarantee that no employees will ever leave once the algorithm is implemented properly.",
+              "AI replaces the need for human HR professionals by automatically making all employee engagement and retention decisions."
+            ],
+            "correctAnswer": 1,
+            "rationale": "AI supports retention by analyzing patterns in turnover (survey responses, scheduling, performance, engagement) to identify employees at higher flight risk, enabling HR and managers to proactively engage and address concerns. It doesn't eliminate turnover (which is impossible), guarantee retention, or replace human judgment about employee relationships and organizational culture.",
+            "tags": [
+              "turnover-prediction",
+              "retention-strategies",
+              "employee-engagement",
+              "workforce-analytics"
+            ]
+          },
+          {
+            "id": "WFM-HA-B-003",
+            "level": 2,
+            "type": "scenario",
+            "points": 10,
+            "difficulty": 0.38,
+            "discrimination": 1.12,
+            "bloomLevel": "Apply",
+            "question": "Your hospital faces nursing shortages during peak demand periods. Which AI application would most directly help address this challenge?",
+            "options": [
+              "Predictive models for patient volume and acuity combined with optimized scheduling and dynamic float pool management to match resources to anticipated needs.",
+              "AI chatbots to answer patient questions and reduce the need for nursing staff by automating all patient interaction and education.",
+              "Computer vision systems to monitor nurse efficiency and automatically discipline those who don't meet algorithmic productivity standards.",
+              "Natural language processing to analyze nursing notes and reduce documentation burden but without addressing actual staffing shortages."
+            ],
+            "correctAnswer": 0,
+            "rationale": "For addressing nursing shortages during peaks, AI that predicts demand patterns combined with optimized scheduling and dynamic resource allocation directly targets the problem by ensuring staff are scheduled when most needed. While documentation reduction is valuable, it doesn't solve shortage problems; monitoring for discipline is inappropriate and counter-productive; and chatbots can't replace nursing judgment and care.",
+            "tags": [
+              "nurse-staffing",
+              "demand-prediction",
+              "resource-allocation",
+              "float-pool-management"
+            ]
+          },
+          {
+            "id": "WFM-HA-B-004",
+            "level": 2,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.4,
+            "discrimination": 1.13,
+            "bloomLevel": "Understand",
+            "question": "What is an important ethical consideration when using AI for performance evaluation in healthcare?",
+            "options": [
+              "AI performance systems should focus solely on efficiency metrics without considering quality, safety, or complexity of patient care.",
+              "AI performance evaluation must balance productivity data with quality outcomes, patient complexity, and fairness while maintaining transparency about how assessments are made.",
+              "AI systems can make all performance decisions automatically without human review since algorithms are always objective and free from bias.",
+              "AI performance monitoring should remain completely secret from employees so they cannot game the system or challenge assessments."
+            ],
+            "correctAnswer": 1,
+            "rationale": "Ethical AI performance evaluation requires balancing multiple dimensions (productivity, quality, safety), adjusting for patient complexity and context, maintaining transparency about evaluation criteria, and preserving human judgment for final assessments. The other options inappropriately prioritize efficiency over quality, eliminate human oversight, or lack transparency—all problematic for fair evaluation systems.",
+            "tags": [
+              "performance-evaluation",
+              "ethical-ai",
+              "transparency",
+              "fairness"
+            ]
+          },
+          {
+            "id": "WFM-HA-B-005",
+            "level": 2,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.36,
+            "discrimination": 1.11,
+            "bloomLevel": "Apply",
+            "question": "Your organization wants to use AI to identify high-potential employees for leadership development. What is the most appropriate approach?",
+            "options": [
+              "Use AI to analyze multiple objective factors (performance, engagement, learning) combined with structured human assessment to identify development candidates.",
+              "Implement AI to automatically select and promote candidates based solely on algorithmic scores without human review or interview processes.",
+              "Deploy AI systems that replicate historical promotion patterns to ensure consistency with past leadership selection decisions.",
+              "Use AI to identify employees who most closely match the demographic profile of current executives to ensure cultural fit."
+            ],
+            "correctAnswer": 0,
+            "rationale": "Appropriate AI talent identification combines objective data analysis (performance metrics, engagement scores, learning agility) with structured human assessment to identify potential. This balances data insights with judgment about leadership qualities. Fully automated promotion, replicating historical patterns (which may embed bias), or matching demographics all create risks of unfairness and limiting diversity.",
+            "tags": [
+              "talent-identification",
+              "succession-planning",
+              "leadership-development",
+              "ai-human-collaboration"
+            ]
+          },
+          {
+            "id": "WFM-HA-B-006",
+            "level": 3,
+            "type": "scenario",
+            "points": 10,
+            "difficulty": 0.43,
+            "discrimination": 1.15,
+            "bloomLevel": "Apply",
+            "question": "An AI scheduling system consistently assigns less desirable shifts to the same group of employees. How should you address this?",
+            "options": [
+              "Audit the algorithm for bias, examine underlying assumptions, adjust optimization criteria to ensure fairness, and implement monitoring for equitable outcomes.",
+              "Continue using the system unchanged since the algorithm must be making optimal decisions based on objective criteria and data.",
+              "Immediately disable all AI scheduling and revert to manual processes since any algorithmic scheduling inevitably produces unfair results.",
+              "Ignore the pattern since shift assignments don't significantly impact employee satisfaction or retention in healthcare settings."
+            ],
+            "correctAnswer": 0,
+            "rationale": "When AI systems produce patterns suggesting inequitable treatment, administrators must investigate for bias in the algorithm, data, or optimization criteria. Proper response includes auditing, adjusting fairness constraints, and ongoing monitoring. The other options either ignore legitimate concerns, reject all AI categorically without investigation, or minimize the impact of fair scheduling on employee satisfaction and retention.",
+            "tags": [
+              "algorithmic-fairness",
+              "bias-detection",
+              "schedule-equity",
+              "workforce-satisfaction"
+            ]
+          },
+          {
+            "id": "WFM-HA-B-007",
+            "level": 2,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.37,
+            "discrimination": 1.11,
+            "bloomLevel": "Understand",
+            "question": "How can AI support personalized professional development for healthcare staff?",
+            "options": [
+              "AI analyzes individual performance, skills, and career goals to recommend targeted learning opportunities and development paths tailored to each employee.",
+              "AI eliminates the need for professional development by making all staff equally competent through automated training modules.",
+              "AI professional development systems guarantee rapid advancement for all employees by perfectly matching them to ideal career progressions.",
+              "AI replaces mentorship and coaching relationships by providing all guidance and feedback through algorithmic recommendations alone."
+            ],
+            "correctAnswer": 0,
+            "rationale": "AI enhances professional development by analyzing individual competencies, performance patterns, and career aspirations to recommend personalized learning opportunities—making development more targeted and efficient. It doesn't eliminate the need for development (continuous learning remains essential), guarantee advancement, or replace human mentorship relationships which remain valuable for professional growth.",
+            "tags": [
+              "professional-development",
+              "personalized-learning",
+              "career-pathing",
+              "skills-development"
+            ]
+          },
+          {
+            "id": "WFM-HA-B-008",
+            "level": 3,
+            "type": "scenario",
+            "points": 10,
+            "difficulty": 0.44,
+            "discrimination": 1.16,
+            "bloomLevel": "Apply",
+            "question": "Your AI recruitment system screens out significantly more female candidates than male candidates with similar qualifications. What should you do?",
+            "options": [
+              "Immediately investigate the algorithm for gender bias, suspend use if bias is confirmed, audit training data and selection criteria, and implement fairness interventions.",
+              "Continue using the system since it's based on objective qualifications data and any gender differences must reflect legitimate capability variations.",
+              "Disable all AI recruitment tools permanently because any algorithmic screening inherently produces discriminatory outcomes in hiring.",
+              "Ignore the pattern since hiring decisions are ultimately made by humans and the AI is just providing initial recommendations."
+            ],
+            "correctAnswer": 0,
+            "rationale": "Gender disparities in AI screening suggest potential bias that requires immediate investigation. Proper response includes suspending the system pending investigation, auditing for bias sources (training data reflecting historical discrimination, proxy variables), and implementing fairness corrections before resuming use. The other options either ignore discriminatory patterns, reject all AI without investigation, or incorrectly assume final human review addresses systemic screening bias.",
+            "tags": [
+              "hiring-bias",
+              "gender-equity",
+              "algorithmic-fairness",
+              "recruitment-ethics"
+            ]
+          }
+        ]
+      },
+      {
+        "dimensionCode": "EGC",
+        "dimensionName": "Ethics, Governance, and Compliance",
+        "description": "Understanding ethical principles, regulatory requirements, and governance frameworks for AI in healthcare administration",
+        "weight": 0.125,
+        "totalPoints": 75,
+        "items": [
+          {
+            "id": "EGC-HA-B-001",
+            "level": 1,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.3,
+            "discrimination": 1.08,
+            "bloomLevel": "Remember",
+            "question": "What is the primary purpose of AI governance frameworks in healthcare organizations?",
+            "options": [
+              "AI governance frameworks establish oversight structures to ensure AI systems are deployed safely, ethically, and in compliance with regulations.",
+              "AI governance frameworks slow down innovation by creating unnecessary bureaucracy that prevents rapid technology adoption.",
+              "AI governance frameworks completely eliminate all risks associated with AI systems by preventing any problems from occurring.",
+              "AI governance frameworks are only necessary for clinical AI applications and not for administrative or operational systems."
+            ],
+            "correctAnswer": 0,
+            "rationale": "AI governance frameworks establish organizational structures, policies, and processes to oversee AI deployment—ensuring safety, ethical use, regulatory compliance, and appropriate risk management. Good governance enables responsible innovation rather than slowing it. Governance reduces but doesn't eliminate all risks, and applies to administrative AI as well as clinical applications.",
+            "tags": [
+              "ai-governance",
+              "oversight-structures",
+              "risk-management",
+              "responsible-innovation"
+            ]
+          },
+          {
+            "id": "EGC-HA-B-002",
+            "level": 1,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.32,
+            "discrimination": 1.09,
+            "bloomLevel": "Understand",
+            "question": "Why is transparency important in healthcare AI systems used for administrative decision-making?",
+            "options": [
+              "Transparency is unnecessary since AI algorithms are too complex for administrators to understand anyway.",
+              "Transparency enables stakeholders to understand how decisions are made, identify potential biases, and maintain accountability for outcomes.",
+              "Transparency automatically guarantees that AI systems will make perfect decisions without any errors or problems.",
+              "Transparency only matters for clinical AI systems that affect patient care, not administrative tools that affect operations."
+            ],
+            "correctAnswer": 1,
+            "rationale": "Transparency in AI systems enables administrators, staff, and patients to understand how decisions are made, evaluate whether they're appropriate, identify potential biases or errors, and maintain accountability. This is important for both clinical and administrative systems. Transparency doesn't make systems infallible or perfect, and while AI is complex, appropriate explanation methods can make decision logic understandable.",
+            "tags": [
+              "transparency",
+              "explainability",
+              "accountability",
+              "trust"
+            ]
+          },
+          {
+            "id": "EGC-HA-B-003",
+            "level": 2,
+            "type": "scenario",
+            "points": 10,
+            "difficulty": 0.38,
+            "discrimination": 1.12,
+            "bloomLevel": "Apply",
+            "question": "Your hospital is implementing an AI system that uses patient data. What is the most important privacy consideration?",
+            "options": [
+              "Ensure the AI system complies with HIPAA and organizational privacy policies, uses minimum necessary data, and maintains appropriate security safeguards.",
+              "Patient data privacy doesn't apply to AI systems since they're internal tools used only by authorized healthcare staff.",
+              "AI systems automatically comply with all privacy regulations if purchased from reputable vendors without any organizational oversight needed.",
+              "Privacy considerations only matter for patient care data and not for administrative data like scheduling or billing information."
+            ],
+            "correctAnswer": 0,
+            "rationale": "Healthcare AI systems must comply with HIPAA and privacy regulations, implement appropriate security controls, follow minimum necessary principles, and maintain patient confidentiality. This applies to AI systems regardless of being internal tools, requires organizational verification beyond vendor claims, and encompasses all patient information including administrative data.",
+            "tags": [
+              "privacy",
+              "hipaa-compliance",
+              "data-security",
+              "patient-confidentiality"
+            ]
+          },
+          {
+            "id": "EGC-HA-B-004",
+            "level": 2,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.4,
+            "discrimination": 1.13,
+            "bloomLevel": "Understand",
+            "question": "What is algorithmic bias in healthcare AI systems and why does it matter?",
+            "options": [
+              "Algorithmic bias occurs when AI systems produce systematically unfair outcomes for certain groups, potentially perpetuating health inequities.",
+              "Algorithmic bias is impossible in AI systems since algorithms are purely mathematical and cannot have human prejudices.",
+              "Algorithmic bias only affects clinical care decisions and has no impact on administrative or operational functions.",
+              "Algorithmic bias is a theoretical concern that doesn't actually occur in properly designed commercial AI systems."
+            ],
+            "correctAnswer": 0,
+            "rationale": "Algorithmic bias occurs when AI systems produce systematically different outcomes for different groups due to biased training data, problematic features, or optimization criteria—potentially exacerbating health inequities. Despite being mathematical, algorithms can encode human biases from data or design choices. Bias affects administrative functions (scheduling, hiring) as well as clinical decisions, and occurs even in commercial systems.",
+            "tags": [
+              "algorithmic-bias",
+              "health-equity",
+              "fairness",
+              "discrimination"
+            ]
+          },
+          {
+            "id": "EGC-HA-B-005",
+            "level": 2,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.36,
+            "discrimination": 1.11,
+            "bloomLevel": "Apply",
+            "question": "Your organization is selecting an AI vendor for a clinical decision support system. What governance question is most critical?",
+            "options": [
+              "How was the AI model trained, validated, and tested? What evidence supports its safety and effectiveness for your patient population?",
+              "Does the vendor offer the lowest price compared to competitors regardless of system quality or evidence?",
+              "Does the system use the latest AI technology terminology like 'deep learning' or 'neural networks' in marketing materials?",
+              "Will the vendor take full legal liability for all decisions made using the AI system without organizational responsibility?"
+            ],
+            "correctAnswer": 0,
+            "rationale": "Critical governance questions focus on clinical validation: training data, testing methodology, evidence of safety and effectiveness, and applicability to your specific patient population. These determine whether the system is appropriate for clinical use. Price alone doesn't ensure quality, technology terminology doesn't validate effectiveness, and organizations cannot fully transfer liability for systems they choose to implement.",
+            "tags": [
+              "vendor-selection",
+              "clinical-validation",
+              "evidence-standards",
+              "due-diligence"
+            ]
+          },
+          {
+            "id": "EGC-HA-B-006",
+            "level": 3,
+            "type": "scenario",
+            "points": 10,
+            "difficulty": 0.43,
+            "discrimination": 1.15,
+            "bloomLevel": "Apply",
+            "question": "An AI system's decision leads to a poor patient outcome. Who is ultimately accountable?",
+            "options": [
+              "The healthcare organization and clinicians remain accountable for patient outcomes even when using AI tools—AI augments rather than transfers responsibility.",
+              "The AI vendor is fully liable since the algorithm made the decision and the organization was just following the system's recommendations.",
+              "The individual clinician who entered data into the AI system bears sole responsibility regardless of organizational implementation decisions.",
+              "No one is accountable since AI decisions are too complex for humans to understand and cannot be fairly attributed to individuals."
+            ],
+            "correctAnswer": 0,
+            "rationale": "Healthcare organizations and clinicians remain accountable for patient outcomes when using AI—AI is a tool that augments decision-making but doesn't transfer fundamental responsibility for care. Organizations are accountable for appropriate system selection, implementation, and oversight; clinicians for exercising judgment. Accountability cannot be fully shifted to vendors, concentrated on front-line staff alone, or dissolved due to complexity.",
+            "tags": [
+              "accountability",
+              "professional-responsibility",
+              "clinical-judgment",
+              "liability"
+            ]
+          },
+          {
+            "id": "EGC-HA-B-007",
+            "level": 2,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.39,
+            "discrimination": 1.12,
+            "bloomLevel": "Understand",
+            "question": "What is the purpose of ongoing monitoring and auditing of deployed AI systems?",
+            "options": [
+              "Monitoring ensures AI systems continue to perform safely and effectively over time, detecting performance drift or unintended consequences.",
+              "Monitoring is unnecessary once AI systems are validated and deployed since they automatically maintain consistent performance indefinitely.",
+              "Monitoring exists solely to satisfy regulatory requirements and has no practical value for system performance or safety.",
+              "Monitoring should only happen if problems are reported—proactive surveillance of AI systems wastes resources unnecessarily."
+            ],
+            "correctAnswer": 0,
+            "rationale": "Ongoing monitoring is essential because AI system performance can drift over time due to changing data patterns, populations, or workflows. Monitoring detects degradation, bias, unintended consequences, or misuse. It's not just regulatory compliance but essential for safe, effective operation. Waiting for reported problems rather than proactive monitoring creates preventable risks.",
+            "tags": [
+              "continuous-monitoring",
+              "performance-tracking",
+              "model-drift",
+              "quality-assurance"
+            ]
+          },
+          {
+            "id": "EGC-HA-B-008",
+            "level": 3,
+            "type": "scenario",
+            "points": 10,
+            "difficulty": 0.45,
+            "discrimination": 1.17,
+            "bloomLevel": "Apply",
+            "question": "Your AI system was trained on data from predominantly white patient populations. What ethical obligation do you have when deploying to a diverse community?",
+            "options": [
+              "Validate system performance across all demographic groups, monitor for bias, adjust or supplement training data as needed, and maintain transparency about limitations.",
+              "Deploy the system universally since AI algorithms are objective and will work equally well for all populations regardless of training data.",
+              "Only use the system for white patients since it was trained on that population and explicitly exclude other demographic groups.",
+              "Deploy broadly without any special considerations since validating across demographics would be too expensive and time-consuming."
+            ],
+            "correctAnswer": 0,
+            "rationale": "Ethical deployment requires validating performance across all patient groups, monitoring for differential performance or bias, supplementing training data or adjusting algorithms if needed, and being transparent about any limitations. The other options either incorrectly assume universality, inappropriately restrict access, or prioritize convenience over equity and safety.",
+            "tags": [
+              "health-equity",
+              "diverse-populations",
+              "validation-requirements",
+              "bias-mitigation"
+            ]
+          }
+        ]
+      },
+      {
+        "dimensionCode": "SIM",
+        "dimensionName": "Strategic Implementation and Change Management",
+        "description": "Understanding strategic planning, implementation approaches, and change management for AI initiatives in healthcare",
+        "weight": 0.125,
+        "totalPoints": 75,
+        "items": [
+          {
+            "id": "SIM-HA-B-001",
+            "level": 1,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.3,
+            "discrimination": 1.08,
+            "bloomLevel": "Remember",
+            "question": "What is the most important first step when developing an AI strategy for a healthcare organization?",
+            "options": [
+              "Identify specific organizational challenges and opportunities where AI could create meaningful value rather than adopting AI for its own sake.",
+              "Purchase as many AI tools as possible immediately to avoid falling behind competitors in technology adoption.",
+              "Implement AI systems in all departments simultaneously to maximize efficiency gains and speed of transformation.",
+              "Focus exclusively on cost reduction opportunities since financial benefits are the only valid justification for AI investment."
+            ],
+            "correctAnswer": 0,
+            "rationale": "Effective AI strategy starts with identifying specific organizational problems or opportunities where AI can create value—beginning with mission-aligned goals rather than technology for its own sake. Successful implementation is strategic and thoughtful, not universal and rushed. Value includes multiple dimensions beyond just cost reduction (quality, safety, experience, access).",
+            "tags": [
+              "strategic-planning",
+              "problem-definition",
+              "value-identification",
+              "goal-alignment"
+            ]
+          },
+          {
+            "id": "SIM-HA-B-002",
+            "level": 1,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.32,
+            "discrimination": 1.09,
+            "bloomLevel": "Understand",
+            "question": "Why is stakeholder engagement critical for successful AI implementation in healthcare?",
+            "options": [
+              "Stakeholder engagement wastes time and should be minimized to implement AI systems quickly before resistance develops.",
+              "Stakeholder engagement ensures users understand AI tools, trust their value, and adopt them effectively while addressing valid concerns.",
+              "Stakeholder engagement is only necessary for clinical AI systems and not for administrative or operational applications.",
+              "Stakeholder engagement guarantees universal support for AI initiatives and eliminates all implementation challenges."
+            ],
+            "correctAnswer": 1,
+            "rationale": "Stakeholder engagement is essential because successful AI adoption requires users to understand, trust, and effectively use new tools. Engagement addresses valid concerns, incorporates user expertise, and builds support. This matters for both clinical and administrative systems. While engagement doesn't guarantee universal support or eliminate all challenges, it significantly increases implementation success.",
+            "tags": [
+              "stakeholder-engagement",
+              "change-management",
+              "user-adoption",
+              "implementation-success"
+            ]
+          },
+          {
+            "id": "SIM-HA-B-003",
+            "level": 2,
+            "type": "scenario",
+            "points": 10,
+            "difficulty": 0.38,
+            "discrimination": 1.12,
+            "bloomLevel": "Apply",
+            "question": "Your hospital is implementing an AI scheduling system, but staff are resistant. What is the most effective approach?",
+            "options": [
+              "Engage staff early to understand concerns, demonstrate benefits, provide training, incorporate feedback, and implement gradually with support.",
+              "Mandate use immediately without discussion since resistance to new technology is always irrational and will fade quickly.",
+              "Abandon the implementation entirely since any staff resistance indicates the AI system is inappropriate for the organization.",
+              "Replace resistant staff members with new employees who will be more accepting of AI technology and systems."
+            ],
+            "correctAnswer": 0,
+            "rationale": "Effective change management addresses resistance by engaging stakeholders early, understanding and addressing legitimate concerns, demonstrating value, providing adequate training, incorporating user feedback, and implementing gradually with support. The other options either force adoption without addressing concerns, give up too easily, or inappropriately blame staff for reasonable concerns about new systems.",
+            "tags": [
+              "change-management",
+              "resistance-management",
+              "implementation-strategy",
+              "user-engagement"
+            ]
+          },
+          {
+            "id": "SIM-HA-B-004",
+            "level": 2,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.4,
+            "discrimination": 1.13,
+            "bloomLevel": "Understand",
+            "question": "What is the primary advantage of starting with a pilot implementation rather than organization-wide AI deployment?",
+            "options": [
+              "Pilots enable learning, refinement, and demonstration of value in a controlled setting before broader rollout, reducing implementation risks.",
+              "Pilots are unnecessary delays that waste time and resources when organizations should immediately deploy AI broadly.",
+              "Pilots guarantee that AI implementations will succeed organization-wide if the pilot shows any positive results at all.",
+              "Pilots exist only to satisfy regulatory requirements and have no practical value for implementation planning."
+            ],
+            "correctAnswer": 0,
+            "rationale": "Pilots enable organizations to learn about the technology, identify and address issues, refine workflows, demonstrate value to skeptics, and build confidence before broader deployment. This reduces risk and improves ultimate success. Pilots aren't unnecessary delays or just regulatory compliance, and pilot success doesn't automatically guarantee organization-wide success without careful scale-up planning.",
+            "tags": [
+              "pilot-implementation",
+              "risk-mitigation",
+              "iterative-deployment",
+              "learning-approach"
+            ]
+          },
+          {
+            "id": "SIM-HA-B-005",
+            "level": 2,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.36,
+            "discrimination": 1.11,
+            "bloomLevel": "Apply",
+            "question": "Your organization wants to measure AI implementation success. What metrics would be most appropriate?",
+            "options": [
+              "Balanced metrics including intended outcomes (efficiency, quality), user adoption rates, staff satisfaction, and unintended consequences.",
+              "Only technical metrics like system uptime and processing speed since those are the only objective measures of success.",
+              "Only cost reduction metrics since financial return on investment is the sole valid measure of AI implementation success.",
+              "No metrics are needed since AI implementations are too complex to measure and success is self-evident from usage."
+            ],
+            "correctAnswer": 0,
+            "rationale": "Appropriate success measurement includes balanced metrics: intended outcomes (efficiency, quality, safety improvements), adoption and usage patterns, user satisfaction, and monitoring for unintended consequences. Narrow focus on only technical performance or only financial returns misses important dimensions of value. While complex, AI implementations can and should be measured systematically.",
+            "tags": [
+              "success-metrics",
+              "outcome-measurement",
+              "balanced-evaluation",
+              "roi-assessment"
+            ]
+          },
+          {
+            "id": "SIM-HA-B-006",
+            "level": 3,
+            "type": "scenario",
+            "points": 10,
+            "difficulty": 0.43,
+            "discrimination": 1.15,
+            "bloomLevel": "Apply",
+            "question": "Six months after implementing an AI system, usage rates have declined significantly. What should you investigate first?",
+            "options": [
+              "Investigate whether the system adds real value to workflows, understand user pain points, assess whether initial training was adequate, and examine system performance.",
+              "Immediately mandate increased usage and threaten consequences for staff who don't use the system sufficiently.",
+              "Assume the AI vendor provided a defective product and terminate the contract without investigating organizational factors.",
+              "Conclude that staff are technology-resistant and ignore declining usage since adoption challenges are always the users' fault."
+            ],
+            "correctAnswer": 0,
+            "rationale": "Declining usage should prompt investigation of root causes: Does the system actually provide value? Are there workflow integration issues? Was training sufficient? Has system performance degraded? Is feedback being addressed? This diagnostic approach can identify addressable problems. The other options inappropriately blame and coerce users, blame vendors without investigation, or dismiss valid concerns about system utility.",
+            "tags": [
+              "adoption-challenges",
+              "root-cause-analysis",
+              "system-optimization",
+              "user-feedback"
+            ]
+          },
+          {
+            "id": "SIM-HA-B-007",
+            "level": 2,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.39,
+            "discrimination": 1.12,
+            "bloomLevel": "Understand",
+            "question": "What is the most important consideration when integrating AI systems with existing healthcare IT infrastructure?",
+            "options": [
+              "Ensure seamless data flow between systems, maintain data quality, avoid creating new workflow inefficiencies, and preserve existing functionality.",
+              "Always replace all existing systems with the new AI platform regardless of disruption or cost to ensure maximum integration.",
+              "Keep AI systems completely separate from other IT systems to avoid any possibility of technical problems or complications.",
+              "Integration planning is unnecessary since modern AI systems automatically connect with any healthcare IT infrastructure."
+            ],
+            "correctAnswer": 0,
+            "rationale": "Successful AI integration requires ensuring appropriate data flow between systems, maintaining data quality, avoiding workflow disruption, and preserving valuable existing functionality. Complete replacement is often unnecessary and disruptive, complete isolation limits AI value, and integration doesn't happen automatically—it requires careful planning and technical work.",
+            "tags": [
+              "system-integration",
+              "interoperability",
+              "workflow-design",
+              "it-infrastructure"
+            ]
+          },
+          {
+            "id": "SIM-HA-B-008",
+            "level": 3,
+            "type": "scenario",
+            "points": 10,
+            "difficulty": 0.44,
+            "discrimination": 1.16,
+            "bloomLevel": "Apply",
+            "question": "Your AI implementation achieved technical success but users report it created more work rather than reducing it. What went wrong?",
+            "options": [
+              "Implementation likely prioritized technical deployment over workflow integration, creating additional steps or failing to remove old processes when adding AI.",
+              "Nothing went wrong—users always complain about change and their concerns should be ignored since the AI is technically working.",
+              "The AI system is fundamentally flawed and should be immediately removed since any system that creates work is completely useless.",
+              "Users need more training since they obviously don't understand how to use the AI system properly to reduce workload."
+            ],
+            "correctAnswer": 0,
+            "rationale": "When technically successful AI increases work, the likely issue is poor workflow integration—adding AI steps without removing old ones, creating duplicate documentation, or not streamlining end-to-end processes. This requires workflow redesign, not dismissing user concerns, abandoning the system entirely, or just providing more training. User feedback about work burden is valuable diagnostic information.",
+            "tags": [
+              "workflow-integration",
+              "process-redesign",
+              "user-experience",
+              "implementation-gaps"
+            ]
+          }
+        ]
+      },
+      {
+        "dimensionCode": "TAS",
+        "dimensionName": "Technical AI Skills and System Interaction",
+        "description": "Understanding technical aspects of AI systems, data requirements, and effective human-AI interaction in healthcare contexts",
+        "weight": 0.125,
+        "totalPoints": 75,
+        "items": [
+          {
+            "id": "TAS-HA-B-001",
+            "level": 1,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.28,
+            "discrimination": 1.07,
+            "bloomLevel": "Remember",
+            "question": "What is the most critical data requirement for training effective healthcare AI systems?",
+            "options": [
+              "AI requires high-quality, representative, and sufficient volumes of relevant data to learn accurate patterns for the intended application.",
+              "AI can work with any data regardless of quality since algorithms automatically correct for errors and inconsistencies.",
+              "AI only needs small amounts of data since modern systems can generalize perfectly from limited examples.",
+              "AI works best with data from a single source to avoid confusion from different formats or standards."
+            ],
+            "correctAnswer": 0,
+            "rationale": "Effective AI requires high-quality data (accurate, complete, relevant), representative of the populations and contexts where it will be used, in sufficient volume to learn patterns reliably. AI doesn't automatically correct poor data quality, needs adequate volume (not just small samples), and often benefits from diverse data sources rather than being limited to single sources.",
+            "tags": [
+              "data-quality",
+              "training-requirements",
+              "data-representativeness",
+              "ai-fundamentals"
+            ]
+          },
+          {
+            "id": "TAS-HA-B-002",
+            "level": 1,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.32,
+            "discrimination": 1.09,
+            "bloomLevel": "Understand",
+            "question": "What does it mean when an AI system provides a 'confidence score' with its predictions?",
+            "options": [
+              "The confidence score indicates how certain the AI model is about its prediction based on the input data and patterns learned during training.",
+              "The confidence score is always 100% accurate in predicting whether the AI's recommendation will be correct.",
+              "The confidence score is meaningless marketing terminology that doesn't provide any useful information for decision-making.",
+              "The confidence score eliminates the need for human judgment since predictions with high confidence are guaranteed to be correct."
+            ],
+            "correctAnswer": 0,
+            "rationale": "Confidence scores indicate the AI system's uncertainty about predictions based on how well the input matches patterns from training data—higher confidence generally (but not always) correlates with accuracy. However, confidence scores aren't perfect predictors of correctness, do provide useful information for decision-making, and don't eliminate the need for human judgment, especially for high-stakes decisions.",
+            "tags": [
+              "confidence-scores",
+              "prediction-uncertainty",
+              "model-interpretation",
+              "decision-support"
+            ]
+          },
+          {
+            "id": "TAS-HA-B-003",
+            "level": 2,
+            "type": "scenario",
+            "points": 10,
+            "difficulty": 0.38,
+            "discrimination": 1.12,
+            "bloomLevel": "Apply",
+            "question": "An AI vendor claims their system is 95% accurate. What additional information should you request before evaluating this claim?",
+            "options": [
+              "Ask about the testing population, specific definition of accuracy, performance on different patient subgroups, and comparison to current practice.",
+              "Accept the 95% accuracy claim without question since it's a high percentage and indicates an excellent system.",
+              "Reject the system entirely since no AI can be 95% accurate and any such claim is obviously fraudulent.",
+              "Only ask about the price since accuracy statistics are too technical for healthcare administrators to evaluate meaningfully."
+            ],
+            "correctAnswer": 0,
+            "rationale": "Evaluating accuracy claims requires understanding: testing population (does it match yours?), how accuracy is defined (sensitivity, specificity, positive predictive value?), performance across subgroups (are there disparities?), and comparison to alternatives (is 95% better than current practice?). Simple acceptance, automatic rejection, or focusing only on cost all fail to properly evaluate clinical utility and appropriateness.",
+            "tags": [
+              "accuracy-evaluation",
+              "performance-metrics",
+              "vendor-claims",
+              "critical-assessment"
+            ]
+          },
+          {
+            "id": "TAS-HA-B-004",
+            "level": 2,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.4,
+            "discrimination": 1.13,
+            "bloomLevel": "Understand",
+            "question": "What is 'model drift' and why does it matter for deployed healthcare AI systems?",
+            "options": [
+              "Model drift occurs when AI performance degrades over time as data patterns change, requiring monitoring and potential retraining to maintain effectiveness.",
+              "Model drift is purely a theoretical concern that doesn't actually occur in properly deployed commercial AI systems.",
+              "Model drift refers to AI systems slowly moving toward better performance automatically over time through continuous learning.",
+              "Model drift only affects experimental AI systems and never impacts validated, production healthcare applications."
+            ],
+            "correctAnswer": 0,
+            "rationale": "Model drift occurs when real-world data patterns change over time (new diseases, changed populations, different practices), causing AI performance to degrade since it was trained on historical patterns. This requires monitoring and potential retraining. Drift is a real practical concern (not just theoretical), typically degrades rather than improves performance, and affects production systems, not just experimental ones.",
+            "tags": [
+              "model-drift",
+              "performance-monitoring",
+              "system-maintenance",
+              "continuous-validation"
+            ]
+          },
+          {
+            "id": "TAS-HA-B-005",
+            "level": 2,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.36,
+            "discrimination": 1.11,
+            "bloomLevel": "Apply",
+            "question": "Your organization is considering building custom AI versus purchasing commercial systems. What is the key trade-off?",
+            "options": [
+              "Custom development offers tailored solutions but requires significant technical expertise, time, and ongoing maintenance vs. commercial systems' faster deployment with less customization.",
+              "Custom AI development is always superior to commercial systems since internally-built solutions are always better for every organization.",
+              "Commercial AI systems are always better than custom development since vendors have more expertise than any single healthcare organization.",
+              "There is no meaningful difference between building and buying AI systems since all approaches produce identical results."
+            ],
+            "correctAnswer": 0,
+            "rationale": "The build vs. buy decision involves trade-offs: custom development enables precise tailoring to unique needs but requires substantial technical capability, time, and ongoing investment in maintenance and updates. Commercial systems deploy faster with vendor support but may require workflow adaptation. Neither approach is universally superior—the decision depends on organizational context, capabilities, and specific needs.",
+            "tags": [
+              "build-vs-buy",
+              "implementation-strategy",
+              "resource-requirements",
+              "customization-tradeoffs"
+            ]
+          },
+          {
+            "id": "TAS-HA-B-006",
+            "level": 3,
+            "type": "scenario",
+            "points": 10,
+            "difficulty": 0.43,
+            "discrimination": 1.15,
+            "bloomLevel": "Apply",
+            "question": "An AI system recommends actions that contradict established clinical guidelines. How should staff be trained to respond?",
+            "options": [
+              "Staff should follow established guidelines and clinical judgment, document the discordance, and escalate to inform system evaluation and potential refinement.",
+              "Staff must always follow AI recommendations exactly since algorithms are more accurate than human judgment and guidelines.",
+              "Staff should immediately override all AI recommendations without consideration since any contradiction indicates the system is completely broken.",
+              "Staff should randomly choose between AI recommendations and guidelines since there's no way to determine which is more appropriate."
+            ],
+            "correctAnswer": 0,
+            "rationale": "When AI contradicts established guidelines, staff should follow evidence-based guidelines and clinical judgment (not blindly follow AI), document the discordance for system evaluation, and escalate so the issue can be investigated. Neither automatic AI adherence, automatic override, nor random selection represent appropriate decision-making. AI should augment rather than replace clinical judgment and evidence-based practice.",
+            "tags": [
+              "clinical-guidelines",
+              "human-oversight",
+              "ai-recommendations",
+              "escalation-protocols"
+            ]
+          },
+          {
+            "id": "TAS-HA-B-007",
+            "level": 2,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.39,
+            "discrimination": 1.12,
+            "bloomLevel": "Understand",
+            "question": "What is the purpose of 'explainable AI' or 'interpretable AI' in healthcare applications?",
+            "options": [
+              "Explainable AI provides insight into how the system reached its conclusions, enabling users to assess appropriateness and maintain accountability.",
+              "Explainable AI is just marketing terminology without any real technical meaning or practical value for healthcare applications.",
+              "Explainable AI automatically guarantees that all AI decisions are correct since transparency equals accuracy in algorithms.",
+              "Explainable AI is only necessary for experimental systems and not for validated, production healthcare AI applications."
+            ],
+            "correctAnswer": 0,
+            "rationale": "Explainable AI provides transparency about how systems reach conclusions—showing what factors influenced predictions—enabling users to assess whether reasoning is appropriate, identify potential errors or biases, and maintain accountability. This isn't just marketing, doesn't guarantee correctness (transparency ≠ accuracy), and remains important for production systems where understanding decision logic matters for trust and proper use.",
+            "tags": [
+              "explainable-ai",
+              "interpretability",
+              "transparency",
+              "decision-logic"
+            ]
+          },
+          {
+            "id": "TAS-HA-B-008",
+            "level": 3,
+            "type": "scenario",
+            "points": 10,
+            "difficulty": 0.44,
+            "discrimination": 1.16,
+            "bloomLevel": "Apply",
+            "question": "Your hospital's AI system performs well overall but has significantly lower accuracy for a specific patient population. What should you do?",
+            "options": [
+              "Investigate the cause, potentially supplement training data for underperforming groups, adjust the model, or limit use until performance is equitable across populations.",
+              "Continue using the system unchanged for all populations since overall accuracy is good and disparities are an acceptable trade-off.",
+              "Exclude the underperforming population from AI use entirely since the system isn't appropriate for them at current performance levels.",
+              "Ignore performance differences since they're inevitable with AI systems and cannot be addressed through technical or data improvements."
+            ],
+            "correctAnswer": 0,
+            "rationale": "Performance disparities require investigation and remediation: identify causes (insufficient training data, relevant features missing?), supplement training data, adjust the model, or limit deployment until equitable performance is achieved. Simply accepting disparities is ethically problematic, excluding populations may worsen equity gaps, and performance differences can often be addressed through technical improvements rather than being inevitable.",
+            "tags": [
+              "performance-disparities",
+              "equity",
+              "model-improvement",
+              "population-specific-validation"
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

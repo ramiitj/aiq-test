@@ -89,6 +89,22 @@ export const dimensionNames: { [key: string]: string } = {
   RIA: "Risk & Investment Analysis",
   PFA: "Portfolio & Financial Analysis",
   CRE: "Compliance, Regulation & Ethics",
+  
+  // Healthcare Administrators Dimensions
+  HAI: "Healthcare AI Understanding",
+  OPM: "Operations and Process Management",
+  FRM: "Financial and Resource Management",
+  QPS: "Quality and Patient Safety",
+  WFM: "Workforce Management",
+  
+  // HR Professional Dimensions
+  TAA: "Talent Acquisition & Analytics",
+  PDA: "Performance & Development Analytics",
+  HRA: "HR Analytics & Data",
+  EEC: "Employee Experience & Culture",
+  CEG: "Compliance, Ethics & Governance",
+  SCS: "Strategic Compensation & Succession",
+  VTO: "Vendor Selection & Technology Operations",
 };
 
 // Performance-Tiered Recommendations Structure
@@ -108,7 +124,8 @@ type AssessmentLevel =
   | "sales-beginner" | "sales-advanced"
   | "ac-beginner" | "ac-advanced"
   | "doc-beginner" | "doc-advanced"
-  | "fa-beginner" | "fa-advanced";
+  | "fa-beginner" | "fa-advanced"
+  | "ha-beginner" | "ha-advanced";
 
 interface TieredRecommendations {
   [dimensionCode: string]: {
@@ -2385,6 +2402,415 @@ export const tieredRecommendations: TieredRecommendations = {
         "Pioneer innovative approaches to financial AI regulatory leadership",
         "Shape organizational strategy around AI ethics and compliance",
         "Lead industry dialogue on regulatory frameworks for financial advisory AI"
+      ]
+    }
+  },
+  
+  // Healthcare Administrators Dimensions
+  OPM: {
+    "ha-beginner": {
+      low: [
+        "Learn foundational AI concepts for healthcare operations and workflow optimization",
+        "Explore AI tools for basic process improvement and efficiency tracking",
+        "Study how AI can support decision-making in healthcare management"
+      ],
+      medium: [
+        "Apply AI tools to optimize scheduling, resource allocation, and patient flow",
+        "Implement AI-driven analytics for operational performance monitoring",
+        "Develop skills in using AI for capacity planning and bottleneck identification"
+      ],
+      high: [
+        "Design comprehensive AI strategies for end-to-end operations transformation",
+        "Lead initiatives integrating AI across multiple operational domains",
+        "Mentor teams in advanced AI applications for healthcare operations excellence"
+      ]
+    },
+    "ha-advanced": {
+      low: [
+        "Strengthen understanding of AI-driven operational transformation methodologies",
+        "Build expertise in change management for AI implementation in healthcare",
+        "Develop strategic thinking around AI's role in operational excellence"
+      ],
+      medium: [
+        "Lead complex AI initiatives across multiple operational departments",
+        "Design AI governance frameworks for healthcare operations",
+        "Implement advanced predictive analytics for operational decision-making"
+      ],
+      high: [
+        "Pioneer innovative AI-driven operational models for healthcare systems",
+        "Shape organizational strategy for AI-enabled operational transformation",
+        "Drive industry leadership in healthcare AI operations innovation"
+      ]
+    }
+  },
+  
+  FRM: {
+    "ha-beginner": {
+      low: [
+        "Learn basics of AI applications in healthcare financial planning and budgeting",
+        "Explore AI tools for cost tracking and financial reporting",
+        "Understand how AI can support resource allocation decisions"
+      ],
+      medium: [
+        "Apply AI analytics to financial forecasting and budget optimization",
+        "Implement AI tools for revenue cycle management and cost reduction",
+        "Use AI for resource utilization analysis and financial risk assessment"
+      ],
+      high: [
+        "Design AI-powered financial management systems for healthcare organizations",
+        "Lead strategic initiatives in AI-driven financial optimization",
+        "Develop expertise in predictive financial modeling using AI"
+      ]
+    },
+    "ha-advanced": {
+      low: [
+        "Deepen knowledge of advanced AI applications in healthcare finance",
+        "Build competency in AI-driven strategic financial planning",
+        "Strengthen understanding of AI's role in value-based care economics"
+      ],
+      medium: [
+        "Lead enterprise-wide AI financial management transformation",
+        "Design sophisticated AI models for financial forecasting and risk management",
+        "Implement AI governance for financial decision-making processes"
+      ],
+      high: [
+        "Pioneer innovative AI financial strategies for healthcare systems",
+        "Shape organizational financial policy around AI capabilities",
+        "Drive industry innovation in healthcare AI financial management"
+      ]
+    }
+  },
+  
+  QPS: {
+    "ha-beginner": {
+      low: [
+        "Learn foundational AI concepts for quality monitoring and patient safety",
+        "Explore AI tools for incident tracking and safety reporting",
+        "Understand AI's role in clinical quality improvement"
+      ],
+      medium: [
+        "Apply AI analytics to quality metrics monitoring and safety event analysis",
+        "Implement AI-powered early warning systems for patient safety",
+        "Use AI for root cause analysis and quality improvement initiatives"
+      ],
+      high: [
+        "Design comprehensive AI quality management and safety systems",
+        "Lead organization-wide AI initiatives for quality excellence",
+        "Develop advanced predictive models for patient safety"
+      ]
+    },
+    "ha-advanced": {
+      low: [
+        "Strengthen expertise in AI-driven quality transformation methodologies",
+        "Build strategic thinking around AI for safety and quality leadership",
+        "Deepen understanding of AI governance in patient safety"
+      ],
+      medium: [
+        "Lead complex AI quality and safety transformation programs",
+        "Design enterprise AI frameworks for quality excellence",
+        "Implement advanced AI analytics for safety prediction and prevention"
+      ],
+      high: [
+        "Pioneer innovative AI approaches to healthcare quality and safety",
+        "Shape organizational strategy for AI-powered quality transformation",
+        "Drive industry leadership in AI quality and safety innovation"
+      ]
+    }
+  },
+  
+  WFM: {
+    "ha-beginner": {
+      low: [
+        "Learn AI basics for healthcare workforce scheduling and staffing",
+        "Explore AI tools for workload balancing and shift optimization",
+        "Understand AI applications in workforce planning and retention"
+      ],
+      medium: [
+        "Apply AI analytics to optimize staffing levels and reduce burnout",
+        "Implement AI-driven scheduling systems for improved efficiency",
+        "Use AI for workforce forecasting and talent management"
+      ],
+      high: [
+        "Design comprehensive AI workforce management strategies",
+        "Lead initiatives in AI-powered talent optimization and engagement",
+        "Develop advanced predictive models for workforce planning"
+      ]
+    },
+    "ha-advanced": {
+      low: [
+        "Strengthen understanding of strategic AI workforce transformation",
+        "Build expertise in AI-driven organizational development",
+        "Deepen knowledge of AI governance for workforce decisions"
+      ],
+      medium: [
+        "Lead enterprise-wide AI workforce optimization programs",
+        "Design sophisticated AI models for talent analytics and retention",
+        "Implement AI frameworks for workforce transformation"
+      ],
+      high: [
+        "Pioneer innovative AI workforce strategies for healthcare systems",
+        "Shape organizational HR policy around AI capabilities",
+        "Drive industry innovation in healthcare AI workforce management"
+      ]
+    }
+  },
+  
+  // HR Professional Dimensions
+  TAA: {
+    "hr-beginner": {
+      low: [
+        "Learn foundational AI concepts for talent acquisition and recruiting",
+        "Explore AI tools for resume screening and candidate sourcing",
+        "Understand AI's role in interview scheduling and coordination"
+      ],
+      medium: [
+        "Apply AI analytics to optimize recruitment pipelines and reduce time-to-hire",
+        "Implement AI-powered candidate assessment and matching tools",
+        "Use AI for predictive hiring and talent pool analysis"
+      ],
+      high: [
+        "Design comprehensive AI recruitment strategies for talent acquisition",
+        "Lead initiatives in AI-driven employer branding and candidate experience",
+        "Develop advanced models for diversity and quality-of-hire prediction"
+      ]
+    },
+    "hr-advanced": {
+      low: [
+        "Strengthen expertise in strategic AI talent acquisition transformation",
+        "Build competency in AI-driven workforce planning at scale",
+        "Deepen understanding of AI governance in hiring decisions"
+      ],
+      medium: [
+        "Lead enterprise-wide AI recruitment transformation programs",
+        "Design sophisticated AI frameworks for talent intelligence",
+        "Implement advanced AI analytics for strategic workforce acquisition"
+      ],
+      high: [
+        "Pioneer innovative AI strategies for talent acquisition excellence",
+        "Shape organizational talent strategy around AI capabilities",
+        "Drive industry leadership in AI-powered recruitment innovation"
+      ]
+    }
+  },
+  
+  PDA: {
+    "hr-beginner": {
+      low: [
+        "Learn AI basics for performance management and employee development",
+        "Explore AI tools for goal tracking and feedback analysis",
+        "Understand AI applications in learning recommendations and skill development"
+      ],
+      medium: [
+        "Apply AI analytics to performance trends and development opportunities",
+        "Implement AI-powered coaching recommendations and career pathing",
+        "Use AI for identifying skill gaps and training needs"
+      ],
+      high: [
+        "Design comprehensive AI performance and development systems",
+        "Lead initiatives in AI-driven talent development and succession planning",
+        "Develop advanced models for performance prediction and growth paths"
+      ]
+    },
+    "hr-advanced": {
+      low: [
+        "Strengthen understanding of AI-driven performance transformation",
+        "Build strategic expertise in AI for organizational development",
+        "Deepen knowledge of AI ethics in performance evaluation"
+      ],
+      medium: [
+        "Lead enterprise-wide AI performance management transformation",
+        "Design sophisticated AI frameworks for talent development",
+        "Implement advanced AI analytics for leadership development"
+      ],
+      high: [
+        "Pioneer innovative AI approaches to performance and development",
+        "Shape organizational development strategy around AI",
+        "Drive industry innovation in AI-powered talent development"
+      ]
+    }
+  },
+  
+  HRA: {
+    "hr-beginner": {
+      low: [
+        "Learn foundational AI concepts for HR data analysis and reporting",
+        "Explore AI tools for workforce metrics and dashboard creation",
+        "Understand AI's role in people analytics and insights"
+      ],
+      medium: [
+        "Apply AI analytics to employee engagement and retention metrics",
+        "Implement AI-powered predictive models for turnover and absenteeism",
+        "Use AI for compensation analysis and workforce trends"
+      ],
+      high: [
+        "Design comprehensive AI-driven people analytics strategies",
+        "Lead initiatives in advanced HR data science and predictive modeling",
+        "Develop sophisticated AI models for organizational health measurement"
+      ]
+    },
+    "hr-advanced": {
+      low: [
+        "Strengthen expertise in strategic AI people analytics",
+        "Build competency in AI-driven workforce intelligence",
+        "Deepen understanding of AI governance in HR data"
+      ],
+      medium: [
+        "Lead enterprise-wide AI people analytics transformation",
+        "Design advanced AI frameworks for workforce intelligence",
+        "Implement sophisticated predictive models for strategic HR decisions"
+      ],
+      high: [
+        "Pioneer innovative AI strategies for people analytics excellence",
+        "Shape organizational HR strategy through AI-driven insights",
+        "Drive industry leadership in AI workforce analytics innovation"
+      ]
+    }
+  },
+  
+  EEC: {
+    "hr-beginner": {
+      low: [
+        "Learn AI basics for employee experience measurement and improvement",
+        "Explore AI tools for engagement surveys and sentiment analysis",
+        "Understand AI applications in culture monitoring and feedback"
+      ],
+      medium: [
+        "Apply AI analytics to employee satisfaction and wellbeing trends",
+        "Implement AI-powered tools for real-time pulse surveys and insights",
+        "Use AI for identifying culture issues and improvement opportunities"
+      ],
+      high: [
+        "Design comprehensive AI employee experience strategies",
+        "Lead initiatives in AI-driven culture transformation and engagement",
+        "Develop advanced models for predicting and improving employee satisfaction"
+      ]
+    },
+    "hr-advanced": {
+      low: [
+        "Strengthen understanding of AI-driven experience transformation",
+        "Build strategic expertise in AI for organizational culture",
+        "Deepen knowledge of AI ethics in employee monitoring"
+      ],
+      medium: [
+        "Lead enterprise-wide AI employee experience programs",
+        "Design sophisticated AI frameworks for culture measurement",
+        "Implement advanced AI analytics for organizational health"
+      ],
+      high: [
+        "Pioneer innovative AI approaches to employee experience excellence",
+        "Shape organizational culture strategy around AI insights",
+        "Drive industry innovation in AI-powered employee experience"
+      ]
+    }
+  },
+  
+  CEG: {
+    "hr-beginner": {
+      low: [
+        "Learn foundational AI concepts for HR compliance and ethics",
+        "Explore AI tools for policy tracking and regulatory monitoring",
+        "Understand AI's role in fair hiring and bias reduction"
+      ],
+      medium: [
+        "Apply AI analytics to compliance monitoring and risk assessment",
+        "Implement AI-powered audit trails and documentation systems",
+        "Use AI for detecting bias and ensuring equitable practices"
+      ],
+      high: [
+        "Design comprehensive AI compliance and ethics frameworks",
+        "Lead initiatives in AI governance for HR decision-making",
+        "Develop advanced models for ethical AI use in people management"
+      ]
+    },
+    "hr-advanced": {
+      low: [
+        "Strengthen expertise in AI governance and ethical frameworks",
+        "Build strategic competency in AI compliance leadership",
+        "Deepen understanding of legal implications of AI in HR"
+      ],
+      medium: [
+        "Lead enterprise-wide AI ethics and compliance programs",
+        "Design sophisticated AI governance frameworks for HR",
+        "Implement advanced AI monitoring for fairness and transparency"
+      ],
+      high: [
+        "Pioneer innovative AI ethics and compliance strategies",
+        "Shape organizational policy around responsible AI in HR",
+        "Drive industry leadership in AI governance and ethics"
+      ]
+    }
+  },
+  
+  SCS: {
+    "hr-beginner": {
+      low: [
+        "Learn AI basics for compensation benchmarking and succession planning",
+        "Explore AI tools for pay equity analysis and market comparisons",
+        "Understand AI applications in identifying high-potential talent"
+      ],
+      medium: [
+        "Apply AI analytics to compensation strategy and succession readiness",
+        "Implement AI-powered tools for pay optimization and talent pipelining",
+        "Use AI for predicting leadership readiness and retention risk"
+      ],
+      high: [
+        "Design comprehensive AI compensation and succession strategies",
+        "Lead initiatives in AI-driven strategic workforce planning",
+        "Develop advanced models for leadership pipeline optimization"
+      ]
+    },
+    "hr-advanced": {
+      low: [
+        "Strengthen understanding of strategic AI compensation and succession",
+        "Build expertise in AI-driven total rewards strategy",
+        "Deepen knowledge of AI for executive talent management"
+      ],
+      medium: [
+        "Lead enterprise-wide AI compensation and succession transformation",
+        "Design sophisticated AI frameworks for strategic talent management",
+        "Implement advanced predictive models for leadership development"
+      ],
+      high: [
+        "Pioneer innovative AI strategies for compensation and succession excellence",
+        "Shape organizational talent strategy around AI capabilities",
+        "Drive industry innovation in AI-powered strategic workforce planning"
+      ]
+    }
+  },
+  
+  VTO: {
+    "hr-beginner": {
+      low: [
+        "Learn foundational AI concepts for HR technology selection and vendor evaluation",
+        "Explore AI tools for system integration and process automation",
+        "Understand AI's role in HR technology optimization"
+      ],
+      medium: [
+        "Apply AI analytics to evaluate and select HR technology vendors",
+        "Implement AI-powered HRIS optimization and workflow automation",
+        "Use AI for technology ROI analysis and system performance"
+      ],
+      high: [
+        "Design comprehensive AI technology strategies for HR operations",
+        "Lead initiatives in AI-driven digital HR transformation",
+        "Develop advanced capabilities in HR technology architecture"
+      ]
+    },
+    "hr-advanced": {
+      low: [
+        "Strengthen expertise in strategic HR technology transformation",
+        "Build competency in AI-driven digital workplace strategy",
+        "Deepen understanding of AI vendor ecosystem and partnerships"
+      ],
+      medium: [
+        "Lead enterprise-wide HR technology transformation programs",
+        "Design sophisticated AI frameworks for HR tech stack optimization",
+        "Implement advanced vendor management and technology governance"
+      ],
+      high: [
+        "Pioneer innovative AI HR technology strategies",
+        "Shape organizational digital HR strategy around AI capabilities",
+        "Drive industry leadership in HR technology innovation"
       ]
     }
   }
