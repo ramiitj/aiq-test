@@ -110,8 +110,8 @@ const About = () => {
 
       <main className="container py-12 max-w-6xl flex-grow">
         {/* Hero Section */}
-        <div className="text-center mb-16">
-          <h1 className="text-5xl lg:text-6xl font-extrabold mb-4 tracking-tight bg-gradient-to-r from-blue-900 to-blue-600 bg-clip-text text-transparent">
+        <div className="text-center mb-16 px-4">
+          <h1 className="text-3xl sm:text-4xl lg:text-6xl font-extrabold mb-4 tracking-tight bg-gradient-to-r from-blue-900 to-blue-600 bg-clip-text text-transparent">
             About AIQ Assessment - Measuring AI Collaboration Intelligence
           </h1>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
@@ -178,7 +178,7 @@ const About = () => {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-4 gap-4">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
             {dimensions.map((dimension, index) => {
               const Icon = dimension.icon;
               return (

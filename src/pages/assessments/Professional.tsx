@@ -27,11 +27,11 @@ export default function ProfessionalAssessments() {
       
       <main className="flex-1 container py-12">
         <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-8">
+          <div className="text-center mb-8 px-4">
             <div className="inline-flex items-center justify-center w-16 h-16 bg-primary/10 rounded-full mb-4">
               <Briefcase className="h-8 w-8 text-primary" />
             </div>
-            <h1 className="text-4xl font-bold mb-3">Professional Track Assessments</h1>
+            <h1 className="text-3xl sm:text-4xl font-bold mb-3">Professional Track Assessments</h1>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto mb-4">
               Role-specific AI collaboration assessments for working professionals across 15 specialized roles
             </p>

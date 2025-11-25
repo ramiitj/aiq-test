@@ -346,8 +346,8 @@ const Dashboard = () => {
       
       <main className="container py-8 max-w-6xl flex-1">
         {/* Welcome Header */}
-        <div className="mb-8">
-          <h1 className="text-3xl lg:text-4xl font-black mb-2 tracking-tight">
+        <div className="mb-8 px-4 sm:px-0">
+          <h1 className="text-2xl sm:text-3xl lg:text-4xl font-black mb-2 tracking-tight">
             Welcome Back{profile?.name ? `, ${profile.name}` : ''}
           </h1>
           <p className="text-sm text-muted-foreground font-medium">

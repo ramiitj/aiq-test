@@ -39,8 +39,8 @@ const Index = () => {
 
       <main>
         {/* Hero Section */}
-        <section className="container py-20 text-center max-w-5xl">
-          <h1 className="text-5xl lg:text-6xl font-extrabold mb-4 tracking-tight leading-tight bg-gradient-to-r from-blue-900 to-blue-600 bg-clip-text text-transparent">
+        <section className="container py-20 text-center max-w-5xl px-4">
+          <h1 className="text-3xl sm:text-4xl lg:text-6xl font-extrabold mb-4 tracking-tight leading-tight bg-gradient-to-r from-blue-900 to-blue-600 bg-clip-text text-transparent">
             Measure Your AI Intelligence with the AIQ Assessment
           </h1>
           <p className="text-lg text-muted-foreground mb-6 max-w-3xl mx-auto leading-relaxed">
@@ -48,7 +48,7 @@ const Index = () => {
             effectively with artificial intelligence. Measure and develop your <strong>AI collaboration skills</strong> 
             across 8 key dimensions with personalized insights backed by <strong>peer-reviewed methodology</strong>.
           </p>
-          <div className="flex gap-3 justify-center flex-wrap mb-6">
+          <div className="flex flex-col sm:flex-row gap-3 justify-center mb-6">
             {isAuthenticated ? (
               <Link to="/dashboard">
                 <Button size="lg" className="text-base px-8 py-6 bg-blue-900 hover:bg-blue-800 font-semibold shadow-lg">
@@ -74,9 +74,9 @@ const Index = () => {
         </section>
 
         {/* Why It Matters - Slim Stats Bar */}
-        <section className="bg-secondary/30 py-12">
-          <div className="container max-w-6xl">
-            <div className="grid md:grid-cols-3 gap-6">
+        <section className="bg-secondary/30 py-8 md:py-12">
+          <div className="container max-w-6xl px-4">
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
               <div className="text-center">
                 <div className="text-5xl font-extrabold text-blue-900 mb-2">78%</div>
                 <p className="text-sm text-muted-foreground mb-1">

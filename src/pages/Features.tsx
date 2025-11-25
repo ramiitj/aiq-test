@@ -149,8 +149,8 @@ const Features = () => {
       
       <main>
         {/* Hero Section */}
-        <section className="container py-20 text-center max-w-5xl">
-          <h1 className="text-5xl lg:text-6xl font-extrabold mb-4 tracking-tight leading-tight bg-gradient-to-r from-blue-900 to-blue-600 bg-clip-text text-transparent">
+        <section className="container py-20 text-center max-w-5xl px-4">
+          <h1 className="text-3xl sm:text-4xl lg:text-6xl font-extrabold mb-4 tracking-tight leading-tight bg-gradient-to-r from-blue-900 to-blue-600 bg-clip-text text-transparent">
             What Makes AIQ Unique
           </h1>
           <p className="text-lg text-muted-foreground mb-8 max-w-3xl mx-auto leading-relaxed">
@@ -159,8 +159,8 @@ const Features = () => {
         </section>
 
         {/* Features Section */}
-        <section className="container py-16 max-w-6xl">
-          <h2 className="text-4xl font-extrabold text-center mb-12 tracking-tight">
+        <section className="container py-16 max-w-6xl px-4">
+          <h2 className="text-3xl sm:text-4xl font-extrabold text-center mb-12 tracking-tight">
             Unique Assessment Features
           </h2>
           <div className="grid md:grid-cols-2 gap-6">
