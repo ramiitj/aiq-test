@@ -12,6 +12,7 @@ import { checkUserRole } from "@/lib/roleUtils";
 import { sanitizeJsonString, sanitizeKeys } from "@/lib/jsonSanitizer";
 import { AdminDataTables } from "@/components/AdminDataTables";
 import { AdminProductAnalytics } from "@/components/AdminProductAnalytics";
+import { AdminIRTAnalytics } from "@/components/AdminIRTAnalytics";
 import { z } from "zod";
 
 // Comprehensive validation schema for assessment uploads
@@ -480,8 +481,20 @@ const Admin = () => {
           </CardContent>
         </Card>
 
-        <AdminProductAnalytics />
-        <AdminDataTables />
+          <AdminProductAnalytics />
+          
+          {/* IRT Analytics Section */}
+          <div className="space-y-4">
+            <div>
+              <h2 className="text-2xl font-bold tracking-tight">IRT Adaptive Selection Analytics</h2>
+              <p className="text-muted-foreground">
+                Advanced analytics for General Advanced assessment's 160→80 item adaptive selection
+              </p>
+            </div>
+            <AdminIRTAnalytics />
+          </div>
+
+          <AdminDataTables />
       </div>
       <Footer />
     </div>
