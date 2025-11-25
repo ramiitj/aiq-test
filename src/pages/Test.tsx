@@ -37,6 +37,15 @@ import { TrueFalseQuestion } from "@/components/TrueFalseQuestion";
 import { SecurityConsentDialog } from "@/components/SecurityConsentDialog";
 import { AIBlocker } from "@/components/AIBlocker";
 import { toast as sonnerToast } from "sonner";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog";
+import { Maximize } from "lucide-react";
 
 interface ConsentData {
   dataCollection: boolean;
@@ -104,6 +113,8 @@ const Test = () => {
   const [violationCount, setViolationCount] = useState(0);
   const [testTerminated, setTestTerminated] = useState(false);
   const [testStarted, setTestStarted] = useState(false);
+  const [fullscreenExitCount, setFullscreenExitCount] = useState(0);
+  const [showFullscreenResumeDialog, setShowFullscreenResumeDialog] = useState(false);
   
   const [showConsent, setShowConsent] = useState(false);
   const [showDemographics, setShowDemographics] = useState(false);
@@ -522,6 +533,90 @@ const Test = () => {
     }
   };
 
+  const handleFullscreenExit = async (exitCount: number) => {
+    setFullscreenExitCount(exitCount);
+    
+    // Terminate and delete test after 3 fullscreen exits
+    if (exitCount >= 3) {
+      setTestTerminated(true);
+      
+      if (testId) {
+        // Delete the test - cascade will remove all related records
+        await supabase
+          .from('tests')
+          .delete()
+          .eq('id', testId);
+      }
+      
+      sonnerToast.error("Assessment Terminated & Deleted", {
+        description: "You exited fullscreen mode 3 times. Your test has been terminated and removed. You must start a new assessment.",
+        duration: 10000,
+      });
+      
+      setTimeout(() => {
+        navigate("/dashboard");
+      }, 3000);
+      return;
+    }
+    
+    // Pause test on fullscreen exit
+    if (!testId) return;
+
+    try {
+      await supabase
+        .from("tests")
+        .update({
+          paused: true,
+          time_remaining: timeRemaining,
+          current_dimension: currentDimension,
+          current_item: currentQuestion,
+          answers: answers
+        })
+        .eq("id", testId);
+
+      // Show resume dialog
+      setShowFullscreenResumeDialog(true);
+      
+      const remainingAttempts = 3 - exitCount;
+      sonnerToast.warning(`Test Paused - Fullscreen Exit ${exitCount}/3`, {
+        description: `You have ${remainingAttempts} fullscreen exit${remainingAttempts !== 1 ? 's' : ''} remaining. Click Resume to continue in fullscreen mode.`,
+        duration: 8000,
+      });
+    } catch (error: any) {
+      console.error("Failed to pause test on fullscreen exit:", error);
+    }
+  };
+
+  const handleResumeFromFullscreenExit = async () => {
+    setShowFullscreenResumeDialog(false);
+    
+    // Re-enter fullscreen
+    try {
+      await document.documentElement.requestFullscreen();
+      
+      // Unpause test
+      if (testId) {
+        await supabase
+          .from("tests")
+          .update({
+            paused: false
+          })
+          .eq("id", testId);
+      }
+      
+      sonnerToast.success("Test Resumed", {
+        description: "Assessment continues in fullscreen mode.",
+        duration: 3000,
+      });
+    } catch (error) {
+      console.error("Failed to re-enter fullscreen:", error);
+      sonnerToast.error("Fullscreen Required", {
+        description: "You must allow fullscreen mode to continue the assessment.",
+        duration: 5000,
+      });
+    }
+  };
+
   const handleDemographicsSubmit = async () => {
     // Validate required fields (age auto-populated for adolescent assessments)
     if (!demographicsData.age || !demographicsData.gender || !demographicsData.education || 
@@ -884,6 +979,43 @@ const Test = () => {
           onDecline={handleSecurityConsentDecline}
           testVersion={version}
         />
+        
+        {/* Fullscreen Resume Dialog */}
+        <Dialog open={showFullscreenResumeDialog} onOpenChange={() => {}}>
+          <DialogContent className="sm:max-w-md">
+            <DialogHeader>
+              <DialogTitle className="flex items-center gap-2">
+                <Maximize className="h-5 w-5 text-amber-600" />
+                Test Paused - Fullscreen Required
+              </DialogTitle>
+              <DialogDescription>
+                You exited fullscreen mode. The assessment must continue in fullscreen.
+              </DialogDescription>
+            </DialogHeader>
+            
+            <div className="py-4 space-y-4">
+              <div className="bg-amber-50 dark:bg-amber-950/50 border border-amber-200 dark:border-amber-800 rounded-lg p-4">
+                <p className="text-sm text-amber-900 dark:text-amber-100">
+                  <strong>Fullscreen exits: {fullscreenExitCount}/3</strong>
+                </p>
+                <p className="text-sm text-muted-foreground mt-2">
+                  You have {3 - fullscreenExitCount} attempt{3 - fullscreenExitCount !== 1 ? 's' : ''} remaining.
+                  After 3 exits, your test will be terminated and deleted.
+                </p>
+              </div>
+              
+              <p className="text-sm text-muted-foreground">
+                Click "Resume Assessment" to re-enter fullscreen mode and continue your test.
+              </p>
+            </div>
+            
+            <DialogFooter>
+              <Button onClick={handleResumeFromFullscreenExit} className="w-full">
+                Resume Assessment
+              </Button>
+            </DialogFooter>
+          </DialogContent>
+        </Dialog>
       </>
     );
   }
@@ -1396,9 +1528,10 @@ const Test = () => {
       {/* AI Blocker Component */}
       {testId && (
         <AIBlocker
-          isActive={testStarted && !showConsent && !showDemographics}
+          isActive={testStarted && !showConsent && !showDemographics && !showFullscreenResumeDialog}
           testId={testId}
           onViolation={handleSecurityViolation}
+          onFullscreenExit={handleFullscreenExit}
           enableFullscreen={true}
         />
       )}

@@ -7,20 +7,24 @@ interface AIBlockerProps {
   isActive: boolean;
   testId: string;
   onViolation: (violationType: string) => void;
+  onFullscreenExit?: (exitCount: number) => void;
   enableFullscreen?: boolean;
 }
 
-export const AIBlocker = ({ isActive, testId, onViolation, enableFullscreen = false }: AIBlockerProps) => {
+export const AIBlocker = ({ isActive, testId, onViolation, onFullscreenExit, enableFullscreen = false }: AIBlockerProps) => {
   const [violations, setViolations] = useState<string[]>([]);
   const [isBlocking, setIsBlocking] = useState(false);
   const isFullscreenTransitioning = useRef(false);
   const fullscreenInitialized = useRef(false);
   const lastViolationTime = useRef<number>(0);
+  const fullscreenExitCount = useRef(0);
   const onViolationRef = useRef(onViolation);
+  const onFullscreenExitRef = useRef(onFullscreenExit);
 
   useEffect(() => {
     onViolationRef.current = onViolation;
-  }, [onViolation]);
+    onFullscreenExitRef.current = onFullscreenExit;
+  }, [onViolation, onFullscreenExit]);
 
   useEffect(() => {
     if (!isActive) return;
@@ -242,6 +246,19 @@ export const AIBlocker = ({ isActive, testId, onViolation, enableFullscreen = fa
     const handleFullscreenChange = () => {
       isFullscreenTransitioning.current = true;
       setTimeout(() => { isFullscreenTransitioning.current = false; }, 1500);
+      
+      // Detect when user exits fullscreen (e.g., pressing Escape)
+      if (!document.fullscreenElement && enableFullscreen && window.innerWidth > 768) {
+        fullscreenExitCount.current += 1;
+        const exitCount = fullscreenExitCount.current;
+        
+        console.log(`🔔 Fullscreen exited (${exitCount}/3)`);
+        
+        // Notify parent component to pause test
+        if (onFullscreenExitRef.current) {
+          onFullscreenExitRef.current(exitCount);
+        }
+      }
     };
 
     const reported = new Set<string>();
