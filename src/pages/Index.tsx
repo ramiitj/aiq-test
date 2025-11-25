@@ -15,15 +15,18 @@ import {
   Rocket,
   Share2,
   ChevronRight,
+  Sparkles,
 } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { Navigation } from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import AssessmentSelector from "@/components/AssessmentSelector";
+import { AssessmentRecommendationQuiz } from "@/components/AssessmentRecommendationQuiz";
 
 const Index = () => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [currentSampleQuestion, setCurrentSampleQuestion] = useState(0);
+  const [showQuiz, setShowQuiz] = useState(false);
 
   // Sample questions for preview
   const sampleQuestions = [
@@ -152,6 +155,9 @@ const Index = () => {
   return (
     <div className="min-h-screen animate-fade-in">
       <Navigation isAuthenticated={isAuthenticated} />
+      
+      {/* Assessment Recommendation Quiz */}
+      <AssessmentRecommendationQuiz open={showQuiz} onClose={() => setShowQuiz(false)} />
 
       <main>
         {/* Hero Section */}
@@ -595,6 +601,103 @@ const Index = () => {
               that organizations increasingly seek but few can objectively measure. Use your results as part of a broader 
               skills portfolio to demonstrate your AI readiness.
             </p>
+          </div>
+        </section>
+
+        {/* Three Track CTA Section */}
+        <section className="container py-16">
+          <div className="text-center mb-8">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4 bg-gradient-to-r from-blue-900 to-blue-700 bg-clip-text text-transparent">
+              Choose Your Assessment Path
+            </h2>
+            <p className="text-lg text-muted-foreground max-w-2xl mx-auto mb-6">
+              Select the assessment track that best matches your experience level and professional goals
+            </p>
+            
+            {/* Help Me Choose Button */}
+            <Button
+              variant="outline"
+              size="lg"
+              onClick={() => setShowQuiz(true)}
+              className="mb-8"
+            >
+              <Sparkles className="mr-2 w-5 h-5" />
+              Not sure? Help me choose
+            </Button>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-6 max-w-6xl mx-auto">
+            {/* General Assessment Card */}
+            <Card className="border-2 hover:shadow-lg transition-shadow">
+              <CardHeader className="text-center pb-4">
+                <div className="mx-auto w-12 h-12 bg-blue-900/10 rounded-lg flex items-center justify-center mb-3">
+                  <Brain className="w-6 h-6 text-blue-900" />
+                </div>
+                <h3 className="text-xl font-bold">General Assessment</h3>
+                <p className="text-sm text-muted-foreground">
+                  Comprehensive AI intelligence evaluation
+                </p>
+              </CardHeader>
+              <CardContent className="space-y-4">
+                <p className="text-sm text-muted-foreground text-center">
+                  For professionals and individuals seeking to validate their AI collaboration skills
+                </p>
+                <Link to="/assessments/general">
+                  <Button className="w-full bg-blue-900 hover:bg-blue-800">
+                    Explore General Track
+                    <ArrowRight className="ml-2 w-4 h-4" />
+                  </Button>
+                </Link>
+              </CardContent>
+            </Card>
+
+            {/* Student Assessment Card */}
+            <Card className="border-2 hover:shadow-lg transition-shadow">
+              <CardHeader className="text-center pb-4">
+                <div className="mx-auto w-12 h-12 bg-blue-900/10 rounded-lg flex items-center justify-center mb-3">
+                  <GraduationCap className="w-6 h-6 text-blue-900" />
+                </div>
+                <h3 className="text-xl font-bold">Student Assessment</h3>
+                <p className="text-sm text-muted-foreground">
+                  Age-appropriate AI skills evaluation
+                </p>
+              </CardHeader>
+              <CardContent className="space-y-4">
+                <p className="text-sm text-muted-foreground text-center">
+                  For students aged 14-17 exploring AI literacy and collaboration competencies
+                </p>
+                <Link to="/assessments/student">
+                  <Button className="w-full bg-blue-900 hover:bg-blue-800">
+                    Explore Student Track
+                    <ArrowRight className="ml-2 w-4 h-4" />
+                  </Button>
+                </Link>
+              </CardContent>
+            </Card>
+
+            {/* Professional Assessment Card */}
+            <Card className="border-2 hover:shadow-lg transition-shadow">
+              <CardHeader className="text-center pb-4">
+                <div className="mx-auto w-12 h-12 bg-blue-900/10 rounded-lg flex items-center justify-center mb-3">
+                  <Briefcase className="w-6 h-6 text-blue-900" />
+                </div>
+                <h3 className="text-xl font-bold">Professional Roles</h3>
+                <p className="text-sm text-muted-foreground">
+                  Role-specific AI assessments
+                </p>
+              </CardHeader>
+              <CardContent className="space-y-4">
+                <p className="text-sm text-muted-foreground text-center">
+                  Specialized assessments for 15+ professional roles with tailored dimensions
+                </p>
+                <Link to="/assessments/professional">
+                  <Button className="w-full bg-blue-900 hover:bg-blue-800">
+                    Explore Professional Track
+                    <ArrowRight className="ml-2 w-4 h-4" />
+                  </Button>
+                </Link>
+              </CardContent>
+            </Card>
           </div>
         </section>
 
