@@ -545,30 +545,33 @@ const Test = () => {
     setFullscreenExitCount(exitCount);
     
     if (exitCount >= 3) {
-      console.log('⛔ Maximum fullscreen exits reached - aborting test');
+      console.log('⛔ Maximum fullscreen exits reached - terminating test');
       setTestTerminated(true);
       
       try {
-        // Mark test as security terminated and completed (aborted), but don't delete
+        // Mark test as security terminated and delete
         await supabase
           .from('tests')
           .update({ 
             security_terminated: true,
-            completed: true,
-            end_time: new Date().toISOString(),
-            fullscreen_exit_count: exitCount
+            paused: true
           })
           .eq('id', testId);
 
-        sonnerToast.error('Test Aborted', {
-          description: 'Test aborted due to 3 fullscreen exits. The test record has been saved.',
+        await supabase
+          .from('tests')
+          .delete()
+          .eq('id', testId);
+
+        sonnerToast.error('Test Terminated', {
+          description: 'Test terminated due to 3 fullscreen exits. Please start a new test.',
           duration: 5000,
         });
 
         navigate('/dashboard');
       } catch (error) {
-        console.error('Failed to abort test:', error);
-        sonnerToast.error('Failed to abort test');
+        console.error('Failed to terminate test:', error);
+        sonnerToast.error('Failed to terminate test');
       }
       return;
     }

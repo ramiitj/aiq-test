@@ -92,7 +92,8 @@ export const SecurityConsentDialog = ({ open, onAccept, onDecline }: SecurityCon
               <li>The test must remain in fullscreen mode at all times</li>
               <li>If you exit fullscreen (e.g., pressing Escape), the test will pause automatically</li>
               <li>You can resume the test up to 3 times by re-entering fullscreen</li>
-              <li>After 3 fullscreen exits, your test will be aborted and marked as incomplete</li>
+              <li>After 3 fullscreen exits, your test will be terminated and deleted permanently</li>
+              <li>You will need to start a completely new assessment</li>
             </ul>
           </AlertDescription>
         </Alert>
