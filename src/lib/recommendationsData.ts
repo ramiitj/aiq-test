@@ -74,6 +74,21 @@ export const dimensionNames: { [key: string]: string } = {
   AET: "Emerging Tech & Future Readiness",
   ALG: "AI Legal, Governance & Risk",
   ATR: "AI Transformation & ROI",
+  
+  // Doctors Dimensions
+  MDA: "Medical AI Understanding",
+  CDM: "Clinical Data Management",
+  PDM: "Precision Diagnostics and Medical Imaging",
+  DSA: "Drug Safety & Adverse Events",
+  CRD: "Clinical Research & Drug Discovery",
+  RAC: "Regulatory Affairs & Compliance",
+  
+  // Financial Advisors Dimensions
+  FAI: "Financial Advisory AI Understanding",
+  CPA: "Client Profiling & Analysis",
+  RIA: "Risk & Investment Analysis",
+  PFA: "Portfolio & Financial Analysis",
+  CRE: "Compliance, Regulation & Ethics",
 };
 
 // Performance-Tiered Recommendations Structure
@@ -91,7 +106,9 @@ type AssessmentLevel =
   | "hr-beginner" | "hr-advanced"
   | "ops-beginner" | "ops-advanced"
   | "sales-beginner" | "sales-advanced"
-  | "ac-beginner" | "ac-advanced";
+  | "ac-beginner" | "ac-advanced"
+  | "doc-beginner" | "doc-advanced"
+  | "fa-beginner" | "fa-advanced";
 
 interface TieredRecommendations {
   [dimensionCode: string]: {
@@ -1957,6 +1974,417 @@ export const tieredRecommendations: TieredRecommendations = {
         "Pioneer breakthrough AI marketing transformation methodologies",
         "Shape organizational culture around AI marketing innovation",
         "Lead industry thought leadership on AI marketing ROI and value creation"
+      ]
+    }
+  },
+  
+  // ========== DOCTORS DIMENSIONS ==========
+  
+  MDA: {
+    "doc-beginner": {
+      low: [
+        "Learn the fundamental concepts of medical AI and its applications in healthcare",
+        "Explore how AI assists with diagnostics, treatment planning, and patient care",
+        "Practice identifying appropriate vs inappropriate uses of AI in clinical settings"
+      ],
+      medium: [
+        "Develop deeper understanding of AI models used in medical imaging and diagnostics",
+        "Learn to evaluate AI-generated clinical insights and recommendations critically",
+        "Explore best practices for integrating AI tools into clinical workflows"
+      ],
+      high: [
+        "Master advanced medical AI concepts including neural networks and deep learning applications",
+        "Lead discussions on effective AI adoption strategies in your clinical practice",
+        "Share expertise on medical AI applications with colleagues and students"
+      ]
+    },
+    "doc-advanced": {
+      low: [
+        "Develop strategic understanding of emerging medical AI technologies and their clinical impact",
+        "Build frameworks for evaluating and implementing AI solutions in healthcare organizations",
+        "Master the principles of AI-augmented clinical decision-making at scale"
+      ],
+      medium: [
+        "Design comprehensive strategies for AI integration across clinical departments",
+        "Create governance frameworks for responsible medical AI deployment",
+        "Establish best practices for AI-enhanced patient care quality and safety"
+      ],
+      high: [
+        "Pioneer innovative approaches to medical AI leadership and organizational transformation",
+        "Shape institutional strategy around AI-driven healthcare innovation",
+        "Lead industry thought leadership on the future of AI in clinical practice"
+      ]
+    }
+  },
+  
+  CDM: {
+    "doc-beginner": {
+      low: [
+        "Learn fundamentals of clinical data management and electronic health records",
+        "Understand how AI helps organize, analyze, and extract insights from patient data",
+        "Practice using AI-powered tools for efficient clinical documentation"
+      ],
+      medium: [
+        "Develop skills in leveraging AI for clinical data quality and completeness",
+        "Learn to use AI tools for pattern recognition in patient records",
+        "Explore best practices for maintaining data privacy while using AI systems"
+      ],
+      high: [
+        "Master advanced techniques for AI-driven clinical data analytics and insights",
+        "Lead implementation of AI-powered clinical documentation systems",
+        "Share expertise on data-driven clinical decision support with peers"
+      ]
+    },
+    "doc-advanced": {
+      low: [
+        "Develop strategic frameworks for enterprise clinical data management with AI",
+        "Build capabilities for AI-powered population health analytics",
+        "Master governance of clinical data assets for AI applications"
+      ],
+      medium: [
+        "Design organization-wide strategies for AI-enhanced clinical data utilization",
+        "Create advanced frameworks for clinical data interoperability and exchange",
+        "Establish best practices for AI-driven clinical insights at scale"
+      ],
+      high: [
+        "Pioneer breakthrough approaches to clinical data strategy and AI integration",
+        "Shape organizational vision for data-driven healthcare delivery",
+        "Lead industry innovation in clinical data science and AI applications"
+      ]
+    }
+  },
+  
+  PDM: {
+    "doc-beginner": {
+      low: [
+        "Learn how AI assists with medical imaging interpretation and diagnostics",
+        "Understand the capabilities and limitations of AI in radiology and pathology",
+        "Practice using AI-powered diagnostic tools under appropriate supervision"
+      ],
+      medium: [
+        "Develop skills in evaluating AI-generated diagnostic insights critically",
+        "Learn to integrate AI imaging tools into diagnostic workflows effectively",
+        "Explore best practices for combining AI assistance with clinical expertise"
+      ],
+      high: [
+        "Master advanced applications of AI in precision diagnostics and imaging",
+        "Lead adoption of AI-enhanced diagnostic capabilities in clinical practice",
+        "Share expertise on AI diagnostic tools with medical colleagues"
+      ]
+    },
+    "doc-advanced": {
+      low: [
+        "Develop strategic vision for AI-powered precision medicine programs",
+        "Build organizational capabilities for advanced diagnostic AI deployment",
+        "Master frameworks for evaluating and procuring diagnostic AI systems"
+      ],
+      medium: [
+        "Design comprehensive strategies for AI-enhanced diagnostic services",
+        "Create governance frameworks for diagnostic AI quality and safety",
+        "Establish best practices for precision medicine at institutional scale"
+      ],
+      high: [
+        "Pioneer innovative diagnostic AI programs and clinical applications",
+        "Shape organizational strategy around precision medicine and AI diagnostics",
+        "Lead industry advancement in AI-powered diagnostic excellence"
+      ]
+    }
+  },
+  
+  DSA: {
+    "doc-beginner": {
+      low: [
+        "Learn how AI helps identify drug interactions and adverse events",
+        "Understand AI-powered pharmacovigilance and medication safety systems",
+        "Practice using AI tools for safe prescribing and drug monitoring"
+      ],
+      medium: [
+        "Develop skills in leveraging AI for proactive medication safety monitoring",
+        "Learn to interpret AI-generated drug safety alerts and recommendations",
+        "Explore best practices for AI-assisted adverse event detection and reporting"
+      ],
+      high: [
+        "Master advanced applications of AI in pharmacovigilance and drug safety",
+        "Lead implementation of AI-powered medication safety programs",
+        "Share expertise on AI drug safety tools with healthcare teams"
+      ]
+    },
+    "doc-advanced": {
+      low: [
+        "Develop strategic frameworks for enterprise pharmacovigilance with AI",
+        "Build organizational capabilities for AI-powered drug safety surveillance",
+        "Master governance of medication safety systems across healthcare networks"
+      ],
+      medium: [
+        "Design comprehensive strategies for AI-enhanced medication safety",
+        "Create advanced frameworks for real-time adverse event detection at scale",
+        "Establish best practices for AI-driven pharmacovigilance excellence"
+      ],
+      high: [
+        "Pioneer breakthrough approaches to AI-powered drug safety programs",
+        "Shape organizational strategy around medication safety innovation",
+        "Lead industry advancement in pharmacovigilance and AI integration"
+      ]
+    }
+  },
+  
+  CRD: {
+    "doc-beginner": {
+      low: [
+        "Learn how AI accelerates clinical research and drug discovery processes",
+        "Understand AI applications in patient recruitment and trial design",
+        "Practice using AI tools for literature review and research synthesis"
+      ],
+      medium: [
+        "Develop skills in leveraging AI for research data analysis and insights",
+        "Learn to use AI for identifying research opportunities and cohort selection",
+        "Explore best practices for AI-assisted clinical trial management"
+      ],
+      high: [
+        "Master advanced applications of AI in clinical research methodologies",
+        "Lead AI-powered research initiatives and drug discovery programs",
+        "Share expertise on AI research tools with academic colleagues"
+      ]
+    },
+    "doc-advanced": {
+      low: [
+        "Develop strategic vision for AI-driven clinical research programs",
+        "Build organizational capabilities for AI-accelerated drug discovery",
+        "Master frameworks for research AI implementation and governance"
+      ],
+      medium: [
+        "Design comprehensive strategies for AI-enhanced clinical research",
+        "Create advanced frameworks for AI-powered translational medicine",
+        "Establish best practices for research AI at institutional scale"
+      ],
+      high: [
+        "Pioneer innovative AI research methodologies and discovery platforms",
+        "Shape organizational strategy around AI-driven medical research",
+        "Lead industry advancement in clinical research AI applications"
+      ]
+    }
+  },
+  
+  RAC: {
+    "doc-beginner": {
+      low: [
+        "Learn healthcare regulatory requirements for AI system deployment",
+        "Understand compliance frameworks for medical AI tools (FDA, HIPAA, etc.)",
+        "Practice following regulatory guidelines when using AI in clinical practice"
+      ],
+      medium: [
+        "Develop skills in evaluating AI systems for regulatory compliance",
+        "Learn to document and audit AI use in accordance with regulations",
+        "Explore best practices for maintaining compliance in AI-augmented care"
+      ],
+      high: [
+        "Master advanced regulatory frameworks for medical AI applications",
+        "Lead compliance initiatives for AI implementation in healthcare",
+        "Share expertise on regulatory affairs with clinical and administrative teams"
+      ]
+    },
+    "doc-advanced": {
+      low: [
+        "Develop strategic frameworks for enterprise AI regulatory compliance",
+        "Build organizational capabilities for medical AI governance and oversight",
+        "Master regulatory strategy for AI innovation in healthcare"
+      ],
+      medium: [
+        "Design comprehensive compliance frameworks for AI healthcare systems",
+        "Create advanced regulatory risk management strategies for medical AI",
+        "Establish best practices for maintaining regulatory excellence at scale"
+      ],
+      high: [
+        "Pioneer innovative approaches to medical AI regulatory leadership",
+        "Shape organizational strategy around AI compliance and governance",
+        "Lead industry dialogue on regulatory frameworks for healthcare AI"
+      ]
+    }
+  },
+  
+  // ========== FINANCIAL ADVISORS DIMENSIONS ==========
+  
+  FAI: {
+    "fa-beginner": {
+      low: [
+        "Learn fundamental concepts of AI in financial advisory and wealth management",
+        "Explore how AI assists with portfolio analysis, risk assessment, and client insights",
+        "Practice identifying appropriate uses of AI tools in financial planning"
+      ],
+      medium: [
+        "Develop deeper understanding of AI models used in financial analysis",
+        "Learn to evaluate AI-generated investment insights and recommendations",
+        "Explore best practices for integrating AI into advisory workflows"
+      ],
+      high: [
+        "Master advanced AI concepts in quantitative finance and portfolio management",
+        "Lead adoption of AI tools to enhance client service and investment outcomes",
+        "Share expertise on financial AI applications with colleagues"
+      ]
+    },
+    "fa-advanced": {
+      low: [
+        "Develop strategic understanding of emerging financial AI technologies",
+        "Build frameworks for evaluating and implementing AI in wealth management",
+        "Master principles of AI-augmented financial advisory at scale"
+      ],
+      medium: [
+        "Design comprehensive strategies for AI integration across advisory services",
+        "Create governance frameworks for responsible financial AI deployment",
+        "Establish best practices for AI-enhanced client outcomes and risk management"
+      ],
+      high: [
+        "Pioneer innovative approaches to financial AI leadership",
+        "Shape organizational strategy around AI-driven wealth management",
+        "Lead industry thought leadership on the future of AI in financial advisory"
+      ]
+    }
+  },
+  
+  CPA: {
+    "fa-beginner": {
+      low: [
+        "Learn how AI helps build comprehensive client profiles and understand needs",
+        "Understand AI tools for analyzing client behavior, goals, and risk tolerance",
+        "Practice using AI-powered CRM and client analysis tools effectively"
+      ],
+      medium: [
+        "Develop skills in leveraging AI for deeper client insights and segmentation",
+        "Learn to use predictive analytics for anticipating client needs",
+        "Explore best practices for AI-enhanced client relationship management"
+      ],
+      high: [
+        "Master advanced AI techniques for client profiling and needs analysis",
+        "Lead implementation of AI-powered client intelligence systems",
+        "Share expertise on client analytics and personalization with peers"
+      ]
+    },
+    "fa-advanced": {
+      low: [
+        "Develop strategic frameworks for enterprise client intelligence with AI",
+        "Build organizational capabilities for AI-powered client analytics at scale",
+        "Master governance of client data and AI-driven insights"
+      ],
+      medium: [
+        "Design comprehensive strategies for AI-enhanced client relationships",
+        "Create advanced frameworks for predictive client modeling and segmentation",
+        "Establish best practices for AI-driven client experience excellence"
+      ],
+      high: [
+        "Pioneer breakthrough approaches to client intelligence and AI integration",
+        "Shape organizational vision for client-centric AI strategies",
+        "Lead industry innovation in financial advisory client analytics"
+      ]
+    }
+  },
+  
+  RIA: {
+    "fa-beginner": {
+      low: [
+        "Learn how AI assists with investment risk assessment and portfolio analysis",
+        "Understand AI tools for market analysis, asset allocation, and risk modeling",
+        "Practice using AI-powered investment research and analysis platforms"
+      ],
+      medium: [
+        "Develop skills in evaluating AI-generated investment insights critically",
+        "Learn to integrate AI analytics into investment decision-making processes",
+        "Explore best practices for AI-assisted risk management and diversification"
+      ],
+      high: [
+        "Master advanced AI applications in quantitative investment analysis",
+        "Lead adoption of sophisticated AI tools for portfolio optimization",
+        "Share expertise on AI-enhanced investment strategies with colleagues"
+      ]
+    },
+    "fa-advanced": {
+      low: [
+        "Develop strategic vision for AI-powered investment management programs",
+        "Build organizational capabilities for advanced risk analytics with AI",
+        "Master frameworks for evaluating and deploying investment AI systems"
+      ],
+      medium: [
+        "Design comprehensive strategies for AI-enhanced investment services",
+        "Create governance frameworks for investment AI quality and compliance",
+        "Establish best practices for AI-driven investment excellence at scale"
+      ],
+      high: [
+        "Pioneer innovative investment AI programs and portfolio strategies",
+        "Shape organizational strategy around AI-driven investment management",
+        "Lead industry advancement in quantitative finance and AI applications"
+      ]
+    }
+  },
+  
+  PFA: {
+    "fa-beginner": {
+      low: [
+        "Learn how AI enhances portfolio construction, rebalancing, and optimization",
+        "Understand AI tools for financial planning and scenario analysis",
+        "Practice using AI-powered financial planning software effectively"
+      ],
+      medium: [
+        "Develop skills in leveraging AI for comprehensive financial plan development",
+        "Learn to use AI for tax optimization and estate planning strategies",
+        "Explore best practices for AI-assisted portfolio management and monitoring"
+      ],
+      high: [
+        "Master advanced AI techniques for holistic financial planning",
+        "Lead implementation of AI-powered wealth management platforms",
+        "Share expertise on portfolio analytics and optimization with peers"
+      ]
+    },
+    "fa-advanced": {
+      low: [
+        "Develop strategic frameworks for enterprise financial planning with AI",
+        "Build organizational capabilities for AI-powered wealth management",
+        "Master governance of portfolio management systems and AI tools"
+      ],
+      medium: [
+        "Design comprehensive strategies for AI-enhanced financial planning",
+        "Create advanced frameworks for portfolio optimization at scale",
+        "Establish best practices for AI-driven wealth management excellence"
+      ],
+      high: [
+        "Pioneer breakthrough approaches to financial planning and AI integration",
+        "Shape organizational vision for wealth management innovation",
+        "Lead industry advancement in portfolio management AI applications"
+      ]
+    }
+  },
+  
+  CRE: {
+    "fa-beginner": {
+      low: [
+        "Learn compliance and regulatory requirements for financial AI systems",
+        "Understand ethical frameworks for AI use in financial advisory (fiduciary duty)",
+        "Practice following regulations and ethical guidelines when using AI tools"
+      ],
+      medium: [
+        "Develop skills in evaluating AI systems for regulatory compliance (SEC, FINRA)",
+        "Learn to document AI use and maintain audit trails appropriately",
+        "Explore best practices for ethical AI use in client advisory relationships"
+      ],
+      high: [
+        "Master advanced compliance frameworks for financial AI applications",
+        "Lead ethical AI initiatives and regulatory compliance programs",
+        "Share expertise on AI governance with compliance and advisory teams"
+      ]
+    },
+    "fa-advanced": {
+      low: [
+        "Develop strategic frameworks for enterprise AI compliance in wealth management",
+        "Build organizational capabilities for financial AI governance and ethics",
+        "Master regulatory strategy for AI innovation in financial services"
+      ],
+      medium: [
+        "Design comprehensive compliance frameworks for AI advisory systems",
+        "Create advanced ethical frameworks and regulatory risk management strategies",
+        "Establish best practices for maintaining compliance excellence at scale"
+      ],
+      high: [
+        "Pioneer innovative approaches to financial AI regulatory leadership",
+        "Shape organizational strategy around AI ethics and compliance",
+        "Lead industry dialogue on regulatory frameworks for financial advisory AI"
       ]
     }
   }
