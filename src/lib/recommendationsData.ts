@@ -105,6 +105,25 @@ export const dimensionNames: { [key: string]: string } = {
   CEG: "Compliance, Ethics & Governance",
   SCS: "Strategic Compensation & Succession",
   VTO: "Vendor Selection & Technology Operations",
+  
+  // Lawyers Dimensions
+  LAI: "Legal AI Understanding",
+  PEL: "Practice Efficiency & Leverage",
+  CER: "Client Engagement & Relations",
+  IAV: "Information Analysis & Validation",
+  LLC: "Legal Logic & Compliance",
+  CSL: "Communication & Stakeholder Leadership",
+  TLS: "Technology & Legal Systems",
+  
+  // Management Consultants Dimensions
+  CAI: "Consulting AI Understanding",
+  STA: "Strategy & Transformation Advisory",
+  CDA: "Client Data & Analytics",
+  PIA: "Process Improvement & Automation",
+  CMA: "Change Management & Adoption",
+  DDA: "Digital & Data Analytics",
+  EIS: "Ethics & Implementation Strategy",
+  CIT: "Client Interaction & Trust",
 };
 
 // Performance-Tiered Recommendations Structure
@@ -125,7 +144,9 @@ type AssessmentLevel =
   | "ac-beginner" | "ac-advanced"
   | "doc-beginner" | "doc-advanced"
   | "fa-beginner" | "fa-advanced"
-  | "ha-beginner" | "ha-advanced";
+  | "ha-beginner" | "ha-advanced"
+  | "lawyer-beginner" | "lawyer-advanced"
+  | "mc-beginner" | "mc-advanced";
 
 interface TieredRecommendations {
   [dimensionCode: string]: {
@@ -2811,6 +2832,563 @@ export const tieredRecommendations: TieredRecommendations = {
         "Pioneer innovative AI HR technology strategies",
         "Shape organizational digital HR strategy around AI capabilities",
         "Drive industry leadership in HR technology innovation"
+      ]
+    }
+  },
+
+  // Lawyers Dimensions
+  LAI: {
+    "lawyer-beginner": {
+      low: [
+        "Learn foundational AI concepts through legal practice case studies",
+        "Explore AI-powered legal research platforms like Westlaw Edge and Lexis+ AI",
+        "Study how AI is transforming contract review, discovery, and legal research"
+      ],
+      medium: [
+        "Deepen understanding of AI applications in litigation and transactional work",
+        "Explore advanced AI tools for legal analytics and practice management",
+        "Study ethical implications of AI in legal decision-making and client advisory"
+      ],
+      high: [
+        "Lead AI transformation initiatives in legal practice areas",
+        "Mentor colleagues on AI legal tools and best practices",
+        "Evaluate emerging AI technologies for practice innovation and competitive advantage"
+      ]
+    },
+    "lawyer-advanced": {
+      low: [
+        "Develop strategic frameworks for AI adoption across practice areas",
+        "Build expertise in AI governance for legal operations",
+        "Study AI impact on legal service delivery models and client expectations"
+      ],
+      medium: [
+        "Design firm-wide AI strategy for competitive positioning",
+        "Create frameworks for evaluating AI legal technology investments",
+        "Lead AI transformation programs across multiple practice groups"
+      ],
+      high: [
+        "Pioneer industry standards for AI in legal practice",
+        "Shape regulatory frameworks for AI in legal services",
+        "Drive thought leadership on AI's future in law practice"
+      ]
+    }
+  },
+
+  PEL: {
+    "lawyer-beginner": {
+      low: [
+        "Learn to use AI for legal research and case law analysis",
+        "Explore AI-powered document drafting and contract review tools",
+        "Study how AI can streamline routine legal tasks and processes"
+      ],
+      medium: [
+        "Implement AI tools for case management and client communication",
+        "Develop workflows that leverage AI for legal analysis and strategy",
+        "Create systems for quality control when using AI in legal work"
+      ],
+      high: [
+        "Design comprehensive AI-enhanced legal workflows for practice areas",
+        "Optimize billable efficiency through strategic AI tool deployment",
+        "Lead practice-wide initiatives to maximize AI leverage in legal services"
+      ]
+    },
+    "lawyer-advanced": {
+      low: [
+        "Develop strategic approaches to AI-enabled legal service delivery",
+        "Build frameworks for measuring AI impact on practice efficiency",
+        "Create best practices for AI tool integration across workflows"
+      ],
+      medium: [
+        "Lead firm-wide efficiency transformation through AI adoption",
+        "Design innovative legal service models leveraging AI capabilities",
+        "Implement advanced metrics for AI-driven productivity gains"
+      ],
+      high: [
+        "Pioneer new legal service delivery paradigms using AI",
+        "Transform firm economics through strategic AI leverage",
+        "Set industry benchmarks for AI-enabled legal practice efficiency"
+      ]
+    }
+  },
+
+  CER: {
+    "lawyer-beginner": {
+      low: [
+        "Learn to use AI for client communication and matter management",
+        "Explore AI tools for client intake and case assessment",
+        "Study how AI can enhance client service and responsiveness"
+      ],
+      medium: [
+        "Implement AI-powered client portals and communication systems",
+        "Develop AI-enhanced client reporting and case updates",
+        "Create personalized client experiences using AI insights"
+      ],
+      high: [
+        "Design comprehensive AI-driven client engagement strategies",
+        "Lead initiatives to transform client relationships through AI",
+        "Optimize client satisfaction and retention using AI analytics"
+      ]
+    },
+    "lawyer-advanced": {
+      low: [
+        "Develop strategic frameworks for AI-enhanced client relationships",
+        "Build expertise in AI-powered client intelligence and analytics",
+        "Create best practices for AI in client development and retention"
+      ],
+      medium: [
+        "Lead firm-wide client experience transformation through AI",
+        "Design innovative client service models leveraging AI capabilities",
+        "Implement advanced client relationship management using AI"
+      ],
+      high: [
+        "Pioneer next-generation client engagement paradigms with AI",
+        "Transform firm-client relationships through strategic AI deployment",
+        "Set industry standards for AI-enabled client service excellence"
+      ]
+    }
+  },
+
+  IAV: {
+    "lawyer-beginner": {
+      low: [
+        "Learn to validate AI-generated legal research and analysis",
+        "Develop critical evaluation skills for AI legal insights",
+        "Study common AI limitations in legal information processing"
+      ],
+      medium: [
+        "Implement systematic verification protocols for AI legal work",
+        "Create frameworks for assessing AI output quality in legal contexts",
+        "Build expertise in identifying AI errors in legal analysis"
+      ],
+      high: [
+        "Design comprehensive quality assurance systems for AI legal work",
+        "Lead training on AI validation best practices",
+        "Establish firm standards for AI-generated legal analysis review"
+      ]
+    },
+    "lawyer-advanced": {
+      low: [
+        "Develop advanced frameworks for AI legal analysis validation",
+        "Build expertise in AI reliability assessment for high-stakes matters",
+        "Create methodologies for AI output verification in complex cases"
+      ],
+      medium: [
+        "Lead firm-wide AI quality assurance programs",
+        "Design sophisticated validation protocols for AI legal work",
+        "Implement advanced risk management for AI-assisted legal analysis"
+      ],
+      high: [
+        "Pioneer industry standards for AI legal analysis validation",
+        "Shape professional standards for AI in legal practice",
+        "Drive innovation in AI quality assurance methodologies"
+      ]
+    }
+  },
+
+  LLC: {
+    "lawyer-beginner": {
+      low: [
+        "Learn how AI supports legal reasoning and statutory analysis",
+        "Explore AI tools for compliance monitoring and regulatory research",
+        "Study AI applications in legal precedent analysis and case law"
+      ],
+      medium: [
+        "Implement AI tools for complex legal analysis and argumentation",
+        "Develop AI-enhanced compliance and risk assessment frameworks",
+        "Create systems for AI-assisted legal strategy development"
+      ],
+      high: [
+        "Design comprehensive AI-powered legal reasoning frameworks",
+        "Lead initiatives to enhance legal logic analysis through AI",
+        "Optimize compliance programs using AI-driven insights"
+      ]
+    },
+    "lawyer-advanced": {
+      low: [
+        "Develop strategic approaches to AI in legal reasoning",
+        "Build expertise in AI for complex regulatory compliance",
+        "Create advanced frameworks for AI-assisted legal analysis"
+      ],
+      medium: [
+        "Lead firm-wide legal reasoning enhancement through AI",
+        "Design sophisticated compliance programs leveraging AI",
+        "Implement advanced legal analytics and predictive modeling"
+      ],
+      high: [
+        "Pioneer new paradigms in AI-enhanced legal reasoning",
+        "Transform firm legal analysis capabilities through AI",
+        "Set industry benchmarks for AI in legal logic and compliance"
+      ]
+    }
+  },
+
+  CSL: {
+    "lawyer-beginner": {
+      low: [
+        "Learn to use AI for legal writing and document preparation",
+        "Explore AI tools for client communication and presentation",
+        "Study how AI can enhance stakeholder communication in legal matters"
+      ],
+      medium: [
+        "Implement AI-powered communication strategies for legal matters",
+        "Develop AI-enhanced advocacy and persuasion techniques",
+        "Create systems for AI-assisted stakeholder management"
+      ],
+      high: [
+        "Design comprehensive AI-driven communication frameworks",
+        "Lead initiatives to transform legal communication through AI",
+        "Optimize stakeholder engagement using AI insights"
+      ]
+    },
+    "lawyer-advanced": {
+      low: [
+        "Develop strategic frameworks for AI in legal communication",
+        "Build expertise in AI-powered stakeholder intelligence",
+        "Create best practices for AI in legal leadership communication"
+      ],
+      medium: [
+        "Lead firm-wide communication transformation through AI",
+        "Design innovative legal communication models leveraging AI",
+        "Implement advanced stakeholder management using AI"
+      ],
+      high: [
+        "Pioneer next-generation legal communication with AI",
+        "Transform firm communication strategies through AI",
+        "Set industry standards for AI-enabled legal communication"
+      ]
+    }
+  },
+
+  TLS: {
+    "lawyer-beginner": {
+      low: [
+        "Learn core legal technology platforms and AI tools",
+        "Explore practice management and matter management systems",
+        "Study e-discovery and document management AI technologies"
+      ],
+      medium: [
+        "Implement integrated legal technology solutions",
+        "Develop expertise in AI-powered legal systems",
+        "Create workflows that optimize legal technology usage"
+      ],
+      high: [
+        "Design comprehensive legal technology stacks",
+        "Lead technology adoption initiatives in practice areas",
+        "Optimize firm operations through strategic technology deployment"
+      ]
+    },
+    "lawyer-advanced": {
+      low: [
+        "Develop strategic frameworks for legal technology transformation",
+        "Build expertise in emerging AI legal technologies",
+        "Create roadmaps for firm-wide technology evolution"
+      ],
+      medium: [
+        "Lead firm-wide legal technology strategy",
+        "Design innovative technology architectures for legal services",
+        "Implement advanced legal systems and platforms"
+      ],
+      high: [
+        "Pioneer industry-leading legal technology strategies",
+        "Transform firm capabilities through technology innovation",
+        "Shape the future of legal technology adoption"
+      ]
+    }
+  },
+
+  // Management Consultants Dimensions
+  CAI: {
+    "mc-beginner": {
+      low: [
+        "Learn foundational AI concepts in consulting contexts",
+        "Study how consultancies use AI for client diagnostics and strategy",
+        "Explore AI-powered analytics platforms for business insights"
+      ],
+      medium: [
+        "Deepen expertise in AI-driven transformation advisory",
+        "Learn advanced AI tools for client engagement and strategy execution",
+        "Study ethical implications of AI in consulting recommendations"
+      ],
+      high: [
+        "Lead AI innovation in consulting practice areas",
+        "Mentor colleagues on AI consulting tools and methodologies",
+        "Evaluate emerging AI technologies for consulting competitive advantage"
+      ]
+    },
+    "mc-advanced": {
+      low: [
+        "Develop strategic frameworks for AI in consulting delivery",
+        "Build expertise in AI governance for consulting operations",
+        "Study AI impact on consulting service models and client value"
+      ],
+      medium: [
+        "Design firm-wide AI strategy for consulting differentiation",
+        "Create frameworks for evaluating AI consulting technology investments",
+        "Lead AI transformation programs across consulting practices"
+      ],
+      high: [
+        "Pioneer industry standards for AI in management consulting",
+        "Shape best practices for AI-driven consulting services",
+        "Drive thought leadership on AI's future in consulting"
+      ]
+    }
+  },
+
+  STA: {
+    "mc-beginner": {
+      low: [
+        "Learn to use AI for strategic analysis and scenario planning",
+        "Explore AI-powered market intelligence and competitive analysis tools",
+        "Study how AI supports transformation roadmap development"
+      ],
+      medium: [
+        "Implement AI tools for strategic planning and advisory work",
+        "Develop AI-enhanced transformation frameworks and methodologies",
+        "Create systems for AI-assisted strategy formulation"
+      ],
+      high: [
+        "Design comprehensive AI-powered strategy frameworks",
+        "Lead transformation initiatives leveraging AI insights",
+        "Optimize client strategy development using AI analytics"
+      ]
+    },
+    "mc-advanced": {
+      low: [
+        "Develop advanced frameworks for AI-driven strategy development",
+        "Build expertise in AI for complex transformation programs",
+        "Create methodologies for AI-enhanced strategic advisory"
+      ],
+      medium: [
+        "Lead firm-wide strategy practice transformation through AI",
+        "Design sophisticated transformation frameworks leveraging AI",
+        "Implement advanced strategic analytics and predictive modeling"
+      ],
+      high: [
+        "Pioneer new paradigms in AI-enhanced strategic consulting",
+        "Transform consulting strategy capabilities through AI",
+        "Set industry benchmarks for AI in strategy and transformation"
+      ]
+    }
+  },
+
+  CDA: {
+    "mc-beginner": {
+      low: [
+        "Learn to analyze client data using AI-powered tools",
+        "Explore AI platforms for business intelligence and reporting",
+        "Study how AI enhances client insight generation"
+      ],
+      medium: [
+        "Implement AI-driven client analytics and intelligence systems",
+        "Develop frameworks for AI-enhanced client data interpretation",
+        "Create data-driven recommendations using AI insights"
+      ],
+      high: [
+        "Design comprehensive AI analytics frameworks for client work",
+        "Lead data-driven consulting initiatives using AI",
+        "Optimize client value delivery through advanced analytics"
+      ]
+    },
+    "mc-advanced": {
+      low: [
+        "Develop strategic frameworks for AI in client analytics",
+        "Build expertise in advanced AI data science for consulting",
+        "Create methodologies for AI-driven client intelligence"
+      ],
+      medium: [
+        "Lead firm-wide analytics transformation through AI",
+        "Design innovative data analytics models for consulting",
+        "Implement advanced client intelligence platforms using AI"
+      ],
+      high: [
+        "Pioneer next-generation client analytics with AI",
+        "Transform consulting through strategic data capabilities",
+        "Set industry standards for AI-enabled client analytics"
+      ]
+    }
+  },
+
+  PIA: {
+    "mc-beginner": {
+      low: [
+        "Learn to use AI for process mapping and analysis",
+        "Explore AI tools for automation opportunity identification",
+        "Study how AI supports operational improvement initiatives"
+      ],
+      medium: [
+        "Implement AI-powered process optimization frameworks",
+        "Develop AI-enhanced automation roadmaps for clients",
+        "Create systems for AI-driven efficiency improvement"
+      ],
+      high: [
+        "Design comprehensive process improvement methodologies with AI",
+        "Lead automation initiatives leveraging AI capabilities",
+        "Optimize client operations through AI-driven insights"
+      ]
+    },
+    "mc-advanced": {
+      low: [
+        "Develop strategic frameworks for AI in process transformation",
+        "Build expertise in intelligent automation and AI integration",
+        "Create advanced methodologies for AI-driven optimization"
+      ],
+      medium: [
+        "Lead enterprise-wide process transformation through AI",
+        "Design sophisticated automation strategies leveraging AI",
+        "Implement advanced operational excellence programs with AI"
+      ],
+      high: [
+        "Pioneer innovative process transformation paradigms with AI",
+        "Transform operational consulting through AI capabilities",
+        "Set industry benchmarks for AI-enabled process improvement"
+      ]
+    }
+  },
+
+  CMA: {
+    "mc-beginner": {
+      low: [
+        "Learn change management fundamentals enhanced by AI tools",
+        "Explore AI for stakeholder analysis and engagement",
+        "Study how AI supports adoption and training programs"
+      ],
+      medium: [
+        "Implement AI-powered change management frameworks",
+        "Develop AI-enhanced adoption strategies and communication plans",
+        "Create systems for AI-driven change readiness assessment"
+      ],
+      high: [
+        "Design comprehensive change management programs with AI",
+        "Lead transformation adoption initiatives using AI insights",
+        "Optimize change success through AI-powered analytics"
+      ]
+    },
+    "mc-advanced": {
+      low: [
+        "Develop strategic frameworks for AI in change leadership",
+        "Build expertise in AI-driven organizational transformation",
+        "Create advanced methodologies for AI-enhanced change management"
+      ],
+      medium: [
+        "Lead enterprise-wide transformation programs through AI",
+        "Design sophisticated change strategies leveraging AI capabilities",
+        "Implement advanced adoption programs using AI intelligence"
+      ],
+      high: [
+        "Pioneer next-generation change management with AI",
+        "Transform organizational change capabilities through AI",
+        "Set industry standards for AI-enabled transformation"
+      ]
+    }
+  },
+
+  DDA: {
+    "mc-beginner": {
+      low: [
+        "Learn digital analytics fundamentals and AI tools",
+        "Explore AI platforms for business data analysis",
+        "Study how AI enhances data-driven decision making"
+      ],
+      medium: [
+        "Implement AI-powered analytics frameworks for clients",
+        "Develop expertise in AI-driven insights and recommendations",
+        "Create data strategies leveraging AI capabilities"
+      ],
+      high: [
+        "Design comprehensive digital analytics programs with AI",
+        "Lead data transformation initiatives using AI",
+        "Optimize client decision-making through AI analytics"
+      ]
+    },
+    "mc-advanced": {
+      low: [
+        "Develop strategic frameworks for AI in digital analytics",
+        "Build expertise in advanced AI data science for business",
+        "Create methodologies for AI-enhanced analytics delivery"
+      ],
+      medium: [
+        "Lead firm-wide digital analytics transformation through AI",
+        "Design sophisticated data strategies leveraging AI",
+        "Implement advanced analytics platforms and capabilities"
+      ],
+      high: [
+        "Pioneer innovative digital analytics paradigms with AI",
+        "Transform consulting analytics capabilities through AI",
+        "Set industry benchmarks for AI-driven digital analytics"
+      ]
+    }
+  },
+
+  EIS: {
+    "mc-beginner": {
+      low: [
+        "Learn ethical considerations in AI-driven consulting",
+        "Explore AI governance frameworks for consulting projects",
+        "Study responsible AI implementation strategies"
+      ],
+      medium: [
+        "Implement ethical AI frameworks in consulting engagements",
+        "Develop governance protocols for AI-enabled solutions",
+        "Create responsible AI deployment strategies for clients"
+      ],
+      high: [
+        "Design comprehensive AI ethics and governance programs",
+        "Lead responsible AI implementation initiatives",
+        "Optimize client AI strategies for ethical compliance"
+      ]
+    },
+    "mc-advanced": {
+      low: [
+        "Develop strategic frameworks for AI ethics in consulting",
+        "Build expertise in AI governance and risk management",
+        "Create advanced methodologies for responsible AI advisory"
+      ],
+      medium: [
+        "Lead firm-wide AI ethics and governance programs",
+        "Design sophisticated responsible AI frameworks",
+        "Implement advanced AI risk management strategies"
+      ],
+      high: [
+        "Pioneer industry standards for ethical AI consulting",
+        "Transform consulting through responsible AI leadership",
+        "Shape the future of AI governance in professional services"
+      ]
+    }
+  },
+
+  CIT: {
+    "mc-beginner": {
+      low: [
+        "Learn to use AI for client relationship management",
+        "Explore AI tools for client communication and engagement",
+        "Study how AI enhances trust-building in consulting relationships"
+      ],
+      medium: [
+        "Implement AI-powered client interaction strategies",
+        "Develop AI-enhanced client experience frameworks",
+        "Create systems for AI-driven relationship management"
+      ],
+      high: [
+        "Design comprehensive client trust programs with AI",
+        "Lead client relationship transformation through AI",
+        "Optimize client satisfaction using AI insights"
+      ]
+    },
+    "mc-advanced": {
+      low: [
+        "Develop strategic frameworks for AI in client relationships",
+        "Build expertise in AI-powered client intelligence",
+        "Create advanced methodologies for AI-enhanced trust-building"
+      ],
+      medium: [
+        "Lead firm-wide client experience transformation through AI",
+        "Design innovative client relationship models leveraging AI",
+        "Implement advanced client trust programs using AI"
+      ],
+      high: [
+        "Pioneer next-generation client interaction paradigms with AI",
+        "Transform consulting relationships through strategic AI",
+        "Set industry standards for AI-enabled client trust"
       ]
     }
   }

@@ -37,7 +37,9 @@ export function getRecommendations(
       'Sales Professional': 'sales',
       'Doctors': 'doc',
       'Financial Advisors': 'fa',
-      'Healthcare Administrators': 'ha'
+      'Healthcare Administrators': 'ha',
+      'Lawyers': 'lawyer',
+      'Management Consultants': 'mc'
     };
     
     const roleSlugPrefix = roleToSlugMap[assessmentContext.role] || assessmentContext.role.toLowerCase().replace(/\s+/g, '-');
