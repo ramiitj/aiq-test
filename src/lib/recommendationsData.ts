@@ -45,6 +45,35 @@ export const dimensionNames: { [key: string]: string } = {
   RSC: "Risk & Solution Complexity",
   SAV: "Strategic AI Visioning",
   AAO: "Architecture & Optimization",
+  
+  // Data Scientist Dimensions
+  MAI: "Model AI Understanding",
+  MDE: "ML Development & Experimentation",
+  MEV: "Model Evaluation & Validation",
+  DPP: "Data Preparation & Pipelines",
+  MPD: "ML Production & Deployment",
+  ERM: "Ethics, Reliability & Monitoring",
+  CCE: "Collaboration & Communication Excellence",
+  TIO: "Tools, Infrastructure & Optimization",
+  
+  // Digital Marketer Dimensions (Beginner)
+  CAC: "Content & Asset Creation",
+  CSI: "Customer Segmentation & Insights",
+  CPO: "Campaign Planning & Optimization",
+  PMM: "Performance Measurement & Metrics",
+  PEC: "Personalization & Customer Experience",
+  ETC: "Ethics, Trust & Compliance",
+  TAP: "Tools, Automation & Platforms",
+  
+  // Digital Marketer Dimensions (Advanced)
+  SMA: "Strategic Marketing AI Leadership",
+  AAD: "Advanced Analytics & Data Science",
+  AOM: "AI-Optimized Media & Attribution",
+  AAM: "Autonomous Agent Marketing",
+  AEX: "Experimentation & Testing Excellence",
+  AET: "Emerging Tech & Future Readiness",
+  ALG: "AI Legal, Governance & Risk",
+  ATR: "AI Transformation & ROI",
 };
 
 // Performance-Tiered Recommendations Structure
@@ -1366,6 +1395,568 @@ export const tieredRecommendations: TieredRecommendations = {
         "Pioneer breakthrough applications of AI in architecture",
         "Shape organizational strategy for AI-driven optimization",
         "Lead industry innovation in AI-powered solution architecture"
+      ]
+    }
+  },
+  
+  // Data Scientist Dimensions
+  MDE: {
+    "ds-beginner": {
+      low: [
+        "Learn foundational ML development workflows and experimentation best practices",
+        "Practice designing basic experiments with proper train/validation/test splits",
+        "Understand fundamental ML model types and when to apply each"
+      ],
+      medium: [
+        "Design comprehensive ML experiments with proper hyperparameter tuning",
+        "Implement reproducible ML pipelines with versioning and tracking",
+        "Apply advanced feature engineering and model selection techniques"
+      ],
+      high: [
+        "Architect complex ML experimentation frameworks for team collaboration",
+        "Optimize end-to-end ML development cycles for rapid iteration",
+        "Share ML experimentation best practices through mentorship and documentation"
+      ]
+    },
+    "ds-advanced": {
+      low: [
+        "Master advanced experimentation frameworks including A/B testing at scale",
+        "Implement sophisticated hyperparameter optimization and AutoML techniques",
+        "Build reproducible research environments with containerization"
+      ],
+      medium: [
+        "Design organization-wide ML experimentation platforms and standards",
+        "Create advanced frameworks for distributed training and model parallelism",
+        "Establish best practices for ML research and production alignment"
+      ],
+      high: [
+        "Pioneer innovative approaches to ML experimentation and research",
+        "Shape organizational ML development standards and tooling",
+        "Lead industry thought leadership on ML development excellence"
+      ]
+    }
+  },
+  
+  MEV: {
+    "ds-beginner": {
+      low: [
+        "Learn fundamental model evaluation metrics for different problem types",
+        "Practice proper validation set creation and cross-validation techniques",
+        "Understand basic error analysis and model debugging approaches"
+      ],
+      medium: [
+        "Design comprehensive model evaluation frameworks with multiple metrics",
+        "Implement rigorous validation strategies including stratified sampling",
+        "Apply statistical testing to compare model performance reliably"
+      ],
+      high: [
+        "Architect sophisticated model validation pipelines for production systems",
+        "Develop custom evaluation metrics aligned with business objectives",
+        "Share evaluation best practices through team training and documentation"
+      ]
+    },
+    "ds-advanced": {
+      low: [
+        "Master advanced evaluation techniques including causal inference methods",
+        "Implement sophisticated monitoring for model degradation and drift",
+        "Build comprehensive model validation frameworks for regulated domains"
+      ],
+      medium: [
+        "Design organization-wide model evaluation standards and governance",
+        "Create advanced frameworks for production model monitoring at scale",
+        "Establish best practices for model fairness and bias assessment"
+      ],
+      high: [
+        "Pioneer breakthrough approaches to model evaluation and validation",
+        "Shape organizational standards for ML model quality and reliability",
+        "Lead industry innovation in model evaluation methodologies"
+      ]
+    }
+  },
+  
+  DPP: {
+    "ds-beginner": {
+      low: [
+        "Learn foundational data cleaning and preprocessing techniques",
+        "Practice basic feature engineering for common data types",
+        "Understand data quality assessment and validation approaches"
+      ],
+      medium: [
+        "Design comprehensive data preprocessing pipelines with error handling",
+        "Implement automated feature engineering and transformation workflows",
+        "Apply advanced techniques for handling missing data and outliers"
+      ],
+      high: [
+        "Architect scalable data preparation pipelines for production ML systems",
+        "Optimize data processing workflows for performance and reliability",
+        "Share data engineering best practices across data science teams"
+      ]
+    },
+    "ds-advanced": {
+      low: [
+        "Master advanced data pipeline orchestration with tools like Airflow or Prefect",
+        "Implement sophisticated feature stores and data versioning systems",
+        "Build scalable ETL/ELT pipelines for real-time ML applications"
+      ],
+      medium: [
+        "Design enterprise-wide data infrastructure for ML at scale",
+        "Create advanced frameworks for streaming data processing and feature computation",
+        "Establish organizational standards for data quality and governance"
+      ],
+      high: [
+        "Pioneer innovative approaches to ML data infrastructure",
+        "Shape organizational data platform strategy and architecture",
+        "Lead industry thought leadership on ML data engineering"
+      ]
+    }
+  },
+  
+  MPD: {
+    "ds-beginner": {
+      low: [
+        "Learn fundamental ML model deployment patterns and serving architectures",
+        "Practice basic containerization with Docker for model packaging",
+        "Understand model versioning and rollback strategies"
+      ],
+      medium: [
+        "Design reliable model deployment pipelines with CI/CD integration",
+        "Implement comprehensive monitoring for production model performance",
+        "Apply best practices for model serving optimization and scaling"
+      ],
+      high: [
+        "Architect production ML systems with sophisticated deployment strategies",
+        "Optimize end-to-end ML operations for reliability and performance",
+        "Share MLOps best practices through mentorship and documentation"
+      ]
+    },
+    "ds-advanced": {
+      low: [
+        "Master advanced MLOps patterns including blue-green and canary deployments",
+        "Implement sophisticated model serving infrastructure with auto-scaling",
+        "Build comprehensive observability and monitoring for production ML"
+      ],
+      medium: [
+        "Design organization-wide MLOps platforms and deployment standards",
+        "Create advanced frameworks for multi-model serving and inference optimization",
+        "Establish best practices for ML system reliability engineering"
+      ],
+      high: [
+        "Pioneer breakthrough approaches to ML production systems",
+        "Shape organizational MLOps strategy and platform architecture",
+        "Lead industry innovation in production ML infrastructure"
+      ]
+    }
+  },
+  
+  ERM: {
+    "ds-beginner": {
+      low: [
+        "Learn fundamental ML ethics principles and bias detection techniques",
+        "Practice basic fairness assessment across different demographic groups",
+        "Understand model explainability and interpretability approaches"
+      ],
+      medium: [
+        "Design comprehensive bias testing and mitigation strategies",
+        "Implement fairness-aware ML pipelines with monitoring dashboards",
+        "Apply advanced techniques for model transparency and accountability"
+      ],
+      high: [
+        "Architect ethical ML frameworks for organization-wide adoption",
+        "Develop sophisticated fairness metrics aligned with business values",
+        "Share ML ethics best practices through training and thought leadership"
+      ]
+    },
+    "ds-advanced": {
+      low: [
+        "Master advanced fairness frameworks including causal fairness methods",
+        "Implement comprehensive model governance for regulated applications",
+        "Build sophisticated explainability systems for complex models"
+      ],
+      medium: [
+        "Design organization-wide AI ethics policies and governance structures",
+        "Create advanced frameworks for algorithmic accountability and auditing",
+        "Establish best practices for responsible AI development and deployment"
+      ],
+      high: [
+        "Pioneer innovative approaches to ethical and reliable AI systems",
+        "Shape organizational AI ethics strategy and compliance frameworks",
+        "Lead industry thought leadership on responsible AI practices"
+      ]
+    }
+  },
+  
+  CCE: {
+    "ds-beginner": {
+      low: [
+        "Learn effective communication of technical ML concepts to non-technical stakeholders",
+        "Practice creating clear visualizations of model results and insights",
+        "Understand collaboration patterns in cross-functional data science teams"
+      ],
+      medium: [
+        "Design comprehensive documentation for ML projects and models",
+        "Implement effective knowledge sharing practices within teams",
+        "Apply storytelling techniques to communicate data insights persuasively"
+      ],
+      high: [
+        "Architect team collaboration frameworks for distributed data science work",
+        "Mentor junior data scientists in communication and collaboration skills",
+        "Build bridges between technical teams and business stakeholders"
+      ]
+    },
+    "ds-advanced": {
+      low: [
+        "Master executive-level communication of ML strategy and ROI",
+        "Implement organization-wide ML documentation and knowledge management",
+        "Build effective cross-functional partnerships for ML initiatives"
+      ],
+      medium: [
+        "Design organization-wide data literacy and ML education programs",
+        "Create advanced frameworks for stakeholder engagement and alignment",
+        "Establish best practices for communicating ML uncertainty and limitations"
+      ],
+      high: [
+        "Pioneer innovative approaches to ML communication and collaboration",
+        "Shape organizational culture around data-driven decision making",
+        "Lead industry thought leadership on ML team effectiveness"
+      ]
+    }
+  },
+  
+  TIO: {
+    "ds-beginner": {
+      low: [
+        "Learn fundamental ML tools and libraries for model development",
+        "Practice basic cloud computing for ML workloads (AWS, GCP, Azure)",
+        "Understand version control and collaborative development with Git"
+      ],
+      medium: [
+        "Design efficient ML development environments with proper tooling",
+        "Implement automated workflows using ML frameworks and orchestration tools",
+        "Apply best practices for compute resource optimization and cost management"
+      ],
+      high: [
+        "Architect scalable ML infrastructure for team productivity",
+        "Optimize tool selection and integration for end-to-end ML workflows",
+        "Share infrastructure and tooling best practices across teams"
+      ]
+    },
+    "ds-advanced": {
+      low: [
+        "Master advanced ML infrastructure including GPU clusters and distributed computing",
+        "Implement sophisticated cost optimization for large-scale ML workloads",
+        "Build comprehensive ML platform engineering capabilities"
+      ],
+      medium: [
+        "Design organization-wide ML infrastructure strategy and architecture",
+        "Create advanced frameworks for infrastructure automation and optimization",
+        "Establish best practices for ML platform operations and reliability"
+      ],
+      high: [
+        "Pioneer innovative approaches to ML infrastructure and tooling",
+        "Shape organizational ML platform strategy and technology choices",
+        "Lead industry innovation in ML infrastructure engineering"
+      ]
+    }
+  },
+  
+  // Digital Marketer Beginner Dimensions
+  CAC: {
+    "dm-beginner": {
+      low: [
+        "Learn fundamental AI content generation tools and their appropriate use cases",
+        "Practice basic prompt engineering for marketing copy and social media content",
+        "Understand quality control and brand voice alignment for AI-generated content"
+      ],
+      medium: [
+        "Design comprehensive content workflows integrating AI tools effectively",
+        "Implement systematic testing of AI-generated creative across channels",
+        "Apply advanced techniques for personalizing content at scale with AI"
+      ],
+      high: [
+        "Architect sophisticated content operations leveraging AI automation",
+        "Optimize content creation processes for quality, speed, and brand consistency",
+        "Share AI content best practices through team training and documentation"
+      ]
+    }
+  },
+  
+  CSI: {
+    "dm-beginner": {
+      low: [
+        "Learn fundamental customer segmentation approaches using AI analytics",
+        "Practice interpreting AI-generated customer insights and personas",
+        "Understand basic audience targeting and lookalike modeling techniques"
+      ],
+      medium: [
+        "Design comprehensive segmentation strategies using AI-powered analytics",
+        "Implement predictive models for customer behavior and lifetime value",
+        "Apply advanced clustering and profiling techniques for precise targeting"
+      ],
+      high: [
+        "Architect sophisticated audience intelligence systems with AI",
+        "Optimize segmentation strategies for conversion and retention",
+        "Lead implementation of AI-driven customer insight platforms"
+      ]
+    }
+  },
+  
+  CPO: {
+    "dm-beginner": {
+      low: [
+        "Learn fundamental campaign planning with AI recommendation systems",
+        "Practice basic campaign optimization using AI-powered bid management",
+        "Understand AI-assisted budget allocation and pacing strategies"
+      ],
+      medium: [
+        "Design comprehensive campaign strategies leveraging AI optimization",
+        "Implement automated testing and optimization workflows for campaigns",
+        "Apply advanced techniques for multi-channel campaign orchestration"
+      ],
+      high: [
+        "Architect sophisticated campaign management systems with AI automation",
+        "Optimize end-to-end campaign performance using AI insights",
+        "Share campaign optimization best practices across marketing teams"
+      ]
+    }
+  },
+  
+  PMM: {
+    "dm-beginner": {
+      low: [
+        "Learn fundamental marketing metrics and KPIs for AI-powered campaigns",
+        "Practice basic attribution modeling and performance analysis with AI tools",
+        "Understand automated reporting and dashboard creation techniques"
+      ],
+      medium: [
+        "Design comprehensive measurement frameworks for AI marketing initiatives",
+        "Implement advanced attribution models and incrementality testing",
+        "Apply statistical rigor to marketing performance analysis and testing"
+      ],
+      high: [
+        "Architect sophisticated marketing analytics and measurement systems",
+        "Optimize measurement strategies for accurate ROI and impact assessment",
+        "Lead implementation of AI-powered marketing intelligence platforms"
+      ]
+    }
+  },
+  
+  PEC: {
+    "dm-beginner": {
+      low: [
+        "Learn fundamental personalization techniques using AI recommendation engines",
+        "Practice basic customer journey mapping and optimization with AI",
+        "Understand AI-powered chatbots and conversational marketing basics"
+      ],
+      medium: [
+        "Design comprehensive personalization strategies across customer touchpoints",
+        "Implement AI-driven dynamic content and product recommendations",
+        "Apply advanced techniques for real-time customer experience optimization"
+      ],
+      high: [
+        "Architect sophisticated omnichannel personalization systems with AI",
+        "Optimize customer experience workflows for engagement and conversion",
+        "Share personalization best practices through team enablement"
+      ]
+    }
+  },
+  
+  ETC: {
+    "dm-beginner": {
+      low: [
+        "Learn fundamental privacy regulations (GDPR, CCPA) affecting AI marketing",
+        "Practice ethical data collection and consent management for AI systems",
+        "Understand transparency requirements for AI-powered marketing"
+      ],
+      medium: [
+        "Design comprehensive compliance frameworks for AI marketing initiatives",
+        "Implement privacy-preserving techniques for customer data usage",
+        "Apply best practices for transparent and trustworthy AI marketing"
+      ],
+      high: [
+        "Architect ethical AI marketing programs aligned with regulations",
+        "Lead privacy and trust initiatives for AI-powered customer engagement",
+        "Share ethical AI marketing practices across the organization"
+      ]
+    }
+  },
+  
+  TAP: {
+    "dm-beginner": {
+      low: [
+        "Learn fundamental marketing automation platforms and AI tool integration",
+        "Practice basic workflow automation for routine marketing tasks",
+        "Understand AI-powered tools for social media, email, and content marketing"
+      ],
+      medium: [
+        "Design comprehensive marketing technology stacks with AI capabilities",
+        "Implement advanced automation workflows for campaign execution",
+        "Apply integration best practices for seamless data flow between tools"
+      ],
+      high: [
+        "Architect sophisticated MarTech ecosystems leveraging AI automation",
+        "Optimize tool selection and integration for team productivity",
+        "Share MarTech and automation best practices across marketing teams"
+      ]
+    }
+  },
+  
+  // Digital Marketer Advanced Dimensions
+  SMA: {
+    "dm-advanced": {
+      low: [
+        "Master strategic AI marketing planning and transformation roadmapping",
+        "Implement executive-level AI marketing strategy and ROI frameworks",
+        "Build organizational capabilities for AI-driven competitive advantage"
+      ],
+      medium: [
+        "Design enterprise-wide AI marketing transformation strategies",
+        "Create advanced frameworks for AI marketing investment and portfolio management",
+        "Establish best practices for measuring AI marketing business impact"
+      ],
+      high: [
+        "Pioneer breakthrough AI marketing strategies and business models",
+        "Shape organizational marketing strategy around AI capabilities",
+        "Lead industry thought leadership on AI marketing transformation"
+      ]
+    }
+  },
+  
+  AAD: {
+    "dm-advanced": {
+      low: [
+        "Master advanced marketing analytics including predictive modeling and ML",
+        "Implement sophisticated customer lifetime value and churn prediction models",
+        "Build data science capabilities for marketing decision support"
+      ],
+      medium: [
+        "Design organization-wide marketing data science platforms and capabilities",
+        "Create advanced frameworks for marketing mix modeling and attribution",
+        "Establish best practices for marketing experimentation and causal inference"
+      ],
+      high: [
+        "Pioneer innovative marketing analytics and data science approaches",
+        "Shape organizational marketing analytics strategy and infrastructure",
+        "Lead industry innovation in marketing data science excellence"
+      ]
+    }
+  },
+  
+  AOM: {
+    "dm-advanced": {
+      low: [
+        "Master advanced media buying automation and algorithmic bidding strategies",
+        "Implement sophisticated multi-touch attribution and incrementality testing",
+        "Build capabilities for AI-optimized media planning and budget allocation"
+      ],
+      medium: [
+        "Design enterprise-wide programmatic media and attribution frameworks",
+        "Create advanced strategies for cross-channel media optimization",
+        "Establish best practices for measuring true incremental media impact"
+      ],
+      high: [
+        "Pioneer breakthrough approaches to AI-powered media optimization",
+        "Shape organizational media strategy around AI capabilities",
+        "Lead industry thought leadership on algorithmic media buying"
+      ]
+    }
+  },
+  
+  AAM: {
+    "dm-advanced": {
+      low: [
+        "Master autonomous marketing agents and AI-powered campaign automation",
+        "Implement self-optimizing marketing systems with minimal human oversight",
+        "Build capabilities for agentic workflows in marketing operations"
+      ],
+      medium: [
+        "Design organization-wide autonomous marketing agent architectures",
+        "Create advanced frameworks for AI agent orchestration and governance",
+        "Establish best practices for human-AI collaboration in marketing"
+      ],
+      high: [
+        "Pioneer innovative autonomous marketing systems and agent architectures",
+        "Shape organizational strategy for agentic AI in marketing",
+        "Lead industry innovation in autonomous marketing technologies"
+      ]
+    }
+  },
+  
+  AEX: {
+    "dm-advanced": {
+      low: [
+        "Master advanced A/B testing and multivariate experimentation at scale",
+        "Implement sophisticated causal inference and incrementality frameworks",
+        "Build rigorous experimentation culture and capabilities"
+      ],
+      medium: [
+        "Design enterprise-wide experimentation platforms and methodologies",
+        "Create advanced frameworks for sequential testing and adaptive experiments",
+        "Establish best practices for statistical rigor in marketing testing"
+      ],
+      high: [
+        "Pioneer breakthrough experimentation methodologies for marketing",
+        "Shape organizational experimentation strategy and culture",
+        "Lead industry thought leadership on marketing science excellence"
+      ]
+    }
+  },
+  
+  AET: {
+    "dm-advanced": {
+      low: [
+        "Master emerging AI technologies including generative AI for marketing",
+        "Implement pilot programs for frontier AI capabilities in marketing",
+        "Build organizational readiness for future AI marketing technologies"
+      ],
+      medium: [
+        "Design innovation frameworks for evaluating emerging marketing AI",
+        "Create advanced strategies for AI technology scouting and adoption",
+        "Establish best practices for managing AI technology transitions"
+      ],
+      high: [
+        "Pioneer adoption of cutting-edge AI technologies in marketing",
+        "Shape organizational innovation strategy around emerging AI",
+        "Lead industry exploration of frontier marketing AI applications"
+      ]
+    }
+  },
+  
+  ALG: {
+    "dm-advanced": {
+      low: [
+        "Master AI governance frameworks and regulatory compliance for marketing",
+        "Implement comprehensive risk management for AI marketing systems",
+        "Build legal and compliance capabilities for AI-powered marketing"
+      ],
+      medium: [
+        "Design organization-wide AI marketing governance and risk frameworks",
+        "Create advanced policies for responsible AI marketing practices",
+        "Establish best practices for AI legal compliance and audit readiness"
+      ],
+      high: [
+        "Pioneer innovative AI governance approaches for marketing",
+        "Shape organizational AI ethics and compliance strategy",
+        "Lead industry thought leadership on responsible AI marketing"
+      ]
+    }
+  },
+  
+  ATR: {
+    "dm-advanced": {
+      low: [
+        "Master AI marketing transformation program management and change leadership",
+        "Implement comprehensive ROI measurement for AI marketing investments",
+        "Build organizational capabilities for sustained AI marketing excellence"
+      ],
+      medium: [
+        "Design enterprise-wide AI marketing transformation strategies and roadmaps",
+        "Create advanced frameworks for measuring AI marketing business value",
+        "Establish best practices for AI marketing capability development"
+      ],
+      high: [
+        "Pioneer breakthrough AI marketing transformation methodologies",
+        "Shape organizational culture around AI marketing innovation",
+        "Lead industry thought leadership on AI marketing ROI and value creation"
       ]
     }
   }

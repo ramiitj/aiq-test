@@ -33,7 +33,16 @@ const assessmentItemSchema = z.object({
 });
 
 const dimensionSchema = z.object({
-  dimensionCode: z.enum(['SAU', 'PEI', 'CEC', 'II', 'ALC', 'EJC', 'CS', 'CRS', 'PAI', 'AIF', 'UEA', 'DMI', 'DMP', 'DP', 'DSA', 'PMA']),
+  dimensionCode: z.enum([
+    'SAU', 'PEI', 'CEC', 'II', 'ALC', 'EJC', 'CS', 'CRS', 
+    'PAI', 'AIF', 'UEA', 'DMI', 'DMP', 'DP', 'DSA', 'PMA',
+    'AAI', 'FAA', 'ATP', 'ADA', 'CRA', 'EGC', 'SAC', 'TAS',
+    'BAI', 'RDA', 'DIA', 'PSM', 'STE', 'ABV', 'CCI', 'TDA',
+    'PAM', 'DGA', 'SIM', 'VBC', 'RSC', 'SAV', 'AAO',
+    'MAI', 'MDE', 'MEV', 'DPP', 'MPD', 'ERM', 'CCE', 'TIO',
+    'CAC', 'CSI', 'CPO', 'PMM', 'PEC', 'ETC', 'TAP',
+    'SMA', 'AAD', 'AOM', 'AAM', 'AEX', 'AET', 'ALG', 'ATR'
+  ]),
   dimensionName: z.string().min(1).max(200),
   description: z.string().max(1000).optional(),
   weight: z.number().min(0).max(1).optional(),
