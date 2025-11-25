@@ -1,0 +1,1593 @@
+{
+  "assessmentName": "AIQ Accountants Beginner Assessment - Accounting & Finance Focus",
+  "version": "1.0",
+  "assessmentType": "fixed",
+  "description": "A rigorously designed foundational AI literacy assessment for accounting and finance professionals with 60 items featuring balanced options, randomized correct answer positions, complete sentence formatting, and enhanced anti-gaming measures.",
+  "assessmentConfiguration": {
+    "totalQuestions": 60,
+    "questionsPerDimension": "7-8",
+    "estimatedTime": "60 minutes",
+    "targetAudience": "Accountants, financial analysts, auditors, tax professionals, and finance managers with varying AI experience levels",
+    "timePerQuestion": "60 seconds average",
+    "presentationMode": {
+      "type": "fixed-sequential",
+      "description": "All questions presented in fixed order",
+      "sequencing": "By dimension, 7-8 questions per dimension"
+    },
+    "questionDistribution": {
+      "totalItems": 60,
+      "itemsPerDimension": "7-8 per dimension",
+      "selectionRatio": "100% (all items presented)"
+    },
+    "dimensionSequencing": {
+      "type": "fixed-order",
+      "sequence": [
+        "AAI",
+        "FAA",
+        "ATP",
+        "ADA",
+        "CRA",
+        "EGC",
+        "SAC",
+        "TAS"
+      ],
+      "description": "Candidates complete 7-8 questions per dimension in sequence"
+    }
+  },
+  "scoringConfiguration": {
+    "totalPoints": 600,
+    "pointsPerDimension": 75,
+    "passingScore": 420,
+    "passingPercentage": 70,
+    "scoringMethod": {
+      "type": "simple-sum",
+      "description": "Direct sum of points from correct answers with differential weighting by item difficulty",
+      "basePoints": 10,
+      "formula": "points = basePoints × (1 + difficulty × 0.3) for each correct answer"
+    },
+    "scoringGuidelines": {
+      "0-40%": "Novice (0-240 points) - Significant foundational learning needed",
+      "41-60%": "Beginner (241-360 points) - Basic awareness established",
+      "61-80%": "Developing (361-480 points) - Good foundational understanding",
+      "81-90%": "Proficient (481-540 points) - Strong grasp of fundamentals",
+      "91-100%": "Advanced (541-600 points) - Excellent foundational mastery"
+    }
+  },
+  "instructions": "This AIQ Accountants Beginner assessment evaluates your foundational AI literacy specifically for accounting and finance contexts. You will answer 60 questions total (7-8 per dimension) across 8 accounting-focused dimensions in approximately 60 minutes. Questions feature nuanced options designed to test genuine understanding of AI applications in accounting. Answer all questions to the best of your ability.",
+  "assessmentGuidelines": {
+    "targetLevel": "Foundational awareness and basic understanding of AI in accounting and finance",
+    "cognitiveEmphasis": "65% Remember/Understand (Bloom's levels 1-2), 35% Apply (Bloom's level 3)",
+    "questionTypes": "Multiple-choice (70%), scenario-based (30%)",
+    "difficultyProfile": "Realistic distractors that require genuine AI/accounting understanding to differentiate",
+    "timeAllocation": "Moderate time for careful consideration of accounting-specific nuances",
+    "reliabilityTarget": "Cronbach's alpha ≥ 0.80"
+  },
+  "itemBank": {
+    "totalItems": 60,
+    "itemsPerDimension": 8,
+    "description": "Complete item set with 60 questions (7-8 per dimension) focused on AI literacy for accounting professionals",
+    "bankStatistics": {
+      "averageDifficulty": 0.383,
+      "difficultySD": 0.08,
+      "averageDiscrimination": 1.15,
+      "discriminationSD": 0.05,
+      "contentCoverageIndex": 0.92,
+      "estimatedReliability": 0.85,
+      "totalItems": 60
+    },
+    "dimensions": [
+      {
+        "dimensionCode": "AAI",
+        "dimensionName": "Accounting AI Understanding",
+        "description": "Understanding AI capabilities, limitations, and strategic applications in accounting contexts",
+        "weight": 0.125,
+        "totalPoints": 75,
+        "items": [
+          {
+            "id": "AAI-AC-B-001",
+            "level": 1,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.25,
+            "discrimination": 1.05,
+            "bloomLevel": "Remember",
+            "question": "What is the primary strategic advantage of using AI in accounting processes?",
+            "options": [
+              "AI completely replaces the need for accounting professionals by automating all financial decision-making accurately.",
+              "AI enables accountants to process high-volume transactions consistently while freeing time for analysis and advisory work.",
+              "AI reduces accounting costs by eliminating expensive professional services and replacing them with cheap software.",
+              "AI guarantees completely error-free financial statements by eliminating all human judgment from accounting."
+            ],
+            "correctAnswer": 1,
+            "rationale": "The primary strategic advantage of AI in accounting is augmentation rather than replacement. AI excels at handling high-volume, repetitive tasks (like transaction processing or data entry) consistently, which frees accountants to focus on analysis, strategic advisory, and complex judgment that requires professional expertise. The other options incorrectly suggest AI replaces humans entirely, guarantees perfection automatically, or is primarily about cost reduction rather than strategic value enhancement.",
+            "tags": [
+              "strategic-value",
+              "ai-augmentation",
+              "accounting-fundamentals",
+              "human-ai-collaboration"
+            ]
+          },
+          {
+            "id": "AAI-AC-B-002",
+            "level": 1,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.3,
+            "discrimination": 1.08,
+            "bloomLevel": "Understand",
+            "question": "Why is understanding AI limitations critical for accounting professionals using AI tools?",
+            "options": [
+              "Understanding limitations allows accountants to completely avoid AI tools that have any weaknesses or constraints.",
+              "Understanding limitations proves that AI should never be used for any financial reporting or accounting work.",
+              "Understanding limitations helps accountants set appropriate expectations and maintain necessary professional judgment for critical decisions.",
+              "Understanding limitations is only important for IT teams but not for accounting professionals using the tools."
+            ],
+            "correctAnswer": 2,
+            "rationale": "Understanding AI limitations is critical because it allows accounting professionals to set realistic expectations with stakeholders and maintain appropriate professional judgment where needed. All AI systems have limitations, but this doesn't mean they shouldn't be used—it means they should be used thoughtfully with human oversight for material judgments. The other options incorrectly suggest avoiding AI entirely, delegating understanding to IT teams, or using limitations as justification to reject AI completely.",
+            "tags": [
+              "ai-limitations",
+              "professional-judgment",
+              "responsible-ai",
+              "expectations"
+            ]
+          },
+          {
+            "id": "AAI-AC-B-003",
+            "level": 2,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.35,
+            "discrimination": 1.1,
+            "bloomLevel": "Understand",
+            "question": "How does AI pattern recognition differ from traditional rule-based accounting automation?",
+            "options": [
+              "AI pattern recognition is always more accurate than rule-based systems because it can make subjective judgments about transactions.",
+              "AI pattern recognition and rule-based automation are essentially the same technology with different marketing names.",
+              "AI pattern recognition completely replaces the need for rule-based controls by adapting automatically to any situation.",
+              "AI pattern recognition learns from data examples to identify anomalies while rule-based systems only follow explicitly programmed if-then logic."
+            ],
+            "correctAnswer": 3,
+            "rationale": "AI pattern recognition fundamentally differs from rule-based automation in that it learns from data patterns rather than following explicitly programmed rules. This allows AI to detect anomalies or patterns that weren't explicitly programmed, while rule-based systems only execute the specific logic coded into them. However, AI isn't always more accurate, doesn't replace the need for controls, and represents genuinely different technology approaches, making the first option correct.",
+            "tags": [
+              "ai-technology",
+              "pattern-recognition",
+              "automation-types",
+              "technical-understanding"
+            ]
+          },
+          {
+            "id": "AAI-AC-B-004",
+            "level": 2,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.4,
+            "discrimination": 1.12,
+            "bloomLevel": "Apply",
+            "question": "Your firm is considering AI for invoice processing. What represents the most realistic expectation for this AI implementation?",
+            "options": [
+              "AI will require initial training on your invoice formats and ongoing monitoring to catch edge cases and maintain accuracy.",
+              "AI will completely eliminate the accounts payable department since machines can make all payment decisions better than humans.",
+              "AI will automatically handle all invoices perfectly from day one without any human review or validation needed.",
+              "AI will only work for simple invoices and will fail completely when encountering any non-standard format or complexity."
+            ],
+            "correctAnswer": 0,
+            "rationale": "Realistic AI implementation for invoice processing requires initial training on specific formats, ongoing monitoring, and human review for exceptions. AI improves over time but doesn't work perfectly from day one, doesn't eliminate the need for AP professionals (especially for judgment calls), and can handle complexity beyond simple cases when properly trained. The second option reflects the realistic middle ground of AI augmentation with appropriate oversight.",
+            "tags": [
+              "implementation-expectations",
+              "invoice-processing",
+              "realistic-assessment",
+              "ap-automation"
+            ]
+          },
+          {
+            "id": "AAI-AC-B-005",
+            "level": 2,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.38,
+            "discrimination": 1.11,
+            "bloomLevel": "Understand",
+            "question": "What distinguishes machine learning models from traditional financial forecasting formulas in accounting?",
+            "options": [
+              "Machine learning models always produce more accurate forecasts than traditional formulas regardless of data quality or context.",
+              "Machine learning models can predict the future with certainty while traditional formulas only provide rough estimates.",
+              "Machine learning models and traditional forecasting formulas produce identical results but machine learning sounds more impressive.",
+              "Machine learning models automatically discover relationships in historical data while traditional formulas apply fixed mathematical relationships."
+            ],
+            "correctAnswer": 3,
+            "rationale": "Machine learning models differ from traditional forecasting formulas in that they automatically discover patterns and relationships from historical data rather than applying fixed, predetermined formulas. However, ML models aren't always more accurate (depends on data quality and context), can't predict with certainty, and produce genuinely different results based on their learning approach. The first option correctly identifies the fundamental distinction.",
+            "tags": [
+              "machine-learning",
+              "forecasting",
+              "predictive-analytics",
+              "technical-differentiation"
+            ]
+          },
+          {
+            "id": "AAI-AC-B-006",
+            "level": 3,
+            "type": "scenario-based",
+            "points": 10,
+            "difficulty": 0.45,
+            "discrimination": 1.15,
+            "bloomLevel": "Apply",
+            "question": "Your AI expense categorization tool has 95% accuracy overall but consistently miscategorizes meals as travel expenses. What does this reveal about AI system performance?",
+            "options": [
+              "The system needs to be completely replaced since any categorization errors indicate fundamental AI failure.",
+              "The miscategorization proves that AI cannot understand accounting concepts and should not be used for financial work.",
+              "High overall accuracy can mask category-specific weaknesses, requiring targeted investigation and retraining for problem areas.",
+              "The 95% overall accuracy means the system is working well enough and the meal categorization issue can be safely ignored."
+            ],
+            "correctAnswer": 2,
+            "rationale": "This scenario illustrates an important AI principle: overall accuracy metrics can mask category-specific performance issues. While 95% sounds good overall, systematic errors in specific categories (like meals vs. travel) can create material misstatements. This requires targeted investigation and potentially retraining the model with more examples of the problematic categories, not system replacement or complete rejection of AI. The third option correctly identifies the need to look beyond aggregate metrics.",
+            "tags": [
+              "performance-evaluation",
+              "accuracy-metrics",
+              "system-monitoring",
+              "category-errors"
+            ]
+          },
+          {
+            "id": "AAI-AC-B-007",
+            "level": 3,
+            "type": "scenario-based",
+            "points": 10,
+            "difficulty": 0.42,
+            "discrimination": 1.13,
+            "bloomLevel": "Apply",
+            "question": "An AI audit tool flags 200 transactions as potentially fraudulent, but you only have time to investigate 50. How should you prioritize which flagged items to review?",
+            "options": [
+              "Review the 50 transactions with highest AI confidence scores for fraud, combined with materiality considerations.",
+              "Review the 50 transactions with highest dollar amounts since larger transactions have greater financial impact.",
+              "Review the 50 most recent transactions since recent fraud is more important than older fraud.",
+              "Review a random sample of 50 transactions to avoid bias in your investigation approach."
+            ],
+            "correctAnswer": 0,
+            "rationale": "The best approach combines AI confidence scores (which indicate how certain the model is about potential fraud) with materiality considerations (dollar amount and impact). Simply using recency ignores the AI's predictive information, focusing only on amount misses high-confidence smaller frauds, and random sampling wastes the AI's prioritization. The third option optimally leverages both the AI's insights and professional judgment about materiality.",
+            "tags": [
+              "fraud-detection",
+              "prioritization",
+              "ai-confidence",
+              "professional-judgment"
+            ]
+          }
+        ]
+      },
+      {
+        "dimensionCode": "FAA",
+        "dimensionName": "Financial Analysis with AI",
+        "description": "Applying AI tools for financial analysis, variance investigation, and business insights",
+        "weight": 0.125,
+        "totalPoints": 75,
+        "items": [
+          {
+            "id": "FAA-AC-B-001",
+            "level": 1,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.28,
+            "discrimination": 1.06,
+            "bloomLevel": "Remember",
+            "question": "What is the primary benefit of using AI for variance analysis in financial reporting?",
+            "options": [
+              "AI can quickly identify unusual patterns across large datasets that might be missed in manual review.",
+              "AI removes the need for variance analysis entirely by preventing variances from occurring in the first place.",
+              "AI completely eliminates the need for human judgment in determining which variances require investigation and explanation.",
+              "AI automatically generates perfect explanations for all variances without requiring any accountant input or validation."
+            ],
+            "correctAnswer": 0,
+            "rationale": "The primary benefit of AI in variance analysis is its ability to quickly process large volumes of data and identify patterns or anomalies that might be overlooked in manual review. However, AI doesn't eliminate the need for professional judgment in interpretation, doesn't auto-generate perfect explanations without validation, and certainly doesn't prevent variances from occurring. The second option correctly identifies AI's strength in pattern detection across large datasets.",
+            "tags": [
+              "variance-analysis",
+              "pattern-detection",
+              "financial-reporting",
+              "anomaly-detection"
+            ]
+          },
+          {
+            "id": "FAA-AC-B-002",
+            "level": 1,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.32,
+            "discrimination": 1.08,
+            "bloomLevel": "Understand",
+            "question": "How can AI-powered financial analysis tools enhance traditional ratio analysis?",
+            "options": [
+              "AI can calculate ratios faster than manual calculation but provides no additional analytical insights beyond traditional methods.",
+              "AI can identify non-obvious correlations between ratios and business outcomes across historical data and peer comparisons.",
+              "AI eliminates the need to understand financial ratios since the system makes all financial health determinations automatically.",
+              "AI ratio analysis completely replaces the need for industry benchmarking and contextual business understanding."
+            ],
+            "correctAnswer": 1,
+            "rationale": "AI enhances traditional ratio analysis by identifying correlations and patterns across large datasets that might not be obvious through traditional analysis. This includes finding relationships between multiple ratios, historical patterns, and peer comparisons. However, AI doesn't eliminate the need to understand ratios, doesn't make all determinations automatically without human interpretation, and doesn't replace the need for contextual business understanding. The third option correctly describes AI's analytical enhancement.",
+            "tags": [
+              "ratio-analysis",
+              "correlation-analysis",
+              "financial-metrics",
+              "benchmarking"
+            ]
+          },
+          {
+            "id": "FAA-AC-B-003",
+            "level": 2,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.36,
+            "discrimination": 1.1,
+            "bloomLevel": "Understand",
+            "question": "What distinguishes AI-powered predictive financial analysis from traditional trend analysis?",
+            "options": [
+              "AI predictive analysis is always more accurate than human analysis regardless of data quality or business context.",
+              "AI predictive analysis and traditional trend analysis produce the same insights but AI requires less training to use.",
+              "AI predictive analysis guarantees accurate future outcomes while traditional trend analysis only makes educated guesses.",
+              "AI predictive analysis can consider multiple variables simultaneously and identify complex non-linear patterns in financial data."
+            ],
+            "correctAnswer": 3,
+            "rationale": "AI predictive analysis differs from traditional trend analysis in its ability to simultaneously consider many variables and identify complex, non-linear relationships that would be difficult to spot manually. However, AI doesn't guarantee accuracy, isn't always superior regardless of context, and the results still require professional interpretation. The second option correctly identifies AI's multivariate, pattern-finding capabilities as the key distinction.",
+            "tags": [
+              "predictive-analysis",
+              "trend-analysis",
+              "multivariate-analysis",
+              "non-linear-patterns"
+            ]
+          },
+          {
+            "id": "FAA-AC-B-004",
+            "level": 2,
+            "type": "scenario-based",
+            "points": 10,
+            "difficulty": 0.4,
+            "discrimination": 1.12,
+            "bloomLevel": "Apply",
+            "question": "Your AI tool identifies that accounts receivable aging has an unusual correlation with marketing campaign timing. What should be your next step?",
+            "options": [
+              "Ignore the finding since AI often identifies meaningless correlations that have no practical business value.",
+              "Investigate the business context to understand why this correlation exists and whether it represents a genuine insight or data artifact.",
+              "Report the correlation directly to executives as a significant finding without further investigation or validation.",
+              "Immediately change your credit policies based on the AI finding since correlation indicates clear causation."
+            ],
+            "correctAnswer": 1,
+            "rationale": "When AI identifies unexpected correlations, the appropriate response is to investigate the business context to understand whether the correlation represents genuine insight or is spurious. This requires combining AI findings with business knowledge and further analysis. Simply acting on correlation without understanding causation is risky, dismissing findings without investigation wastes AI value, and reporting without validation lacks professional diligence. The second option demonstrates appropriate analytical judgment.",
+            "tags": [
+              "correlation-analysis",
+              "business-context",
+              "validation",
+              "critical-thinking"
+            ]
+          },
+          {
+            "id": "FAA-AC-B-005",
+            "level": 2,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.38,
+            "discrimination": 1.11,
+            "bloomLevel": "Understand",
+            "question": "Why is historical data quality particularly important for AI-powered financial forecasting?",
+            "options": [
+              "AI forecasting accuracy is completely independent of historical data quality because algorithms compensate for poor data.",
+              "Historical data quality only matters for traditional forecasting but not for AI since AI uses different data sources.",
+              "AI learns patterns from historical data, so inaccurate historical data leads to flawed predictions and unreliable forecasts.",
+              "AI can automatically detect and fix all data quality issues in historical records without human intervention."
+            ],
+            "correctAnswer": 2,
+            "rationale": "Historical data quality is crucial for AI forecasting because machine learning models learn patterns from past data. If the historical data is inaccurate, incomplete, or biased, the model will learn flawed patterns and produce unreliable forecasts. AI cannot automatically fix all data issues, historical data matters for both traditional and AI approaches, and algorithms cannot fully compensate for fundamentally poor data. The second option correctly identifies the critical dependency on historical data quality.",
+            "tags": [
+              "data-quality",
+              "forecasting",
+              "historical-data",
+              "model-training"
+            ]
+          },
+          {
+            "id": "FAA-AC-B-006",
+            "level": 3,
+            "type": "scenario-based",
+            "points": 10,
+            "difficulty": 0.44,
+            "discrimination": 1.14,
+            "bloomLevel": "Apply",
+            "question": "An AI system recommends investigating 15 accounts that show unusual activity patterns. Manual review finds only 3 actually have issues. How should you interpret this?",
+            "options": [
+              "The false positives prove that AI cannot understand financial analysis and human review is always superior.",
+              "The system is working as designed by narrowing thousands of accounts to 15 for review, with 3 true issues found being valuable.",
+              "The AI system is failing and should be discontinued since it only found 20% of true issues correctly.",
+              "The AI needs immediate retraining to reduce false positives before it can be used for any financial analysis work."
+            ],
+            "correctAnswer": 1,
+            "rationale": "This scenario illustrates an important concept in AI-assisted analysis: precision versus value. If the system narrowed thousands of accounts to 15 candidates, and 3 of those 15 have real issues, the AI is providing significant value by prioritizing review efforts. A 20% precision rate from thousands of accounts is often quite valuable in practice. The system isn't failing, doesn't necessarily need immediate retraining, and the finding doesn't invalidate AI's analytical value. The second option demonstrates proper interpretation of AI screening tools.",
+            "tags": [
+              "false-positives",
+              "screening-tools",
+              "precision-recall",
+              "value-assessment"
+            ]
+          },
+          {
+            "id": "FAA-AC-B-007",
+            "level": 3,
+            "type": "scenario-based",
+            "points": 10,
+            "difficulty": 0.46,
+            "discrimination": 1.16,
+            "bloomLevel": "Apply",
+            "question": "Your AI cash flow forecasting tool performs well in stable periods but poorly during major business changes. What does this suggest about AI model limitations?",
+            "options": [
+              "The poor performance during changes proves AI can never be reliable for financial forecasting in any situation.",
+              "The model needs no adjustment since all forecasting methods perform poorly during major business changes.",
+              "AI models trained on historical patterns may struggle with unprecedented changes that lack historical parallels.",
+              "The model is completely useless and should be replaced with traditional forecasting methods for all scenarios."
+            ],
+            "correctAnswer": 2,
+            "rationale": "This scenario illustrates a fundamental limitation of machine learning models: they learn from historical patterns and may struggle with unprecedented situations that differ significantly from training data. This doesn't make the model useless (it works well in stable periods), doesn't invalidate all AI forecasting, and does suggest the need for human judgment augmentation during major changes. The second option correctly identifies the historical pattern dependency limitation of AI models.",
+            "tags": [
+              "model-limitations",
+              "unprecedented-events",
+              "cash-flow-forecasting",
+              "pattern-dependency"
+            ]
+          },
+          {
+            "id": "FAA-AC-B-008",
+            "level": 3,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.48,
+            "discrimination": 1.17,
+            "bloomLevel": "Apply",
+            "question": "When using AI for profitability analysis by customer segment, what consideration is most critical for ensuring meaningful results?",
+            "options": [
+              "Ensuring the AI has access to sufficient historical transaction data and accurate cost allocation methodologies.",
+              "Using the most complex AI algorithm available since sophisticated algorithms always produce better business insights.",
+              "Prioritizing speed of analysis over accuracy since business decisions require immediate insights regardless of precision.",
+              "Eliminating all human input from the analysis process to prevent bias from affecting the AI results."
+            ],
+            "correctAnswer": 0,
+            "rationale": "For meaningful profitability analysis, AI needs two critical inputs: sufficient historical transaction data and accurate cost allocation methodologies. Without proper cost allocation, even sophisticated AI cannot produce meaningful profitability insights. Algorithm complexity doesn't guarantee better results, human input provides essential business context, and speed should not trump accuracy for material business decisions. The first option correctly identifies the foundational data and methodology requirements.",
+            "tags": [
+              "profitability-analysis",
+              "cost-allocation",
+              "data-requirements",
+              "segment-analysis"
+            ]
+          }
+        ]
+      },
+      {
+        "dimensionCode": "ATP",
+        "dimensionName": "Audit & Tax Processes",
+        "description": "Understanding AI applications in audit procedures, tax compliance, and risk assessment",
+        "weight": 0.125,
+        "totalPoints": 75,
+        "items": [
+          {
+            "id": "ATP-AC-B-001",
+            "level": 1,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.26,
+            "discrimination": 1.05,
+            "bloomLevel": "Remember",
+            "question": "How does AI enhance traditional audit sampling approaches?",
+            "options": [
+              "AI sampling produces identical results to traditional statistical sampling but requires less mathematical understanding.",
+              "AI eliminates the need for audit sampling by testing 100% of transactions automatically with perfect accuracy.",
+              "AI completely replaces auditor judgment in determining materiality and sampling strategies for all audit procedures.",
+              "AI can analyze entire populations of transactions to identify high-risk items for targeted audit testing."
+            ],
+            "correctAnswer": 3,
+            "rationale": "AI enhances audit sampling by enabling analysis of entire populations rather than just samples, helping identify high-risk transactions for targeted testing. This doesn't eliminate sampling entirely, doesn't provide perfect accuracy automatically, doesn't replace auditor judgment on materiality and strategy, and represents a genuinely different analytical approach from traditional sampling. The second option correctly describes AI's population analysis capability.",
+            "tags": [
+              "audit-sampling",
+              "population-analysis",
+              "risk-identification",
+              "audit-procedures"
+            ]
+          },
+          {
+            "id": "ATP-AC-B-002",
+            "level": 1,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.3,
+            "discrimination": 1.07,
+            "bloomLevel": "Understand",
+            "question": "What is a key advantage of using AI for journal entry testing in fraud detection?",
+            "options": [
+              "AI automatically determines which journal entries are fraudulent without requiring any auditor judgment or validation.",
+              "AI journal entry testing provides 100% certainty about fraud presence or absence in financial statements.",
+              "AI eliminates the need to understand the business since algorithms detect fraud regardless of context.",
+              "AI can examine all journal entries for unusual patterns rather than just sampling high-dollar or manual entries."
+            ],
+            "correctAnswer": 3,
+            "rationale": "AI's key advantage in journal entry testing is the ability to analyze all entries (not just a sample) to identify unusual patterns, timing, or characteristics that might indicate fraud risk. However, AI doesn't automatically determine fraud without auditor judgment, doesn't eliminate the need for business understanding, and doesn't provide absolute certainty. The first option correctly identifies AI's comprehensive analysis capability while maintaining appropriate professional skepticism.",
+            "tags": [
+              "journal-entry-testing",
+              "fraud-detection",
+              "comprehensive-analysis",
+              "audit-analytics"
+            ]
+          },
+          {
+            "id": "ATP-AC-B-003",
+            "level": 2,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.34,
+            "discrimination": 1.09,
+            "bloomLevel": "Understand",
+            "question": "How can AI assist in tax compliance processes for multinational corporations?",
+            "options": [
+              "AI can monitor changing tax regulations across jurisdictions and identify potential compliance implications for transactions.",
+              "AI tax compliance tools eliminate the need for tax professionals since algorithms understand all tax law better than humans.",
+              "AI completely eliminates tax compliance risk by automatically filing perfect returns in all jurisdictions.",
+              "AI makes tax judgment calls about uncertain tax positions without requiring professional interpretation or documentation."
+            ],
+            "correctAnswer": 0,
+            "rationale": "AI assists tax compliance by monitoring regulatory changes across multiple jurisdictions and identifying potential compliance implications, which is valuable for complex multinational operations. However, AI doesn't eliminate compliance risk entirely, doesn't make final judgment calls on uncertain positions without professional input, and doesn't replace the need for tax professionals who understand nuanced interpretation and planning. The second option correctly describes AI's monitoring and identification capabilities.",
+            "tags": [
+              "tax-compliance",
+              "regulatory-monitoring",
+              "multinational",
+              "compliance-risk"
+            ]
+          },
+          {
+            "id": "ATP-AC-B-004",
+            "level": 2,
+            "type": "scenario-based",
+            "points": 10,
+            "difficulty": 0.39,
+            "discrimination": 1.11,
+            "bloomLevel": "Apply",
+            "question": "An AI audit tool flags a series of related party transactions as potentially suspicious. What should be the auditor's appropriate response?",
+            "options": [
+              "Immediately report the flagged transactions as audit findings without conducting additional substantive procedures.",
+              "Ignore the AI flag since algorithms cannot understand the complexity of related party relationships and transactions.",
+              "Investigate the flagged transactions using professional judgment to understand the business context and assess disclosure adequacy.",
+              "Accept the AI determination as conclusive evidence of related party transaction problems without further investigation."
+            ],
+            "correctAnswer": 2,
+            "rationale": "When AI flags potentially suspicious transactions, the appropriate auditor response is to investigate using professional judgment, understand the business context, and assess whether disclosures and accounting treatment are appropriate. AI flags are starting points for investigation, not conclusive determinations, and shouldn't be ignored or immediately reported without proper evaluation. The second option demonstrates appropriate professional skepticism and judgment.",
+            "tags": [
+              "related-party-transactions",
+              "professional-judgment",
+              "audit-investigation",
+              "substantive-procedures"
+            ]
+          },
+          {
+            "id": "ATP-AC-B-005",
+            "level": 2,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.37,
+            "discrimination": 1.1,
+            "bloomLevel": "Understand",
+            "question": "What is an important consideration when using AI for continuous audit monitoring?",
+            "options": [
+              "AI continuous monitoring eliminates the need for year-end audit procedures since real-time testing is always sufficient.",
+              "AI monitoring systems require appropriate threshold setting and exception handling protocols to avoid alert fatigue.",
+              "AI continuous monitoring provides absolute assurance that no material misstatements exist in financial records.",
+              "AI monitoring replaces the need for internal controls since the AI system detects all errors and irregularities immediately."
+            ],
+            "correctAnswer": 1,
+            "rationale": "Continuous audit monitoring with AI requires careful threshold setting and exception protocols to balance detecting real issues versus generating too many false alarms (alert fatigue). AI monitoring doesn't eliminate year-end procedures, doesn't provide absolute assurance, and doesn't replace internal controls—it augments them. The second option correctly identifies the practical implementation considerations for effective continuous monitoring.",
+            "tags": [
+              "continuous-monitoring",
+              "threshold-setting",
+              "alert-fatigue",
+              "exception-management"
+            ]
+          },
+          {
+            "id": "ATP-AC-B-006",
+            "level": 3,
+            "type": "scenario-based",
+            "points": 10,
+            "difficulty": 0.43,
+            "discrimination": 1.13,
+            "bloomLevel": "Apply",
+            "question": "Your AI-powered tax research tool suggests an aggressive tax position based on limited case law. How should you proceed?",
+            "options": [
+              "Adopt the aggressive position immediately since AI analysis is more thorough than human research could be.",
+              "Ignore the AI suggestion completely since tax law is too complex for automated systems to interpret correctly.",
+              "Report the position to clients as viable without additional validation since the AI has legal research capabilities.",
+              "Research the suggested position thoroughly, considering additional authorities and consulting specialized tax expertise before advising."
+            ],
+            "correctAnswer": 3,
+            "rationale": "When AI suggests tax positions, especially aggressive ones, thorough validation is essential. This includes reviewing additional authorities, considering factual nuances, and consulting specialized expertise as needed before advising clients. AI research tools are helpful starting points but don't replace professional judgment on tax positions. The second option demonstrates appropriate professional diligence and skepticism.",
+            "tags": [
+              "tax-positions",
+              "professional-judgment",
+              "validation",
+              "research-tools"
+            ]
+          },
+          {
+            "id": "ATP-AC-B-007",
+            "level": 3,
+            "type": "scenario-based",
+            "points": 10,
+            "difficulty": 0.45,
+            "discrimination": 1.15,
+            "bloomLevel": "Apply",
+            "question": "An AI system analyzing inventory records identifies potential obsolescence issues not flagged by traditional age-based analysis. What does this suggest about AI capabilities?",
+            "options": [
+              "AI can identify patterns beyond simple rule-based criteria by analyzing multiple factors simultaneously like turnover, seasonality, and market trends.",
+              "The pattern identification proves AI can make final obsolescence judgments without requiring professional evaluation or write-down decisions.",
+              "AI inventory analysis is always superior to human judgment regardless of industry specifics or product characteristics.",
+              "The AI findings are likely errors since traditional age-based analysis is the only reliable method for identifying obsolete inventory."
+            ],
+            "correctAnswer": 0,
+            "rationale": "This scenario illustrates AI's ability to analyze multiple factors simultaneously (turnover, seasonality, market trends, etc.) to identify patterns that simple rule-based age analysis might miss. However, AI findings still require professional evaluation, aren't always superior regardless of context, and don't eliminate the need for human judgment in write-down decisions. The first option correctly describes AI's multivariate pattern recognition capability while maintaining appropriate professional judgment.",
+            "tags": [
+              "inventory-obsolescence",
+              "multivariate-analysis",
+              "pattern-recognition",
+              "professional-evaluation"
+            ]
+          }
+        ]
+      },
+      {
+        "dimensionCode": "ADA",
+        "dimensionName": "Accounting Data & Analytics",
+        "description": "Managing accounting data quality, analytics, and insights with AI tools",
+        "weight": 0.125,
+        "totalPoints": 75,
+        "items": [
+          {
+            "id": "ADA-AC-B-001",
+            "level": 1,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.27,
+            "discrimination": 1.06,
+            "bloomLevel": "Remember",
+            "question": "Why is data standardization important before applying AI analytics to accounting data?",
+            "options": [
+              "Data standardization ensures consistent formats and definitions so AI can identify meaningful patterns across datasets.",
+              "Data standardization is only needed for small datasets but large datasets provide enough information for AI to work without it.",
+              "Data standardization only benefits traditional analysis but actually reduces AI effectiveness by limiting algorithmic flexibility.",
+              "Data standardization is unnecessary because AI can automatically interpret any data format perfectly without preparation."
+            ],
+            "correctAnswer": 0,
+            "rationale": "Data standardization is crucial for AI analytics because inconsistent formats, definitions, or structures can prevent the AI from identifying meaningful patterns or can lead to spurious correlations. AI doesn't automatically interpret any format perfectly, standardization benefits both traditional and AI approaches, and data volume doesn't compensate for poor standardization. The second option correctly identifies the need for consistency to enable effective pattern recognition.",
+            "tags": [
+              "data-standardization",
+              "data-preparation",
+              "pattern-recognition",
+              "data-quality"
+            ]
+          },
+          {
+            "id": "ADA-AC-B-002",
+            "level": 1,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.31,
+            "discrimination": 1.08,
+            "bloomLevel": "Understand",
+            "question": "What role does master data quality play in AI-powered financial analytics?",
+            "options": [
+              "Master data quality only matters for traditional reporting but AI systems use completely different data sources.",
+              "Master data quality requirements are lower for AI systems than traditional systems because AI is more flexible.",
+              "Master data quality has no impact on AI analytics since algorithms can compensate for any data quality issues automatically.",
+              "Poor master data quality leads to flawed AI insights because the system learns incorrect relationships from inaccurate foundational data."
+            ],
+            "correctAnswer": 3,
+            "rationale": "Master data quality is fundamental to AI analytics because AI learns patterns from the data it's provided. If master data (customers, products, accounts, etc.) is inaccurate or inconsistent, the AI will learn flawed relationships and produce unreliable insights. AI cannot automatically compensate for poor data quality, uses the same foundational data as traditional systems, and actually requires high-quality data to function effectively. The second option correctly identifies the critical dependency on master data quality.",
+            "tags": [
+              "master-data-quality",
+              "data-foundations",
+              "ai-analytics",
+              "data-accuracy"
+            ]
+          },
+          {
+            "id": "ADA-AC-B-003",
+            "level": 2,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.35,
+            "discrimination": 1.1,
+            "bloomLevel": "Understand",
+            "question": "How do AI analytics tools handle missing data in financial records differently than traditional reporting?",
+            "options": [
+              "AI and traditional reporting handle missing data identically since both require 100% complete records to produce any results.",
+              "AI can impute or predict missing values based on patterns in available data while traditional reporting typically requires complete data or manual investigation.",
+              "AI analytics fail completely with any missing data while traditional reporting methods handle gaps effectively without issues.",
+              "AI automatically fills in missing data with random values to complete datasets while traditional reporting leaves gaps visible."
+            ],
+            "correctAnswer": 1,
+            "rationale": "AI analytics can employ imputation techniques to estimate missing values based on patterns in the available data, which differs from traditional reporting that often requires complete data or manual gap-filling. However, AI imputation must be done carefully and transparently. AI doesn't fail with missing data, the approaches aren't identical, and AI doesn't randomly fill gaps. The first option correctly describes AI's pattern-based imputation capability while acknowledging the difference from traditional approaches.",
+            "tags": [
+              "missing-data",
+              "data-imputation",
+              "analytics-methods",
+              "data-completeness"
+            ]
+          },
+          {
+            "id": "ADA-AC-B-004",
+            "level": 2,
+            "type": "scenario-based",
+            "points": 10,
+            "difficulty": 0.41,
+            "discrimination": 1.12,
+            "bloomLevel": "Apply",
+            "question": "Your company maintains accounting records in three different ERP systems with inconsistent chart of account structures. What should be prioritized before implementing AI analytics?",
+            "options": [
+              "Create data mapping and transformation rules to standardize account classifications before deploying AI analytics tools.",
+              "Implement AI separately in each system without integration since cross-system analytics provide no additional value.",
+              "Immediately implement AI across all systems since advanced algorithms can automatically reconcile any differences in account structures.",
+              "Abandon AI implementation entirely since multiple systems with different structures cannot support analytics effectively."
+            ],
+            "correctAnswer": 0,
+            "rationale": "Before implementing AI analytics across multiple systems with different chart of account structures, establishing data mapping and transformation rules to standardize classifications is essential. Without this, AI cannot meaningfully compare or analyze data across systems. AI doesn't automatically reconcile structural differences, multiple systems don't prevent analytics (with proper mapping), and cross-system analytics can provide significant value when properly implemented. The second option identifies the critical data integration prerequisite.",
+            "tags": [
+              "data-integration",
+              "multiple-systems",
+              "account-mapping",
+              "data-transformation"
+            ]
+          },
+          {
+            "id": "ADA-AC-B-005",
+            "level": 2,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.38,
+            "discrimination": 1.11,
+            "bloomLevel": "Understand",
+            "question": "What is an important consideration when using AI to analyze unstructured accounting documents like contracts or invoices?",
+            "options": [
+              "AI unstructured document processing eliminates the need to review original source documents for any accounting purpose.",
+              "AI cannot process unstructured documents at all and requires all information to be in structured database formats.",
+              "AI perfectly understands all unstructured documents regardless of format, handwriting, or language without any error rates.",
+              "AI can extract and interpret information from unstructured documents but may require validation for complex or ambiguous content."
+            ],
+            "correctAnswer": 3,
+            "rationale": "AI can extract information from unstructured documents (using OCR, NLP, etc.) but accuracy varies based on document quality, format consistency, and content complexity. Validation is important, especially for ambiguous or complex content. AI doesn't achieve perfection on all documents, can process unstructured data effectively, but doesn't eliminate the need for source document review in all situations. The first option correctly balances AI capabilities with appropriate validation needs.",
+            "tags": [
+              "unstructured-data",
+              "document-processing",
+              "ocr-nlp",
+              "validation"
+            ]
+          },
+          {
+            "id": "ADA-AC-B-006",
+            "level": 3,
+            "type": "scenario-based",
+            "points": 10,
+            "difficulty": 0.44,
+            "discrimination": 1.14,
+            "bloomLevel": "Apply",
+            "question": "An AI analytics project requires combining financial data with operational data from manufacturing systems. What data governance consideration is most critical?",
+            "options": [
+              "Immediately combining all data sources without governance since AI works better with unrestricted access to maximum information.",
+              "Allowing AI developers unlimited access to all data without oversight since technical experts understand data needs best.",
+              "Establishing clear data ownership, access controls, and lineage documentation to ensure data security and auditability.",
+              "Keeping financial and operational data completely separate since cross-functional analytics provide no accounting value."
+            ],
+            "correctAnswer": 2,
+            "rationale": "When combining data across functional areas, establishing clear data governance is critical—including ownership, access controls, and lineage (documenting where data comes from and how it's transformed). This ensures security, privacy, auditability, and data quality. Unrestricted access without governance creates risks, cross-functional analytics can provide significant value, and oversight is necessary regardless of technical expertise. The first option correctly identifies essential data governance elements.",
+            "tags": [
+              "data-governance",
+              "cross-functional-analytics",
+              "data-lineage",
+              "access-controls"
+            ]
+          },
+          {
+            "id": "ADA-AC-B-007",
+            "level": 3,
+            "type": "scenario-based",
+            "points": 10,
+            "difficulty": 0.47,
+            "discrimination": 1.16,
+            "bloomLevel": "Apply",
+            "question": "Your AI analytics reveal that certain customer accounts consistently take 90+ days to pay despite 30-day terms, but have never defaulted. How should this insight be used?",
+            "options": [
+              "Use the AI finding to automatically reclassify these customers as high credit risk without further analysis or business context.",
+              "Analyze the pattern to understand if these customers represent strategic relationships that justify different credit terms or collection approaches.",
+              "Immediately implement automated payment enforcement and penalties for all customers exceeding terms regardless of payment history.",
+              "Ignore the AI finding since payment behavior analysis is too subjective for algorithmic assessment and recommendations."
+            ],
+            "correctAnswer": 1,
+            "rationale": "This scenario illustrates the importance of combining AI insights with business judgment. The pattern identified is valuable, but interpretation requires understanding whether these are strategic customers, whether terms should be formally adjusted, or whether different collection approaches are appropriate. Automatic enforcement without context is risky, the finding shouldn't be ignored, and automatic reclassification without analysis overlooks important nuances. The second option demonstrates appropriate analytical thinking.",
+            "tags": [
+              "credit-management",
+              "business-context",
+              "analytical-interpretation",
+              "customer-relationships"
+            ]
+          },
+          {
+            "id": "ADA-AC-B-008",
+            "level": 3,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.49,
+            "discrimination": 1.18,
+            "bloomLevel": "Apply",
+            "question": "When implementing AI for cost allocation analysis across products, what represents the most critical data requirement?",
+            "options": [
+              "Having the most sophisticated AI algorithm available since advanced technology compensates for any data limitations.",
+              "Ensuring accurate activity-based costing data and clear cost driver relationships to enable meaningful AI pattern analysis.",
+              "Using only financial system data without operational metrics since accounting records contain all necessary allocation information.",
+              "Prioritizing analysis speed over data accuracy since business decisions require immediate insights regardless of precision."
+            ],
+            "correctAnswer": 1,
+            "rationale": "For AI cost allocation analysis to be meaningful, accurate activity-based costing data and clear cost driver relationships are essential. Without understanding actual resource consumption patterns and drivers, even sophisticated AI cannot produce useful allocation recommendations. Algorithm sophistication doesn't compensate for poor data, operational metrics are often critical for accurate allocation, and speed should not trump accuracy for material cost decisions. The second option correctly identifies the foundational data requirements.",
+            "tags": [
+              "cost-allocation",
+              "activity-based-costing",
+              "cost-drivers",
+              "data-requirements"
+            ]
+          }
+        ]
+      },
+      {
+        "dimensionCode": "CRA",
+        "dimensionName": "Controls & Risk Assessment",
+        "description": "Understanding AI's role in internal controls, risk identification, and control monitoring",
+        "weight": 0.125,
+        "totalPoints": 75,
+        "items": [
+          {
+            "id": "CRA-AC-B-001",
+            "level": 1,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.29,
+            "discrimination": 1.07,
+            "bloomLevel": "Remember",
+            "question": "How can AI enhance internal control monitoring in accounting processes?",
+            "options": [
+              "AI replaces manual controls entirely but requires the same periodic testing approach as traditional controls.",
+              "AI completely eliminates the need for internal controls by preventing all errors and fraud from occurring.",
+              "AI control monitoring provides absolute certainty that no control failures or circumventions have occurred.",
+              "AI enables continuous monitoring of control effectiveness by analyzing transaction patterns and identifying control exceptions."
+            ],
+            "correctAnswer": 3,
+            "rationale": "AI enhances internal control monitoring by enabling continuous analysis of transactions to identify control exceptions, unusual patterns, or potential control failures in real-time or near-real-time. However, AI doesn't eliminate the need for controls themselves, doesn't replace all manual controls entirely, and doesn't provide absolute certainty. The second option correctly describes AI's continuous monitoring enhancement while maintaining realistic expectations.",
+            "tags": [
+              "internal-controls",
+              "continuous-monitoring",
+              "control-exceptions",
+              "control-effectiveness"
+            ]
+          },
+          {
+            "id": "CRA-AC-B-002",
+            "level": 1,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.33,
+            "discrimination": 1.09,
+            "bloomLevel": "Understand",
+            "question": "What is an important consideration when implementing AI for segregation of duties monitoring?",
+            "options": [
+              "AI can perfectly identify all segregation of duties violations automatically without requiring any understanding of business processes.",
+              "AI segregation monitoring works identically across all organizations without requiring customization or configuration.",
+              "AI eliminates the need for segregation of duties entirely since algorithms can detect any resulting fraud immediately.",
+              "AI monitoring requires clear definition of incompatible duties and access combinations specific to your organization's risk profile."
+            ],
+            "correctAnswer": 3,
+            "rationale": "Effective AI monitoring of segregation of duties requires clear definition of which duty combinations are incompatible in your specific organizational context. Different organizations and industries have different risk profiles and process structures. AI doesn't automatically understand all violations without configuration, doesn't eliminate the need for segregation of duties, and requires customization to organizational needs. The second option correctly identifies the need for context-specific configuration.",
+            "tags": [
+              "segregation-of-duties",
+              "access-monitoring",
+              "risk-profile",
+              "configuration"
+            ]
+          },
+          {
+            "id": "CRA-AC-B-003",
+            "level": 2,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.36,
+            "discrimination": 1.1,
+            "bloomLevel": "Understand",
+            "question": "How does AI-powered fraud risk assessment differ from traditional fraud risk matrices?",
+            "options": [
+              "AI guarantees fraud detection with 100% accuracy while traditional risk matrices only provide rough estimates of fraud likelihood.",
+              "AI can analyze multiple risk factors simultaneously and identify complex patterns that indicate elevated fraud risk.",
+              "AI fraud risk assessment eliminates the need for professional judgment about fraud risk factors and indicators.",
+              "AI and traditional risk matrices produce identical risk assessments but AI requires less time to generate results."
+            ],
+            "correctAnswer": 1,
+            "rationale": "AI-powered fraud risk assessment can simultaneously analyze multiple risk factors and identify complex patterns or combinations that indicate elevated risk, which may be difficult to spot with traditional matrices. However, AI doesn't guarantee perfect detection, doesn't eliminate professional judgment needs, and represents a genuinely different analytical approach that can reveal insights beyond traditional methods. The second option correctly describes AI's multivariate analytical capability.",
+            "tags": [
+              "fraud-risk-assessment",
+              "risk-factors",
+              "pattern-analysis",
+              "multivariate-analysis"
+            ]
+          },
+          {
+            "id": "CRA-AC-B-004",
+            "level": 2,
+            "type": "scenario-based",
+            "points": 10,
+            "difficulty": 0.4,
+            "discrimination": 1.12,
+            "bloomLevel": "Apply",
+            "question": "An AI control monitoring system flags 50 purchase order approvals where the approver reported to the person who created the PO. How should you respond?",
+            "options": [
+              "Investigate to determine if these represent temporary reporting relationships, system errors, or genuine control deficiencies requiring remediation.",
+              "Immediately terminate the employment of all approvers identified since control violations indicate intentional wrongdoing.",
+              "Automatically reverse all 50 transactions since the AI identified a clear control violation that invalidates the purchases.",
+              "Ignore the AI flags since organizational reporting relationships are too complex for algorithmic systems to understand correctly."
+            ],
+            "correctAnswer": 0,
+            "rationale": "When AI flags potential control violations, appropriate response involves investigation to understand context. Reporting relationships may be temporary, system data may be outdated, or genuine control gaps may exist requiring remediation. Automatic transaction reversal is inappropriate without investigation, AI findings shouldn't be ignored, and personnel actions require proper investigation beyond AI flags. The second option demonstrates appropriate investigation protocol.",
+            "tags": [
+              "control-violations",
+              "investigation-protocol",
+              "reporting-relationships",
+              "remediation"
+            ]
+          },
+          {
+            "id": "CRA-AC-B-005",
+            "level": 2,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.38,
+            "discrimination": 1.11,
+            "bloomLevel": "Understand",
+            "question": "What is a key limitation of using AI for financial statement risk assessment?",
+            "options": [
+              "AI financial risk assessment is always less accurate than human judgment regardless of the complexity or data volume.",
+              "AI cannot process financial statement data at all and requires all risk assessment to be performed manually.",
+              "AI can only identify risks that have historical precedent in the training data and may miss emerging or novel risk scenarios.",
+              "AI risk assessment eliminates the need for audit procedures since algorithms identify all material misstatement risks perfectly."
+            ],
+            "correctAnswer": 2,
+            "rationale": "A fundamental limitation of AI risk assessment is that models learn from historical patterns, so they may struggle with emerging or unprecedented risks that lack historical examples. This doesn't mean AI is always less accurate than humans (it can excel with complex patterns in large datasets), can certainly process financial data, and doesn't eliminate audit procedure needs. The first option correctly identifies the historical pattern dependency limitation.",
+            "tags": [
+              "risk-assessment-limitations",
+              "emerging-risks",
+              "historical-patterns",
+              "novel-scenarios"
+            ]
+          },
+          {
+            "id": "CRA-AC-B-006",
+            "level": 3,
+            "type": "scenario-based",
+            "points": 10,
+            "difficulty": 0.43,
+            "discrimination": 1.13,
+            "bloomLevel": "Apply",
+            "question": "Your AI system identifies an unusual pattern where revenue is booked late in quarters but returned early in subsequent quarters. What should be your primary concern?",
+            "options": [
+              "The pattern could indicate channel stuffing or inappropriate revenue recognition that warrants investigation of revenue cut-off procedures.",
+              "The AI finding proves fraudulent revenue manipulation and should be immediately reported to regulators without further analysis.",
+              "AI cannot understand revenue timing issues and this finding should be ignored as algorithmic misunderstanding of accounting periods.",
+              "This pattern is routine business seasonality and requires no investigation since AI often identifies normal patterns as anomalies."
+            ],
+            "correctAnswer": 0,
+            "rationale": "This pattern could indicate channel stuffing or improper revenue recognition practices that inflate period-end revenue followed by returns. While it could have innocent explanations, the pattern warrants investigation of revenue recognition policies, cut-off procedures, and return patterns. The pattern isn't necessarily routine, doesn't prove fraud without investigation, and AI can identify meaningful timing patterns. The second option demonstrates appropriate professional skepticism.",
+            "tags": [
+              "revenue-recognition",
+              "channel-stuffing",
+              "pattern-investigation",
+              "professional-skepticism"
+            ]
+          },
+          {
+            "id": "CRA-AC-B-007",
+            "level": 3,
+            "type": "scenario-based",
+            "points": 10,
+            "difficulty": 0.46,
+            "discrimination": 1.15,
+            "bloomLevel": "Apply",
+            "question": "An AI access control monitoring tool identifies that 15% of users have excessive system permissions beyond their job requirements. What should be the prioritization approach?",
+            "options": [
+              "Risk-rank the excess permissions by user role, data sensitivity, and transaction authority, then remediate highest-risk access first.",
+              "Immediately revoke all excess permissions for all users simultaneously to eliminate the control deficiency without delay.",
+              "Ignore the finding since 15% is a small percentage and excess permissions rarely result in actual control failures or fraud.",
+              "Replace the entire access control system since excess permissions indicate fundamental system design flaws requiring new technology."
+            ],
+            "correctAnswer": 0,
+            "rationale": "When AI identifies widespread access control issues, appropriate response involves risk-ranking based on factors like user roles, data sensitivity, and transaction authority to prioritize remediation of highest-risk access. Immediately revoking all access simultaneously could disrupt business operations, 15% excess access represents meaningful risk that shouldn't be ignored, and system replacement is usually not the appropriate first response. The second option demonstrates risk-based prioritization.",
+            "tags": [
+              "access-controls",
+              "risk-prioritization",
+              "permission-management",
+              "remediation-strategy"
+            ]
+          }
+        ]
+      },
+      {
+        "dimensionCode": "EGC",
+        "dimensionName": "Ethics, Governance & Compliance",
+        "description": "Understanding ethical AI use, governance frameworks, and compliance in accounting",
+        "weight": 0.125,
+        "totalPoints": 75,
+        "items": [
+          {
+            "id": "EGC-AC-B-001",
+            "level": 1,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.28,
+            "discrimination": 1.06,
+            "bloomLevel": "Remember",
+            "question": "Why is explainability important when using AI for financial reporting decisions?",
+            "options": [
+              "Explainability is unnecessary for AI since algorithms always make more accurate decisions than explainable human judgment.",
+              "Explainability requirements prevent AI from being used in accounting since complex algorithms cannot be explained to non-technical users.",
+              "Explainability allows auditors and stakeholders to understand the basis for AI-influenced accounting judgments and verify appropriateness.",
+              "Explainability only matters for external auditors but is irrelevant for management's use of AI in financial reporting."
+            ],
+            "correctAnswer": 2,
+            "rationale": "Explainability is critical in financial reporting because auditors, management, and stakeholders need to understand the basis for AI-influenced judgments to verify appropriateness and meet professional standards. AI accuracy doesn't eliminate the need for explainability, explainability requirements don't prevent AI use (though they require thoughtful implementation), and explainability matters for both internal and external accountability. The second option correctly identifies the accountability and verification rationale.",
+            "tags": [
+              "explainability",
+              "financial-reporting",
+              "accountability",
+              "audit-trail"
+            ]
+          },
+          {
+            "id": "EGC-AC-B-002",
+            "level": 1,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.32,
+            "discrimination": 1.08,
+            "bloomLevel": "Understand",
+            "question": "What is a key ethical consideration when using AI for credit risk assessment in accounts receivable?",
+            "options": [
+              "AI credit assessment is always more ethical than human judgment because algorithms cannot have personal biases or prejudices.",
+              "AI credit risk models can inadvertently perpetuate historical biases if trained on data reflecting past discriminatory practices.",
+              "AI eliminates all ethical concerns in credit assessment by removing subjective human judgment from the decision process.",
+              "Ethical considerations don't apply to credit risk AI since financial decisions are purely objective and mathematical."
+            ],
+            "correctAnswer": 1,
+            "rationale": "A critical ethical consideration is that AI models can perpetuate historical biases if training data reflects past discriminatory practices. This is particularly important in credit decisions which can significantly impact people and businesses. AI isn't automatically more ethical than humans, ethical considerations definitely apply to financial AI systems, and AI doesn't eliminate ethical concerns—it may actually amplify them through scale. The first option correctly identifies the bias perpetuation risk.",
+            "tags": [
+              "ethical-ai",
+              "bias",
+              "credit-risk",
+              "discrimination"
+            ]
+          },
+          {
+            "id": "EGC-AC-B-003",
+            "level": 2,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.37,
+            "discrimination": 1.1,
+            "bloomLevel": "Understand",
+            "question": "How should accounting firms handle AI model governance for tools used in audit and assurance services?",
+            "options": [
+              "Governance requirements are lower for AI audit tools than traditional audit procedures since algorithms are more reliable.",
+              "Governance should include model validation, performance monitoring, and documentation of AI tool decisions in audit files.",
+              "AI model governance should be outsourced entirely to technology vendors without firm oversight or validation.",
+              "AI audit tools don't require governance since they're just technological enhancements to traditional audit procedures."
+            ],
+            "correctAnswer": 1,
+            "rationale": "AI tools used in audit require robust governance including model validation, ongoing performance monitoring, and appropriate documentation of how AI influenced audit judgments. AI audit tools do require governance (professional standards apply), firms retain responsibility even when using vendor tools, and governance rigor should match the significance of AI's role in audit procedures. The second option correctly identifies essential governance elements.",
+            "tags": [
+              "ai-governance",
+              "model-validation",
+              "audit-documentation",
+              "professional-standards"
+            ]
+          },
+          {
+            "id": "EGC-AC-B-004",
+            "level": 2,
+            "type": "scenario-based",
+            "points": 10,
+            "difficulty": 0.41,
+            "discrimination": 1.12,
+            "bloomLevel": "Apply",
+            "question": "Your company's AI expense approval system consistently flags expense reports from employees in certain demographics for additional review. What should be your response?",
+            "options": [
+              "Ignore the pattern since expense approval is an internal process where bias concerns don't apply like they would for external decisions.",
+              "Investigate whether the flagging pattern reflects genuine risk factors or represents inappropriate bias requiring model adjustment.",
+              "Continue using the system since it's based on objective algorithms and must therefore be identifying legitimate risk patterns.",
+              "Immediately discontinue all AI expense tools since any pattern differences across demographics prove the technology is inherently biased."
+            ],
+            "correctAnswer": 1,
+            "rationale": "When AI systems show demographic patterns, investigation is essential to determine whether patterns reflect genuine risk factors or inappropriate bias. Algorithms aren't objective by default if trained on biased data, the system shouldn't be discontinued without investigation, and bias concerns apply to internal processes that affect employees. The second option demonstrates appropriate bias investigation and potential remediation approach.",
+            "tags": [
+              "bias-detection",
+              "demographic-patterns",
+              "investigation",
+              "model-adjustment"
+            ]
+          },
+          {
+            "id": "EGC-AC-B-005",
+            "level": 2,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.39,
+            "discrimination": 1.11,
+            "bloomLevel": "Understand",
+            "question": "What is an important data privacy consideration when using AI to analyze employee expense and reimbursement patterns?",
+            "options": [
+              "Data privacy only applies to external customer data but not to internal employee financial and expense information.",
+              "AI analysis of expense data should respect employee privacy expectations and comply with data protection regulations regarding personal information.",
+              "Employee expense data can be used for any AI analysis without restrictions since it's company financial information.",
+              "AI systems automatically ensure privacy compliance so no special considerations are needed for employee expense analysis."
+            ],
+            "correctAnswer": 1,
+            "rationale": "Employee expense data contains personal information protected by privacy regulations and organizational policies. AI analysis must respect privacy expectations and comply with relevant data protection laws. Employee data isn't unrestricted just because it's internal, privacy applies to employee data not just customer data, and AI systems don't automatically ensure privacy compliance. The second option correctly identifies the privacy and compliance requirements.",
+            "tags": [
+              "data-privacy",
+              "employee-data",
+              "compliance",
+              "personal-information"
+            ]
+          },
+          {
+            "id": "EGC-AC-B-006",
+            "level": 3,
+            "type": "scenario-based",
+            "points": 10,
+            "difficulty": 0.44,
+            "discrimination": 1.14,
+            "bloomLevel": "Apply",
+            "question": "An AI vendor claims their model for estimating warranty reserves is proprietary and cannot disclose the algorithm details. How should you respond?",
+            "options": [
+              "Use the tool without transparency since warranty estimation involves judgment where AI explainability is not critical.",
+              "Require sufficient transparency about inputs, outputs, and model validation to fulfill professional responsibility for estimates, or consider alternatives.",
+              "Immediately reject any proprietary AI tools since full algorithm transparency is mandatory for all accounting applications.",
+              "Accept the proprietary limitation since vendor AI tools don't require the same understanding as internally developed systems."
+            ],
+            "correctAnswer": 1,
+            "rationale": "For material accounting estimates, accountants need sufficient understanding of AI tools to fulfill professional responsibilities, even with vendor solutions. This doesn't necessarily require full algorithm disclosure, but does require transparency about inputs, outputs, validation, and limitations. Complete acceptance isn't appropriate, full algorithm disclosure isn't always required but sufficient transparency is, and all material estimates require appropriate basis understanding. The second option balances transparency needs with practical vendor relationships.",
+            "tags": [
+              "vendor-transparency",
+              "accounting-estimates",
+              "professional-responsibility",
+              "model-disclosure"
+            ]
+          },
+          {
+            "id": "EGC-AC-B-007",
+            "level": 3,
+            "type": "scenario-based",
+            "points": 10,
+            "difficulty": 0.47,
+            "discrimination": 1.16,
+            "bloomLevel": "Apply",
+            "question": "Your AI accounts payable system is making autonomous payment decisions up to $10,000 without human review. What governance framework element is most critical?",
+            "options": [
+              "Governance is unnecessary for routine payment decisions since the amounts are immaterial and the process is fully automated.",
+              "Eliminating all autonomous decision-making since AI should never make financial decisions without human approval regardless of amount.",
+              "Increasing the autonomous threshold to $50,000 since AI systems are more reliable than human review for payment decisions.",
+              "Establishing clear audit trails, exception monitoring, and periodic validation of AI decision quality with escalation protocols."
+            ],
+            "correctAnswer": 3,
+            "rationale": "For autonomous AI financial decisions, critical governance includes clear audit trails (accountability), exception monitoring (oversight), periodic quality validation (performance confirmation), and escalation protocols (intervention mechanisms). Complete elimination of autonomy may be unnecessarily restrictive, increasing limits without validation is imprudent, and governance is important regardless of materiality for autonomous systems. The second option identifies essential governance components for autonomous AI.",
+            "tags": [
+              "autonomous-decisions",
+              "governance-framework",
+              "audit-trail",
+              "oversight-mechanisms"
+            ]
+          },
+          {
+            "id": "EGC-AC-B-008",
+            "level": 3,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.5,
+            "discrimination": 1.18,
+            "bloomLevel": "Apply",
+            "question": "When implementing AI for financial close processes, what represents the most important ethical obligation?",
+            "options": [
+              "Maximizing AI automation to eliminate all human judgment since algorithms produce more objective financial reporting.",
+              "Ensuring AI recommendations are explainable and that human accountants retain ultimate responsibility for financial statement assertions.",
+              "Keeping AI implementation confidential from auditors since AI methods are proprietary and don't affect financial statement reliability.",
+              "Using AI to accelerate close timelines regardless of whether finance team understands or can validate AI-generated results."
+            ],
+            "correctAnswer": 1,
+            "rationale": "The primary ethical obligation is ensuring AI-influenced financial reporting decisions remain explainable and that human accountants retain ultimate professional responsibility for financial statement assertions. Eliminating human judgment isn't appropriate or realistic, speed shouldn't trump understanding and validation, and transparency with auditors about AI use is ethically important. The first option correctly identifies the fundamental professional responsibility principle.",
+            "tags": [
+              "ethical-obligations",
+              "professional-responsibility",
+              "financial-close",
+              "explainability"
+            ]
+          }
+        ]
+      },
+      {
+        "dimensionCode": "SAC",
+        "dimensionName": "Strategic Advisory & Communication",
+        "description": "Using AI insights for strategic advisory, stakeholder communication, and decision support",
+        "weight": 0.125,
+        "totalPoints": 75,
+        "items": [
+          {
+            "id": "SAC-AC-B-001",
+            "level": 1,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.3,
+            "discrimination": 1.07,
+            "bloomLevel": "Remember",
+            "question": "How can AI enhance accountants' strategic advisory capabilities?",
+            "options": [
+              "AI strategic advisory eliminates the need for accountants to understand business context or industry dynamics.",
+              "AI completely replaces the need for accountants to provide strategic advice since algorithms make all business decisions better.",
+              "AI and human strategic advisory produce identical recommendations so AI simply reduces the time required for analysis.",
+              "AI provides data-driven insights about patterns and trends that accountants can interpret and translate into strategic recommendations."
+            ],
+            "correctAnswer": 3,
+            "rationale": "AI enhances strategic advisory by surfacing data-driven insights, patterns, and trends that accountants can interpret in business context and translate into strategic recommendations. AI doesn't replace the advisory role, doesn't eliminate the need for business understanding, and the combination of AI insights with human interpretation produces different and potentially better recommendations than either alone. The second option correctly describes the augmentation relationship.",
+            "tags": [
+              "strategic-advisory",
+              "data-insights",
+              "business-interpretation",
+              "advisory-enhancement"
+            ]
+          },
+          {
+            "id": "SAC-AC-B-002",
+            "level": 1,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.31,
+            "discrimination": 1.08,
+            "bloomLevel": "Understand",
+            "question": "What is an important consideration when communicating AI-generated financial insights to non-technical stakeholders?",
+            "options": [
+              "Require all stakeholders to learn AI technical concepts before presenting any AI-influenced financial analysis.",
+              "Translate AI findings into business language, focusing on insights and implications rather than algorithmic details.",
+              "Avoid mentioning AI involvement since stakeholders don't need to know about the analytical tools used in finance.",
+              "Use detailed technical AI terminology to ensure stakeholders understand the sophisticated analytical methods employed."
+            ],
+            "correctAnswer": 1,
+            "rationale": "Effective communication of AI insights requires translating findings into business language, focusing on what the insights mean and their implications rather than technical details. Excessive technical terminology confuses stakeholders, transparency about AI use is generally appropriate, and requiring technical learning is impractical and unnecessary. The second option correctly identifies the translation and business-focus approach for stakeholder communication.",
+            "tags": [
+              "stakeholder-communication",
+              "translation",
+              "business-language",
+              "insight-presentation"
+            ]
+          },
+          {
+            "id": "SAC-AC-B-003",
+            "level": 2,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.35,
+            "discrimination": 1.1,
+            "bloomLevel": "Understand",
+            "question": "How should accountants present AI-generated forecasts to executives making strategic decisions?",
+            "options": [
+              "Present forecasts with appropriate confidence intervals and key assumptions, acknowledging uncertainty and model limitations.",
+              "Avoid presenting any AI forecasts since executives prefer traditional analysis methods and don't trust algorithmic predictions.",
+              "Present AI forecasts as definitive predictions since algorithmic analysis is more accurate than human judgment about future outcomes.",
+              "Present only the numerical forecasts without context since executives want concise information without technical details."
+            ],
+            "correctAnswer": 0,
+            "rationale": "AI forecasts should be presented with confidence intervals, key assumptions, and acknowledgment of limitations to support informed decision-making. Forecasts aren't definitive predictions regardless of methodology, executives benefit from AI insights when properly contextualized, and context about uncertainty and assumptions is critical even when being concise. The second option demonstrates appropriate professional communication of predictive analytics.",
+            "tags": [
+              "forecasting-communication",
+              "confidence-intervals",
+              "assumptions",
+              "uncertainty"
+            ]
+          },
+          {
+            "id": "SAC-AC-B-004",
+            "level": 2,
+            "type": "scenario-based",
+            "points": 10,
+            "difficulty": 0.4,
+            "discrimination": 1.12,
+            "bloomLevel": "Apply",
+            "question": "AI analysis reveals your company's profitability is declining in a product line that executives believe is strategic. How should you present this finding?",
+            "options": [
+              "Present the finding as proof that executive strategy is wrong and should be immediately reversed based on algorithmic analysis.",
+              "Present the AI data directly without interpretation since executives should draw their own conclusions from objective data.",
+              "Present the profitability decline along with potential explanations, strategic considerations, and recommendations for investigation or action.",
+              "Suppress the AI finding since it contradicts executive strategy and presenting it would damage your credibility with leadership."
+            ],
+            "correctAnswer": 2,
+            "rationale": "Professional presentation involves showing the data, providing potential explanations and context, acknowledging strategic considerations, and recommending next steps. Raw data without interpretation misses the advisory opportunity, suppressing findings is inappropriate, and presenting findings as proof of strategy failure is overly definitive and ignores complexity. The second option demonstrates balanced professional communication that provides insight while respecting strategic context.",
+            "tags": [
+              "profitability-analysis",
+              "strategic-communication",
+              "executive-presentation",
+              "balanced-recommendation"
+            ]
+          },
+          {
+            "id": "SAC-AC-B-005",
+            "level": 2,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.38,
+            "discrimination": 1.11,
+            "bloomLevel": "Understand",
+            "question": "What role should AI play in preparing Board-level financial presentations?",
+            "options": [
+              "AI can identify key trends and anomalies for inclusion, but presentation structure and messaging require professional judgment.",
+              "AI has no role in Board presentations since Board members prefer traditional financial analysis without technological enhancement.",
+              "AI should only be used for Board presentations if all Board members have technical AI backgrounds and training.",
+              "AI should automatically generate complete Board presentations without human review since algorithms understand board information needs."
+            ],
+            "correctAnswer": 0,
+            "rationale": "AI can identify important trends, anomalies, and patterns that inform Board presentations, but the structure, messaging, and what to emphasize require professional judgment about Board priorities and communication. AI doesn't understand Board needs autonomously, Boards benefit from enhanced analysis regardless of technical background, and technical AI expertise isn't required to benefit from AI-enhanced insights. The second option correctly describes AI's supporting role with human professional judgment.",
+            "tags": [
+              "board-presentations",
+              "trend-identification",
+              "professional-judgment",
+              "messaging"
+            ]
+          },
+          {
+            "id": "SAC-AC-B-006",
+            "level": 3,
+            "type": "scenario-based",
+            "points": 10,
+            "difficulty": 0.43,
+            "discrimination": 1.13,
+            "bloomLevel": "Apply",
+            "question": "AI identifies an opportunity to reduce costs by 15% through supplier consolidation, but you know this conflicts with the company's supplier diversity commitments. How do you advise?",
+            "options": [
+              "Implement the cost reduction while hiding the supplier diversity impact to avoid complicating the decision unnecessarily.",
+              "Present the cost opportunity alongside supplier diversity implications, enabling informed decision-making about trade-offs and alternatives.",
+              "Reject the AI recommendation without presenting it since the algorithm obviously doesn't understand supplier diversity importance.",
+              "Recommend implementing the AI suggestion immediately since cost reduction always takes priority over other business considerations."
+            ],
+            "correctAnswer": 1,
+            "rationale": "Professional advisory involves presenting the AI-identified opportunity along with relevant business considerations (like supplier diversity commitments), enabling informed decision-making about trade-offs. Simply prioritizing cost ignores important business factors, rejecting without presentation eliminates potentially valuable discussion, and hiding impacts is unethical. The second option demonstrates comprehensive advisory that combines AI insights with business context.",
+            "tags": [
+              "trade-off-analysis",
+              "business-context",
+              "ethical-considerations",
+              "informed-decisions"
+            ]
+          },
+          {
+            "id": "SAC-AC-B-007",
+            "level": 3,
+            "type": "scenario-based",
+            "points": 10,
+            "difficulty": 0.46,
+            "discrimination": 1.15,
+            "bloomLevel": "Apply",
+            "question": "Your CFO wants to present AI-predicted earnings to investors. What should be your primary guidance?",
+            "options": [
+              "Ensure disclosures clearly explain the prediction methodology, key assumptions, limitations, and that predictions are not guarantees.",
+              "Use AI predictions only if they show favorable results since negative predictions would inappropriately concern investors.",
+              "Present the AI predictions as management guidance without differentiating them from traditional forecasting methods.",
+              "AI predictions are too uncertain for investor communication and should never be disclosed to external stakeholders."
+            ],
+            "correctAnswer": 0,
+            "rationale": "If communicating AI predictions externally, clear disclosure of methodology, assumptions, and limitations is critical for investor protection and regulatory compliance. AI predictions can be valuable communication with proper context, should be clearly differentiated from traditional guidance, and selective disclosure based on favorability is inappropriate. The second option correctly emphasizes necessary transparency and appropriate caveats.",
+            "tags": [
+              "investor-communication",
+              "disclosure-requirements",
+              "prediction-methodology",
+              "transparency"
+            ]
+          }
+        ]
+      },
+      {
+        "dimensionCode": "TAS",
+        "dimensionName": "Tools, Automation & Systems",
+        "description": "Understanding accounting AI tools, system integration, and automation technologies",
+        "weight": 0.125,
+        "totalPoints": 75,
+        "items": [
+          {
+            "id": "TAS-AC-B-001",
+            "level": 1,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.27,
+            "discrimination": 1.06,
+            "bloomLevel": "Remember",
+            "question": "What is the primary advantage of integrating AI tools with existing accounting ERP systems?",
+            "options": [
+              "Integration completely eliminates the need for the ERP system since AI can replace all traditional accounting software.",
+              "Integration means AI takes over all accounting functions and the ERP becomes obsolete legacy technology.",
+              "Integration is unnecessary because AI tools work better as standalone systems without connection to traditional accounting software.",
+              "Integration allows AI to access transactional data for analysis while maintaining the ERP as the authoritative system of record."
+            ],
+            "correctAnswer": 3,
+            "rationale": "Integrating AI with ERP systems allows AI to access and analyze transactional data while the ERP remains the authoritative system of record for financial information. AI doesn't replace ERP systems, integration provides significant value over standalone operation, and ERP systems retain their core role in transaction recording and financial reporting. The second option correctly describes the complementary relationship between AI and ERP.",
+            "tags": [
+              "erp-integration",
+              "system-architecture",
+              "data-access",
+              "system-of-record"
+            ]
+          },
+          {
+            "id": "TAS-AC-B-002",
+            "level": 1,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.29,
+            "discrimination": 1.07,
+            "bloomLevel": "Understand",
+            "question": "What distinguishes robotic process automation (RPA) from AI in accounting workflows?",
+            "options": [
+              "RPA follows explicitly programmed rules while AI learns patterns from data, though they can be used together effectively.",
+              "RPA is always more effective than AI for accounting automation because rule-based processes are more reliable than learning algorithms.",
+              "RPA only works for manufacturing processes while AI is specifically designed for accounting and financial applications.",
+              "RPA and AI are identical technologies with different marketing names used by competing software vendors."
+            ],
+            "correctAnswer": 0,
+            "rationale": "RPA and AI represent different automation approaches: RPA executes explicitly programmed if-then rules, while AI learns from data patterns. They're complementary technologies often used together—RPA for structured process execution, AI for decision support and pattern recognition. They're not identical, neither is universally superior, and both have applications beyond their origins. The first option correctly distinguishes the technologies while noting their complementary nature.",
+            "tags": [
+              "rpa",
+              "ai-distinction",
+              "automation-types",
+              "complementary-technologies"
+            ]
+          },
+          {
+            "id": "TAS-AC-B-003",
+            "level": 2,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.33,
+            "discrimination": 1.09,
+            "bloomLevel": "Understand",
+            "question": "What is an important consideration when evaluating AI accounting software vendors?",
+            "options": [
+              "Vendor evaluation is unnecessary since all AI accounting tools are certified and standardized by accounting professional bodies.",
+              "Choose vendors based solely on AI algorithm sophistication since the most advanced technology always delivers the best results.",
+              "Always select the least expensive AI tool since all accounting AI software performs identically regardless of vendor.",
+              "Evaluate vendors on implementation support, accounting domain expertise, integration capabilities, and ongoing model maintenance."
+            ],
+            "correctAnswer": 3,
+            "rationale": "Effective vendor evaluation requires assessing multiple factors: implementation support, accounting domain expertise (does the vendor understand accounting?), integration with existing systems, and ongoing model maintenance and updates. Algorithm sophistication alone doesn't guarantee success, tools aren't commodities with identical performance, and there's no universal AI certification standard for accounting software. The second option identifies comprehensive evaluation criteria.",
+            "tags": [
+              "vendor-evaluation",
+              "implementation-support",
+              "domain-expertise",
+              "integration"
+            ]
+          },
+          {
+            "id": "TAS-AC-B-004",
+            "level": 2,
+            "type": "scenario-based",
+            "points": 10,
+            "difficulty": 0.38,
+            "discrimination": 1.11,
+            "bloomLevel": "Apply",
+            "question": "Your company is implementing an AI tool for invoice processing that requires 3 months of historical data for training. What should be your preparation priority?",
+            "options": [
+              "Immediately implement the tool and let it train on whatever data is currently available without preparation.",
+              "Use synthetic or fake invoice data for training since it can be generated faster than cleaning historical records.",
+              "Audit and clean historical invoice data to ensure training data quality, removing errors and standardizing formats.",
+              "Skip historical training entirely and configure the system with manual rules since data preparation takes too long."
+            ],
+            "correctAnswer": 2,
+            "rationale": "Before training AI on historical data, auditing and cleaning that data is critical to ensure the model learns correct patterns rather than perpetuating errors. Implementing without preparation risks training on poor data, skipping training eliminates AI's learning advantage, and synthetic data won't reflect your actual invoice patterns and characteristics. The second option correctly prioritizes data quality for effective model training.",
+            "tags": [
+              "implementation-preparation",
+              "training-data",
+              "data-quality",
+              "model-training"
+            ]
+          },
+          {
+            "id": "TAS-AC-B-005",
+            "level": 2,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.36,
+            "discrimination": 1.1,
+            "bloomLevel": "Understand",
+            "question": "How should accounting teams approach the integration of AI tools with their business intelligence platforms?",
+            "options": [
+              "Keep AI tools completely separate from BI platforms since they serve different purposes and should not interact.",
+              "Integrate AI insights into BI platforms to provide unified access to both traditional reports and AI-generated analytics.",
+              "Replace BI platforms entirely with AI tools since algorithmic analysis makes traditional business intelligence obsolete.",
+              "Integration is impossible because BI platforms and AI tools use incompatible data formats and technologies."
+            ],
+            "correctAnswer": 1,
+            "rationale": "Integrating AI insights into BI platforms provides unified access for users, allowing them to see both traditional reports and AI-generated analytics in one place. Keeping systems separate creates silos, AI doesn't replace BI platforms (they're complementary), and integration is technically feasible and beneficial. The second option correctly describes the complementary integration approach.",
+            "tags": [
+              "bi-integration",
+              "unified-access",
+              "analytics-platform",
+              "system-integration"
+            ]
+          },
+          {
+            "id": "TAS-AC-B-006",
+            "level": 3,
+            "type": "scenario-based",
+            "points": 10,
+            "difficulty": 0.42,
+            "discrimination": 1.13,
+            "bloomLevel": "Apply",
+            "question": "Your AI expense categorization tool accuracy has declined from 95% to 85% over six months. What is the most likely cause and appropriate response?",
+            "options": [
+              "The business has evolved with new expense types or patterns, requiring model retraining with recent data.",
+              "Accuracy decline is normal for AI systems and should be accepted since 85% is still better than manual processing.",
+              "The issue is definitely data quality deterioration and fixing source data will automatically restore 95% accuracy.",
+              "The AI system is fundamentally broken and must be completely replaced with a new vendor solution."
+            ],
+            "correctAnswer": 0,
+            "rationale": "Accuracy decline over time often indicates that business operations have evolved (new expense types, changed patterns) and the model needs retraining with recent data to learn current patterns. This is called model drift. The system isn't fundamentally broken, accuracy decline shouldn't be simply accepted without investigation, and while data quality could contribute, business evolution is a common cause requiring retraining. The second option correctly identifies model drift and appropriate response.",
+            "tags": [
+              "model-drift",
+              "retraining",
+              "performance-monitoring",
+              "business-evolution"
+            ]
+          },
+          {
+            "id": "TAS-AC-B-007",
+            "level": 3,
+            "type": "scenario-based",
+            "points": 10,
+            "difficulty": 0.45,
+            "discrimination": 1.15,
+            "bloomLevel": "Apply",
+            "question": "Your finance team wants to deploy multiple AI tools from different vendors for various accounting processes. What integration challenge should be prioritized?",
+            "options": [
+              "Selecting only one vendor for all AI needs even if their capabilities are weaker to avoid any integration challenges.",
+              "Letting each vendor access and modify the same database directly without coordination to maximize flexibility.",
+              "Establishing consistent data standards and APIs to enable data flow between tools and maintain a single source of truth.",
+              "Ensuring each tool works independently in isolation since integration between different vendor systems is impossible."
+            ],
+            "correctAnswer": 2,
+            "rationale": "With multiple AI tools, establishing consistent data standards, APIs, and data flow protocols is critical to maintain data integrity and a single source of truth. Integration between vendor systems is possible and important, single-vendor approaches sacrifice best-of-breed capabilities, and uncoordinated database access creates integrity risks. The second option correctly identifies essential integration architecture principles.",
+            "tags": [
+              "multi-tool-integration",
+              "data-standards",
+              "api-strategy",
+              "data-integrity"
+            ]
+          },
+          {
+            "id": "TAS-AC-B-008",
+            "level": 3,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.47,
+            "discrimination": 1.16,
+            "bloomLevel": "Apply",
+            "question": "When planning AI tool deployment for month-end close acceleration, what represents the most realistic approach?",
+            "options": [
+              "Deploy AI tools only during non-close periods and disable them during actual month-end to avoid disruption risk.",
+              "Implement all AI close tools simultaneously to achieve maximum time reduction in the first month after deployment.",
+              "Avoid AI in the close process entirely since month-end has too much time pressure to accommodate new technology.",
+              "Phase AI implementation starting with highest-volume repetitive tasks, validate results, then expand to more complex processes."
+            ],
+            "correctAnswer": 3,
+            "rationale": "Phased AI implementation starting with high-volume repetitive tasks, validating results, and gradually expanding to complex processes represents realistic change management. Simultaneous implementation of all tools creates excessive risk, avoiding AI in close misses significant value, and disabling tools during close defeats their purpose. The second option demonstrates pragmatic implementation strategy balancing value and risk.",
+            "tags": [
+              "phased-implementation",
+              "close-process",
+              "change-management",
+              "risk-mitigation"
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

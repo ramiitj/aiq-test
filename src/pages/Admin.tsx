@@ -331,32 +331,63 @@ const Admin = () => {
     setStorageInitResults(null);
 
     try {
-      const { data: { session } } = await supabase.auth.getSession();
-      if (!session) {
-        throw new Error('Not authenticated');
+      if (!products || products.length === 0) {
+        throw new Error("No assessment products found to initialize storage.");
       }
 
-      const response = await supabase.functions.invoke('initialize-storage', {
-        headers: {
-          Authorization: `Bearer ${session.access_token}`,
-        },
-      });
+      const results: { fileName: string; success: boolean; error?: string }[] = [];
 
-      if (response.error) {
-        throw response.error;
+      for (const product of products) {
+        const fileName = product.json_file_path.split("/").pop();
+        if (!fileName) {
+          results.push({ fileName: "<unknown>", success: false, error: "Missing json_file_path" });
+          continue;
+        }
+
+        try {
+          const response = await fetch(`/test-items/${fileName}`);
+
+          if (!response.ok) {
+            throw new Error(`File not found in public/test-items (${response.status})`);
+          }
+
+          const blob = await response.blob();
+
+          const { error: uploadError } = await supabase.storage
+            .from("aiq-items")
+            .upload(fileName, blob, {
+              upsert: true,
+              contentType: "application/json",
+            });
+
+          if (uploadError) {
+            throw uploadError;
+          }
+
+          results.push({ fileName, success: true });
+        } catch (err: any) {
+          results.push({ fileName, success: false, error: err.message || "Unknown error" });
+        }
       }
 
-      setStorageInitResults(response.data);
+      const summary = {
+        total: results.length,
+        succeeded: results.filter((r) => r.success).length,
+        failed: results.filter((r) => !r.success).length,
+      };
 
-      if (response.data.success) {
+      const responseData = { success: summary.failed === 0, summary, results };
+      setStorageInitResults(responseData);
+
+      if (responseData.success) {
         toast({
           title: "Storage Initialized",
-          description: `Successfully uploaded ${response.data.summary.succeeded}/${response.data.summary.total} files`,
+          description: `Successfully uploaded ${summary.succeeded}/${summary.total} files`,
         });
       } else {
         toast({
-          title: "Initialization Failed",
-          description: response.data.error,
+          title: "Initialization Completed with Errors",
+          description: `${summary.succeeded}/${summary.total} files uploaded. Check details below.`,
           variant: "destructive",
         });
       }

@@ -1,0 +1,1689 @@
+{
+  "assessmentName": "AIQ Management Consultant Beginner Assessment - Consulting Focus",
+  "version": "1.0",
+  "assessmentType": "fixed",
+  "description": "A rigorously designed foundational AI literacy assessment for management consultants with 60 items featuring balanced options, randomized correct answer positions, complete sentence formatting, and enhanced anti-gaming measures.",
+  "assessmentConfiguration": {
+    "totalQuestions": 60,
+    "questionsPerDimension": "7-8",
+    "estimatedTime": "60 minutes",
+    "targetAudience": "Management consultants, strategy consultants, business advisors, and consulting professionals with varying AI experience levels",
+    "timePerQuestion": "60 seconds average",
+    "presentationMode": {
+      "type": "fixed-sequential",
+      "description": "All questions presented in fixed order",
+      "sequencing": "By dimension, 7-8 questions per dimension"
+    },
+    "questionDistribution": {
+      "totalItems": 60,
+      "itemsPerDimension": "7-8 per dimension",
+      "selectionRatio": "100% (all items presented)"
+    },
+    "dimensionSequencing": {
+      "type": "fixed-order",
+      "sequence": [
+        "CAI",
+        "STA",
+        "CDA",
+        "PIA",
+        "CMA",
+        "DDA",
+        "EIS",
+        "CIT"
+      ],
+      "description": "Candidates complete 7-8 questions per dimension in sequence"
+    }
+  },
+  "scoringConfiguration": {
+    "totalPoints": 600,
+    "pointsPerDimension": 75,
+    "passingScore": 420,
+    "passingPercentage": 70,
+    "scoringMethod": {
+      "type": "simple-sum",
+      "description": "Direct sum of points from correct answers with differential weighting by item difficulty",
+      "basePoints": 10,
+      "formula": "points = basePoints × (1 + difficulty × 0.3) for each correct answer"
+    },
+    "scoringGuidelines": {
+      "0-40%": "Novice (0-240 points) - Significant foundational learning needed",
+      "41-60%": "Beginner (241-360 points) - Basic awareness established",
+      "61-80%": "Developing (361-480 points) - Good foundational understanding",
+      "81-90%": "Proficient (481-540 points) - Strong grasp of fundamentals",
+      "91-100%": "Advanced (541-600 points) - Excellent foundational mastery"
+    }
+  },
+  "instructions": "This AIQ Management Consultant Beginner assessment evaluates your foundational AI literacy specifically for consulting contexts. You will answer 60 questions total (7-8 per dimension) across 8 consulting-focused dimensions in approximately 60 minutes. Questions feature nuanced options designed to test genuine understanding of AI's role in management consulting. Answer all questions to the best of your ability.",
+  "assessmentGuidelines": {
+    "targetLevel": "Foundational awareness and basic understanding of AI in management consulting",
+    "cognitiveEmphasis": "65% Remember/Understand (Bloom's levels 1-2), 35% Apply (Bloom's level 3)",
+    "questionTypes": "Multiple-choice (70%), scenario-based (30%)",
+    "difficultyProfile": "Realistic distractors that require genuine consulting understanding to differentiate",
+    "timeAllocation": "Moderate time for careful consideration of consulting-specific nuances",
+    "reliabilityTarget": "Cronbach's alpha ≥ 0.80"
+  },
+  "itemBank": {
+    "totalItems": 60,
+    "itemsPerDimension": 8,
+    "description": "Complete item set with 60 questions (7-8 per dimension) focused on AI literacy for management consultants",
+    "bankStatistics": {
+      "averageDifficulty": 0.383,
+      "difficultySD": 0.08,
+      "averageDiscrimination": 1.15,
+      "discriminationSD": 0.05,
+      "contentCoverageIndex": 0.92,
+      "estimatedReliability": 0.85,
+      "totalItems": 60
+    },
+    "dimensions": [
+      {
+        "dimensionCode": "CAI",
+        "dimensionName": "Consulting AI Understanding",
+        "description": "Understanding AI capabilities, limitations, and strategic applications in consulting contexts",
+        "weight": 0.125,
+        "totalPoints": 75,
+        "items": [
+          {
+            "id": "CAI-MC-B-001",
+            "level": 1,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.25,
+            "discrimination": 1.05,
+            "bloomLevel": "Remember",
+            "question": "What is the primary strategic value AI brings to management consulting engagements?",
+            "options": [
+              "AI completely replaces the need for consultants by automatically solving all client problems without human involvement.",
+              "AI guarantees perfectly accurate recommendations by eliminating subjective judgment from all strategic decisions.",
+              "AI reduces consulting fees to minimal levels by automating all analysis and eliminating billable hours.",
+              "AI enables consultants to analyze larger datasets and identify patterns more quickly while maintaining strategic judgment for recommendations."
+            ],
+            "correctAnswer": 3,
+            "rationale": "The primary strategic value of AI in consulting is augmentation of consultant capabilities rather than replacement. AI excels at processing large datasets quickly and identifying patterns that might take humans significantly longer to discover, but consultants remain essential for strategic interpretation, contextual judgment, and client relationship management. The other options incorrectly suggest AI eliminates consultants entirely, guarantees perfection automatically, or primarily reduces fees.",
+            "tags": [
+              "strategic-value",
+              "ai-augmentation",
+              "consulting-fundamentals",
+              "human-ai-collaboration"
+            ]
+          },
+          {
+            "id": "CAI-MC-B-002",
+            "level": 1,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.3,
+            "discrimination": 1.08,
+            "bloomLevel": "Understand",
+            "question": "Why is understanding AI limitations essential for consultants advising clients on AI adoption?",
+            "options": [
+              "Understanding limitations allows consultants to avoid recommending AI solutions entirely for any client situation.",
+              "Understanding limitations helps consultants set realistic expectations and develop implementation strategies that account for AI constraints.",
+              "Understanding limitations is only relevant for technical teams but not for strategy consultants advising executives.",
+              "Understanding limitations demonstrates that AI should never be used for business-critical decisions in any industry."
+            ],
+            "correctAnswer": 1,
+            "rationale": "Understanding AI limitations is essential for consultants because it enables them to set realistic expectations with clients and develop thoughtful implementation strategies that account for both capabilities and constraints. All AI systems have limitations, but this doesn't mean they shouldn't be recommended—it means recommendations should be grounded in reality with appropriate risk mitigation. The other options incorrectly suggest avoiding AI entirely, delegating understanding to technical teams, or using limitations as justification to reject AI categorically.",
+            "tags": [
+              "ai-limitations",
+              "client-advisory",
+              "responsible-ai",
+              "expectations-management"
+            ]
+          },
+          {
+            "id": "CAI-MC-B-003",
+            "level": 2,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.35,
+            "discrimination": 1.1,
+            "bloomLevel": "Understand",
+            "question": "How does AI-driven analysis differ from traditional consulting analysis methodologies?",
+            "options": [
+              "AI-driven analysis completely replaces traditional frameworks by automatically generating superior insights without consultant input.",
+              "AI-driven analysis and traditional methodologies produce identical results but AI sounds more innovative to clients.",
+              "AI-driven analysis processes larger datasets and identifies non-obvious patterns while traditional methods apply established frameworks and structured thinking.",
+              "AI-driven analysis is always more accurate than traditional methods regardless of data quality or business context."
+            ],
+            "correctAnswer": 2,
+            "rationale": "AI-driven analysis differs from traditional consulting methodologies in that it can process much larger volumes of data and identify patterns that might not be obvious through structured frameworks alone. However, AI doesn't replace consultant frameworks entirely, isn't always more accurate (depends on data quality and context), and doesn't automatically generate superior insights without consultant interpretation. The combination of AI pattern recognition with traditional strategic frameworks often yields the best results.",
+            "tags": [
+              "analysis-methods",
+              "consulting-frameworks",
+              "ai-capabilities",
+              "methodology-comparison"
+            ]
+          },
+          {
+            "id": "CAI-MC-B-004",
+            "level": 2,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.4,
+            "discrimination": 1.12,
+            "bloomLevel": "Apply",
+            "question": "A manufacturing client asks about using AI to optimize their supply chain. What represents the most realistic consulting recommendation?",
+            "options": [
+              "AI will require clean historical data, careful model training, and ongoing human oversight for strategic decisions and exceptions.",
+              "AI will only work for simple supply chains and will completely fail with any complexity or variability in operations.",
+              "AI will eliminate the entire supply chain team since machines make better logistics decisions than any human.",
+              "AI will deliver perfect optimization from day one without any training data or integration with existing systems."
+            ],
+            "correctAnswer": 0,
+            "rationale": "A realistic AI recommendation for supply chain optimization acknowledges that AI requires quality historical data, proper model training on the client's specific context, and ongoing human oversight for strategic decisions and exceptional situations. AI can handle significant complexity when properly implemented but doesn't work perfectly from day one, doesn't eliminate the need for human expertise, and requires integration with existing systems. The other options reflect either unrealistic expectations or unnecessary pessimism.",
+            "tags": [
+              "client-recommendations",
+              "supply-chain",
+              "realistic-expectations",
+              "implementation-planning"
+            ]
+          },
+          {
+            "id": "CAI-MC-B-005",
+            "level": 2,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.38,
+            "discrimination": 1.11,
+            "bloomLevel": "Understand",
+            "question": "What distinguishes machine learning approaches from traditional statistical consulting models?",
+            "options": [
+              "Machine learning models always provide more accurate predictions than traditional statistical models regardless of the situation.",
+              "Machine learning models and traditional statistical models are exactly the same thing with different terminology.",
+              "Machine learning models automatically discover complex non-linear patterns in data while traditional models test specific hypothesized relationships.",
+              "Machine learning models can predict future outcomes with certainty while traditional models only produce estimates."
+            ],
+            "correctAnswer": 2,
+            "rationale": "Machine learning models differ from traditional statistical approaches in that they automatically discover patterns and relationships in data, including complex non-linear interactions, rather than testing specific pre-specified hypotheses. However, ML isn't always more accurate (depends on data and context), represents genuinely different methodology (not just terminology), and cannot predict with certainty. Both approaches have strengths depending on the consulting context and business problem.",
+            "tags": [
+              "machine-learning",
+              "statistical-methods",
+              "analytical-approaches",
+              "methodology-comparison"
+            ]
+          },
+          {
+            "id": "CAI-MC-B-006",
+            "level": 3,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.42,
+            "discrimination": 1.14,
+            "bloomLevel": "Apply",
+            "question": "Your consulting team is analyzing customer behavior patterns for a retail client with 50 million transaction records. How should AI be positioned in this engagement?",
+            "options": [
+              "AI should replace all traditional market research since machine learning will automatically identify all relevant customer segments.",
+              "AI should be avoided entirely because the dataset is too large and complex for any meaningful analysis.",
+              "AI should complement consultant expertise by identifying patterns in transaction data that inform strategic segmentation frameworks.",
+              "AI should be used only to create impressive visualizations but not for actual analysis or strategic recommendations."
+            ],
+            "correctAnswer": 2,
+            "rationale": "For large-scale customer behavior analysis, AI should be positioned as a complement to consultant expertise—using machine learning to identify patterns and segments in the massive transaction dataset, while consultants provide strategic interpretation, business context, and actionable recommendations. AI doesn't replace all traditional research, isn't overwhelmed by large datasets (this is where it excels), and should drive actual insights rather than just visualizations.",
+            "tags": [
+              "customer-analytics",
+              "large-scale-analysis",
+              "strategic-positioning",
+              "client-engagement"
+            ]
+          },
+          {
+            "id": "CAI-MC-B-007",
+            "level": 3,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.45,
+            "discrimination": 1.16,
+            "bloomLevel": "Apply",
+            "question": "A financial services client wants to understand whether AI can improve their risk assessment process. What represents sound consulting guidance?",
+            "options": [
+              "AI can analyze historical patterns and flag anomalies more consistently than manual review, but final risk decisions require human judgment on materiality and context.",
+              "AI will guarantee elimination of all risk assessment errors by removing subjective human judgment from the process entirely.",
+              "AI should not be used for risk assessment in regulated industries because algorithms cannot be trusted with compliance.",
+              "AI can only assist with simple risk calculations but fails completely when dealing with complex or nuanced risk factors."
+            ],
+            "correctAnswer": 0,
+            "rationale": "Sound consulting guidance acknowledges that AI can significantly improve risk assessment by analyzing patterns consistently and flagging anomalies, but emphasizes that human judgment remains essential for final decisions on materiality, context, and regulatory considerations. AI doesn't guarantee elimination of all errors, can be used appropriately in regulated industries with proper governance, and can handle significant complexity when properly trained.",
+            "tags": [
+              "risk-assessment",
+              "financial-services",
+              "consulting-judgment",
+              "human-oversight"
+            ]
+          },
+          {
+            "id": "CAI-MC-B-008",
+            "level": 3,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.48,
+            "discrimination": 1.18,
+            "bloomLevel": "Analyze",
+            "question": "When should a management consultant recommend against using AI for a client's specific business problem?",
+            "options": [
+              "When the problem involves high-stakes decisions that could significantly impact people's lives or livelihoods without human oversight.",
+              "When the client has limited historical data, the problem requires deep contextual judgment, or regulatory constraints prohibit automated decisions.",
+              "Consultants should always recommend AI solutions regardless of client circumstances since AI represents the future of business.",
+              "Consultants should never recommend AI because traditional consulting methods are always superior to technological solutions."
+            ],
+            "correctAnswer": 1,
+            "rationale": "Consultants should recommend against AI when there is insufficient quality data for training, when the problem is primarily judgment-based rather than pattern-based, or when regulatory requirements prohibit automated decision-making. While high-stakes decisions warrant caution, they don't automatically preclude AI if proper human oversight is maintained. The key is matching the solution approach to the specific problem characteristics and constraints.",
+            "tags": [
+              "solution-appropriateness",
+              "consulting-judgment",
+              "ai-applicability",
+              "risk-assessment"
+            ]
+          }
+        ]
+      },
+      {
+        "dimensionCode": "STA",
+        "dimensionName": "Strategic AI Applications",
+        "description": "Applying AI strategically in client transformation and business strategy contexts",
+        "weight": 0.125,
+        "totalPoints": 75,
+        "items": [
+          {
+            "id": "STA-MC-B-001",
+            "level": 1,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.28,
+            "discrimination": 1.06,
+            "bloomLevel": "Remember",
+            "question": "In strategy consulting, what is the primary role of AI in competitive analysis?",
+            "options": [
+              "AI automatically identifies all competitive threats and generates complete strategic responses without consultant analysis.",
+              "AI eliminates the need for traditional competitive intelligence by replacing industry experts with algorithms.",
+              "AI processes large volumes of competitive data from multiple sources to surface trends and patterns for consultant interpretation.",
+              "AI guarantees perfectly accurate predictions of competitor moves by analyzing their historical behavior patterns."
+            ],
+            "correctAnswer": 2,
+            "rationale": "In strategy consulting, AI's primary role in competitive analysis is to process and synthesize large volumes of data from multiple sources (news, filings, social media, etc.) to surface trends and patterns that inform consultant analysis. AI doesn't replace consultant judgment in interpreting competitive implications, doesn't eliminate need for industry expertise, and cannot predict competitor moves with certainty. The value is in augmenting data processing capabilities.",
+            "tags": [
+              "competitive-analysis",
+              "strategy-consulting",
+              "data-processing",
+              "strategic-intelligence"
+            ]
+          },
+          {
+            "id": "STA-MC-B-002",
+            "level": 2,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.32,
+            "discrimination": 1.09,
+            "bloomLevel": "Understand",
+            "question": "How can AI support consultants in developing market entry strategies for clients?",
+            "options": [
+              "AI can analyze market data, competitive landscapes, and demand patterns to inform entry strategy options that consultants evaluate.",
+              "AI completely replaces consultant strategic thinking by automatically generating the optimal market entry approach.",
+              "AI should only be used for basic data visualization and not for substantive market analysis or strategy development.",
+              "AI eliminates all risk from market entry decisions by predicting exactly how competitors will respond."
+            ],
+            "correctAnswer": 0,
+            "rationale": "AI supports market entry strategy by analyzing relevant data sources to identify patterns in market dynamics, competitive behavior, and demand signals that inform strategic options. Consultants then apply judgment about client capabilities, risk tolerance, and strategic fit to develop recommendations. AI doesn't replace strategic thinking, can be used for substantive analysis beyond just visualization, and cannot eliminate uncertainty from strategic decisions.",
+            "tags": [
+              "market-entry",
+              "strategy-development",
+              "market-analysis",
+              "strategic-planning"
+            ]
+          },
+          {
+            "id": "STA-MC-B-003",
+            "level": 2,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.36,
+            "discrimination": 1.11,
+            "bloomLevel": "Apply",
+            "question": "A client in healthcare is exploring digital transformation opportunities. What role should AI play in your strategic recommendations?",
+            "options": [
+              "AI should be recommended for every business process regardless of value or feasibility to demonstrate innovation.",
+              "AI should be evaluated based on where it addresses specific pain points, creates meaningful value, and aligns with strategic priorities.",
+              "AI should be excluded from healthcare recommendations due to regulatory complexity and patient safety concerns.",
+              "AI should only be recommended for back-office functions and never for clinical or patient-facing applications."
+            ],
+            "correctAnswer": 1,
+            "rationale": "Strategic AI recommendations should be based on rigorous evaluation of where AI addresses specific business problems, creates meaningful value, and aligns with the organization's strategic objectives and capabilities. Recommending AI everywhere shows poor judgment, while blanket exclusion ignores genuine opportunities. Healthcare applications require particular attention to regulatory and safety considerations, but AI can be appropriate for both operational and clinical applications when properly implemented.",
+            "tags": [
+              "digital-transformation",
+              "healthcare-strategy",
+              "strategic-prioritization",
+              "value-assessment"
+            ]
+          },
+          {
+            "id": "STA-MC-B-004",
+            "level": 2,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.4,
+            "discrimination": 1.13,
+            "bloomLevel": "Apply",
+            "question": "How should consultants position AI in helping clients achieve cost reduction objectives?",
+            "options": [
+              "AI should be positioned as a way to eliminate all labor costs by fully automating departments and eliminating jobs.",
+              "AI should be positioned as enabling employees to focus on higher-value work while automating repetitive tasks, potentially requiring workforce redeployment.",
+              "AI should never be mentioned in cost reduction discussions since AI implementation is always more expensive than current operations.",
+              "AI should only be used to reduce technology costs and has no application to operational cost reduction."
+            ],
+            "correctAnswer": 1,
+            "rationale": "Consultants should position AI in cost reduction contexts as enabling workforce productivity improvements by automating repetitive tasks, allowing employees to focus on judgment-intensive work. This may involve workforce redeployment rather than just headcount reduction. Positioning AI purely as job elimination is socially problematic and ignores value creation opportunities. AI implementation has upfront costs but can generate sustainable efficiency gains across operations.",
+            "tags": [
+              "cost-reduction",
+              "workforce-strategy",
+              "automation",
+              "change-management"
+            ]
+          },
+          {
+            "id": "STA-MC-B-005",
+            "level": 3,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.43,
+            "discrimination": 1.15,
+            "bloomLevel": "Apply",
+            "question": "A manufacturing client wants to build competitive advantage through AI. What strategic guidance should you provide?",
+            "options": [
+              "Implement the same AI solutions competitors use to maintain parity since differentiation through AI is impossible.",
+              "Avoid AI entirely since any advantage will be quickly copied by competitors with similar technology.",
+              "Focus AI on areas aligned with core competencies where proprietary data or domain expertise creates differentiation.",
+              "Pursue AI in every possible area to maximize technology adoption regardless of strategic alignment or readiness."
+            ],
+            "correctAnswer": 2,
+            "rationale": "Strategic AI advantage comes from focusing on applications aligned with core competencies where the organization has proprietary data, deep domain expertise, or unique operational context that creates differentiation. Simply copying competitor implementations yields parity not advantage, while avoiding AI entirely cedes competitive ground. Pursuing AI everywhere without strategic focus dilutes resources and reduces impact. The key is selective deployment where AI amplifies existing strategic strengths.",
+            "tags": [
+              "competitive-advantage",
+              "strategic-differentiation",
+              "ai-strategy",
+              "core-competencies"
+            ]
+          },
+          {
+            "id": "STA-MC-B-006",
+            "level": 3,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.46,
+            "discrimination": 1.17,
+            "bloomLevel": "Analyze",
+            "question": "When advising on AI-driven business model innovation, what is the most critical strategic consideration?",
+            "options": [
+              "Implementing the most advanced AI technology available regardless of business model fit or market readiness.",
+              "Ensuring AI enables a business model that is defensible, scalable, and creates genuine customer value.",
+              "Avoiding any business model changes and only using AI to optimize existing operations incrementally.",
+              "Copying successful AI business models from other industries without adaptation to client context."
+            ],
+            "correctAnswer": 1,
+            "rationale": "The most critical consideration in AI-driven business model innovation is ensuring that AI enables a model that creates genuine customer value, can scale economically, and has some defensibility against competition. Technology sophistication without business model viability fails, while refusing to consider model changes may miss transformative opportunities. Simply copying models from other contexts ignores important industry and organizational differences. The focus should be on sustainable value creation.",
+            "tags": [
+              "business-model-innovation",
+              "strategic-planning",
+              "value-creation",
+              "competitive-sustainability"
+            ]
+          },
+          {
+            "id": "STA-MC-B-007",
+            "level": 3,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.48,
+            "discrimination": 1.18,
+            "bloomLevel": "Analyze",
+            "question": "A retail client asks how AI should factor into their five-year strategic plan. What represents the most sophisticated consulting perspective?",
+            "options": [
+              "Recommend specific AI technologies today since five-year technology plans ensure competitive advantage through predictability.",
+              "Exclude AI from long-term planning since technology changes too rapidly to incorporate into strategic roadmaps.",
+              "Build organizational capabilities and data foundations that enable AI adoption as specific use cases and technologies mature.",
+              "Plan to replace the entire workforce with AI systems within five years to maximize return on technology investment."
+            ],
+            "correctAnswer": 2,
+            "rationale": "Sophisticated AI strategic planning focuses on building organizational capabilities (data infrastructure, talent, culture, governance) that enable AI adoption as specific technologies and use cases mature, rather than locking into specific technologies that may become outdated. Excluding AI from planning ignores inevitable industry changes, while planning wholesale workforce replacement shows poor judgment about AI capabilities and implementation realities. The focus should be on adaptive capability-building.",
+            "tags": [
+              "strategic-planning",
+              "capability-building",
+              "organizational-readiness",
+              "long-term-strategy"
+            ]
+          },
+          {
+            "id": "STA-MC-B-008",
+            "level": 3,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.5,
+            "discrimination": 1.2,
+            "bloomLevel": "Evaluate",
+            "question": "How should management consultants evaluate whether an AI initiative aligns with a client's overall corporate strategy?",
+            "options": [
+              "AI initiatives always align with strategy since technology adoption is inherently strategic regardless of specific objectives.",
+              "Assess whether the AI initiative advances strategic priorities, leverages distinctive capabilities, and fits the organizational context and risk tolerance.",
+              "AI initiatives should be evaluated purely on technical merits without consideration of broader strategic alignment.",
+              "Any AI investment is strategically sound as long as competitors are also investing in similar technologies."
+            ],
+            "correctAnswer": 1,
+            "rationale": "Consultants should evaluate AI strategic alignment by assessing whether initiatives advance stated strategic priorities, leverage the organization's distinctive capabilities or data assets, fit the organizational context and change capacity, and align with leadership's risk tolerance. Technology adoption isn't inherently strategic, technical merits alone are insufficient for strategic decisions, and following competitors doesn't ensure strategic fit. Alignment assessment requires holistic evaluation of initiative fit with organizational strategy and capabilities.",
+            "tags": [
+              "strategic-alignment",
+              "initiative-evaluation",
+              "strategic-assessment",
+              "consulting-frameworks"
+            ]
+          }
+        ]
+      },
+      {
+        "dimensionCode": "CDA",
+        "dimensionName": "Client Data Analysis",
+        "description": "Using AI for data analysis, insights generation, and evidence-based consulting",
+        "weight": 0.125,
+        "totalPoints": 75,
+        "items": [
+          {
+            "id": "CDA-MC-B-001",
+            "level": 1,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.26,
+            "discrimination": 1.05,
+            "bloomLevel": "Remember",
+            "question": "What is the primary advantage of using AI for analyzing client operational data in consulting engagements?",
+            "options": [
+              "AI guarantees finding the root cause of any operational issue by automatically testing all possible hypotheses.",
+              "AI completely eliminates the need for consultants to understand the client's business context or operations.",
+              "AI processes large operational datasets quickly to identify patterns and anomalies that inform consultant hypothesis development.",
+              "AI makes all operational decisions automatically without requiring consultant analysis or client management approval."
+            ],
+            "correctAnswer": 2,
+            "rationale": "The primary advantage is that AI can process large volumes of operational data quickly to surface patterns, trends, and anomalies that inform consultant hypothesis development and analysis. AI doesn't guarantee finding root causes automatically, doesn't eliminate the need for business context understanding, and doesn't make decisions autonomously. The value is in augmenting consultant analytical capabilities with rapid large-scale data processing.",
+            "tags": [
+              "operational-analysis",
+              "data-processing",
+              "pattern-recognition",
+              "hypothesis-development"
+            ]
+          },
+          {
+            "id": "CDA-MC-B-002",
+            "level": 2,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.3,
+            "discrimination": 1.07,
+            "bloomLevel": "Understand",
+            "question": "How does AI-powered data analysis differ from traditional consultant-led data analysis in client engagements?",
+            "options": [
+              "AI-powered analysis always produces more accurate insights than consultant analysis regardless of data quality or business complexity.",
+              "AI-powered analysis can process larger datasets and identify complex patterns while consultant-led analysis applies frameworks and business judgment.",
+              "AI-powered analysis and traditional consulting analysis are essentially identical methodologies with different terminology.",
+              "AI-powered analysis completely replaces the need for consultants to review data or validate findings with clients."
+            ],
+            "correctAnswer": 1,
+            "rationale": "AI-powered analysis differs in its ability to process much larger datasets and identify complex or non-obvious patterns, while consultant-led analysis excels at applying structured frameworks, business context, and judgment. The approaches are complementary not identical, AI isn't always more accurate (depends on data quality and context), and AI doesn't eliminate the need for consultant validation and interpretation. The best approach often combines both methods.",
+            "tags": [
+              "analysis-methods",
+              "consulting-approach",
+              "complementary-capabilities",
+              "methodology-comparison"
+            ]
+          },
+          {
+            "id": "CDA-MC-B-003",
+            "level": 2,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.34,
+            "discrimination": 1.09,
+            "bloomLevel": "Apply",
+            "question": "A client provides 5 years of sales transaction data (10 million records) and asks for insights on declining revenue. How should AI be used in this analysis?",
+            "options": [
+              "Use AI to identify patterns in customer segments, product categories, and regional trends that might explain revenue decline for consultant interpretation.",
+              "Avoid using AI entirely and manually analyze all 10 million transactions using spreadsheets to ensure accuracy.",
+              "Let AI automatically determine the cause and solution without consultant involvement since the dataset is too large for human analysis.",
+              "Use AI only for creating attractive charts and visualizations but not for actual analysis or insight generation."
+            ],
+            "correctAnswer": 0,
+            "rationale": "For large transaction datasets, AI should be used to identify patterns across multiple dimensions (customer segments, products, regions, time periods) that might explain revenue trends, which consultants then interpret with business context to develop hypotheses and recommendations. Manual analysis of 10 million records is impractical, AI shouldn't work without consultant oversight, and AI should drive substantive analysis not just visualization. The goal is AI-augmented insight generation.",
+            "tags": [
+              "revenue-analysis",
+              "large-scale-data",
+              "pattern-identification",
+              "insight-generation"
+            ]
+          },
+          {
+            "id": "CDA-MC-B-004",
+            "level": 2,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.38,
+            "discrimination": 1.11,
+            "bloomLevel": "Apply",
+            "question": "What should consultants do when AI analysis of client data produces unexpected or counterintuitive findings?",
+            "options": [
+              "Immediately reject the AI findings since unexpected results indicate the algorithm is malfunctioning or incorrect.",
+              "Present the AI findings directly to clients without validation since algorithms are always more objective than humans.",
+              "Investigate the unexpected findings through additional analysis, validate with subject matter experts, and consider alternative explanations.",
+              "Ignore unexpected AI findings and focus only on results that confirm existing consultant hypotheses and client expectations."
+            ],
+            "correctAnswer": 2,
+            "rationale": "When AI produces unexpected findings, consultants should investigate further through additional analysis, validate findings with client subject matter experts, check data quality, and consider whether the results reveal genuine insights or reflect data issues. Immediately rejecting unexpected results may miss valuable insights, while blindly accepting them without validation is irresponsible. Ignoring results that don't match expectations introduces bias. The professional approach is thoughtful investigation.",
+            "tags": [
+              "findings-validation",
+              "analytical-rigor",
+              "unexpected-results",
+              "professional-judgment"
+            ]
+          },
+          {
+            "id": "CDA-MC-B-005",
+            "level": 2,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.4,
+            "discrimination": 1.12,
+            "bloomLevel": "Understand",
+            "question": "Why is data quality particularly important when using AI for client data analysis in consulting projects?",
+            "options": [
+              "AI algorithms automatically fix all data quality issues, so data quality is actually less important when using AI than traditional methods.",
+              "Data quality is only relevant for small datasets; AI excels specifically because it overcomes poor data quality through sophisticated algorithms.",
+              "Poor data quality leads to unreliable AI outputs, potentially resulting in flawed recommendations that damage client outcomes and consultant credibility.",
+              "Data quality concerns are exaggerated by traditional consultants who resist AI adoption and prefer manual analysis methods."
+            ],
+            "correctAnswer": 2,
+            "rationale": "Data quality is critical because AI algorithms learn from the data provided—poor quality data leads to poor quality outputs regardless of algorithm sophistication. In consulting contexts, unreliable AI outputs can lead to flawed recommendations that harm client outcomes and damage consultant credibility. AI doesn't automatically fix data quality issues, doesn't overcome poor quality through sophistication alone, and quality concerns are legitimate professional considerations not just resistance to technology.",
+            "tags": [
+              "data-quality",
+              "analytical-reliability",
+              "professional-standards",
+              "risk-management"
+            ]
+          },
+          {
+            "id": "CDA-MC-B-006",
+            "level": 3,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.44,
+            "discrimination": 1.14,
+            "bloomLevel": "Apply",
+            "question": "Your team uses AI to analyze employee survey data and identifies patterns suggesting management problems in specific departments. How should this be handled?",
+            "options": [
+              "Present raw AI findings immediately to senior leadership without further validation or context to demonstrate analytical capabilities.",
+              "Validate patterns through confidential interviews, corroborate with other data sources, and present findings sensitively with anonymized insights.",
+              "Suppress any negative findings about management to maintain client relationship and focus only on positive organizational patterns.",
+              "Let the AI system automatically generate and distribute reports to all affected departments without consultant review."
+            ],
+            "correctAnswer": 1,
+            "rationale": "Sensitive AI findings about management or organizational issues require careful validation through multiple data sources, confidential corroboration with stakeholders, and thoughtful presentation that protects anonymity while enabling action. Presenting raw findings without validation is unprofessional, suppressing negative findings is unethical, and automated distribution without review shows poor judgment. Consultants must balance analytical rigor with sensitivity to organizational dynamics and individual privacy.",
+            "tags": [
+              "sensitive-findings",
+              "organizational-analysis",
+              "professional-ethics",
+              "stakeholder-management"
+            ]
+          },
+          {
+            "id": "CDA-MC-B-007",
+            "level": 3,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.46,
+            "discrimination": 1.16,
+            "bloomLevel": "Analyze",
+            "question": "A client's historical data shows strong patterns, but leadership expresses concern that business conditions have fundamentally changed. How should this affect your AI analysis approach?",
+            "options": [
+              "Rely entirely on AI analysis of historical patterns since data is more objective than leadership intuition about market changes.",
+              "Ignore historical data entirely and base recommendations solely on leadership perspectives about current conditions.",
+              "Acknowledge historical patterns while stress-testing assumptions about changing conditions and incorporating forward-looking indicators where available.",
+              "Cancel the AI analysis completely since historical data is worthless when business conditions change."
+            ],
+            "correctAnswer": 2,
+            "rationale": "When leadership raises concerns about fundamental business changes, consultants should acknowledge historical patterns while explicitly testing assumptions about how conditions may have changed and incorporating forward-looking indicators where possible. Historical data provides valuable context even in changing conditions, but shouldn't be applied mechanically without considering structural changes. Ignoring either historical data or current perspectives shows poor judgment. The goal is balanced analysis that weighs multiple information sources.",
+            "tags": [
+              "changing-conditions",
+              "assumption-testing",
+              "forward-looking-analysis",
+              "balanced-judgment"
+            ]
+          },
+          {
+            "id": "CDA-MC-B-008",
+            "level": 3,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.48,
+            "discrimination": 1.17,
+            "bloomLevel": "Evaluate",
+            "question": "How should consultants determine the appropriate balance between AI-driven analysis and traditional consulting frameworks for a particular client engagement?",
+            "options": [
+              "Always prioritize AI-driven analysis over traditional frameworks since AI represents more sophisticated and objective methodology.",
+              "Always prioritize traditional frameworks over AI since consultant judgment is inherently superior to algorithmic analysis.",
+              "Evaluate based on data availability, problem structure, client sophistication, and the relative strengths of each approach for the specific context.",
+              "Use AI and traditional frameworks equally in all situations regardless of problem characteristics or client needs."
+            ],
+            "correctAnswer": 2,
+            "rationale": "The appropriate balance between AI and traditional frameworks depends on multiple contextual factors: data availability and quality, whether the problem is pattern-based or judgment-based, client technological sophistication and preferences, and which approach better suits the specific analytical needs. Neither AI nor traditional methods should be prioritized categorically, and equal application regardless of context shows poor analytical judgment. Professional consultants adapt their methodology to fit the problem and context.",
+            "tags": [
+              "methodology-selection",
+              "analytical-approach",
+              "context-dependent-analysis",
+              "professional-judgment"
+            ]
+          }
+        ]
+      },
+      {
+        "dimensionCode": "PIA",
+        "dimensionName": "Process Improvement with AI",
+        "description": "Applying AI to identify and implement process improvements for clients",
+        "weight": 0.125,
+        "totalPoints": 75,
+        "items": [
+          {
+            "id": "PIA-MC-B-001",
+            "level": 1,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.27,
+            "discrimination": 1.06,
+            "bloomLevel": "Remember",
+            "question": "What is the primary benefit of using AI in process improvement initiatives for consulting clients?",
+            "options": [
+              "AI identifies inefficiencies and bottlenecks in complex processes by analyzing operational data patterns at scale.",
+              "AI completely redesigns all business processes automatically without requiring consultant expertise or client input.",
+              "AI eliminates the need for change management by forcing employees to adopt new processes immediately.",
+              "AI guarantees 50% cost reduction in any process by replacing human workers with automated systems."
+            ],
+            "correctAnswer": 0,
+            "rationale": "The primary benefit of AI in process improvement is its ability to analyze large volumes of operational data to identify inefficiencies, bottlenecks, and improvement opportunities that might not be obvious through traditional process mapping alone. AI doesn't redesign processes automatically without consultant guidance, doesn't eliminate change management needs, and doesn't guarantee specific cost reduction levels. The value is in data-driven identification of improvement opportunities.",
+            "tags": [
+              "process-improvement",
+              "operational-analysis",
+              "efficiency-identification",
+              "data-driven-insights"
+            ]
+          },
+          {
+            "id": "PIA-MC-B-002",
+            "level": 2,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.31,
+            "discrimination": 1.08,
+            "bloomLevel": "Understand",
+            "question": "How does AI process mining differ from traditional process improvement methodologies like Six Sigma or Lean?",
+            "options": [
+              "AI process mining and traditional Lean/Six Sigma methodologies produce identical results using different terminology.",
+              "AI process mining automatically discovers actual process flows from system data while traditional methods map intended processes through observation.",
+              "AI process mining is always more accurate than Lean or Six Sigma regardless of process complexity or data availability.",
+              "AI process mining completely replaces the need for traditional process improvement frameworks and consultant expertise."
+            ],
+            "correctAnswer": 1,
+            "rationale": "AI process mining differs from traditional methods in that it automatically discovers how processes actually work by analyzing digital footprints in systems, revealing variations and deviations from intended processes. Traditional methods typically map processes as they should work or as observed. The approaches are complementary not identical, AI isn't always more accurate, and doesn't replace traditional frameworks which provide structured improvement methodologies. The combination of both approaches often yields best results.",
+            "tags": [
+              "process-mining",
+              "methodology-comparison",
+              "actual-vs-intended-process",
+              "complementary-approaches"
+            ]
+          },
+          {
+            "id": "PIA-MC-B-003",
+            "level": 2,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.35,
+            "discrimination": 1.1,
+            "bloomLevel": "Apply",
+            "question": "A manufacturing client wants to reduce production cycle time. How should AI be incorporated into the process improvement engagement?",
+            "options": [
+              "Use AI to analyze production data and identify bottlenecks, then apply Lean principles to develop solutions collaboratively with operations team.",
+              "Replace the entire manufacturing workforce with AI-controlled robots since automation always reduces cycle time most effectively.",
+              "Avoid using AI and rely exclusively on traditional time-and-motion studies since AI cannot understand physical manufacturing.",
+              "Let AI automatically optimize the production schedule without consulting operations managers or understanding capacity constraints."
+            ],
+            "correctAnswer": 0,
+            "rationale": "AI should be used to analyze production data to identify bottlenecks and inefficiencies, which then inform Lean-based improvements developed collaboratively with the operations team who understand practical constraints. Wholesale automation may not be feasible or optimal, traditional methods alone miss insights from data analysis, and AI optimization without operational expertise may produce impractical recommendations. The best approach combines AI analysis with traditional improvement methodologies and operational expertise.",
+            "tags": [
+              "manufacturing-improvement",
+              "cycle-time-reduction",
+              "hybrid-approach",
+              "collaborative-problem-solving"
+            ]
+          },
+          {
+            "id": "PIA-MC-B-004",
+            "level": 2,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.39,
+            "discrimination": 1.12,
+            "bloomLevel": "Apply",
+            "question": "When should consultants recommend process automation with AI versus process redesign without AI for a client?",
+            "options": [
+              "Always recommend AI automation regardless of process characteristics since technology adoption demonstrates innovation.",
+              "Recommend AI when processes are high-volume, rule-based, and data-intensive; recommend redesign when processes require significant judgment or are low-volume.",
+              "Never recommend AI automation since human judgment is always superior to automated decision-making in business processes.",
+              "Recommend whichever approach is more expensive since higher project fees indicate more sophisticated consulting work."
+            ],
+            "correctAnswer": 1,
+            "rationale": "AI automation is most appropriate for high-volume, rule-based, data-intensive processes where AI can handle scale and consistency. Process redesign without AI may be better for judgment-intensive, low-volume, or highly variable processes. The recommendation should be based on process characteristics and value potential, not technology adoption for its own sake, blanket rejection of AI, or consultant self-interest in fees. Professional recommendations match solution to problem.",
+            "tags": [
+              "automation-vs-redesign",
+              "solution-fit",
+              "process-characteristics",
+              "professional-judgment"
+            ]
+          },
+          {
+            "id": "PIA-MC-B-005",
+            "level": 2,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.41,
+            "discrimination": 1.13,
+            "bloomLevel": "Understand",
+            "question": "What is a key consideration when recommending AI for customer service process improvement?",
+            "options": [
+              "AI should completely replace human customer service representatives to maximize cost savings and efficiency.",
+              "AI should handle routine inquiries while complex or sensitive issues are escalated to human representatives for personalized handling.",
+              "AI should never be used for customer service since customers always prefer human interaction for all issues.",
+              "AI should be implemented without informing customers since they cannot tell the difference between AI and human service."
+            ],
+            "correctAnswer": 1,
+            "rationale": "The appropriate approach for AI in customer service is to handle routine, high-volume inquiries efficiently while escalating complex, sensitive, or nuanced issues to human representatives. Complete replacement often degrades service quality and customer satisfaction, while refusing to use AI for any inquiries misses efficiency opportunities. Customers should generally be aware when interacting with AI systems for transparency. The goal is augmentation with appropriate handoffs to humans.",
+            "tags": [
+              "customer-service-automation",
+              "human-ai-handoff",
+              "service-quality",
+              "appropriate-escalation"
+            ]
+          },
+          {
+            "id": "PIA-MC-B-006",
+            "level": 3,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.43,
+            "discrimination": 1.15,
+            "bloomLevel": "Apply",
+            "question": "A client's accounts payable team processes 10,000 invoices monthly with 15% requiring exceptions handling. How should you approach AI-driven process improvement?",
+            "options": [
+              "Implement AI to process all invoices identically to achieve complete automation and eliminate the AP team entirely.",
+              "Implement AI for standard invoices while building exception handling workflows that leverage human judgment for complex cases.",
+              "Avoid AI entirely since 15% exceptions rate means the process is too complex for any automation.",
+              "Use AI only for data entry and not for any validation, matching, or approval processes."
+            ],
+            "correctAnswer": 1,
+            "rationale": "With 85% standard invoices and 15% exceptions, the appropriate approach is AI automation for standard cases combined with well-designed exception workflows that route complex cases to human judgment. Complete automation ignoring exceptions will create problems, while avoiding AI due to exceptions rate misses large efficiency opportunity. AI can and should handle more than just data entry when properly configured. The key is designing for both automation and exception handling.",
+            "tags": [
+              "ap-automation",
+              "exception-handling",
+              "hybrid-processing",
+              "process-design"
+            ]
+          },
+          {
+            "id": "PIA-MC-B-007",
+            "level": 3,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.45,
+            "discrimination": 1.16,
+            "bloomLevel": "Analyze",
+            "question": "When AI process analysis reveals that employees have developed workarounds to official procedures, how should consultants address this finding?",
+            "options": [
+              "Immediately recommend eliminating all workarounds and forcing compliance with official procedures through stricter controls.",
+              "Ignore the workarounds since they indicate employee creativity and shouldn't be discouraged by consultants.",
+              "Investigate why workarounds exist, evaluate whether they represent practical improvements or risks, and incorporate valid improvements into redesigned processes.",
+              "Implement AI to automatically prevent any deviations from official procedures regardless of business justification."
+            ],
+            "correctAnswer": 2,
+            "rationale": "When AI reveals workarounds, consultants should investigate the underlying reasons—workarounds often indicate process design flaws or practical constraints that official procedures don't address. Some workarounds may represent risks requiring elimination, while others may be practical improvements worth incorporating. Simply forcing compliance ignores root causes, ignoring workarounds misses improvement opportunities, and automatically preventing deviations shows poor judgment. The professional approach is thoughtful investigation and selective incorporation.",
+            "tags": [
+              "workaround-analysis",
+              "root-cause-investigation",
+              "process-reality",
+              "practical-improvement"
+            ]
+          },
+          {
+            "id": "PIA-MC-B-008",
+            "level": 3,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.47,
+            "discrimination": 1.17,
+            "bloomLevel": "Evaluate",
+            "question": "How should consultants evaluate the success of an AI-driven process improvement implementation beyond immediate efficiency metrics?",
+            "options": [
+              "Focus exclusively on cost reduction and headcount elimination since these represent clear financial benefits.",
+              "Measure only system uptime and processing speed since technical performance indicates successful AI implementation.",
+              "Evaluate employee adoption, process quality, customer impact, and sustainability alongside efficiency improvements and cost savings.",
+              "Success evaluation is unnecessary since AI implementations always succeed and provide benefits automatically."
+            ],
+            "correctAnswer": 2,
+            "rationale": "Comprehensive evaluation of AI process improvement should include multiple dimensions: employee adoption and satisfaction, process quality and accuracy, customer or stakeholder impact, operational sustainability, alongside efficiency metrics and cost savings. Focusing solely on cost reduction or technical metrics misses important aspects of implementation success. Assuming automatic success without evaluation is professionally irresponsible. Sustainable process improvement requires holistic assessment across multiple stakeholder perspectives.",
+            "tags": [
+              "implementation-success",
+              "holistic-evaluation",
+              "stakeholder-impact",
+              "sustainability-assessment"
+            ]
+          }
+        ]
+      },
+      {
+        "dimensionCode": "CMA",
+        "dimensionName": "Change Management for AI",
+        "description": "Managing organizational change and adoption of AI solutions in client organizations",
+        "weight": 0.125,
+        "totalPoints": 75,
+        "items": [
+          {
+            "id": "CMA-MC-B-001",
+            "level": 1,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.29,
+            "discrimination": 1.07,
+            "bloomLevel": "Remember",
+            "question": "What is the primary change management challenge when implementing AI solutions in client organizations?",
+            "options": [
+              "AI technology is too complex for any employees to understand, making adoption impossible without complete workforce replacement.",
+              "Employees fear job displacement and may resist AI adoption even when it augments rather than replaces their roles.",
+              "AI implementations never face resistance since employees always embrace new technology enthusiastically.",
+              "Change management is unnecessary for AI projects since the technology automatically drives adoption."
+            ],
+            "correctAnswer": 1,
+            "rationale": "The primary change management challenge is employee concern about job security and role changes, which can drive resistance even when AI is designed to augment rather than replace. These concerns require proactive communication, involvement, and reskilling support. AI complexity can be addressed through training, resistance does commonly occur, and change management remains essential for successful adoption. Effective change management acknowledges and addresses legitimate employee concerns.",
+            "tags": [
+              "employee-concerns",
+              "resistance-management",
+              "job-security",
+              "change-challenges"
+            ]
+          },
+          {
+            "id": "CMA-MC-B-002",
+            "level": 2,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.33,
+            "discrimination": 1.09,
+            "bloomLevel": "Understand",
+            "question": "Why is leadership buy-in particularly important for successful AI implementations in client organizations?",
+            "options": [
+              "Leadership buy-in is unnecessary since AI projects should be driven entirely by technical teams without executive involvement.",
+              "Leadership buy-in ensures resources, communicates strategic importance, models adoption behaviors, and sustains commitment through implementation challenges.",
+              "Leadership buy-in is only important for securing initial project funding but has no impact on actual implementation success.",
+              "Leadership buy-in guarantees success regardless of project design, change management quality, or employee readiness."
+            ],
+            "correctAnswer": 1,
+            "rationale": "Leadership buy-in is critical because it ensures adequate resourcing, communicates strategic priority to the organization, provides visible modeling of new behaviors, and maintains commitment when implementations face inevitable challenges. Leadership involvement is essential beyond just funding, doesn't guarantee success alone, and shouldn't be absent from AI initiatives. Executive sponsorship and visible support significantly increase implementation success probability.",
+            "tags": [
+              "leadership-sponsorship",
+              "executive-support",
+              "organizational-commitment",
+              "sustained-support"
+            ]
+          },
+          {
+            "id": "CMA-MC-B-003",
+            "level": 2,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.37,
+            "discrimination": 1.11,
+            "bloomLevel": "Apply",
+            "question": "A client's finance department resists an AI implementation for invoice processing, claiming it will eliminate jobs. How should consultants address this?",
+            "options": [
+              "Acknowledge concerns directly, demonstrate how AI handles repetitive work while creating opportunities for higher-value analysis, and involve staff in implementation.",
+              "Dismiss concerns as irrational resistance to change and proceed with implementation regardless of employee sentiment.",
+              "Guarantee that no jobs will be eliminated even if this isn't realistic, to reduce resistance and ensure implementation proceeds.",
+              "Implement AI secretly without employee involvement to avoid resistance and announce changes after they're irreversible."
+            ],
+            "correctAnswer": 0,
+            "rationale": "Effective change management requires acknowledging legitimate concerns, transparently communicating how AI will change work (automating repetitive tasks while enabling higher-value work), and involving affected employees in implementation. Dismissing concerns increases resistance, false guarantees damage credibility, and secretive implementation creates severe trust and adoption problems. Transparent communication, involvement, and authentic handling of transition issues build support for change.",
+            "tags": [
+              "resistance-management",
+              "employee-engagement",
+              "transparent-communication",
+              "role-transition"
+            ]
+          },
+          {
+            "id": "CMA-MC-B-004",
+            "level": 2,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.4,
+            "discrimination": 1.12,
+            "bloomLevel": "Apply",
+            "question": "What role should training play in the change management plan for an AI implementation?",
+            "options": [
+              "Training should focus on technical AI concepts and machine learning algorithms so employees understand the underlying technology deeply.",
+              "Training is unnecessary since AI tools should be so intuitive that employees can use them without any formal instruction.",
+              "Training should focus on how to use AI tools effectively in daily work, interpret AI outputs appropriately, and escalate issues.",
+              "Training should only be provided to IT staff since they are responsible for maintaining AI systems."
+            ],
+            "correctAnswer": 2,
+            "rationale": "Effective training for AI implementations should focus on practical use in daily work, appropriate interpretation of AI outputs, understanding when to trust or question results, and knowing how to handle exceptions. Deep technical training on algorithms is usually unnecessary for business users, while assuming intuitive use leads to poor adoption. Training should reach all affected employees, not just IT staff. The goal is building practical competence and confidence with AI tools.",
+            "tags": [
+              "training-strategy",
+              "user-enablement",
+              "practical-competence",
+              "adoption-support"
+            ]
+          },
+          {
+            "id": "CMA-MC-B-005",
+            "level": 2,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.42,
+            "discrimination": 1.13,
+            "bloomLevel": "Understand",
+            "question": "How should consultants approach change management differently for AI implementations compared to traditional system implementations?",
+            "options": [
+              "AI implementations require identical change management as traditional systems since the technology type doesn't matter.",
+              "AI implementations require addressing concerns about job displacement, algorithm transparency, and decision authority that traditional systems may not raise.",
+              "AI implementations require no change management since AI is so powerful that adoption happens automatically.",
+              "AI implementations require keeping employees completely isolated from the technology to prevent resistance."
+            ],
+            "correctAnswer": 1,
+            "rationale": "AI implementations raise distinct change management concerns beyond traditional systems: job displacement fears, questions about algorithm decision-making and transparency, shifts in decision authority between humans and systems, and concerns about bias or fairness. These issues require targeted change management approaches. AI isn't identical to traditional systems, doesn't automatically drive adoption, and isolation prevents necessary engagement. Change management must address AI-specific organizational and psychological dynamics.",
+            "tags": [
+              "ai-specific-concerns",
+              "unique-challenges",
+              "transparency-concerns",
+              "decision-authority"
+            ]
+          },
+          {
+            "id": "CMA-MC-B-006",
+            "level": 3,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.44,
+            "discrimination": 1.14,
+            "bloomLevel": "Apply",
+            "question": "Your client wants to implement AI but has a culture of risk aversion and slow decision-making. How should this affect your change management approach?",
+            "options": [
+              "Recommend abandoning the AI implementation entirely since risk-averse cultures can never successfully adopt new technologies.",
+              "Force rapid implementation to overcome cultural resistance and prove AI value quickly regardless of organizational readiness.",
+              "Design a phased approach with pilot projects, extensive communication about risk mitigation, and early wins to build confidence gradually.",
+              "Implement AI secretly in isolated areas without leadership awareness to avoid triggering cultural resistance mechanisms."
+            ],
+            "correctAnswer": 2,
+            "rationale": "In risk-averse cultures, effective change management requires phased approaches that start with lower-risk pilots, emphasize risk mitigation strategies, demonstrate early wins to build confidence, and respect the organization's natural decision-making pace while gradually building momentum. Abandoning implementation gives up too easily, forcing rapid change often backfires, and secretive implementation violates trust and governance. The goal is adapting the change approach to organizational culture while still achieving objectives.",
+            "tags": [
+              "organizational-culture",
+              "risk-aversion",
+              "phased-implementation",
+              "culture-appropriate-change"
+            ]
+          },
+          {
+            "id": "CMA-MC-B-007",
+            "level": 3,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.46,
+            "discrimination": 1.15,
+            "bloomLevel": "Analyze",
+            "question": "When should consultants recommend delaying an AI implementation due to change management concerns rather than proceeding with the technical implementation?",
+            "options": [
+              "Never delay implementations for change management since technical capabilities should always take priority over organizational readiness.",
+              "Always delay implementations until 100% of employees enthusiastically support the initiative and all concerns are resolved.",
+              "Delay when critical stakeholders actively oppose the change, organizational capacity is severely constrained, or implementation would create significant operational risk.",
+              "Delay only when executives explicitly request delays, regardless of actual organizational readiness or risk factors."
+            ],
+            "correctAnswer": 2,
+            "rationale": "Implementations should be delayed when active opposition from critical stakeholders would undermine success, when organizational capacity is genuinely insufficient to absorb change, or when proceeding would create unacceptable operational risks. Never delaying ignores important readiness factors, while waiting for universal support is unrealistic. Delay decisions should be based on objective readiness assessment rather than just executive preference. The goal is timing implementation for success rather than forcing failure.",
+            "tags": [
+              "implementation-timing",
+              "readiness-assessment",
+              "risk-management",
+              "strategic-delay"
+            ]
+          },
+          {
+            "id": "CMA-MC-B-008",
+            "level": 3,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.48,
+            "discrimination": 1.16,
+            "bloomLevel": "Evaluate",
+            "question": "How should consultants measure the effectiveness of change management efforts for an AI implementation beyond adoption metrics?",
+            "options": [
+              "Focus exclusively on system usage statistics since adoption rates fully capture change management success.",
+              "Measure only employee satisfaction scores since happy employees indicate successful change management.",
+              "Evaluate user proficiency, appropriate use of AI outputs, sustained behavior change, and business outcomes alongside adoption rates.",
+              "Change management measurement is unnecessary since AI success is self-evident from technical performance metrics."
+            ],
+            "correctAnswer": 2,
+            "rationale": "Effective change management evaluation requires measuring multiple dimensions: user proficiency with AI tools, appropriate use and interpretation of AI outputs, sustained behavior change beyond initial adoption, and actual business outcomes alongside adoption rates. Usage alone doesn't indicate quality of use, satisfaction alone doesn't ensure business value, and technical metrics miss human adoption dynamics. Comprehensive measurement assesses whether change management achieved the full intended transformation.",
+            "tags": [
+              "change-effectiveness",
+              "holistic-measurement",
+              "behavior-change",
+              "value-realization"
+            ]
+          }
+        ]
+      },
+      {
+        "dimensionCode": "DDA",
+        "dimensionName": "Data-Driven Diagnostics",
+        "description": "Using AI for diagnostic analysis and problem identification in client organizations",
+        "weight": 0.125,
+        "totalPoints": 75,
+        "items": [
+          {
+            "id": "DDA-MC-B-001",
+            "level": 1,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.28,
+            "discrimination": 1.06,
+            "bloomLevel": "Remember",
+            "question": "What is the primary advantage of using AI for diagnostic analysis in consulting engagements?",
+            "options": [
+              "AI guarantees identification of root causes for any organizational problem by automatically testing all possible hypotheses.",
+              "AI analyzes large volumes of organizational data to surface patterns, correlations, and anomalies that inform diagnostic hypotheses.",
+              "AI eliminates the need for consultants to interview stakeholders or understand organizational context when diagnosing problems.",
+              "AI makes diagnostic decisions automatically without requiring consultant judgment or validation of findings."
+            ],
+            "correctAnswer": 1,
+            "rationale": "The primary advantage is that AI can analyze large volumes of organizational data across multiple dimensions to surface patterns, correlations, and anomalies that inform consultant diagnostic hypotheses. AI doesn't guarantee root cause identification automatically, doesn't eliminate the need for stakeholder input and context, and doesn't make final diagnostic judgments autonomously. The value is in augmenting diagnostic capabilities with data-driven pattern recognition.",
+            "tags": [
+              "diagnostic-analysis",
+              "pattern-recognition",
+              "hypothesis-generation",
+              "data-driven-insights"
+            ]
+          },
+          {
+            "id": "DDA-MC-B-002",
+            "level": 2,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.32,
+            "discrimination": 1.08,
+            "bloomLevel": "Understand",
+            "question": "How does AI-driven root cause analysis differ from traditional consulting diagnostic approaches like fishbone diagrams?",
+            "options": [
+              "AI analyzes actual data relationships to identify contributing factors while traditional methods structure hypotheses based on experience and stakeholder input.",
+              "AI and traditional diagnostic methods are essentially identical approaches with different terminology and tool names.",
+              "AI is always more accurate than traditional methods regardless of data availability or problem complexity.",
+              "AI completely replaces the need for traditional diagnostic frameworks by automatically solving all organizational problems."
+            ],
+            "correctAnswer": 0,
+            "rationale": "AI differs from traditional diagnostic methods in that it analyzes actual data relationships and correlations to identify contributing factors, while traditional frameworks like fishbone diagrams structure potential causes based on experience and stakeholder input. The approaches are complementary not identical, AI isn't universally more accurate, and doesn't replace traditional frameworks which provide structure for hypothesis development. Combining data-driven AI analysis with traditional diagnostic frameworks often yields best results.",
+            "tags": [
+              "root-cause-analysis",
+              "diagnostic-methods",
+              "complementary-approaches",
+              "data-vs-framework"
+            ]
+          },
+          {
+            "id": "DDA-MC-B-003",
+            "level": 2,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.36,
+            "discrimination": 1.1,
+            "bloomLevel": "Apply",
+            "question": "A retail client is experiencing declining store performance but isn't sure why. How should AI be used in the diagnostic phase?",
+            "options": [
+              "Let AI automatically determine the root cause and solution without consultant analysis since the problem is too complex for humans.",
+              "Avoid using AI and rely exclusively on store manager interviews since AI cannot understand retail operations.",
+              "Use AI to analyze store performance data, foot traffic, inventory, and local demographics to identify patterns differentiating successful and struggling locations.",
+              "Use AI only for creating polished charts of sales trends but not for substantive analysis or hypothesis development."
+            ],
+            "correctAnswer": 2,
+            "rationale": "AI should be used to analyze multiple data dimensions (performance, traffic, inventory, demographics, competition) to identify patterns that differentiate successful from struggling stores, which inform diagnostic hypotheses to validate through stakeholder input. Letting AI work without oversight is irresponsible, while avoiding AI misses valuable data insights. AI should drive substantive analysis not just visualization. The goal is using AI pattern recognition to inform structured diagnostic inquiry.",
+            "tags": [
+              "retail-diagnostics",
+              "multi-dimensional-analysis",
+              "performance-comparison",
+              "pattern-identification"
+            ]
+          },
+          {
+            "id": "DDA-MC-B-004",
+            "level": 2,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.39,
+            "discrimination": 1.11,
+            "bloomLevel": "Apply",
+            "question": "When AI diagnostic analysis identifies correlation between two organizational factors, what should consultants do?",
+            "options": [
+              "Immediately conclude causation and recommend interventions based on the identified correlation.",
+              "Investigate whether the correlation represents causation, coincidence, or shared underlying causes through additional analysis and validation.",
+              "Ignore all AI-identified correlations since correlation never indicates any meaningful relationship between variables.",
+              "Present the correlation to clients as definitive proof of causation to demonstrate analytical sophistication."
+            ],
+            "correctAnswer": 1,
+            "rationale": "When AI identifies correlations, consultants should investigate whether they represent causal relationships, coincidental patterns, or effects of shared underlying causes. This requires additional analysis, subject matter expert validation, and logical examination. Immediately concluding causation is a basic analytical error, ignoring correlations wastes insights, and misrepresenting correlations as causation damages credibility. Professional analysis distinguishes correlation from causation through thoughtful investigation.",
+            "tags": [
+              "correlation-vs-causation",
+              "analytical-rigor",
+              "hypothesis-validation",
+              "professional-judgment"
+            ]
+          },
+          {
+            "id": "DDA-MC-B-005",
+            "level": 2,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.41,
+            "discrimination": 1.12,
+            "bloomLevel": "Understand",
+            "question": "Why might AI diagnostic analysis miss important organizational problems that traditional consulting approaches would identify?",
+            "options": [
+              "AI analysis is always comprehensive and never misses problems that traditional approaches might identify.",
+              "AI may miss problems not reflected in quantitative data, such as cultural issues, relationship dynamics, or unspoken concerns.",
+              "AI is intentionally designed to hide organizational problems to protect client leadership from criticism.",
+              "Traditional consulting approaches never identify anything beyond what AI analysis already reveals."
+            ],
+            "correctAnswer": 1,
+            "rationale": "AI analysis may miss important problems that aren't captured in quantitative systems data, including organizational culture issues, interpersonal dynamics, unspoken stakeholder concerns, or emerging issues not yet reflected in data. AI isn't comprehensively superior, isn't designed to hide problems, and traditional approaches add distinct value through stakeholder engagement and qualitative insights. The combination of AI data analysis with traditional stakeholder inquiry provides most comprehensive diagnosis.",
+            "tags": [
+              "analytical-limitations",
+              "qualitative-factors",
+              "comprehensive-diagnosis",
+              "multi-method-approach"
+            ]
+          },
+          {
+            "id": "DDA-MC-B-006",
+            "level": 3,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.43,
+            "discrimination": 1.14,
+            "bloomLevel": "Apply",
+            "question": "Your AI analysis identifies that high-performing employees share specific characteristics, but stakeholders insist other factors matter more. How should you proceed?",
+            "options": [
+              "Trust AI analysis completely and dismiss stakeholder input as biased opinion contradicted by objective data.",
+              "Abandon AI analysis completely and rely solely on stakeholder opinions since they know the organization better.",
+              "Investigate both AI findings and stakeholder perspectives to understand if they reflect different aspects of performance or if one perspective has blind spots.",
+              "Present AI findings to clients while privately acknowledging that stakeholder input is more reliable than algorithmic analysis."
+            ],
+            "correctAnswer": 2,
+            "rationale": "When AI findings and stakeholder perspectives diverge, consultants should investigate both rather than choosing one over the other. Differences may reveal that both capture important but different aspects of performance, or may indicate blind spots in either data or stakeholder perception. Completely trusting either AI or stakeholders alone shows poor judgment, while being duplicitous undermines professional integrity. Professional diagnosis reconciles multiple information sources.",
+            "tags": [
+              "competing-perspectives",
+              "analytical-reconciliation",
+              "stakeholder-validation",
+              "comprehensive-understanding"
+            ]
+          },
+          {
+            "id": "DDA-MC-B-007",
+            "level": 3,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.45,
+            "discrimination": 1.15,
+            "bloomLevel": "Analyze",
+            "question": "AI analysis reveals that a problem the client believes is recent actually shows patterns extending back several years. How should this finding be handled?",
+            "options": [
+              "Suppress the historical pattern findings to avoid embarrassing clients who didn't notice the problem earlier.",
+              "Immediately blame client leadership for missing obvious problems revealed by AI analysis.",
+              "Present findings diplomatically while helping clients understand why the problem may have been difficult to detect without data analysis.",
+              "Exaggerate the historical pattern to make the AI analysis appear more impressive and valuable."
+            ],
+            "correctAnswer": 2,
+            "rationale": "When AI reveals problems existed longer than clients realized, findings should be presented diplomatically while helping clients understand why the patterns may not have been obvious without comprehensive data analysis. Suppressing findings is unethical, blaming leadership is unprofessional and damages relationships, and exaggerating findings damages credibility. The goal is delivering valuable insights while maintaining constructive client relationships and understanding that data visibility often reveals what operational proximity obscures.",
+            "tags": [
+              "sensitive-findings",
+              "client-relations",
+              "diplomatic-communication",
+              "professional-delivery"
+            ]
+          },
+          {
+            "id": "DDA-MC-B-008",
+            "level": 3,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.47,
+            "discrimination": 1.16,
+            "bloomLevel": "Evaluate",
+            "question": "How should consultants evaluate the reliability of AI-driven diagnostic findings before presenting them to clients?",
+            "options": [
+              "AI findings are always reliable and require no validation before presentation since algorithms are objective.",
+              "Validate findings through multiple data sources, check for data quality issues, test alternative explanations, and corroborate with subject matter experts.",
+              "Never trust AI findings regardless of evidence since consultant judgment is inherently superior to algorithmic analysis.",
+              "Present all AI findings directly to clients without validation since clients can evaluate reliability themselves."
+            ],
+            "correctAnswer": 1,
+            "rationale": "Professional consultants validate AI findings through multiple approaches: checking data quality and completeness, seeking corroboration from additional data sources, testing alternative explanations, and validating with subject matter experts before presenting to clients. Assuming AI is always reliable is naive, reflexively distrusting AI ignores valuable insights, and presenting unvalidated findings is professionally irresponsible. Validation protects both client interests and consultant credibility.",
+            "tags": [
+              "findings-validation",
+              "quality-assurance",
+              "professional-standards",
+              "multi-source-validation"
+            ]
+          }
+        ]
+      },
+      {
+        "dimensionCode": "EIS",
+        "dimensionName": "Ethics and Implementation Safeguards",
+        "description": "Ensuring ethical AI implementation and appropriate safeguards in client contexts",
+        "weight": 0.125,
+        "totalPoints": 75,
+        "items": [
+          {
+            "id": "EIS-MC-B-001",
+            "level": 1,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.3,
+            "discrimination": 1.07,
+            "bloomLevel": "Remember",
+            "question": "What is the primary ethical consideration when recommending AI solutions that may affect client employees?",
+            "options": [
+              "Maximizing return on investment for clients regardless of impact on employees since shareholders take priority.",
+              "Considering impacts on employees including job security, working conditions, and retraining needs alongside business benefits.",
+              "Always prioritizing employee interests over client business objectives regardless of organizational circumstances.",
+              "Ethical considerations are unnecessary in client engagements since consultants aren't responsible for implementation outcomes."
+            ],
+            "correctAnswer": 1,
+            "rationale": "Consultants should consider impacts on employees including job security, role changes, working conditions, and retraining needs when recommending AI, while balancing these considerations with legitimate business objectives. Neither pure shareholder primacy nor pure employee primacy represents sound professional ethics. Consultants do bear responsibility for foreseeable consequences of their recommendations, including employee impacts. Responsible consulting balances multiple stakeholder interests.",
+            "tags": [
+              "employee-impact",
+              "ethical-consideration",
+              "stakeholder-balance",
+              "responsible-consulting"
+            ]
+          },
+          {
+            "id": "EIS-MC-B-002",
+            "level": 2,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.34,
+            "discrimination": 1.09,
+            "bloomLevel": "Understand",
+            "question": "Why is algorithmic bias a particular concern when implementing AI in client organizations?",
+            "options": [
+              "Algorithmic bias is a myth created by technology skeptics and should be ignored in professional consulting.",
+              "AI systems can perpetuate or amplify historical biases in data, potentially leading to unfair outcomes that expose clients to legal and reputational risk.",
+              "Algorithmic bias only matters in specific industries and is irrelevant for most consulting engagements.",
+              "Algorithmic bias is impossible since computer algorithms are purely objective and cannot exhibit human biases."
+            ],
+            "correctAnswer": 1,
+            "rationale": "Algorithmic bias is a legitimate concern because AI systems learn from historical data that may contain biases, and can perpetuate or amplify these biases leading to unfair outcomes in hiring, lending, service delivery, etc. This creates legal liability and reputational risk for clients. Bias isn't a myth, affects many contexts, and algorithms can exhibit bias despite being mathematical. Professional consultants must address bias risk in AI implementations.",
+            "tags": [
+              "algorithmic-bias",
+              "fairness-concerns",
+              "legal-risk",
+              "responsible-ai"
+            ]
+          },
+          {
+            "id": "EIS-MC-B-003",
+            "level": 2,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.38,
+            "discrimination": 1.11,
+            "bloomLevel": "Apply",
+            "question": "A client wants to use AI for automated hiring decisions. What ethical safeguards should you recommend?",
+            "options": [
+              "No safeguards needed since AI automatically makes fairer decisions than biased human hiring managers.",
+              "Test for bias in AI outputs, maintain human oversight for final decisions, and ensure transparency about AI's role in the process.",
+              "Advise against any AI use in hiring since algorithms can never make appropriate employment decisions.",
+              "Implement AI secretly without informing candidates that automated systems are evaluating their applications."
+            ],
+            "correctAnswer": 1,
+            "rationale": "Ethical AI hiring implementations require testing for bias across protected classes, maintaining human oversight for final hiring decisions, ensuring transparency with candidates about AI's role, and monitoring outcomes over time. AI doesn't automatically ensure fairness, can be used appropriately with safeguards, and candidates should generally know when AI is part of evaluation. Responsible implementation combines AI efficiency with human judgment and appropriate transparency.",
+            "tags": [
+              "ai-hiring",
+              "bias-testing",
+              "human-oversight",
+              "transparency"
+            ]
+          },
+          {
+            "id": "EIS-MC-B-004",
+            "level": 2,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.4,
+            "discrimination": 1.12,
+            "bloomLevel": "Apply",
+            "question": "What role should human oversight play in high-stakes AI decision-making for clients (e.g., loan approvals, medical diagnoses)?",
+            "options": [
+              "Human oversight is unnecessary since AI makes more accurate high-stakes decisions than humans.",
+              "Humans should review AI recommendations for high-stakes decisions, particularly for edge cases or when AI confidence is low.",
+              "All AI decisions should have human review regardless of stakes or confidence, making AI pointless for decision support.",
+              "Human oversight creates liability since humans always override correct AI decisions with biased judgment."
+            ],
+            "correctAnswer": 1,
+            "rationale": "For high-stakes decisions, human oversight should review AI recommendations, especially for edge cases, unusual circumstances, or when AI confidence scores are low. This combines AI's pattern recognition capabilities with human judgment about context, ethics, and special circumstances. AI doesn't guarantee accuracy in high-stakes contexts, universal human review may be impractical, and appropriate oversight enhances rather than undermines decision quality. The goal is appropriate human-AI collaboration.",
+            "tags": [
+              "high-stakes-decisions",
+              "human-oversight",
+              "hybrid-decision-making",
+              "risk-management"
+            ]
+          },
+          {
+            "id": "EIS-MC-B-005",
+            "level": 2,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.42,
+            "discrimination": 1.13,
+            "bloomLevel": "Understand",
+            "question": "Why is explainability important for AI systems used in regulated industries or public-facing decisions?",
+            "options": [
+              "Explainability is unnecessary since accurate predictions matter more than understanding how AI reaches conclusions.",
+              "Explainability enables compliance with regulations, builds trust with stakeholders, and allows validation that AI reasoning is appropriate.",
+              "Explainability only matters for technically sophisticated users and is irrelevant for business stakeholders.",
+              "Explainability makes AI less accurate since constraining algorithms to be interpretable reduces predictive power."
+            ],
+            "correctAnswer": 1,
+            "rationale": "Explainability is important because it enables regulatory compliance (many regulations require explanation of automated decisions), builds stakeholder trust, allows validation that AI reasoning aligns with policy and ethics, and facilitates debugging when errors occur. Accuracy without explainability is insufficient for many contexts, matters for all stakeholders not just technical users, and explainability can sometimes be achieved with minimal accuracy trade-offs. Appropriate explainability depends on use case and risk.",
+            "tags": [
+              "explainability",
+              "transparency",
+              "regulatory-compliance",
+              "stakeholder-trust"
+            ]
+          },
+          {
+            "id": "EIS-MC-B-006",
+            "level": 3,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.44,
+            "discrimination": 1.14,
+            "bloomLevel": "Apply",
+            "question": "A client wants to implement AI for fraud detection but is concerned about false positives affecting legitimate customers. How should you advise?",
+            "options": [
+              "Set very high detection thresholds to minimize false positives even if this means missing most actual fraud.",
+              "Balance sensitivity with precision based on business costs of false positives versus missed fraud, and implement robust appeal processes.",
+              "Set very low thresholds to catch all fraud regardless of false positive rates since fraud prevention always takes priority.",
+              "Avoid implementing AI fraud detection entirely since any false positives will damage customer relationships irreparably."
+            ],
+            "correctAnswer": 1,
+            "rationale": "Fraud detection requires balancing sensitivity (catching fraud) with precision (avoiding false positives) based on the business costs of each error type, implementing robust appeal and review processes for flagged cases, and monitoring system performance. Extreme thresholds in either direction show poor judgment, while avoiding AI entirely misses valuable protection. Professional implementation involves thoughtful calibration, appropriate human review, and customer protection processes.",
+            "tags": [
+              "fraud-detection",
+              "threshold-calibration",
+              "false-positives",
+              "customer-protection"
+            ]
+          },
+          {
+            "id": "EIS-MC-B-007",
+            "level": 3,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.46,
+            "discrimination": 1.15,
+            "bloomLevel": "Analyze",
+            "question": "When should consultants recommend against AI implementation even if it's technically feasible and potentially profitable?",
+            "options": [
+              "Never recommend against profitable AI implementations since consultant responsibility is maximizing client financial returns.",
+              "Recommend against implementation when it creates unacceptable risks to vulnerable populations, violates ethical principles, or likely causes significant harm.",
+              "Always recommend against AI implementation when any stakeholder expresses concerns regardless of merit.",
+              "Ethical considerations are beyond consultant scope; only clients should make ethical judgments about implementations."
+            ],
+            "correctAnswer": 1,
+            "rationale": "Consultants should recommend against technically feasible implementations when they create unacceptable risks to vulnerable populations, violate fundamental ethical principles, or likely cause significant harm that outweighs benefits. Financial return isn't the only consideration, any stakeholder concern doesn't automatically invalidate implementation, and consultants do have professional responsibility for ethical implications of recommendations. Professional ethics sometimes require advising against profitable but problematic implementations.",
+            "tags": [
+              "ethical-boundaries",
+              "professional-responsibility",
+              "harm-prevention",
+              "vulnerable-populations"
+            ]
+          },
+          {
+            "id": "EIS-MC-B-008",
+            "level": 3,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.48,
+            "discrimination": 1.16,
+            "bloomLevel": "Evaluate",
+            "question": "How should consultants approach data privacy and security when recommending AI solutions that process customer or employee data?",
+            "options": [
+              "Data privacy concerns are exaggerated and should not constrain AI implementation since data use creates business value.",
+              "Ensure compliance with regulations, implement appropriate technical safeguards, limit data collection to necessary purposes, and maintain transparency with data subjects.",
+              "Avoid collecting any personal data for AI applications since privacy concerns always outweigh potential business benefits.",
+              "Privacy considerations are purely legal issues for client lawyers and should not influence consultant AI recommendations."
+            ],
+            "correctAnswer": 1,
+            "rationale": "Consultants should ensure AI recommendations include regulatory compliance, appropriate technical and organizational safeguards, data minimization principles, and transparency with individuals whose data is used. Privacy concerns are legitimate not exaggerated, don't require avoiding AI entirely, and aren't purely legal issues consultants can ignore. Professional recommendations balance innovation with appropriate privacy protections and regulatory compliance.",
+            "tags": [
+              "data-privacy",
+              "regulatory-compliance",
+              "data-protection",
+              "privacy-by-design"
+            ]
+          }
+        ]
+      },
+      {
+        "dimensionCode": "CIT",
+        "dimensionName": "Client Interaction and Trust",
+        "description": "Building client trust and effectively communicating about AI in consulting relationships",
+        "weight": 0.125,
+        "totalPoints": 75,
+        "items": [
+          {
+            "id": "CIT-MC-B-001",
+            "level": 1,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.27,
+            "discrimination": 1.06,
+            "bloomLevel": "Remember",
+            "question": "What is the most important principle when communicating AI capabilities to non-technical client executives?",
+            "options": [
+              "Use highly technical language and detailed algorithmic explanations to demonstrate consultant expertise.",
+              "Focus on business value, practical applications, and realistic expectations using language executives understand.",
+              "Avoid mentioning any AI limitations or challenges to maintain executive enthusiasm for the initiative.",
+              "Exaggerate AI capabilities to secure project approval and then manage expectations later during implementation."
+            ],
+            "correctAnswer": 1,
+            "rationale": "Effective communication with non-technical executives focuses on business value, practical applications, and realistic expectations using business language they understand rather than technical jargon. Technical complexity without business context alienates executives, hiding limitations damages credibility, and exaggerating capabilities destroys trust. Professional communication balances enthusiasm for genuine opportunities with transparency about realistic implementation requirements and constraints.",
+            "tags": [
+              "executive-communication",
+              "business-language",
+              "expectation-setting",
+              "credible-communication"
+            ]
+          },
+          {
+            "id": "CIT-MC-B-002",
+            "level": 2,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.31,
+            "discrimination": 1.08,
+            "bloomLevel": "Understand",
+            "question": "Why is managing client expectations about AI project timelines particularly important?",
+            "options": [
+              "AI projects always take exactly the same time as traditional projects, so timeline expectations are identical.",
+              "AI implementations often require data preparation, model training, and iterative refinement that may take longer than clients expect.",
+              "AI projects always deliver results instantly, so timeline management is unnecessary.",
+              "Consultants should always promise aggressive timelines to win projects and then request extensions later."
+            ],
+            "correctAnswer": 1,
+            "rationale": "AI projects often involve data quality assessment, data preparation, model training, validation, and iterative refinement that may take longer than clients familiar with traditional software projects expect. Setting realistic timelines upfront preserves trust, while promising aggressive timelines to win work and requesting extensions later damages credibility. AI projects have distinct characteristics from both traditional IT and traditional consulting projects requiring appropriate timeline communication.",
+            "tags": [
+              "timeline-management",
+              "expectation-setting",
+              "project-planning",
+              "realistic-commitments"
+            ]
+          },
+          {
+            "id": "CIT-MC-B-003",
+            "level": 2,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.35,
+            "discrimination": 1.1,
+            "bloomLevel": "Apply",
+            "question": "A client asks if AI can solve a problem that seems beyond current AI capabilities. How should you respond?",
+            "options": [
+              "Claim AI can solve any problem the client mentions to demonstrate confidence and secure the engagement.",
+              "Explain honestly what AI can and cannot do for their specific problem, suggest alternative approaches if AI isn't suitable.",
+              "Avoid discussing AI limitations and redirect conversation to problems AI can solve well.",
+              "Implement AI anyway even if it's not suitable, since discovering limitations through failure provides learning opportunities."
+            ],
+            "correctAnswer": 1,
+            "rationale": "Professional consultants honestly assess whether AI is appropriate for specific problems, explain capabilities and limitations transparently, and suggest alternative approaches when AI isn't suitable. Claiming AI can solve any problem destroys credibility when reality emerges, avoiding limitation discussions stores up later problems, and implementing unsuitable solutions is professionally irresponsible. Trust is built through honest assessment of fit, not overselling capabilities.",
+            "tags": [
+              "honest-assessment",
+              "suitability-evaluation",
+              "trust-building",
+              "professional-integrity"
+            ]
+          },
+          {
+            "id": "CIT-MC-B-004",
+            "level": 2,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.38,
+            "discrimination": 1.11,
+            "bloomLevel": "Apply",
+            "question": "How should consultants address client concerns that AI will make their industry expertise obsolete?",
+            "options": [
+              "Agree completely that AI will replace industry expertise, since honesty requires acknowledging this reality.",
+              "Dismiss concerns as irrational resistance to change and proceed with recommendations regardless.",
+              "Acknowledge concerns while explaining how AI augments expertise by handling data analysis so experts can focus on judgment and strategy.",
+              "Guarantee that AI will never affect their work to alleviate concerns even if this isn't realistic."
+            ],
+            "correctAnswer": 2,
+            "rationale": "Client concerns about AI affecting their expertise should be acknowledged respectfully while explaining how AI typically augments rather than replaces deep expertise by handling data-intensive tasks and freeing experts for judgment-intensive work. Complete replacement is rarely accurate, dismissing concerns damages relationships, and false guarantees destroy credibility when reality emerges. Trust requires balancing honest assessment with respectful acknowledgment of legitimate concerns.",
+            "tags": [
+              "expertise-concerns",
+              "augmentation-framing",
+              "concern-acknowledgment",
+              "realistic-reassurance"
+            ]
+          },
+          {
+            "id": "CIT-MC-B-005",
+            "level": 2,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.4,
+            "discrimination": 1.12,
+            "bloomLevel": "Understand",
+            "question": "What should consultants do when AI recommendations conflict with client leadership's intuition or preferred approach?",
+            "options": [
+              "Always defer to client intuition since consultants should never challenge leadership judgment.",
+              "Always insist on AI recommendations since data-driven analysis is objectively superior to human intuition.",
+              "Present AI findings clearly, explain the analytical basis, acknowledge leadership perspective, and discuss reconciling data insights with experience.",
+              "Modify AI findings to align with leadership preferences to avoid conflict and maintain relationships."
+            ],
+            "correctAnswer": 2,
+            "rationale": "When AI findings conflict with client intuition, consultants should present findings clearly with analytical basis, acknowledge leadership perspective respectfully, and facilitate discussion about reconciling data insights with experience. Neither automatic deference nor automatic insistence shows good judgment, and modifying findings to match preferences is professionally unethical. Professional consulting involves thoughtful dialogue when evidence and intuition diverge.",
+            "tags": [
+              "conflicting-findings",
+              "leadership-engagement",
+              "evidence-vs-intuition",
+              "professional-dialogue"
+            ]
+          },
+          {
+            "id": "CIT-MC-B-006",
+            "level": 3,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.42,
+            "discrimination": 1.13,
+            "bloomLevel": "Apply",
+            "question": "A client becomes skeptical of AI after reading negative press about AI failures in other companies. How should you respond?",
+            "options": [
+              "Dismiss all negative press as misinformation from technology skeptics and critics.",
+              "Acknowledge legitimate concerns from failures, explain factors that contributed to those failures, and discuss how your approach addresses those risks.",
+              "Agree that AI is too risky and abandon recommendations immediately without further discussion.",
+              "Ignore the client's concerns and proceed with implementation since they lack technical expertise to evaluate risks."
+            ],
+            "correctAnswer": 1,
+            "rationale": "When clients express concerns based on publicized failures, consultants should acknowledge legitimate issues, analyze what contributed to those failures, and explain how your recommended approach addresses those risk factors. Dismissing concerns damages trust, abandoning recommendations without analysis shows poor judgment, and ignoring client concerns is disrespectful and imprudent. Professional response involves thoughtful discussion of risks and mitigation rather than defensive rejection.",
+            "tags": [
+              "concern-response",
+              "risk-discussion",
+              "failure-analysis",
+              "trust-building"
+            ]
+          },
+          {
+            "id": "CIT-MC-B-007",
+            "level": 3,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.44,
+            "discrimination": 1.14,
+            "bloomLevel": "Analyze",
+            "question": "How should consultants handle situations where they discover their AI recommendation was based on flawed assumptions after client engagement has begun?",
+            "options": [
+              "Continue with the flawed approach to avoid admitting error and maintain client confidence.",
+              "Blame the client for providing inadequate information that led to flawed assumptions.",
+              "Promptly disclose the issue to clients, explain what was learned, and recommend adjusted approach with transparent explanation.",
+              "Quietly adjust the approach without informing clients since disclosing mistakes damages credibility."
+            ],
+            "correctAnswer": 2,
+            "rationale": "When consultants discover flawed assumptions, professional ethics require promptly disclosing the issue to clients, explaining what was learned, and recommending an adjusted approach with transparent explanation. Continuing with flawed approaches is irresponsible, blaming clients damages relationships, and hiding mistakes destroys trust when eventually discovered. Clients respect consultants who acknowledge errors promptly and propose thoughtful corrections. Trust is built through integrity not perfection.",
+            "tags": [
+              "error-disclosure",
+              "professional-integrity",
+              "course-correction",
+              "transparent-communication"
+            ]
+          },
+          {
+            "id": "CIT-MC-B-008",
+            "level": 3,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.46,
+            "discrimination": 1.15,
+            "bloomLevel": "Evaluate",
+            "question": "What is the most important factor in building long-term client trust around AI consulting recommendations?",
+            "options": [
+              "Always recommending the most advanced AI solutions available regardless of client readiness or problem fit.",
+              "Consistently delivering realistic expectations, transparent communication, and recommendations aligned with client capabilities and genuine business value.",
+              "Never mentioning AI limitations or implementation challenges to maintain enthusiasm and confidence.",
+              "Focusing exclusively on technical sophistication rather than business outcomes to demonstrate expertise."
+            ],
+            "correctAnswer": 1,
+            "rationale": "Long-term trust is built through consistent delivery of realistic expectations, transparent communication about both opportunities and challenges, and recommendations aligned with client capabilities and genuine business value. Recommending advanced technology regardless of fit, hiding limitations, or prioritizing technical sophistication over business outcomes all undermine trust over time. Sustainable client relationships require integrity, transparency, and focus on client success over consultant self-interest.",
+            "tags": [
+              "trust-building",
+              "long-term-relationships",
+              "professional-integrity",
+              "client-success-focus"
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

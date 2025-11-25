@@ -1,0 +1,1689 @@
+{
+  "assessmentName": "AIQ Teachers Beginner Assessment - Educational Practice Focus",
+  "version": "1.0",
+  "assessmentType": "fixed",
+  "description": "A rigorously designed foundational AI literacy assessment for educators with 60 items featuring balanced options, randomized correct answer positions, complete sentence formatting, and enhanced anti-gaming measures.",
+  "assessmentConfiguration": {
+    "totalQuestions": 60,
+    "questionsPerDimension": "7-8",
+    "estimatedTime": "60 minutes",
+    "targetAudience": "K-12 teachers, college instructors, curriculum designers, educational administrators, and teaching professionals with varying AI experience levels",
+    "timePerQuestion": "60 seconds average",
+    "presentationMode": {
+      "type": "fixed-sequential",
+      "description": "All questions presented in fixed order",
+      "sequencing": "By dimension, 7-8 questions per dimension"
+    },
+    "questionDistribution": {
+      "totalItems": 60,
+      "itemsPerDimension": "7-8 per dimension",
+      "selectionRatio": "100% (all items presented)"
+    },
+    "dimensionSequencing": {
+      "type": "fixed-order",
+      "sequence": [
+        "TEA",
+        "PLD",
+        "ASE",
+        "CAI",
+        "EAI",
+        "EGC",
+        "ACI",
+        "TAS"
+      ],
+      "description": "Candidates complete 7-8 questions per dimension in sequence"
+    }
+  },
+  "scoringConfiguration": {
+    "totalPoints": 600,
+    "pointsPerDimension": 75,
+    "passingScore": 420,
+    "passingPercentage": 70,
+    "scoringMethod": {
+      "type": "simple-sum",
+      "description": "Direct sum of points from correct answers with differential weighting by item difficulty",
+      "basePoints": 10,
+      "formula": "points = basePoints × (1 + difficulty × 0.3) for each correct answer"
+    },
+    "scoringGuidelines": {
+      "0-40%": "Novice (0-240 points) - Significant foundational learning needed",
+      "41-60%": "Beginner (241-360 points) - Basic awareness established",
+      "61-80%": "Developing (361-480 points) - Good foundational understanding",
+      "81-90%": "Proficient (481-540 points) - Strong grasp of fundamentals",
+      "91-100%": "Advanced (541-600 points) - Excellent foundational mastery"
+    }
+  },
+  "instructions": "This AIQ Teachers Beginner assessment evaluates your foundational AI literacy specifically for educational contexts. You will answer 60 questions total (7-8 per dimension) across 8 education-focused dimensions in approximately 60 minutes. Questions feature nuanced options designed to test genuine understanding of AI applications in teaching and learning. Answer all questions to the best of your ability.",
+  "assessmentGuidelines": {
+    "targetLevel": "Foundational awareness and basic understanding of AI in education",
+    "cognitiveEmphasis": "65% Remember/Understand (Bloom's levels 1-2), 35% Apply (Bloom's level 3)",
+    "questionTypes": "Multiple-choice (70%), scenario-based (30%)",
+    "difficultyProfile": "Realistic distractors that require genuine AI/education understanding to differentiate",
+    "timeAllocation": "Moderate time for careful consideration of education-specific nuances",
+    "reliabilityTarget": "Cronbach's alpha ≥ 0.80"
+  },
+  "itemBank": {
+    "totalItems": 60,
+    "itemsPerDimension": 8,
+    "description": "Complete item set with 60 questions (7-8 per dimension) focused on AI literacy for educators",
+    "bankStatistics": {
+      "averageDifficulty": 0.383,
+      "difficultySD": 0.08,
+      "averageDiscrimination": 1.15,
+      "discriminationSD": 0.05,
+      "contentCoverageIndex": 0.92,
+      "estimatedReliability": 0.85,
+      "totalItems": 60
+    },
+    "dimensions": [
+      {
+        "dimensionCode": "TEA",
+        "dimensionName": "Teaching AI Understanding",
+        "description": "Understanding AI capabilities, limitations, and strategic applications in teaching contexts",
+        "weight": 0.125,
+        "totalPoints": 75,
+        "items": [
+          {
+            "id": "TEA-TC-B-001",
+            "level": 1,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.25,
+            "discrimination": 1.05,
+            "bloomLevel": "Remember",
+            "question": "What is the primary strategic advantage of using AI in teaching practice?",
+            "options": [
+              "AI frees teachers from routine tasks like grading and feedback, allowing more time for personalized instruction and mentoring.",
+              "AI completely replaces teachers by delivering all instruction and assessment autonomously without human involvement.",
+              "AI reduces educational costs by eliminating the need for trained teachers and replacing them with software.",
+              "AI guarantees every student achieves perfect mastery by automatically adjusting to eliminate all learning difficulties."
+            ],
+            "correctAnswer": 0,
+            "rationale": "The primary strategic advantage of AI in education is augmentation rather than replacement. AI excels at automating routine tasks like initial grading, data tracking, and basic feedback, which frees teachers to focus on personalized instruction, complex pedagogical decisions, and relationship-building with students. The other options incorrectly suggest AI replaces teachers entirely, guarantees perfect outcomes automatically, or is primarily about cost reduction rather than pedagogical enhancement.",
+            "tags": [
+              "strategic-value",
+              "ai-augmentation",
+              "teaching-fundamentals",
+              "teacher-ai-collaboration"
+            ]
+          },
+          {
+            "id": "TEA-TC-B-002",
+            "level": 1,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.3,
+            "discrimination": 1.08,
+            "bloomLevel": "Understand",
+            "question": "Why is understanding AI limitations critical for educators using AI tools in their classrooms?",
+            "options": [
+              "Understanding limitations allows teachers to set realistic expectations and maintain necessary professional judgment for pedagogical decisions.",
+              "Understanding limitations proves that AI should never be used for any educational purposes or student assessment work.",
+              "Understanding limitations is only important for IT staff but not for teachers who use the educational tools daily.",
+              "Understanding limitations allows teachers to completely avoid AI tools that have any weaknesses or technical constraints."
+            ],
+            "correctAnswer": 0,
+            "rationale": "Understanding AI limitations is critical because it allows educators to set realistic expectations with students and parents while maintaining appropriate professional judgment for important educational decisions. All AI systems have limitations, but this doesn't mean they shouldn't be used—it means they should be used thoughtfully with teacher oversight for critical pedagogical judgments. The other options incorrectly suggest avoiding AI entirely, delegating understanding to IT teams, or using limitations as justification to reject AI completely.",
+            "tags": [
+              "ai-limitations",
+              "professional-judgment",
+              "responsible-ai",
+              "expectations"
+            ]
+          },
+          {
+            "id": "TEA-TC-B-003",
+            "level": 2,
+            "type": "scenario-based",
+            "points": 10,
+            "difficulty": 0.35,
+            "discrimination": 1.1,
+            "bloomLevel": "Apply",
+            "question": "A colleague suggests using AI to automatically generate individualized education plans for all special education students. What is the most appropriate response?",
+            "options": [
+              "AI can assist by analyzing student data and suggesting accommodations, but educators must review and finalize IEPs based on professional judgment.",
+              "Completely reject the idea since AI should never be involved in any special education documentation or planning processes.",
+              "Implement the automated system immediately since AI-generated IEPs will be more consistent and objective than human-created ones.",
+              "Use the AI-generated IEPs without review since artificial intelligence eliminates bias and ensures legal compliance automatically."
+            ],
+            "correctAnswer": 0,
+            "rationale": "AI can be a valuable tool for analyzing patterns in student data and suggesting evidence-based accommodations, but IEPs require professional judgment, understanding of individual student contexts, and legal compliance that only qualified educators can ensure. Complete automation removes necessary human expertise, while complete rejection ignores potential benefits. The first option correctly balances AI assistance with essential human oversight.",
+            "tags": [
+              "special-education",
+              "professional-judgment",
+              "ai-assistance",
+              "legal-compliance"
+            ]
+          },
+          {
+            "id": "TEA-TC-B-004",
+            "level": 2,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.33,
+            "discrimination": 1.09,
+            "bloomLevel": "Understand",
+            "question": "How does AI differ from traditional educational technology tools like learning management systems?",
+            "options": [
+              "AI follows predefined rules exactly as programmed, while traditional tools adapt and learn from student interactions automatically.",
+              "AI and traditional tools are essentially identical since both involve computers processing educational data for student learning.",
+              "AI can recognize patterns and adapt responses based on data, while traditional tools follow predetermined rules and workflows.",
+              "AI is always more effective than traditional tools because machine learning guarantees superior educational outcomes for all students."
+            ],
+            "correctAnswer": 2,
+            "rationale": "The key distinction is that AI systems can recognize patterns in data and adapt their responses dynamically (within their training), while traditional educational technology follows predetermined rules and workflows. This doesn't make AI universally better—both have appropriate use cases. Traditional tools provide predictable, consistent behavior, while AI offers adaptive capabilities. The other options incorrectly reverse the capabilities or oversimplify the relationship between these technologies.",
+            "tags": [
+              "ai-vs-traditional",
+              "adaptive-learning",
+              "edtech-comparison",
+              "pattern-recognition"
+            ]
+          },
+          {
+            "id": "TEA-TC-B-005",
+            "level": 2,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.38,
+            "discrimination": 1.11,
+            "bloomLevel": "Understand",
+            "question": "What does it mean when an AI tutoring system is described as having been trained on specific grade-level content?",
+            "options": [
+              "The AI learned patterns from examples of that content and can generate similar responses, not that it understands concepts like humans do.",
+              "The AI has human-like understanding of the concepts and can teach any subject at that grade level with expert comprehension.",
+              "Training means the AI was programmed with explicit rules for every possible question students might ask about that content.",
+              "The AI developers manually entered all correct answers into the system to ensure perfect accuracy for all student questions."
+            ],
+            "correctAnswer": 0,
+            "rationale": "Training means the AI system learned statistical patterns from examples of content at that grade level and can generate contextually appropriate responses based on those patterns. This is fundamentally different from human understanding—the AI doesn't have conceptual comprehension or consciousness. It's not programmed with explicit rules for every case, nor are all answers manually entered. Understanding this distinction helps teachers use AI appropriately and recognize its limitations.",
+            "tags": [
+              "ai-training",
+              "pattern-learning",
+              "ai-understanding",
+              "content-knowledge"
+            ]
+          },
+          {
+            "id": "TEA-TC-B-006",
+            "level": 3,
+            "type": "scenario-based",
+            "points": 10,
+            "difficulty": 0.42,
+            "discrimination": 1.13,
+            "bloomLevel": "Apply",
+            "question": "Your school purchases an AI reading assessment tool that claims 98% accuracy in identifying reading difficulties. A student's results seem inconsistent with your classroom observations. What should you do?",
+            "options": [
+              "Trust your professional observations and use the AI results as one data point among multiple assessments and classroom evidence.",
+              "Completely ignore the AI results since they contradict your observations, proving the tool is unreliable for all students.",
+              "Defer entirely to the AI results since 98% accuracy means the technology is more reliable than teacher observations.",
+              "Immediately refer the student for special education evaluation based solely on the AI assessment without further investigation."
+            ],
+            "correctAnswer": 0,
+            "rationale": "High accuracy rates don't mean AI is infallible—98% accuracy still means 2% error rate, and individual cases may fall in that 2%. Professional judgment involves triangulating multiple data sources including AI results, classroom observations, student work samples, and other assessments. Complete deference to AI ignores teacher expertise, while complete dismissal wastes a potentially useful data point. The first option demonstrates appropriate professional integration of AI results.",
+            "tags": [
+              "assessment-accuracy",
+              "professional-judgment",
+              "multiple-measures",
+              "data-triangulation"
+            ]
+          },
+          {
+            "id": "TEA-TC-B-007",
+            "level": 3,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.45,
+            "discrimination": 1.15,
+            "bloomLevel": "Apply",
+            "question": "What distinguishes AI systems that should require teacher oversight from those that can operate more autonomously in classrooms?",
+            "options": [
+              "Autonomous operation is acceptable for high-stakes decisions like grading and assessment because AI ensures fairness and consistency.",
+              "Teacher oversight is needed when AI outputs affect important educational decisions, student well-being, or require pedagogical judgment.",
+              "All AI systems require constant teacher monitoring regardless of their function since technology can never be trusted independently.",
+              "AI can operate autonomously in all educational contexts as long as the vendor claims sufficient accuracy in marketing materials."
+            ],
+            "correctAnswer": 1,
+            "rationale": "The key factor is the stakes and nature of the decision. AI affecting important educational outcomes (grades, placement, accommodations) or requiring pedagogical judgment needs teacher oversight. Low-stakes administrative tasks (attendance tracking, resource scheduling) may operate more autonomously. Blanket rules to always monitor or never monitor miss this nuance. Vendor claims alone don't determine appropriate autonomy. The second option correctly identifies the decision-stakes framework.",
+            "tags": [
+              "oversight-requirements",
+              "high-stakes-decisions",
+              "autonomous-systems",
+              "decision-framework"
+            ]
+          },
+          {
+            "id": "TEA-TC-B-008",
+            "level": 3,
+            "type": "scenario-based",
+            "points": 10,
+            "difficulty": 0.47,
+            "discrimination": 1.16,
+            "bloomLevel": "Apply",
+            "question": "Your district is considering an AI tool that personalizes lesson content for each student based on learning patterns. What key question should inform the adoption decision?",
+            "options": [
+              "Whether the personalization algorithm transparently explains its recommendations so teachers can evaluate pedagogical appropriateness and adjust if needed.",
+              "Whether the tool costs less than hiring additional teachers, since cost savings is the only valid justification for educational AI adoption.",
+              "Whether the AI vendor is a well-known technology company, as brand recognition guarantees effectiveness in educational contexts.",
+              "Whether students like the interface design, since engagement with technology automatically translates to improved learning outcomes."
+            ],
+            "correctAnswer": 0,
+            "rationale": "For instructional AI, transparency about how decisions are made is critical so teachers can evaluate pedagogical soundness and maintain instructional control. Cost alone doesn't ensure educational value, vendor reputation doesn't guarantee appropriate pedagogy, and interface appeal doesn't equal learning effectiveness. Teachers need to understand and potentially override AI recommendations to ensure they align with learning objectives and student needs. The first option prioritizes essential pedagogical control.",
+            "tags": [
+              "personalization",
+              "algorithm-transparency",
+              "pedagogical-control",
+              "adoption-criteria"
+            ]
+          }
+        ]
+      },
+      {
+        "dimensionCode": "PLD",
+        "dimensionName": "Pedagogy and Learning Design",
+        "description": "Applying AI to enhance instructional design, differentiation, and learning experiences",
+        "weight": 0.125,
+        "totalPoints": 75,
+        "items": [
+          {
+            "id": "PLD-TC-B-001",
+            "level": 1,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.28,
+            "discrimination": 1.07,
+            "bloomLevel": "Remember",
+            "question": "What is adaptive learning in the context of AI-powered educational tools?",
+            "options": [
+              "Adaptive learning means students can choose any topic they want to study based on personal interests rather than curriculum requirements.",
+              "Adaptive learning requires teachers to manually adjust every assignment for each student based on continuous assessment data.",
+              "Adaptive learning systems adjust content difficulty and pathways based on individual student performance and learning patterns.",
+              "Adaptive learning is a marketing term without real meaning since all educational software adapts to basic user preferences."
+            ],
+            "correctAnswer": 2,
+            "rationale": "Adaptive learning refers to AI systems that dynamically adjust content difficulty, pacing, and learning pathways based on analysis of individual student performance patterns. This differs from simple user preferences, doesn't mean students choose curriculum randomly, and provides automated rather than fully manual differentiation. The third option correctly defines this AI-powered educational approach.",
+            "tags": [
+              "adaptive-learning",
+              "personalization",
+              "content-adjustment",
+              "learning-pathways"
+            ]
+          },
+          {
+            "id": "PLD-TC-B-002",
+            "level": 1,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.3,
+            "discrimination": 1.08,
+            "bloomLevel": "Understand",
+            "question": "How can AI assist teachers in differentiating instruction for diverse learners?",
+            "options": [
+              "AI analyzes student data to suggest groupings and materials at varied levels, helping teachers target instruction more effectively.",
+              "AI eliminates the need for differentiation by teaching all content at the same level since algorithms know the optimal approach.",
+              "AI creates completely separate curricula for each student, removing any need for whole-class instruction or shared experiences.",
+              "AI differentiation is only effective for advanced students and should not be used with struggling learners who need human support."
+            ],
+            "correctAnswer": 0,
+            "rationale": "AI can analyze patterns in student performance data to suggest appropriate groupings, recommend materials at varied complexity levels, and identify gaps—helping teachers differentiate more efficiently. It doesn't eliminate the need for differentiation, doesn't mean complete individualization with no shared learning, and benefits all students including those who struggle. The first option correctly describes AI as a tool supporting differentiation strategy.",
+            "tags": [
+              "differentiation",
+              "data-analysis",
+              "instructional-grouping",
+              "diverse-learners"
+            ]
+          },
+          {
+            "id": "PLD-TC-B-003",
+            "level": 2,
+            "type": "scenario-based",
+            "points": 10,
+            "difficulty": 0.36,
+            "discrimination": 1.1,
+            "bloomLevel": "Apply",
+            "question": "You want to use AI to generate practice problems for your algebra class. What approach best ensures the problems support your learning objectives?",
+            "options": [
+              "Request AI to generate problems matching specific learning objectives and skills, then review and modify to ensure alignment with your curriculum.",
+              "Accept whatever problems the AI generates since artificial intelligence automatically creates pedagogically optimal content for any topic.",
+              "Avoid AI for practice problems entirely because only human-created problems can be effective for student learning in mathematics.",
+              "Have students generate all practice problems using AI without teacher review to build their AI literacy and problem-solving skills."
+            ],
+            "correctAnswer": 0,
+            "rationale": "Effective use of AI for content generation requires clearly specifying learning objectives and reviewing outputs to ensure alignment with curriculum and pedagogical goals. AI can efficiently generate varied problems, but teacher review ensures quality, appropriateness, and alignment. Complete acceptance without review risks misalignment, while complete avoidance ignores useful capabilities. Student-generated problems without guidance misses the point. The first option demonstrates appropriate AI-assisted content creation.",
+            "tags": [
+              "content-generation",
+              "learning-objectives",
+              "curriculum-alignment",
+              "teacher-review"
+            ]
+          },
+          {
+            "id": "PLD-TC-B-004",
+            "level": 2,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.34,
+            "discrimination": 1.09,
+            "bloomLevel": "Understand",
+            "question": "What is the relationship between AI-powered tools and Universal Design for Learning principles?",
+            "options": [
+              "AI tools contradict UDL principles because technology creates barriers for students with disabilities who need human interaction.",
+              "AI tools can support UDL by providing multiple means of representation, engagement, and expression when designed thoughtfully.",
+              "AI automatically implements perfect UDL in every educational context without requiring teacher consideration of accessibility needs.",
+              "UDL and AI are completely unrelated frameworks that cannot be integrated into coherent instructional design approaches."
+            ],
+            "correctAnswer": 1,
+            "rationale": "AI tools can support UDL principles when thoughtfully designed and implemented—for example, providing text-to-speech (representation), adaptive difficulty (engagement), or varied response modes (expression). AI doesn't automatically ensure UDL, doesn't contradict accessibility principles inherently, and can be integrated with UDL frameworks. The second option correctly identifies AI as a potential tool for supporting UDL implementation when used appropriately.",
+            "tags": [
+              "universal-design",
+              "accessibility",
+              "multiple-means",
+              "inclusive-design"
+            ]
+          },
+          {
+            "id": "PLD-TC-B-005",
+            "level": 2,
+            "type": "scenario-based",
+            "points": 10,
+            "difficulty": 0.38,
+            "discrimination": 1.11,
+            "bloomLevel": "Apply",
+            "question": "An AI writing assistant suggests corrections to a student's essay. How should you frame this tool's use to support student learning?",
+            "options": [
+              "Students should accept all AI suggestions automatically since the corrections improve writing quality and save time on revisions.",
+              "Present AI feedback as suggestions to consider and evaluate, encouraging students to make intentional decisions about their own writing.",
+              "Prohibit students from seeing AI suggestions since they prevent students from learning grammar and writing skills independently.",
+              "Tell students AI feedback is always more accurate than teacher feedback and should be prioritized over human guidance."
+            ],
+            "correctAnswer": 1,
+            "rationale": "Effective use of AI writing tools involves teaching students to critically evaluate suggestions rather than accepting them blindly. This develops metacognitive skills and maintains student agency in their writing. Automatic acceptance removes learning opportunities, complete prohibition ignores useful feedback, and claiming AI superiority over teachers is pedagogically inappropriate. The second option correctly frames AI as a tool for informed student decision-making.",
+            "tags": [
+              "writing-feedback",
+              "student-agency",
+              "critical-evaluation",
+              "metacognition"
+            ]
+          },
+          {
+            "id": "PLD-TC-B-006",
+            "level": 3,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.42,
+            "discrimination": 1.13,
+            "bloomLevel": "Apply",
+            "question": "When designing learning activities that incorporate AI tools, what principle should guide the integration?",
+            "options": [
+              "AI integration should start with learning goals and determine where AI adds pedagogical value rather than starting with the tool's features.",
+              "Learning activities should maximize AI usage in all aspects since increased technology use automatically improves educational outcomes.",
+              "AI tools should replace traditional activities entirely because digital approaches are always superior to non-technology methods.",
+              "Teachers should integrate whatever AI tools the district purchases regardless of alignment with learning objectives or student needs."
+            ],
+            "correctAnswer": 0,
+            "rationale": "Pedagogically sound technology integration starts with learning goals and asks where tools add value, rather than starting with technology and building activities around it. Maximum technology use doesn't equal effective learning, AI doesn't replace all traditional methods, and district purchases don't dictate instructional appropriateness. The first option correctly prioritizes pedagogy-first rather than technology-first design.",
+            "tags": [
+              "instructional-design",
+              "pedagogy-first",
+              "learning-goals",
+              "technology-integration"
+            ]
+          },
+          {
+            "id": "PLD-TC-B-007",
+            "level": 3,
+            "type": "scenario-based",
+            "points": 10,
+            "difficulty": 0.45,
+            "discrimination": 1.15,
+            "bloomLevel": "Apply",
+            "question": "Students in your class are using an AI tutor that provides immediate feedback on math problems. You notice some students stop trying to solve problems independently and just guess until the AI gives them the answer. What pedagogical response is most appropriate?",
+            "options": [
+              "Completely remove the AI tutor since some students are gaming the system rather than learning from the immediate feedback.",
+              "Redesign activities to require students to explain their reasoning before receiving AI feedback, building metacognitive engagement.",
+              "Continue current implementation since students eventually learn through trial and error regardless of their problem-solving approach.",
+              "Make AI feedback available only to high-performing students who demonstrate they can use it responsibly and productively."
+            ],
+            "correctAnswer": 1,
+            "rationale": "When students game feedback systems, redesigning tasks to require explanation or reasoning before feedback encourages genuine engagement with problem-solving processes. Complete removal loses valuable feedback capabilities, accepting gaming behavior enables poor learning habits, and restricting by performance punishes struggling students who might benefit most. The second option addresses the pedagogical issue while preserving tool benefits.",
+            "tags": [
+              "gaming-behavior",
+              "metacognition",
+              "feedback-design",
+              "student-engagement"
+            ]
+          },
+          {
+            "id": "PLD-TC-B-008",
+            "level": 3,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.47,
+            "discrimination": 1.16,
+            "bloomLevel": "Apply",
+            "question": "How should teachers balance AI-personalized learning paths with opportunities for collaborative learning and peer interaction?",
+            "options": [
+              "Collaborative learning is obsolete when AI personalization is available since individualized paths are always more effective than group work.",
+              "Design learning experiences that combine AI-supported individual work with structured collaborative tasks where students share and discuss different approaches.",
+              "Force all students to follow identical AI pathways to ensure they can work together, eliminating personalization benefits for consistency.",
+              "Keep AI personalization and collaborative learning completely separate since they represent incompatible pedagogical approaches to instruction."
+            ],
+            "correctAnswer": 1,
+            "rationale": "Effective instruction combines personalized learning with collaborative experiences—students can work on AI-adapted individual practice then come together to discuss strategies, compare approaches, or tackle complex problems collaboratively. Personalization doesn't make collaboration obsolete, forced uniformity defeats personalization purpose, and the approaches are complementary rather than incompatible. The second option demonstrates balanced instructional design.",
+            "tags": [
+              "personalization-collaboration",
+              "balanced-instruction",
+              "peer-interaction",
+              "instructional-balance"
+            ]
+          }
+        ]
+      },
+      {
+        "dimensionCode": "ASE",
+        "dimensionName": "Assessment and Evaluation",
+        "description": "Using AI for assessment design, grading, feedback, and learning analytics",
+        "weight": 0.125,
+        "totalPoints": 75,
+        "items": [
+          {
+            "id": "ASE-TC-B-001",
+            "level": 1,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.27,
+            "discrimination": 1.06,
+            "bloomLevel": "Remember",
+            "question": "What type of assessment tasks can AI grade most reliably?",
+            "options": [
+              "AI can reliably grade objective items with clearly defined correct answers like multiple-choice, fill-in-blank, and true-false questions.",
+              "AI can reliably grade all assessment types including complex essays and open-ended creative projects with perfect accuracy.",
+              "AI cannot reliably grade any educational assessments and should never be used for any evaluation purposes.",
+              "AI can reliably grade subjective creative work better than objective items because it recognizes artistic quality."
+            ],
+            "correctAnswer": 0,
+            "rationale": "AI is most reliable for objective assessment items with clear right/wrong answers. It can provide useful feedback on some essay elements (grammar, structure), but complex evaluation of argumentation, creativity, and nuanced understanding still requires human judgment. The first option correctly identifies AI's strengths in objective assessment while acknowledging limitations in subjective evaluation.",
+            "tags": [
+              "automated-grading",
+              "objective-assessment",
+              "grading-reliability",
+              "assessment-types"
+            ]
+          },
+          {
+            "id": "ASE-TC-B-002",
+            "level": 1,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.29,
+            "discrimination": 1.07,
+            "bloomLevel": "Understand",
+            "question": "What is the primary benefit of AI-generated feedback on student writing?",
+            "options": [
+              "AI feedback is always more accurate and comprehensive than teacher feedback for all aspects of writing quality.",
+              "AI can provide immediate preliminary feedback on mechanics and structure, allowing teachers to focus on higher-order concerns like argumentation.",
+              "AI feedback eliminates any need for teacher comments since students prefer technology-generated responses to human interaction.",
+              "AI feedback should replace peer review entirely because algorithmic analysis is more objective than peer evaluation."
+            ],
+            "correctAnswer": 1,
+            "rationale": "AI can efficiently provide quick feedback on mechanical elements (grammar, spelling, sentence structure), freeing teachers to focus on higher-order concerns like argumentation, thesis development, and evidence quality that require human judgment. AI doesn't replace teachers or peers but complements them by handling routine feedback efficiently. The second option correctly identifies the complementary role.",
+            "tags": [
+              "writing-feedback",
+              "immediate-feedback",
+              "higher-order-thinking",
+              "complementary-roles"
+            ]
+          },
+          {
+            "id": "ASE-TC-B-003",
+            "level": 2,
+            "type": "scenario-based",
+            "points": 10,
+            "difficulty": 0.35,
+            "discrimination": 1.1,
+            "bloomLevel": "Apply",
+            "question": "Your school implements an AI essay grading tool that scores student writing. You notice it consistently rates essays with advanced vocabulary higher regardless of argument quality. What should you do?",
+            "options": [
+              "Trust the AI scores since algorithms are objective and your perception may reflect unconscious bias in favor of simple writing.",
+              "Continue using AI scores but manually review and adjust grades when argument quality doesn't match vocabulary sophistication scores.",
+              "Immediately abandon the AI tool completely since any flaw proves the technology is unreliable for all assessment purposes.",
+              "Teach students to use sophisticated vocabulary regardless of appropriateness since that's what the AI values most highly."
+            ],
+            "correctAnswer": 1,
+            "rationale": "When AI grading shows systematic biases or limitations, appropriate response is to use scores as a starting point while applying professional judgment to adjust for known weaknesses. Complete trust ignores evident limitations, complete abandonment wastes useful capabilities, and teaching to the AI's weakness corrupts learning goals. The second option demonstrates appropriate professional oversight of automated grading.",
+            "tags": [
+              "grading-bias",
+              "professional-judgment",
+              "assessment-validity",
+              "tool-limitations"
+            ]
+          },
+          {
+            "id": "ASE-TC-B-004",
+            "level": 2,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.33,
+            "discrimination": 1.09,
+            "bloomLevel": "Understand",
+            "question": "How should teachers interpret learning analytics dashboards generated by AI systems?",
+            "options": [
+              "Learning analytics provide definitive diagnoses of student abilities that should determine all instructional decisions automatically.",
+              "Analytics dashboards are meaningless data displays that distract from authentic classroom observation and teacher intuition.",
+              "Analytics offer useful patterns to investigate further through professional judgment, observation, and conversation with students.",
+              "Analytics are only valuable for administrators making accountability decisions and have no practical classroom application."
+            ],
+            "correctAnswer": 2,
+            "rationale": "Learning analytics reveal patterns and trends that warrant investigation but don't provide definitive answers. They should prompt questions and inform but not replace professional judgment combined with observation and student interaction. They're neither definitive nor meaningless, and they have practical classroom value when interpreted appropriately. The third option correctly frames analytics as investigative tools requiring professional interpretation.",
+            "tags": [
+              "learning-analytics",
+              "data-interpretation",
+              "pattern-recognition",
+              "professional-judgment"
+            ]
+          },
+          {
+            "id": "ASE-TC-B-005",
+            "level": 2,
+            "type": "scenario-based",
+            "points": 10,
+            "difficulty": 0.37,
+            "discrimination": 1.11,
+            "bloomLevel": "Apply",
+            "question": "An AI system flags several students as at-risk for course failure based on early assignment patterns. How should you respond to these predictions?",
+            "options": [
+              "Use predictions as reason to proactively check in with flagged students and offer support, while monitoring students not flagged as well.",
+              "Immediately notify parents of all flagged students that AI predicts their child will fail without mentioning uncertainty in predictions.",
+              "Ignore the predictions entirely since algorithmic risk assessment is inherently problematic and biased in educational contexts.",
+              "Adjust expectations downward for flagged students since AI predictions are accurate and struggling students should receive easier work."
+            ],
+            "correctAnswer": 0,
+            "rationale": "AI predictions can identify students who may benefit from early support, but should prompt proactive outreach rather than lower expectations or alarming communications. Predictions aren't certainties—they indicate risk patterns worth addressing. Ignoring potentially useful signals wastes the tool, while treating predictions as definitive creates self-fulfilling prophecies. The first option demonstrates appropriate preventive use of predictive analytics.",
+            "tags": [
+              "predictive-analytics",
+              "early-intervention",
+              "at-risk-students",
+              "proactive-support"
+            ]
+          },
+          {
+            "id": "ASE-TC-B-006",
+            "level": 3,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.41,
+            "discrimination": 1.12,
+            "bloomLevel": "Apply",
+            "question": "What is the most important consideration when using AI to generate assessment items for summative evaluations?",
+            "options": [
+              "The quantity of items generated, since AI can produce thousands of questions more efficiently than manual item writing.",
+              "The alignment of generated items with specific learning objectives and cognitive levels targeted in instruction and standards.",
+              "The cost savings compared to purchasing commercial test banks or hiring assessment specialists to create items professionally.",
+              "The novelty of questions since AI-generated items are inherently more engaging than traditional teacher-created assessments."
+            ],
+            "correctAnswer": 1,
+            "rationale": "For summative assessment, validity (measuring intended learning objectives at appropriate cognitive levels) is paramount. AI can generate many items quickly, but quantity without quality and alignment undermines assessment validity. Cost savings and novelty are secondary to measuring what students were supposed to learn. The second option correctly prioritizes validity in assessment design.",
+            "tags": [
+              "assessment-validity",
+              "item-generation",
+              "alignment",
+              "summative-assessment"
+            ]
+          },
+          {
+            "id": "ASE-TC-B-007",
+            "level": 3,
+            "type": "scenario-based",
+            "points": 10,
+            "difficulty": 0.44,
+            "discrimination": 1.14,
+            "bloomLevel": "Apply",
+            "question": "You notice that AI-generated feedback on student lab reports focuses heavily on formatting and organization but rarely addresses scientific reasoning or experimental design. How should you address this limitation?",
+            "options": [
+              "Supplement AI feedback with targeted teacher comments on scientific reasoning while leveraging AI for formatting feedback efficiency.",
+              "Accept the limitation since formatting and organization are the most important aspects of scientific writing in educational contexts.",
+              "Eliminate AI feedback entirely and return to fully manual grading since the tool doesn't address all assessment criteria.",
+              "Adjust your rubric to emphasize formatting over scientific reasoning since that aligns with what the AI can evaluate."
+            ],
+            "correctAnswer": 0,
+            "rationale": "When AI handles some aspects well but misses others, effective strategy is to leverage AI's strengths (efficiency on routine elements) while teachers address what AI misses (complex reasoning). Neither eliminating AI nor adjusting learning goals to fit AI limitations serves students well. The first option demonstrates strategic division of feedback labor based on comparative advantages.",
+            "tags": [
+              "feedback-limitations",
+              "scientific-reasoning",
+              "complementary-feedback",
+              "strategic-use"
+            ]
+          },
+          {
+            "id": "ASE-TC-B-008",
+            "level": 3,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.46,
+            "discrimination": 1.15,
+            "bloomLevel": "Apply",
+            "question": "When should teachers be most cautious about relying on AI-powered assessment tools?",
+            "options": [
+              "When assessments inform high-stakes decisions about student placement, advancement, or identification for special services requiring human judgment.",
+              "When assessments are low-stakes formative checks since AI should only be trusted for important summative evaluations.",
+              "Teachers should be equally cautious about AI in all assessment contexts since algorithms require constant human monitoring.",
+              "Teachers should never be cautious about AI assessment tools since modern systems have been validated for educational accuracy."
+            ],
+            "correctAnswer": 0,
+            "rationale": "Higher stakes require greater caution and human oversight. AI can be useful for low-stakes formative assessment where immediate feedback matters more than perfect accuracy. High-stakes decisions (placement, special education referral, graduation) demand human judgment considering context AI may miss. Blanket rules of equal caution everywhere or no caution anywhere miss this risk-proportionate approach. The first option correctly identifies stakes as the key factor.",
+            "tags": [
+              "high-stakes-assessment",
+              "risk-management",
+              "human-oversight",
+              "decision-consequences"
+            ]
+          }
+        ]
+      },
+      {
+        "dimensionCode": "CAI",
+        "dimensionName": "Content and AI Integration",
+        "description": "Creating, curating, and adapting educational content using AI tools",
+        "weight": 0.125,
+        "totalPoints": 75,
+        "items": [
+          {
+            "id": "CAI-TC-B-001",
+            "level": 1,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.26,
+            "discrimination": 1.06,
+            "bloomLevel": "Remember",
+            "question": "What is the primary value of using AI for lesson planning?",
+            "options": [
+              "AI generates complete lesson plans that require no teacher modification and can be implemented exactly as produced.",
+              "AI can quickly generate initial frameworks and ideas that teachers then adapt based on their students and context.",
+              "AI eliminates the need for teachers to understand pedagogy since algorithms encode best instructional practices automatically.",
+              "AI lesson plans are always superior to teacher-created plans because they're based on analysis of thousands of lessons."
+            ],
+            "correctAnswer": 1,
+            "rationale": "AI's value in lesson planning is providing starting points and ideas that teachers adapt to their specific context, students, and objectives. AI doesn't produce perfect ready-to-use lessons, doesn't replace pedagogical knowledge, and isn't inherently superior to thoughtful teacher planning. It's a tool for efficiency in initial draft generation. The second option correctly identifies AI as a starting-point generator.",
+            "tags": [
+              "lesson-planning",
+              "content-generation",
+              "teacher-adaptation",
+              "planning-efficiency"
+            ]
+          },
+          {
+            "id": "CAI-TC-B-002",
+            "level": 1,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.28,
+            "discrimination": 1.07,
+            "bloomLevel": "Understand",
+            "question": "When using AI to generate examples for teaching a new concept, what is most important to verify?",
+            "options": [
+              "The factual accuracy and appropriateness of examples for your students' age, background, and learning objectives.",
+              "The quantity of examples generated since more examples automatically leads to better understanding for all students.",
+              "The technological sophistication of the AI system since advanced algorithms guarantee pedagogically sound examples.",
+              "The speed of generation since rapid content creation is the primary benefit of using AI for instructional materials."
+            ],
+            "correctAnswer": 0,
+            "rationale": "When AI generates examples, teachers must verify accuracy, appropriateness for student backgrounds, and alignment with learning objectives. AI can generate inaccurate or inappropriate examples, quantity doesn't equal quality, sophisticated systems still require review, and speed is valuable only if quality is maintained. The first option correctly prioritizes verification of accuracy and appropriateness.",
+            "tags": [
+              "content-verification",
+              "example-appropriateness",
+              "accuracy-checking",
+              "student-relevance"
+            ]
+          },
+          {
+            "id": "CAI-TC-B-003",
+            "level": 2,
+            "type": "scenario-based",
+            "points": 10,
+            "difficulty": 0.34,
+            "discrimination": 1.09,
+            "bloomLevel": "Apply",
+            "question": "You use AI to create differentiated reading passages at three levels for your diverse learners. What aspect requires your most careful attention?",
+            "options": [
+              "Ensuring all three versions maintain the same core content and learning objectives despite different complexity levels.",
+              "Making sure the AI-generated passages are exactly the same length to ensure equity and fairness across groups.",
+              "Verifying the technology used advanced natural language processing since that guarantees appropriate differentiation quality.",
+              "Checking that the easiest version uses mostly single-syllable words regardless of content distortion or meaning loss."
+            ],
+            "correctAnswer": 0,
+            "rationale": "The critical aspect of differentiated texts is maintaining consistent core content and learning objectives across complexity levels. All students should access the same essential concepts, just through appropriately challenging texts. Same length doesn't ensure appropriate differentiation, technology sophistication doesn't guarantee pedagogy, and oversimplifying to single syllables can distort meaning. The first option correctly identifies content consistency as paramount.",
+            "tags": [
+              "differentiated-texts",
+              "content-consistency",
+              "learning-objectives",
+              "appropriate-complexity"
+            ]
+          },
+          {
+            "id": "CAI-TC-B-004",
+            "level": 2,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.32,
+            "discrimination": 1.08,
+            "bloomLevel": "Understand",
+            "question": "What limitation should teachers understand about AI-generated multimedia content for lessons?",
+            "options": [
+              "AI-generated images and videos may contain subtle inaccuracies or inappropriate elements requiring teacher review before classroom use.",
+              "AI-generated multimedia is always more engaging than teacher-created content and guarantees improved student attention and learning.",
+              "AI cannot generate any useful multimedia content and teachers must create all visual materials manually for quality.",
+              "AI-generated content is automatically copyright-free and can be used without any attribution or permission considerations."
+            ],
+            "correctAnswer": 0,
+            "rationale": "AI-generated images and videos can contain inaccuracies, inappropriate elements, or bias that requires teacher review before classroom use. They're not automatically superior for engagement, aren't unusable entirely, and do involve copyright considerations. Teachers should review AI-generated multimedia for accuracy and appropriateness just as they would any instructional material. The first option correctly identifies the need for review.",
+            "tags": [
+              "multimedia-content",
+              "content-review",
+              "accuracy-verification",
+              "appropriateness"
+            ]
+          },
+          {
+            "id": "CAI-TC-B-005",
+            "level": 2,
+            "type": "scenario-based",
+            "points": 10,
+            "difficulty": 0.36,
+            "discrimination": 1.1,
+            "bloomLevel": "Apply",
+            "question": "You ask AI to generate a simulation for teaching climate change impacts. The output is engaging but includes some scientifically inaccurate projections. What should you do?",
+            "options": [
+              "Modify the inaccurate elements to align with scientific consensus before using the simulation with students.",
+              "Use the simulation as generated since engagement is more important than perfect accuracy in middle school science.",
+              "Discard the simulation entirely and never use AI for science content since this proves AI cannot handle STEM topics.",
+              "Present the inaccurate simulation to students and use errors as a lesson about why AI cannot be trusted."
+            ],
+            "correctAnswer": 0,
+            "rationale": "When AI generates useful but flawed content, appropriate response is to correct inaccuracies before use. Accuracy matters regardless of engagement, one flawed output doesn't invalidate AI for all STEM content, and using inaccurate content even as a negative example risks reinforcing misconceptions. The first option demonstrates responsible content curation and adaptation.",
+            "tags": [
+              "content-accuracy",
+              "scientific-accuracy",
+              "content-modification",
+              "misconception-prevention"
+            ]
+          },
+          {
+            "id": "CAI-TC-B-006",
+            "level": 3,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.40,
+            "discrimination": 1.12,
+            "bloomLevel": "Apply",
+            "question": "When curating AI-generated content for culturally diverse classrooms, what consideration is most critical?",
+            "options": [
+              "Ensuring AI-generated examples reflect diverse perspectives and don't perpetuate stereotypes or exclude student backgrounds.",
+              "Accepting AI content as culturally neutral since algorithms don't have cultural biases like humans do in content creation.",
+              "Using only AI-generated content to avoid teacher bias in selecting examples that reflect personal cultural perspectives.",
+              "Focusing exclusively on content accuracy since cultural considerations are secondary to factual correctness in education."
+            ],
+            "correctAnswer": 0,
+            "rationale": "AI systems can perpetuate biases present in training data, so teachers must review AI-generated content for cultural inclusivity, stereotype avoidance, and representation of diverse perspectives. AI isn't culturally neutral, shouldn't replace human judgment about cultural appropriateness, and cultural considerations aren't secondary to accuracy—both matter. The first option correctly prioritizes cultural responsiveness in content curation.",
+            "tags": [
+              "cultural-responsiveness",
+              "bias-awareness",
+              "diverse-perspectives",
+              "inclusive-content"
+            ]
+          },
+          {
+            "id": "CAI-TC-B-007",
+            "level": 3,
+            "type": "scenario-based",
+            "points": 10,
+            "difficulty": 0.43,
+            "discrimination": 1.13,
+            "bloomLevel": "Apply",
+            "question": "Your district provides AI tools for translating instructional materials for multilingual learners. You notice some translations seem awkward and potentially confusing. What's the most appropriate response?",
+            "options": [
+              "Have bilingual staff or native speakers review translations for accuracy and clarity before distributing to families.",
+              "Use the translations as provided since AI translation is more consistent than human translation which varies by translator.",
+              "Abandon translated materials entirely since imperfect translation is worse than providing English-only materials to families.",
+              "Continue using AI translations without review since attempting communication in home languages shows good intent regardless of quality."
+            ],
+            "correctAnswer": 0,
+            "rationale": "AI translation can be useful but requires review by bilingual staff or native speakers to catch errors, awkward phrasing, or culturally inappropriate expressions. Machine translation isn't inherently superior to human translation, imperfect translation still provides more access than English-only, and good intent doesn't excuse poor quality that may confuse families. The first option demonstrates appropriate quality assurance.",
+            "tags": [
+              "translation-accuracy",
+              "multilingual-learners",
+              "family-communication",
+              "quality-review"
+            ]
+          },
+          {
+            "id": "CAI-TC-B-008",
+            "level": 3,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.45,
+            "discrimination": 1.14,
+            "bloomLevel": "Apply",
+            "question": "When should teachers invest time in creating content manually rather than using AI generation?",
+            "options": [
+              "When content requires nuanced understanding of specific student needs, local context, or complex pedagogical considerations AI cannot capture.",
+              "Teachers should always create content manually since AI-generated materials are inherently inferior to human-created instructional content.",
+              "Teachers should always use AI generation since manual creation is inefficient and wastes time that could be spent on other tasks.",
+              "The decision should be based solely on speed since faster content creation always translates to more effective instruction."
+            ],
+            "correctAnswer": 0,
+            "rationale": "The decision between AI generation and manual creation should be strategic. AI works well for routine content that can be easily adapted, while complex, context-specific, or pedagogically nuanced content may require human creation from the start. Blanket rules to always or never use AI miss this nuance, and speed alone doesn't determine instructional value. The first option correctly identifies complexity and context-specificity as decision factors.",
+            "tags": [
+              "content-creation-decisions",
+              "ai-vs-manual",
+              "context-specific",
+              "strategic-choices"
+            ]
+          }
+        ]
+      },
+      {
+        "dimensionCode": "EAI",
+        "dimensionName": "Ethics and AI in Education",
+        "description": "Understanding ethical considerations, privacy, bias, and responsible AI use in educational settings",
+        "weight": 0.125,
+        "totalPoints": 75,
+        "items": [
+          {
+            "id": "EAI-TC-B-001",
+            "level": 1,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.29,
+            "discrimination": 1.07,
+            "bloomLevel": "Remember",
+            "question": "What is the primary student privacy concern when using AI tools in classrooms?",
+            "options": [
+              "AI tools may collect and process student data in ways that violate privacy regulations like FERPA or create security vulnerabilities.",
+              "Privacy isn't a concern with AI since educational technology is automatically exempt from data protection laws and regulations.",
+              "The only privacy concern is that students might share passwords with each other when using educational technology platforms.",
+              "AI tools improve privacy by replacing teacher observation with algorithmic monitoring that doesn't involve human awareness."
+            ],
+            "correctAnswer": 0,
+            "rationale": "AI tools often collect substantial student data (performance, behavior, biometric in some cases) raising privacy concerns about compliance with regulations like FERPA, data security, and appropriate use. Educational technology isn't exempt from privacy laws, password sharing is a separate issue, and algorithmic monitoring doesn't eliminate privacy concerns. The first option correctly identifies data collection and processing as primary privacy issues.",
+            "tags": [
+              "student-privacy",
+              "data-protection",
+              "FERPA",
+              "privacy-regulations"
+            ]
+          },
+          {
+            "id": "EAI-TC-B-002",
+            "level": 1,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.31,
+            "discrimination": 1.08,
+            "bloomLevel": "Understand",
+            "question": "What does algorithmic bias in educational AI mean?",
+            "options": [
+              "Algorithmic bias means AI systems may produce systematically unfair outcomes for certain student groups based on patterns in training data.",
+              "Algorithmic bias means AI is intentionally programmed to discriminate against certain students by malicious developers.",
+              "Algorithmic bias is a theoretical concern with no real-world impact on actual student outcomes in educational settings.",
+              "Algorithmic bias only affects social media algorithms and cannot occur in educational AI systems designed for learning."
+            ],
+            "correctAnswer": 0,
+            "rationale": "Algorithmic bias refers to systematic unfairness in AI outputs that disadvantage certain groups, typically resulting from biased training data or design decisions rather than intentional malice. It has documented real-world impacts and can occur in educational AI systems just as in other domains. Understanding this helps teachers watch for and mitigate potential bias in AI tools they use. The first option correctly defines algorithmic bias.",
+            "tags": [
+              "algorithmic-bias",
+              "fairness",
+              "systematic-unfairness",
+              "training-data"
+            ]
+          },
+          {
+            "id": "EAI-TC-B-003",
+            "level": 2,
+            "type": "scenario-based",
+            "points": 10,
+            "difficulty": 0.37,
+            "discrimination": 1.11,
+            "bloomLevel": "Apply",
+            "question": "An AI tutoring system in your school seems to recommend advanced content more frequently to certain demographic groups. What ethical concern does this raise?",
+            "options": [
+              "This pattern suggests potential bias in the algorithm that may create or reinforce educational inequities requiring investigation and correction.",
+              "This is acceptable optimization since AI identifies which students are naturally better suited for advanced content based on data.",
+              "This proves the AI is working properly by recognizing actual ability differences between demographic groups in your school.",
+              "This is not an ethical concern since algorithmic recommendations are objective and cannot reflect bias or discrimination."
+            ],
+            "correctAnswer": 0,
+            "rationale": "Differential recommendations by demographic group raise serious equity concerns and suggest potential algorithmic bias that needs investigation. AI identifying 'natural' ability differences by demographics reflects bias rather than objective assessment. Such patterns can perpetuate inequities rather than support equitable access to rigorous content. The first option correctly identifies this as a bias concern requiring response.",
+            "tags": [
+              "algorithmic-bias",
+              "educational-equity",
+              "demographic-patterns",
+              "investigation"
+            ]
+          },
+          {
+            "id": "EAI-TC-B-004",
+            "level": 2,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.35,
+            "discrimination": 1.1,
+            "bloomLevel": "Understand",
+            "question": "Why should teachers be cautious about student data being used to train AI systems?",
+            "options": [
+              "Student data used for training may be retained, shared, or repurposed in ways that violate privacy expectations and regulations.",
+              "Data used for training is always completely anonymized and cannot be traced back to individual students under any circumstances.",
+              "Training AI on student data is automatically illegal and violates federal law regardless of consent or data handling practices.",
+              "Student data improves AI systems and should always be shared freely since educational benefit outweighs privacy concerns."
+            ],
+            "correctAnswer": 0,
+            "rationale": "When student data trains AI systems, questions arise about retention duration, sharing with third parties, repurposing for commercial uses, and true anonymization (which is difficult). This isn't automatically illegal but requires careful attention to consent, data minimization, and regulatory compliance. Blanket assumptions that data is fully anonymized or that benefits always outweigh privacy risks are incorrect. The first option correctly identifies legitimate privacy concerns.",
+            "tags": [
+              "training-data",
+              "data-sharing",
+              "student-privacy",
+              "data-retention"
+            ]
+          },
+          {
+            "id": "EAI-TC-B-005",
+            "level": 2,
+            "type": "scenario-based",
+            "points": 10,
+            "difficulty": 0.39,
+            "discrimination": 1.11,
+            "bloomLevel": "Apply",
+            "question": "A vendor offers your school free AI tools in exchange for access to anonymized student performance data. What factors should inform the decision?",
+            "options": [
+              "Whether true anonymization is possible, what the data will be used for, whether benefits justify risks, and whether consent can be obtained.",
+              "Accept immediately since 'anonymized' means there's no privacy concern and free tools benefit students without any drawbacks.",
+              "Reject automatically since any data sharing is unethical regardless of anonymization, consent, or potential educational benefits.",
+              "The decision should be based solely on cost savings since free tools always provide better value than purchased alternatives."
+            ],
+            "correctAnswer": 0,
+            "rationale": "Data-for-service arrangements require careful consideration of whether anonymization is truly effective, how data will be used, whether benefits justify risks, consent processes, and alternatives. 'Anonymized' doesn't guarantee privacy (re-identification is possible), automatic rejection may sacrifice legitimate benefits, and free doesn't automatically mean better value if privacy is compromised. The first option identifies appropriate decision factors.",
+            "tags": [
+              "data-sharing-decisions",
+              "anonymization",
+              "risk-benefit",
+              "informed-consent"
+            ]
+          },
+          {
+            "id": "EAI-TC-B-006",
+            "level": 3,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.42,
+            "discrimination": 1.13,
+            "bloomLevel": "Apply",
+            "question": "What ethical responsibility do teachers have regarding AI-generated content students might submit as their own work?",
+            "options": [
+              "Teachers should establish clear expectations about appropriate AI use and help students develop academic integrity in an AI-enabled world.",
+              "Teachers should assume all student work involves AI and grade accordingly since preventing AI use is impossible.",
+              "Teachers should implement surveillance technology to detect AI use since any AI involvement constitutes cheating automatically.",
+              "Teachers have no responsibility since AI-generated work is indistinguishable from student work and academic integrity is obsolete."
+            ],
+            "correctAnswer": 0,
+            "rationale": "Teachers' ethical responsibility includes helping students understand appropriate AI use, developing academic integrity in new contexts, and designing assessments that value authentic thinking. Assuming all work involves AI is cynical and unfair, surveillance-based solutions are ethically problematic and practically limited, and academic integrity isn't obsolete—it's evolving. The first option correctly identifies teachers' pedagogical responsibility for guidance and integrity development.",
+            "tags": [
+              "academic-integrity",
+              "appropriate-use",
+              "ai-ethics",
+              "student-guidance"
+            ]
+          },
+          {
+            "id": "EAI-TC-B-007",
+            "level": 3,
+            "type": "scenario-based",
+            "points": 10,
+            "difficulty": 0.45,
+            "discrimination": 1.15,
+            "bloomLevel": "Apply",
+            "question": "Your school AI system tracks detailed student engagement data including attention patterns. Parents ask how this data is used and who has access. What ethical principle guides your response?",
+            "options": [
+              "Transparency principle requires clearly explaining what data is collected, how it's used, who accesses it, and how it's protected.",
+              "Minimize information shared since detailed explanations might alarm parents and reduce trust in beneficial educational technology.",
+              "Explain that privacy policies cover this and refer to legal documents since teachers aren't responsible for data governance.",
+              "Emphasize that surveillance benefits students through better personalization and parents shouldn't worry about data details."
+            ],
+            "correctAnswer": 0,
+            "rationale": "Transparency is a core ethical principle in educational data use. Families have a right to understand what data is collected about their children, how it's used, who accesses it, and how it's protected. Withholding information undermines trust, referring solely to legal documents avoids engagement, and dismissing concerns is ethically inappropriate. The first option correctly prioritizes transparency with families.",
+            "tags": [
+              "transparency",
+              "parent-communication",
+              "data-governance",
+              "family-rights"
+            ]
+          },
+          {
+            "id": "EAI-TC-B-008",
+            "level": 3,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.47,
+            "discrimination": 1.16,
+            "bloomLevel": "Apply",
+            "question": "When AI tools make recommendations about student needs or abilities, what ethical framework should guide teacher response?",
+            "options": [
+              "AI recommendations should inform but not determine decisions about students, with teachers maintaining professional judgment and considering multiple evidence sources.",
+              "Teachers should defer to AI recommendations since algorithmic analysis is more objective and less biased than human judgment.",
+              "Teachers should ignore AI recommendations entirely to preserve human judgment and avoid automation bias in educational decisions.",
+              "The accuracy rate of the AI system determines appropriate response, with >90% accuracy justifying full automation of decisions."
+            ],
+            "correctAnswer": 0,
+            "rationale": "Ethical use of AI recommendations maintains human judgment and decision-making authority, especially for consequential decisions about students. AI should inform rather than determine, requiring teachers to consider recommendations alongside other evidence and professional expertise. Neither complete deference nor complete dismissal is appropriate, and accuracy rates alone don't determine when automation is ethically appropriate. The first option correctly frames teacher judgment as paramount.",
+            "tags": [
+              "professional-judgment",
+              "ai-recommendations",
+              "decision-authority",
+              "ethical-framework"
+            ]
+          }
+        ]
+      },
+      {
+        "dimensionCode": "EGC",
+        "dimensionName": "Effective Guidance and Communication",
+        "description": "Communicating with students, parents, and colleagues about AI tools and their use in education",
+        "weight": 0.125,
+        "totalPoints": 75,
+        "items": [
+          {
+            "id": "EGC-TC-B-001",
+            "level": 1,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.28,
+            "discrimination": 1.07,
+            "bloomLevel": "Remember",
+            "question": "What is the most important element to communicate to students about using AI tools for learning?",
+            "options": [
+              "When and how AI tools can appropriately support learning versus when they undermine development of essential skills and understanding.",
+              "AI tools should be avoided completely since they prevent students from developing critical thinking and problem-solving abilities.",
+              "Students should maximize AI use for all academic tasks since those who don't use AI will be disadvantaged.",
+              "AI tools are neutral resources that can be used however students prefer without guidance about appropriate use."
+            ],
+            "correctAnswer": 0,
+            "rationale": "Students need clear guidance about when AI tools appropriately support learning (e.g., initial brainstorming, editing) versus when they undermine skill development (e.g., replacing thinking for assignments assessing that thinking). Complete avoidance ignores valuable uses, maximizing all use undermines learning goals, and treating tools as neutral without guidance abdicates teaching responsibility. The first option correctly identifies guidance on appropriate use as essential.",
+            "tags": [
+              "student-guidance",
+              "appropriate-use",
+              "learning-goals",
+              "skill-development"
+            ]
+          },
+          {
+            "id": "EGC-TC-B-002",
+            "level": 1,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.3,
+            "discrimination": 1.08,
+            "bloomLevel": "Understand",
+            "question": "How should teachers communicate with parents about AI tools being used in the classroom?",
+            "options": [
+              "Explain the educational purpose, how tools support learning objectives, and what oversight measures are in place for appropriate use.",
+              "Avoid mentioning AI tools to parents since detailed explanations might create unnecessary concern about classroom practices.",
+              "Tell parents AI is being used but provide no details since instructional decisions are solely professional prerogative.",
+              "Emphasize that AI is required by the district and teachers have no choice in its use to deflect parent concerns."
+            ],
+            "correctAnswer": 0,
+            "rationale": "Transparent communication with parents about AI use includes explaining educational purposes, how tools support learning, and oversight practices. Avoiding communication creates trust problems, withholding details is dismissive, and deflecting responsibility undermines professional credibility. Parents are partners in education and deserve clear information about instructional approaches including technology use. The first option correctly emphasizes transparent, purposeful communication.",
+            "tags": [
+              "parent-communication",
+              "transparency",
+              "educational-purpose",
+              "oversight"
+            ]
+          },
+          {
+            "id": "EGC-TC-B-003",
+            "level": 2,
+            "type": "scenario-based",
+            "points": 10,
+            "difficulty": 0.36,
+            "discrimination": 1.1,
+            "bloomLevel": "Apply",
+            "question": "A parent emails concerned that their child is 'cheating' by using AI for homework. What response best addresses this concern?",
+            "options": [
+              "Explain your specific guidelines for AI use, clarify learning objectives, and discuss how you're teaching appropriate AI integration for learning.",
+              "Defend the child and blame the parent for not understanding how modern students learn in a technology-enhanced educational environment.",
+              "Immediately prohibit the child from using AI since parental complaints indicate the student is misusing technology inappropriately.",
+              "Inform the parent that AI use is inevitable and they should adjust their expectations rather than questioning modern practices."
+            ],
+            "correctAnswer": 0,
+            "rationale": "Productive response acknowledges the concern, explains specific guidelines and learning objectives, and discusses how appropriate AI use is being taught. Defensive responses damage relationships, immediate prohibition without investigation is reactive, and dismissing parental perspectives undermines partnership. The first option demonstrates professional communication that addresses concerns constructively while maintaining educational judgment.",
+            "tags": [
+              "parent-concerns",
+              "academic-integrity",
+              "professional-communication",
+              "partnership"
+            ]
+          },
+          {
+            "id": "EGC-TC-B-004",
+            "level": 2,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.34,
+            "discrimination": 1.09,
+            "bloomLevel": "Understand",
+            "question": "What should teachers emphasize when discussing AI limitations with students?",
+            "options": [
+              "AI can make mistakes, reflect biases, and lack true understanding, so students should think critically about AI outputs rather than accepting them uncritically.",
+              "AI limitations mean it should never be used for any educational purpose since unreliable tools have no place in learning.",
+              "AI limitations are rapidly disappearing and within a few years AI will have no meaningful weaknesses in educational applications.",
+              "Students don't need to know about AI limitations since understanding weaknesses might discourage them from using helpful tools."
+            ],
+            "correctAnswer": 0,
+            "rationale": "Teaching students about AI limitations (errors, biases, lack of understanding) develops critical thinking about technology rather than naive trust. Limitations don't mean AI shouldn't be used, aren't disappearing despite improvements, and students benefit from understanding weaknesses to use tools thoughtfully. The first option correctly frames limitations as reason for critical thinking rather than rejection or uncritical acceptance.",
+            "tags": [
+              "ai-limitations",
+              "critical-thinking",
+              "student-understanding",
+              "skepticism"
+            ]
+          },
+          {
+            "id": "EGC-TC-B-005",
+            "level": 2,
+            "type": "scenario-based",
+            "points": 10,
+            "difficulty": 0.38,
+            "discrimination": 1.11,
+            "bloomLevel": "Apply",
+            "question": "Colleagues express worry that students using AI won't learn essential skills. How should you engage this concern in professional discussion?",
+            "options": [
+              "Acknowledge legitimate concerns while discussing how to design learning experiences where AI supports rather than replaces skill development.",
+              "Dismiss their concerns as resistance to change since all new technologies face initial skepticism from traditional educators.",
+              "Agree completely and advocate for banning AI from all educational contexts until students master foundational skills.",
+              "Argue that skill development is obsolete since AI will handle these skills in future and teaching them wastes instructional time."
+            ],
+            "correctAnswer": 0,
+            "rationale": "Professional discussion should acknowledge legitimate concerns about AI potentially undermining skill development while exploring how to design learning experiences that use AI to support rather than replace essential learning. Dismissing concerns damages professional relationships, complete bans ignore benefits, and declaring skills obsolete is pedagogically irresponsible. The first option demonstrates respectful professional engagement that moves toward solutions.",
+            "tags": [
+              "professional-dialogue",
+              "skill-development",
+              "design-thinking",
+              "colleague-engagement"
+            ]
+          },
+          {
+            "id": "EGC-TC-B-006",
+            "level": 3,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.41,
+            "discrimination": 1.12,
+            "bloomLevel": "Apply",
+            "question": "When introducing a new AI tool to students, what sequence of communication best supports responsible use?",
+            "options": [
+              "Explain the tool's purpose, demonstrate appropriate use, discuss limitations and ethical considerations, then provide supervised practice with feedback.",
+              "Simply provide access to the tool since students are digital natives who intuitively understand technology use.",
+              "Begin with all the ways students might misuse the tool to scare them into appropriate behavior through fear of consequences.",
+              "Show only the positive capabilities since discussing limitations or ethical issues might discourage students from using valuable tools."
+            ],
+            "correctAnswer": 0,
+            "rationale": "Effective introduction includes explaining purpose (why we're using it), demonstrating appropriate use (how), discussing limitations and ethics (critical thinking), and providing supervised practice with feedback (skill development). Digital native assumptions are myth, fear-based approaches undermine learning relationships, and hiding limitations prevents critical thinking development. The first option follows sound instructional design for technology introduction.",
+            "tags": [
+              "tool-introduction",
+              "scaffolded-learning",
+              "responsible-use",
+              "instructional-sequence"
+            ]
+          },
+          {
+            "id": "EGC-TC-B-007",
+            "level": 3,
+            "type": "scenario-based",
+            "points": 10,
+            "difficulty": 0.44,
+            "discrimination": 1.14,
+            "bloomLevel": "Apply",
+            "question": "You discover students sharing AI-generated work without attribution in ways that violate your academic integrity policy. How should you address this class-wide?",
+            "options": [
+              "Use this as teaching opportunity to discuss academic integrity, appropriate AI use, and consequences while reinforcing clear expectations going forward.",
+              "Immediately fail all involved students without discussion since rules were violated and consequences must be severe to deter others.",
+              "Ignore the violations since preventing AI use is impossible and enforcing policies will only create conflict with students.",
+              "Publicly shame students who violated policies as a warning to others about the serious consequences of academic dishonesty."
+            ],
+            "correctAnswer": 0,
+            "rationale": "Policy violations present teaching opportunities to clarify expectations, discuss academic integrity in AI contexts, and reinforce appropriate use. Immediate severe punishment without dialogue misses educational opportunity, ignoring violations abandons standards, and public shaming is psychologically harmful and professionally inappropriate. The first option uses the situation for learning while maintaining standards.",
+            "tags": [
+              "academic-integrity",
+              "teaching-moments",
+              "policy-enforcement",
+              "restorative-approach"
+            ]
+          },
+          {
+            "id": "EGC-TC-B-008",
+            "level": 3,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.46,
+            "discrimination": 1.15,
+            "bloomLevel": "Apply",
+            "question": "How should teachers communicate about differential AI access among students due to economic factors?",
+            "options": [
+              "Acknowledge access disparities and ensure classroom AI use doesn't disadvantage students with limited home technology access, while advocating for equitable access.",
+              "Ignore access disparities since discussing inequality makes students uncomfortable and creates classroom divisions based on socioeconomic status.",
+              "Require all students to have AI tool subscriptions at home since those who can't afford it aren't serious about education.",
+              "Prohibit all AI tool discussion to ensure no student feels disadvantaged, even though this limits learning for all students."
+            ],
+            "correctAnswer": 0,
+            "rationale": "Teachers should acknowledge access disparities matter, ensure classroom practices don't disadvantage students lacking home access, and advocate for equitable access. Ignoring real inequality doesn't make it disappear, requiring paid resources creates unfair barriers, and prohibiting all use harms students who could benefit. The first option balances acknowledgment of reality with equitable practices and advocacy.",
+            "tags": [
+              "digital-equity",
+              "access-disparities",
+              "equitable-practices",
+              "advocacy"
+            ]
+          }
+        ]
+      },
+      {
+        "dimensionCode": "ACI",
+        "dimensionName": "AI Collaboration and Innovation",
+        "description": "Collaborating with colleagues, participating in professional learning, and innovating with AI in teaching practice",
+        "weight": 0.125,
+        "totalPoints": 75,
+        "items": [
+          {
+            "id": "ACI-TC-B-001",
+            "level": 1,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.27,
+            "discrimination": 1.06,
+            "bloomLevel": "Remember",
+            "question": "What is the primary benefit of collaborating with colleagues about AI tool use in teaching?",
+            "options": [
+              "Collaboration allows teachers to share effective practices, learn from failures, and develop collective expertise about educational AI use.",
+              "Collaboration ensures all teachers use AI identically so students have consistent experiences across all classes and grade levels.",
+              "Collaboration is primarily about peer pressure to adopt technology even when teachers have reservations about appropriateness.",
+              "Collaboration reduces professional autonomy since group decisions override individual teacher judgment about instructional methods."
+            ],
+            "correctAnswer": 0,
+            "rationale": "Professional collaboration about AI allows teachers to share what works, learn from each other's experiences (including failures), and build collective knowledge. It doesn't mean everyone uses AI identically, isn't about pressure to adopt technology, and doesn't eliminate professional autonomy—it enhances professional learning. The first option correctly identifies collaborative learning as the primary benefit.",
+            "tags": [
+              "professional-collaboration",
+              "shared-learning",
+              "collective-expertise",
+              "professional-learning"
+            ]
+          },
+          {
+            "id": "ACI-TC-B-002",
+            "level": 1,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.29,
+            "discrimination": 1.07,
+            "bloomLevel": "Understand",
+            "question": "What characterizes effective professional learning about AI in education?",
+            "options": [
+              "Ongoing, practice-focused learning that includes experimentation, reflection, and adaptation rather than one-time training sessions.",
+              "One-time vendor demonstrations of AI products that show features without time for teacher practice or implementation planning.",
+              "Mandatory training sessions where teachers are told they must use specific AI tools regardless of appropriateness for their context.",
+              "Self-directed learning only since teachers know their needs and formal professional development wastes time on irrelevant content."
+            ],
+            "correctAnswer": 0,
+            "rationale": "Effective professional learning about AI is ongoing, practice-focused, and includes opportunities to experiment, reflect, and adapt rather than passive one-time sessions. Vendor demos alone don't support implementation, mandates without context ignore professional judgment, and purely self-directed learning misses benefits of facilitated learning and collaboration. The first option describes evidence-based professional learning characteristics.",
+            "tags": [
+              "professional-learning",
+              "ongoing-development",
+              "practice-focused",
+              "experimentation"
+            ]
+          },
+          {
+            "id": "ACI-TC-B-003",
+            "level": 2,
+            "type": "scenario-based",
+            "points": 10,
+            "difficulty": 0.35,
+            "discrimination": 1.1,
+            "bloomLevel": "Apply",
+            "question": "Your teaching team wants to experiment with AI tools but colleagues have varying comfort levels with technology. What approach best supports collaborative innovation?",
+            "options": [
+              "Start with low-stakes experimentation, share results openly including failures, and allow different pacing while maintaining collaborative learning.",
+              "Require all teachers to implement the same AI tools simultaneously so the team can compare results across identical implementations.",
+              "Allow only the most tech-comfortable teachers to experiment since others' hesitation will slow innovation and waste group time.",
+              "Wait until all teachers reach identical comfort levels before any experimentation since uneven participation creates team conflict."
+            ],
+            "correctAnswer": 0,
+            "rationale": "Supporting colleagues with varying readiness involves low-stakes experimentation, open sharing of successes and failures, and allowing different pacing while maintaining collaborative learning. Forcing identical implementation ignores individual differences, restricting to tech-comfortable teachers creates divisions, and waiting for identical readiness prevents all progress. The first option supports differentiated yet collaborative professional learning.",
+            "tags": [
+              "collaborative-innovation",
+              "differentiated-support",
+              "low-stakes-experimentation",
+              "team-learning"
+            ]
+          },
+          {
+            "id": "ACI-TC-B-004",
+            "level": 2,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.33,
+            "discrimination": 1.09,
+            "bloomLevel": "Understand",
+            "question": "What role should teacher voice play in school-level decisions about AI tool adoption?",
+            "options": [
+              "Teachers should have substantive input since they understand instructional contexts, student needs, and practical implementation challenges.",
+              "Teachers should have no input since AI adoption requires technical expertise only administrators and IT staff possess.",
+              "Teacher input should be limited to implementation logistics after administrators make all strategic decisions about AI tools.",
+              "Each teacher should independently choose all AI tools for their classroom without any coordination or school-level guidance."
+            ],
+            "correctAnswer": 0,
+            "rationale": "Teachers should have substantive voice in AI adoption decisions because they understand instructional contexts, student needs, and implementation realities. Technical expertise matters but doesn't replace pedagogical expertise, limiting input to post-decision logistics wastes professional knowledge, and complete independence without coordination creates inconsistency and inefficiency. The first option appropriately values teacher expertise in decision-making.",
+            "tags": [
+              "teacher-voice",
+              "adoption-decisions",
+              "professional-expertise",
+              "participatory-decisions"
+            ]
+          },
+          {
+            "id": "ACI-TC-B-005",
+            "level": 2,
+            "type": "scenario-based",
+            "points": 10,
+            "difficulty": 0.37,
+            "discrimination": 1.11,
+            "bloomLevel": "Apply",
+            "question": "You've developed an innovative approach using AI that's working well in your classroom. How should you share this with colleagues?",
+            "options": [
+              "Present both successes and challenges, share specific strategies and materials, and offer support for colleagues who want to adapt your approach.",
+              "Keep it to yourself since sharing might lead colleagues to copy your innovation without proper understanding of implementation nuances.",
+              "Present only successes to inspire adoption, omitting challenges since discussing difficulties might discourage colleagues from trying.",
+              "Insist all colleagues adopt your exact approach since it's proven effective and deviation will lead to inferior results."
+            ],
+            "correctAnswer": 0,
+            "rationale": "Effective sharing includes both successes and challenges, provides concrete strategies and materials, and offers support for colleagues adapting to their contexts. Hoarding knowledge undermines professional culture, presenting only successes sets unrealistic expectations, and insisting on exact replication ignores contextual differences. The first option demonstrates generous, realistic professional sharing that supports adaptation.",
+            "tags": [
+              "knowledge-sharing",
+              "professional-generosity",
+              "realistic-sharing",
+              "adaptation-support"
+            ]
+          },
+          {
+            "id": "ACI-TC-B-006",
+            "level": 3,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.40,
+            "discrimination": 1.12,
+            "bloomLevel": "Apply",
+            "question": "When experimenting with new AI approaches in your teaching, what practice best supports professional learning?",
+            "options": [
+              "Document what you try, reflect on outcomes systematically, and share learning with colleagues regardless of whether experiments succeed or fail.",
+              "Only share experiments that succeed since failed attempts reflect poorly on professional competence and waste colleagues' time.",
+              "Avoid experimentation entirely since trying unproven approaches might harm students and violate professional responsibility to use established methods.",
+              "Experiment freely without documentation since reflection and sharing are time-consuming and innovation requires rapid iteration."
+            ],
+            "correctAnswer": 0,
+            "rationale": "Effective professional learning from innovation involves documenting attempts, systematic reflection, and sharing learning including failures. Failed experiments aren't professional deficits but learning opportunities, avoiding all experimentation stagnates practice, and undocumented experimentation loses learning value. The first option describes action research practices that support professional growth.",
+            "tags": [
+              "action-research",
+              "systematic-reflection",
+              "learning-from-failure",
+              "documentation"
+            ]
+          },
+          {
+            "id": "ACI-TC-B-007",
+            "level": 3,
+            "type": "scenario-based",
+            "points": 10,
+            "difficulty": 0.43,
+            "discrimination": 1.13,
+            "bloomLevel": "Apply",
+            "question": "Your district is forming a committee to evaluate AI tools for potential adoption. What expertise should guide your participation?",
+            "options": [
+              "Pedagogical expertise about learning goals, student needs, and instructional design combined with practical implementation understanding.",
+              "Only technical expertise about AI systems since pedagogical concerns are secondary to ensuring robust technology infrastructure.",
+              "Political awareness to ensure your department gets desired tools regardless of whether they're pedagogically optimal choices.",
+              "Deference to administrators and vendors since they have more authority and information about AI products than classroom teachers."
+            ],
+            "correctAnswer": 0,
+            "rationale": "Teacher committee participation should bring pedagogical expertise (learning goals, student needs, instructional design) and practical implementation knowledge. Technical expertise matters but doesn't replace pedagogical judgment, political maneuvering undermines good decision-making, and deference to authority wastes the teacher perspective that motivated including teachers. The first option correctly identifies teachers' unique and essential expertise.",
+            "tags": [
+              "pedagogical-expertise",
+              "evaluation-criteria",
+              "teacher-expertise",
+              "decision-making"
+            ]
+          },
+          {
+            "id": "ACI-TC-B-008",
+            "level": 3,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.45,
+            "discrimination": 1.14,
+            "bloomLevel": "Apply",
+            "question": "How should teachers balance innovation with AI tools against responsibility to maintain effective established practices?",
+            "options": [
+              "Experiment strategically with AI for specific purposes while maintaining effective core practices, evaluating innovations against learning outcomes.",
+              "Abandon all traditional practices in favor of AI-enhanced approaches since innovation requires complete transformation of teaching methods.",
+              "Maintain all traditional practices unchanged since proven methods should never be modified regardless of new technology potential.",
+              "Innovation and established practice are incompatible so teachers must choose to be either innovative or traditional in their approach."
+            ],
+            "correctAnswer": 0,
+            "rationale": "Professional balance involves strategic experimentation with AI while maintaining effective core practices, evaluating innovations based on learning outcomes. Neither complete transformation nor rigid maintenance of all traditional methods serves students well, and innovation and tradition aren't incompatible opposites. The first option describes thoughtful integration that balances innovation with preservation of what works.",
+            "tags": [
+              "balanced-innovation",
+              "strategic-change",
+              "outcome-evaluation",
+              "professional-judgment"
+            ]
+          }
+        ]
+      },
+      {
+        "dimensionCode": "TAS",
+        "dimensionName": "Technical and System Understanding",
+        "description": "Understanding technical aspects of AI implementation, integration, and classroom system management",
+        "weight": 0.125,
+        "totalPoints": 75,
+        "items": [
+          {
+            "id": "TAS-TC-B-001",
+            "level": 1,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.28,
+            "discrimination": 1.07,
+            "bloomLevel": "Remember",
+            "question": "What does it mean when an AI educational tool requires an internet connection to function?",
+            "options": [
+              "The AI processing happens on remote servers (cloud-based), requiring connectivity to send data and receive results.",
+              "Internet requirements mean the tool is less secure than offline tools since online connection automatically creates vulnerabilities.",
+              "Cloud-based tools are always inferior to offline software since internet dependency limits reliability and classroom usefulness.",
+              "Internet connection requirements indicate poor design since all educational software should function without network access."
+            ],
+            "correctAnswer": 0,
+            "rationale": "Internet requirements typically mean the AI processing happens on remote servers rather than locally, requiring connectivity to send data and receive results. This has trade-offs (computing power vs. connectivity requirements) but doesn't automatically mean less security, inferior quality, or poor design. The first option correctly explains the technical reason for internet requirements.",
+            "tags": [
+              "cloud-computing",
+              "connectivity-requirements",
+              "technical-architecture",
+              "remote-processing"
+            ]
+          },
+          {
+            "id": "TAS-TC-B-002",
+            "level": 1,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.3,
+            "discrimination": 1.08,
+            "bloomLevel": "Understand",
+            "question": "What does 'integration' mean when discussing AI tools with existing classroom technology systems?",
+            "options": [
+              "Integration means AI tools can share data with other systems like learning management platforms, reducing duplicate data entry and improving workflow.",
+              "Integration means completely replacing existing systems with new AI-powered platforms that handle all educational technology needs.",
+              "Integration is a meaningless marketing term since AI tools and traditional systems use incompatible technologies that cannot connect.",
+              "Integration means teachers must become technology experts to connect systems manually since automatic connections don't exist."
+            ],
+            "correctAnswer": 0,
+            "rationale": "Integration means systems can share data and work together, reducing duplicate work and improving workflow. It doesn't mean complete replacement, isn't impossible or meaningless, and modern integrated systems connect automatically through APIs rather than requiring manual teacher intervention. The first option correctly defines integration in educational technology context.",
+            "tags": [
+              "system-integration",
+              "interoperability",
+              "data-sharing",
+              "workflow-efficiency"
+            ]
+          },
+          {
+            "id": "TAS-TC-B-003",
+            "level": 2,
+            "type": "scenario-based",
+            "points": 10,
+            "difficulty": 0.34,
+            "discrimination": 1.09,
+            "bloomLevel": "Apply",
+            "question": "Your AI vocabulary tool stopped providing accurate difficulty-level recommendations. What is the most appropriate initial troubleshooting step?",
+            "options": [
+              "Check whether recent changes in your usage patterns or student population might have affected the AI's recommendations and report the issue.",
+              "Immediately stop using the tool with all students since accuracy decline proves it's fundamentally unreliable and technically broken.",
+              "Ignore the accuracy issue since 100% accuracy is impossible and expecting perfect AI performance is unrealistic for education.",
+              "Assume the problem is your internet connection and spend significant time troubleshooting network issues before investigating other causes."
+            ],
+            "correctAnswer": 0,
+            "rationale": "When AI performance changes, first check for contextual changes (new student population, different usage patterns) and report the issue to get support. Immediately abandoning tools is reactive, ignoring accuracy problems is irresponsible, and assuming network causes when functionality works but accuracy declined wastes time. The first option demonstrates logical troubleshooting and appropriate reporting.",
+            "tags": [
+              "troubleshooting",
+              "performance-decline",
+              "issue-reporting",
+              "contextual-factors"
+            ]
+          },
+          {
+            "id": "TAS-TC-B-004",
+            "level": 2,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.32,
+            "discrimination": 1.08,
+            "bloomLevel": "Understand",
+            "question": "Why might AI tool performance vary across different student populations in your school?",
+            "options": [
+              "AI systems trained primarily on certain populations may perform less accurately for students from different backgrounds or with different learning profiles.",
+              "AI performance is completely uniform across populations since algorithms treat all inputs identically without demographic variation.",
+              "Performance variation proves teachers are using tools incorrectly with certain student groups rather than reflecting AI limitations.",
+              "Only low-quality AI tools show performance variation while well-designed systems work equally well for all possible users."
+            ],
+            "correctAnswer": 0,
+            "rationale": "AI systems trained predominantly on certain populations may not generalize equally well to all students, particularly those from underrepresented backgrounds in training data. This is a known AI limitation, not evidence of uniform performance, user error, or poor quality systems exclusively. Understanding this helps teachers monitor for and report performance disparities. The first option correctly explains training data bias as source of variation.",
+            "tags": [
+              "performance-variation",
+              "training-data-bias",
+              "population-differences",
+              "generalization"
+            ]
+          },
+          {
+            "id": "TAS-TC-B-005",
+            "level": 2,
+            "type": "scenario-based",
+            "points": 10,
+            "difficulty": 0.36,
+            "discrimination": 1.1,
+            "bloomLevel": "Apply",
+            "question": "Your school's AI reading assessment tool requires students to speak responses aloud for analysis. Several students are reluctant to speak. What accommodation consideration is most important?",
+            "options": [
+              "Whether alternative input methods (typing, multiple-choice) are available that still assess reading comprehension without requiring speech.",
+              "Requiring all students to use voice input regardless of comfort since assessment consistency demands identical administration for everyone.",
+              "Exempting reluctant students from assessment entirely since accommodating preferences would invalidate assessment results for those students.",
+              "Assuming reluctance indicates the AI tool is inappropriate for all students and should be eliminated from the assessment program."
+            ],
+            "correctAnswer": 0,
+            "rationale": "When technology creates barriers for some students, appropriate consideration is whether alternative input methods can assess the same construct (reading comprehension) without the barrier (required speech). Rigid identical administration creates inequity, exemption denies assessment data, and removing tools entirely overreacts. The first option correctly prioritizes equivalent but accessible assessment approaches.",
+            "tags": [
+              "accessibility-accommodation",
+              "alternative-inputs",
+              "assessment-equity",
+              "student-comfort"
+            ]
+          },
+          {
+            "id": "TAS-TC-B-006",
+            "level": 3,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.40,
+            "discrimination": 1.12,
+            "bloomLevel": "Apply",
+            "question": "What factor most determines whether an AI tool will integrate successfully with your school's existing technology ecosystem?",
+            "options": [
+              "Whether the tool uses standard data formats and protocols (APIs) compatible with your existing learning management and information systems.",
+              "Whether the vendor is a well-known company since major brands always ensure compatibility with all educational technology systems.",
+              "Whether the tool is expensive since higher cost correlates with better integration capabilities and technical support quality.",
+              "Whether IT staff like the interface design since user experience determines technical integration feasibility more than data standards."
+            ],
+            "correctAnswer": 0,
+            "rationale": "Integration success depends primarily on technical compatibility—whether the tool uses standard data formats and APIs that work with existing systems. Vendor reputation doesn't guarantee compatibility, cost doesn't correlate reliably with integration ease, and interface design is separate from backend integration capabilities. The first option correctly identifies technical standards as the key integration factor.",
+            "tags": [
+              "integration-success",
+              "technical-compatibility",
+              "data-standards",
+              "apis"
+            ]
+          },
+          {
+            "id": "TAS-TC-B-007",
+            "level": 3,
+            "type": "scenario-based",
+            "points": 10,
+            "difficulty": 0.42,
+            "discrimination": 1.13,
+            "bloomLevel": "Apply",
+            "question": "Your district is choosing between two AI writing feedback tools. One processes data locally on devices, one uses cloud processing. What trade-off should inform the decision?",
+            "options": [
+              "Local processing offers better privacy and offline functionality while cloud processing typically provides more sophisticated AI capabilities and easier updates.",
+              "Cloud processing is always superior since it provides better performance and local processing is obsolete technology that should be avoided.",
+              "Local processing is always superior since data privacy concerns mean student information should never be processed on external servers.",
+              "The choice is irrelevant since local and cloud processing produce identical results and differ only in meaningless technical implementation."
+            ],
+            "correctAnswer": 0,
+            "rationale": "The local vs. cloud trade-off involves balancing privacy/offline benefits of local processing against typically more powerful AI and easier maintenance of cloud systems. Neither is universally superior, and the choice matters for privacy, functionality, and practical considerations. The first option correctly identifies this as a trade-off requiring consideration of school priorities and constraints.",
+            "tags": [
+              "local-vs-cloud",
+              "privacy-tradeoffs",
+              "processing-location",
+              "capability-tradeoffs"
+            ]
+          },
+          {
+            "id": "TAS-TC-B-008",
+            "level": 3,
+            "type": "multiple-choice",
+            "points": 10,
+            "difficulty": 0.44,
+            "discrimination": 1.14,
+            "bloomLevel": "Apply",
+            "question": "What technical consideration is most important when planning to use AI tools with students who have inconsistent internet access at home?",
+            "options": [
+              "Whether tools can function offline or save work locally to sync later, ensuring access disparities don't create academic disadvantages.",
+              "Simply accepting that students without reliable internet will be disadvantaged since technology requirements reflect modern educational reality.",
+              "Requiring all students to complete AI-assisted work at school to ensure equal access regardless of home connectivity situations.",
+              "Choosing only the most advanced cloud-based tools since they provide best AI capabilities even if they require constant connectivity."
+            ],
+            "correctAnswer": 0,
+            "rationale": "When students have inconsistent home internet, tools that can function offline or save work locally for later syncing reduce inequity. Accepting disadvantage is ethically inappropriate, requiring all work at school may be impractical, and choosing tools based only on capability without considering access creates inequity. The first option correctly prioritizes technical features that support equitable access.",
+            "tags": [
+              "digital-equity",
+              "offline-functionality",
+              "access-considerations",
+              "connectivity-issues"
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}
