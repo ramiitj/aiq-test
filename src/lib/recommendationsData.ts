@@ -125,6 +125,13 @@ export const dimensionNames: { [key: string]: string } = {
   EIS: "Ethics & Implementation Strategy",
   CIT: "Client Interaction & Trust",
   
+  // Teachers Dimensions
+  TEA: "Teaching AI Understanding",
+  PLD: "Pedagogy and Learning Design",
+  ASE: "Assessment and Evaluation",
+  EAI: "Ethics and AI in Education",
+  ACI: "AI Collaboration and Innovation",
+  
   // Operations Manager Dimensions
   OAI: "Operations AI Understanding",
   PAW: "Process Automation & Workflow",
@@ -193,7 +200,8 @@ type AssessmentLevel =
   | "fa-beginner" | "fa-advanced"
   | "ha-beginner" | "ha-advanced"
   | "lawyer-beginner" | "lawyer-advanced"
-  | "mc-beginner" | "mc-advanced";
+  | "mc-beginner" | "mc-advanced"
+  | "teachers-beginner" | "teachers-advanced";
 
 interface TieredRecommendations {
   [dimensionCode: string]: {
@@ -4115,6 +4123,192 @@ export const tieredRecommendations: TieredRecommendations = {
       low: ["Study deployment strategies for AI systems", "Learn to manage AI model lifecycle effectively", "Understand monitoring and observability requirements"],
       medium: ["Build sophisticated deployment pipelines for AI", "Master techniques for safe rollouts and rollbacks", "Design systems enabling rapid iteration with reliability"],
       high: ["Lead deployment engineering transformation for AI", "Build capabilities enabling continuous deployment", "Design frameworks optimizing velocity and reliability"]
+    }
+  },
+
+  // Teachers - Beginner and Advanced dimensions
+  TEA: {
+    "beginner": {
+      low: [
+        "Focus on understanding basic AI concepts and how they relate to teaching and learning",
+        "Explore introductory resources about AI tools designed for educational settings",
+        "Learn about common AI applications in classrooms and their potential benefits"
+      ],
+      medium: [
+        "Develop skills in identifying appropriate AI tools for specific teaching tasks",
+        "Build understanding of how AI can support differentiated instruction",
+        "Practice evaluating AI tools for educational effectiveness and student engagement"
+      ],
+      high: [
+        "Master techniques for integrating AI tools seamlessly into lesson plans",
+        "Lead professional development on AI literacy for fellow educators",
+        "Develop expertise in leveraging AI to enhance student learning outcomes"
+      ]
+    },
+    "teachers-advanced": {
+      low: [
+        "Focus on developing strategic understanding of AI's role in transforming education",
+        "Study emerging AI technologies and their potential applications in teaching",
+        "Practice analyzing how AI tools align with learning objectives and standards"
+      ],
+      medium: [
+        "Develop systematic approaches for evaluating and selecting AI tools for your classroom",
+        "Build expertise in using AI to personalize learning experiences at scale",
+        "Practice implementing AI solutions that address diverse student needs"
+      ],
+      high: [
+        "Master advanced techniques for using AI to drive innovation in pedagogy",
+        "Lead school-wide initiatives to integrate AI into curriculum development",
+        "Explore cutting-edge AI applications that transform student engagement and achievement"
+      ]
+    }
+  },
+
+  PLD: {
+    "beginner": {
+      low: [
+        "Focus on understanding how AI can assist with basic lesson planning tasks",
+        "Explore AI tools that help create learning materials and resources",
+        "Learn about AI applications for organizing and structuring curriculum content"
+      ],
+      medium: [
+        "Develop skills in using AI to design engaging and interactive learning experiences",
+        "Build experience with AI tools that support various learning styles and modalities",
+        "Practice integrating AI-assisted resources into your instructional design"
+      ],
+      high: [
+        "Master techniques for using AI to create highly differentiated learning pathways",
+        "Lead initiatives to redesign curriculum using AI-enhanced pedagogical approaches",
+        "Develop expertise in leveraging AI for innovative instructional design"
+      ]
+    },
+    "teachers-advanced": {
+      low: [
+        "Focus on developing strategic approaches to AI-enhanced instructional design",
+        "Study research-based practices for integrating AI into learning design",
+        "Practice using AI tools to create more effective and engaging lessons"
+      ],
+      medium: [
+        "Develop systematic methods for using AI to personalize learning design",
+        "Build expertise in creating AI-assisted learning experiences that improve outcomes",
+        "Practice implementing AI solutions that support diverse pedagogical approaches"
+      ],
+      high: [
+        "Master advanced techniques for using AI to revolutionize learning design",
+        "Lead professional learning communities on AI-enhanced pedagogy",
+        "Explore innovative AI applications that transform how students learn and engage"
+      ]
+    }
+  },
+
+  ASE: {
+    "beginner": {
+      low: [
+        "Focus on understanding how AI can support basic assessment creation and grading",
+        "Explore AI tools that help generate quiz questions and rubrics",
+        "Learn about AI applications for providing timely feedback to students"
+      ],
+      medium: [
+        "Develop skills in using AI to create varied and authentic assessments",
+        "Build experience with AI tools that analyze student performance data",
+        "Practice using AI to provide personalized feedback at scale"
+      ],
+      high: [
+        "Master techniques for leveraging AI to design comprehensive assessment systems",
+        "Lead initiatives to use AI for formative and summative evaluation innovations",
+        "Develop expertise in AI-driven assessment that improves student learning"
+      ]
+    },
+    "teachers-advanced": {
+      low: [
+        "Focus on developing strategic approaches to AI-enhanced assessment design",
+        "Study best practices for using AI to evaluate student learning effectively",
+        "Practice implementing AI tools that provide actionable assessment insights"
+      ],
+      medium: [
+        "Develop systematic methods for using AI to create valid and reliable assessments",
+        "Build expertise in leveraging AI for real-time formative assessment",
+        "Practice using AI to identify learning gaps and inform instruction"
+      ],
+      high: [
+        "Master advanced techniques for using AI to transform assessment practices",
+        "Lead school-wide initiatives to implement AI-enhanced assessment systems",
+        "Explore cutting-edge AI applications that revolutionize how we measure learning"
+      ]
+    }
+  },
+
+  EAI: {
+    "beginner": {
+      low: [
+        "Focus on understanding ethical considerations when using AI in education",
+        "Explore guidelines for protecting student privacy and data when using AI tools",
+        "Learn about responsible AI use and potential biases in educational technology"
+      ],
+      medium: [
+        "Develop skills in evaluating AI tools for ethical compliance and safety",
+        "Build understanding of equity issues related to AI access and use in classrooms",
+        "Practice teaching students about AI ethics and digital citizenship"
+      ],
+      high: [
+        "Master techniques for implementing AI tools that promote equity and inclusion",
+        "Lead school initiatives on ethical AI use and student data protection",
+        "Develop expertise in creating ethical frameworks for AI integration in education"
+      ]
+    },
+    "teachers-advanced": {
+      low: [
+        "Focus on developing comprehensive understanding of AI ethics in educational contexts",
+        "Study policies and regulations governing AI use in schools",
+        "Practice implementing safeguards to ensure ethical AI use in your classroom"
+      ],
+      medium: [
+        "Develop systematic approaches for evaluating AI tools through an ethical lens",
+        "Build expertise in addressing bias and equity issues in AI applications",
+        "Practice creating inclusive AI-enhanced learning environments"
+      ],
+      high: [
+        "Master advanced techniques for establishing ethical AI governance in education",
+        "Lead district-wide initiatives on responsible AI use and digital ethics",
+        "Explore cutting-edge frameworks for ensuring AI benefits all students equitably"
+      ]
+    }
+  },
+
+  ACI: {
+    "beginner": {
+      low: [
+        "Focus on understanding how AI can support collaborative teaching and learning",
+        "Explore AI tools that facilitate teamwork and co-creation among students",
+        "Learn about AI applications for sharing and co-developing instructional materials"
+      ],
+      medium: [
+        "Develop skills in using AI to foster innovative problem-solving in the classroom",
+        "Build experience with AI tools that support project-based and collaborative learning",
+        "Practice integrating AI to enhance student creativity and critical thinking"
+      ],
+      high: [
+        "Master techniques for using AI to drive pedagogical innovation",
+        "Lead collaborative initiatives to pilot and refine AI-enhanced teaching practices",
+        "Develop expertise in creating AI-driven environments that inspire student innovation"
+      ]
+    },
+    "teachers-advanced": {
+      low: [
+        "Focus on developing strategic approaches to AI-enhanced collaboration and innovation",
+        "Study emerging practices for using AI to foster creativity in education",
+        "Practice implementing AI tools that support collaborative knowledge construction"
+      ],
+      medium: [
+        "Develop systematic methods for using AI to promote innovation in teaching and learning",
+        "Build expertise in leveraging AI for interdisciplinary and project-based learning",
+        "Practice creating AI-enhanced learning experiences that develop 21st century skills"
+      ],
+      high: [
+        "Master advanced techniques for using AI to transform collaboration and innovation",
+        "Lead district initiatives to build cultures of innovation through AI integration",
+        "Explore cutting-edge AI applications that revolutionize how students create and collaborate"
+      ]
     }
   }
 };

@@ -55,7 +55,9 @@ const dimensionSchema = z.object({
     'FOA', 'PER', 'STR',
     // Software Development Engineer dimensions  
     'AIC', 'MIA', 'PAO', 'TDE', 'SRC', 'UIF', 'ADE',
-    'AIA', 'MLE', 'DSE', 'SRS', 'IAT', 'TQA', 'DAE'
+    'AIA', 'MLE', 'DSE', 'SRS', 'IAT', 'TQA', 'DAE',
+    // Teachers dimensions
+    'TEA', 'PLD', 'ASE', 'EAI', 'ACI'
   ]),
   dimensionName: z.string().min(1).max(200),
   description: z.string().max(1000).optional(),
