@@ -56,12 +56,7 @@ export const ConsentForm = ({ open, onConsent, onDecline, testVersion }: Consent
   
   // Section 5: Optional Demographics
   const [ageRange, setAgeRange] = useState("");
-  const [educationLevel, setEducationLevel] = useState(() => {
-    // Auto-prefill education level for adolescent assessments
-    if (testVersion?.includes('adolescent-14-15')) return 'grade-9-10';
-    if (testVersion?.includes('adolescent-16-17')) return 'grade-11-12';
-    return '';
-  });
+  const [educationLevel, setEducationLevel] = useState("");
   const [country, setCountry] = useState("");
   const [primaryLanguage, setPrimaryLanguage] = useState("");
   const [technicalBackground, setTechnicalBackground] = useState("");
@@ -628,38 +623,34 @@ export const ConsentForm = ({ open, onConsent, onDecline, testVersion }: Consent
                 </div>
               )}
 
-              {isAdolescentAssessment ? (
-                <div className="space-y-2">
-                  <Label>Education Level</Label>
-                  <div className="p-3 bg-muted rounded-md">
-                    <p className="text-sm font-medium">
-                      {testVersion.includes('14-15') ? 'Currently in Grade 9-10' : 'Currently in Grade 11-12'}
-                    </p>
-                    <p className="text-xs text-muted-foreground mt-1">
-                      Education level is pre-determined based on the student assessment you selected
-                    </p>
-                  </div>
-                </div>
-              ) : (
-                <div className="space-y-2">
-                  <Label>Highest Education Level</Label>
-                  <Select value={educationLevel} onValueChange={setEducationLevel}>
-                    <SelectTrigger>
-                      <SelectValue placeholder="Select education level" />
-                    </SelectTrigger>
-                    <SelectContent>
-                      <SelectItem value="high-school">High school or equivalent</SelectItem>
-                      <SelectItem value="some-college">Some college/Associate degree</SelectItem>
-                      <SelectItem value="bachelors">Bachelor's degree</SelectItem>
-                      <SelectItem value="masters">Master's degree</SelectItem>
-                      <SelectItem value="doctoral">Doctoral degree (PhD, MD, JD, etc.)</SelectItem>
-                      <SelectItem value="professional">Professional certification</SelectItem>
-                      <SelectItem value="other">Other</SelectItem>
-                      <SelectItem value="prefer-not">Prefer not to say</SelectItem>
-                    </SelectContent>
-                  </Select>
-                </div>
-              )}
+              <div className="space-y-2">
+                <Label>Highest Education Level</Label>
+                <Select value={educationLevel} onValueChange={setEducationLevel}>
+                  <SelectTrigger>
+                    <SelectValue placeholder="Select education level" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    {isAdolescentAssessment ? (
+                      <>
+                        <SelectItem value="grade-9-10">Currently in Grade 9-10</SelectItem>
+                        <SelectItem value="grade-11-12">Currently in Grade 11-12</SelectItem>
+                        <SelectItem value="prefer-not">Prefer not to say</SelectItem>
+                      </>
+                    ) : (
+                      <>
+                        <SelectItem value="high-school">High school or equivalent</SelectItem>
+                        <SelectItem value="some-college">Some college/Associate degree</SelectItem>
+                        <SelectItem value="bachelors">Bachelor's degree</SelectItem>
+                        <SelectItem value="masters">Master's degree</SelectItem>
+                        <SelectItem value="doctoral">Doctoral degree (PhD, MD, JD, etc.)</SelectItem>
+                        <SelectItem value="professional">Professional certification</SelectItem>
+                        <SelectItem value="other">Other</SelectItem>
+                        <SelectItem value="prefer-not">Prefer not to say</SelectItem>
+                      </>
+                    )}
+                  </SelectContent>
+                </Select>
+              </div>
 
               <div className="space-y-2">
                 <Label>Country/Region</Label>
