@@ -114,7 +114,6 @@ const Test = () => {
   const [testTerminated, setTestTerminated] = useState(false);
   const [testStarted, setTestStarted] = useState(false);
   const [fullscreenExitCount, setFullscreenExitCount] = useState(0);
-  const [showFullscreenResumeDialog, setShowFullscreenResumeDialog] = useState(false);
   
   const [showConsent, setShowConsent] = useState(false);
   const [showDemographics, setShowDemographics] = useState(false);
@@ -423,6 +422,14 @@ const Test = () => {
         const defaultDuration = assessmentData.assessmentInfo.totalTime * 60; // Convert to seconds
         setTimeRemaining(typeof testData.time_remaining === 'number' ? testData.time_remaining : defaultDuration);
         setAnswers((testData.answers as Record<string, string>) || {});
+        setFullscreenExitCount(testData.fullscreen_exit_count || 0);
+        
+        // Re-enter fullscreen on resume
+        setTimeout(() => {
+          document.documentElement.requestFullscreen?.().catch(() => {
+            console.warn('Fullscreen request denied on resume');
+          });
+        }, 500);
         
         // Ensure test_started is true when resuming (should already be true, but just in case)
         if (!testData.test_started) {
@@ -534,86 +541,67 @@ const Test = () => {
   };
 
   const handleFullscreenExit = async (exitCount: number) => {
+    console.log(`🔔 Fullscreen exited (${exitCount}/3)`);
     setFullscreenExitCount(exitCount);
     
-    // Terminate and delete test after 3 fullscreen exits
     if (exitCount >= 3) {
+      console.log('⛔ Maximum fullscreen exits reached - terminating test');
       setTestTerminated(true);
       
-      if (testId) {
-        // Delete the test - cascade will remove all related records
+      try {
+        // Mark test as security terminated and delete
+        await supabase
+          .from('tests')
+          .update({ 
+            security_terminated: true,
+            paused: true
+          })
+          .eq('id', testId);
+
         await supabase
           .from('tests')
           .delete()
           .eq('id', testId);
+
+        sonnerToast.error('Test Terminated', {
+          description: 'Test terminated due to 3 fullscreen exits. Please start a new test.',
+          duration: 5000,
+        });
+
+        navigate('/dashboard');
+      } catch (error) {
+        console.error('Failed to terminate test:', error);
+        sonnerToast.error('Failed to terminate test');
       }
-      
-      sonnerToast.error("Assessment Terminated & Deleted", {
-        description: "You exited fullscreen mode 3 times. Your test has been terminated and removed. You must start a new assessment.",
-        duration: 10000,
-      });
-      
-      setTimeout(() => {
-        navigate("/dashboard");
-      }, 3000);
       return;
     }
-    
-    // Pause test on fullscreen exit
-    if (!testId) return;
 
+    // Pause the test and redirect to dashboard
+    if (!testId) return;
+    
     try {
       await supabase
-        .from("tests")
-        .update({
+        .from('tests')
+        .update({ 
           paused: true,
+          pause_timestamp: new Date().toISOString(),
           time_remaining: timeRemaining,
           current_dimension: currentDimension,
           current_item: currentQuestion,
-          answers: answers
+          answers: answers,
+          fullscreen_exit_count: exitCount
         })
-        .eq("id", testId);
+        .eq('id', testId);
 
-      // Show resume dialog
-      setShowFullscreenResumeDialog(true);
-      
-      const remainingAttempts = 3 - exitCount;
-      sonnerToast.warning(`Test Paused - Fullscreen Exit ${exitCount}/3`, {
-        description: `You have ${remainingAttempts} fullscreen exit${remainingAttempts !== 1 ? 's' : ''} remaining. Click Resume to continue in fullscreen mode.`,
-        duration: 8000,
-      });
-    } catch (error: any) {
-      console.error("Failed to pause test on fullscreen exit:", error);
-    }
-  };
-
-  const handleResumeFromFullscreenExit = async () => {
-    setShowFullscreenResumeDialog(false);
-    
-    // Re-enter fullscreen
-    try {
-      await document.documentElement.requestFullscreen();
-      
-      // Unpause test
-      if (testId) {
-        await supabase
-          .from("tests")
-          .update({
-            paused: false
-          })
-          .eq("id", testId);
-      }
-      
-      sonnerToast.success("Test Resumed", {
-        description: "Assessment continues in fullscreen mode.",
-        duration: 3000,
-      });
-    } catch (error) {
-      console.error("Failed to re-enter fullscreen:", error);
-      sonnerToast.error("Fullscreen Required", {
-        description: "You must allow fullscreen mode to continue the assessment.",
+      sonnerToast.warning('Test Paused - Fullscreen Required', {
+        description: `You have ${3 - exitCount} fullscreen exit(s) remaining. Resume from dashboard to continue.`,
         duration: 5000,
       });
+
+      navigate('/dashboard');
+    } catch (error) {
+      console.error('Failed to pause test:', error);
+      sonnerToast.error('Failed to pause test');
     }
   };
 
@@ -979,43 +967,6 @@ const Test = () => {
           onDecline={handleSecurityConsentDecline}
           testVersion={version}
         />
-        
-        {/* Fullscreen Resume Dialog */}
-        <Dialog open={showFullscreenResumeDialog} onOpenChange={() => {}}>
-          <DialogContent className="sm:max-w-md">
-            <DialogHeader>
-              <DialogTitle className="flex items-center gap-2">
-                <Maximize className="h-5 w-5 text-amber-600" />
-                Test Paused - Fullscreen Required
-              </DialogTitle>
-              <DialogDescription>
-                You exited fullscreen mode. The assessment must continue in fullscreen.
-              </DialogDescription>
-            </DialogHeader>
-            
-            <div className="py-4 space-y-4">
-              <div className="bg-amber-50 dark:bg-amber-950/50 border border-amber-200 dark:border-amber-800 rounded-lg p-4">
-                <p className="text-sm text-amber-900 dark:text-amber-100">
-                  <strong>Fullscreen exits: {fullscreenExitCount}/3</strong>
-                </p>
-                <p className="text-sm text-muted-foreground mt-2">
-                  You have {3 - fullscreenExitCount} attempt{3 - fullscreenExitCount !== 1 ? 's' : ''} remaining.
-                  After 3 exits, your test will be terminated and deleted.
-                </p>
-              </div>
-              
-              <p className="text-sm text-muted-foreground">
-                Click "Resume Assessment" to re-enter fullscreen mode and continue your test.
-              </p>
-            </div>
-            
-            <DialogFooter>
-              <Button onClick={handleResumeFromFullscreenExit} className="w-full">
-                Resume Assessment
-              </Button>
-            </DialogFooter>
-          </DialogContent>
-        </Dialog>
       </>
     );
   }
@@ -1528,11 +1479,12 @@ const Test = () => {
       {/* AI Blocker Component */}
       {testId && (
         <AIBlocker
-          isActive={testStarted && !showConsent && !showDemographics && !showFullscreenResumeDialog}
+          isActive={testStarted && !showConsent && !showDemographics}
           testId={testId}
           onViolation={handleSecurityViolation}
           onFullscreenExit={handleFullscreenExit}
           enableFullscreen={true}
+          initialExitCount={fullscreenExitCount}
         />
       )}
       

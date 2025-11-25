@@ -9,9 +9,10 @@ interface AIBlockerProps {
   onViolation: (violationType: string) => void;
   onFullscreenExit?: (exitCount: number) => void;
   enableFullscreen?: boolean;
+  initialExitCount?: number;
 }
 
-export const AIBlocker = ({ isActive, testId, onViolation, onFullscreenExit, enableFullscreen = false }: AIBlockerProps) => {
+export const AIBlocker = ({ isActive, testId, onViolation, onFullscreenExit, enableFullscreen = false, initialExitCount = 0 }: AIBlockerProps) => {
   const [violations, setViolations] = useState<string[]>([]);
   const [isBlocking, setIsBlocking] = useState(false);
   const isFullscreenTransitioning = useRef(false);
@@ -24,7 +25,8 @@ export const AIBlocker = ({ isActive, testId, onViolation, onFullscreenExit, ena
   useEffect(() => {
     onViolationRef.current = onViolation;
     onFullscreenExitRef.current = onFullscreenExit;
-  }, [onViolation, onFullscreenExit]);
+    fullscreenExitCount.current = initialExitCount;
+  }, [onViolation, onFullscreenExit, initialExitCount]);
 
   useEffect(() => {
     if (!isActive) return;
