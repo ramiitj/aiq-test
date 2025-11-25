@@ -103,9 +103,12 @@ const assessmentUploadSchema = z.object({
     ]).optional(),
   }),
   assessmentConfiguration: z.object({
-    totalQuestions: z.number().positive().optional(),
-    estimatedTime: z.number().positive().optional(),
-  }).optional(),
+    totalQuestions: z.union([z.number().positive(), z.string()]).optional(),
+    estimatedTime: z.union([z.number().positive(), z.string()]).optional(),
+    questionsPerDimension: z.union([z.number(), z.string()]).optional(),
+    targetAudience: z.string().optional(),
+    timePerQuestion: z.union([z.number(), z.string()]).optional(),
+  }).passthrough().optional(),
 });
 
 const Admin = () => {
