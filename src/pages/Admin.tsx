@@ -16,13 +16,13 @@ import { z } from "zod";
 
 // Comprehensive validation schema for assessment uploads
 const assessmentItemSchema = z.object({
-  id: z.string().regex(/^[A-Z]{2,3}-[A-Z0-9]+-\d{3}$/, "Invalid item ID format"),
+  id: z.string().regex(/^[A-Z]{2,3}(-[A-Z0-9]+)+-\d{3}$/, "Invalid item ID format"),
   level: z.number().min(1).max(3).optional(),
   type: z.enum(['multiple-choice', 'true-false', 'multiple-response', 'scenario-based', 'rank-ordering']),
   points: z.number().min(1).max(50),
   difficulty: z.number().min(0).max(1),
   bloomLevel: z.string().optional(),
-  question: z.string().min(10).max(2000),
+  question: z.string().min(10).max(4000),
   options: z.array(z.string().min(1).max(500)).min(2).max(10).optional(),
   correctAnswer: z.union([z.number(), z.boolean()]).optional(),
   correctAnswers: z.array(z.number()).optional(),
@@ -33,34 +33,7 @@ const assessmentItemSchema = z.object({
 }).passthrough();
 
 const dimensionSchema = z.object({
-  dimensionCode: z.enum([
-    'SAU', 'PEI', 'CEC', 'II', 'ALC', 'EJC', 'CS', 'CRS', 
-    'PAI', 'AIF', 'UEA', 'DMI', 'DMP', 'DP', 'DSA', 'PMA',
-    'AAI', 'FAA', 'ATP', 'ADA', 'CRA', 'EGC', 'SAC', 'TAS',
-    'BAI', 'RDA', 'DIA', 'PSM', 'STE', 'ABV', 'CCI', 'TDA',
-    'PAM', 'DGA', 'SIM', 'VBC', 'RSC', 'SAV', 'AAO',
-    'MAI', 'MDE', 'MEV', 'DPP', 'MPD', 'ERM', 'CCE', 'TIO',
-    'CAC', 'CSI', 'CPO', 'PMM', 'PEC', 'ETC', 'TAP',
-    'SMA', 'AAD', 'AOM', 'AAM', 'AEX', 'AET', 'ALG', 'ATR',
-    'MDA', 'CDM', 'PDM', 'CRD', 'RAC', 'DSA',
-    'FAI', 'CPA', 'RIA', 'PFA', 'CRE',
-    'HAI', 'OPM', 'FRM', 'QPS', 'WFM',
-    'TAA', 'PDA', 'HRA', 'EEC', 'CEG', 'SCS', 'VTO',
-    'LAI', 'PEL', 'CER', 'IAV', 'LLC', 'CSL', 'TLS',
-    'CAI', 'STA', 'CDA', 'PIA', 'CMA', 'DDA', 'EIS', 'CIT',
-    'OAI', 'PAW', 'PFO', 'QDM', 'SCL', 'RCO', 'CIO', 'TCI',
-    'RDC', 'SMI', 'PRL', 'CPE',
-    // Sales Professional dimensions (ETS = Ethics, Trust & Sales Compliance)
-    'SAI', 'LPO', 'CII', 'SFP', 'CAE', 'PWO', 'TSI', 'ETS',
-    'FOA', 'PER', 'STR',
-    // Software Development Engineer dimensions (DPE = Data & Prompt Engineering, AIP = AI Product Integration)
-    'AIC', 'MIA', 'PAO', 'TDE', 'SRC', 'UIF', 'ADE', 'DPE',
-    'AIA', 'MLE', 'DSE', 'SRS', 'IAT', 'TQA', 'DAE', 'AIP',
-    // Product Manager dimensions (PMD = Product Manager Data)
-    'PMD',
-    // Teachers dimensions
-    'TEA', 'PLD', 'ASE', 'EAI', 'ACI'
-  ]),
+  dimensionCode: z.string().regex(/^[A-Z]{2,4}$/, "Dimension code must be 2-4 uppercase letters"),
   dimensionName: z.string().min(1).max(200),
   description: z.string().max(1000).optional(),
   weight: z.number().min(0).max(1).optional(),
