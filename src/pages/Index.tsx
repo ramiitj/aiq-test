@@ -443,9 +443,9 @@ const Index = () => {
                 </div>
                 <h3 className="text-2xl font-extrabold mb-2">Professional Track</h3>
                 <p className="text-sm text-muted-foreground mb-4">
-                  8 professional roles with tailored assessments
+                  16 professional roles with tailored AI assessments
                 </p>
-                <div className="text-3xl font-bold text-primary mb-4">15 Assessments</div>
+                <div className="text-3xl font-bold text-primary mb-4">32 Assessments</div>
                 <p className="text-xs text-muted-foreground mb-6">Beginner & Advanced for each role</p>
                 <Link to="/assessments/professional">
                   <Button className="w-full">Explore Professional Track</Button>

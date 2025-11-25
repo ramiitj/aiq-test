@@ -265,20 +265,20 @@ const About = () => {
                 </div>
                 <h3 className="font-bold text-xl mb-3 text-center">Professional Track</h3>
                 <p className="text-sm text-muted-foreground mb-4">
-                  Role-specific assessments tailored to the unique AI needs of 8 professional specializations.
+                  Role-specific assessments tailored to the unique AI needs of 16 professional specializations.
                 </p>
                 <ul className="space-y-2 text-sm text-muted-foreground">
                   <li className="flex items-start gap-2">
                     <CheckCircle className="h-4 w-4 text-green-600 mt-0.5 flex-shrink-0" />
-                    <span>8 roles: PM, SDE, DS, BA, HR, Sales, Ops, DM</span>
+                    <span>16 roles: Accounting & Finance, Business Analyst, Data Scientist, Digital Marketer, Doctors, Financial Advisors, Healthcare Admin, HR, Lawyers, Management Consultants, Ops Manager, Product Manager, Sales, Software Engineer, Teachers</span>
                   </li>
                   <li className="flex items-start gap-2">
                     <CheckCircle className="h-4 w-4 text-green-600 mt-0.5 flex-shrink-0" />
-                    <span>Beginner & Advanced levels for each role</span>
+                    <span>Beginner (60 fixed items) & Advanced (80 IRT items) for each role</span>
                   </li>
                   <li className="flex items-start gap-2">
                     <CheckCircle className="h-4 w-4 text-green-600 mt-0.5 flex-shrink-0" />
-                    <span>Advanced levels use IRT-adaptive selection (80 from 160 items)</span>
+                    <span>Advanced levels use IRT-adaptive selection (80 from 160-item banks)</span>
                   </li>
                 </ul>
               </CardContent>
