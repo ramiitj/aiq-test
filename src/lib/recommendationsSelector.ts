@@ -53,6 +53,9 @@ export function getRecommendations(
       level = roleSpecificKey;
     } else {
       // Fallback to generic level
+      if (import.meta.env.DEV) {
+        console.warn(`⚠️ Role-specific recommendations not found for ${dimensionCode} at level ${roleSpecificKey}, falling back to generic ${proficiencyLevel === 'beginner' ? 'beginner' : 'expert'}`);
+      }
       level = proficiencyLevel === 'beginner' ? 'beginner' : 'expert';
     }
   }
@@ -85,6 +88,9 @@ export function getRecommendations(
   }
 
   // Fallback recommendations if dimension not found
+  if (import.meta.env.DEV) {
+    console.warn(`⚠️ No recommendations found for dimension ${dimensionCode} at level ${level} and tier ${tier}, using generic fallback`);
+  }
   return [
     "Continue developing your AI collaboration skills in this dimension",
     "Seek feedback from peers and mentors on your AI use patterns",
