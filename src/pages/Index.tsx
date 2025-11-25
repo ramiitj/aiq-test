@@ -39,7 +39,7 @@ const Index = () => {
           </h1>
           <p className="text-lg text-muted-foreground mb-6 max-w-3xl mx-auto leading-relaxed">
             The AIQ assessment is a <strong>research-validated evaluation</strong> of your ability to collaborate
-            effectively with artificial intelligence. Measure and develop your <strong>AI collaboration skills</strong>
+            effectively with artificial intelligence. Measure and develop your <strong>AI collaboration skills</strong>{' '}
             across 8 key dimensions with personalized insights backed by <strong>peer-reviewed methodology</strong>.
           </p>
           <div className="flex flex-col sm:flex-row gap-3 justify-center mb-6">
