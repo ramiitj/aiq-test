@@ -3,13 +3,7 @@ import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
-import {
-  Brain,
-  ArrowRight,
-  GraduationCap,
-  Briefcase,
-  Sparkles,
-} from "lucide-react";
+import { Brain, ArrowRight, GraduationCap, Briefcase, Sparkles } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { Navigation } from "@/components/Navigation";
 import Footer from "@/components/Footer";
@@ -33,7 +27,7 @@ const Index = () => {
   return (
     <div className="min-h-screen animate-fade-in">
       <Navigation isAuthenticated={isAuthenticated} />
-      
+
       {/* Assessment Recommendation Quiz */}
       <AssessmentRecommendationQuiz open={showQuiz} onClose={() => setShowQuiz(false)} />
 
@@ -45,7 +39,7 @@ const Index = () => {
           </h1>
           <p className="text-lg text-muted-foreground mb-6 max-w-3xl mx-auto leading-relaxed">
             The AIQ assessment is a <strong>research-validated evaluation</strong> of your ability to collaborate
-            effectively with artificial intelligence. Measure and develop your <strong>AI collaboration skills</strong> 
+            effectively with artificial intelligence. Measure and develop your <strong>AI collaboration skills</strong>
             across 8 key dimensions with personalized insights backed by <strong>peer-reviewed methodology</strong>.
           </p>
           <div className="flex flex-col sm:flex-row gap-3 justify-center mb-6">
@@ -102,11 +96,10 @@ const Index = () => {
 
         {/* Help Me Choose - Prominent Section */}
         <section className="container py-16 max-w-4xl text-center">
-          <h2 className="text-3xl font-extrabold mb-4 tracking-tight">
-            Not Sure Which Assessment to Take?
-          </h2>
+          <h2 className="text-3xl font-extrabold mb-4 tracking-tight">Not Sure Which Assessment to Take?</h2>
           <p className="text-muted-foreground mb-6 max-w-2xl mx-auto">
-            Answer a few quick questions and we'll recommend the perfect assessment track for your experience level and goals
+            Answer a few quick questions and we'll recommend the perfect assessment track for your experience level and
+            goals
           </p>
           <Button
             variant="default"
@@ -125,7 +118,7 @@ const Index = () => {
           <p className="text-center text-muted-foreground mb-12 max-w-2xl mx-auto">
             Select the track that best matches your background and goals
           </p>
-          
+
           <div className="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto">
             {/* General Track */}
             <Card className="hover:shadow-lg transition-all border-2">
@@ -189,9 +182,7 @@ const Index = () => {
         {/* Brief Value Propositions */}
         <section className="bg-secondary/30 py-16">
           <div className="container max-w-4xl text-center">
-            <h2 className="text-3xl font-extrabold mb-8 tracking-tight">
-              Why Take the AIQ Assessment?
-            </h2>
+            <h2 className="text-3xl font-extrabold mb-8 tracking-tight">Why Take the AIQ Assessment?</h2>
             <div className="grid md:grid-cols-3 gap-8 mb-8">
               <div>
                 <div className="text-4xl mb-3">🔬</div>
@@ -253,9 +244,10 @@ const Index = () => {
                 How long does the AIQ assessment take?
               </AccordionTrigger>
               <AccordionContent className="text-muted-foreground leading-relaxed">
-                Assessment duration varies by track: General Track assessments are 60 minutes (Beginner) or 80 minutes (Advanced),
-                Student Track assessments are 24 minutes (Ages 14-15) or 48 minutes (Ages 16-17), and Professional Track assessments
-                follow the same 60/80 minute structure as General Track based on the level you choose.
+                Assessment duration varies by track: General Track assessments are 60 minutes (Beginner) or 80 minutes
+                (Advanced), Student Track assessments are 24 minutes (Ages 14-15) or 48 minutes (Ages 16-17), and
+                Professional Track assessments follow the same 60/80 minute structure as General Track based on the
+                level you choose.
               </AccordionContent>
             </AccordionItem>
             <AccordionItem value="item-3">
