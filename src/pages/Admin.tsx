@@ -66,7 +66,7 @@ const dimensionSchema = z.object({
   weight: z.number().min(0).max(1).optional(),
   items: z.array(assessmentItemSchema).min(1).max(100),
   totalPoints: z.number().positive().optional(),
-});
+}).passthrough();
 
 // Support both JSON structures: fixed-sequential and adaptive IRT
 const assessmentUploadSchema = z.object({
@@ -74,7 +74,10 @@ const assessmentUploadSchema = z.object({
   version: z.string().min(1).max(50),
   tier: z.string().optional(),
   type: z.string().optional(),
+  assessmentType: z.string().optional(), // "adaptive-irt", "fixed", "adaptive"
   description: z.string().max(2000).optional(),
+  instructions: z.string().optional(),
+  assessmentGuidelines: z.object({}).passthrough().optional(),
   // Support both formats: itemBank.dimensions[] (beginner) OR itemBank[] (advanced)
   itemBank: z.union([
     z.object({
@@ -83,31 +86,54 @@ const assessmentUploadSchema = z.object({
     z.array(dimensionSchema).min(1).max(20), // Direct array for advanced format
   ]),
   presentationMode: z.object({
-    type: z.enum(['fixed-sequential', 'adaptive-sequential']),
+    type: z.enum(['fixed-sequential', 'adaptive-sequential', 'computerized-adaptive-testing']),
     description: z.string().optional(),
-  }).optional(),
+    algorithm: z.string().optional(),
+    stoppingRule: z.string().optional(),
+    sequencing: z.string().optional(),
+  }).passthrough().optional(),
   questionDistribution: z.object({
-    totalItems: z.number().optional(),
+    totalItems: z.union([z.number(), z.string()]).optional(),
     itemsPerDimension: z.union([z.number(), z.string()]).optional(),
     selectionRatio: z.string().optional(),
-  }).optional(),
+    totalItemBank: z.number().optional(),
+    itemsPerDimensionBank: z.number().optional(),
+    administeredTotal: z.number().optional(),
+    administeredPerDimension: z.number().optional(),
+  }).passthrough().optional(),
   scoringConfiguration: z.object({
     totalPoints: z.number().positive(),
     pointsPerDimension: z.number().positive().optional(),
     passingScore: z.number().min(0),
     passingPercentage: z.number().min(0).max(100).optional(),
-    scoringMethod: z.union([z.string(), z.object({}).passthrough()]).optional(),
+    scoringMethod: z.union([
+      z.string(),
+      z.object({
+        type: z.string().optional(),
+        method: z.string().optional(),
+        formula: z.string().optional(),
+        description: z.string().optional(),
+        basePoints: z.number().optional(),
+      }).passthrough()
+    ]).optional(),
     scoringGuidelines: z.union([
       z.record(z.string()), // Simple format: "0-50%": "Developing"
       z.object({}).passthrough(), // Complex nested format
     ]).optional(),
-  }),
+  }).passthrough(),
   assessmentConfiguration: z.object({
     totalQuestions: z.union([z.number().positive(), z.string()]).optional(),
     estimatedTime: z.union([z.number().positive(), z.string()]).optional(),
     questionsPerDimension: z.union([z.number(), z.string()]).optional(),
     targetAudience: z.string().optional(),
     timePerQuestion: z.union([z.number(), z.string()]).optional(),
+    itemBankSize: z.number().optional(),
+    itemsPerDimensionInBank: z.number().optional(),
+    administeredQuestions: z.number().optional(),
+    administeredPerDimension: z.number().optional(),
+    presentationMode: z.object({}).passthrough().optional(),
+    dimensionSequencing: z.object({}).passthrough().optional(),
+    questionDistribution: z.object({}).passthrough().optional(),
   }).passthrough().optional(),
 });
 
