@@ -383,6 +383,7 @@ export type Database = {
           current_item: number | null
           dimension_states: Json | null
           end_time: string | null
+          fullscreen_exit_count: number | null
           id: string
           json_version: string
           pause_timestamp: string | null
@@ -410,6 +411,7 @@ export type Database = {
           current_item?: number | null
           dimension_states?: Json | null
           end_time?: string | null
+          fullscreen_exit_count?: number | null
           id?: string
           json_version: string
           pause_timestamp?: string | null
@@ -437,6 +439,7 @@ export type Database = {
           current_item?: number | null
           dimension_states?: Json | null
           end_time?: string | null
+          fullscreen_exit_count?: number | null
           id?: string
           json_version?: string
           pause_timestamp?: string | null
