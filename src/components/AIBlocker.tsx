@@ -16,6 +16,11 @@ export const AIBlocker = ({ isActive, testId, onViolation, enableFullscreen = fa
   const isFullscreenTransitioning = useRef(false);
   const fullscreenInitialized = useRef(false);
   const lastViolationTime = useRef<number>(0);
+  const onViolationRef = useRef(onViolation);
+
+  useEffect(() => {
+    onViolationRef.current = onViolation;
+  }, [onViolation]);
 
   useEffect(() => {
     if (!isActive) return;
@@ -250,7 +255,7 @@ export const AIBlocker = ({ isActive, testId, onViolation, enableFullscreen = fa
       reported.add(message);
       console.warn('🚨 Security Violation:', message);
       setViolations(prev => [...prev, message]);
-      onViolation(message);
+      onViolationRef.current(message);
       
       // Log to backend
       logViolation(message);
@@ -373,7 +378,7 @@ export const AIBlocker = ({ isActive, testId, onViolation, enableFullscreen = fa
       
       setIsBlocking(false);
     };
-  }, [isActive, testId, onViolation]);
+  }, [isActive, testId, enableFullscreen]);
 
   if (!isBlocking) return null;
 
