@@ -541,23 +541,17 @@ const Test = () => {
   };
 
   const handleFullscreenExit = async (exitCount: number) => {
-    console.log(`🔔 Fullscreen exited (${exitCount}/3)`);
+    console.log(`🔔 Fullscreen exited (${exitCount}/3) - Pausing test immediately`);
     setFullscreenExitCount(exitCount);
+    
+    // Immediately block local state to prevent further question rendering
+    setTestTerminated(exitCount >= 3);
     
     if (exitCount >= 3) {
       console.log('⛔ Maximum fullscreen exits reached - terminating test');
-      setTestTerminated(true);
       
       try {
-        // Mark test as security terminated and delete
-        await supabase
-          .from('tests')
-          .update({ 
-            security_terminated: true,
-            paused: true
-          })
-          .eq('id', testId);
-
+        // Delete the test (cascade will remove related records)
         await supabase
           .from('tests')
           .delete()
