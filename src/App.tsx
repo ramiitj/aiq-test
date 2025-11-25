@@ -10,6 +10,8 @@ import Index from "./pages/Index";
 import Auth from "./pages/Auth";
 import Dashboard from "./pages/Dashboard";
 import About from "./pages/About";
+import Features from "./pages/Features";
+import Research from "./pages/Research";
 import Test from "./pages/Test";
 import Results from "./pages/Results";
 import Admin from "./pages/Admin";
@@ -37,6 +39,8 @@ const App = () => (
           <Route path="/sign-in" element={<Auth />} />
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/about" element={<About />} />
+          <Route path="/features" element={<Features />} />
+          <Route path="/research" element={<Research />} />
           <Route path="/ai-assessment" element={<Test />} />
           <Route path="/results/:testId" element={<Results />} />
           <Route path="/admin" element={<Admin />} />

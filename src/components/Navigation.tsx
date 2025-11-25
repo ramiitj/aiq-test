@@ -68,6 +68,18 @@ export const Navigation = ({ isAuthenticated, isAdmin }: NavigationProps) => {
               </DropdownMenuContent>
             </DropdownMenu>
 
+            <Link to="/features">
+              <Button variant="ghost" size="sm" className="font-semibold text-sm">
+                Features
+              </Button>
+            </Link>
+
+            <Link to="/research">
+              <Button variant="ghost" size="sm" className="font-semibold text-sm">
+                Research
+              </Button>
+            </Link>
+
             <Link to="/about">
               <Button variant="ghost" size="sm" className="font-semibold text-sm">
                 <BookOpen className="h-4 w-4 mr-2" />
