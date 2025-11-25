@@ -124,6 +124,24 @@ export const dimensionNames: { [key: string]: string } = {
   DDA: "Digital & Data Analytics",
   EIS: "Ethics & Implementation Strategy",
   CIT: "Client Interaction & Trust",
+  
+  // Operations Manager Dimensions
+  OAI: "Operations AI Understanding",
+  PAW: "Process Automation & Workflow",
+  PFO: "Productivity & Forecasting Optimization",
+  QDM: "Quality & Decision Making",
+  SCL: "Supply Chain & Logistics",
+  RCO: "Risk & Compliance in Operations",
+  CIO: "Continuous Improvement & Operations Excellence",
+  TCI: "Technology & Change Integration",
+  
+  // Product Manager Dimensions  
+  // Note: PAI, AIF, UEA already defined above
+  // PDM conflicts with Doctors dimension - using context-aware lookup in recommendations
+  RDC: "Roadmap & Decision-making",
+  SMI: "Strategy & Market Intelligence",
+  PRL: "Product Risk & Lifecycle",
+  CPE: "Competitive Positioning & Ethics",
 };
 
 // Performance-Tiered Recommendations Structure
@@ -3389,6 +3407,454 @@ export const tieredRecommendations: TieredRecommendations = {
         "Pioneer next-generation client interaction paradigms with AI",
         "Transform consulting relationships through strategic AI",
         "Set industry standards for AI-enabled client trust"
+      ]
+    }
+  },
+
+  // ============= OPERATIONS MANAGER DIMENSIONS =============
+  
+  OAI: {
+    "ops-beginner": {
+      low: [
+        "Build foundational knowledge of AI applications in operations management through case studies and research",
+        "Study how AI optimizes supply chains, improves quality control, and enhances workflow automation in your industry",
+        "Learn to identify operations tasks suitable for AI assistance versus those requiring human judgment"
+      ],
+      medium: [
+        "Develop strategic understanding of AI deployment in operational contexts including predictive maintenance and demand forecasting",
+        "Explore AI-powered quality management platforms and process optimization tools for operations",
+        "Implement pilot AI projects in operations to gain hands-on experience with operational AI systems"
+      ],
+      high: [
+        "Lead AI transformation initiatives in operations by designing proprietary operational AI systems",
+        "Mentor operations teams on AI-driven continuous improvement methodologies and best practices",
+        "Build data flywheels for competitive advantage through strategic AI integration in operations"
+      ]
+    },
+    "ops-advanced": {
+      low: [
+        "Develop strategic frameworks for AI in operations leadership and transformation",
+        "Build expertise in advanced AI capabilities for operational excellence and innovation",
+        "Create methodologies for AI-powered operational intelligence and decision-making"
+      ],
+      medium: [
+        "Lead enterprise-wide operations transformation through strategic AI deployment",
+        "Design sophisticated operational AI architectures for competitive advantage",
+        "Implement advanced predictive and prescriptive analytics for operations optimization"
+      ],
+      high: [
+        "Pioneer next-generation operational paradigms leveraging AI and automation",
+        "Transform industry operations standards through innovative AI strategies",
+        "Shape the future of operations management through AI thought leadership"
+      ]
+    }
+  },
+
+  PAW: {
+    "ops-beginner": {
+      low: [
+        "Learn fundamentals of AI-powered process automation and workflow optimization tools",
+        "Explore robotic process automation (RPA) and how AI enhances traditional automation",
+        "Study workflow mapping techniques and identify automation opportunities in your operations"
+      ],
+      medium: [
+        "Implement AI-enhanced workflow automation for repetitive operational tasks",
+        "Develop process optimization frameworks using AI-powered analytics and insights",
+        "Create automation roadmaps that balance AI capabilities with operational requirements"
+      ],
+      high: [
+        "Design comprehensive intelligent automation strategies for end-to-end workflows",
+        "Lead process transformation initiatives leveraging AI and machine learning",
+        "Optimize operational efficiency through advanced workflow automation and AI integration"
+      ]
+    },
+    "ops-advanced": {
+      low: [
+        "Develop strategic frameworks for intelligent process automation at enterprise scale",
+        "Build expertise in AI-driven workflow optimization and process mining",
+        "Create advanced methodologies for autonomous process management"
+      ],
+      medium: [
+        "Lead enterprise-wide intelligent automation programs and transformation",
+        "Design sophisticated workflow orchestration systems leveraging AI",
+        "Implement advanced autonomous operations capabilities"
+      ],
+      high: [
+        "Pioneer industry-leading intelligent automation architectures",
+        "Transform operational processes through innovative AI-powered automation",
+        "Set new standards for autonomous workflow management"
+      ]
+    }
+  },
+
+  PFO: {
+    "ops-beginner": {
+      low: [
+        "Learn AI applications for productivity measurement and operational forecasting",
+        "Explore AI tools for resource optimization and capacity planning",
+        "Study how AI improves demand forecasting accuracy in operations"
+      ],
+      medium: [
+        "Implement AI-powered forecasting systems for operational planning",
+        "Develop productivity optimization frameworks using AI analytics",
+        "Create predictive models for resource allocation and efficiency improvement"
+      ],
+      high: [
+        "Design comprehensive forecasting and optimization strategies with AI",
+        "Lead productivity transformation initiatives using advanced AI",
+        "Optimize operational performance through predictive and prescriptive analytics"
+      ]
+    },
+    "ops-advanced": {
+      low: [
+        "Develop strategic frameworks for AI in operational forecasting and optimization",
+        "Build expertise in advanced predictive and prescriptive analytics",
+        "Create methodologies for AI-driven productivity transformation"
+      ],
+      medium: [
+        "Lead enterprise-wide forecasting and optimization programs with AI",
+        "Design sophisticated predictive operations management systems",
+        "Implement advanced AI-powered resource optimization strategies"
+      ],
+      high: [
+        "Pioneer next-generation forecasting and optimization paradigms",
+        "Transform operational planning through innovative AI capabilities",
+        "Shape industry standards for AI-driven operational excellence"
+      ]
+    }
+  },
+
+  QDM: {
+    "ops-beginner": {
+      low: [
+        "Learn AI applications in quality management and decision support systems",
+        "Explore AI-powered defect detection and quality control automation",
+        "Study how AI enhances operational decision-making processes"
+      ],
+      medium: [
+        "Implement AI-driven quality management systems and frameworks",
+        "Develop decision support tools leveraging AI analytics and insights",
+        "Create quality optimization strategies using machine learning"
+      ],
+      high: [
+        "Design comprehensive AI-powered quality and decision management programs",
+        "Lead quality transformation initiatives with advanced AI capabilities",
+        "Optimize decision-making through intelligent quality systems"
+      ]
+    },
+    "ops-advanced": {
+      low: [
+        "Develop strategic frameworks for AI in quality and decision excellence",
+        "Build expertise in advanced AI for quality prediction and optimization",
+        "Create methodologies for autonomous quality management"
+      ],
+      medium: [
+        "Lead enterprise-wide quality transformation through AI",
+        "Design sophisticated AI-powered decision support architectures",
+        "Implement advanced predictive quality management systems"
+      ],
+      high: [
+        "Pioneer innovative quality and decision management with AI",
+        "Transform operational quality standards through AI leadership",
+        "Set industry benchmarks for AI-driven quality excellence"
+      ]
+    }
+  },
+
+  SCL: {
+    "ops-beginner": {
+      low: [
+        "Learn AI applications in supply chain optimization and logistics management",
+        "Explore AI tools for inventory management and demand planning",
+        "Study how AI improves supply chain visibility and resilience"
+      ],
+      medium: [
+        "Implement AI-powered supply chain optimization systems",
+        "Develop logistics strategies leveraging AI analytics and forecasting",
+        "Create supply chain risk management frameworks using AI"
+      ],
+      high: [
+        "Design comprehensive AI-driven supply chain transformation programs",
+        "Lead logistics optimization initiatives with advanced AI capabilities",
+        "Optimize end-to-end supply chain through intelligent systems"
+      ]
+    },
+    "ops-advanced": {
+      low: [
+        "Develop strategic frameworks for AI in supply chain leadership",
+        "Build expertise in advanced AI for supply chain intelligence",
+        "Create methodologies for autonomous supply chain operations"
+      ],
+      medium: [
+        "Lead enterprise-wide supply chain transformation through AI",
+        "Design sophisticated AI-powered logistics and distribution systems",
+        "Implement advanced predictive supply chain management"
+      ],
+      high: [
+        "Pioneer next-generation supply chain paradigms with AI",
+        "Transform industry supply chain standards through AI innovation",
+        "Shape the future of logistics through AI thought leadership"
+      ]
+    }
+  },
+
+  RCO: {
+    "ops-beginner": {
+      low: [
+        "Learn AI applications in operational risk management and compliance",
+        "Explore AI tools for compliance monitoring and risk detection",
+        "Study how AI enhances operational governance and control"
+      ],
+      medium: [
+        "Implement AI-powered risk management frameworks for operations",
+        "Develop compliance automation strategies using AI monitoring",
+        "Create risk mitigation systems leveraging AI analytics"
+      ],
+      high: [
+        "Design comprehensive AI-driven risk and compliance programs",
+        "Lead operational governance transformation with AI",
+        "Optimize risk management through intelligent compliance systems"
+      ]
+    },
+    "ops-advanced": {
+      low: [
+        "Develop strategic frameworks for AI in enterprise risk management",
+        "Build expertise in advanced AI for compliance and governance",
+        "Create methodologies for predictive risk management with AI"
+      ],
+      medium: [
+        "Lead enterprise-wide risk transformation through AI",
+        "Design sophisticated AI-powered compliance architectures",
+        "Implement advanced predictive risk management systems"
+      ],
+      high: [
+        "Pioneer innovative risk and compliance management with AI",
+        "Transform operational governance through AI leadership",
+        "Set industry standards for AI-driven risk excellence"
+      ]
+    }
+  },
+
+  CIO: {
+    "ops-beginner": {
+      low: [
+        "Learn AI applications in continuous improvement and operational excellence",
+        "Explore AI tools for process mining and improvement opportunity identification",
+        "Study how AI enables data-driven continuous improvement methodologies"
+      ],
+      medium: [
+        "Implement AI-powered continuous improvement frameworks",
+        "Develop operational excellence programs leveraging AI insights",
+        "Create improvement tracking systems using AI analytics"
+      ],
+      high: [
+        "Design comprehensive AI-driven operational excellence strategies",
+        "Lead continuous improvement transformation with advanced AI",
+        "Optimize operations through intelligent improvement systems"
+      ]
+    },
+    "ops-advanced": {
+      low: [
+        "Develop strategic frameworks for AI in operational excellence",
+        "Build expertise in advanced AI for continuous improvement",
+        "Create methodologies for autonomous operational optimization"
+      ],
+      medium: [
+        "Lead enterprise-wide excellence transformation through AI",
+        "Design sophisticated AI-powered improvement architectures",
+        "Implement advanced autonomous improvement systems"
+      ],
+      high: [
+        "Pioneer next-generation operational excellence with AI",
+        "Transform industry improvement standards through AI innovation",
+        "Shape the future of operational excellence through AI"
+      ]
+    }
+  },
+
+  TCI: {
+    "ops-beginner": {
+      low: [
+        "Learn AI applications in technology adoption and change management for operations",
+        "Explore AI tools for change impact analysis and readiness assessment",
+        "Study how AI supports technology integration in operational environments"
+      ],
+      medium: [
+        "Implement AI-powered technology integration strategies",
+        "Develop change management frameworks leveraging AI insights",
+        "Create technology adoption roadmaps using AI analytics"
+      ],
+      high: [
+        "Design comprehensive AI-driven technology and change programs",
+        "Lead operational technology transformation with AI",
+        "Optimize technology integration through intelligent change systems"
+      ]
+    },
+    "ops-advanced": {
+      low: [
+        "Develop strategic frameworks for AI in technology leadership",
+        "Build expertise in AI-driven change and technology transformation",
+        "Create methodologies for AI-powered technology integration"
+      ],
+      medium: [
+        "Lead enterprise-wide technology transformation through AI",
+        "Design sophisticated AI-enabled change architectures",
+        "Implement advanced technology integration strategies with AI"
+      ],
+      high: [
+        "Pioneer innovative technology and change paradigms with AI",
+        "Transform operational technology standards through AI",
+        "Shape the future of technology integration through AI leadership"
+      ]
+    }
+  },
+
+  // ============= PRODUCT MANAGER DIMENSIONS =============
+
+  RDC: {
+    "pm-beginner": {
+      low: [
+        "Learn to use AI for product roadmap planning and prioritization",
+        "Explore AI tools for market analysis and competitive intelligence",
+        "Study how AI supports data-driven product decision-making"
+      ],
+      medium: [
+        "Implement AI-powered roadmap frameworks and prioritization models",
+        "Develop AI-enhanced decision-making processes for product strategy",
+        "Create data-driven product planning systems using AI analytics"
+      ],
+      high: [
+        "Design comprehensive AI-driven product strategy frameworks",
+        "Lead product planning transformation with advanced AI",
+        "Optimize product decisions through intelligent roadmap systems"
+      ]
+    },
+    "pm-advanced": {
+      low: [
+        "Develop strategic frameworks for AI in product leadership",
+        "Build expertise in advanced AI for product intelligence",
+        "Create methodologies for AI-powered strategic planning"
+      ],
+      medium: [
+        "Lead product transformation through AI-driven strategy",
+        "Design sophisticated AI-enabled roadmap architectures",
+        "Implement advanced predictive product planning with AI"
+      ],
+      high: [
+        "Pioneer next-generation product strategy paradigms with AI",
+        "Transform product leadership through strategic AI innovation",
+        "Shape industry standards for AI-driven product excellence"
+      ]
+    }
+  },
+
+  SMI: {
+    "pm-beginner": {
+      low: [
+        "Learn AI applications in market research and competitive analysis",
+        "Explore AI tools for customer insights and trend identification",
+        "Study how AI enhances product-market fit assessment"
+      ],
+      medium: [
+        "Implement AI-powered market intelligence frameworks",
+        "Develop competitive strategy using AI-driven insights",
+        "Create market opportunity assessment systems with AI"
+      ],
+      high: [
+        "Design comprehensive AI-driven market intelligence programs",
+        "Lead strategic market analysis with advanced AI capabilities",
+        "Optimize product strategy through intelligent market systems"
+      ]
+    },
+    "pm-advanced": {
+      low: [
+        "Develop strategic frameworks for AI in market leadership",
+        "Build expertise in advanced AI for competitive intelligence",
+        "Create methodologies for predictive market analysis with AI"
+      ],
+      medium: [
+        "Lead market intelligence transformation through AI",
+        "Design sophisticated AI-powered competitive strategy systems",
+        "Implement advanced market prediction and opportunity identification"
+      ],
+      high: [
+        "Pioneer innovative market intelligence paradigms with AI",
+        "Transform strategic positioning through AI-driven insights",
+        "Set industry benchmarks for AI-enabled market strategy"
+      ]
+    }
+  },
+
+  PRL: {
+    "pm-beginner": {
+      low: [
+        "Learn AI applications in product risk management and lifecycle optimization",
+        "Explore AI tools for risk detection and mitigation planning",
+        "Study how AI supports product lifecycle analysis and planning"
+      ],
+      medium: [
+        "Implement AI-powered risk management frameworks for products",
+        "Develop lifecycle optimization strategies using AI insights",
+        "Create risk assessment systems leveraging AI analytics"
+      ],
+      high: [
+        "Design comprehensive AI-driven risk and lifecycle programs",
+        "Lead product risk transformation with advanced AI",
+        "Optimize product lifecycle through intelligent risk systems"
+      ]
+    },
+    "pm-advanced": {
+      low: [
+        "Develop strategic frameworks for AI in product risk leadership",
+        "Build expertise in advanced AI for lifecycle intelligence",
+        "Create methodologies for predictive risk management with AI"
+      ],
+      medium: [
+        "Lead product portfolio transformation through AI risk management",
+        "Design sophisticated AI-powered lifecycle optimization systems",
+        "Implement advanced predictive product risk frameworks"
+      ],
+      high: [
+        "Pioneer next-generation product risk paradigms with AI",
+        "Transform product management through AI risk innovation",
+        "Shape industry standards for AI-driven product excellence"
+      ]
+    }
+  },
+
+  CPE: {
+    "pm-beginner": {
+      low: [
+        "Learn AI applications in competitive positioning and product ethics",
+        "Explore AI tools for competitive analysis and ethical assessment",
+        "Study how AI supports responsible product development"
+      ],
+      medium: [
+        "Implement AI-powered competitive strategy frameworks",
+        "Develop ethical product guidelines leveraging AI insights",
+        "Create positioning strategies using AI competitive intelligence"
+      ],
+      high: [
+        "Design comprehensive AI-driven competitive and ethics programs",
+        "Lead ethical product transformation with AI",
+        "Optimize product positioning through intelligent competitive systems"
+      ]
+    },
+    "pm-advanced": {
+      low: [
+        "Develop strategic frameworks for AI in competitive leadership",
+        "Build expertise in advanced AI for ethical product innovation",
+        "Create methodologies for AI-powered competitive advantage"
+      ],
+      medium: [
+        "Lead product ethics transformation through AI",
+        "Design sophisticated AI-enabled competitive positioning systems",
+        "Implement advanced ethical AI frameworks for products"
+      ],
+      high: [
+        "Pioneer innovative competitive and ethical paradigms with AI",
+        "Transform product leadership through responsible AI",
+        "Set industry standards for AI-driven ethical excellence"
       ]
     }
   }
