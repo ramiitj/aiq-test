@@ -3886,6 +3886,236 @@ export const tieredRecommendations: TieredRecommendations = {
         "Set industry standards for AI-driven ethical excellence"
       ]
     }
+  },
+
+  // Sales Professional Recommendations
+  LPO: {
+    "sales-beginner": {
+      low: ["Learn fundamentals of predictive lead scoring and opportunity prioritization", "Practice interpreting AI-generated lead scores alongside traditional qualification methods", "Study how market changes affect model accuracy"],
+      medium: ["Master combining AI lead scores with contextual judgment and domain expertise", "Develop strategies for handling score discrepancies between AI and intuition", "Use velocity insights to identify high-potential opportunities"],
+      high: ["Optimize lead scoring models through systematic feedback loops", "Train team on advanced scoring interpretation and calibration techniques", "Design custom scoring frameworks that blend AI insights with relationship intelligence"]
+    },
+    "sales-advanced": {
+      low: ["Study advanced predictive scoring methodologies and causal inference techniques", "Learn to build defensible ROI models for lead prioritization initiatives", "Master field experimentation for validating scoring model improvements"],
+      medium: ["Build sophisticated opportunity analysis frameworks with proper attribution", "Design experiments that separate correlation from causation in scoring", "Create proprietary algorithms that leverage unique data advantages"],
+      high: ["Lead development of proprietary data flywheels for competitive advantage", "Build organizational capabilities in probabilistic forecasting", "Design strategic frameworks that compound scoring accuracy advantages"]
+    }
+  },
+  CII: {
+    "sales-beginner": {
+      low: ["Understand how AI analyzes customer behavior patterns and engagement signals", "Learn to identify AI-generated buying intent indicators and trends", "Practice combining automated insights with relationship knowledge"],
+      medium: ["Leverage AI customer insights to personalize sales approaches effectively", "Combine automated intelligence with contextual relationship understanding", "Use engagement analytics to time outreach and interventions strategically"],
+      high: ["Design comprehensive customer intelligence strategies using AI platforms", "Build feedback systems that continuously improve insight accuracy", "Lead initiatives that transform customer data into competitive sales advantage"]
+    },
+    "sales-advanced": {
+      low: ["Study advanced customer intelligence methodologies and segmentation techniques", "Learn sophisticated predictive analytics for customer behavior", "Master causal inference in customer analysis"],
+      medium: ["Build comprehensive intelligence frameworks with multi-source integration", "Design experimentation systems that validate intelligence effectiveness", "Create proprietary customer insights that competitors cannot replicate"],
+      high: ["Lead customer intelligence transformation across sales organization", "Build data capabilities that enable continuous customer understanding", "Design competitive strategies based on unique customer intelligence moats"]
+    }
+  },
+  SFP: {
+    "sales-beginner": {
+      low: ["Learn AI forecasting basics and how deal velocity analysis works", "Practice interpreting probability predictions and confidence levels", "Understand how to investigate forecast discrepancies"],
+      medium: ["Calibrate AI forecasts with pipeline reality through systematic comparison", "Investigate discrepancies between predictions and actual outcomes", "Use velocity insights to accelerate high-probability deals strategically"],
+      high: ["Build sophisticated forecasting models combining AI and human judgment", "Train teams on probabilistic thinking and forecast calibration", "Design pipeline management frameworks that maximize forecast accuracy"]
+    },
+    "sales-advanced": {
+      low: ["Develop expertise in advanced forecasting methodologies and statistics", "Build defensible ROI models from first principles", "Study causal inference techniques for sales contexts"],
+      medium: ["Master probabilistic forecasting with proper uncertainty quantification", "Build sophisticated opportunity analysis frameworks with attribution", "Design validation experiments that test forecast accuracy improvements"],
+      high: ["Lead development of proprietary forecasting models and systems", "Build organizational capabilities in data-driven revenue planning", "Design strategic frameworks that create compounding forecast advantages"]
+    }
+  },
+  CAE: {
+    "sales-beginner": {
+      low: ["Study appropriate use of AI in sales communication and automation", "Learn to review and personalize AI-generated messages effectively", "Understand automation risks and authenticity balance"],
+      medium: ["Master AI-assisted personalization at scale without losing authenticity", "Develop workflows that blend automation with genuine personal touch", "Create messaging frameworks that maintain relationship quality"],
+      high: ["Design communication strategies that leverage AI while preserving depth", "Build governance systems for automation quality assurance", "Lead team training on effective AI-human collaboration in outreach"]
+    },
+    "sales-advanced": {
+      low: ["Study advanced communication AI and multi-channel orchestration", "Learn sentiment analysis and conversational intelligence", "Master real-time coaching and message optimization"],
+      medium: ["Build sophisticated engagement systems with proper measurement", "Design experimentation frameworks for communication effectiveness", "Create proprietary communication approaches that differentiate"],
+      high: ["Lead communication transformation across sales organization", "Build organizational capabilities in AI-augmented engagement", "Design innovative strategies that set new industry standards"]
+    }
+  },
+  PWO: {
+    "sales-beginner": {
+      low: ["Identify routine tasks suitable for AI automation in your workflow", "Measure time savings from workflow optimization initiatives", "Understand which activities benefit most from automation"],
+      medium: ["Implement comprehensive workflow automation strategies systematically", "Measure productivity impact across multiple performance dimensions", "Balance efficiency gains with deal quality maintenance"],
+      high: ["Design end-to-end productivity transformation using AI tools", "Build frameworks for continuous workflow optimization", "Lead organizational change management for automation adoption"]
+    },
+    "sales-advanced": {
+      low: ["Study advanced workflow optimization and process reengineering", "Learn comprehensive productivity measurement frameworks", "Master techniques for identifying optimization opportunities"],
+      medium: ["Build enterprise-scale optimization systems with proper governance", "Design continuous improvement processes for workflows", "Create proprietary methodologies that create efficiency advantages"],
+      high: ["Lead organizational transformation through workflow innovation", "Build capability frameworks that enable scalable productivity", "Design strategic initiatives that redefine sales operations"]
+    }
+  },
+  TSI: {
+    "sales-beginner": {
+      low: ["Learn basics of AI-powered CRM systems and common sales tools", "Understand integration requirements and data quality importance", "Study tool selection criteria and evaluation frameworks"],
+      medium: ["Master multiple AI sales platforms and their integration patterns", "Diagnose adoption barriers and implementation challenges", "Design change management strategies for new tool rollouts"],
+      high: ["Lead sales technology strategy and tool stack optimization", "Build comprehensive integration architectures across systems", "Drive organizational transformation through strategic tool implementation"]
+    },
+    "sales-advanced": {
+      low: ["Study enterprise sales technology ecosystems and platforms", "Learn platform evaluation and vendor selection frameworks", "Master tool integration and data architecture patterns"],
+      medium: ["Build comprehensive technology strategies with roadmaps", "Design integration frameworks that enable scalability", "Create adoption systems that maximize tool utilization"],
+      high: ["Lead platform strategy for sales organization", "Build organizational capabilities in sales technology", "Design transformation initiatives that leverage technology advantages"]
+    }
+  },
+  FOA: {
+    "sales-advanced": {
+      low: ["Develop expertise in advanced forecasting methodologies and analytics", "Build defensible ROI models from first principles", "Study causal inference and attribution in sales contexts"],
+      medium: ["Master probabilistic forecasting with uncertainty quantification", "Build sophisticated opportunity analysis frameworks", "Design validation experiments for forecast improvements"],
+      high: ["Lead development of proprietary forecasting capabilities", "Build organizational competencies in predictive planning", "Design strategic frameworks that compound accuracy advantages"]
+    }
+  },
+  PER: {
+    "sales-advanced": {
+      low: ["Study advanced performance measurement frameworks and metrics", "Learn to separate signal from noise in performance data", "Understand leading vs lagging indicator relationships"],
+      medium: ["Build comprehensive performance dashboards with attribution", "Master causal analysis of performance driver relationships", "Design interventions based on rigorous measurement"],
+      high: ["Lead transformation of performance management using AI", "Build cultural capabilities around data-driven execution", "Design organizational frameworks that optimize sustainable performance"]
+    }
+  },
+  STR: {
+    "sales-advanced": {
+      low: ["Develop strategic thinking frameworks for AI in sales contexts", "Learn to evaluate competitive dynamics and differentiation", "Study market positioning and go-to-market strategies"],
+      medium: ["Build comprehensive strategies leveraging AI capabilities", "Master competitive analysis and strategic response frameworks", "Design initiatives that create sustainable competitive advantage"],
+      high: ["Lead organizational strategy development for AI-era sales", "Build capabilities in strategic planning and execution", "Design transformational initiatives that redefine competitive positioning"]
+    }
+  },
+
+  // Software Development Engineer Recommendations
+  AIC: {
+    "sde-beginner": {
+      low: ["Build foundational skills in AI API integration and implementation", "Practice implementing simple AI features like text generation", "Study error handling patterns for non-deterministic outputs"],
+      medium: ["Develop expertise in prompt engineering and feature optimization", "Learn advanced caching strategies for AI API calls", "Explore asynchronous processing patterns for AI operations"],
+      high: ["Architect robust AI-powered systems with proper fallback mechanisms", "Mentor teammates on AI integration best practices", "Design proprietary frameworks that maximize value while minimizing costs"]
+    },
+    "sde-advanced": {
+      low: ["Study advanced AI integration patterns and architectures", "Learn system design principles for AI at scale", "Master scalability and reliability patterns"],
+      medium: ["Build sophisticated architectures balancing performance and cost", "Design systems that enable rapid AI experimentation", "Create integration platforms that abstract complexity"],
+      high: ["Lead strategic architectural decisions for AI at enterprise scale", "Design proprietary platforms that create competitive advantage", "Build organizational capabilities in AI systems thinking"]
+    }
+  },
+  MIA: {
+    "sde-beginner": {
+      low: ["Learn fundamentals of AI model APIs including tokens and parameters", "Understand knowledge cutoffs and model limitations", "Practice basic prompt construction and optimization"],
+      medium: ["Master advanced API features like streaming and system messages", "Develop strategies for managing costs and rate limits effectively", "Build reusable integration patterns and abstractions"],
+      high: ["Design sophisticated model integration architectures", "Lead selection and evaluation of AI services", "Build frameworks that abstract model interactions"]
+    },
+    "sde-advanced": {
+      low: ["Study model selection frameworks and evaluation criteria", "Learn benchmarking methodologies for AI services", "Master techniques for comparing model capabilities"],
+      medium: ["Build sophisticated model management systems", "Design experimentation platforms for model evaluation", "Create proprietary approaches to model selection"],
+      high: ["Lead model strategy and governance for organization", "Build capabilities that enable informed model choices", "Design transformation through strategic model selection"]
+    }
+  },
+  PAO: {
+    "sde-beginner": {
+      low: ["Learn basics of AI performance optimization including caching", "Understand cost-latency-quality tradeoffs in AI systems", "Practice monitoring key performance and cost metrics"],
+      medium: ["Implement comprehensive optimization strategies systematically", "Master rate limit handling and resource management", "Build monitoring dashboards for AI feature performance"],
+      high: ["Design organization-wide AI optimization frameworks", "Lead cost and performance engineering initiatives", "Build systems that continuously improve efficiency"]
+    },
+    "sde-advanced": {
+      low: ["Study advanced optimization techniques and cost engineering", "Learn performance tuning methodologies at scale", "Master resource allocation and capacity planning"],
+      medium: ["Build enterprise optimization systems with governance", "Design efficiency frameworks that balance multiple objectives", "Create proprietary optimization methods"],
+      high: ["Lead platform optimization strategy for organization", "Build capabilities that enable cost-effective AI at scale", "Design strategic initiatives that create efficiency advantages"]
+    }
+  },
+  TDE: {
+    "sde-beginner": {
+      low: ["Learn fundamentals of testing non-deterministic AI systems", "Practice mocking AI responses for reliable unit tests", "Understand validation strategies for AI outputs"],
+      medium: ["Build comprehensive testing strategies for AI features", "Master debugging techniques for AI integration issues", "Design test suites that validate quality without brittleness"],
+      high: ["Lead development of AI testing frameworks and methodologies", "Build organizational capabilities in AI quality assurance", "Design continuous testing systems for AI features"]
+    },
+    "sde-advanced": {
+      low: ["Study advanced testing methodologies for AI systems", "Learn quality metrics and validation strategies", "Understand challenges of testing at scale"],
+      medium: ["Build comprehensive QA frameworks for AI systems", "Master automated testing strategies and tools", "Design quality gates that ensure reliability"],
+      high: ["Lead quality engineering transformation for AI", "Build organizational testing capabilities and culture", "Design frameworks that embed quality in development"]
+    }
+  },
+  SRC: {
+    "sde-beginner": {
+      low: ["Learn foundational AI security concepts including prompt injection", "Understand data privacy requirements and best practices", "Practice input validation and sanitization patterns"],
+      medium: ["Implement comprehensive security measures for AI features", "Master privacy-preserving techniques and compliance", "Build multi-layered defense systems"],
+      high: ["Lead AI security strategy and governance initiatives", "Design organization-wide security frameworks", "Build ethical AI practices into development culture"]
+    },
+    "sde-advanced": {
+      low: ["Study advanced security patterns and threat models for AI", "Learn compliance frameworks and regulatory requirements", "Master techniques for security at scale"],
+      medium: ["Build comprehensive security and risk frameworks", "Master privacy-preserving techniques at enterprise scale", "Design governance systems balancing innovation and safety"],
+      high: ["Lead organization-wide AI security and governance strategy", "Build cultural capabilities around responsible AI", "Design frameworks enabling secure innovation at scale"]
+    }
+  },
+  UIF: {
+    "sde-beginner": {
+      low: ["Learn basics of designing UI for AI features and interactions", "Understand importance of transparency and user control", "Practice progressive disclosure and loading state patterns"],
+      medium: ["Master advanced UX patterns for AI including streaming", "Design intuitive interfaces for complex AI capabilities", "Build effective feedback and regeneration mechanisms"],
+      high: ["Lead development of design systems for AI features", "Build organizational guidelines and standards for AI UX", "Design innovative interaction patterns"]
+    },
+    "sde-advanced": {
+      low: ["Study advanced UX principles for AI interactions", "Learn interaction design patterns for AI systems", "Master accessibility and inclusive design"],
+      medium: ["Build sophisticated design frameworks for AI products", "Create component libraries and design systems", "Design systems that scale across products"],
+      high: ["Lead UX strategy for AI across organization", "Build capabilities in AI interaction design", "Design industry-leading interaction patterns"]
+    }
+  },
+  ADE: {
+    "sde-beginner": {
+      low: ["Learn architectural patterns for AI integration", "Understand resilience and failure handling patterns", "Practice designing for AI service unreliability"],
+      medium: ["Design comprehensive architectures for AI applications", "Master patterns for scalability and extensibility", "Build systems that gracefully handle AI limitations"],
+      high: ["Lead architectural decisions for complex AI systems", "Build organization-wide architectural patterns", "Design transformational architectures enabling innovation"]
+    },
+    "sde-advanced": {
+      low: ["Study advanced architecture patterns for AI at scale", "Learn system design principles for AI platforms", "Understand infrastructure and deployment requirements"],
+      medium: ["Build sophisticated platform architectures", "Design integration systems enabling experimentation", "Create proprietary architectural approaches"],
+      high: ["Lead strategic architectural decisions for AI platforms", "Design platforms that create competitive advantage", "Build organizational capabilities in systems thinking"]
+    }
+  },
+  AIA: {
+    "sde-advanced": {
+      low: ["Study AI system architecture and scalability strategies", "Learn to design for AI model limitations and lifecycle", "Understand infrastructure requirements at scale"],
+      medium: ["Build sophisticated AI architectures balancing objectives", "Master integration of multiple AI services and models", "Design systems enabling rapid experimentation"],
+      high: ["Lead strategic architectural decisions for AI at scale", "Design proprietary platforms creating competitive advantage", "Build organizational capabilities in AI architecture"]
+    }
+  },
+  MLE: {
+    "sde-advanced": {
+      low: ["Learn machine learning engineering fundamentals", "Study model training, evaluation, and deployment", "Understand MLOps basics and best practices"],
+      medium: ["Master end-to-end ML pipelines and workflows", "Build monitoring and retraining systems", "Design experiments validating model improvements"],
+      high: ["Lead ML platform development and team building", "Design systems enabling organization-wide innovation", "Build competitive moats through ML capabilities"]
+    }
+  },
+  DSE: {
+    "sde-advanced": {
+      low: ["Study data engineering for AI including pipelines", "Learn to design for data quality and governance", "Understand privacy and compliance requirements"],
+      medium: ["Build sophisticated data systems enabling AI at scale", "Master data quality frameworks and lineage tracking", "Design systems balancing freshness, quality, and cost"],
+      high: ["Lead data platform strategy for AI organization", "Build enterprise data capabilities unlocking innovation", "Design data moats creating sustainable advantage"]
+    }
+  },
+  SRS: {
+    "sde-advanced": {
+      low: ["Learn advanced security patterns for AI systems", "Study threat models and defense strategies", "Understand compliance frameworks for AI"],
+      medium: ["Build comprehensive security and risk frameworks", "Master privacy-preserving techniques at scale", "Design governance balancing innovation with responsibility"],
+      high: ["Lead organization-wide AI security strategy", "Build cultural capabilities around responsible AI", "Design frameworks enabling secure innovation"]
+    }
+  },
+  IAT: {
+    "sde-advanced": {
+      low: ["Study AI infrastructure and tooling ecosystem", "Learn to evaluate and select appropriate tools", "Understand deployment and operations requirements"],
+      medium: ["Build sophisticated infrastructure and tooling strategies", "Master MLOps platforms and practices", "Design systems enabling efficient development"],
+      high: ["Lead AI platform and infrastructure strategy", "Build capabilities enabling organization-wide innovation", "Design tooling creating competitive development advantages"]
+    }
+  },
+  TQA: {
+    "sde-advanced": {
+      low: ["Learn advanced testing methodologies for AI systems", "Study quality metrics and validation strategies", "Understand testing challenges at scale"],
+      medium: ["Build comprehensive quality assurance frameworks", "Master automated testing strategies and tools", "Design quality gates ensuring reliability"],
+      high: ["Lead quality engineering transformation for AI", "Build organizational testing capabilities", "Design frameworks embedding quality in culture"]
+    }
+  },
+  DAE: {
+    "sde-advanced": {
+      low: ["Study deployment strategies for AI systems", "Learn to manage AI model lifecycle effectively", "Understand monitoring and observability requirements"],
+      medium: ["Build sophisticated deployment pipelines for AI", "Master techniques for safe rollouts and rollbacks", "Design systems enabling rapid iteration with reliability"],
+      high: ["Lead deployment engineering transformation for AI", "Build capabilities enabling continuous deployment", "Design frameworks optimizing velocity and reliability"]
+    }
   }
 };
 
