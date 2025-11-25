@@ -32,8 +32,8 @@ const Research = () => {
       
       <main>
         {/* Hero Section */}
-        <section className="container py-20 text-center max-w-5xl">
-          <h1 className="text-5xl lg:text-6xl font-extrabold mb-4 tracking-tight leading-tight bg-gradient-to-r from-blue-900 to-blue-600 bg-clip-text text-transparent">
+        <section className="container py-20 text-center max-w-5xl px-4">
+          <h1 className="text-3xl sm:text-4xl lg:text-6xl font-extrabold mb-4 tracking-tight leading-tight bg-gradient-to-r from-blue-900 to-blue-600 bg-clip-text text-transparent">
             Research Foundation
           </h1>
           <p className="text-lg text-muted-foreground mb-8 max-w-3xl mx-auto leading-relaxed">
@@ -42,7 +42,7 @@ const Research = () => {
         </section>
 
         {/* Research Foundation */}
-        <section className="container py-16 max-w-5xl">
+        <section className="container py-16 max-w-5xl px-4">
           <Card className="bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-blue-950/30 dark:to-indigo-950/30 shadow-lg border-2">
             <CardContent className="pt-8 pb-8">
               <h2 className="text-3xl font-extrabold mb-3 text-center tracking-tight">Built on Rigorous Research</h2>
@@ -145,7 +145,7 @@ const Research = () => {
         </section>
 
         {/* Real-World Value & Skills Development */}
-        <section className="container py-16 max-w-5xl">
+        <section className="container py-16 max-w-5xl px-4">
           <div className="text-center mb-10">
             <h2 className="text-4xl font-extrabold mb-4 tracking-tight">
               Your AI Skills Development Journey

@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { LogOut, LayoutDashboard, BookOpen, Settings, GraduationCap, ChevronDown } from "lucide-react";
+import { LogOut, LayoutDashboard, BookOpen, Settings, GraduationCap, ChevronDown, Menu } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { useNavigate } from "react-router-dom";
 import {
@@ -9,6 +9,14 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import {
+  Sheet,
+  SheetContent,
+  SheetHeader,
+  SheetTitle,
+  SheetTrigger,
+} from "@/components/ui/sheet";
+import { useState } from "react";
 
 interface NavigationProps {
   isAuthenticated: boolean;
@@ -17,9 +25,11 @@ interface NavigationProps {
 
 export const Navigation = ({ isAuthenticated, isAdmin }: NavigationProps) => {
   const navigate = useNavigate();
+  const [sheetOpen, setSheetOpen] = useState(false);
 
   const handleLogout = async () => {
     await supabase.auth.signOut();
+    setSheetOpen(false);
     navigate("/");
   };
 
@@ -119,24 +129,90 @@ export const Navigation = ({ isAuthenticated, isAdmin }: NavigationProps) => {
 
           {/* Mobile Navigation */}
           <div className="flex md:hidden items-center gap-2">
-            {isAuthenticated ? (
-              <>
-                <Link to="/dashboard">
-                  <Button variant="ghost" size="sm">
-                    <LayoutDashboard className="h-4 w-4" />
-                  </Button>
-                </Link>
-                <Button onClick={handleLogout} variant="ghost" size="sm">
-                  <LogOut className="h-4 w-4" />
+            <Sheet open={sheetOpen} onOpenChange={setSheetOpen}>
+              <SheetTrigger asChild>
+                <Button variant="ghost" size="sm">
+                  <Menu className="h-5 w-5" />
                 </Button>
-              </>
-            ) : (
-              <Link to="/sign-in">
-                <Button size="sm" className="bg-blue-900 hover:bg-blue-800 font-semibold">
-                  Start
-                </Button>
-              </Link>
-            )}
+              </SheetTrigger>
+              <SheetContent side="right" className="w-72">
+                <SheetHeader>
+                  <SheetTitle className="text-left">Menu</SheetTitle>
+                </SheetHeader>
+                <nav className="flex flex-col gap-4 mt-6">
+                  <div className="flex flex-col gap-2">
+                    <p className="text-xs font-semibold text-muted-foreground px-2">Assessments</p>
+                    <Link to="/assessments/general" onClick={() => setSheetOpen(false)}>
+                      <Button variant="ghost" className="w-full justify-start font-medium">
+                        General
+                      </Button>
+                    </Link>
+                    <Link to="/assessments/student" onClick={() => setSheetOpen(false)}>
+                      <Button variant="ghost" className="w-full justify-start font-medium">
+                        Students
+                      </Button>
+                    </Link>
+                    <Link to="/assessments/professional" onClick={() => setSheetOpen(false)}>
+                      <Button variant="ghost" className="w-full justify-start font-medium">
+                        Professionals
+                      </Button>
+                    </Link>
+                  </div>
+
+                  <div className="border-t pt-4 flex flex-col gap-2">
+                    <Link to="/features" onClick={() => setSheetOpen(false)}>
+                      <Button variant="ghost" className="w-full justify-start font-medium">
+                        Features
+                      </Button>
+                    </Link>
+                    <Link to="/research" onClick={() => setSheetOpen(false)}>
+                      <Button variant="ghost" className="w-full justify-start font-medium">
+                        Research
+                      </Button>
+                    </Link>
+                    <Link to="/about" onClick={() => setSheetOpen(false)}>
+                      <Button variant="ghost" className="w-full justify-start font-medium">
+                        <BookOpen className="h-4 w-4 mr-2" />
+                        About
+                      </Button>
+                    </Link>
+                  </div>
+
+                  {isAuthenticated && (
+                    <div className="border-t pt-4 flex flex-col gap-2">
+                      <Link to="/dashboard" onClick={() => setSheetOpen(false)}>
+                        <Button variant="ghost" className="w-full justify-start font-medium">
+                          <LayoutDashboard className="h-4 w-4 mr-2" />
+                          Dashboard
+                        </Button>
+                      </Link>
+                      {isAdmin && (
+                        <Link to="/admin" onClick={() => setSheetOpen(false)}>
+                          <Button variant="ghost" className="w-full justify-start font-medium">
+                            <Settings className="h-4 w-4 mr-2" />
+                            Admin
+                          </Button>
+                        </Link>
+                      )}
+                      <Button onClick={handleLogout} variant="ghost" className="w-full justify-start font-medium">
+                        <LogOut className="h-4 w-4 mr-2" />
+                        Logout
+                      </Button>
+                    </div>
+                  )}
+
+                  {!isAuthenticated && (
+                    <div className="border-t pt-4">
+                      <Link to="/sign-in" onClick={() => setSheetOpen(false)}>
+                        <Button size="sm" className="w-full bg-blue-900 hover:bg-blue-800 font-semibold">
+                          Get Started
+                        </Button>
+                      </Link>
+                    </div>
+                  )}
+                </nav>
+              </SheetContent>
+            </Sheet>
           </div>
         </div>
       </div>
