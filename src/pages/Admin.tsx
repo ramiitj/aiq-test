@@ -17,7 +17,7 @@ import { z } from "zod";
 // Comprehensive validation schema for assessment uploads
 const assessmentItemSchema = z.object({
   id: z.string().regex(/^[A-Z]{2,3}-[A-Z0-9]+-\d{3}$/, "Invalid item ID format"),
-  level: z.number().min(1).max(3),
+  level: z.number().min(1).max(3).optional(),
   type: z.enum(['multiple-choice', 'true-false', 'multiple-response', 'scenario-based', 'rank-ordering']),
   points: z.number().min(1).max(50),
   difficulty: z.number().min(0).max(1),
@@ -30,7 +30,7 @@ const assessmentItemSchema = z.object({
   explanation: z.string().max(2000).optional(),
   tags: z.array(z.string()).optional(),
   discrimination: z.number().min(0).max(3).optional(),
-});
+}).passthrough();
 
 const dimensionSchema = z.object({
   dimensionCode: z.enum([
@@ -79,7 +79,7 @@ const assessmentUploadSchema = z.object({
   itemBank: z.union([
     z.object({
       dimensions: z.array(dimensionSchema).min(1).max(20),
-    }),
+    }).passthrough(),
     z.array(dimensionSchema).min(1).max(20), // Direct array for advanced format
   ]),
   presentationMode: z.object({
