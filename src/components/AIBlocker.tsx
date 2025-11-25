@@ -226,9 +226,9 @@ export const AIBlocker = ({ isActive, testId, onViolation, enableFullscreen = fa
         isFullscreenTransitioning.current = true;
         setTimeout(() => { isFullscreenTransitioning.current = false; }, 1500);
         
-        // Request to re-enter fullscreen instead of logging violation immediately
+        // Try to re-enter fullscreen; if denied, do NOT treat as a violation
         document.documentElement.requestFullscreen?.().catch(() => {
-          handleViolation('Exited Fullscreen Mode');
+          console.warn('Fullscreen request denied while enforcing.');
         });
       }
     };
@@ -312,7 +312,6 @@ export const AIBlocker = ({ isActive, testId, onViolation, enableFullscreen = fa
     window.addEventListener('message', messageListener);
     if (enableFullscreen) {
       document.addEventListener('fullscreenchange', handleFullscreenChange);
-      document.addEventListener('fullscreenchange', enforceFullscreen);
     }
 
     // Run detections
@@ -338,7 +337,7 @@ export const AIBlocker = ({ isActive, testId, onViolation, enableFullscreen = fa
     if (enableFullscreen && window.innerWidth > 768) {
       setTimeout(() => {
         document.documentElement.requestFullscreen?.().catch(() => {
-          handleViolation('Fullscreen Request Denied');
+          console.warn('Initial fullscreen request denied.');
         });
         // Set fullscreen initialized after grace period
         setTimeout(() => { fullscreenInitialized.current = true; }, 3000);
@@ -363,7 +362,6 @@ export const AIBlocker = ({ isActive, testId, onViolation, enableFullscreen = fa
       window.removeEventListener('message', messageListener);
       if (enableFullscreen) {
         document.removeEventListener('fullscreenchange', handleFullscreenChange);
-        document.removeEventListener('fullscreenchange', enforceFullscreen);
       }
       clearInterval(detectionInterval);
       try { uiObserver.disconnect(); } catch {}
