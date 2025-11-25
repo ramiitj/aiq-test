@@ -50,12 +50,14 @@ const dimensionSchema = z.object({
     'CAI', 'STA', 'CDA', 'PIA', 'CMA', 'DDA', 'EIS', 'CIT',
     'OAI', 'PAW', 'PFO', 'QDM', 'SCL', 'RCO', 'CIO', 'TCI',
     'RDC', 'SMI', 'PRL', 'CPE',
-    // Sales Professional dimensions
-    'SAI', 'LPO', 'CII', 'SFP', 'CAE', 'PWO', 'TSI',
+    // Sales Professional dimensions (ETS = Ethics, Trust & Sales Compliance)
+    'SAI', 'LPO', 'CII', 'SFP', 'CAE', 'PWO', 'TSI', 'ETS',
     'FOA', 'PER', 'STR',
-    // Software Development Engineer dimensions  
-    'AIC', 'MIA', 'PAO', 'TDE', 'SRC', 'UIF', 'ADE',
-    'AIA', 'MLE', 'DSE', 'SRS', 'IAT', 'TQA', 'DAE',
+    // Software Development Engineer dimensions (DPE = Data & Prompt Engineering, AIP = AI Product Integration)
+    'AIC', 'MIA', 'PAO', 'TDE', 'SRC', 'UIF', 'ADE', 'DPE',
+    'AIA', 'MLE', 'DSE', 'SRS', 'IAT', 'TQA', 'DAE', 'AIP',
+    // Product Manager dimensions (PMD = Product Manager Data)
+    'PMD',
     // Teachers dimensions
     'TEA', 'PLD', 'ASE', 'EAI', 'ACI'
   ]),

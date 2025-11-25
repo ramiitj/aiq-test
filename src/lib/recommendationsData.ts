@@ -144,7 +144,7 @@ export const dimensionNames: { [key: string]: string } = {
   
   // Product Manager Dimensions  
   // Note: PAI, AIF, UEA already defined above
-  // PDM conflicts with Doctors dimension - using context-aware lookup in recommendations
+  PMD: "Product Manager Data & Metrics", // Renamed from PDM to avoid conflict with Doctors
   RDC: "Roadmap & Decision-making",
   SMI: "Strategy & Market Intelligence",
   PRL: "Product Risk & Lifecycle",
@@ -166,6 +166,7 @@ export const dimensionNames: { [key: string]: string } = {
   // Software Development Engineer Dimensions
   AIC: "AI Coding & Implementation",
   MIA: "Model Integration & APIs",
+  DPE: "Data & Prompt Engineering", // Renamed from DPM to avoid conflict with Product Manager
   PAO: "Performance & Optimization",
   TDE: "Testing & Debugging",
   SRC: "Security, Risk & Compliance",
@@ -174,10 +175,14 @@ export const dimensionNames: { [key: string]: string } = {
   AIA: "AI Architecture & Systems Design",
   MLE: "Machine Learning Engineering",
   DSE: "Data & Systems Engineering",
+  AIP: "AI Product Integration", // Renamed from PAI to avoid conflict with Product Manager
   SRS: "Security, Risk & Systems",
   IAT: "Infrastructure & AI Tools",
   TQA: "Testing & Quality Assurance",
   DAE: "Deployment & AI Engineering",
+  
+  // Sales Professional - Renamed dimension
+  ETS: "Ethics, Trust & Sales Compliance", // Renamed from ETC to avoid conflict with Digital Marketer
 };
 
 // Performance-Tiered Recommendations Structure
