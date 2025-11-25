@@ -111,14 +111,20 @@ const Test = () => {
     researchParticipation: false,
     ageConfirmation: false
   });
-  const [demographicsData, setDemographicsData] = useState<DemographicsData>({
-    age: '',
-    gender: '',
-    education: '',
-    occupation: '',
-    aiExperience: '',
-    industry: '',
-    country: ''
+  const [demographicsData, setDemographicsData] = useState<DemographicsData>(() => {
+    // Auto-populate age for adolescent assessments from slug
+    const productParam = searchParams.get("product");
+    const autoAge = extractAgeFromSlug(productParam);
+    
+    return {
+      age: autoAge || '',
+      gender: '',
+      education: '',
+      occupation: '',
+      aiExperience: '',
+      industry: '',
+      country: ''
+    };
   });
 
   // State for rank-ordering questions (drag and drop)
@@ -130,6 +136,14 @@ const Test = () => {
   // Helper to detect adolescent assessments
   const isAdolescentSlug = (slug?: string | null): boolean => {
     return !!slug && slug.startsWith('adolescent-');
+  };
+  
+  // Helper to extract age from adolescent slug
+  const extractAgeFromSlug = (slug?: string | null): string | null => {
+    if (!slug || !slug.startsWith('adolescent-')) return null;
+    // Extract age from slug like 'adolescent-14-15' or 'adolescent-16-17'
+    const match = slug.match(/adolescent-(\d+-\d+)/);
+    return match ? match[1] : null;
   };
 
   // Helper to normalize version for database
@@ -502,7 +516,7 @@ const Test = () => {
   };
 
   const handleDemographicsSubmit = async () => {
-    // Validate required fields
+    // Validate required fields (age auto-populated for adolescent assessments)
     if (!demographicsData.age || !demographicsData.gender || !demographicsData.education || 
         !demographicsData.aiExperience) {
       toast({
@@ -1363,6 +1377,7 @@ const Test = () => {
           isActive={testStarted && !showConsent && !showDemographics}
           testId={testId}
           onViolation={handleSecurityViolation}
+          enableFullscreen={true}
         />
       )}
       

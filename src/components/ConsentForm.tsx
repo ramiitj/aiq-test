@@ -587,34 +587,41 @@ export const ConsentForm = ({ open, onConsent, onDecline, testVersion }: Consent
               <h3 className="font-semibold text-lg">Optional Demographics</h3>
               <p className="text-sm text-muted-foreground">All fields in this section are optional</p>
               
-              <div className="space-y-2">
-                <Label>Age Range</Label>
-                <Select value={ageRange} onValueChange={setAgeRange}>
-                  <SelectTrigger>
-                    <SelectValue placeholder="Select age range" />
-                  </SelectTrigger>
-                  <SelectContent>
-                    {isAdolescentAssessment ? (
-                      <>
-                        <SelectItem value="14-15">14-15 years</SelectItem>
-                        <SelectItem value="16-17">16-17 years</SelectItem>
-                        <SelectItem value="prefer-not">Prefer not to say</SelectItem>
-                      </>
-                    ) : (
-                      <>
-                        <SelectItem value="<18">Under 18</SelectItem>
-                        <SelectItem value="18-24">18-24</SelectItem>
-                        <SelectItem value="25-34">25-34</SelectItem>
-                        <SelectItem value="35-44">35-44</SelectItem>
-                        <SelectItem value="45-54">45-54</SelectItem>
-                        <SelectItem value="55-64">55-64</SelectItem>
-                        <SelectItem value="65+">65+</SelectItem>
-                        <SelectItem value="prefer-not">Prefer not to say</SelectItem>
-                      </>
-                    )}
-                  </SelectContent>
-                </Select>
-              </div>
+              {!isAdolescentAssessment && (
+                <div className="space-y-2">
+                  <Label>Age Range</Label>
+                  <Select value={ageRange} onValueChange={setAgeRange}>
+                    <SelectTrigger>
+                      <SelectValue placeholder="Select age range" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="<18">Under 18</SelectItem>
+                      <SelectItem value="18-24">18-24</SelectItem>
+                      <SelectItem value="25-34">25-34</SelectItem>
+                      <SelectItem value="35-44">35-44</SelectItem>
+                      <SelectItem value="45-54">45-54</SelectItem>
+                      <SelectItem value="55-64">55-64</SelectItem>
+                      <SelectItem value="65+">65+</SelectItem>
+                      <SelectItem value="prefer-not">Prefer not to say</SelectItem>
+                    </SelectContent>
+                  </Select>
+                  <p className="text-xs text-muted-foreground">Optional demographic information</p>
+                </div>
+              )}
+              
+              {isAdolescentAssessment && (
+                <div className="space-y-2">
+                  <Label>Age Group</Label>
+                  <div className="p-3 bg-muted rounded-md">
+                    <p className="text-sm font-medium">
+                      Auto-detected from selected assessment: {testVersion.includes('14-15') ? '14-15 years' : '16-17 years'}
+                    </p>
+                    <p className="text-xs text-muted-foreground mt-1">
+                      Age group is pre-determined based on the student assessment you selected
+                    </p>
+                  </div>
+                </div>
+              )}
 
               <div className="space-y-2">
                 <Label>Highest Education Level</Label>
