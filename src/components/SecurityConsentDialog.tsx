@@ -30,6 +30,7 @@ export const SecurityConsentDialog = ({ open, onAccept, onDecline }: SecurityCon
     { icon: Search, text: "Developer tools detection is active", color: "text-amber-600" },
     { icon: Wifi, text: "Network requests to AI APIs will be blocked", color: "text-amber-600" },
     { icon: MonitorOff, text: "Browser extensions will be monitored", color: "text-amber-600" },
+    { icon: Maximize, text: "Fullscreen mode is required throughout the test", color: "text-blue-600" },
     { icon: FileWarning, text: "All violations will be logged and recorded", color: "text-red-600" },
     { icon: AlertTriangle, text: "3 violations will result in test termination", color: "text-red-600" },
   ];
@@ -84,6 +85,15 @@ export const SecurityConsentDialog = ({ open, onAccept, onDecline }: SecurityCon
               <li>You will receive a warning notification for each violation</li>
               <li>After 3 violations, your assessment will be automatically terminated</li>
               <li>Terminated assessments cannot be resumed and will be marked in your record</li>
+            </ul>
+            
+            <strong className="block mt-4">Fullscreen Policy:</strong>
+            <ul className="mt-2 ml-4 list-disc space-y-1">
+              <li>The test must remain in fullscreen mode at all times</li>
+              <li>If you exit fullscreen (e.g., pressing Escape), the test will pause automatically</li>
+              <li>You can resume the test up to 3 times by re-entering fullscreen</li>
+              <li>After 3 fullscreen exits, your test will be terminated and deleted permanently</li>
+              <li>You will need to start a completely new assessment</li>
             </ul>
           </AlertDescription>
         </Alert>
