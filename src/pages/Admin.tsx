@@ -6,8 +6,9 @@ import Footer from "@/components/Footer";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { Button } from "@/components/ui/button";
 import { useToast } from "@/hooks/use-toast";
-import { Upload, BarChart3, Users } from "lucide-react";
+import { Upload, BarChart3, Users, Database, CheckCircle2, XCircle, Loader2 } from "lucide-react";
 import { checkUserRole } from "@/lib/roleUtils";
 import { sanitizeJsonString, sanitizeKeys } from "@/lib/jsonSanitizer";
 import { AdminDataTables } from "@/components/AdminDataTables";
@@ -117,6 +118,8 @@ const Admin = () => {
   const [uploading, setUploading] = useState<Record<string, boolean>>({});
   const [stats, setStats] = useState({ totalUsers: 0, totalTests: 0 });
   const [products, setProducts] = useState<any[]>([]);
+  const [initializingStorage, setInitializingStorage] = useState(false);
+  const [storageInitResults, setStorageInitResults] = useState<any>(null);
   const navigate = useNavigate();
   const { toast } = useToast();
 
@@ -323,6 +326,51 @@ const Admin = () => {
     }
   };
 
+  const handleBatchStorageInit = async () => {
+    setInitializingStorage(true);
+    setStorageInitResults(null);
+
+    try {
+      const { data: { session } } = await supabase.auth.getSession();
+      if (!session) {
+        throw new Error('Not authenticated');
+      }
+
+      const response = await supabase.functions.invoke('initialize-storage', {
+        headers: {
+          Authorization: `Bearer ${session.access_token}`,
+        },
+      });
+
+      if (response.error) {
+        throw response.error;
+      }
+
+      setStorageInitResults(response.data);
+
+      if (response.data.success) {
+        toast({
+          title: "Storage Initialized",
+          description: `Successfully uploaded ${response.data.summary.succeeded}/${response.data.summary.total} files`,
+        });
+      } else {
+        toast({
+          title: "Initialization Failed",
+          description: response.data.error,
+          variant: "destructive",
+        });
+      }
+    } catch (error: any) {
+      toast({
+        title: "Error",
+        description: error.message,
+        variant: "destructive",
+      });
+    } finally {
+      setInitializingStorage(false);
+    }
+  };
+
   const UploadCard = ({ product }: { product: any }) => {
     const difficultyColors: Record<string, { border: string; bg: string; badge: string; text: string }> = {
       beginner: {
@@ -431,6 +479,72 @@ const Admin = () => {
             </CardContent>
           </Card>
         </div>
+
+        <Card className="shadow-elegant mb-8 border-2 border-primary/20">
+          <CardHeader>
+            <CardTitle className="flex items-center gap-2">
+              <Database className="h-5 w-5 text-primary" />
+              Storage Initialization
+            </CardTitle>
+            <CardDescription>
+              Batch upload all 34 assessment files (2 General + 2 Adolescent + 30 Professional) to cloud storage
+            </CardDescription>
+          </CardHeader>
+          <CardContent className="space-y-4">
+            <div className="flex items-center justify-between">
+              <p className="text-sm text-muted-foreground">
+                Click the button below to initialize storage with all assessment files from the repository
+              </p>
+              <Button 
+                onClick={handleBatchStorageInit}
+                disabled={initializingStorage}
+                size="lg"
+                className="ml-4"
+              >
+                {initializingStorage ? (
+                  <>
+                    <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                    Uploading...
+                  </>
+                ) : (
+                  <>
+                    <Upload className="mr-2 h-4 w-4" />
+                    Initialize Storage
+                  </>
+                )}
+              </Button>
+            </div>
+
+            {storageInitResults && (
+              <div className="mt-4 p-4 bg-muted rounded-lg">
+                <div className="flex items-center gap-2 mb-3">
+                  <h4 className="font-semibold">Upload Results</h4>
+                  <span className="text-sm text-muted-foreground">
+                    {storageInitResults.summary.succeeded} succeeded / {storageInitResults.summary.failed} failed
+                  </span>
+                </div>
+                <div className="max-h-64 overflow-y-auto space-y-2">
+                  {storageInitResults.results.map((result: any, index: number) => (
+                    <div 
+                      key={index}
+                      className="flex items-center justify-between text-sm p-2 rounded bg-background"
+                    >
+                      <span className="font-mono text-xs">{result.fileName}</span>
+                      {result.success ? (
+                        <CheckCircle2 className="h-4 w-4 text-green-500" />
+                      ) : (
+                        <div className="flex items-center gap-2">
+                          <span className="text-xs text-destructive">{result.error}</span>
+                          <XCircle className="h-4 w-4 text-destructive" />
+                        </div>
+                      )}
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
+          </CardContent>
+        </Card>
 
         <Card className="shadow-elegant mb-8">
           <CardHeader>
