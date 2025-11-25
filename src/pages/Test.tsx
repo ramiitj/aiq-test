@@ -140,12 +140,12 @@ const Test = () => {
   };
   
   // Helper to extract age from adolescent slug
-  const extractAgeFromSlug = (slug?: string | null): string | null => {
+  function extractAgeFromSlug(slug?: string | null): string | null {
     if (!slug || !slug.startsWith('adolescent-')) return null;
     // Extract age from slug like 'adolescent-14-15' or 'adolescent-16-17'
     const match = slug.match(/adolescent-(\d+-\d+)/);
     return match ? match[1] : null;
-  };
+  }
 
   // Helper to normalize version for database
   const deriveTestVersionFromSlugOrVersion = (input: string): 'beginner' | 'advanced' => {
