@@ -82,6 +82,18 @@ const assessments: Assessment[] = [
     targetAudience: "Product managers new to AI-powered workflows",
     icon: Briefcase
   },
+  {
+    slug: "pm-advanced",
+    name: "Product Manager - Advanced",
+    track: "role-based",
+    role: "Product Manager",
+    difficulty: "advanced",
+    duration: 80,
+    questionCount: 80,
+    description: "Advanced AI strategies for product innovation and leadership",
+    targetAudience: "Senior product leaders mastering AI-driven product development",
+    icon: Briefcase
+  },
   
   // Data Scientist
   {
@@ -288,6 +300,162 @@ const assessments: Assessment[] = [
     questionCount: 80,
     description: "Advanced AI strategies for talent management and development",
     targetAudience: "Senior HR leaders driving AI-powered people strategies",
+    icon: Briefcase
+  },
+  
+  // Doctors
+  {
+    slug: "doc-beginner",
+    name: "Doctors - Beginner",
+    track: "role-based",
+    role: "Doctors",
+    difficulty: "beginner",
+    duration: 60,
+    questionCount: 60,
+    description: "Foundational AI literacy for medical professionals",
+    targetAudience: "Physicians beginning to integrate AI into clinical practice",
+    icon: Briefcase
+  },
+  {
+    slug: "doc-advanced",
+    name: "Doctors - Advanced",
+    track: "role-based",
+    role: "Doctors",
+    difficulty: "advanced",
+    duration: 80,
+    questionCount: 80,
+    description: "Advanced AI applications in medical diagnosis and care",
+    targetAudience: "Senior physicians leading AI-powered healthcare transformation",
+    icon: Briefcase
+  },
+  
+  // Financial Advisors
+  {
+    slug: "fa-beginner",
+    name: "Financial Advisors - Beginner",
+    track: "role-based",
+    role: "Financial Advisors",
+    difficulty: "beginner",
+    duration: 60,
+    questionCount: 60,
+    description: "Essential AI skills for financial advisory services",
+    targetAudience: "Financial advisors starting to leverage AI tools",
+    icon: Briefcase
+  },
+  {
+    slug: "fa-advanced",
+    name: "Financial Advisors - Advanced",
+    track: "role-based",
+    role: "Financial Advisors",
+    difficulty: "advanced",
+    duration: 80,
+    questionCount: 80,
+    description: "Advanced AI strategies for wealth management",
+    targetAudience: "Senior advisors mastering AI-driven financial planning",
+    icon: Briefcase
+  },
+  
+  // Healthcare Administrators
+  {
+    slug: "ha-beginner",
+    name: "Healthcare Administrator - Beginner",
+    track: "role-based",
+    role: "Healthcare Administrator",
+    difficulty: "beginner",
+    duration: 60,
+    questionCount: 60,
+    description: "Foundational AI skills for healthcare operations",
+    targetAudience: "Healthcare administrators new to AI-powered systems",
+    icon: Briefcase
+  },
+  {
+    slug: "ha-advanced",
+    name: "Healthcare Administrator - Advanced",
+    track: "role-based",
+    role: "Healthcare Administrator",
+    difficulty: "advanced",
+    duration: 80,
+    questionCount: 80,
+    description: "Advanced AI for healthcare management excellence",
+    targetAudience: "Senior healthcare leaders optimizing operations with AI",
+    icon: Briefcase
+  },
+  
+  // Lawyers
+  {
+    slug: "lawyer-beginner",
+    name: "Lawyers - Beginner",
+    track: "role-based",
+    role: "Lawyers",
+    difficulty: "beginner",
+    duration: 60,
+    questionCount: 60,
+    description: "Essential AI literacy for legal professionals",
+    targetAudience: "Lawyers beginning to use AI in legal research and practice",
+    icon: Briefcase
+  },
+  {
+    slug: "lawyer-advanced",
+    name: "Lawyers - Advanced",
+    track: "role-based",
+    role: "Lawyers",
+    difficulty: "advanced",
+    duration: 80,
+    questionCount: 80,
+    description: "Advanced AI applications in legal strategy and compliance",
+    targetAudience: "Senior legal professionals leading AI-powered law practices",
+    icon: Briefcase
+  },
+  
+  // Management Consultants
+  {
+    slug: "mc-beginner",
+    name: "Management Consultants - Beginner",
+    track: "role-based",
+    role: "Management Consultants",
+    difficulty: "beginner",
+    duration: 60,
+    questionCount: 60,
+    description: "Core AI collaboration for consulting professionals",
+    targetAudience: "Consultants new to AI-powered analysis and strategy",
+    icon: Briefcase
+  },
+  {
+    slug: "mc-advanced",
+    name: "Management Consultants - Advanced",
+    track: "role-based",
+    role: "Management Consultants",
+    difficulty: "advanced",
+    duration: 80,
+    questionCount: 80,
+    description: "Advanced AI-driven strategic consulting methodologies",
+    targetAudience: "Senior consultants mastering AI for client transformation",
+    icon: Briefcase
+  },
+  
+  // Teachers
+  {
+    slug: "teachers-beginner",
+    name: "Teachers - Beginner",
+    track: "role-based",
+    role: "Teachers",
+    difficulty: "beginner",
+    duration: 60,
+    questionCount: 60,
+    description: "Foundational AI literacy for educators",
+    targetAudience: "Teachers beginning to integrate AI into instruction",
+    icon: Briefcase
+  },
+  {
+    slug: "teachers-advanced",
+    name: "Teachers - Advanced",
+    track: "role-based",
+    role: "Teachers",
+    difficulty: "advanced",
+    duration: 80,
+    questionCount: 80,
+    description: "Advanced AI strategies for personalized learning",
+    targetAudience: "Education leaders transforming teaching with AI",
     icon: Briefcase
   }
 ];
