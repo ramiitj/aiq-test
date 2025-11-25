@@ -84,6 +84,7 @@ const Test = () => {
   const navigate = useNavigate();
   const { toast } = useToast();
   
+  const [isAuthChecking, setIsAuthChecking] = useState(true);
   const [loading, setLoading] = useState(true);
   const [loadError, setLoadError] = useState<string | null>(null);
   const [testId, setTestId] = useState<string | null>(null);
@@ -339,14 +340,17 @@ const Test = () => {
   };
 
   const initializeTest = async () => {
-    const { data: { session } } = await supabase.auth.getSession();
-    
-    if (!session) {
-      navigate("/sign-in");
-      return;
-    }
-
     try {
+      const { data: { session }, error: sessionError } = await supabase.auth.getSession();
+      
+      if (sessionError || !session) {
+        const returnUrl = encodeURIComponent(window.location.pathname + window.location.search);
+        navigate(`/auth?returnTo=${returnUrl}`);
+        return;
+      }
+      
+      setIsAuthChecking(false);
+
       if (resumeId) {
         // Skip consent/demographics for resumed tests immediately
         setShowConsent(false);
@@ -434,6 +438,7 @@ const Test = () => {
         description: error.message,
         variant: "destructive",
       });
+      setIsAuthChecking(false);
       setLoading(false);
     }
   };
@@ -822,6 +827,21 @@ const Test = () => {
   const globalQuestionNumber = (dimensions?.slice(0, currentDimension).reduce((sum, dim) => sum + (dim.items?.length ?? 0), 0) ?? 0) + currentQuestion + 1;
   const progress = actualTotalQuestions > 0 ? (globalQuestionNumber / actualTotalQuestions) * 100 : 0;
   const isLastQuestion = currentDimension === dimensions.length - 1 && currentQuestion === (dimensions[currentDimension]?.items?.length ?? 0) - 1;
+
+  // Show auth checking state first
+  if (isAuthChecking) {
+    return (
+      <div className="min-h-screen">
+        <Navigation isAuthenticated={false} />
+        <div className="container py-12 text-center space-y-4">
+          <div className="animate-pulse">
+            <Shield className="h-12 w-12 mx-auto text-primary" />
+          </div>
+          <p className="text-muted-foreground">Verifying authentication...</p>
+        </div>
+      </div>
+    );
+  }
 
   if (testTerminated) {
     return (
