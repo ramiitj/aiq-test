@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import { Shield } from 'lucide-react';
 import { supabase } from '@/integrations/supabase/client';
 import { toast } from 'sonner';
@@ -13,8 +13,9 @@ interface AIBlockerProps {
 export const AIBlocker = ({ isActive, testId, onViolation, enableFullscreen = false }: AIBlockerProps) => {
   const [violations, setViolations] = useState<string[]>([]);
   const [isBlocking, setIsBlocking] = useState(false);
-  const [isFullscreenTransitioning, setIsFullscreenTransitioning] = useState(false);
-  const [fullscreenInitialized, setFullscreenInitialized] = useState(false);
+  const isFullscreenTransitioning = useRef(false);
+  const fullscreenInitialized = useRef(false);
+  const lastViolationTime = useRef<number>(0);
 
   useEffect(() => {
     if (!isActive) return;
@@ -69,10 +70,12 @@ export const AIBlocker = ({ isActive, testId, onViolation, enableFullscreen = fa
 
     // 4. Detect Tab Switching / Window Blur
     const detectTabSwitch = () => {
-      // ignore first 3s after activation to avoid false positives from extensions
-      if (Date.now() - activatedAt < 3000) return;
+      // ignore first 5s after activation to avoid false positives from extensions
+      if (Date.now() - activatedAt < 5000) return;
       // Ignore during fullscreen transition
-      if (isFullscreenTransitioning) return;
+      if (isFullscreenTransitioning.current) return;
+      // Ignore if currently in fullscreen mode (transitions often cause blur)
+      if (document.fullscreenElement) return;
       handleViolation('Tab/Window Switch Detected');
     };
     
@@ -115,8 +118,8 @@ export const AIBlocker = ({ isActive, testId, onViolation, enableFullscreen = fa
         return false;
       }
 
-      // F12 and other function keys
-      if (e.key === 'F12' || e.key === 'F11') {
+      // F12 function key (allow F11 for fullscreen toggle)
+      if (e.key === 'F12') {
         e.preventDefault();
         handleViolation('Function Key Blocked: ' + e.key);
         return false;
@@ -196,9 +199,9 @@ export const AIBlocker = ({ isActive, testId, onViolation, enableFullscreen = fa
     // 8b. Visibility change detection
     const detectVisibilityChange = () => {
       // Ignore during fullscreen transition
-      if (isFullscreenTransitioning) return;
-      // Ignore until fullscreen is initialized (2 second grace period)
-      if (!fullscreenInitialized) return;
+      if (isFullscreenTransitioning.current) return;
+      // Ignore until fullscreen is initialized (3 second grace period)
+      if (!fullscreenInitialized.current) return;
       
       if (document.hidden) {
         handleViolation('Page Hidden / Backgrounded');
@@ -220,8 +223,8 @@ export const AIBlocker = ({ isActive, testId, onViolation, enableFullscreen = fa
       if (!enableFullscreen) return;
       if (!document.fullscreenElement && window.innerWidth > 768) {
         // Mark as transitioning
-        setIsFullscreenTransitioning(true);
-        setTimeout(() => setIsFullscreenTransitioning(false), 1000);
+        isFullscreenTransitioning.current = true;
+        setTimeout(() => { isFullscreenTransitioning.current = false; }, 1500);
         
         // Request to re-enter fullscreen instead of logging violation immediately
         document.documentElement.requestFullscreen?.().catch(() => {
@@ -232,14 +235,18 @@ export const AIBlocker = ({ isActive, testId, onViolation, enableFullscreen = fa
     
     // Track fullscreen transitions to avoid false positives
     const handleFullscreenChange = () => {
-      setIsFullscreenTransitioning(true);
-      setTimeout(() => setIsFullscreenTransitioning(false), 500);
+      isFullscreenTransitioning.current = true;
+      setTimeout(() => { isFullscreenTransitioning.current = false; }, 1500);
     };
 
     const reported = new Set<string>();
 
     const handleViolation = (message: string) => {
       if (reported.has(message)) return; // de-duplicate noisy events
+      // Debounce rapid violations (within 2 seconds)
+      if (Date.now() - lastViolationTime.current < 2000) return;
+      
+      lastViolationTime.current = Date.now();
       reported.add(message);
       console.warn('🚨 Security Violation:', message);
       setViolations(prev => [...prev, message]);
@@ -334,11 +341,11 @@ export const AIBlocker = ({ isActive, testId, onViolation, enableFullscreen = fa
           handleViolation('Fullscreen Request Denied');
         });
         // Set fullscreen initialized after grace period
-        setTimeout(() => setFullscreenInitialized(true), 2000);
+        setTimeout(() => { fullscreenInitialized.current = true; }, 3000);
       }, 500);
     } else if (!enableFullscreen) {
       // If fullscreen not enabled, immediately mark as initialized
-      setFullscreenInitialized(true);
+      fullscreenInitialized.current = true;
     }
 
     // Cleanup
