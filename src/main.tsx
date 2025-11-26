@@ -5,10 +5,52 @@ import "./index.css";
 // Build version check for cache busting on deployments
 declare const __BUILD_ID__: string;
 
+// Clear all caches except Supabase auth session
+const clearAppCaches = () => {
+  // Always clear service worker caches on every page load
+  if ('caches' in window) {
+    caches.keys().then(keys => {
+      keys.forEach(key => caches.delete(key));
+    });
+  }
+  
+  // Clear localStorage except Supabase auth keys (sb-*)
+  const authKeys: string[] = [];
+  for (let i = 0; i < localStorage.length; i++) {
+    const key = localStorage.key(i);
+    if (key && key.startsWith('sb-')) {
+      authKeys.push(key);
+    }
+  }
+  
+  // Preserve auth data
+  const authData: Record<string, string> = {};
+  authKeys.forEach(key => {
+    authData[key] = localStorage.getItem(key) || '';
+  });
+  
+  // Clear all localStorage
+  localStorage.clear();
+  
+  // Restore auth data
+  Object.entries(authData).forEach(([key, value]) => {
+    localStorage.setItem(key, value);
+  });
+  
+  // Clear sessionStorage (except during reload cycle)
+  const isReloading = sessionStorage.getItem('isReloading') === 'true';
+  if (!isReloading) {
+    sessionStorage.clear();
+  }
+};
+
 const checkAndUpdateVersion = () => {
   const storedBuildId = localStorage.getItem('BUILD_ID');
   const currentBuildId = __BUILD_ID__;
   const isReloading = sessionStorage.getItem('isReloading') === 'true';
+
+  // Always clear caches on every page load
+  clearAppCaches();
 
   // If build ID changed and we're not already in a reload cycle
   if (storedBuildId && storedBuildId !== currentBuildId && !isReloading) {
@@ -16,13 +58,6 @@ const checkAndUpdateVersion = () => {
     
     // Set flag to prevent infinite reload
     sessionStorage.setItem('isReloading', 'true');
-    
-    // Clear caches
-    if ('caches' in window) {
-      caches.keys().then(keys => {
-        keys.forEach(key => caches.delete(key));
-      });
-    }
     
     // Update stored build ID
     localStorage.setItem('BUILD_ID', currentBuildId);
