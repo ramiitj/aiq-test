@@ -85,6 +85,22 @@ const dimensionCodeMap: Record<string, string> = {
   CRS: "Creative Reasoning Synthesis",
 };
 
+// Helper function to calculate overall score from nested dimension scores
+const calculateOverallScore = (scores: any): number => {
+  if (!scores) return 0;
+  
+  let total = 0;
+  Object.values(scores).forEach((scoreData: any) => {
+    if (typeof scoreData === 'object' && scoreData !== null && 'score' in scoreData) {
+      total += scoreData.score || 0;
+    } else if (typeof scoreData === 'number') {
+      total += scoreData;
+    }
+  });
+  
+  return total;
+};
+
 const Results = () => {
   const { testId } = useParams();
   const [result, setResult] = useState<TestResult | null>(null);
@@ -162,6 +178,47 @@ const Results = () => {
           
           setAssessmentContext(context);
         }
+      }
+
+      // AUTO-CREATE public_results record if it doesn't exist
+      const { data: existingPublicResult } = await supabase
+        .from("public_results")
+        .select("id, share_code")
+        .eq("test_id", data.id)
+        .maybeSingle();
+
+      if (!existingPublicResult) {
+        // Generate verification code
+        const year = new Date().getFullYear();
+        const randomPart = crypto.randomUUID().replace(/-/g, "").substring(0, 16).toUpperCase();
+        const shareCode = `AIQ-${year}-${randomPart}`;
+        
+        // Get user name from profile
+        const { data: profile } = await supabase
+          .from("profiles")
+          .select("name")
+          .eq("user_id", session.user.id)
+          .maybeSingle();
+        
+        // Create public_results record immediately
+        await supabase.from("public_results").insert({
+          test_id: data.id,
+          user_id: session.user.id,
+          share_code: shareCode,
+          overall_score: calculateOverallScore(data.scores),
+          dimension_scores: JSON.stringify(data.scores),
+          user_name: profile?.name || session.user.email?.split('@')[0] || 'Anonymous',
+          test_completion_date: data.created_at,
+          test_duration_seconds: data.test_duration_seconds || 0,
+          test_version: data.test_version || 'beginner',
+          product_id: productId || data.product_id,
+          product_slug: data.product_slug,
+        });
+        
+        setVerificationCode(shareCode);
+      } else {
+        // Use existing verification code
+        setVerificationCode(existingPublicResult.share_code);
       }
 
       // Store test data
