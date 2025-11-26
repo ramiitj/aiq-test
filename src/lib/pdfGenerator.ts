@@ -33,6 +33,25 @@ export async function generatePDFReport(
     format: "a4",
   });
 
+  // Helper to get correct total points based on product slug or assessment level
+  const getTotalPossiblePointsPDF = (productSlug?: string, level?: string): number => {
+    if (productSlug === 'adolescent-14-15') return 240;
+    if (productSlug === 'adolescent-16-17') return 480;
+    if (productSlug === 'general-beginner') return 600;
+    if (productSlug === 'general-advanced') return 800;
+    
+    // Professional roles
+    if (productSlug?.endsWith('-beginner')) return 600;
+    if (productSlug?.endsWith('-advanced')) return 800;
+    
+    // Fallback to assessment level
+    if (level?.includes('advanced') || level === 'expert') return 800;
+    return 600;
+  };
+
+  // Get product slug from scoringResult if available
+  const productSlug = scoringResult?.productSlug;
+
   // Validate passing score if scoringResult provided
   if (scoringResult && !scoringResult.passed) {
     throw new Error(
@@ -40,8 +59,9 @@ export async function generatePDFReport(
     );
   }
 
-  // Calculate percentage for display
-  const totalPossible = scoringResult?.totalPossiblePoints || 600;
+  // Calculate percentage for display using correct total
+  const totalPossible = scoringResult?.totalPossiblePoints || 
+                        getTotalPossiblePointsPDF(productSlug, assessmentLevel);
   const percentageScore = scoringResult?.percentageScore || (overallScore / totalPossible) * 100;
 
   const pageWidth = doc.internal.pageSize.getWidth();

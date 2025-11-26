@@ -37,7 +37,7 @@ Deno.serve(async (req) => {
       );
     }
 
-    const { testId, answers } = await req.json();
+    const { testId, answers, duration } = await req.json();
 
     // Verify test ownership and status
     const { data: test, error: testError } = await supabaseClient
@@ -108,12 +108,13 @@ Deno.serve(async (req) => {
 
     const percentile = calculatePercentile(scores.overallScore, allScores || []);
 
-    // Update test with scores
+    // Update test with scores and duration
     const { error: updateError } = await supabaseClient
       .from('tests')
       .update({
         completed: true,
         end_time: new Date().toISOString(),
+        test_duration_seconds: duration || 0,
         scores: scores.dimensionScores,
         answers: answers,
       })
@@ -163,12 +164,17 @@ function calculateTestScores(
       const answerKey = `${dimIndex}-${itemIndex}`;
       const userAnswer = answers[answerKey];
       const isCorrect = checkAnswer(item, userAnswer);
+      
+      // Calculate earned points with weighting
       const itemPoints = calculateItemPoints(item, isCorrect, assessmentLevel);
+      
+      // Calculate max points WITHOUT weighting (FIXED 10 points per item)
+      const maxItemPoints = calculateMaxItemPoints(item);
       
       if (isCorrect) {
         dimensionPoints += itemPoints;
       }
-      dimensionMax += itemPoints;
+      dimensionMax += maxItemPoints;
     });
 
     dimensionScores[dimension.dimensionCode] = {
@@ -220,12 +226,14 @@ function checkAnswer(item: any, userAnswer: string): boolean {
 }
 
 function calculateItemPoints(item: any, isCorrect: boolean, assessmentLevel: string): number {
+  const basePoints = item.points || 10;
+  
   if (!isCorrect) return 0;
   
-  const basePoints = item.points || 10;
   const difficulty = item.difficulty || 0.5;
   const discrimination = item.discrimination || 1;
   
+  // Apply weighting to earned scores only, not to maxScore
   // Advanced uses stronger weighting for difficulty and discrimination
   if (assessmentLevel.includes('advanced') || assessmentLevel === 'professional' || assessmentLevel === 'expert') {
     return basePoints * (1 + difficulty * 0.5 + discrimination * 0.25);
@@ -233,6 +241,11 @@ function calculateItemPoints(item: any, isCorrect: boolean, assessmentLevel: str
   
   // Beginner uses lighter weighting
   return basePoints * (1 + difficulty * 0.3);
+}
+
+// Calculate max possible points for an item (FIXED 10 points per item)
+function calculateMaxItemPoints(item: any): number {
+  return item.points || 10;
 }
 
 function determinePerformanceLevel(percentage: number, scoringGuidelines?: any): string {
