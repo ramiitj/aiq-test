@@ -99,7 +99,8 @@ const Verify = () => {
             Certificate Verification
           </h1>
           <p className="text-xl lg:text-2xl text-muted-foreground mb-10 max-w-3xl mx-auto leading-relaxed">
-            Verify the authenticity of AIQ<sup className="text-[0.6em]">™</sup> Assessment certificates issued to participants
+            Verify the authenticity of AIQ<sup className="text-[0.6em]">™</sup> Assessment certificates issued to
+            participants
           </p>
         </section>
 
@@ -194,18 +195,19 @@ const Verify = () => {
                     Certificate Authenticity Confirmed
                   </h4>
                   <p className="text-sm text-green-800 dark:text-green-200 leading-relaxed">
-                    This certificate has been verified as authentic and was issued by the AIQ<sup className="text-[0.6em]">™</sup> Assessment system. The
-                    certificate holder has successfully completed the assessment and demonstrated proficiency in AI
-                    collaboration skills. Exact scores are confidential and available only to the certificate holder.
+                    This certificate has been verified as authentic and was issued by the AIQ
+                    <sup className="text-[0.6em]">™</sup> Assessment system. The certificate holder has successfully
+                    completed the assessment and demonstrated proficiency in AI collaboration skills. Exact scores are
+                    confidential and available only to the certificate holder.
                   </p>
                 </div>
 
                 {/* CTA Section */}
                 <div className="text-center pt-8">
                   <p className="text-lg text-muted-foreground mb-6">Want to assess your own AI collaboration skills?</p>
-                  <Link to="/" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
+                  <Link to="/" onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}>
                     <Button size="lg" className="text-lg px-10 py-6 bg-blue-900 hover:bg-blue-800">
-                      Take the AIQ<sup className="text-[0.6em]">™</sup> Assessment
+                      Take the AIQ<sup className="text-[0.2em]">™</sup> Assessment
                     </Button>
                   </Link>
                 </div>
@@ -249,7 +251,7 @@ const Verify = () => {
 
                 {/* CTA Section */}
                 <div className="text-center pt-4">
-                  <Link to="/" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
+                  <Link to="/" onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}>
                     <Button size="lg" variant="outline" className="text-lg px-10 py-6">
                       Take the AIQ<sup className="text-[0.6em]">™</sup> Assessment
                     </Button>
@@ -266,8 +268,8 @@ const Verify = () => {
             <div className="container max-w-4xl">
               <h2 className="text-3xl font-bold text-center mb-6">About Certificate Verification</h2>
               <p className="text-lg text-muted-foreground text-center mb-12 leading-relaxed max-w-2xl mx-auto">
-                Each AIQ<sup className="text-[0.6em]">™</sup> Assessment certificate includes a unique verification code that can be used to confirm its
-                authenticity and view key details about the achievement.
+                Each AIQ<sup className="text-[0.6em]">™</sup> Assessment certificate includes a unique verification
+                code that can be used to confirm its authenticity and view key details about the achievement.
               </p>
               <div className="grid md:grid-cols-3 gap-8">
                 <div className="bg-card p-6 rounded-lg shadow-sm text-center">
