@@ -221,7 +221,7 @@ const Results = () => {
           test_id: data.id,
           user_id: session.user.id,
           share_code: shareCode,
-          overall_score: calculateOverallScore(data.scores),
+          overall_score: Math.round(calculateOverallScore(data.scores)),
           dimension_scores: JSON.stringify(data.scores),
           user_name: profile?.name || session.user.email?.split('@')[0] || 'Anonymous',
           test_completion_date: data.created_at,
@@ -409,7 +409,7 @@ const Results = () => {
             test_id: result.id,
             user_id: (await supabase.auth.getUser()).data.user!.id,
             share_code: code,
-            overall_score: Number(scoringResult.overallScore.toFixed(1)), // Store actual points with 1 decimal
+            overall_score: Math.round(scoringResult.overallScore),
             dimension_scores: JSON.stringify(scoringResult.dimensionScores),
             user_name: userName,
             test_completion_date: result.created_at,
@@ -533,7 +533,7 @@ const Results = () => {
             test_id: result.id,
             user_id: (await supabase.auth.getUser()).data.user!.id,
             share_code: shareCode,
-            overall_score: Number((scoringResult?.overallScore || 0).toFixed(1)), // Store actual points with 1 decimal
+            overall_score: Math.round(scoringResult?.overallScore || 0),
             dimension_scores: JSON.stringify(scoringResult?.dimensionScores || {}),
             user_name: userName,
             test_completion_date: result.created_at,
@@ -780,7 +780,7 @@ const Results = () => {
               <div className="text-center">
                 <p className="text-sm text-muted-foreground mb-2 uppercase tracking-wide">Total Score</p>
                 <p className="text-6xl font-bold text-primary mb-2 tabular-nums">
-                  {scoringResult.overallScore}
+                  {Math.round(scoringResult.overallScore)}
                 </p>
                 <p className="text-sm text-muted-foreground">
                   out of {scoringResult.totalPossiblePoints} points
@@ -850,13 +850,13 @@ const Results = () => {
                         </span>
                       </div>
                       <div className="text-right ml-4">
-                        <p className="text-2xl font-bold tabular-nums">{dim.score}</p>
+                        <p className="text-2xl font-bold tabular-nums">{Math.round(dim.score)}</p>
                         <p className="text-xs text-muted-foreground">points</p>
                       </div>
                     </div>
                     <Progress value={percentage} className="h-3" />
                     <p className="text-xs text-muted-foreground mt-2">
-                      {percentage.toFixed(1)}% proficiency • {dim.score} of {maxScore.toFixed(0)} points
+                      {Math.round(percentage)}% proficiency • {Math.round(dim.score)} of {Math.round(maxScore)} points
                     </p>
                   </div>
                 );

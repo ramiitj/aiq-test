@@ -14,7 +14,7 @@ export function generateCaption(data: CaptionData): string {
   const { score, totalPossible, topDimensions, verificationUrl, passed = true, assessmentContext } = data;
 
   const dimensionList = topDimensions
-    .map((dim) => `✅ ${dim.name} (${dim.score.toFixed(1)})`)
+    .map((dim) => `✅ ${dim.name} (${Math.round(dim.score)})`)
     .join('\n');
   
   const percentage = (score / totalPossible) * 100;
@@ -24,7 +24,7 @@ export function generateCaption(data: CaptionData): string {
     if (!passed) {
       return `📚 Completed my ${assessmentContext.assessmentName}!
 
-Scored ${score.toFixed(1)}/${totalPossible} points and learned so much about responsible AI use!
+Scored ${Math.round(score)}/${Math.round(totalPossible)} points and learned so much about responsible AI use!
 
 This assessment measures AI literacy across 8 key areas using student-friendly, research-validated methods.
 
@@ -41,7 +41,7 @@ Verify: ${verificationUrl}
     if (percentage >= 80) {
       return `🎓 Proud to share my ${assessmentContext.assessmentName} results!
 
-Scored ${score.toFixed(1)}/${totalPossible} demonstrating strong AI literacy skills!
+Scored ${Math.round(score)}/${Math.round(totalPossible)} demonstrating strong AI literacy skills!
 
 This comprehensive assessment measures understanding across 8 dimensions of responsible AI use for students.
 
@@ -58,7 +58,7 @@ Verify: ${verificationUrl}
     if (percentage >= 60) {
       return `📊 Completed my ${assessmentContext.assessmentName}!
 
-Scored ${score.toFixed(1)}/${totalPossible} and gained valuable insights into AI collaboration!
+Scored ${Math.round(score)}/${Math.round(totalPossible)} and gained valuable insights into AI collaboration!
 
 Learning how to use AI responsibly and effectively is an important 21st century skill.
 
@@ -72,9 +72,9 @@ Verify: ${verificationUrl}
 #StudentLearning #AILiteracy #FutureSkills #Education #AIForStudents`;
     }
     
-    return `🌱 Took my ${assessmentContext.assessmentName} to learn about AI!
+      return `🌱 Took my ${assessmentContext.assessmentName} to learn about AI!
 
-Scored ${score.toFixed(1)}/${totalPossible} and discovered areas where I can grow.
+Scored ${Math.round(score)}/${Math.round(totalPossible)} and discovered areas where I can grow.
 
 Current strengths:
 ${dimensionList}
@@ -93,7 +93,7 @@ Verify: ${verificationUrl}
     if (percentage >= 80) {
       return `🌟 Thrilled to share my ${assessmentContext.assessmentName} results!
 
-Scored ${score.toFixed(1)}/${totalPossible} demonstrating advanced ${roleName} AI collaboration skills.
+Scored ${Math.round(score)}/${Math.round(totalPossible)} demonstrating advanced ${roleName} AI collaboration skills.
 
 This role-specific assessment measures real-world AI capabilities across 8 research-validated dimensions tailored for ${roleName} professionals.
 
@@ -110,7 +110,7 @@ Verify: ${verificationUrl}
     if (percentage >= 60) {
       return `🎯 Just completed the ${assessmentContext.assessmentName}!
 
-Scored ${score.toFixed(1)}/${totalPossible} as a ${roleName} AI Collaborator. This specialized assessment evaluates role-specific AI competencies using research-backed methods.
+Scored ${Math.round(score)}/${Math.round(totalPossible)} as a ${roleName} AI Collaborator. This specialized assessment evaluates role-specific AI competencies using research-backed methods.
 
 Top strengths:
 ${dimensionList}
@@ -122,9 +122,9 @@ Verify: ${verificationUrl}
 #${roleName} #AICollaboration #ProfessionalGrowth #AISkills`;
     }
     
-    return `📈 Completed the ${assessmentContext.assessmentName} to benchmark my AI collaboration skills!
+      return `📈 Completed the ${assessmentContext.assessmentName} to benchmark my AI collaboration skills!
 
-Scored ${score.toFixed(1)}/${totalPossible}. Ready to enhance these ${roleName}-specific capabilities as AI transforms our field.
+Scored ${Math.round(score)}/${Math.round(totalPossible)}. Ready to enhance these ${roleName}-specific capabilities as AI transforms our field.
 
 Key focus areas:
 ${dimensionList}
@@ -139,7 +139,7 @@ Verify: ${verificationUrl}
   // General assessment captions (original logic)
   // For non-passing users, focus on progress and learning journey
   if (!passed) {
-    return `📊 Completed my AIQ Assessment™ and scored ${score.toFixed(1)}/${totalPossible} (${data.level} level)!
+    return `📊 Completed my AIQ Assessment™ and scored ${Math.round(score)}/${Math.round(totalPossible)} (${data.level} level)!
 
 This comprehensive assessment measures AI collaboration skills across 8 research-validated dimensions using psychometric methodologies.
 
@@ -156,7 +156,7 @@ Verify my results: ${verificationUrl}
   if (percentage >= 80) {
     return `🌟 Thrilled to share my AIQ Assessment™ results!
 
-Scored ${score.toFixed(1)}/${totalPossible} as an Exceptional AI Collaborator across 8 research-validated dimensions.
+Scored ${Math.round(score)}/${Math.round(totalPossible)} as an Exceptional AI Collaborator across 8 research-validated dimensions.
 
 This assessment measures real-world AI collaboration skills using 400 psychometrically calibrated items and adaptive Item Response Theory (IRT) methodology.
 
@@ -173,7 +173,7 @@ Verify my results: ${verificationUrl}
   if (percentage >= 60) {
     return `🎯 Just completed the AIQ Assessment™!
 
-Scored ${score.toFixed(1)}/${totalPossible} as a Proficient AI Collaborator. This comprehensive test evaluates 8 key dimensions of AI collaboration competency using research-backed psychometric methods.
+Scored ${Math.round(score)}/${Math.round(totalPossible)} as a Proficient AI Collaborator. This comprehensive test evaluates 8 key dimensions of AI collaboration competency using research-backed psychometric methods.
 
 Excited to continue developing these critical skills as AI becomes integral to every profession.
 
@@ -188,7 +188,7 @@ Verify my results: ${verificationUrl}
   if (percentage >= 40) {
     return `📈 Completed the AIQ Assessment™ to benchmark my AI collaboration skills!
 
-Scored ${score.toFixed(1)}/${totalPossible} as a Developing AI Collaborator across 8 dimensions. Ready to enhance these capabilities as AI transforms the workplace.
+Scored ${Math.round(score)}/${Math.round(totalPossible)} as a Developing AI Collaborator across 8 dimensions. Ready to enhance these capabilities as AI transforms the workplace.
 
 Key focus areas:
 ${dimensionList}
@@ -202,7 +202,7 @@ Verify my results: ${verificationUrl}
 
   return `🌱 Started my AI collaboration journey with the AIQ Assessment™!
 
-Scored ${score.toFixed(1)}/${totalPossible} as an Emerging AI Collaborator. Excited to develop these essential skills for the AI-powered future of work.
+Scored ${Math.round(score)}/${Math.round(totalPossible)} as an Emerging AI Collaborator. Excited to develop these essential skills for the AI-powered future of work.
 
 Current strengths:
 ${dimensionList}
