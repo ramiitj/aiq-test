@@ -776,13 +776,25 @@ const Test = () => {
     }
 
     try {
+      // Calculate test duration in seconds
+      const { data: testData } = await supabase
+        .from('tests')
+        .select('start_time')
+        .eq('id', testId)
+        .single();
+      
+      const duration = testData?.start_time 
+        ? Math.floor((Date.now() - new Date(testData.start_time).getTime()) / 1000)
+        : 0;
+      
       // Call the secure score-test edge function
       console.log('[Test] Calling score-test edge function for test:', testId);
       
       const { data: scoreData, error: scoreError } = await supabase.functions.invoke('score-test', {
         body: { 
           testId, 
-          answers 
+          answers,
+          duration
         }
       });
 

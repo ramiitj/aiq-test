@@ -101,6 +101,22 @@ const calculateOverallScore = (scores: any): number => {
   return total;
 };
 
+// Helper function to get correct total possible points based on product slug
+const getTotalPossiblePoints = (productSlug: string | null | undefined): number => {
+  if (!productSlug) return 600; // Default fallback
+  
+  if (productSlug === 'adolescent-14-15') return 240;
+  if (productSlug === 'adolescent-16-17') return 480;
+  if (productSlug === 'general-beginner') return 600;
+  if (productSlug === 'general-advanced') return 800;
+  
+  // Professional roles: beginner = 600, advanced = 800
+  if (productSlug.endsWith('-beginner')) return 600;
+  if (productSlug.endsWith('-advanced')) return 800;
+  
+  return 600; // Default fallback
+};
+
 const Results = () => {
   const { testId } = useParams();
   const [result, setResult] = useState<TestResult | null>(null);
@@ -222,19 +238,8 @@ const Results = () => {
       }
 
       // Store test data
-      setResult({
-        id: data.id,
-        scores: data.scores,
-        answers: data.answers,
-        created_at: data.created_at,
-        completed: data.completed,
-        test_duration_seconds: Number(data.test_duration_seconds) || 0,
-        test_version: data.test_version || "beginner",
-        product_id: productId || data.product_id,
-        product_slug: data.product_slug,
-        product_name: productName,
-      });
-
+      setResult(data);
+      
       // Use scores from database (calculated securely server-side)
       const testVersion = (() => {
         const rawVersion = data.test_version || "beginner";
@@ -250,14 +255,12 @@ const Results = () => {
       // Extract actual scores from nested objects
       const dimensionScores: { [key: string]: number } = {};
       let totalScore = 0;
-      let totalMaxScore = 0;
 
       Object.entries(rawScores).forEach(([code, scoreData]) => {
         if (typeof scoreData === 'object' && scoreData !== null) {
           const sd = scoreData as { score: number; maxScore: number; percentage: number };
           dimensionScores[code] = sd.score || 0;
           totalScore += sd.score || 0;
-          totalMaxScore += sd.maxScore || 0;
         } else {
           // Fallback for flat number format (legacy)
           dimensionScores[code] = scoreData as number || 0;
@@ -266,11 +269,27 @@ const Results = () => {
       });
 
       const overallScore = totalScore;
-      const totalPossiblePoints = totalMaxScore || 240; // Dynamic from actual scores
+      
+      // Get correct total possible points based on product slug
+      const totalPossiblePoints = getTotalPossiblePoints(data.product_slug);
+      
+      // Calculate percentage
       const percentageScore = totalPossiblePoints > 0 ? (overallScore / totalPossiblePoints) * 100 : 0;
-      const passingPercentage = 70; // From assessment config
+      
+      // Determine pass threshold (70% for most, 80% for advanced)
+      const passingPercentage = data.product_slug?.includes('advanced') ? 80 : 70;
       const passingScore = Math.floor(totalPossiblePoints * (passingPercentage / 100));
       const passed = percentageScore >= passingPercentage;
+      
+      console.log('[Results] Score calculation:', {
+        overallScore,
+        totalPossiblePoints,
+        percentageScore,
+        passingScore,
+        passed,
+        productSlug: data.product_slug,
+        rawScores
+      });
 
       const enrichedScores: any = {
         dimensionScores,
