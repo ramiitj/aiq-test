@@ -119,9 +119,26 @@ Deno.serve(async (req) => {
     }
 
     // Calculate percentage from points (overall_score now stores actual points)
-    // Use test_version to determine total possible points
+    // Use product_slug to determine correct total possible points
+    const getTotalPossiblePoints = (productSlug: string | null, testVersion: string): number => {
+      // Adolescent assessments
+      if (productSlug === 'adolescent-14-15') return 240;
+      if (productSlug === 'adolescent-16-17') return 480;
+      
+      // General assessments  
+      if (productSlug === 'general-beginner') return 600;
+      if (productSlug === 'general-advanced') return 800;
+      
+      // Professional assessments (beginner = 600, advanced = 800)
+      if (productSlug?.endsWith('-beginner')) return 600;
+      if (productSlug?.endsWith('-advanced')) return 800;
+      
+      // Fallback based on test_version
+      return testVersion === 'beginner' ? 600 : 800;
+    };
+
     const testVersion = data.test_version || 'professional';
-    const totalPossible = testVersion === 'beginner' ? 600 : 1600;
+    const totalPossible = getTotalPossiblePoints(data.product_slug, testVersion);
     const percentage = (data.overall_score / totalPossible) * 100;
     
     let scoreRange = "";
