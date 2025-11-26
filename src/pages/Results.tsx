@@ -318,7 +318,7 @@ const Results = () => {
           .from("public_results")
           .select("share_code")
           .eq("test_id", result.id)
-          .single();
+          .maybeSingle();
 
         if (existingShare) {
           code = existingShare.share_code;
@@ -441,7 +441,7 @@ const Results = () => {
         .from("public_results")
         .select("share_code")
         .eq("test_id", result.id)
-        .single();
+        .maybeSingle();
 
       let shareCode: string;
 
