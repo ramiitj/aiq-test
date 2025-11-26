@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import {
   Dialog,
   DialogContent,
@@ -31,6 +31,15 @@ export const ConsentForm = ({ open, onConsent, onDecline, testVersion }: Consent
   const isAdolescentAssessment = testVersion?.includes('adolescent') || false;
   
   const [currentTab, setCurrentTab] = useState("basic");
+  
+  // Auto-populate age and education for adolescent assessments
+  useEffect(() => {
+    if (isAdolescentAssessment) {
+      const is14_15 = testVersion.includes('14-15');
+      setAgeRange(is14_15 ? '14-15' : '16-17');
+      setEducationLevel(is14_15 ? 'grade-9-10' : 'grade-11-12');
+    }
+  }, [isAdolescentAssessment, testVersion]);
   
   // Section 1: Basic Information
   const [fullName, setFullName] = useState("");
@@ -625,19 +634,22 @@ export const ConsentForm = ({ open, onConsent, onDecline, testVersion }: Consent
 
               <div className="space-y-2">
                 <Label>Highest Education Level</Label>
-                <Select value={educationLevel} onValueChange={setEducationLevel}>
-                  <SelectTrigger>
-                    <SelectValue placeholder="Select education level" />
-                  </SelectTrigger>
-                  <SelectContent>
-                    {isAdolescentAssessment ? (
-                      <>
-                        <SelectItem value="grade-9-10">Currently in Grade 9-10</SelectItem>
-                        <SelectItem value="grade-11-12">Currently in Grade 11-12</SelectItem>
-                        <SelectItem value="prefer-not">Prefer not to say</SelectItem>
-                      </>
-                    ) : (
-                      <>
+                {isAdolescentAssessment ? (
+                  <div className="p-3 bg-muted rounded-md">
+                    <p className="text-sm font-medium">
+                      {testVersion.includes('14-15') ? 'Grade 9-10' : 'Grade 11-12'}
+                    </p>
+                    <p className="text-xs text-muted-foreground mt-1">
+                      Education level is pre-determined based on the student assessment you selected
+                    </p>
+                  </div>
+                ) : (
+                  <>
+                    <Select value={educationLevel} onValueChange={setEducationLevel}>
+                      <SelectTrigger>
+                        <SelectValue placeholder="Select education level" />
+                      </SelectTrigger>
+                      <SelectContent>
                         <SelectItem value="high-school">High school or equivalent</SelectItem>
                         <SelectItem value="some-college">Some college/Associate degree</SelectItem>
                         <SelectItem value="bachelors">Bachelor's degree</SelectItem>
@@ -646,10 +658,11 @@ export const ConsentForm = ({ open, onConsent, onDecline, testVersion }: Consent
                         <SelectItem value="professional">Professional certification</SelectItem>
                         <SelectItem value="other">Other</SelectItem>
                         <SelectItem value="prefer-not">Prefer not to say</SelectItem>
-                      </>
-                    )}
-                  </SelectContent>
-                </Select>
+                      </SelectContent>
+                    </Select>
+                    <p className="text-xs text-muted-foreground">Optional demographic information</p>
+                  </>
+                )}
               </div>
 
               <div className="space-y-2">
