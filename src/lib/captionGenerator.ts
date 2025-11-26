@@ -90,6 +90,21 @@ Verify: ${verificationUrl}
   if (assessmentContext?.type === 'role-specific') {
     const roleName = assessmentContext.role || 'Professional';
     
+    if (!passed) {
+      return `📊 Completed the ${assessmentContext.assessmentName} to assess my AI collaboration skills!
+
+Scored ${Math.round(score)}/${Math.round(totalPossible)} and gained valuable insights into ${roleName}-specific AI capabilities.
+
+Current strengths:
+${dimensionList}
+
+Committed to developing these essential skills as AI transforms the ${roleName} field! 🚀
+
+Verify: ${verificationUrl}
+
+#${roleName} #AILearning #ProfessionalDevelopment #SkillBuilding #AICollaboration`;
+    }
+    
     if (percentage >= 80) {
       return `🌟 Thrilled to share my ${assessmentContext.assessmentName} results!
 
