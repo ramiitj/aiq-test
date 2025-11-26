@@ -41,6 +41,7 @@ interface Test {
 
 interface CompletedTest {
   id: string;
+  test_id: string;
   created_at: string;
   test_completion_date: string;
   overall_score: number;
@@ -127,6 +128,7 @@ const Dashboard = () => {
         .from("public_results")
         .select(`
           id,
+          test_id,
           created_at,
           test_completion_date,
           overall_score,
@@ -602,7 +604,7 @@ const Dashboard = () => {
                     <div
                       key={test.id}
                       className="flex items-center justify-between p-4 border rounded-lg hover:bg-accent/50 cursor-pointer transition-colors group"
-                      onClick={() => navigate(`/results/${test.id}`)}
+                      onClick={() => navigate(`/results/${test.test_id}`)}
                     >
                       <div className="flex-1">
                         <div className="flex items-center gap-2 mb-1">
