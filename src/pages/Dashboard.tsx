@@ -496,23 +496,11 @@ const Dashboard = () => {
                       </div>
                       <h3 className="text-sm font-black">General Track</h3>
                     </div>
-                    <p className="text-xs text-muted-foreground mb-2">
-                      Universal AI collaboration • 2 levels
+                    <p className="text-xs text-muted-foreground mb-3">
+                      Universal AI collaboration • 2 levels • 8 dimensions assessed
                     </p>
                     
-                    {/* 8 Dimension Badges */}
-                    <div className="mb-3">
-                      <p className="text-[10px] font-semibold text-muted-foreground mb-1.5">8 Core Dimensions:</p>
-                      <div className="flex flex-wrap gap-1">
-                        {generalTrack.dimensions.map((dim) => (
-                          <Badge key={dim.code} variant="outline" className="text-[10px] px-1.5 py-0">
-                            {dim.code}
-                          </Badge>
-                        ))}
-                      </div>
-                    </div>
-                    
-                    <Button 
+                    <Button
                       className="w-full bg-blue-600 hover:bg-blue-700 h-9 mt-auto"
                       size="sm"
                     >
@@ -531,23 +519,11 @@ const Dashboard = () => {
                       </div>
                       <h3 className="text-sm font-black">Student Track</h3>
                     </div>
-                    <p className="text-xs text-muted-foreground mb-2">
-                      Age-appropriate literacy • Ages 14-17
+                    <p className="text-xs text-muted-foreground mb-3">
+                      Age-appropriate literacy • Ages 14-17 • 8 dimensions assessed
                     </p>
                     
-                    {/* 8 Dimension Badges */}
-                    <div className="mb-3">
-                      <p className="text-[10px] font-semibold text-muted-foreground mb-1.5">8 Core Dimensions:</p>
-                      <div className="flex flex-wrap gap-1">
-                        {adolescent14_15Track.dimensions.map((dim) => (
-                          <Badge key={dim.code} variant="outline" className="text-[10px] px-1.5 py-0">
-                            {dim.code}
-                          </Badge>
-                        ))}
-                      </div>
-                    </div>
-                    
-                    <Button 
+                    <Button
                       className="w-full bg-green-600 hover:bg-green-700 h-9 mt-auto"
                       size="sm"
                     >
@@ -566,22 +542,11 @@ const Dashboard = () => {
                       </div>
                       <h3 className="text-sm font-black">Professional Track</h3>
                     </div>
-                    <p className="text-xs text-muted-foreground mb-2">
-                      Role-specific • 15 specialized roles
+                    <p className="text-xs text-muted-foreground mb-3">
+                      Role-specific • 15 specialized roles • 8 dimensions per role
                     </p>
                     
-                    {/* Professional Roles Note */}
-                    <div className="mb-3">
-                      <p className="text-[10px] font-semibold text-muted-foreground mb-1.5">8 Role-Specific Dimensions per role:</p>
-                      <div className="flex flex-wrap gap-1">
-                        <Badge variant="secondary" className="text-[10px] px-1.5 py-0">Product Manager</Badge>
-                        <Badge variant="secondary" className="text-[10px] px-1.5 py-0">Software Engineer</Badge>
-                        <Badge variant="secondary" className="text-[10px] px-1.5 py-0">Data Scientist</Badge>
-                        <Badge variant="secondary" className="text-[10px] px-1.5 py-0">+12 more</Badge>
-                      </div>
-                    </div>
-                    
-                    <Button 
+                    <Button
                       className="w-full bg-purple-600 hover:bg-purple-700 h-9 mt-auto"
                       size="sm"
                     >
