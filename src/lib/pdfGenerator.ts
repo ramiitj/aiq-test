@@ -211,7 +211,7 @@ export async function generatePDFReport(
   doc.setTextColor(...scoreColor);
   // Display actual points with total possible
   doc.setFontSize(28);
-  doc.text(`${overallScore.toFixed(1)} / ${totalPossible.toFixed(0)}`, centerX, currentY + 5, { align: "center" });
+  doc.text(`${Math.round(overallScore)} / ${Math.round(totalPossible)}`, centerX, currentY + 5, { align: "center" });
 
   currentY += 15;
 
@@ -292,7 +292,7 @@ export async function generatePDFReport(
     doc.setFontSize(9);
     doc.setFont("helvetica", "bold");
     doc.setTextColor(...barColor);
-    doc.text(`${dim.score.toFixed(1)}`, scoreXPos, currentY + 5.5);
+    doc.text(`${Math.round(dim.score)}`, scoreXPos, currentY + 5.5);
 
     // Proficiency level text
     doc.setFontSize(9.5);
@@ -352,7 +352,7 @@ export async function generatePDFReport(
 
       return [
         fullName,
-        dim.score.toFixed(1),
+        Math.round(dim.score).toString(),
         getProficiencyLevel(dimPercentage, levelType),
         recText,
       ];

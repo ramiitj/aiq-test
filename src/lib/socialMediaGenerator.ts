@@ -109,11 +109,11 @@ export async function generateSocialMediaImage(data: SocialMediaImageData): Prom
   ctx.fillStyle = '#3B82F6';
   ctx.font = 'bold 48px Inter, system-ui, sans-serif';
   ctx.textAlign = 'center';
-  ctx.fillText(`${data.score.toFixed(1)}`, badgeX, badgeY - 5);
+  ctx.fillText(`${Math.round(data.score)}`, badgeX, badgeY - 5);
   
   ctx.font = '600 18px Inter, system-ui, sans-serif';
   ctx.fillStyle = '#6B7280';
-  ctx.fillText(`out of ${data.totalPossible}`, badgeX, badgeY + 20);
+  ctx.fillText(`out of ${Math.round(data.totalPossible)}`, badgeX, badgeY + 20);
 
   // Draw "AIQ" text in badge
   ctx.font = '600 16px Inter, system-ui, sans-serif';
@@ -151,7 +151,7 @@ export async function generateSocialMediaImage(data: SocialMediaImageData): Prom
     
     // Draw score
     ctx.textAlign = 'right';
-    ctx.fillText(`${dim.score.toFixed(1)}`, 880, y);
+    ctx.fillText(`${Math.round(dim.score)}`, 880, y);
     ctx.textAlign = 'left';
   });
 
