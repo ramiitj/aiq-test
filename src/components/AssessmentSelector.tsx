@@ -5,7 +5,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { Search, Clock, FileQuestion, Briefcase, Brain, GraduationCap, TrendingUp } from "lucide-react";
+import { Search, Clock, FileQuestion, Briefcase, Brain, GraduationCap, TrendingUp, Calculator, Landmark } from "lucide-react";
 
 interface Assessment {
   slug: string;
@@ -176,27 +176,27 @@ const assessments: Assessment[] = [
   // Accounting & Finance
   {
     slug: "ac-beginner",
-    name: "Accounting & Finance - Beginner",
+    name: "Accounting & Finance Professional - Beginner",
     track: "role-based",
-    role: "Accounting & Finance",
+    role: "Accounting & Finance Professional",
     difficulty: "beginner",
     duration: 60,
     questionCount: 60,
-    description: "Foundational AI literacy for accounting professionals",
+    description: "Automate accounting workflows and corporate financial operations with AI",
     targetAudience: "Accountants, financial analysts, auditors, tax professionals",
-    icon: Briefcase
+    icon: Calculator
   },
   {
     slug: "ac-advanced",
-    name: "Accounting & Finance - Advanced",
+    name: "Accounting & Finance Professional - Advanced",
     track: "role-based",
-    role: "Accounting & Finance",
+    role: "Accounting & Finance Professional",
     difficulty: "advanced",
     duration: 80,
     questionCount: 80,
-    description: "Expert-level AI literacy for finance leaders",
+    description: "Expert-level AI literacy for corporate finance leaders",
     targetAudience: "CFO, VP Finance, Controller, Finance Transformation Leader",
-    icon: Briefcase
+    icon: Calculator
   },
   
   // Business Analyst
@@ -332,27 +332,27 @@ const assessments: Assessment[] = [
   // Financial Advisors
   {
     slug: "fa-beginner",
-    name: "Financial Advisors - Beginner",
+    name: "Wealth & Investment Advisor - Beginner",
     track: "role-based",
-    role: "Financial Advisors",
+    role: "Wealth & Investment Advisor",
     difficulty: "beginner",
     duration: 60,
     questionCount: 60,
-    description: "Essential AI skills for financial advisory services",
+    description: "Personalize client wealth management and investment strategies with AI insights",
     targetAudience: "Financial advisors starting to leverage AI tools",
-    icon: Briefcase
+    icon: Landmark
   },
   {
     slug: "fa-advanced",
-    name: "Financial Advisors - Advanced",
+    name: "Wealth & Investment Advisor - Advanced",
     track: "role-based",
-    role: "Financial Advisors",
+    role: "Wealth & Investment Advisor",
     difficulty: "advanced",
     duration: 80,
     questionCount: 80,
-    description: "Advanced AI strategies for wealth management",
+    description: "Advanced AI strategies for client-facing wealth management",
     targetAudience: "Senior advisors mastering AI-driven financial planning",
-    icon: Briefcase
+    icon: Landmark
   },
   
   // Healthcare Administrators
