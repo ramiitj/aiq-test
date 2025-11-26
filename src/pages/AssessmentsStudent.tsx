@@ -105,11 +105,12 @@ export default function AssessmentsStudent() {
               </CardDescription>
             </CardHeader>
             <CardContent>
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
                 {dimensions.map((dim) => (
-                  <Badge key={dim.code} variant="outline" className="justify-center py-2">
-                    {dim.code}
-                  </Badge>
+                  <div key={dim.code} className="flex items-center gap-2 p-3 rounded-lg bg-secondary/30">
+                    <Badge variant="outline" className="shrink-0">{dim.code}</Badge>
+                    <span className="text-sm font-medium">{dim.name}</span>
+                  </div>
                 ))}
               </div>
             </CardContent>
