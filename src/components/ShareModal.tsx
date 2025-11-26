@@ -101,7 +101,9 @@ export function ShareModal({
 
     toast({
       title: "Image Downloaded",
-      description: "Your shareable certificate image has been saved.",
+      description: passed 
+        ? "Your certificate image has been saved."
+        : "Your results card has been saved.",
     });
   };
 
@@ -183,7 +185,9 @@ export function ShareModal({
             <div>
               <DialogTitle className="text-3xl font-bold tracking-tight">Share Your AIQ Results</DialogTitle>
               <DialogDescription className="text-base mt-1">
-                Download your certificate and showcase your AI collaboration skills
+                {passed 
+                  ? "Download your certificate and showcase your AI collaboration skills"
+                  : "Download your results card and track your AI learning journey"}
               </DialogDescription>
             </div>
           </div>
@@ -192,15 +196,15 @@ export function ShareModal({
         <div className="space-y-8 pt-4">
           {/* Image Preview Section */}
           <div className="space-y-3">
-            <h3 className="text-lg font-semibold">Certificate Preview</h3>
+            <h3 className="text-lg font-semibold">Results Summary</h3>
             <div className="border-2 rounded-lg overflow-hidden bg-secondary/30 shadow-sm">
               {isGenerating ? (
                 <div className="flex flex-col items-center justify-center h-[315px] gap-4">
                   <Loader2 className="h-12 w-12 animate-spin text-blue-900" />
-                  <p className="text-sm text-muted-foreground">Generating your certificate...</p>
+                  <p className="text-sm text-muted-foreground">Generating your results card...</p>
                 </div>
               ) : imageUrl ? (
-                <img src={imageUrl} alt="AIQ Results Certificate" className="w-full h-auto" />
+                <img src={imageUrl} alt="AIQ Assessment Results" className="w-full h-auto" />
               ) : (
                 <div className="flex flex-col items-center justify-center h-[315px] text-muted-foreground gap-2">
                   <p className="font-medium">Failed to generate image</p>
@@ -221,7 +225,7 @@ export function ShareModal({
               className="w-full bg-blue-900 hover:bg-blue-800 text-lg py-6"
             >
               <Download className="mr-2 h-5 w-5" />
-              Download Certificate
+              {passed ? "Download Certificate" : "Download Results Card"}
             </Button>
             <Button
               onClick={handleCopyCaption}
@@ -295,7 +299,7 @@ export function ShareModal({
             </div>
             <div className="bg-blue-50 dark:bg-blue-950/30 border border-blue-200 dark:border-blue-800 rounded-lg p-4">
               <p className="text-sm text-blue-900 dark:text-blue-100">
-                <strong>Note:</strong> The certificate image will download automatically when you click a social
+                <strong>Note:</strong> The {passed ? "certificate" : "results card"} image will download automatically when you click a social
                 platform. Upload the image and paste your caption when creating your post.
               </p>
             </div>
@@ -336,7 +340,7 @@ export function ShareModal({
             </Button>
             
             <p className="text-xs text-muted-foreground">
-              Share this link to allow others to verify your certificate authenticity
+              Share this link to allow others to verify your {passed ? "certificate" : "assessment results"}
             </p>
           </div>
 
@@ -346,11 +350,11 @@ export function ShareModal({
             <ul className="space-y-2 text-sm text-muted-foreground">
               <li className="flex items-start gap-2">
                 <CheckCircle className="h-4 w-4 text-green-600 mt-0.5 flex-shrink-0" />
-                <span>Add the certificate image to make your post stand out</span>
+                <span>Add the {passed ? "certificate" : "results card"} image to make your post stand out</span>
               </li>
               <li className="flex items-start gap-2">
                 <CheckCircle className="h-4 w-4 text-green-600 mt-0.5 flex-shrink-0" />
-                <span>Include the verification link so others can validate your results</span>
+                <span>Include the verification link so others can validate your {passed ? "certificate" : "results"}</span>
               </li>
               <li className="flex items-start gap-2">
                 <CheckCircle className="h-4 w-4 text-green-600 mt-0.5 flex-shrink-0" />
