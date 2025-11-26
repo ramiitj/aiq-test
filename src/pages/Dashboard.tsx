@@ -10,6 +10,7 @@ import { useToast } from "@/hooks/use-toast";
 import { checkUserRole } from "@/lib/roleUtils";
 import { captureUserLocation } from "@/lib/geolocation";
 import { Badge } from "@/components/ui/badge";
+import { generalTrack, adolescent14_15Track } from "@/lib/trackData";
 import {
   AlertDialog,
   AlertDialogAction,
@@ -489,23 +490,30 @@ const Dashboard = () => {
                 {/* General Track */}
                 <Link to="/assessments/general" className="block group">
                   <div className="bg-white dark:bg-gray-900 rounded-lg p-4 hover:shadow-xl transition-all hover:scale-[1.02] border-2 border-transparent hover:border-blue-400 h-full flex flex-col">
-                    <div className="flex items-center gap-2 mb-3">
+                    <div className="flex items-center gap-2 mb-2">
                       <div className="p-2 bg-blue-100 dark:bg-blue-900/30 rounded">
                         <Brain className="h-4 w-4 text-blue-600" />
                       </div>
                       <h3 className="text-sm font-black">General Track</h3>
                     </div>
-                    <p className="text-xs text-muted-foreground mb-3">
+                    <p className="text-xs text-muted-foreground mb-2">
                       Universal AI collaboration • 2 levels
                     </p>
-                    <div className="flex-1 mb-3">
-                      <div className="text-xs space-y-1 text-muted-foreground">
-                        <div>• Beginner Level</div>
-                        <div>• Advanced Level</div>
+                    
+                    {/* 8 Dimension Badges */}
+                    <div className="mb-3">
+                      <p className="text-[10px] font-semibold text-muted-foreground mb-1.5">8 Core Dimensions:</p>
+                      <div className="flex flex-wrap gap-1">
+                        {generalTrack.dimensions.map((dim) => (
+                          <Badge key={dim.code} variant="outline" className="text-[10px] px-1.5 py-0">
+                            {dim.code}
+                          </Badge>
+                        ))}
                       </div>
                     </div>
+                    
                     <Button 
-                      className="w-full bg-blue-600 hover:bg-blue-700 h-9"
+                      className="w-full bg-blue-600 hover:bg-blue-700 h-9 mt-auto"
                       size="sm"
                     >
                       View General
@@ -517,23 +525,30 @@ const Dashboard = () => {
                 {/* Student Track */}
                 <Link to="/assessments/adolescent" className="block group">
                   <div className="bg-white dark:bg-gray-900 rounded-lg p-4 hover:shadow-xl transition-all hover:scale-[1.02] border-2 border-transparent hover:border-green-400 h-full flex flex-col">
-                    <div className="flex items-center gap-2 mb-3">
+                    <div className="flex items-center gap-2 mb-2">
                       <div className="p-2 bg-green-100 dark:bg-green-900/30 rounded">
                         <GraduationCap className="h-4 w-4 text-green-600" />
                       </div>
                       <h3 className="text-sm font-black">Student Track</h3>
                     </div>
-                    <p className="text-xs text-muted-foreground mb-3">
-                      Age-appropriate literacy • 2 groups
+                    <p className="text-xs text-muted-foreground mb-2">
+                      Age-appropriate literacy • Ages 14-17
                     </p>
-                    <div className="flex-1 mb-3">
-                      <div className="text-xs space-y-1 text-muted-foreground">
-                        <div>• Ages 14-15</div>
-                        <div>• Ages 16-17</div>
+                    
+                    {/* 8 Dimension Badges */}
+                    <div className="mb-3">
+                      <p className="text-[10px] font-semibold text-muted-foreground mb-1.5">8 Core Dimensions:</p>
+                      <div className="flex flex-wrap gap-1">
+                        {adolescent14_15Track.dimensions.map((dim) => (
+                          <Badge key={dim.code} variant="outline" className="text-[10px] px-1.5 py-0">
+                            {dim.code}
+                          </Badge>
+                        ))}
                       </div>
                     </div>
+                    
                     <Button 
-                      className="w-full bg-green-600 hover:bg-green-700 h-9"
+                      className="w-full bg-green-600 hover:bg-green-700 h-9 mt-auto"
                       size="sm"
                     >
                       View Student
@@ -545,23 +560,29 @@ const Dashboard = () => {
                 {/* Professional Track */}
                 <Link to="/assessments/professional" className="block group">
                   <div className="bg-white dark:bg-gray-900 rounded-lg p-4 hover:shadow-xl transition-all hover:scale-[1.02] border-2 border-transparent hover:border-purple-400 h-full flex flex-col">
-                    <div className="flex items-center gap-2 mb-3">
+                    <div className="flex items-center gap-2 mb-2">
                       <div className="p-2 bg-purple-100 dark:bg-purple-900/30 rounded">
                         <Briefcase className="h-4 w-4 text-purple-600" />
                       </div>
                       <h3 className="text-sm font-black">Professional Track</h3>
                     </div>
-                    <p className="text-xs text-muted-foreground mb-3">
-                      Role-specific • 8 roles • 15 tests
+                    <p className="text-xs text-muted-foreground mb-2">
+                      Role-specific • 15 specialized roles
                     </p>
-                    <div className="flex-1 mb-3">
-                      <div className="text-xs space-y-1 text-muted-foreground">
-                        <div>• 8 Professional Roles</div>
-                        <div>• Beginner & Advanced</div>
+                    
+                    {/* Professional Roles Note */}
+                    <div className="mb-3">
+                      <p className="text-[10px] font-semibold text-muted-foreground mb-1.5">8 Role-Specific Dimensions per role:</p>
+                      <div className="flex flex-wrap gap-1">
+                        <Badge variant="secondary" className="text-[10px] px-1.5 py-0">Product Manager</Badge>
+                        <Badge variant="secondary" className="text-[10px] px-1.5 py-0">Software Engineer</Badge>
+                        <Badge variant="secondary" className="text-[10px] px-1.5 py-0">Data Scientist</Badge>
+                        <Badge variant="secondary" className="text-[10px] px-1.5 py-0">+12 more</Badge>
                       </div>
                     </div>
+                    
                     <Button 
-                      className="w-full bg-purple-600 hover:bg-purple-700 h-9"
+                      className="w-full bg-purple-600 hover:bg-purple-700 h-9 mt-auto"
                       size="sm"
                     >
                       View Professional
