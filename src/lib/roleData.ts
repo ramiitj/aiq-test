@@ -1,4 +1,4 @@
-import { Briefcase, Code, BarChart3, TrendingUp, Stethoscope, DollarSign, Building2, Users, Scale, Target, Cog, Package, ShoppingCart, Laptop, GraduationCap } from "lucide-react";
+import { Briefcase, Code, BarChart3, TrendingUp, Stethoscope, DollarSign, Building2, Users, Scale, Target, Cog, Package, ShoppingCart, Laptop, GraduationCap, Calculator, Landmark } from "lucide-react";
 
 export interface RoleData {
   slug: string;
@@ -228,11 +228,11 @@ export const professionalRoles: RoleData[] = [
   },
   {
     slug: "accounting-finance",
-    name: "Accounting & Finance",
-    icon: DollarSign,
-    description: "Transform financial operations with AI-powered analytics and automation",
-    longDescription: "Finance professionals use AI for forecasting, fraud detection, financial reporting, and risk management. This assessment evaluates your ability to leverage AI across all financial functions.",
-    targetAudience: ["Accountants", "Financial Analysts", "CFOs", "Controllers", "Auditors"],
+    name: "Accounting & Finance Professional",
+    icon: Calculator,
+    description: "Automate accounting workflows and corporate financial operations with AI",
+    longDescription: "Corporate finance and accounting professionals use AI for financial reporting, auditing, fraud detection, budgeting, and regulatory compliance. This assessment evaluates your ability to leverage AI in back-office financial operations and corporate accounting workflows.",
+    targetAudience: ["Accountants", "Financial Analysts", "CFOs", "Controllers", "Auditors", "Bookkeepers"],
     dimensions: [
       { code: "AAI", name: "Accounting AI Integration", description: "Understanding AI in accounting and finance" },
       { code: "FAA", name: "Financial Analysis & Automation", description: "AI-powered financial analysis" },
@@ -280,11 +280,11 @@ export const professionalRoles: RoleData[] = [
   },
   {
     slug: "financial-advisors",
-    name: "Financial Advisors",
-    icon: DollarSign,
-    description: "Deliver personalized wealth management with AI-driven insights",
-    longDescription: "Financial advisors use AI for portfolio optimization, risk assessment, client insights, and financial planning. This assessment evaluates your ability to leverage AI in wealth management.",
-    targetAudience: ["Financial Advisors", "Wealth Managers", "Financial Planners", "Investment Advisors"],
+    name: "Wealth & Investment Advisor",
+    icon: Landmark,
+    description: "Personalize client wealth management and investment strategies with AI insights",
+    longDescription: "Wealth managers and investment advisors use AI for portfolio optimization, client profiling, risk assessment, and personalized financial planning. This assessment evaluates your ability to leverage AI in client-facing advisory services and investment management.",
+    targetAudience: ["Financial Advisors", "Wealth Managers", "Financial Planners", "Investment Advisors", "Private Bankers"],
     dimensions: [
       { code: "FAI", name: "Financial Advisory AI Integration", description: "Understanding AI in wealth management" },
       { code: "CPA", name: "Client Profiling & Analysis", description: "AI-powered client insights and segmentation" },
