@@ -48,6 +48,7 @@ interface TestResult {
 
 interface ScoringResult {
   dimensionScores: { [dimensionCode: string]: number };
+  rawScores?: { [code: string]: { score: number; maxScore: number; percentage: number } };
   overallScore: number;
   totalPossiblePoints: number;
   passingScore: number;
@@ -186,20 +187,42 @@ const Results = () => {
         return rawVersion as TestVersion;
       })();
 
-      // Build scoring result from stored data with proper type casting
-      const dimensionScores = (data.scores || {}) as { [key: string]: number };
-      const dimScores = Object.values(dimensionScores);
-      const overallScore = dimScores.length > 0 
-        ? dimScores.reduce((sum, score) => sum + score, 0) / dimScores.length 
-        : 0;
+      // Parse nested score objects from server response
+      const rawScores = data.scores || {};
+      
+      // Extract actual scores from nested objects
+      const dimensionScores: { [key: string]: number } = {};
+      let totalScore = 0;
+      let totalMaxScore = 0;
+
+      Object.entries(rawScores).forEach(([code, scoreData]) => {
+        if (typeof scoreData === 'object' && scoreData !== null) {
+          const sd = scoreData as { score: number; maxScore: number; percentage: number };
+          dimensionScores[code] = sd.score || 0;
+          totalScore += sd.score || 0;
+          totalMaxScore += sd.maxScore || 0;
+        } else {
+          // Fallback for flat number format (legacy)
+          dimensionScores[code] = scoreData as number || 0;
+          totalScore += scoreData as number || 0;
+        }
+      });
+
+      const overallScore = totalScore;
+      const totalPossiblePoints = totalMaxScore || 240; // Dynamic from actual scores
+      const percentageScore = totalPossiblePoints > 0 ? (overallScore / totalPossiblePoints) * 100 : 0;
+      const passingPercentage = 70; // From assessment config
+      const passingScore = Math.floor(totalPossiblePoints * (passingPercentage / 100));
+      const passed = percentageScore >= passingPercentage;
 
       const enrichedScores: any = {
         dimensionScores,
+        rawScores,
         overallScore,
-        totalPossiblePoints: 1000,
-        passingScore: 700,
-        passed: overallScore >= 700,
-        percentageScore: (overallScore / 1000) * 100,
+        totalPossiblePoints,
+        passingScore,
+        passed,
+        percentageScore,
         correctCount: 0,
         totalCount: 0,
         assessmentLevel: testVersion,
@@ -208,12 +231,18 @@ const Results = () => {
       };
 
       setScoringResult(enrichedScores);
-      setIsPassed(enrichedScores.passed);
+      setIsPassed(passed);
 
-      // Extract bottom 3 dimensions for recommendations
-      const sortedDimensions = Object.entries(dimensionScores)
-        .map(([code, score]) => ({ code, score }))
-        .sort((a, b) => a.score - b.score)
+      // Extract bottom 3 dimensions for recommendations (sorted by percentage)
+      const sortedDimensions = Object.entries(rawScores)
+        .map(([code, scoreData]) => {
+          if (typeof scoreData === 'object' && scoreData !== null) {
+            const sd = scoreData as { score: number; maxScore: number; percentage: number };
+            return { code, score: sd.score || 0, percentage: sd.percentage || 0 };
+          }
+          return { code, score: scoreData as number || 0, percentage: 0 };
+        })
+        .sort((a, b) => a.percentage - b.percentage)
         .slice(0, 3);
 
       // Load recommendations with assessment context
@@ -467,10 +496,25 @@ const Results = () => {
     return null;
   }
 
-  const dimensionsWithNames = Object.keys(dimensionCodeMap).map((code, index) => ({
-    name: dimensionNames[index],
-    score: scoringResult.dimensionScores[code] || 0,
-  }));
+  const dimensionsWithNames = Object.keys(dimensionCodeMap).map((code, index) => {
+    const rawScoreData = result.scores?.[code];
+    let score = 0;
+    let maxScore = 30; // Default per dimension
+    
+    if (typeof rawScoreData === 'object' && rawScoreData !== null) {
+      score = (rawScoreData as any).score || 0;
+      maxScore = (rawScoreData as any).maxScore || 30;
+    } else if (typeof rawScoreData === 'number') {
+      score = rawScoreData;
+    }
+    
+    return {
+      code,
+      name: dimensionNames[index],
+      score,
+      maxScore,
+    };
+  });
 
   const verificationUrl = verificationCode ? `https://aiq.works/verify-certificate/${verificationCode}` : "";
 
@@ -716,8 +760,8 @@ const Results = () => {
           <CardContent className="p-0">
             <div className="divide-y-2">
               {dimensionsWithNames.map((dim, idx) => {
-                const maxScore = scoringResult.totalPossiblePoints / 8;
-                const percentage = (dim.score / maxScore) * 100;
+                const maxScore = dim.maxScore || (scoringResult.totalPossiblePoints / 8);
+                const percentage = maxScore > 0 ? (dim.score / maxScore) * 100 : 0;
                 const { label, color, bg } = getScoreLevel(dim.score);
                 
                 return (

@@ -154,12 +154,14 @@ function calculateTestScores(
   let totalWeightedPoints = 0;
   let maxPossibleWeighted = 0;
 
-  dimensions.forEach((dimension) => {
+  dimensions.forEach((dimension, dimIndex) => {
     let dimensionPoints = 0;
     let dimensionMax = 0;
 
-    dimension.items.forEach((item: any) => {
-      const userAnswer = answers[item.id];
+    dimension.items.forEach((item: any, itemIndex: number) => {
+      // Use dimension-item index format matching Test.tsx answer keys
+      const answerKey = `${dimIndex}-${itemIndex}`;
+      const userAnswer = answers[answerKey];
       const isCorrect = checkAnswer(item, userAnswer);
       const itemPoints = calculateItemPoints(item, isCorrect, assessmentLevel);
       
