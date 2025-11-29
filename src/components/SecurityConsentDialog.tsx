@@ -24,6 +24,7 @@ export const SecurityConsentDialog = ({ open, onAccept, onDecline }: SecurityCon
 
   const securityMeasures = [
     { icon: Shield, text: "AI assistants and chatbots will be blocked", color: "text-amber-600" },
+    { icon: MonitorOff, text: "Screen recording and screen capture are disabled", color: "text-amber-600" },
     { icon: Ban, text: "Copy and paste operations will be disabled", color: "text-amber-600" },
     { icon: Lock, text: "Right-click context menu will be blocked", color: "text-amber-600" },
     { icon: Eye, text: "Tab switching and window changes will be monitored", color: "text-amber-600" },

@@ -34,6 +34,34 @@ export const AIBlocker = ({ isActive, testId, onViolation, onFullscreenExit, ena
     setIsBlocking(true);
     const activatedAt = Date.now();
     
+    // 0. Block Screen Recording and Screen Capture
+    const blockScreenCapture = () => {
+      // Block getDisplayMedia (screen recording)
+      if (navigator.mediaDevices && navigator.mediaDevices.getDisplayMedia) {
+        const originalGetDisplayMedia = navigator.mediaDevices.getDisplayMedia;
+        navigator.mediaDevices.getDisplayMedia = async () => {
+          handleViolation('Screen Recording Blocked');
+          throw new DOMException('Screen recording is not allowed during assessment', 'NotAllowedError');
+        };
+      }
+
+      // Block screen capture via getUserMedia
+      if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
+        const originalGetUserMedia = navigator.mediaDevices.getUserMedia;
+        navigator.mediaDevices.getUserMedia = async (constraints) => {
+          if (constraints && typeof constraints === 'object' && 'video' in constraints) {
+            const videoConstraints = constraints.video as MediaTrackConstraints;
+            if (videoConstraints && typeof videoConstraints === 'object' && 
+                ('displaySurface' in videoConstraints || 'cursor' in videoConstraints)) {
+              handleViolation('Screen Capture Blocked');
+              throw new DOMException('Screen capture is not allowed during assessment', 'NotAllowedError');
+            }
+          }
+          return originalGetUserMedia.call(navigator.mediaDevices, constraints);
+        };
+      }
+    };
+    
     // 1. Detect AI Assistant Browser Extensions
     const detectExtensions = () => {
       const suspiciousExtensions = [
@@ -103,6 +131,21 @@ export const AIBlocker = ({ isActive, testId, onViolation, onFullscreenExit, ena
 
     // 6. Block Specific Keyboard Shortcuts
     const blockKeyboardShortcuts = (e: KeyboardEvent) => {
+      // Block screenshot shortcuts
+      // Windows/Linux: Print Screen, Alt+Print Screen
+      if (e.key === 'PrintScreen') {
+        e.preventDefault();
+        handleViolation('Screenshot Shortcut Blocked');
+        return false;
+      }
+
+      // macOS: Cmd+Shift+3, Cmd+Shift+4, Cmd+Shift+5
+      if ((e.metaKey || e.ctrlKey) && e.shiftKey && ['3', '4', '5'].includes(e.key)) {
+        e.preventDefault();
+        handleViolation('Screenshot Shortcut Blocked');
+        return false;
+      }
+      
       const blockedCombos = [
         { key: 'c', ctrl: true }, // Ctrl+C
         { key: 'v', ctrl: true }, // Ctrl+V
@@ -338,7 +381,8 @@ export const AIBlocker = ({ isActive, testId, onViolation, onFullscreenExit, ena
       document.addEventListener('fullscreenchange', handleFullscreenChange);
     }
 
-    // Run detections
+    // Run detections and blocking
+    blockScreenCapture();
     detectExtensions();
     monitorNetworkRequests();
     detectAIAssistantUI();
