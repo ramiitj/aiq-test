@@ -37,7 +37,7 @@ export const ConsentForm = ({ open, onConsent, onDecline, testVersion }: Consent
     if (isAdolescentAssessment) {
       const is14_15 = testVersion.includes('14-15');
       setAgeRange(is14_15 ? '14-15' : '16-17');
-      setEducationLevel(is14_15 ? 'grade-9-10' : 'grade-11-12');
+      setEducationLevel(is14_15 ? 'Grade 9-10 (High School)' : 'Grade 11-12 (High School)');
     }
   }, [isAdolescentAssessment, testVersion]);
   
@@ -637,7 +637,7 @@ export const ConsentForm = ({ open, onConsent, onDecline, testVersion }: Consent
                 {isAdolescentAssessment ? (
                   <div className="p-3 bg-muted rounded-md">
                     <p className="text-sm font-medium">
-                      {testVersion.includes('14-15') ? 'Grade 9-10' : 'Grade 11-12'}
+                      {testVersion.includes('14-15') ? 'Grade 9-10 (High School)' : 'Grade 11-12 (High School)'}
                     </p>
                     <p className="text-xs text-muted-foreground mt-1">
                       Education level is pre-determined based on the student assessment you selected
