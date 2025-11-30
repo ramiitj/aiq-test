@@ -24,7 +24,7 @@ export const SecurityConsentDialog = ({ open, onAccept, onDecline }: SecurityCon
 
   const securityMeasures = [
     { icon: Shield, text: "AI assistants and chatbots will be blocked", color: "text-amber-600" },
-    { icon: MonitorOff, text: "Screen recording and screen capture are disabled", color: "text-amber-600" },
+    { icon: MonitorOff, text: "Screen recording and screen capture are strictly prohibited and monitored", color: "text-amber-600" },
     { icon: Ban, text: "Copy and paste operations will be disabled", color: "text-amber-600" },
     { icon: Lock, text: "Right-click context menu will be blocked", color: "text-amber-600" },
     { icon: Eye, text: "Tab switching and window changes will be monitored", color: "text-amber-600" },
@@ -59,7 +59,7 @@ export const SecurityConsentDialog = ({ open, onAccept, onDecline }: SecurityCon
           <AlertTriangle className="h-5 w-5 text-amber-600" />
           <AlertDescription className="text-amber-900 dark:text-amber-100">
             <strong>Important:</strong> This assessment uses comprehensive security monitoring to ensure integrity and
-            prevent AI assistance. By proceeding, you consent to these measures.
+            prevent AI assistance or unauthorized recording. By proceeding, you consent to these measures. Visual watermarks with your user ID and timestamp will be displayed throughout the test to deter unauthorized recording.
           </AlertDescription>
         </Alert>
 
@@ -107,8 +107,8 @@ export const SecurityConsentDialog = ({ open, onAccept, onDecline }: SecurityCon
           />
           <label htmlFor="security-agreement" className="text-sm font-medium leading-relaxed cursor-pointer">
             I understand and accept all security measures listed above. I confirm that I will not use any AI assistants,
-            external tools, or attempt to circumvent these security measures during the assessment. I understand that
-            violations will be logged and may result in test termination.
+            external tools, screen recording, or attempt to circumvent these security measures during the assessment. I understand that
+            screen recording and capture are strictly prohibited and that violations will be logged and may result in test termination.
           </label>
         </div>
 
