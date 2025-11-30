@@ -36,6 +36,7 @@ import {
 import { TrueFalseQuestion } from "@/components/TrueFalseQuestion";
 import { SecurityConsentDialog } from "@/components/SecurityConsentDialog";
 import { AIBlocker } from "@/components/AIBlocker";
+import { TestWatermark } from "@/components/TestWatermark";
 import { toast as sonnerToast } from "sonner";
 import {
   Dialog,
@@ -97,6 +98,7 @@ const Test = () => {
   const [loading, setLoading] = useState(true);
   const [loadError, setLoadError] = useState<string | null>(null);
   const [testId, setTestId] = useState<string | null>(null);
+  const [userId, setUserId] = useState<string | null>(null);
   const [currentDimension, setCurrentDimension] = useState(0);
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [timeRemaining, setTimeRemaining] = useState(3600); // Will be set from assessment
@@ -361,6 +363,8 @@ const Test = () => {
         return;
       }
       
+      // Set userId for watermark
+      setUserId(session.user.id);
       setIsAuthChecking(false);
 
       if (resumeId) {
@@ -1498,6 +1502,11 @@ const Test = () => {
           enableFullscreen={true}
           initialExitCount={fullscreenExitCount}
         />
+      )}
+      
+      {/* Anti-Recording Watermark */}
+      {testId && userId && testStarted && !showConsent && !showDemographics && (
+        <TestWatermark userId={userId} testId={testId} />
       )}
       
       {/* Professional Test Header - Fixed at top */}
