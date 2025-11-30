@@ -36,7 +36,7 @@ import {
 import { TrueFalseQuestion } from "@/components/TrueFalseQuestion";
 import { SecurityConsentDialog } from "@/components/SecurityConsentDialog";
 import { AIBlocker } from "@/components/AIBlocker";
-import { TestWatermark } from "@/components/TestWatermark";
+import { SecurityBadge } from "@/components/SecurityBadge";
 import { toast as sonnerToast } from "sonner";
 import {
   Dialog,
@@ -1504,17 +1504,15 @@ const Test = () => {
         />
       )}
       
-      {/* Anti-Recording Watermark */}
-      {testId && userId && testStarted && !showConsent && !showDemographics && (
-        <TestWatermark userId={userId} testId={testId} />
-      )}
-      
       {/* Professional Test Header - Fixed at top */}
       <div className="sticky top-0 z-50 bg-white dark:bg-gray-900 border-b-2 border-gray-200 dark:border-gray-700 shadow-sm">
         <div className="container max-w-6xl px-3 sm:px-4">
           <div className="flex items-center justify-between py-2 sm:py-3 gap-2">
             {/* Left: Test Info */}
             <div className="flex items-center gap-2 sm:gap-4 min-w-0">
+              {testId && userId && (
+                <SecurityBadge userId={userId} testId={testId} />
+              )}
               <Brain className="w-5 h-5 sm:w-6 sm:h-6 text-primary flex-shrink-0" />
               <div className="min-w-0">
                 <h1 className="text-xs sm:text-sm font-semibold truncate">AIQ Assessment™</h1>
