@@ -3,6 +3,7 @@ import { useNavigate, useSearchParams } from "react-router-dom";
 import { supabase } from "@/integrations/supabase/client";
 import { Navigation } from "@/components/Navigation";
 import { loadTestItems, type Dimension, type TestVersion } from "@/lib/adaptiveItemSelector";
+import { isBlockedEmailDomain } from "@/lib/emailValidation";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Progress } from "@/components/ui/progress";
@@ -360,6 +361,18 @@ const Test = () => {
         // Ensure we clear auth checking state even if navigation fails
         setIsAuthChecking(false);
         navigate(`/auth?returnTo=${returnUrl}`);
+        return;
+      }
+      
+      // Block users with disposable/alias email addresses from accessing tests
+      if (session.user.email && isBlockedEmailDomain(session.user.email)) {
+        toast({
+          title: "Access Denied",
+          description: "Assessments cannot be accessed from accounts using disposable or alias email addresses. Please register with your primary email.",
+          variant: "destructive",
+        });
+        setIsAuthChecking(false);
+        navigate("/dashboard");
         return;
       }
       

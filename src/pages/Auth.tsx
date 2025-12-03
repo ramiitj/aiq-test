@@ -8,6 +8,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { useToast } from "@/hooks/use-toast";
 import { z } from "zod";
 import { Mail, Lock, User, ArrowRight, AlertCircle } from "lucide-react";
+import { validateEmailForRegistration } from "@/lib/emailValidation";
 
 const authSchema = z.object({
   email: z.string().email("Please enter a valid email address"),
@@ -54,6 +55,18 @@ const Auth = () => {
       const validationData = isLogin ? { email, password } : { email, password, name };
 
       authSchema.parse(validationData);
+
+      // Block disposable/alias email domains for both login and signup
+      const emailValidation = validateEmailForRegistration(email);
+      if (!emailValidation.valid) {
+        toast({
+          title: "Email Not Allowed",
+          description: emailValidation.message,
+          variant: "destructive",
+        });
+        setLoading(false);
+        return;
+      }
 
       if (isLogin) {
         const { error } = await supabase.auth.signInWithPassword({
