@@ -32,6 +32,7 @@ import { generatePDFReport } from "@/lib/pdfGenerator";
 import { calculateTestScores } from "@/lib/scoreCalculator";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { getAssessmentContext, getPerformanceDescriptor, type AssessmentContext } from "@/lib/assessmentUtils";
+import { getDimensionName } from "@/lib/dimensionUtils";
 
 interface TestResult {
   id: string;
@@ -62,28 +63,6 @@ interface ScoringResult {
   failedDimensions?: string[];
   dimensionMinimumRequired?: number;
 }
-
-const dimensionNames = [
-  "Strategic AI Understanding",
-  "Prompt Engineering & Iteration",
-  "Critical Evaluation & Calibration",
-  "Intelligent Task Integration",
-  "Adaptive Learning & Continuous Improvement",
-  "Ethical Judgment & Use",
-  "Context Sensitivity",
-  "Creative Synthesis",
-];
-
-const dimensionCodeMap: Record<string, string> = {
-  SAU: "Strategic AI Understanding",
-  PEI: "Prompt Engineering Intelligence",
-  CEC: "Critical Evaluation Capability",
-  II: "Integration Intelligence",
-  ALC: "Adaptive Learning Capability",
-  EJC: "Ethical Judgment in AI Utilization",
-  CS: "Context Sensitivity",
-  CRS: "Creative Reasoning Synthesis",
-};
 
 // Helper function to calculate overall score from nested dimension scores
 const calculateOverallScore = (scores: any): number => {
@@ -376,11 +355,11 @@ const Results = () => {
 
     setDownloadingPDF(true);
     try {
-      // Convert dimension scores to array format for PDF
-      const dimensionsWithNames = Object.keys(dimensionCodeMap).map((code, index) => ({
+      // Convert dimension scores to array format for PDF - dynamically resolve names
+      const dimensionsWithNames = Object.entries(scoringResult.dimensionScores || {}).map(([code, score]) => ({
         code,
-        name: dimensionNames[index],
-        score: scoringResult.dimensionScores[code] || 0,
+        name: getDimensionName(code, result.product_slug),
+        score: score || 0,
       }));
 
       const issueDate = new Date(result.created_at);
@@ -572,8 +551,8 @@ const Results = () => {
     return null;
   }
 
-  const dimensionsWithNames = Object.keys(dimensionCodeMap).map((code, index) => {
-    const rawScoreData = result.scores?.[code];
+  // Dynamically extract dimensions from actual scores - works for ALL assessment types
+  const dimensionsWithNames = Object.entries(result.scores || {}).map(([code, rawScoreData]) => {
     let score = 0;
     let maxScore = 30; // Default per dimension
     
@@ -584,9 +563,12 @@ const Results = () => {
       score = rawScoreData;
     }
     
+    // Get dimension name dynamically based on product slug
+    const name = getDimensionName(code, result.product_slug);
+    
     return {
       code,
-      name: dimensionNames[index],
+      name,
       score,
       maxScore,
     };
