@@ -17,8 +17,8 @@ const Footer = () => {
             </Link>
           </div>
           <div className="text-center text-sm text-muted-foreground">
-            <p className="font-medium leading-relaxed">
-              AIQ<sup className="text-[0.6em]">™</sup> is a trademark of AI Works Pvt. Ltd. All Rights Reserved.
+          <p className="font-medium leading-relaxed">
+              The trademark "AIQ" is in the filing stages with the Indian Trade Marks Registry, and all rights regarding its use are reserved.
             </p>
             <p className="mt-2 leading-relaxed">
               All other trademarks, logos, and brand names are the property of their respective owners.
