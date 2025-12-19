@@ -108,7 +108,7 @@ export async function generatePDFReport(
     const footerY = pageHeight - 10;
 
     // Line 1: Trademark (left) and Page number (right)
-    doc.text("AIQ™ is a trademark of AI Works Pvt Ltd", margin, footerY);
+    doc.text("AIQ trademark filing in progress with Indian Trade Marks Registry", margin, footerY);
     doc.setFontSize(8);
     doc.text(`${pageNum}/${totalPages}`, pageWidth - margin, footerY, { align: "right" });
 
