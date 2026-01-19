@@ -294,6 +294,16 @@ export const professionalRoles: RoleData[] = [
       { code: "RAC", name: "Regulatory & Administrative Compliance", description: "Meeting healthcare AI regulations" },
       { code: "TAS", name: "Technology Adoption & Security", description: "Secure medical AI systems" }
     ],
+    advancedDimensions: [
+      { code: "MDA", name: "Medical AI Understanding", description: "Strategic understanding of frontier AI capabilities in clinical medicine" },
+      { code: "CDM", name: "Clinical Decision Making", description: "Advanced AI for diagnosis, treatment planning, and differential diagnosis support" },
+      { code: "PDM", name: "Precision Diagnostics & Medical Imaging", description: "Expert AI applications in radiology, pathology, and precision medicine" },
+      { code: "DSA", name: "Data Security & Analytics", description: "Advanced clinical data management, security, and analytics" },
+      { code: "CRD", name: "Clinical Research & Development", description: "AI leadership in medical research, clinical trials, and drug discovery" },
+      { code: "EGC", name: "Ethics, Governance & Control", description: "Ethical AI governance and leadership in healthcare" },
+      { code: "RAC", name: "Regulatory & Administrative Compliance", description: "Advanced healthcare AI regulatory compliance and leadership" },
+      { code: "TAS", name: "Technology Adoption & Security", description: "Enterprise healthcare AI security and adoption leadership" }
+    ],
     careerBenefits: [
       "Improve diagnostic accuracy with AI",
       "Personalize treatment plans using data",
@@ -415,14 +425,24 @@ export const professionalRoles: RoleData[] = [
     longDescription: "Educators leverage AI for personalized learning, assessment automation, content creation, and student engagement. This assessment evaluates your ability to integrate AI into teaching while maintaining pedagogical excellence.",
     targetAudience: ["Teachers", "Educators", "Instructional Designers", "Education Leaders"],
     dimensions: [
-      { code: "TAI", name: "Teaching AI Integration", description: "Understanding AI in education" },
-      { code: "PLA", name: "Personalized Learning & Adaptation", description: "AI for differentiated instruction" },
-      { code: "CAC", name: "Content & Curriculum Creation", description: "AI-assisted lesson planning and materials" },
-      { code: "ASF", name: "Assessment & Student Feedback", description: "AI-powered grading and feedback" },
-      { code: "SEE", name: "Student Engagement & Experience", description: "Using AI to boost engagement" },
-      { code: "DII", name: "Digital Literacy & Innovation", description: "Teaching students about AI" },
-      { code: "EPI", name: "Ethics & Professional Integration", description: "Responsible AI use in classrooms" },
-      { code: "TLP", name: "Tools & Learning Platforms", description: "EdTech and AI learning platforms" }
+      { code: "TEA", name: "Teaching AI Understanding", description: "Understanding AI capabilities, limitations, and strategic applications in teaching contexts" },
+      { code: "PLD", name: "Pedagogy and Learning Design", description: "Applying AI to enhance instructional design, differentiation, and learning experiences" },
+      { code: "ASE", name: "Assessment & Student Evaluation", description: "Using AI for formative/summative assessment, feedback, and learning analytics" },
+      { code: "CAI", name: "Content & AI Integration", description: "Creating, curating, and adapting educational content with AI assistance" },
+      { code: "EAI", name: "Ethical AI in Education", description: "Addressing bias, privacy, equity, and responsible AI use in educational settings" },
+      { code: "EGC", name: "Ethics, Governance & Control", description: "Governance frameworks and ethical oversight for AI in education" },
+      { code: "ACI", name: "AI & Classroom Innovation", description: "Innovative applications of AI for student engagement and classroom management" },
+      { code: "TAS", name: "Technology Adoption & Security", description: "Safe, secure, and effective adoption of AI technologies in educational environments" }
+    ],
+    advancedDimensions: [
+      { code: "TEA", name: "Teaching AI Understanding", description: "Strategic AI mastery in educational leadership and transformation" },
+      { code: "PLD", name: "Personalized Learning & Differentiation", description: "Advanced AI for adaptive learning paths and mastery-based progression" },
+      { code: "ASE", name: "Assessment & Student Evaluation", description: "Expert AI assessment systems and learning analytics" },
+      { code: "CAI", name: "Content & AI Integration", description: "Advanced AI curriculum development and content orchestration" },
+      { code: "EAI", name: "Ethical AI in Education", description: "Policy-level AI ethics and institutional governance" },
+      { code: "EGC", name: "Ethics, Governance & Control", description: "Strategic governance of AI in educational systems" },
+      { code: "ACI", name: "AI & Classroom Innovation", description: "Transformational AI-powered educational innovation" },
+      { code: "TAS", name: "Technology Adoption & Security", description: "Enterprise-scale educational technology leadership" }
     ],
     careerBenefits: [
       "Personalize learning for every student",
