@@ -12,6 +12,11 @@ export interface RoleData {
     name: string;
     description: string;
   }[];
+  advancedDimensions?: {
+    code: string;
+    name: string;
+    description: string;
+  }[];
   careerBenefits: string[];
   beginnerSlug: string;
   advancedSlug: string;
@@ -27,13 +32,23 @@ export const professionalRoles: RoleData[] = [
     targetAudience: ["Product Managers", "Product Owners", "Product Leaders", "Innovation Directors"],
     dimensions: [
       { code: "PAI", name: "Product AI Understanding", description: "Understanding AI capabilities in product development" },
-      { code: "UII", name: "User Insights & Intelligence", description: "Leveraging AI for user research and behavior analysis" },
-      { code: "PDM", name: "Product Data & Metrics", description: "Using AI to analyze product metrics and KPIs" },
-      { code: "ARP", name: "AI in Roadmap Planning", description: "Integrating AI tools into strategic product planning" },
-      { code: "CPE", name: "Collaborative Product Execution", description: "AI-powered cross-functional collaboration" },
-      { code: "EFI", name: "Ethical Feature Innovation", description: "Responsible AI feature development and ethics" },
-      { code: "CSP", name: "Competitive Strategy & Positioning", description: "AI-driven competitive analysis" },
-      { code: "TPI", name: "Technical Product Integration", description: "Understanding AI technical feasibility and integration" }
+      { code: "AIF", name: "AI Feature Development", description: "Designing, prioritizing, and building AI-powered features" },
+      { code: "UEA", name: "User Experience & AI", description: "Creating intuitive UX for AI features and managing user expectations" },
+      { code: "PDM", name: "Product Data & Metrics", description: "Leveraging data for product decisions and measuring AI feature performance" },
+      { code: "RDC", name: "Risk, Data & Compliance", description: "Managing risks, ensuring data privacy, and maintaining compliance" },
+      { code: "SMI", name: "Stakeholder & Market Intelligence", description: "Communicating AI value to stakeholders and understanding market dynamics" },
+      { code: "PRL", name: "Product Roadmap & Lifecycle", description: "Planning AI features in product roadmap and managing their lifecycle" },
+      { code: "CPE", name: "Competitive & Positioning Excellence", description: "Positioning AI-powered features competitively and managing differentiation" }
+    ],
+    advancedDimensions: [
+      { code: "PAI", name: "Product AI Understanding", description: "Advanced strategic assessment of AI capabilities in product contexts" },
+      { code: "AIF", name: "AI Feature Development", description: "Expert AI feature development and strategy" },
+      { code: "UEA", name: "User Experience & AI", description: "Advanced UX design for AI features" },
+      { code: "PDM", name: "Product Data & Metrics", description: "Expert data-driven product decisions" },
+      { code: "RDC", name: "Risk, Data & Compliance", description: "Advanced risk and compliance management" },
+      { code: "SMI", name: "Stakeholder & Market Intelligence", description: "Expert stakeholder communication" },
+      { code: "PRL", name: "Product Roadmap & Lifecycle", description: "Advanced roadmap planning" },
+      { code: "CPE", name: "Competitive & Positioning Excellence", description: "Expert competitive positioning" }
     ],
     careerBenefits: [
       "Build AI-native products with confidence",
@@ -52,14 +67,24 @@ export const professionalRoles: RoleData[] = [
     longDescription: "Software engineers leverage AI for code generation, debugging, testing, and architecture. This assessment measures your ability to collaborate with AI coding assistants and build AI-powered applications.",
     targetAudience: ["Software Developers", "Full-Stack Engineers", "Backend Engineers", "DevOps Engineers"],
     dimensions: [
-      { code: "AIC", name: "AI-Assisted Coding", description: "Using AI tools for code generation and completion" },
-      { code: "MIA", name: "Model Integration & APIs", description: "Integrating AI models and APIs into applications" },
-      { code: "DPM", name: "Data & Prompt Management", description: "Managing training data and optimizing prompts" },
-      { code: "PAO", name: "Performance & Optimization", description: "Optimizing AI model performance and efficiency" },
-      { code: "TDE", name: "Testing & Debugging with AI", description: "AI-powered testing and debugging workflows" },
-      { code: "SRC", name: "Security & Responsible Coding", description: "Secure AI implementation and ethical coding" },
-      { code: "UIF", name: "UI/UX for AI Features", description: "Designing interfaces for AI-powered features" },
-      { code: "AIM", name: "AI in Maintenance & Scalability", description: "Scaling and maintaining AI systems" }
+      { code: "AIC", name: "AI Coding & Implementation", description: "Practical implementation of AI features in software applications" },
+      { code: "MIA", name: "Model Integration & APIs", description: "Understanding and effectively using AI model APIs and services" },
+      { code: "DPM", name: "Data & Prompt Management", description: "Handling data flow and prompt engineering in AI-powered applications" },
+      { code: "PAO", name: "Performance & Optimization", description: "Optimizing AI feature performance, costs, and resource usage" },
+      { code: "TDE", name: "Testing & Debugging", description: "Testing methodologies and debugging strategies for AI-integrated systems" },
+      { code: "SRC", name: "Security, Risk & Compliance", description: "Security considerations and responsible AI practices in development" },
+      { code: "UIF", name: "UI/UX for AI Features", description: "Designing intuitive user interfaces for AI-powered functionality" },
+      { code: "ADE", name: "Architecture & Design", description: "System architecture and design patterns for AI-integrated applications" }
+    ],
+    advancedDimensions: [
+      { code: "AIA", name: "AI Architecture & Systems Design", description: "Advanced AI system architecture, scalability patterns, and infrastructure design" },
+      { code: "MLE", name: "ML Engineering & Model Operations", description: "Expert ML engineering practices and model operations" },
+      { code: "DSE", name: "Data Systems & Engineering", description: "Advanced data systems design and engineering" },
+      { code: "PAI", name: "Performance & AI Optimization", description: "Expert performance optimization for AI systems" },
+      { code: "SRS", name: "Safety, Reliability & Security", description: "Advanced AI system safety, reliability, and security" },
+      { code: "IAT", name: "Integration & API Technologies", description: "Expert API and integration patterns for AI" },
+      { code: "TQA", name: "Testing & Quality Assurance", description: "Advanced testing methodologies for AI systems" },
+      { code: "DAE", name: "Development & AI Engineering Tools", description: "Expert tooling and infrastructure for AI development" }
     ],
     careerBenefits: [
       "10x your coding productivity with AI",

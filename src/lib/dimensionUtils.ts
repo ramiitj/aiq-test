@@ -4,6 +4,7 @@ import { generalTrack, adolescent14_15Track, adolescent16_17Track } from "@/lib/
 /**
  * Get dimension name from code based on product slug
  * Dynamically resolves dimension names for all assessment types
+ * Supports both beginner and advanced dimensions for professional roles
  */
 export function getDimensionName(code: string, productSlug: string | null | undefined): string {
   if (!productSlug) {
@@ -30,10 +31,19 @@ export function getDimensionName(code: string, productSlug: string | null | unde
     if (dim) return dim.name;
   }
 
-  // Check professional roles
+  // Check professional roles - with advanced dimensions support
   for (const role of professionalRoles) {
-    // Match by beginnerSlug or advancedSlug
-    if (productSlug === role.beginnerSlug || productSlug === role.advancedSlug) {
+    const isBeginner = productSlug === role.beginnerSlug;
+    const isAdvanced = productSlug === role.advancedSlug;
+    
+    if (isBeginner || isAdvanced) {
+      // For advanced assessments, check advancedDimensions first if available
+      if (isAdvanced && role.advancedDimensions) {
+        const advDim = role.advancedDimensions.find(d => d.code === code);
+        if (advDim) return advDim.name;
+      }
+      
+      // Check regular dimensions (also as fallback for advanced)
       const dim = role.dimensions.find(d => d.code === code);
       if (dim) return dim.name;
     }
@@ -41,6 +51,14 @@ export function getDimensionName(code: string, productSlug: string | null | unde
     // Also try matching by role slug prefix
     const rolePrefix = role.beginnerSlug.replace('-beginner', '');
     if (productSlug.startsWith(rolePrefix)) {
+      // Determine if advanced based on slug
+      const isAdvancedPrefix = productSlug.includes('-advanced');
+      
+      if (isAdvancedPrefix && role.advancedDimensions) {
+        const advDim = role.advancedDimensions.find(d => d.code === code);
+        if (advDim) return advDim.name;
+      }
+      
       const dim = role.dimensions.find(d => d.code === code);
       if (dim) return dim.name;
     }
@@ -51,6 +69,12 @@ export function getDimensionName(code: string, productSlug: string | null | unde
   if (generalDim) return generalDim.name;
 
   for (const role of professionalRoles) {
+    // Check advanced dimensions first
+    if (role.advancedDimensions) {
+      const advDim = role.advancedDimensions.find(d => d.code === code);
+      if (advDim) return advDim.name;
+    }
+    // Then check regular dimensions
     const dim = role.dimensions.find(d => d.code === code);
     if (dim) return dim.name;
   }
@@ -62,6 +86,7 @@ export function getDimensionName(code: string, productSlug: string | null | unde
 /**
  * Get all dimension data for a product slug
  * Returns array of {code, name, description} for the assessment type
+ * Supports both beginner and advanced dimensions for professional roles
  */
 export function getDimensionsForProduct(productSlug: string | null | undefined): { code: string; name: string; description: string }[] {
   if (!productSlug) {
@@ -82,14 +107,27 @@ export function getDimensionsForProduct(productSlug: string | null | undefined):
     return generalTrack.dimensions;
   }
 
-  // Check professional roles
+  // Check professional roles - with advanced dimensions support
   for (const role of professionalRoles) {
-    if (productSlug === role.beginnerSlug || productSlug === role.advancedSlug) {
+    const isBeginner = productSlug === role.beginnerSlug;
+    const isAdvanced = productSlug === role.advancedSlug;
+    
+    if (isBeginner) {
       return role.dimensions;
     }
     
+    if (isAdvanced) {
+      // Use advancedDimensions if available, otherwise fall back to regular dimensions
+      return role.advancedDimensions || role.dimensions;
+    }
+    
+    // Also try matching by role slug prefix
     const rolePrefix = role.beginnerSlug.replace('-beginner', '');
     if (productSlug.startsWith(rolePrefix)) {
+      const isAdvancedPrefix = productSlug.includes('-advanced');
+      if (isAdvancedPrefix && role.advancedDimensions) {
+        return role.advancedDimensions;
+      }
       return role.dimensions;
     }
   }
