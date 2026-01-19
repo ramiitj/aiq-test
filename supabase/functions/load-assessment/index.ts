@@ -133,7 +133,9 @@ Deno.serve(async (req) => {
         : { ...assessment.itemBank, dimensions: sanitizedDimensions }  // Nested format
     };
 
-    console.log(`Assessment loaded for test ${testId.substring(0, 8)}...`);
+    // Log structure info for debugging
+    console.log(`[load-assessment] Assessment loaded for test ${testId.substring(0, 8)}...`);
+    console.log(`[load-assessment] Structure: dimensions=${sanitizedDimensions.length}, hasScoringConfig=${!!assessment.scoringConfiguration}, hasAssessmentConfig=${!!assessment.assessmentConfiguration}`);
 
     return new Response(
       JSON.stringify({ assessment: sanitizedAssessment }),

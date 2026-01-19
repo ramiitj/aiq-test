@@ -95,14 +95,30 @@ Deno.serve(async (req) => {
       ? assessment.itemBank 
       : assessment.itemBank.dimensions;
 
+    // CRITICAL FIX: Handle both scoringConfiguration and assessmentConfiguration formats
+    // Some assessment files (like SDE) use assessmentConfiguration instead of scoringConfiguration
+    const rawScoringConfig = assessment.scoringConfiguration 
+      || assessment.assessmentConfiguration 
+      || {};
+    
+    // Normalize scoring config with safe defaults
+    const scoringConfig = {
+      passingPercentage: rawScoringConfig.passingPercentage || 70,
+      passingScore: rawScoringConfig.passingScore,
+      totalPoints: rawScoringConfig.totalPoints || 600,
+      scoringGuidelines: rawScoringConfig.scoringGuidelines || null,
+      ...rawScoringConfig
+    };
+
     console.log(`[score-test] Assessment loaded with ${dimensions.length} dimensions`);
+    console.log(`[score-test] Scoring config: passingPercentage=${scoringConfig.passingPercentage}, hasGuidelines=${!!scoringConfig.scoringGuidelines}`);
     console.log(`[score-test] Total answers received: ${Object.keys(answers).length}`);
 
     // Server-side scoring logic
     const scores = calculateTestScores(
       answers,
       dimensions,
-      assessment.scoringConfiguration,
+      scoringConfig,
       test.test_version,
       test.product_slug
     );
@@ -219,12 +235,12 @@ function calculateTestScores(
     : 0;
   const overallPercentage = Math.min(100, rawOverallPercentage);
 
-  // Use passing percentage from config, default to 70%
-  const passingPercentage = scoringConfig.passingPercentage || 70;
+  // Use passing percentage from config, default to 70% (null-safe access)
+  const passingPercentage = scoringConfig?.passingPercentage || 70;
   const passed = overallPercentage >= passingPercentage;
 
-  // Use scoringGuidelines for proficiency level if available
-  const performanceLevel = scoringConfig.scoringGuidelines
+  // Use scoringGuidelines for proficiency level if available (null-safe access)
+  const performanceLevel = scoringConfig?.scoringGuidelines
     ? determinePerformanceLevel(overallPercentage, scoringConfig.scoringGuidelines)
     : determinePerformanceLevel(overallPercentage);
 
