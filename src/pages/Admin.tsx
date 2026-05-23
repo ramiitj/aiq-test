@@ -487,161 +487,179 @@ const Admin = () => {
           Manage AIQ platform content and view analytics
         </p>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
-          <Card className="shadow-elegant">
-            <CardHeader>
-              <CardTitle className="flex items-center gap-2">
-                <Users className="h-5 w-5 text-primary" />
-                Total Users
-              </CardTitle>
-            </CardHeader>
-            <CardContent>
-              <p className="text-4xl font-bold">{stats.totalUsers}</p>
-            </CardContent>
-          </Card>
+        <Tabs defaultValue="monitor" className="w-full">
+          <TabsList>
+            <TabsTrigger value="monitor">Live Monitor</TabsTrigger>
+            <TabsTrigger value="overview">Overview</TabsTrigger>
+            <TabsTrigger value="content">Content</TabsTrigger>
+            <TabsTrigger value="analytics">Analytics</TabsTrigger>
+            <TabsTrigger value="data">Data</TabsTrigger>
+          </TabsList>
 
-          <Card className="shadow-elegant">
-            <CardHeader>
-              <CardTitle className="flex items-center gap-2">
-                <BarChart3 className="h-5 w-5 text-primary" />
-                Total Tests
-              </CardTitle>
-            </CardHeader>
-            <CardContent>
-              <p className="text-4xl font-bold">{stats.totalTests}</p>
-            </CardContent>
-          </Card>
-        </div>
+          <TabsContent value="monitor" className="mt-6">
+            <LiveMonitor />
+          </TabsContent>
 
-        <Card className="shadow-elegant mb-8 border-2 border-primary/20">
-          <CardHeader>
-            <CardTitle className="flex items-center gap-2">
-              <Database className="h-5 w-5 text-primary" />
-              Storage Initialization
-            </CardTitle>
-            <CardDescription>
-              Batch upload all 34 assessment files (2 General + 2 Adolescent + 30 Professional) to cloud storage
-            </CardDescription>
-          </CardHeader>
-          <CardContent className="space-y-4">
-            <div className="flex items-center justify-between">
-              <p className="text-sm text-muted-foreground">
-                Click the button below to initialize storage with all assessment files from the repository
-              </p>
-              <Button 
-                onClick={handleBatchStorageInit}
-                disabled={initializingStorage}
-                size="lg"
-                className="ml-4"
-              >
-                {initializingStorage ? (
-                  <>
-                    <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                    Uploading...
-                  </>
-                ) : (
-                  <>
-                    <Upload className="mr-2 h-4 w-4" />
-                    Initialize Storage
-                  </>
-                )}
-              </Button>
+          <TabsContent value="overview" className="mt-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <Card className="shadow-elegant">
+                <CardHeader>
+                  <CardTitle className="flex items-center gap-2">
+                    <Users className="h-5 w-5 text-primary" />
+                    Total Users
+                  </CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <p className="text-4xl font-bold">{stats.totalUsers}</p>
+                </CardContent>
+              </Card>
+
+              <Card className="shadow-elegant">
+                <CardHeader>
+                  <CardTitle className="flex items-center gap-2">
+                    <BarChart3 className="h-5 w-5 text-primary" />
+                    Total Tests
+                  </CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <p className="text-4xl font-bold">{stats.totalTests}</p>
+                </CardContent>
+              </Card>
             </div>
+          </TabsContent>
 
-            {storageInitResults && (
-              <div className="mt-4 p-4 bg-muted rounded-lg">
-                <div className="flex items-center gap-2 mb-3">
-                  <h4 className="font-semibold">Upload Results</h4>
-                  <span className="text-sm text-muted-foreground">
-                    {storageInitResults.summary.succeeded} succeeded / {storageInitResults.summary.failed} failed
-                  </span>
+          <TabsContent value="content" className="mt-6 space-y-8">
+            <Card className="shadow-elegant border-2 border-primary/20">
+              <CardHeader>
+                <CardTitle className="flex items-center gap-2">
+                  <Database className="h-5 w-5 text-primary" />
+                  Storage Initialization
+                </CardTitle>
+                <CardDescription>
+                  Batch upload all 34 assessment files (2 General + 2 Adolescent + 30 Professional) to cloud storage
+                </CardDescription>
+              </CardHeader>
+              <CardContent className="space-y-4">
+                <div className="flex items-center justify-between">
+                  <p className="text-sm text-muted-foreground">
+                    Click the button below to initialize storage with all assessment files from the repository
+                  </p>
+                  <Button
+                    onClick={handleBatchStorageInit}
+                    disabled={initializingStorage}
+                    size="lg"
+                    className="ml-4"
+                  >
+                    {initializingStorage ? (
+                      <>
+                        <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                        Uploading...
+                      </>
+                    ) : (
+                      <>
+                        <Upload className="mr-2 h-4 w-4" />
+                        Initialize Storage
+                      </>
+                    )}
+                  </Button>
                 </div>
-                <div className="max-h-64 overflow-y-auto space-y-2">
-                  {storageInitResults.results.map((result: any, index: number) => (
-                    <div 
-                      key={index}
-                      className="flex items-center justify-between text-sm p-2 rounded bg-background"
-                    >
-                      <span className="font-mono text-xs">{result.fileName}</span>
-                      {result.success ? (
-                        <CheckCircle2 className="h-4 w-4 text-green-500" />
-                      ) : (
-                        <div className="flex items-center gap-2">
-                          <span className="text-xs text-destructive">{result.error}</span>
-                          <XCircle className="h-4 w-4 text-destructive" />
-                        </div>
-                      )}
+
+                {storageInitResults && (
+                  <div className="mt-4 p-4 bg-muted rounded-lg">
+                    <div className="flex items-center gap-2 mb-3">
+                      <h4 className="font-semibold">Upload Results</h4>
+                      <span className="text-sm text-muted-foreground">
+                        {storageInitResults.summary.succeeded} succeeded / {storageInitResults.summary.failed} failed
+                      </span>
                     </div>
-                  ))}
-                </div>
-              </div>
-            )}
-          </CardContent>
-        </Card>
+                    <div className="max-h-64 overflow-y-auto space-y-2">
+                      {storageInitResults.results.map((result: any, index: number) => (
+                        <div
+                          key={index}
+                          className="flex items-center justify-between text-sm p-2 rounded bg-background"
+                        >
+                          <span className="font-mono text-xs">{result.fileName}</span>
+                          {result.success ? (
+                            <CheckCircle2 className="h-4 w-4 text-green-500" />
+                          ) : (
+                            <div className="flex items-center gap-2">
+                              <span className="text-xs text-destructive">{result.error}</span>
+                              <XCircle className="h-4 w-4 text-destructive" />
+                            </div>
+                          )}
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                )}
+              </CardContent>
+            </Card>
 
-        <Card className="shadow-elegant mb-8">
-          <CardHeader>
-            <CardTitle className="flex items-center gap-2">
-              <Upload className="h-5 w-5 text-primary" />
-              Upload Test Items by Assessment Product
-            </CardTitle>
-            <CardDescription>
-              Upload JSON files for each assessment product. Files will be saved to their configured paths.
-            </CardDescription>
-          </CardHeader>
-          <CardContent className="space-y-8">
-            {/* General Assessments */}
-            {products.filter(p => p.slug.startsWith('general-')).length > 0 && (
+            <Card className="shadow-elegant">
+              <CardHeader>
+                <CardTitle className="flex items-center gap-2">
+                  <Upload className="h-5 w-5 text-primary" />
+                  Upload Test Items by Assessment Product
+                </CardTitle>
+                <CardDescription>
+                  Upload JSON files for each assessment product. Files will be saved to their configured paths.
+                </CardDescription>
+              </CardHeader>
+              <CardContent className="space-y-8">
+                {products.filter(p => p.slug.startsWith('general-')).length > 0 && (
+                  <div>
+                    <h3 className="text-lg font-semibold mb-4">General Assessments</h3>
+                    <div className="space-y-4">
+                      {products.filter(p => p.slug.startsWith('general-')).map(product => (
+                        <UploadCard key={product.id} product={product} />
+                      ))}
+                    </div>
+                  </div>
+                )}
+
+                {products.filter(p => p.slug.startsWith('adolescent-')).length > 0 && (
+                  <div>
+                    <h3 className="text-lg font-semibold mb-4">Student Assessments</h3>
+                    <div className="space-y-4">
+                      {products.filter(p => p.slug.startsWith('adolescent-')).map(product => (
+                        <UploadCard key={product.id} product={product} />
+                      ))}
+                    </div>
+                  </div>
+                )}
+
+                {products.filter(p => !p.slug.startsWith('general-') && !p.slug.startsWith('adolescent-')).length > 0 && (
+                  <div>
+                    <h3 className="text-lg font-semibold mb-4">Professional Assessments</h3>
+                    <div className="space-y-4">
+                      {products.filter(p => !p.slug.startsWith('general-') && !p.slug.startsWith('adolescent-')).map(product => (
+                        <UploadCard key={product.id} product={product} />
+                      ))}
+                    </div>
+                  </div>
+                )}
+              </CardContent>
+            </Card>
+          </TabsContent>
+
+          <TabsContent value="analytics" className="mt-6 space-y-8">
+            <AdminProductAnalytics />
+            <div className="space-y-4">
               <div>
-                <h3 className="text-lg font-semibold mb-4">General Assessments</h3>
-                <div className="space-y-4">
-                  {products.filter(p => p.slug.startsWith('general-')).map(product => (
-                    <UploadCard key={product.id} product={product} />
-                  ))}
-                </div>
+                <h2 className="text-2xl font-bold tracking-tight">IRT Adaptive Selection Analytics</h2>
+                <p className="text-muted-foreground">
+                  Advanced analytics for General Advanced assessment's 160→80 item adaptive selection
+                </p>
               </div>
-            )}
-
-            {/* Student/Adolescent Assessments */}
-            {products.filter(p => p.slug.startsWith('adolescent-')).length > 0 && (
-              <div>
-                <h3 className="text-lg font-semibold mb-4">Student Assessments</h3>
-                <div className="space-y-4">
-                  {products.filter(p => p.slug.startsWith('adolescent-')).map(product => (
-                    <UploadCard key={product.id} product={product} />
-                  ))}
-                </div>
-              </div>
-            )}
-
-            {/* Professional/Role-Based Assessments */}
-            {products.filter(p => !p.slug.startsWith('general-') && !p.slug.startsWith('adolescent-')).length > 0 && (
-              <div>
-                <h3 className="text-lg font-semibold mb-4">Professional Assessments</h3>
-                <div className="space-y-4">
-                  {products.filter(p => !p.slug.startsWith('general-') && !p.slug.startsWith('adolescent-')).map(product => (
-                    <UploadCard key={product.id} product={product} />
-                  ))}
-                </div>
-              </div>
-            )}
-          </CardContent>
-        </Card>
-
-          <AdminProductAnalytics />
-          
-          {/* IRT Analytics Section */}
-          <div className="space-y-4">
-            <div>
-              <h2 className="text-2xl font-bold tracking-tight">IRT Adaptive Selection Analytics</h2>
-              <p className="text-muted-foreground">
-                Advanced analytics for General Advanced assessment's 160→80 item adaptive selection
-              </p>
+              <AdminIRTAnalytics />
             </div>
-            <AdminIRTAnalytics />
-          </div>
+          </TabsContent>
 
-          <AdminDataTables />
+          <TabsContent value="data" className="mt-6">
+            <AdminDataTables />
+          </TabsContent>
+        </Tabs>
+
       </div>
       <Footer />
     </div>
