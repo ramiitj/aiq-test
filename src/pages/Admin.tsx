@@ -14,6 +14,8 @@ import { sanitizeJsonString, sanitizeKeys } from "@/lib/jsonSanitizer";
 import { AdminDataTables } from "@/components/AdminDataTables";
 import { AdminProductAnalytics } from "@/components/AdminProductAnalytics";
 import { AdminIRTAnalytics } from "@/components/AdminIRTAnalytics";
+import { LiveMonitor } from "@/components/admin/LiveMonitor";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { z } from "zod";
 
 // Comprehensive validation schema for assessment uploads
